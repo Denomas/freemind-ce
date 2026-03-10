@@ -1,0 +1,43 @@
+freemind/freemind/main/FreeMind.java
+  bd7e19ac4215c780 301-302
+freemind/plugins/script/ScriptingEngine.java
+  bd7e19ac4215c780 228-230
+freemind/freemind/main/XMLElement.java
+  bd7e19ac4215c780 715,777,839,978,2069,2082,2128
+freemind/plugins/map/Registration.java
+  bd7e19ac4215c780 190
+freemind/freemind/controller/MapModuleManager.java
+  bd7e19ac4215c780 197
+freemind/tests/freemind/ToolsTests.java
+  bd7e19ac4215c780 213
+freemind/build.gradle.kts
+  bd7e19ac4215c780 195-199
+freemind/freemind/modes/common/dialogs/EnterPasswordDialog.java
+  bd7e19ac4215c780 73
+freemind/freemind/modes/mindmapmode/MindMapController.java
+  bd7e19ac4215c780 2027
+freemind/tests/freemind/PrintGraphics.java
+  bd7e19ac4215c780 417
+freemind/freemind/modes/browsemode/BrowseController.java
+  bd7e19ac4215c780 443
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "f32e187c6dab0caa0ce40efc457a64fb9d9c593b",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 27,
+      "total_deletions": 73,
+      "accepted_lines": 24,
+      "overriden_lines": 0
+    }
+  }
+}
