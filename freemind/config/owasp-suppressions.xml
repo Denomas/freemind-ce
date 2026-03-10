@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <!--
+        Suppressions for local JARs without Maven GAV coordinates.
+        OWASP cannot identify these JARs reliably, producing false positives.
+        Only suppress specific false-positive CVEs here — not blanket CPE wildcards.
+        Manual security review should be performed periodically.
+    -->
+
+    <!-- jortho.jar: spell checker, no Maven Central entry, no known CVEs -->
+    <!-- SimplyHTML.jar: WYSIWYG editor, no Maven Central entry, no known CVEs -->
+    <!-- JGoodies: UI forms library, no known CVEs for 1.8.x -->
+    <!-- HotEqn.jar: LaTeX renderer, will be replaced by JLaTeXMath in v1.3.0 -->
+    <!-- groovy-all.jar: may flag CVEs for older Groovy — review individually -->
+
+    <!-- Note: If OWASP flags specific CVEs for these JARs, add individual
+         <suppress><cve>CVE-XXXX-XXXXX</cve></suppress> entries with justification,
+         rather than blanket suppressions. -->
+</suppressions>
