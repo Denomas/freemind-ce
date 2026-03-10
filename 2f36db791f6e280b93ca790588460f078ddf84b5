@@ -1,0 +1,29 @@
+.github/workflows/release.yml
+  bd7e19ac4215c780 48,50-51,54-59,62-64,71,94-95
+README.md
+  bd7e19ac4215c780 5,9,11,13,15,17,19,21,23,25,27,34,37,43,45,47-51,53,57-59,61,64-65,73,75-77,80,82-86,88,90,95-99,101-102,107,110,113,116-117,119,123,130-131,138,152,154-156,159,161-162,164,168
+freemind/build.gradle.kts
+  bd7e19ac4215c780 84-86,353,374,394-395
+.github/workflows/build.yml
+  bd7e19ac4215c780 36-37,40-43,52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "2f36db791f6e280b93ca790588460f078ddf84b5",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 195,
+      "total_deletions": 216,
+      "accepted_lines": 550,
+      "overriden_lines": 0
+    }
+  }
+}
