@@ -106,6 +106,17 @@
 		<plugin_property name="create_dir" value="false"/>
 		<plugin_property name="create_html_linked_image" value="false"/>
 	</plugin_action>
+	<plugin_action documentation="%accessories/plugins/ExportWithXSLT_StandaloneHTML.properties_documentation" name="%accessories/plugins/ExportWithXSLT_StandaloneHTML.properties_name" base="freemind.extensions.ModeControllerHookAdapter" label="accessories/plugins/ExportWithXSLT_StandaloneHTML.properties" class_name="accessories.plugins.ExportWithXSLT">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/html/exportHTML_Standalone"/>
+		<plugin_property name="file_type" value="html"/>
+		<plugin_property name="file_description" value="%accessories/plugins/ExportWithXSLT_StandaloneHTML.properties_webpage"/>
+		<plugin_property name="xslt_file" value="accessories/freemind2html_standalone.xsl"/>
+		<plugin_property name="create_dir" value="false"/>
+		<plugin_property name="copy_icons" value="false"/>
+		<plugin_property name="load_file" value="true"/>
+		<plugin_property name="create_html_linked_image" value="false"/>
+	</plugin_action>
 <!--     <plugin_action
 	documentation="%accessories/plugins/ExportToLatex.properties_documentation"
 	name="%accessories/plugins/ExportToLatex.properties_name" base="freemind.extensions.ModeControllerHookAdapter"
