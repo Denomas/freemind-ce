@@ -21,7 +21,7 @@
 - **Platforms:** macOS, Windows, Linux
 - **CI/CD:** GitHub Actions (multi-platform matrix build + jpackage)
 
-## Generated Documentation
+## Documentation
 
 - [Project Overview](./project-overview.md) — Vision, tech stack, modernization status
 - [Architecture](./architecture.md) — System architecture, patterns, components, data model
@@ -64,10 +64,8 @@ When using this documentation with AI tools:
 4. Reference `development-guide.md` for build/test/deploy workflows
 5. Reference `source-tree-analysis.md` for navigating the codebase
 
-## Key Modernization Priorities
+## Current Focus
 
-1. **Cross-platform packaging** — Ensure jpackage works reliably on all 3 platforms via CI/CD
-2. **JiBX → JAXB migration** — Complete XML binding migration (legacy binding/ dir still exists)
-3. **UTF-8 modernization** — Full Unicode support in .mm file content and file paths
-4. **Plugin modernization** — Bring LaTeX, Database, Jabber collaboration plugins into Gradle
-5. **Community launch** — Prepare GitHub release for the FreeMind community
+See the [Active Tech Spec](../_bmad-output/implementation-artifacts/tech-spec-freemind-ce-next-gen-modernization.md) for the full implementation plan and roadmap.
+
+Next milestone: **v1.1.x — Infrastructure, DX & Automation**

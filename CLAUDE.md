@@ -1,91 +1,120 @@
-# FreeMind CE — Agent & Developer Guide
+# FreeMind CE — Developer Guide
 
-## Project Identity
-- **FreeMind Classic Edition (CE)** — Java 21 Swing mind-mapping desktop application
-- **Repository:** https://github.com/Denomas/freemind-ce
-- **Branch:** `main` (default branch, all development happens here)
-- **License:** GNU GPL v2
-- **Organization:** Denomas Engineering
+## Quick Start
 
-## Git & Release Strategy
-- **Remotes:** `github` → Denomas/freemind-ce (push target), `origin` → SourceForge (upstream, read-only)
-- **Branching:** Trunk-based — all work on `main`, feature branches for large changes
-- **Releases:** Tag `v*.*.*` on main → GitHub Actions auto-builds + creates release with DMG/EXE/DEB
-- **Versioning:** Semantic — `build.gradle.kts` (root) has `version = "X.Y.Z-CE"`, update before tagging
-- **Pre-commit:** `.pre-commit-config.yaml` — XML validation, compilation check, blocks .class/auto.properties
-
-## Build & Run
 ```bash
-export JAVA_HOME="/opt/homebrew/Cellar/openjdk@21/21.0.10/libexec/openjdk.jdk/Contents/Home"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
 ./gradlew :freemind:build --no-configuration-cache
 ./gradlew :freemind:run --no-configuration-cache
 ```
+
 - Always use `--no-configuration-cache` (config cache serialization issue)
 - Entry point: `freemind.main.FreeMindStarter`
+- Version: `build.gradle.kts` (root) → `version = "X.Y.Z-CE"`
 
-## Architecture
-- **Pattern:** MVC + Mode-based + Hook/Plugin framework
-- **XML Binding:** JAXB 2.3.9 (migrated from JiBX — Phase 1 complete)
-- **File I/O:** UTF-8 everywhere via `InputStreamReader`/`OutputStreamWriter` + `StandardCharsets.UTF_8`
-- **Plugins:** Registered via XML descriptors, loaded by `ImportWizard` classpath scanning
-- **Key docs:** `docs/architecture.md`, `docs/component-inventory.md`
+## Repository Layout
 
-## Project Structure
 ```
-freemind/                    # Main module
-├── freemind/                # Core source (package: freemind.*)
-│   ├── main/                # FreeMind.java, FreeMindStarter.java, Tools.java
-│   ├── modes/               # MindMapNode, MindIcon, ModeController
-│   ├── controller/          # Controller, FilterController
-│   ├── view/                # MapView, NodeView
-│   ├── extensions/          # ExportHook, HookFactory, ImportWizard
-│   └── common/              # XmlBindingTools (JAXB)
-├── accessories/             # XSLT exports, accessory plugins
-├── plugins/                 # Plugin modules (svg, script, map, search, help, contextgraph)
-├── generated-src/           # JAXB-generated classes (do NOT edit manually)
-├── tests/                   # JUnit tests
-├── images/                  # Icons, UI images
-├── lib/                     # Local JAR dependencies (tracked in git)
-├── build.gradle.kts         # Module build config
-├── freemind.properties      # Default application properties
-├── freemind_actions.xsd     # XSD schema for JAXB generation
-└── jaxb-bindings.xjb       # JAXB binding customizations
+freemind-ce/
+├── CLAUDE.md                 # This file — read first
+├── docs/
+│   ├── architecture.md       # MVC, modes, action framework → READ FOR DESIGN
+│   ├── component-inventory.md # UI components, plugins → READ FOR FINDING CODE
+│   ├── source-tree-analysis.md # Directory guide → READ FOR NAVIGATION
+│   └── development-guide.md  # Build, test, deploy → READ FOR WORKFLOWS
+├── build.gradle.kts          # Root build config (version here)
+├── settings.gradle.kts       # Module registration
+├── freemind/                  # Main module
+│   ├── freemind/              # Core source (package: freemind.*)
+│   ├── accessories/           # XSLT exports, accessory plugins
+│   ├── plugins/               # Plugin modules
+│   ├── generated-src/         # JAXB generated (DO NOT EDIT)
+│   ├── tests/                 # JUnit tests
+│   ├── build.gradle.kts       # Module build config
+│   └── freemind.properties    # Default application properties
+└── _bmad-output/              # Technical specs and migration analysis
 ```
+
+## Git & Release
+
+- **Remotes:** `github` → Denomas/freemind-ce (push target), `origin` → SourceForge (read-only)
+- **Branch:** `main` — trunk-based, all work here
+- **Release:** Tag `v*.*.*` on main → GitHub Actions auto-builds DMG/EXE/DEB
+- **Pre-commit:** `.pre-commit-config.yaml` — XML validation, Java compilation, whitespace
+
+## Architecture (Summary)
+
+- **Pattern:** MVC + Mode-based (Browse/MindMap/File) + Hook/Plugin
+- **XML Binding:** JAXB 2.3.9 (schema: `freemind_actions.xsd`)
+- **Plugins:** Registered via XML descriptors in `plugins/`, loaded by `ImportWizard`
+- **L&F:** FlatLaf 3.4.1 (light/dark), configured in `freemind.properties`
+
+For full architecture details → [`docs/architecture.md`](docs/architecture.md)
+
+## Key Source Locations
+
+| What | Where |
+|------|-------|
+| Main app class | `freemind/freemind/main/FreeMind.java` |
+| Controller hub | `freemind/freemind/controller/Controller.java` |
+| Primary mode | `freemind/freemind/modes/mindmapmode/MindMapController.java` |
+| Map view | `freemind/freemind/view/mindmapview/MapView.java` |
+| Node model | `freemind/freemind/modes/MindMapNode.java` |
+| JAXB tools | `freemind/freemind/common/XmlBindingTools.java` |
+| Plugin registry | `freemind/accessories/plugins/` (XML descriptors) |
+| Export XSLT | `freemind/accessories/*.xsl` (32 formats) |
+| Properties | `freemind/freemind.properties` |
+| XSD schema | `freemind/freemind_actions.xsd` |
+| JAXB bindings | `freemind/jaxb-bindings.xjb` |
+
+## Plugin Development
+
+- Extend `ExportHook` or `ModeControllerHookAdapter`
+- Register via XML in `plugins/` directory
+- Add resources to `Resources_en.properties`
+- Each plugin has its own `build.gradle.kts` in `plugins/<name>/`
+
+Active plugins: svg, script, map, search, help, contextgraph, collaboration/socket
+Not in Gradle: latex, collaboration/database, collaboration/jabber
 
 ## Critical Rules
-1. **Never ignore `*.jar` in .gitignore** — project depends on ~90 tracked local JARs
-2. **Never modify `generated-src/`** — regenerated by `./gradlew :freemind:generateJaxb`
+
+1. **Never ignore `*.jar` in .gitignore** — project depends on ~90 tracked local JARs in `lib/`
+2. **Never modify `generated-src/`** — regenerate with `./gradlew :freemind:generateJaxb`
 3. **Never commit `auto.properties`** — runtime-generated user config
-4. **Pre-commit hooks are active** — `.pre-commit-config.yaml` enforces quality checks
-5. **Existing features must not break** — always preserve backward compatibility
-6. **Plugin convention:** extend `ExportHook` or `ModeControllerHookAdapter`, register via XML in `plugins/`, add resources to `Resources_en.properties`
+4. **Test before commit** — `./gradlew build` must pass, run the app to verify
+5. **No @SuppressWarnings** — fix root causes, don't suppress
+6. **Preserve backward compatibility** — existing .mm files must keep working
 
-## Completed Modernization Phases
-- [x] Phase 0: XJC Spike (`_bmad-output/spike-xjc-findings.md`)
-- [x] Phase 1: JAXB Migration — XSD fixed, 128 classes generated, XmlBindingTools rewritten
-- [x] Phase 2: UTF-8 Encoding — 15 files, FileReader/FileWriter → InputStreamReader/OutputStreamWriter
-- [x] Phase 3: Plugin Build Configs — 6 plugin build.gradle.kts files
-- [x] Phase 4: CI/CD — GitHub Actions multi-platform build
-- [x] Phase 5: (Deferred — needs GitHub org/tap repo infrastructure)
-- [x] Phase 6: HTML Export — Standalone HTML with emoji icons, MindIconEmoji.java
-- [x] Phase 7: Context Graph Plugin — Markdown + XML export
+## Common Tasks
 
-## Remaining Work
-- [ ] FlatLaf modern look-and-feel integration (dark mode, modern theme)
-- [ ] Compiler warnings cleanup (25 warnings: SecurityManager, deprecated APIs)
-- [ ] Homebrew Cask (`brew install freemind-ce` — needs denomas/homebrew-tap repo)
-- [ ] macOS code signing & notarization (Gatekeeper bypass currently required)
-- [ ] Property-based tests (incomplete, excluded from build)
-- [ ] LaTeX, Database, Jabber plugins not yet in Gradle
+```bash
+# Full build (all platforms)
+./gradlew build --no-configuration-cache
 
-## Documentation Map
-- `CLAUDE.md` — This file (always read first)
-- `docs/index.md` — Documentation entry point
-- `docs/architecture.md` — System architecture and patterns
-- `docs/development-guide.md` — Build, test, deploy workflows
-- `docs/component-inventory.md` — UI components and plugin catalog
-- `docs/source-tree-analysis.md` — Directory structure guide
-- `_bmad-output/` — Technical specs and migration analysis
+# Run the app
+./gradlew :freemind:run --no-configuration-cache
 
-## Tech Spec Reference
-Full modernization roadmap: `_bmad-output/implementation-artifacts/tech-spec-freemind-ce-full-modernization.md`
+# Regenerate JAXB classes
+./gradlew :freemind:generateJaxb
+
+# Package for macOS/Windows/Linux
+./gradlew :freemind:jpackageMac
+./gradlew :freemind:jpackageWin
+./gradlew :freemind:jpackageLinux
+
+# Debug mode (port 5005)
+./gradlew :freemind:run --debug-jvm
+```
+
+## Where to Look Next
+
+| If you need... | Read... |
+|----------------|---------|
+| How the system works | [`docs/architecture.md`](docs/architecture.md) |
+| Finding specific code | [`docs/component-inventory.md`](docs/component-inventory.md) |
+| Build/test/deploy how-to | [`docs/development-guide.md`](docs/development-guide.md) |
+| Directory navigation | [`docs/source-tree-analysis.md`](docs/source-tree-analysis.md) |
+| Completed tech spec (v1.1.0) | [`_bmad-output/implementation-artifacts/tech-spec-freemind-ce-full-modernization.md`](_bmad-output/implementation-artifacts/tech-spec-freemind-ce-full-modernization.md) |
+| Active tech spec (next) | [`_bmad-output/implementation-artifacts/tech-spec-freemind-ce-next-gen-modernization.md`](_bmad-output/implementation-artifacts/tech-spec-freemind-ce-next-gen-modernization.md) |
+| Freeplane reference | `~/Development/Resources-Taken-From-Others/freeplane/` |

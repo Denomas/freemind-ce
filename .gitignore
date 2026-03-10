@@ -95,6 +95,13 @@ bin/reports/
 # Test coverage
 jacoco/
 coverage/
+
+# Legacy Ant build output inside freemind/
+freemind/bin/
+
+# Claude Code local settings (per-developer)
+.claude/
+
+# BMAD workflow framework and output artifacts (local tooling)
 _bmad/
 _bmad-output/
-.claude/
