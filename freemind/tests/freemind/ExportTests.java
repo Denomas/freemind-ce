@@ -20,6 +20,8 @@
 
 package tests.freemind;
 
+import freemind.main.HeadlessFreeMind;
+
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -55,7 +57,7 @@ public class ExportTests extends FreeMindTestBase {
 	@SuppressWarnings("serial")
 	public static void main(String[] args) throws FileNotFoundException,
 			XMLParseException, IOException, URISyntaxException {
-		FreeMindMainMock mFreeMindMain = new FreeMindMainMock();
+		HeadlessFreeMind mFreeMindMain = new HeadlessFreeMind();
 		JDialog fm = new JDialog();
 		fm.setTitle("Title");
 		fm.setModal(true);

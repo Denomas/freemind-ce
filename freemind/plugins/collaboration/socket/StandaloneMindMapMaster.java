@@ -33,11 +33,12 @@ import freemind.main.XMLParseException;
 import freemind.modes.ExtendedMapFeedback;
 import freemind.modes.MindMap;
 import freemind.modes.mindmapmode.MindMapController;
-import tests.freemind.FreeMindMainMock;
+import freemind.main.HeadlessFreeMind;
+import freemind.main.FreeMindMain;
 
 /**
  * Background server for map serving without gui. Single map instance.
- * 
+ *
  * @author foltin
  * @date 03.05.2014
  */
@@ -85,7 +86,7 @@ public class StandaloneMindMapMaster extends SocketMaster {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see plugins.collaboration.socket.TerminateableThread#processAction()
 		 */
 		public boolean processAction() throws Exception {
@@ -96,7 +97,7 @@ public class StandaloneMindMapMaster extends SocketMaster {
 				client.setSoTimeout(SOCKET_TIMEOUT_IN_MILLIES);
 				ServerCommunication communication = new ServerCommunication(
 						StandaloneMindMapMaster.this, client, null, false);
-				communication.start(); 
+				communication.start();
 			} catch (SocketTimeoutException e) {
 			}
 			final long now = System.currentTimeMillis();
@@ -158,7 +159,7 @@ public class StandaloneMindMapMaster extends SocketMaster {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter#getMindMapController
 	 * ()
@@ -170,7 +171,7 @@ public class StandaloneMindMapMaster extends SocketMaster {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#getMapFeedback()
 	 */
 	@Override
@@ -184,9 +185,9 @@ public class StandaloneMindMapMaster extends SocketMaster {
 	 * @param pPort
 	 * @throws IOException
 	 * @throws XMLParseException
-	 * 
+	 *
 	 */
-	public StandaloneMindMapMaster(FreeMindMainMock pFreeMindMain, File pFilePath,
+	public StandaloneMindMapMaster(FreeMindMain pFreeMindMain, File pFilePath,
 			String pPassword, int pPort) throws XMLParseException, IOException {
 		mBaseFilePath = pFilePath;
 		String[] fileList = pFilePath.list(new FilenameFilter() {
@@ -222,7 +223,7 @@ public class StandaloneMindMapMaster extends SocketMaster {
 	protected File getBaseFile() {
 		return mBaseFilePath;
 	}
-	
+
 	/**
 	 * @param args
 	 * @throws IOException
@@ -237,19 +238,19 @@ public class StandaloneMindMapMaster extends SocketMaster {
 			path = "/tmp/";
 		}
 		System.out.println("Using path '" + path + "'");
-		new StandaloneMindMapMaster(new FreeMindMainMock(), new File(path), "aa", 9001);
+		new StandaloneMindMapMaster(new HeadlessFreeMind(), new File(path), "aa", 9001);
 
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketMaster#setTitle()
 	 */
 	@Override
 	protected void setTitle() {
 	}
-	
+
 	public void terminate() {
 		mMasterThread.commitSuicide();
 		try {
@@ -258,5 +259,5 @@ public class StandaloneMindMapMaster extends SocketMaster {
 			freemind.main.Resources.getInstance().logException(e);
 		}
 	}
-	
+
 }

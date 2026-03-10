@@ -34,7 +34,6 @@ import java.util.logging.Logger;
 
 import javax.swing.filechooser.FileFilter;
 
-import tests.freemind.FreeMindMainMock;
 import freemind.common.NamedObject;
 import freemind.common.TextTranslator;
 import freemind.main.FreeMindMain.VersionInformation;
@@ -78,7 +77,7 @@ public class Resources implements TextTranslator {
 
 	static public Resources getInstance() {
 		if(resourcesInstance == null) {
-			createInstance(new FreeMindMainMock());
+			createInstance(new HeadlessFreeMind());
 			System.err.println("Resources without FreeMind called.");
 		}
 		return resourcesInstance;
@@ -91,11 +90,11 @@ public class Resources implements TextTranslator {
 	public String getFreemindBaseDir() {
 		return main.getFreemindBaseDir();
 	}
-	
+
 	public VersionInformation getFreemindVersion() {
 		return main.getFreemindVersion();
 	}
-	
+
 	public ClassLoader getFreeMindClassLoader() {
 		return main.getFreeMindClassLoader();
 	}
@@ -103,7 +102,7 @@ public class Resources implements TextTranslator {
 	public int getIntProperty(String key, int defaultValue) {
 		return main.getIntProperty(key, defaultValue);
 	}
-	
+
 	public long getLongProperty(String key, long defaultValue) {
 		try {
 			return Long.parseLong(getProperty(key));
@@ -179,7 +178,7 @@ public class Resources implements TextTranslator {
 	public String getText(String pKey) {
 		return getResourceString(pKey);
 	}
-	
+
 	public FreeMindFileDialog getStandardFileChooser(FileFilter filter) {
 		FreeMindFileDialog chooser;
 		if (!Tools.isMacOsX()) {

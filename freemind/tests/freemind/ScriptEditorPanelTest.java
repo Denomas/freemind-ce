@@ -22,6 +22,7 @@
 /*$Id: ScriptEditorPanelTest.java,v 1.1.2.7 2008/01/17 20:27:41 christianfoltin Exp $*/
 package tests.freemind;
 
+import freemind.main.HeadlessFreeMind;
 import freemind.controller.actions.generated.instance.ScriptEditorWindowConfigurationStorage;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
@@ -37,7 +38,7 @@ import plugins.script.ScriptingEngine.ErrorHandler;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ScriptEditorPanelTest extends FreeMindTestBase {
 
@@ -113,7 +114,7 @@ public class ScriptEditorPanelTest extends FreeMindTestBase {
 
 	public void _testPanel() {
 		ScriptEditorPanel scriptEditor = new ScriptEditorPanel(
-				new TestScriptModel(), new FreeMindMainMock(), true);
+				new TestScriptModel(), new HeadlessFreeMind(), true);
 		scriptEditor.setVisible(true);
 	}
 

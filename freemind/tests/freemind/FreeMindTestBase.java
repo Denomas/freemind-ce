@@ -20,15 +20,16 @@
 
 package tests.freemind;
 
+import freemind.main.HeadlessFreeMind;
 import junit.framework.TestCase;
 
 /** */
-public class FreeMindTestBase extends TestCase {
+public abstract class FreeMindTestBase extends TestCase {
 
-	protected FreeMindMainMock mFreeMindMain;
+	protected HeadlessFreeMind mFreeMindMain;
 
 	/**
-     * 
+     *
      */
 	public FreeMindTestBase() {
 		super();
@@ -44,11 +45,11 @@ public class FreeMindTestBase extends TestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		mFreeMindMain = new FreeMindMainMock();
+		mFreeMindMain = new HeadlessFreeMind();
 		System.out.println("Starting " + getName());
 	}
 
-	public FreeMindMainMock getFrame() {
+	public HeadlessFreeMind getFrame() {
 		return mFreeMindMain;
 	}
 }

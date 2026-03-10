@@ -22,6 +22,8 @@
 /*$Id: MindMapControllerMock.java,v 1.1.2.12 2008/12/09 21:09:43 christianfoltin Exp $*/
 package tests.freemind;
 
+import freemind.main.HeadlessFreeMind;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.datatransfer.Transferable;
@@ -57,15 +59,15 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class MindMapControllerMock extends MapFeedbackAdapter implements
 		ModeController {
 
-	private final FreeMindMainMock freeMindMain;
+	private final HeadlessFreeMind freeMindMain;
 	private MindMapMock mindMapMock;
 
-	public MindMapControllerMock(FreeMindMainMock freeMindMain,
+	public MindMapControllerMock(HeadlessFreeMind freeMindMain,
 			String pMapXmlString) {
 		this.freeMindMain = freeMindMain;
 
@@ -74,7 +76,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getFrame()
 	 */
 	@Override
@@ -84,7 +86,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getMap()
 	 */
 	@Override
@@ -94,7 +96,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#load(java.net.URL)
 	 */
 	@Override
@@ -106,7 +108,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#load(java.io.File)
 	 */
 	@Override
@@ -118,7 +120,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#loadURL(java.lang.String)
 	 */
 	@Override
@@ -128,7 +130,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#save(java.io.File)
 	 */
 	@Override
@@ -139,7 +141,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#newMap()
 	 */
 	@Override
@@ -150,7 +152,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#save()
 	 */
 	@Override
@@ -161,7 +163,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#saveAs()
 	 */
 	@Override
@@ -172,7 +174,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#open()
 	 */
 	@Override
@@ -182,7 +184,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#close(boolean,
 	 * freemind.controller.MapModuleManager)
 	 */
@@ -194,7 +196,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#startupController()
 	 */
 	@Override
@@ -204,7 +206,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#shutdownController()
 	 */
 	@Override
@@ -214,7 +216,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#doubleClick(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -224,7 +226,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#plainClick(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -234,7 +236,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#setVisible(boolean)
 	 */
 	@Override
@@ -244,7 +246,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#isBlocked()
 	 */
 	@Override
@@ -255,7 +257,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getNodeFromID(java.lang.String)
 	 */
 	@Override
@@ -266,7 +268,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getNodeID(freemind.modes.MindMapNode)
 	 */
 	@Override
@@ -277,7 +279,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#select(freemind.view.mindmapview.NodeView)
 	 */
@@ -288,7 +290,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#select(freemind.modes.MindMapNode,
 	 * java.util.List)
 	 */
@@ -299,7 +301,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#selectBranch(freemind.view.mindmapview.
 	 * NodeView, boolean)
@@ -311,7 +313,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getSelected()
 	 */
 	@Override
@@ -322,7 +324,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getSelectedView()
 	 */
 	@Override
@@ -333,7 +335,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getSelecteds()
 	 */
 	@Override
@@ -344,7 +346,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getSelectedsByDepth()
 	 */
 	@Override
@@ -355,7 +357,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#sortNodesByDepth(java.util.List)
 	 */
 	@Override
@@ -365,7 +367,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#extendSelection(java.awt.event.MouseEvent)
 	 */
@@ -377,7 +379,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#setSaved(boolean)
 	 */
 	@Override
@@ -387,7 +389,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#registerNodeSelectionListener(freemind.
 	 * modes.ModeController.NodeSelectionListener, boolean)
@@ -400,7 +402,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#deregisterNodeSelectionListener(freemind
 	 * .modes.ModeController.NodeSelectionListener)
@@ -412,7 +414,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#registerNodeLifetimeListener(freemind.modes
 	 * .ModeController.NodeLifetimeListener, boolean)
@@ -425,7 +427,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#deregisterNodeLifetimeListener(freemind
 	 * .modes.ModeController.NodeLifetimeListener)
@@ -437,7 +439,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#displayNode(freemind.modes.MindMapNode)
 	 */
@@ -448,7 +450,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#centerNode(freemind.modes.MindMapNode)
 	 */
 	@Override
@@ -458,7 +460,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#getLinkShortText(freemind.modes.MindMapNode
 	 * )
@@ -471,7 +473,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getModeToolBar()
 	 */
 	@Override
@@ -482,7 +484,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getLeftToolBar()
 	 */
 	@Override
@@ -493,7 +495,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#updateMenus(freemind.controller.
 	 * StructuredMenuHolder)
 	 */
@@ -504,7 +506,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#updatePopupMenu(freemind.controller.
 	 * StructuredMenuHolder)
 	 */
@@ -515,7 +517,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getPopupMenu()
 	 */
 	@Override
@@ -526,7 +528,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#showPopupMenu(java.awt.event.MouseEvent)
 	 */
@@ -537,7 +539,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getPopupForModel(java.lang.Object)
 	 */
 	@Override
@@ -548,7 +550,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getView()
 	 */
 	@Override
@@ -559,7 +561,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#setModel(freemind.modes.MapAdapter)
 	 */
 	@Override
@@ -569,7 +571,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getMode()
 	 */
 	@Override
@@ -580,7 +582,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getMapModule()
 	 */
 	@Override
@@ -591,7 +593,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getController()
 	 */
 	@Override
@@ -602,7 +604,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getHookFactory()
 	 */
 	@Override
@@ -613,7 +615,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getSelectionColor()
 	 */
 	@Override
@@ -624,7 +626,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getText(java.lang.String)
 	 */
 	@Override
@@ -635,7 +637,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#getResource(java.lang.String)
 	 */
 	@Override
@@ -646,7 +648,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#getNodeView(freemind.modes.MindMapNode)
 	 */
@@ -658,7 +660,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#refreshMap()
 	 */
 	@Override
@@ -668,7 +670,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#copy(freemind.modes.MindMapNode,
 	 * boolean)
 	 */
@@ -680,7 +682,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#copy()
 	 */
 	@Override
@@ -691,7 +693,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#copySingle()
 	 */
 	@Override
@@ -702,7 +704,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#copy(java.util.List, boolean)
 	 */
 	@Override
@@ -713,7 +715,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#getFileChooser(javax.swing.filechooser.
 	 * FileFilter)
@@ -726,7 +728,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController#setView(freemind.view.mindmapview.MapView)
 	 */
@@ -737,7 +739,7 @@ public class MindMapControllerMock extends MapFeedbackAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#setToolTip(freemind.modes.MindMapNode,
 	 * java.lang.String, java.lang.String)
 	 */

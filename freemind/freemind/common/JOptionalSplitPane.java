@@ -34,13 +34,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
-import tests.freemind.FreeMindMainMock;
+import freemind.main.HeadlessFreeMind;
 import freemind.main.Resources;
 
 /**
  * Should display one or two JComponents. If two, it should use a JSplitPane
  * internally. Future: if more than two, it can use a JTabbedPane.
- * 
+ *
  * @author foltin
  * @date 26.08.2014
  */
@@ -49,13 +49,13 @@ public class JOptionalSplitPane extends JPanel {
 
 	private HashMap<Integer, JComponent> mComponentHash = new HashMap<Integer, JComponent>();
 	private JComponent mBasicComponent = null;
-	private int mLastDividerPosition = -1; 
-	
-	
+	private int mLastDividerPosition = -1;
+
+
 	public JOptionalSplitPane() {
 		setLayout(new BorderLayout());
 	}
-	
+
 	public int getAmountOfComponents() {
 		return mComponentHash.size();
 	}
@@ -129,7 +129,7 @@ public class JOptionalSplitPane extends JPanel {
 		add(mBasicComponent, BorderLayout.CENTER);
 		revalidate();
 	}
-	
+
 	public void removeComponent(int index) {
 		checkIndex(index);
 		if(!mComponentHash.containsKey(index)) {
@@ -166,7 +166,7 @@ public class JOptionalSplitPane extends JPanel {
 
 
 	public static void main(String[] args) {
-		Resources.createInstance(new FreeMindMainMock());
+		Resources.createInstance(new HeadlessFreeMind());
 		final JFrame frame = new JFrame("JOptionalSplitPane");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		final JOptionalSplitPane panel = new JOptionalSplitPane();
@@ -187,29 +187,29 @@ public class JOptionalSplitPane extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent pE) {
 				panel.setComponent(new JLabel("links " + index++),0);
-				
+
 			}}));
 		contentPane.add(new JButton(new AbstractAction("Add 1") {
 			private int index = 0;
-			
+
 			@Override
 			public void actionPerformed(ActionEvent pE) {
 				panel.setComponent(new JLabel("rechts " + index++),1);
-				
+
 			}}));
 		contentPane.add(new JButton(new AbstractAction("Remove 0") {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent pE) {
 				panel.removeComponent(0);
-				
+
 			}}));
 		contentPane.add(new JButton(new AbstractAction("Remove 1") {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent pE) {
 				panel.removeComponent(1);
-				
+
 			}}));
 		contentPane.add(panel);
 		frame.setVisible(true);
@@ -233,7 +233,7 @@ public class JOptionalSplitPane extends JPanel {
 		}
 		return mLastDividerPosition;
 	}
-	
+
 	/**
 	 * @param pLastDividerPosition the lastDividerPosition to set
 	 */

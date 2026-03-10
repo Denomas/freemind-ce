@@ -39,11 +39,11 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.LineBorder;
 
-import tests.freemind.FreeMindMainMock;
+import freemind.main.HeadlessFreeMind;
 import freemind.main.Resources;
 import freemind.main.Tools;
 
-/** 
+/**
  * Formerly, it has only three calendar widgets at once.
  * Now, it has 9 in total, but we keep the naming.
  * */
@@ -91,8 +91,8 @@ public class JTripleCalendar extends JPanel implements PropertyChangeListener {
 					monthIndex++;
 				}
 				if(column < AMOUNT_OF_COLUMNS-1) {
-					GridBagConstraints constraints = new GridBagConstraints(2*column+1, 0, 1, AMOUNT_OF_ROWS, 
-							0, 0, GridBagConstraints.CENTER, GridBagConstraints.VERTICAL, 
+					GridBagConstraints constraints = new GridBagConstraints(2*column+1, 0, 1, AMOUNT_OF_ROWS,
+							0, 0, GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
 							new Insets(0, 0, 0, 10), 0, 0);
 					JSeparator sep = new JSeparator();
 					sep.setPreferredSize(new Dimension(5,2));
@@ -136,12 +136,12 @@ public class JTripleCalendar extends JPanel implements PropertyChangeListener {
 			dayChooser.setDay(calendar.get(Calendar.DAY_OF_MONTH));
 		}
 
-		
+
 		public JSwitchableCalendar() {
 			super();
 			setEnabled(false);
 		}
-		
+
 		/* (non-Javadoc)
 		 * @see accessories.plugins.time.JCalendar#createJDayChooser(boolean)
 		 */
@@ -181,10 +181,10 @@ public class JTripleCalendar extends JPanel implements PropertyChangeListener {
 
 			};
 		};
-	
+
 		/**
 		 * Returns the calendar property.
-		 * 
+		 *
 		 * @return the value of the calendar property.
 		 */
 		public Calendar getCalendar() {
@@ -203,7 +203,7 @@ public class JTripleCalendar extends JPanel implements PropertyChangeListener {
 	}
 
 	public static void main(String[] args) {
-		Resources.createInstance(new FreeMindMainMock());
+		Resources.createInstance(new HeadlessFreeMind());
 		final JFrame frame = new JFrame("JTripleCalendar");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		final JTripleCalendar jcalendar = new JTripleCalendar(4, null);
@@ -223,7 +223,7 @@ public class JTripleCalendar extends JPanel implements PropertyChangeListener {
 	}
 
 	private boolean mIgnoreChangeEvent = false;
-	
+
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(mIgnoreChangeEvent) {
 			return;
@@ -258,7 +258,7 @@ public class JTripleCalendar extends JPanel implements PropertyChangeListener {
 		} finally {
 			mIgnoreChangeEvent = false;
 		}
-		
+
 	}
 
 	protected void setCalendarInternally(Calendar gregorianCalendar) {

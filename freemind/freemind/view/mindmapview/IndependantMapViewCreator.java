@@ -36,7 +36,6 @@ import java.net.URISyntaxException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import tests.freemind.FreeMindMainMock;
 import freemind.extensions.NodeHook;
 import freemind.extensions.PermanentNodeHookSubstituteUnknown;
 import freemind.main.FreeMindMain;
@@ -62,7 +61,7 @@ public class IndependantMapViewCreator extends MapFeedbackAdapter {
 					.println("Export map to png.\nUsage:\n java -jar lib/freemind.jar freemind.view.mindmapview.IndependantMapViewCreator <map_path>.mm <picture_path>.png");
 			System.exit(0);
 		}
-		FreeMindMainMock freeMindMain = new FreeMindMainMock();
+		FreeMindMain freeMindMain = new freemind.main.HeadlessFreeMind();
 		IndependantMapViewCreator creator = new IndependantMapViewCreator();
 		try {
 			String outputFileName = args[1];
@@ -93,7 +92,7 @@ public class IndependantMapViewCreator extends MapFeedbackAdapter {
 		Tools.FileReaderCreator readerCreator = new Tools.FileReaderCreator(new File(inputFileName));
 		MindMapNode node = mMap.loadTree(readerCreator, MapAdapter.sDontAskInstance);
 		mMap.setRoot(node);
-		MapView mapView = new MapView(mMap, this); 
+		MapView mapView = new MapView(mMap, this);
 		parent.add(mapView, BorderLayout.CENTER);
 		mapView.setBounds(parent.getBounds());
 		Tools.waitForEventQueue();
@@ -124,7 +123,7 @@ public class IndependantMapViewCreator extends MapFeedbackAdapter {
 	 * @param parent
 	 * @param mapView
 	 * @param outputFileName
-	 * @param scale 
+	 * @param scale
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -141,7 +140,7 @@ public class IndependantMapViewCreator extends MapFeedbackAdapter {
 		int newY = -dim.y-dimI.y;
 		g.translate(newX, newY);
 		g.clipRect(-newX, -newY, dimI.width, dimI.height);
-		parent.print(g); 
+		parent.print(g);
 		g.dispose();
 		if(scale) {
 			double maxDim = Math.max(dimI.getHeight(), dimI.getWidth());

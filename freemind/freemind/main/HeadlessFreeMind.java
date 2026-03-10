@@ -16,9 +16,8 @@
  *along with this program; if not, write to the Free Software
  *Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-/*$Id: FreeMindMainMock.java,v 1.1.2.16 2009/03/29 19:37:23 christianfoltin Exp $*/
 
-package tests.freemind;
+package freemind.main;
 
 import java.awt.Container;
 import java.io.File;
@@ -39,25 +38,22 @@ import javax.swing.JSplitPane;
 
 import freemind.controller.Controller;
 import freemind.controller.MenuBar;
-import freemind.main.FreeMindMain;
-import freemind.main.FreeMindStarter;
-import freemind.main.Resources;
-import freemind.main.Tools;
 import freemind.view.mindmapview.MapView;
 
-/** */
-public class FreeMindMainMock implements FreeMindMain {
+/**
+ * A minimal, headless implementation of {@link FreeMindMain} for use in
+ * non-GUI contexts such as command-line export tools, standalone servers,
+ * and test infrastructure. Loads default properties but provides no
+ * Swing UI components.
+ */
+public class HeadlessFreeMind implements FreeMindMain {
 
 	private Properties mProperties;
 
-	/**
-     * 
-     */
-	public FreeMindMainMock() {
+	public HeadlessFreeMind() {
 		super();
 		mProperties = new FreeMindStarter().readDefaultPreferences();
 		Resources.createInstance(this);
-
 	}
 
 	public JFrame getJFrame() {
@@ -139,6 +135,7 @@ public class FreeMindMainMock implements FreeMindMain {
 	}
 
 	public void setProperty(String key, String value) {
+		mProperties.setProperty(key, value);
 	}
 
 	public void saveProperties(boolean pIsShutdown) {
@@ -176,8 +173,8 @@ public class FreeMindMainMock implements FreeMindMain {
 	}
 
 	public VersionInformation getFreemindVersion() {
-		return new VersionInformation(1, 0, 0, FreeMindMain.VERSION_TYPE_ALPHA,
-				42);
+		return new VersionInformation(1, 1, 0, FreeMindMain.VERSION_TYPE_RELEASE,
+				0);
 	}
 
 	public Logger getLogger(String forClass) {
@@ -200,23 +197,17 @@ public class FreeMindMainMock implements FreeMindMain {
 	}
 
 	public String getAdjustableProperty(String pLabel) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void setDefaultProperty(String pKey, String pValue) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public JSplitPane insertComponentIntoSplitPane(JComponent pParameter) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void removeSplitPane() {
-		// TODO Auto-generated method stub
-
 	}
 
 	public JComponent getContentComponent() {
@@ -229,14 +220,9 @@ public class FreeMindMainMock implements FreeMindMain {
 
 	public void registerStartupDoneListener(
 			StartupDoneListener pStartupDoneListener) {
-		// TODO Auto-generated method stub
-
 	}
 
-	/* (non-Javadoc)
-	 * @see freemind.main.FreeMindMain#getLoggerList()
-	 */
-	public List getLoggerList() {
+	public List<Logger> getLoggerList() {
 		return new Vector<>();
 	}
 

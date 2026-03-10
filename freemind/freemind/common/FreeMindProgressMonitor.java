@@ -33,7 +33,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
-import tests.freemind.FreeMindMainMock;
+import freemind.main.HeadlessFreeMind;
 import freemind.controller.actions.generated.instance.WindowConfigurationStorage;
 import freemind.main.Resources;
 import freemind.main.Tools;
@@ -46,7 +46,7 @@ import freemind.main.Tools;
 public class FreeMindProgressMonitor extends JDialog {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final String PROGRESS_MONITOR_WINDOW_CONFIGURATION_STORAGE = "progress_monitor_window_configuration_storage";
 	private JLabel mLabel;
@@ -55,7 +55,7 @@ public class FreeMindProgressMonitor extends JDialog {
 	protected boolean mCanceled = false;
 
 	/**
-	 * 
+	 *
 	 */
 	public FreeMindProgressMonitor(String pTitle) {
 		setTitle(getString(pTitle));
@@ -150,7 +150,7 @@ public class FreeMindProgressMonitor extends JDialog {
 	 * Test method for this dialog.
 	 */
 	public static void main(String[] args) throws InterruptedException {
-		FreeMindMainMock mock = new FreeMindMainMock();
+		HeadlessFreeMind mock = new HeadlessFreeMind();
 		Resources.createInstance(mock);
 		FreeMindProgressMonitor progress = new FreeMindProgressMonitor("title");
 		progress.setVisible(true);
