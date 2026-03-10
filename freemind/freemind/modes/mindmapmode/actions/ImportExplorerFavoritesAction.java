@@ -21,8 +21,12 @@ package freemind.modes.mindmapmode.actions;
 
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
+import java.nio.charset.StandardCharsets;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 
 import javax.swing.JFileChooser;
 
@@ -94,8 +98,7 @@ public class ImportExplorerFavoritesAction extends MindmapAction {
 						MindMapNode node = addNode(target,
 								Tools.removeExtension(list[i].getName()));
 						// For each line: Is it URL? => Set it as link
-						BufferedReader in = new BufferedReader(new FileReader(
-								list[i]));
+						BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(list[i]), StandardCharsets.UTF_8));
 						while (in.ready()) {
 							String line = in.readLine();
 							if (line.startsWith("URL=")) {

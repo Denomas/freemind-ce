@@ -23,10 +23,13 @@ package accessories.plugins;
 import java.awt.Container;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.io.StringWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.net.URL;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -107,7 +110,7 @@ public class ImportMindmanagerFiles extends ModeControllerHookAdapter {
 									file.getName(),
 									freemind.main.FreeMindCommon.FREEMIND_FILE_EXTENSION,
 									file.getParentFile());
-					FileWriter fw = new FileWriter(tempFile);
+					Writer fw = new OutputStreamWriter(new FileOutputStream(tempFile), StandardCharsets.UTF_8);
 					fw.write(xml);
 					fw.close();
 					getController().load(tempFile);

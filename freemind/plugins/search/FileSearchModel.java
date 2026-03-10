@@ -1,9 +1,12 @@
 package plugins.search;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -44,7 +47,7 @@ public class FileSearchModel {
 	private ArrayList<File> queue = new ArrayList<File>();
 
 	/**
-	 * 
+	 *
 	 * @param querystring
 	 * @param hitsPerPage
 	 * @param searcher
@@ -79,7 +82,7 @@ public class FileSearchModel {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 */
 	FileSearchModel(Logger logger) {
 		this._logger = logger;
@@ -89,7 +92,7 @@ public class FileSearchModel {
 
 	/**
 	 * Indexes a file or directory
-	 * 
+	 *
 	 * @param fileName
 	 *            the name of a text file or a folder we wish to add to the
 	 *            index
@@ -136,7 +139,7 @@ public class FileSearchModel {
 
 	/**
 	 * Indexes a file or directory
-	 * 
+	 *
 	 * @param fileName
 	 *            the name of a text file or a folder we wish to add to the
 	 *            index
@@ -153,7 +156,7 @@ public class FileSearchModel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param fileName
 	 * @param writer
 	 * @return
@@ -190,14 +193,14 @@ public class FileSearchModel {
 	public int indexFiles(IndexWriter writer) throws IOException {
 		int originalNumDocs = writer.numDocs();
 		for (File f : queue) {
-			FileReader fr = null;
+			Reader fr = null;
 			try {
 				Document doc = new Document();
 
 				// ===================================================
 				// add contents of file
 				// ===================================================
-				fr = new FileReader(f);
+				fr = new InputStreamReader(new FileInputStream(f), StandardCharsets.UTF_8);
 				doc.add(new TextField(FileAttribute.contents.name(), fr));
 				doc.add(new StringField(FileAttribute.path.name(), f.getPath(),
 						Field.Store.YES));
@@ -241,7 +244,7 @@ public class FileSearchModel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param file
 	 */
 	private void addFiles(File file) {

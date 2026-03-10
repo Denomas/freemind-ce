@@ -25,7 +25,10 @@ package freemind.view.mindmapview;
 
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 
 import freemind.main.Tools;
@@ -33,7 +36,7 @@ import freemind.modes.ModeController;
 
 /**
  * @author Daniel Polansky
- * 
+ *
  */
 public class EditNodeExternalApplication extends EditNodeBase {
 
@@ -52,13 +55,13 @@ public class EditNodeExternalApplication extends EditNodeBase {
 		// mainWindow.setEnabled(false);
 		new Thread() {
 			public void run() {
-				FileWriter writer = null;
+				Writer writer = null;
 				try {
 
 					File temporaryFile = File.createTempFile("tmm", ".html");
 
 					// a. Write the text of the long node to the temporary file
-					writer = new FileWriter(temporaryFile);
+					writer = new OutputStreamWriter(new FileOutputStream(temporaryFile), StandardCharsets.UTF_8);
 					writer.write(text);
 					writer.close();
 

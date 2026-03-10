@@ -23,11 +23,13 @@ package freemind.modes.mindmapmode;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.io.BufferedReader;
+import java.nio.charset.StandardCharsets;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
@@ -240,7 +242,7 @@ public class MindMapMapModel extends MapAdapter {
 
 	/**
 	 * Return the success of saving
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public boolean save(File file) throws IOException {
 		boolean result;
@@ -257,7 +259,7 @@ public class MindMapMapModel extends MapAdapter {
 	/**
 	 * This method is intended to provide both normal save routines and saving
 	 * of temporary (internal) files.
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	private boolean saveInternal(File file, boolean isInternal) throws IOException {
 		if (!isInternal && readOnly) { // unexpected situation, yet it's better
@@ -273,9 +275,9 @@ public class MindMapMapModel extends MapAdapter {
 			BufferedWriter fileout = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream(file)));
 			getXml(fileout);
-			
+
 			if (!isInternal) {
-				setFile(file);				
+				setFile(file);
 			}
 		} finally {
 			scheduleTimerForAutomaticSaving();
@@ -285,7 +287,7 @@ public class MindMapMapModel extends MapAdapter {
 
 	/**
 	 * writes the content of the map to a writer.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	public void getXml(Writer fileout, boolean saveInvisible)
@@ -295,7 +297,7 @@ public class MindMapMapModel extends MapAdapter {
 
 	/**
 	 * writes the content of the map to a writer.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	public void getXml(Writer fileout, boolean saveInvisible,
@@ -319,7 +321,7 @@ public class MindMapMapModel extends MapAdapter {
 
 	/**
 	 * Attempts to lock the map using a semaphore file
-	 * 
+	 *
 	 * @return If the map is locked, return the name of the locking user,
 	 *         otherwise return null.
 	 * @throws Exception
@@ -337,7 +339,7 @@ public class MindMapMapModel extends MapAdapter {
 		}
 		if (lockingUser == null) {
 			readOnly = false;
-		} 
+		}
 		// The map sure is not read only when the locking succeeded.
 		return lockingUser;
 	}
@@ -447,7 +449,7 @@ public class MindMapMapModel extends MapAdapter {
 			}
 			try {
 				BufferedReader semaphoreReader = new BufferedReader(
-						new FileReader(semaphoreFile));
+						new InputStreamReader(new FileInputStream(semaphoreFile), StandardCharsets.UTF_8));
 				String lockingUser = semaphoreReader.readLine();
 
 				long lockTime = Long.valueOf(semaphoreReader.readLine())
@@ -658,7 +660,7 @@ public class MindMapMapModel extends MapAdapter {
 			NodeAdapter target) {
 		return new ArrowLinkTarget(source, target, mMapFeedback);
 	}
-	
+
 	public NodeAdapter createEncryptedNode(String additionalInfo) {
 		NodeAdapter node = createNodeAdapter(mMapFeedback.getMap(),
 				EncryptedMindMapNode.class.getName());

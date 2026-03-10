@@ -44,21 +44,21 @@ import freemind.modes.mindmapmode.MindMapController;
 public class ToolsTests extends FreeMindTestBase {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final String UNIX_PATH_WITH_SPEACIAL_CHAR = "/Users/foltin/downloads/Ja\u0308nstra\u00dfe 270c.pdf";
 	/**
-	 * 
+	 *
 	 */
 	private static final String WINDOWS_PATH_WITH_SPECIAL_CHAR = "o:\\Users\\foltin\\downloads\\Ja\u0308nstra\u00dfe 270c.pdf";
 	/**
-	 * 
+	 *
 	 */
 	private static final String WINDOWS_PATH_C_USERS_TMP_IM_MM = "c:\\Users\\foltin\\tmp\\im.mm";
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see tests.freemind.FreeMindTestBase#setUp()
 	 */
 	protected void setUp() throws Exception {
@@ -136,15 +136,15 @@ public class ToolsTests extends FreeMindTestBase {
 
 	public void testGetPrefix() throws Exception {
 		if (Tools.isWindows()) {
-			  assertEquals("c:\\", 
+			  assertEquals("c:\\",
 					Tools.getPrefix(WINDOWS_PATH_C_USERS_TMP_IM_MM).toString());
 		} else {
 			assertEquals("/",
 					Tools.getPrefix(UNIX_PATH_WITH_SPEACIAL_CHAR).toString());
-			
+
 		}
 	}
-	
+
 	public void testRelativeUrls() throws Exception {
 		File input = new File(
 				UNIX_PATH_WITH_SPEACIAL_CHAR);
@@ -218,7 +218,11 @@ public class ToolsTests extends FreeMindTestBase {
 		 * (this is normally done in FreeMind) breaks the update. This is tested
 		 * here.
 		 */
-		System.setSecurityManager(new FreeMindSecurityManager());
+		try {
+			System.setSecurityManager(new FreeMindSecurityManager());
+		} catch (UnsupportedOperationException e) {
+			// SecurityManager removed in Java 21+
+		}
 		doUpdate();
 	}
 
@@ -272,7 +276,7 @@ public class ToolsTests extends FreeMindTestBase {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void testVisitor() {
 		A a = new A();
@@ -293,7 +297,7 @@ public class ToolsTests extends FreeMindTestBase {
 		String file = "c:\\home\\java\\freemind\\0_9_0\\bin\\dist\\doc/FM_Key_Mappings_Quick_Guide.pdf";
 		System.out.println(Tools.urlToFile(Tools.fileToUrl(new File(file))));
 	}
-	
+
 	public void testChangedProperties() throws Exception {
 		Properties def = new Properties();
 		Properties changed = new Properties();
@@ -319,18 +323,18 @@ public class ToolsTests extends FreeMindTestBase {
 		assertTrue("-1,2345".matches(MindMapController.REGEXP_FOR_NUMBERS_IN_STRINGS));
 		assertFalse("+".matches(MindMapController.REGEXP_FOR_NUMBERS_IN_STRINGS));
 		assertFalse("-".matches(MindMapController.REGEXP_FOR_NUMBERS_IN_STRINGS));
-		
+
 	}
-	
+
 	public void testMakeFileHidden() throws Exception {
 		File tempFile = File.createTempFile("hidden", "now");
 		Tools.makeFileHidden(tempFile, true);
 	}
-	
+
 	public void testHiddenNonExistingFile() throws Exception {
 		File tempFile = File.createTempFile("hidden", "now");
 		File nonExisting = new File(tempFile.getAbsolutePath()+".notexisting");
 		Tools.makeFileHidden(nonExisting, true);
-		
+
 	}
 }

@@ -23,11 +23,14 @@
  */
 package freemind.controller.filter;
 
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
@@ -48,7 +51,7 @@ import freemind.view.MapModule;
 
 /**
  * @author dimitri
- * 
+ *
  */
 public class FilterController implements MapModuleChangeObserver {
 	private Controller c;
@@ -182,7 +185,7 @@ public class FilterController implements MapModuleChangeObserver {
 			String pathToFilterFile) throws IOException {
 		XMLElement saver = new XMLElement();
 		saver.setName("filter_conditions");
-		Writer writer = new FileWriter(pathToFilterFile);
+		Writer writer = new OutputStreamWriter(new FileOutputStream(pathToFilterFile), StandardCharsets.UTF_8);
 		for (int i = 0; i < filterConditionModel.getSize(); i++) {
 			Condition cond = (Condition) filterConditionModel.getElementAt(i);
 			cond.save(saver);
@@ -195,7 +198,7 @@ public class FilterController implements MapModuleChangeObserver {
 			String pathToFilterFile) throws IOException {
 		filterConditionModel.removeAllElements();
 		XMLElement loader = new XMLElement();
-		Reader reader = new FileReader(pathToFilterFile);
+		Reader reader = new InputStreamReader(new FileInputStream(pathToFilterFile), StandardCharsets.UTF_8);
 		loader.parseFromReader(reader);
 		reader.close();
 		final Vector<XMLElement> conditions = loader.getChildren();

@@ -21,7 +21,11 @@
 package accessories.plugins;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 
 import javax.swing.JOptionPane;
 
@@ -35,7 +39,7 @@ import freemind.modes.mindmapmode.hooks.MindMapHookAdapter;
 public class ManagePatterns extends MindMapHookAdapter {
 
 	/**
-	 * 
+	 *
 	 */
 	public ManagePatterns() {
 		super();
@@ -56,7 +60,7 @@ public class ManagePatterns extends MindMapHookAdapter {
 			try {
 				// Save patterns in private pattern list:
 				File patternFile = getController().getFrame().getPatternsFile();
-				StylePatternFactory.savePatterns(new FileWriter(patternFile), formatDialog.getPatternList());
+				StylePatternFactory.savePatterns(new OutputStreamWriter(new FileOutputStream(patternFile), StandardCharsets.UTF_8), formatDialog.getPatternList());
 				getMindMapController().loadPatterns(getMindMapController().getPatternReader());
 				// TODO: seems to be a bad hack:
 				getMindMapController().getFrame().getFreeMindMenuBar().updateMenus(getMindMapController());

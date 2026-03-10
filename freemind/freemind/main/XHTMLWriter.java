@@ -2,19 +2,22 @@ package freemind.main;
 
 /*
  * XHTMLWriter -- A simple XHTML document writer
- * 
+ *
  * (C) 2004 Richard "Shred" Koerber
  *   http://www.shredzone.net/
  *
  * This is free software. You can modify and use it at will.
  */
 
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FilterWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -28,7 +31,7 @@ import javax.swing.text.html.Option;
  * The result will be a valid XML file, but it is not granted that the file will
  * really be XHTML 1.0 transitional conform. The basic purpose of this class
  * is to give an XSL processor access to plain HTML files.
- * 
+ *
  * @author Richard "Shred" K�rber
  */
 public class XHTMLWriter extends FixedHTMLWriter {
@@ -36,7 +39,7 @@ public class XHTMLWriter extends FixedHTMLWriter {
 
 	/**
 	 * Create a new XHTMLWriter that will write the entire HTMLDocument.
-	 * 
+	 *
 	 * @param writer
 	 *            Writer to write to
 	 * @param doc
@@ -48,7 +51,7 @@ public class XHTMLWriter extends FixedHTMLWriter {
 
 	/**
 	 * Create a new XHTMLWriter that will write a part of a HTMLDocument.
-	 * 
+	 *
 	 * @param writer
 	 *            Writer to write to
 	 * @param doc
@@ -95,7 +98,7 @@ public class XHTMLWriter extends FixedHTMLWriter {
 	/**
 	 * Read HTML from the Reader, and send XHTML to the writer. Common mistakes
 	 * in the HTML code will also be corrected. The result is pretty-printed.
-	 * 
+	 *
 	 * @param reader
 	 *            HTML source
 	 * @param writer
@@ -119,14 +122,14 @@ public class XHTMLWriter extends FixedHTMLWriter {
 	 * External call to convert a source HTML file to a target XHTML file.
 	 * <p>
 	 * Usage: <tt>java XHTMLWriter &lt;source file&gt; &lt;target file&gt;</tt>
-	 * 
+	 *
 	 * @param args
 	 *            Shell arguments
 	 */
 	public static void main(String[] args) {
 		try {
-			FileReader reader = new FileReader(args[0]);
-			FileWriter writer = new FileWriter(args[1]);
+			Reader reader = new InputStreamReader(new FileInputStream(args[0]), StandardCharsets.UTF_8);
+			Writer writer = new OutputStreamWriter(new FileOutputStream(args[1]), StandardCharsets.UTF_8);
 			html2xhtml(reader, writer);
 			writer.close();
 			reader.close();
@@ -152,7 +155,7 @@ public class XHTMLWriter extends FixedHTMLWriter {
 
 		/**
 		 * Create a new XHTMLFilterWriter.
-		 * 
+		 *
 		 * @param writer
 		 *            Writer to write to
 		 */
@@ -162,7 +165,7 @@ public class XHTMLWriter extends FixedHTMLWriter {
 
 		/**
 		 * Write a single char to the Writer.
-		 * 
+		 *
 		 * @param c
 		 *            Char to be written
 		 */
@@ -218,7 +221,7 @@ public class XHTMLWriter extends FixedHTMLWriter {
 
 		/**
 		 * Write a char array to the Writer.
-		 * 
+		 *
 		 * @param cbuf
 		 *            Char array to be written
 		 * @param off
@@ -234,7 +237,7 @@ public class XHTMLWriter extends FixedHTMLWriter {
 
 		/**
 		 * Write a String to the Writer.
-		 * 
+		 *
 		 * @param str
 		 *            String to be written
 		 * @param off

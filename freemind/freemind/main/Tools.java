@@ -44,11 +44,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.print.Paper;
 import java.io.BufferedReader;
+import java.nio.charset.StandardCharsets;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.InputStreamReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -123,11 +126,11 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class Tools {
 	/**
-	 * 
+	 *
 	 */
 	public static final String FREEMIND_LIB_FREEMIND_JAR = "lib/freemind.jar";
 
@@ -154,7 +157,7 @@ public class Tools {
 		executableExtensions.add("vbs");
 		executableExtensions.add("bat");
 		executableExtensions.add("lnk");
-		
+
 	}
 
 	private static String sEnvFonts[] = null;
@@ -451,7 +454,7 @@ public class Tools {
 	/**
 	 * If the preferences say, that links should be relative, a relative url is
 	 * returned.
-	 * 
+	 *
 	 * @param input
 	 *            the file that is treated
 	 * @param pMapFile
@@ -477,7 +480,7 @@ public class Tools {
 
 	/**
 	 * Tests a string to be equals with "true".
-	 * 
+	 *
 	 * @return true, iff the String is "true".
 	 */
 	public static boolean isPreferenceTrue(String option) {
@@ -605,7 +608,7 @@ public class Tools {
 		public String toString() {
 			return "IntHolder(" + value + ")";
 		}
-		
+
 		public void increase() {
 			value++;
 		}
@@ -1005,7 +1008,7 @@ public class Tools {
 	/**
 	 * Creates a reader that pipes the input file through a XSLT-Script that
 	 * updates the version to the current.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	public static Reader getUpdateReader(Reader pReader, String xsltScript) throws IOException {
@@ -1114,7 +1117,7 @@ public class Tools {
 
 	/**
 	 * Creates a default reader that just reads the given file.
-	 * 
+	 *
 	 * @throws FileNotFoundException
 	 */
 	public static Reader getActualReader(Reader pReader)
@@ -1124,7 +1127,7 @@ public class Tools {
 
 	/**
 	 * In case of trouble, the method returns null.
-	 * 
+	 *
 	 * @param pInputFile
 	 *            the file to read.
 	 * @return the complete content of the file. or null if an exception has
@@ -1141,7 +1144,7 @@ public class Tools {
 
 	public static Reader getReaderFromFile(File pInputFile)
 			throws FileNotFoundException {
-		return new FileReader(pInputFile);
+		return new InputStreamReader(new FileInputStream(pInputFile), StandardCharsets.UTF_8);
 	}
 
 	public static String getFile(Reader pReader) {
@@ -1232,7 +1235,7 @@ public class Tools {
 	/**
 	 * Returns the same URL as input with the addition, that the reference part
 	 * "#..." is filtered out.
-	 * 
+	 *
 	 * @throws MalformedURLException
 	 */
 	public static URL getURLWithoutReference(URL input)
@@ -1322,7 +1325,7 @@ public class Tools {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.main.Tools.IAbstractButton#getText()
 		 */
 		public String getText() {
@@ -1331,7 +1334,7 @@ public class Tools {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.main.Tools.IAbstractButton#setDisplayedMnemonicIndex(int)
 		 */
@@ -1341,7 +1344,7 @@ public class Tools {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.main.Tools.IAbstractButton#setMnemonic(char)
 		 */
 		public void setMnemonic(char charAfterMnemoSign) {
@@ -1350,7 +1353,7 @@ public class Tools {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.main.Tools.IAbstractButton#setText(java.lang.String)
 		 */
 		public void setText(String text) {
@@ -1369,7 +1372,7 @@ public class Tools {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.main.Tools.IAbstractButton#getText()
 		 */
 		public String getText() {
@@ -1378,7 +1381,7 @@ public class Tools {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.main.Tools.IAbstractButton#setDisplayedMnemonicIndex(int)
 		 */
@@ -1387,7 +1390,7 @@ public class Tools {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.main.Tools.IAbstractButton#setMnemonic(char)
 		 */
 		public void setMnemonic(char charAfterMnemoSign) {
@@ -1399,7 +1402,7 @@ public class Tools {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.main.Tools.IAbstractButton#setText(java.lang.String)
 		 */
 		public void setText(String text) {
@@ -1429,32 +1432,32 @@ public class Tools {
 
 	public static class FileReaderCreator implements Tools.ReaderCreator {
 		private final File mFile;
-	
+
 		public FileReaderCreator(File pFile) {
 			mFile = pFile;
 		}
-	
+
 		public Reader createReader() throws FileNotFoundException {
 			return new UnicodeReader(new FileInputStream(mFile), "UTF-8");
 		}
-	
+
 		public String toString() {
 			return mFile.getName();
 		}
 	}
 
 	public static class StringReaderCreator implements Tools.ReaderCreator {
-	
+
 		private final String mString;
-	
+
 		public StringReaderCreator(String pString) {
 			mString = pString;
 		}
-	
+
 		public Reader createReader() throws FileNotFoundException {
 			return new StringReader(mString);
 		}
-	
+
 		public String toString() {
 			return mString;
 		}
@@ -1611,7 +1614,7 @@ public class Tools {
 
 	/**
 	 * Adapts the font size inside of a component to the zoom
-	 * 
+	 *
 	 * @param c
 	 *            component
 	 * @param zoom
@@ -1828,7 +1831,7 @@ public class Tools {
 		return Toolkit.getDefaultToolkit().getSystemClipboard();
 	}
 
-	
+
 	/**
 	 * @return a list of MindMapNode s if they are currently contained in the clipboard. An empty list otherwise.
 	 */
@@ -1852,7 +1855,7 @@ public class Tools {
 	}
 
 
-	
+
 	public static void addFocusPrintTimer() {
 		Timer timer = new Timer(1000, new ActionListener() {
 
@@ -1871,10 +1874,10 @@ public class Tools {
 
 	/**
 	 * copied from HomePane.java 15 mai 2006
-	 * 
+	 *
 	 * Sweet Home 3D, Copyright (c) 2006 Emmanuel PUYBARET / eTeks
 	 * <info@eteks.com>
-	 * 
+	 *
 	 * - This listener manages accelerator keys that may require the use of
 	 * shift key depending on keyboard layout (like + - or ?)
 	 */
@@ -2034,7 +2037,7 @@ public class Tools {
 	/**
 	 * Call this method, if you don't know, if you are in the event thread or
 	 * not. It checks this and calls the invokeandwait or the runnable directly.
-	 * 
+	 *
 	 * @param pRunnable
 	 * @throws InterruptedException
 	 * @throws InvocationTargetException
@@ -2081,7 +2084,7 @@ public class Tools {
 
 	/**
 	 * Returns pMinimumLength bytes of the files content.
-	 * 
+	 *
 	 * @return an empty string buffer, if something fails.
 	 */
 	public static StringBuffer readFileStart(Reader pReader, int pMinimumLength) {
@@ -2124,7 +2127,7 @@ public class Tools {
 				return i.previousIndex();
 		}
 		return -1;
-	
+
 	}
 
 	static public int iconLastIndex(MindMapNode node, String iconName) {
@@ -2136,18 +2139,18 @@ public class Tools {
 				return i.nextIndex();
 		}
 		return -1;
-	
+
 	}
 
-	
+
 	// http://stackoverflow.com/questions/1149703/stacktrace-to-string-in-java
 	public static String getStacktrace(Exception e) {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		e.printStackTrace(pw);
-		return sw.toString(); 
+		return sw.toString();
 	}
-	
+
 	public static void makeFileHidden(File file, boolean setHidden) {
 		try {
 			if(!file.exists() || !isWindows()) {
@@ -2162,8 +2165,8 @@ public class Tools {
 			freemind.main.Resources.getInstance().logException(e);
 		}
 	}
-	
-	
+
+
 	public static boolean isRetina() {
 		GraphicsEnvironment env = GraphicsEnvironment
 				.getLocalGraphicsEnvironment();
@@ -2195,7 +2198,7 @@ public class Tools {
 					Font biggerFont = font.deriveFont(pScale * font.getSize2D());
 					// change ui default to bigger font
 					UIManager.put(key, biggerFont);
-				}				
+				}
 			}
 		}
 	}
@@ -2206,5 +2209,5 @@ public class Tools {
 
 	public static int getScalingFactorPlain() {
 		return Resources.getInstance().getIntProperty(FreeMind.SCALING_FACTOR_PROPERTY, 100);
-	}	
+	}
 }

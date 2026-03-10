@@ -22,8 +22,12 @@ package freemind.modes;
 
 import java.awt.Font;
 import java.io.BufferedReader;
+import java.nio.charset.StandardCharsets;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.HashMap;
@@ -64,7 +68,7 @@ public class StylePatternFactory {
 	public static final String TRUE_VALUE = "true";
 
 	public static List<Pattern> loadPatterns(File file) throws Exception {
-		return loadPatterns(new BufferedReader(new FileReader(file)));
+		return loadPatterns(new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)));
 	}
 
 	/**
@@ -109,7 +113,7 @@ public class StylePatternFactory {
 	/**
 	 * the result is written to, and it is closed afterwards List of Pattern
 	 * elements.
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	public static void savePatterns(Writer writer, List<Pattern> listOfPatterns)
@@ -382,8 +386,8 @@ public class StylePatternFactory {
 		result.setPatternNodeStyle(new PatternNodeStyle());
 		return result;
 	}
-	
-	@Deprecated 
+
+	@Deprecated
 	public static void applyPattern(Pattern pattern, MindMapNode pNode, MapFeedback pFeedback) {
 		if (pattern.getPatternNodeColor() != null) {
 			pNode.setColor(Tools.xmlToColor(pattern
@@ -433,7 +437,7 @@ public class StylePatternFactory {
 					pNode.addIcon(MindIcon.factory(iconName), pNode.getIcons().size());
 				}
 			}
-		} 
+		}
 		if (pattern.getPatternNodeFontName() != null) {
 			String nodeFontFamily = pattern.getPatternNodeFontName().getValue();
 			if (nodeFontFamily == null) {
@@ -484,8 +488,8 @@ public class StylePatternFactory {
 			}
 		}
 	}
-	
-	public static void applyPattern(MindMapNode node, Pattern pattern, 
+
+	public static void applyPattern(MindMapNode node, Pattern pattern,
 			List<Pattern> pPatternList, Set<MindMapControllerPlugin> pPlugins, ExtendedMapFeedback pMapFeedback) {
 		if (pattern.getPatternNodeText() != null) {
 			if (pattern.getPatternNodeText().getValue() != null) {

@@ -22,8 +22,12 @@ package freemind.modes;
 
 import java.awt.Color;
 import java.io.BufferedReader;
+import java.nio.charset.StandardCharsets;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -38,7 +42,7 @@ import freemind.main.XMLElement;
 
 /**
  * THIS CLASS IS NO LONGER USED!
- * 
+ *
  * This class represents a StylePattern than can be applied to a node or a whole
  * branch. The properties of the nodes are replaced with the properties saved in
  * the pattern. If a property "text" is given, this pattern is automatically
@@ -138,7 +142,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of name.
-	 * 
+	 *
 	 * @return Value of name.
 	 */
 	public String getName() {
@@ -147,7 +151,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of name.
-	 * 
+	 *
 	 * @param v
 	 *            Value to assign to name.
 	 */
@@ -158,7 +162,7 @@ public class StylePattern {
 	/**
 	 * Determine if the properies of this pattern, of course except the "text"
 	 * attribute, apply to all the child nodes of this node.
-	 * 
+	 *
 	 * @return Value of recursive.
 	 */
 	public boolean getRecursive() {
@@ -167,7 +171,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of recursive.
-	 * 
+	 *
 	 * @param v
 	 *            Value to assign to recursive.
 	 */
@@ -177,7 +181,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of text.
-	 * 
+	 *
 	 * @return Value of text.
 	 */
 	public String getText() {
@@ -186,7 +190,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of text.
-	 * 
+	 *
 	 * @param v
 	 *            Value to assign to text.
 	 */
@@ -196,7 +200,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of nodeColor.
-	 * 
+	 *
 	 * @return Value of nodeColor.
 	 */
 	public Color getNodeColor() {
@@ -205,7 +209,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of nodeColor.
-	 * 
+	 *
 	 * @param v
 	 *            Value to assign to nodeColor.
 	 */
@@ -223,7 +227,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of nodeStyle.
-	 * 
+	 *
 	 * @return Value of nodeStyle.
 	 */
 	public String getNodeStyle() {
@@ -232,7 +236,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of nodeStyle.
-	 * 
+	 *
 	 * @param nodeStyle
 	 *            Value to assign to nodeStyle.
 	 */
@@ -272,7 +276,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of icon.
-	 * 
+	 *
 	 * @return Value of icon.
 	 */
 	public MindIcon getNodeIcon() {
@@ -281,7 +285,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of icon.
-	 * 
+	 *
 	 * @param nodeIcon
 	 *            Value to assign to icon.
 	 */
@@ -291,7 +295,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of edgeColor.
-	 * 
+	 *
 	 * @return Value of edgeColor.
 	 */
 	public Color getEdgeColor() {
@@ -300,7 +304,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of edgeColor.
-	 * 
+	 *
 	 * @param edgeColor
 	 *            Value to assign to edgeColor.
 	 */
@@ -310,7 +314,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of edgeStyle.
-	 * 
+	 *
 	 * @return Value of edgeStyle.
 	 */
 	public String getEdgeStyle() {
@@ -319,7 +323,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of edgeStyle.
-	 * 
+	 *
 	 * @param edgeStyle
 	 *            Value to assign to edgeStyle.
 	 */
@@ -329,7 +333,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of edgeWidth.
-	 * 
+	 *
 	 * @return Value of edgeWidth.
 	 */
 	public Integer getEdgeWidth() {
@@ -338,7 +342,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of edgeWidth.
-	 * 
+	 *
 	 * @param edgeWidth
 	 *            Value to assign to edgeWidth.
 	 */
@@ -348,7 +352,7 @@ public class StylePattern {
 
 	/**
 	 * Get the value of ChildrenStylePattern.
-	 * 
+	 *
 	 * @return Value of ChildrenStylePattern.
 	 */
 	public StylePattern getChildrenStylePattern() {
@@ -357,7 +361,7 @@ public class StylePattern {
 
 	/**
 	 * Set the value of ChildrenStylePattern.
-	 * 
+	 *
 	 * @param pChildrenStylePattern
 	 *            Value to assign to ChildrenStylePattern.
 	 */
@@ -366,7 +370,7 @@ public class StylePattern {
 	}
 
 	public static List loadPatterns(File file) throws Exception {
-		return loadPatterns(new BufferedReader(new FileReader(file)));
+		return loadPatterns(new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)));
 	}
 
 	public static List loadPatterns(Reader reader) throws Exception {
@@ -527,48 +531,47 @@ public class StylePattern {
  * XMLElement node = new XMLElement(); node.setTagName("node");
  * pattern.addChild(node); XMLElement edge = new XMLElement();
  * edge.setTagName("edge"); pattern.addChild(edge);
- * 
- * 
+ *
+ *
  * pattern.addChild(((MindMapNodeModel)getRoot()).save());
- * 
+ *
  * XMLElement node = new XMLElement(); node.setTagName("node");
- * 
+ *
  * node.addProperty("text",this.toString());
- * 
+ *
  * // ((MindMapEdgeModel)getEdge()).save(doc,node);
- * 
+ *
  * XMLElement edge = ((MindMapEdgeModel)getEdge()).save(); if (edge != null) {
  * node.addChild(edge); }
- * 
+ *
  * if (isFolded()) { node.addProperty("folded","true"); }
- * 
+ *
  * if (color != null) { node.addProperty("color", Tools.colorToXml(getColor()));
  * }
- * 
+ *
  * if (style != null) { node.addProperty("style", getStyle()); }
- * 
+ *
  * //link if (getLink() != null) { node.addProperty("link", getLink()); }
- * 
+ *
  * //font if (font!=null || font.getSize()!=0 || isBold() || isItalic() ||
  * isUnderlined() ) { XMLElement fontElement = new XMLElement();
  * fontElement.setTagName("font");
- * 
+ *
  * if (font != null) { fontElement.addProperty("name",getFont().getFontName());
  * } if (font.getSize() != 0) {
  * fontElement.addProperty("size",Integer.toString(getFont().getSize())); } if
  * (isBold()) { fontElement.addProperty("bold","true"); } if (isItalic()) {
  * fontElement.addProperty("italic","true"); } if (isUnderlined()) {
  * fontElement.addProperty("underline","true"); } node.addChild(fontElement); }
- * 
- * 
- * 
+ *
+ *
+ *
  * //Generating output Stream BufferedWriter fileout = new BufferedWriter( new
  * OutputStreamWriter( new FileOutputStream(file) ) ); pattern.write(fileout);
- * 
+ *
  * fileout.close();
- * 
+ *
  * } catch(Exception e) {
  * System.err.println("Error in MindMapMapModel.saveXML(): ");
  * freemind.main.Resources.getInstance().logExecption(e); } }
  */
-

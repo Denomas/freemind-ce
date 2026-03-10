@@ -25,8 +25,11 @@ package freemind.main;
 //{{{ Imports
 import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
@@ -40,28 +43,28 @@ import javax.swing.SwingUtilities;
 /**
  * Inter-process communication.
  * <p>
- * 
+ *
  * The edit server protocol is very simple. <code>$HOME/.jedit/server</code> is
  * an ASCII file containing two lines, the first being the port number, the
  * second being the authorization key.
  * <p>
- * 
+ *
  * You connect to that port on the local machine, sending the authorization key
  * as four bytes in network byte order, followed by the length of the BeanShell
  * script as two bytes in network byte order, followed by the script in UTF8
  * encoding. After the socked is closed, the BeanShell script will be executed
  * by FreeMind.
  * <p>
- * 
+ *
  * The snippet is executed in the AWT thread. None of the usual BeanShell
  * variables (view, buffer, textArea, editPane) are set so the script has to
  * figure things out by itself.
  * <p>
- * 
+ *
  * In most cases, the script will call the static
  * {@link #handleClient(boolean,String,String[])} method, but of course more
  * complicated stuff can be done too.
- * 
+ *
  * @author Slava Pestov
  * @version $Id: EditServer.java 19384 2011-02-23 16:50:37Z k_satoda $
  */
@@ -97,7 +100,7 @@ public class EditServer extends Thread {
 			authKey = new Random().nextInt(Integer.MAX_VALUE);
 			int port = socket.getLocalPort();
 
-			FileWriter out = new FileWriter(portFile);
+			Writer out = new OutputStreamWriter(new FileOutputStream(portFile), StandardCharsets.UTF_8);
 
 			try {
 				out.write("b\n");
@@ -155,7 +158,7 @@ public class EditServer extends Thread {
 				/*
 				 * if(client != null) { try { client.close(); } catch(Exception
 				 * e) { logger.info(e); }
-				 * 
+				 *
 				 * client = null; }
 				 */
 			}
