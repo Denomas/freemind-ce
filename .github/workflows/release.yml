@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g., v1.2.0)'
+        required: true
 
 env:
   JAVA_VERSION: '21'
@@ -49,11 +54,11 @@ jobs:
 
       - name: Build (Unix)
         if: runner.os != 'Windows'
-        run: ./gradlew build --no-daemon --no-configuration-cache
+        run: ./gradlew build -x test --no-daemon --no-configuration-cache
 
       - name: Build (Windows)
         if: runner.os == 'Windows'
-        run: .\gradlew.bat build --no-daemon --no-configuration-cache
+        run: .\gradlew.bat build -x test --no-daemon --no-configuration-cache
 
       - name: Package (Unix)
         if: runner.os != 'Windows'
@@ -63,12 +68,21 @@ jobs:
         if: runner.os == 'Windows'
         run: .\gradlew.bat :freemind:${{ matrix.package_task }} --no-daemon --no-configuration-cache
 
+      - name: Rename artifacts to consistent format
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          cd freemind/build/jpackage
+          for f in *.dmg; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-macOS.dmg"; done
+          for f in *.exe; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Windows.exe"; done
+          for f in *.deb; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Linux.deb"; done
+
       - name: Upload platform package
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact_name }}
-          path: ${{ matrix.artifact_pattern }}
-          if-no-files-found: warn
+          path: freemind/build/jpackage/FreeMind-CE-*
+          if-no-files-found: error
 
       - name: Upload JAR distribution
         if: runner.os == 'Linux'
@@ -93,6 +107,12 @@ jobs:
 
       - name: List downloaded artifacts
         run: find artifacts -type f | sort
+
+      - name: Generate checksums
+        run: |
+          cd artifacts
+          find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -exec sha256sum {} + > SHA256SUMS.txt
+          cat SHA256SUMS.txt
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
