@@ -1,0 +1,43 @@
+freemind/tests/freemind/DontShowAgainDialogTests.java
+  c40946108e95727a 26,38-40
+freemind/accessories/plugins/time/CalendarMarkingEvaluator.java
+  c40946108e95727a 26,42-52,61,322,326,365,369,411
+freemind/generated-src/freemind/controller/actions/generated/instance/CalendarMarking.java
+  c40946108e95727a 68
+freemind/tests/freemind/LastStorageManagementTests.java
+  c40946108e95727a 10
+freemind/tests/freemind/CalendarMarkingTests.java
+  c40946108e95727a 4,14-15,26,34,41,55-56,66,81-82,89,104-105,112,119-120,127,136-137,144,153-154,162,171,185-186,194-195,202-203,211-212,214,216,220-221,231-232,236-237
+freemind/tests/freemind/SplashTests.java
+  c40946108e95727a 23,30-32
+freemind/tests/freemind/FreeMindTaskTests.java
+  c40946108e95727a 23,83-85
+freemind/freemind_actions.xsd
+  c40946108e95727a 752
+freemind/tests/freemind/SignedScriptTests.java
+  c40946108e95727a 23-26
+freemind/tests/freemind/TransformTest.java
+  c40946108e95727a 45,104,134,153
+freemind/tests/freemind/MarshallerTests.java
+  c40946108e95727a 105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "8fe66c6881bac08086923d1405a25652b5a8daa1",
+  "prompts": {
+    "c40946108e95727a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "688bfcb2-72ea-40ac-9f61-c909e2f793e9",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 572,
+      "overriden_lines": 0
+    }
+  }
+}
