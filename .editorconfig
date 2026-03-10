@@ -1,0 +1,65 @@
+# FreeMind CE - EditorConfig
+# https://editorconfig.org
+
+root = true
+
+# Default for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 4
+
+# Java source files — tabs (matches existing codebase convention)
+[*.java]
+indent_style = tab
+indent_size = 4
+
+# Gradle build files
+[*.{gradle,gradle.kts}]
+indent_style = tab
+indent_size = 4
+
+# XML, XSD, XSL, XSLT files
+[*.{xml,xsd,xsl,xslt}]
+indent_style = tab
+indent_size = 4
+
+# Properties files
+[*.properties]
+charset = utf-8
+indent_style = space
+indent_size = 0
+
+# YAML files (pre-commit config, GitHub Actions)
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+indent_style = space
+indent_size = 2
+
+# Shell scripts
+[*.sh]
+end_of_line = lf
+indent_style = space
+indent_size = 2
+
+# Windows batch files
+[*.{bat,cmd}]
+end_of_line = crlf
+
+# Gradle wrapper properties
+[gradle/wrapper/gradle-wrapper.properties]
+indent_style = space
+indent_size = 0
+
+# Mind map files — preserve as-is
+[*.mm]
+trim_trailing_whitespace = false
+insert_final_newline = false

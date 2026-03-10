@@ -1,0 +1,72 @@
+# FreeMind CE - Pre-commit Configuration
+# Prevents accidental commits of wrong/dangerous files
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # Prevent merge conflict markers from being committed
+      - id: check-merge-conflict
+
+      # Prevent large files (>500KB) from being added
+      # Existing tracked JARs are excluded — only NEW large files are caught
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+
+      # Ensure files end with a newline
+      - id: end-of-file-fixer
+        exclude: '\.jar$|\.png$|\.gif$|\.jpg$|\.ico$|\.icns$|\.ortho$|\.mm$'
+
+      # Remove trailing whitespace (Java, XML, properties, XSL files)
+      - id: trailing-whitespace
+        exclude: '\.jar$|\.png$|\.gif$|\.jpg$|\.ico$|\.icns$|\.ortho$|\.mm$'
+
+      # Validate XML syntax
+      - id: check-xml
+        files: '\.xml$|\.xsl$|\.xslt$|\.xsd$'
+        # Exclude .mm files (FreeMind map format uses .mm extension, not .xml)
+
+      # Validate YAML syntax
+      - id: check-yaml
+
+      # Detect private keys
+      - id: detect-private-key
+
+      # Check for broken symlinks
+      - id: check-symlinks
+
+      # Check JSON files (if any)
+      - id: check-json
+        files: '\.json$'
+
+  # Prevent accidentally committing binary/generated files
+  - repo: local
+    hooks:
+      # Block .class files
+      - id: no-class-files
+        name: Block compiled .class files
+        entry: "Cannot commit .class files — these are build artifacts"
+        language: fail
+        files: '\.class$'
+
+      # Block auto.properties (runtime-generated user config)
+      - id: no-auto-properties
+        name: Block auto.properties
+        entry: "Cannot commit auto.properties — this is a runtime-generated file"
+        language: fail
+        files: 'auto\.properties$'
+
+      # Block build output directories
+      - id: no-build-dirs
+        name: Block build directory files
+        entry: "Cannot commit build output files"
+        language: fail
+        files: '^freemind/build/|^build/'
+
+      # Verify Java compilation on staged .java files
+      - id: gradle-compile-check
+        name: Verify Java compilation
+        entry: bash -c 'export JAVA_HOME="/opt/homebrew/Cellar/openjdk@21/21.0.10/libexec/openjdk.jdk/Contents/Home" && ./gradlew :freemind:compileJava --no-configuration-cache -q'
+        language: system
+        files: '\.java$'
+        pass_filenames: false

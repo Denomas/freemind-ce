@@ -1,7 +1,5 @@
 ### Eclipse ###
-
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
@@ -25,29 +23,75 @@ local.properties
 .recommenders/
 
 ### Eclipse Patch ###
-# Eclipse Core
+# Eclipse Core — tracked for Eclipse users
 #.project
-
-# JDT-specific (Eclipse Java Development Tools)
 #.classpath
 
 ### Java ###
-# Compiled class file
+# Compiled class files
 *.class
 
-# Log file
+# Log files
 *.log
 
-# Package Files #
+# Package Files — JAR/ZIP are NOT ignored (project uses local JARs as dependencies)
 #*.jar
 #*.zip
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs
 hs_err_pid*
-#freemind/.classpath
-freemind/version.properties
+replay_pid*
 
-# file is generated:
+### Gradle ###
+.gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+### VS Code ###
+.vscode/
+*.code-workspace
+
+### macOS ###
+.DS_Store
+._*
+
+### Windows ###
+Thumbs.db
+Desktop.ini
+
+### FreeMind CE specific ###
+
+# Auto-generated at runtime
+freemind/version.properties
+freemind/auto.properties
+
+# JiBX binding JAR (obsolete — replaced by JAXB)
 freemind/lib/bindings.jar
+
+# Build output directories (legacy Ant)
+bin/dist/
+bin/classes/
+bin/testclasses/
+bin/reports/
+
+# Distribution artifacts
+*.dmg
+*.pkg
+*.exe
+*.msi
+*.deb
+*.rpm
+
+# Test coverage
+jacoco/
+coverage/
