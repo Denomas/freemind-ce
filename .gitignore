@@ -95,3 +95,6 @@ bin/reports/
 # Test coverage
 jacoco/
 coverage/
+_bmad/
+_bmad-output/
+.claude/
