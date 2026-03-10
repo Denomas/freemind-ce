@@ -34,8 +34,8 @@
 	<property name="test.reports" location="../bin/reports/" />
 	<property name="post" location="../post" />
 	<property name="debug" value="on" />
-	<property name="java_source_version" value="11" />
-	<property name="java_target_version" value="11" />
+	<property name="java_source_version" value="21" />
+	<property name="java_target_version" value="21" />
 	<property name="build.compiler" value="modern" />
 	<property name="appbundler.jar" value = "appbundler-1.0.jar"/>
 	<property name="freemind_socket" location="${user.home}/.freemind/freemind.socket"/>
@@ -45,11 +45,12 @@
 	<!-- begin generator part -->
 	<property name="jibxhome" location="lib/jibx"/>
 	<property name="jibxjar" location="lib/bindings.jar"/>
-	<property name="jibxruntimelibs" value="${jibxhome}/jibx-run.jar:${jibxhome}/xpp3.jar"/>
+	<property name="jibxruntimelibs" value="${jibxhome}/jibx-run.jar:${jibxhome}/xpp3.jar:${jibxhome}/commons-lang3-3.14.0.jar"/>
 	<property name="jibxlibs" value="${jibxhome}/bcel.jar:${jibxhome}/jibx-bind.jar:${jibxhome}/jibx-extras.jar:${jibxruntimelibs}"/>
 	<taskdef name="bind" classname="org.jibx.binding.ant.CompileTask">
 		<classpath path="${jibxlibs}"/>
 		<classpath location="binding/classes"/>
+		<classpath path="${jibxhome}/commons-lang3-3.14.0.jar"/>
 	</taskdef>
 	<property name="formsLib" location="lib/jgoodies-forms-1.8.0.jar:lib/jgoodies-common-1.8.1.jar"/>
 	<property name="simplyHtml" location="lib/SimplyHTML/SimplyHTML.jar"/>
@@ -73,8 +74,8 @@
 	              targetfile="${jibxjar}"/>
 	</target>
 
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: init                      
+	<!-- - - - - - - - - - - - - - - - - -
+          target: init
          - - - - - - - - - - - - - - - - - -->
 	<target name="init">
 		<buildnumber file="${freemind.buildnumber.file}"/>
@@ -97,7 +98,7 @@
 		<mkdir dir="binding/src" />
 		<mkdir dir="binding/run" />
 		<mkdir dir="binding/classes" />
-		<javac includeantruntime="false"  destdir="binding/run" 
+		<javac includeantruntime="false"  destdir="binding/run"
 			srcdir="${src}"
 			classpath="${classpath}"
 			debug="${debug}"
@@ -117,7 +118,10 @@
 			<bindingfileset dir="binding/src">
 				<include name="**/*.xml" />
 			</bindingfileset>
-			<classpathset dir="binding/classes" />
+			<classpath>
+				<pathelement location="binding/classes"/>
+				<pathelement location="${jibxhome}/commons-lang3-3.14.0.jar"/>
+			</classpath>
 		</bind>
 		<!-- jar the bindings -->
 		<jar destfile="${jibxjar}">
@@ -129,8 +133,9 @@
 				<include name="**/*.xml" />
 			</fileset>
 		</jar>
-		<delete dir="binding">
-		</delete>
+		<!-- Temporarily keep binding files for debugging -->
+		<!-- <delete dir="binding">
+		</delete> -->
 		<delete failonerror="false" file="${src}/accessories/plugins/MacChanges.java" quiet="true"/>
 		<delete failonerror="false" file="${src}/accessories/plugins/MacChanges.xml" quiet="true"/>
 	</target>
@@ -189,8 +194,8 @@
 		<copy todir="${testbuild}" file="${src}/freemind.properties"/>
 	</target>
 
-	<!-- ================================= 
-          target: test              
+	<!-- =================================
+          target: test
          ================================= -->
 	<target name="test" depends="build_tests" description="Carries out all unit tests">
 		<delete dir="${test.reports}" />
@@ -286,7 +291,7 @@
 		<delete dir="${dist_macos}" followsymlinks="false"/>
 		<mkdir dir="${dist_macos}"/>
 		<taskdef name="bundleapp"
-		             classname="com.oracle.appbundler.AppBundlerTask"   
+		             classname="com.oracle.appbundler.AppBundlerTask"
 		             classpath="${src}/lib/${appbundler.jar}" />
 
 		<bundleapp outputdirectory="${dist_macos}"
@@ -350,7 +355,7 @@
 			</fileset>
 		</copy>
 
-		<!-- Associate Freemind with mm 
+		<!-- Associate Freemind with mm
 		-->
 		<xslt style="mac_file_association.xslt"
 			in ="${dist_macos_info}"
@@ -552,7 +557,7 @@
 		<mkdir dir="${dist}/doc/javadoc" />
 		<javadoc sourcepath="${src}"
 	         destdir="${dist}/doc/javadoc"
-			 breakiterator="yes" 
+			 breakiterator="yes"
 			linksource="true"
 			 classpath="${classpath}"
 		         packagenames="freemind.*" />
@@ -743,8 +748,8 @@
     	-->
 	</target>
 
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: create_windows_installer                      
+	<!-- - - - - - - - - - - - - - - - - -
+          target: create_windows_installer
          - - - - - - - - - - - - - - - - - -->
 	<target name="create_windows_installer">
 		<ant dir="${inst.windows.installer}" target="${inst.windows.variant}">
@@ -759,8 +764,8 @@
 		</exec>
 	</target>
 
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: installers_chris_mac                      
+	<!-- - - - - - - - - - - - - - - - - -
+          target: installers_chris_mac
          - - - - - - - - - - - - - - - - - -->
 	<target name="installers_chris_mac">
 		<exec dir="." executable="ssh" os="Linux">
@@ -831,4 +836,3 @@
 	</target>
 
 </project>
-

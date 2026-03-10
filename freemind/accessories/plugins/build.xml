@@ -4,7 +4,7 @@
 	<property name="plugin.jar" value="${FM.jar}" />
 	<property name="plugin.zip" value="builtin_plugins-${ver}.zip" />
 	<property name="additional.lib" value=""/>
-	
+
 	<property name="additional.lib.pattern" value="${plugin.dir}/*.jar"/>
 
 	<target name="build">
@@ -15,18 +15,19 @@
 			debug="${debug}"
 		   source="${java_source_version}"
 	       target="${java_target_version}"
-						> 
+						>
 			<include name="${plugin.dir}/**" />
+			<exclude name="${plugin.dir}/MacChanges.java"/>
 			<classpath>
 				<path path="${classpath}"/>
 				<!-- <path path="${additional.lib}"/> -->
 			</classpath>
-			
+
 		</javac>
 	</target>
 
 	<target name="jar">
-		<copy todir="${build}"> 
+		<copy todir="${build}">
 			<fileset dir="${src}">
 				<include name="${plugin.dir}/**"/>
 				<exclude name="**/*.java"/>
@@ -40,11 +41,11 @@
 			</fileset>
 		</jar>
 	</target>
-	
+
 	<target name="dist">
 		<!-- additional libs  -->
 		<mkdir dir="${dist}" />
-		<copy todir="${dist}" flatten="false"> 
+		<copy todir="${dist}" flatten="false">
 			<fileset dir="${src}">
 				<include name="${additional.lib.pattern}"/>
 			</fileset>
@@ -56,7 +57,7 @@
 			basedir="${dist}"
 			includes="${plugin.dir}/**,${plugin.xml}"
 			>
-				
+
 		</zip>		-->
 	</target>
 </project>

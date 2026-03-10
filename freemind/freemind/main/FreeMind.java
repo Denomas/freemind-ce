@@ -37,10 +37,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import java.io.BufferedReader;
+import java.nio.charset.StandardCharsets;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -99,9 +101,9 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	public static final String J_SPLIT_PANE_SPLIT_TYPE = "JSplitPane.SPLIT_TYPE";
 
 	public static final String VERTICAL_SPLIT_BELOW = "vertical_split_below";
-	
+
 	public static final String HORIZONTAL_SPLIT_RIGHT = "horizontal_split_right";
-	
+
 	public static final String LOG_FILE_NAME = "log";
 
 	private static final String PORT_FILE = "portFile";
@@ -147,7 +149,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	public static final String RESOURCES_USE_TABBED_PANE = "use_tabbed_pane";
 
 	public static final String RESOURCES_SHOW_NOTE_PANE = "use_split_pane";
-	
+
 	public static final String RESOURCES_SHOW_ATTRIBUTE_PANE = "show_attribute_pane";
 
 	public static final String RESOURCES_DELETE_NODES_WITHOUT_QUESTION = "delete_nodes_without_question";
@@ -179,7 +181,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	public static final String RESOURCES_DON_T_SHOW_NOTE_ICONS = "resources_don_t_show_note_icons";
 
 	public static final String RESOURCES_USE_COLLABORATION_SERVER_WITH_DIFFERENT_VERSION = "resources_use_collaboration_server_with_different_version";
-	
+
 	public static final String RESOURCES_REMOVE_NOTES_WITHOUT_QUESTION = "resources_remove_notes_without_question";
 
 	public static final String RESOURCES_SAVE_FOLDING_STATE = "resources_save_folding_state";
@@ -207,7 +209,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	public static final String RESOURCES_DON_T_SHOW_NOTE_TOOLTIPS = "resources_don_t_show_note_tooltips";
 
 	public static final String RESOURCES_SEARCH_FOR_NODE_TEXT_WITHOUT_QUESTION = "resources_search_for_node_text_without_question";
-	
+
 	public static final String RESOURCES_COMPLETE_CLONING = "complete_cloning";
 
 	public static final String RESOURCES_CLONE_TYPE_COMPLETE_CLONE = "COMPLETE_CLONE";
@@ -251,7 +253,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	private MenuBar menuBar;
 
 	private JLabel status;
-	
+
 	private Timer mStatusMessageDisplayTimer;
 
 	// used to open different file types
@@ -295,7 +297,11 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 			Properties pUserPreferences, File pAutoPropertiesFile) {
 		super("FreeMind");
 		// Focus searcher
-		System.setSecurityManager(new FreeMindSecurityManager());
+		try {
+			System.setSecurityManager(new FreeMindSecurityManager());
+		} catch (UnsupportedOperationException e) {
+			// SecurityManager removed in Java 21+
+		}
 		defProps = pDefaultPreferences;
 		props = pUserPreferences;
 		autoPropertiesFile = pAutoPropertiesFile;
@@ -392,7 +398,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		// }
 		// }
 		// });
-		
+
 		controller.optionAntialiasAction
 				.changeAntialias(getProperty(FreeMindCommon.RESOURCE_ANTIALIAS));
 
@@ -414,7 +420,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	}// Constructor
 
 	/**
-	 * 
+	 *
 	 */
 	private void updateLookAndFeel() {
 		// set Look&Feel
@@ -581,12 +587,12 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		out("");
 		mStatusMessageDisplayTimer.stop();
 	}
-	
+
 	/**
 	 * Open URL in system browser
 	 * <p>
 	 * Opens the specified URL in the default browser for the operating system.
-	 * 
+	 *
 	 * @param url a url pointing to where the browser should open
 	 * @see       URL
 	 */
@@ -713,22 +719,22 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 			feedBack.setMaximumValue(10 + frame.getMaximumNumberOfMapsToLoad(args));
 			frame.init(feedBack);
-	
+
 			feedBack.increase("FreeMind.progress.startCreateController", null);
 			final ModeController ctrl = frame.createModeController(args);
-	
+
 			feedBack.increase(FREE_MIND_PROGRESS_LOAD_MAPS, null);
-	
+
 			frame.loadMaps(args, ctrl, feedBack);
-	
+
 			Tools.waitForEventQueue();
 			feedBack.increase("FreeMind.progress.endStartup", null);
 			// focus fix after startup.
 			frame.addWindowFocusListener(new WindowFocusListener() {
-	
+
 				public void windowLostFocus(WindowEvent e) {
 				}
-	
+
 				public void windowGainedFocus(WindowEvent e) {
 					frame.getController().obtainFocusForSelected();
 					frame.removeWindowFocusListener(this);
@@ -744,7 +750,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 			JOptionPane.showMessageDialog(null,
 					"FreeMind can't be started: " + e.getLocalizedMessage()+"\n" + Tools.getStacktrace(e),
 					"Startup problem", JOptionPane.ERROR_MESSAGE);
-			System.exit(1);			
+			System.exit(1);
 		}
 	}
 
@@ -754,22 +760,27 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 			Tools.safeEquals("true", props.getProperty(FreeMindCommon.CHECK_SPELLING));
 		if (checkSpelling) {
 			try {
-				// TODO filter languages in dictionaries.properties like this:
-//				String[] languages = "en,de,es,fr,it,nl,pl,ru,ar".split(",");
-//				for (int i = 0; i < languages.length; i++) {
-//					System.out.println(new File("dictionary_" + languages[i] + ".ortho").exists());
-//				}
-				String decodedPath = Tools.getFreeMindBasePath();
+				// Use classpath resource URL for spell checker dictionaries
+				// This works with both Gradle dev (resources in separate dir) and JAR packaging
+				URL dictUrl = FreeMind.class.getClassLoader().getResource("dictionaries.cnf");
 				URL url = null;
-				if (new File (decodedPath).exists()) {
-					url = new URL("file", null, decodedPath);
+				if (dictUrl != null) {
+					// Get the base URL (parent directory of dictionaries.cnf)
+					String dictUrlStr = dictUrl.toExternalForm();
+					url = new URL(dictUrlStr.substring(0, dictUrlStr.lastIndexOf('/') + 1));
+				} else {
+					// Fallback to file-based path for standalone installations
+					String decodedPath = Tools.getFreeMindBasePath();
+					if (new File(decodedPath).exists()) {
+						url = new URL("file", null, decodedPath);
+					}
 				}
 				SpellChecker.registerDictionaries(url, Locale.getDefault().getLanguage());
 			} catch (MalformedURLException e) {
 				freemind.main.Resources.getInstance().logException(e);
 			} catch (UnsupportedEncodingException e) {
 				freemind.main.Resources.getInstance().logException(e);
-				
+
 			}
 		}
 	}
@@ -808,7 +819,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		// {{{ Try connecting to another running FreeMind instance
 		if (portFile != null && new File(portFile).exists()) {
 			try {
-				BufferedReader in = new BufferedReader(new FileReader(portFile));
+				BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(portFile), StandardCharsets.UTF_8));
 				String check = in.readLine();
 				if (!check.equals("b"))
 					throw new Exception("Wrong port file format");
@@ -1106,7 +1117,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	 * loadEventDuringStartup0=/Users/alex/Desktop/test1.mm
 	 * loadEventDuringStartup1=/Users/alex/Desktop/test2.mm
 	 * </ul>
-	 * 
+	 *
 	 * @return true if at least one file has been loaded
 	 */
 	private boolean processLoadEventFromStartupPhase() {
@@ -1147,7 +1158,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.main.FreeMindMain#getJFrame()
 	 */
 	public JFrame getJFrame() {
@@ -1165,7 +1176,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	public String getAdjustableProperty(String label) {
 		return mFreeMindCommon.getAdjustableProperty(label);
 	}
-	
+
 	public JSplitPane insertComponentIntoSplitPane(JComponent pMindMapComponent) {
 		if (mSplitPane != null) {
 			// already present:
@@ -1201,7 +1212,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 			public void componentResized(ComponentEvent pE) {
 				setSplitLocation();
 				removeComponentListener(this);
-			}	
+			}
 		});
 		return mSplitPane;
 	}
@@ -1210,6 +1221,17 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		int splitPanePosition = getIntProperty(SPLIT_PANE_POSITION, -1);
 		int lastSplitPanePosition = getIntProperty(SPLIT_PANE_LAST_POSITION, -1);
 		if (mSplitPane != null && splitPanePosition != -1 && lastSplitPanePosition != -1) {
+			// Ensure the mindmap area (top component) has a reasonable minimum size.
+			// A divider position below 100px makes the mindmap nearly invisible.
+			int minPosition = 100;
+			if (splitPanePosition < minPosition) {
+				int paneHeight = mSplitPane.getHeight();
+				splitPanePosition = paneHeight > 0 ? (int)(paneHeight * 0.7) : 600;
+			}
+			if (lastSplitPanePosition < minPosition) {
+				int paneHeight = mSplitPane.getHeight();
+				lastSplitPanePosition = paneHeight > 0 ? (int)(paneHeight * 0.7) : 600;
+			}
 			mSplitPane.setDividerLocation(splitPanePosition);
 			mSplitPane.setLastDividerLocation(lastSplitPanePosition);
 		}

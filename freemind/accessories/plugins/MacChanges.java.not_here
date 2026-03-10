@@ -30,9 +30,10 @@ import java.util.logging.Logger;
 
 import javax.swing.SwingUtilities;
 
-import com.apple.eawt.Application;
-import com.apple.eawt.ApplicationAdapter;
-import com.apple.eawt.ApplicationEvent;
+// Disabled for Java 21+ - com.apple.eawt removed
+// import com.apple.eawt.Application;
+// import com.apple.eawt.ApplicationAdapter;
+// import com.apple.eawt.ApplicationEvent;
 
 import freemind.controller.Controller;
 import freemind.controller.Controller.LocalLinkConverter;
@@ -42,14 +43,17 @@ import freemind.main.Tools;
 
 /**
  * This plugin changes some things for mac users.
- * 
+ * Disabled for Java 21+ (com.apple.eawt removed).
+ *
  * @author foltin
  */
-public class MacChanges extends ApplicationAdapter {
+@SuppressWarnings("unused")
+public class MacChanges {
+	// Disabled: extends ApplicationAdapter - deprecated API removed in Java 21
 
 	private Logger logger;
 
-	private static Application fmMacApplication;
+	// private static Application fmMacApplication; // Removed - deprecated API
 
 	private final FreeMindMain mFrame;
 
