@@ -1,0 +1,35 @@
+docs/index.md
+  bd7e19ac4215c780 1-83
+docs/architecture.md
+  bd7e19ac4215c780 1-201
+docs/source-tree-analysis.md
+  bd7e19ac4215c780 1-136
+docs/project-scan-report.json
+  bd7e19ac4215c780 1
+docs/project-overview.md
+  bd7e19ac4215c780 1-108
+docs/development-guide.md
+  bd7e19ac4215c780 1-180
+docs/component-inventory.md
+  bd7e19ac4215c780 1-164
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "0769b216e61e585460db1b9984c0a82bedbea748",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 1299,
+      "overriden_lines": 0
+    }
+  }
+}
