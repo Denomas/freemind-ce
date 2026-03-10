@@ -1,0 +1,35 @@
+README-TR.md
+  bd7e19ac4215c780 49,53-73
+CLAUDE.md
+  bd7e19ac4215c780 74-77,79
+README.md
+  bd7e19ac4215c780 49,53-73
+docs/source-tree-analysis.md
+  bd7e19ac4215c780 51-52
+docs/component-inventory.md
+  bd7e19ac4215c780 151-154
+docs/architecture.md
+  bd7e19ac4215c780 196-201
+docs/development-guide.md
+  bd7e19ac4215c780 142-144,147
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "e41c63fcbc15124a6e4c147a95ce880429410117",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 67,
+      "total_deletions": 17,
+      "accepted_lines": 493,
+      "overriden_lines": 0
+    }
+  }
+}
