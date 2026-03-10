@@ -1,0 +1,97 @@
+freemind/generated-src/freemind/controller/actions/generated/instance/MenuRadioAction.java
+  bd7e19ac4215c780 66-70
+freemind/generated-src/freemind/controller/actions/generated/instance/MoveNodesAction.java
+  bd7e19ac4215c780 94-114
+freemind/generated-src/freemind/controller/actions/generated/instance/ItalicNodeAction.java
+  bd7e19ac4215c780 54-58
+freemind/plugins/map/FreeMindMapController.java
+  bd7e19ac4215c780 2204
+freemind/generated-src/freemind/controller/actions/generated/instance/TransferableContent.java
+  bd7e19ac4215c780 240-250
+freemind/tests/freemind/TransformTest.java
+  bd7e19ac4215c780 33,101,109
+freemind/generated-src/freemind/controller/actions/generated/instance/MindmapLastStateMapStorage.java
+  bd7e19ac4215c780 10,38,106-126
+freemind/generated-src/freemind/controller/actions/generated/instance/PasteNodeAction.java
+  bd7e19ac4215c780 89-93,108-112
+freemind/generated-src/freemind/controller/actions/generated/instance/CalendarMarkings.java
+  bd7e19ac4215c780 4-5,22-23,25-29,31-43,46-47
+freemind/freemind_actions.xsd
+  bd7e19ac4215c780 726,734,758,894,1103-1104,1114,1135,1139,1143,1198
+freemind/generated-src/freemind/controller/actions/generated/instance/Searchresults.java
+  bd7e19ac4215c780 237-251
+freemind/generated-src/freemind/controller/actions/generated/instance/TimeWindowConfigurationStorage.java
+  bd7e19ac4215c780 108-121
+freemind/generated-src/freemind/controller/actions/generated/instance/AttributeTableProperties.java
+  bd7e19ac4215c780 9,36,76-86
+freemind/generated-src/freemind/controller/actions/generated/instance/PluginRegistration.java
+  bd7e19ac4215c780 131-141
+freemind/generated-src/freemind/controller/actions/generated/instance/MindmapLastStateStorage.java
+  bd7e19ac4215c780 222-242
+freemind/generated-src/freemind/controller/actions/generated/instance/MenuCategoryBase.java
+  bd7e19ac4215c780 96-101
+freemind/generated-src/freemind/controller/actions/generated/instance/CompoundAction.java
+  bd7e19ac4215c780 202-229
+freemind/generated-src/freemind/controller/actions/generated/instance/TableColumnSetting.java
+  bd7e19ac4215c780 1-23
+freemind/generated-src/freemind/controller/actions/generated/instance/Plugin.java
+  bd7e19ac4215c780 92-97
+freemind/generated-src/freemind/controller/actions/generated/instance/CalendarMarking.java
+  bd7e19ac4215c780 57-69
+freemind/freemind/common/XmlBindingTools.java
+  bd7e19ac4215c780 34-37,46,51,60-62,69,71-75,81,83-84,151,153-154,168-169,171,177-190
+freemind/generated-src/freemind/controller/actions/generated/instance/UnderlinedNodeAction.java
+  bd7e19ac4215c780 54-58
+freemind/generated-src/freemind/controller/actions/generated/instance/PluginAction.java
+  bd7e19ac4215c780 126-131,356-360
+freemind/jaxb-bindings.xjb
+  bd7e19ac4215c780 1-26
+freemind/generated-src/freemind/controller/actions/generated/instance/NodeList.java
+  bd7e19ac4215c780 76-96
+freemind/freemind/modes/mindmapmode/hooks/MindMapHookFactory.java
+  bd7e19ac4215c780 35,148,168,263-269
+freemind/generated-src/freemind/controller/actions/generated/instance/MapWindowConfigurationStorage.java
+  bd7e19ac4215c780 513-564
+freemind/generated-src/freemind/controller/actions/generated/instance/MenuStructure.java
+  bd7e19ac4215c780 76-82
+freemind/generated-src/freemind/controller/actions/generated/instance/UndoPasteNodeAction.java
+  bd7e19ac4215c780 90-98
+freemind/generated-src/freemind/controller/actions/generated/instance/HookNodeAction.java
+  bd7e19ac4215c780 138-168
+freemind/generated-src/freemind/controller/actions/generated/instance/AddCloudXmlAction.java
+  bd7e19ac4215c780 57-61
+freemind/generated-src/freemind/controller/actions/generated/instance/BoldNodeAction.java
+  bd7e19ac4215c780 54-58
+freemind/generated-src/freemind/controller/actions/generated/instance/Patterns.java
+  bd7e19ac4215c780 76-93
+freemind/generated-src/freemind/controller/actions/generated/instance/FoldAction.java
+  bd7e19ac4215c780 52-56
+freemind/generated-src/freemind/controller/actions/generated/instance/Reversegeocode.java
+  bd7e19ac4215c780 151-167
+freemind/generated-src/freemind/controller/actions/generated/instance/CollaborationOffers.java
+  bd7e19ac4215c780 108-127
+freemind/freemind/modes/mindmapmode/MindMapController.java
+  bd7e19ac4215c780 78-79,1117,1120,1122,2025-2029
+freemind/generated-src/freemind/controller/actions/generated/instance/StrikethroughNodeAction.java
+  bd7e19ac4215c780 54-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "a65917f86ce01b82dcf912a6d4afa4fe7d4fd10b",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 3440,
+      "overriden_lines": 0
+    }
+  }
+}

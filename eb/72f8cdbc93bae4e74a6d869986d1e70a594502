@@ -1,0 +1,37 @@
+freemind/freemind/view/mindmapview/EditNodeExternalApplication.java
+  bd7e19ac4215c780 30,58
+freemind/freemind/controller/filter/FilterController.java
+  bd7e19ac4215c780 26-27,29-30
+freemind/tests/freemind/ToolsTests.java
+  bd7e19ac4215c780 221,223-225
+freemind/freemind/modes/mindmapmode/actions/xml/actors/RevertActor.java
+  bd7e19ac4215c780 25,27-29,31,75,133
+freemind/accessories/plugins/ImportMindmanagerFiles.java
+  bd7e19ac4215c780 29,31,113
+freemind/freemind/main/XHTMLWriter.java
+  bd7e19ac4215c780 12-13,16-17,131-132
+freemind/freemind/main/EditServer.java
+  bd7e19ac4215c780 30-31,103
+freemind/plugins/search/FileSearchModel.java
+  bd7e19ac4215c780 7-8,196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "eb72f8cdbc93bae4e74a6d869986d1e70a594502",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 2881,
+      "overriden_lines": 0
+    }
+  }
+}
