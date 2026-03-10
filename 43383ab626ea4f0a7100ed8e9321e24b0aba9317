@@ -1,0 +1,23 @@
+freemind/freemind/main/FreeMind.java
+  bd7e19ac4215c780 300,302-304,763-765,767-774,776,1224-1234
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "43383ab626ea4f0a7100ed8e9321e24b0aba9317",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 2445,
+      "overriden_lines": 0
+    }
+  }
+}
