@@ -1,0 +1,25 @@
+settings.gradle.kts
+  c40946108e95727a 6-12
+freemind/build.gradle.kts
+  c40946108e95727a 11-13,163-168,171-172,175,228-232,235-238,337-338,347-365,369-377,398-399,421-422,444-445
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "98f716c238c98a17acaa57e7b8deb4a96d8f4411",
+  "prompts": {
+    "c40946108e95727a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "688bfcb2-72ea-40ac-9f61-c909e2f793e9",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 636,
+      "overriden_lines": 0
+    }
+  }
+}
