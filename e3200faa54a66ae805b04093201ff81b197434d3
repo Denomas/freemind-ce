@@ -1,0 +1,37 @@
+freemind/plugins/help/build.gradle.kts
+  bd7e19ac4215c780 1-27
+freemind/plugins/search/build.gradle.kts
+  bd7e19ac4215c780 1-33
+freemind/plugins/script/build.gradle.kts
+  bd7e19ac4215c780 1-27
+settings.gradle.kts
+  bd7e19ac4215c780 6-9,22,31
+freemind/build.gradle.kts
+  bd7e19ac4215c780 23-63,84-85,96-98,101-109,115-125,132-145,157-160,162-164,166,176,179-191,194,197,199-201,203-204,217,220,229-232,234,236-237,239-244,246,248-251,260,278-280,339-340,344,361-362,366,382-383,387
+freemind/plugins/map/build.gradle.kts
+  bd7e19ac4215c780 1-27
+freemind/plugins/collaboration/socket/build.gradle.kts
+  bd7e19ac4215c780 1-25
+freemind/dictionaries.cnf
+  bd7e19ac4215c780 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "e3200faa54a66ae805b04093201ff81b197434d3",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 2849,
+      "overriden_lines": 0
+    }
+  }
+}
