@@ -1,0 +1,40 @@
+name: Security Scan
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Monday 6am UTC
+  workflow_dispatch:
+
+env:
+  JAVA_VERSION: '21'
+
+jobs:
+  owasp-check:
+    name: OWASP Dependency Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Run OWASP Dependency Check
+        run: ./gradlew :freemind:dependencyCheckAnalyze --no-daemon --no-configuration-cache
+        continue-on-error: true
+
+      - name: Upload OWASP Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: owasp-dependency-check-report
+          path: freemind/build/reports/dependency-check-report.html
+          retention-days: 30
