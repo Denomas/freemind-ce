@@ -1,0 +1,27 @@
+freemind/freemind/preferences/layout/OptionPanel.java
+  bd7e19ac4215c780 672,677-681,683,685,687,689
+freemind/freemind.properties
+  bd7e19ac4215c780 91-94
+freemind/freemind/main/FreeMind.java
+  bd7e19ac4215c780 86-87,431-435,450,453-454
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "731a246ebbf774edb94fb0d0cb4d3edd6a78c951",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 25,
+      "total_deletions": 22,
+      "accepted_lines": 450,
+      "overriden_lines": 0
+    }
+  }
+}
