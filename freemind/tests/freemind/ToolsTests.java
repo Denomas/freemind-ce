@@ -31,7 +31,6 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.Vector;
 
-import freemind.main.FreeMindSecurityManager;
 import freemind.main.HtmlTools;
 import freemind.main.Tools;
 import freemind.modes.MapAdapter;
@@ -211,20 +210,7 @@ public class ToolsTests extends FreeMindTestBase {
 		doUpdate();
 	}
 
-	public void testUpdateWithSecurityManager() throws FileNotFoundException,
-			IOException {
-		/**
-		 * Due to a java bug (in version 7 update 4), setting a security manager
-		 * (this is normally done in FreeMind) breaks the update. This is tested
-		 * here.
-		 */
-		try {
-			System.setSecurityManager(new FreeMindSecurityManager());
-		} catch (UnsupportedOperationException e) {
-			// SecurityManager removed in Java 21+
-		}
-		doUpdate();
-	}
+	// testUpdateWithSecurityManager removed — SecurityManager no longer works in Java 21+ (JEP 411)
 
 	protected void doUpdate() throws IOException {
 		String input = "<map version=\"0.9.0\">"

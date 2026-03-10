@@ -70,6 +70,7 @@ public class EnterPasswordDialog extends JDialog {
 	/**
 	 * @deprecated do not use. This is for visual editor only.
 	 */
+	@Deprecated
 	public EnterPasswordDialog() {
 
 	}
@@ -87,7 +88,7 @@ public class EnterPasswordDialog extends JDialog {
 
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize() {
@@ -166,7 +167,7 @@ public class EnterPasswordDialog extends JDialog {
 
 	/**
 	 * This method initializes jContentPane
-	 * 
+	 *
 	 * @return javax.swing.JPanel
 	 */
 	private javax.swing.JPanel getJContentPane() {
@@ -226,7 +227,7 @@ public class EnterPasswordDialog extends JDialog {
 
 	/**
 	 * This method initializes jPasswordField
-	 * 
+	 *
 	 * @return javax.swing.JPasswordField
 	 */
 	private JPasswordField getJPasswordField() {
@@ -238,7 +239,7 @@ public class EnterPasswordDialog extends JDialog {
 
 	/**
 	 * This method initializes jPasswordField1
-	 * 
+	 *
 	 * @return javax.swing.JPasswordField
 	 */
 	private JPasswordField getJPasswordField1() {
@@ -250,7 +251,7 @@ public class EnterPasswordDialog extends JDialog {
 
 	/**
 	 * This method initializes jButton
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJOKButton() {
@@ -273,7 +274,7 @@ public class EnterPasswordDialog extends JDialog {
 
 	/**
 	 * This method initializes jButton1
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJCancelButton() {

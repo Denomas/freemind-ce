@@ -414,9 +414,7 @@ public class PrintGraphics extends Graphics2D {
 		mG.dispose();
 	}
 
-	public void finalize() {
-		mG.finalize();
-	}
+	// finalize() removed — use dispose() for resource cleanup
 
 	public String toString() {
 		return mG.toString();

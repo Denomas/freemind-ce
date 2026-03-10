@@ -192,6 +192,11 @@ sourceSets {
             exclude("**/property/**")
             // Exclude Jabber collaboration plugin (broken API calls, unmaintained)
             exclude("**/jabber/**")
+            // Exclude JApplet-based applet (JApplet removed in Java 21)
+            exclude("**/FreeMindApplet.java")
+            // Exclude SecurityManager classes (removed in Java 21, JEP 411)
+            exclude("**/FreeMindSecurityManager.java")
+            exclude("**/ScriptingSecurityManager.java")
         }
         resources {
             setSrcDirs(listOf(

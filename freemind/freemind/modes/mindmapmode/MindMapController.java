@@ -2024,6 +2024,7 @@ public class MindMapController extends ControllerAdapter implements
 	}
 
 	/** @deprecated Use {@link #getActionRegistry()} instead */
+	@Deprecated
 	public ActionRegistry getActionFactory() {
 		return actionFactory;
 	}

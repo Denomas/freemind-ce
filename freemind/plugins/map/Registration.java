@@ -71,9 +71,9 @@ public class Registration implements HookRegistration, ActorXml,
 		TileLoaderListener, MenuItemEnabledListener {
 
 	/**
-	 * 
+	 *
 	 * Clean the file cache periodically.
-	 * 
+	 *
 	 * @author foltin
 	 * @date 27.04.2012
 	 */
@@ -110,7 +110,7 @@ public class Registration implements HookRegistration, ActorXml,
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.TimerTask#run()
 		 */
 		public void run() {
@@ -187,7 +187,7 @@ public class Registration implements HookRegistration, ActorXml,
 
 	private static Timer sTimer;
 
-	private static Boolean sTimerSemaphore = Boolean.valueOf(false);
+	private static final Object sTimerSemaphore = new Object();
 
 	private IntHolder mCachePurgerSemaphore = new IntHolder(0);
 
@@ -327,9 +327,9 @@ public class Registration implements HookRegistration, ActorXml,
 
 	/**
 	 * Set map position. Is undoable.
-	 * 
+	 *
 	 * @param pTileSource
-	 * 
+	 *
 	 */
 	public void changePosition(MapNodePositionHolder pHolder,
 							   ICoordinate pPosition, ICoordinate pMapCenter, int pZoom,
@@ -370,7 +370,7 @@ public class Registration implements HookRegistration, ActorXml,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.mindmapmode.actions.xml.ActorXml#act(freemind.controller
 	 * .actions.generated.instance.XmlAction)
@@ -403,7 +403,7 @@ public class Registration implements HookRegistration, ActorXml,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.mindmapmode.actions.xml.ActorXml#getDoActionClass()
 	 */
 	public Class<PlaceNodeXmlAction> getDoActionClass() {
@@ -412,7 +412,7 @@ public class Registration implements HookRegistration, ActorXml,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.openstreetmap.gui.jmapviewer.interfaces.TileLoaderListener#
 	 * getTileCache()
 	 */
@@ -422,7 +422,7 @@ public class Registration implements HookRegistration, ActorXml,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.openstreetmap.gui.jmapviewer.interfaces.TileLoaderListener#
 	 * tileLoadingFinished(org.openstreetmap.gui.jmapviewer.Tile, boolean)
 	 */
@@ -431,7 +431,7 @@ public class Registration implements HookRegistration, ActorXml,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing.JMenuItem
 	 * , javax.swing.Action)

@@ -28,7 +28,6 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.security.AccessControlException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ListIterator;
@@ -397,7 +396,7 @@ public class BrowseController extends ViewControllerAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#updateMenus(freemind.controller.
 	 * StructuredMenuHolder)
 	 */
@@ -441,7 +440,7 @@ public class BrowseController extends ViewControllerAdapter {
 
 		try {
 			urlStreamReader = new InputStreamReader(url.openStream());
-		} catch (AccessControlException ex) {
+		} catch (SecurityException ex) {
 			getFrame().getController()
 					.errorMessage(
 							"Could not open URL " + url.toString()
@@ -473,7 +472,7 @@ public class BrowseController extends ViewControllerAdapter {
 	@Override
 	public void out(String pFormat) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 

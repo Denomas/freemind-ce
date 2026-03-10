@@ -298,12 +298,8 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	public FreeMind(Properties pDefaultPreferences,
 			Properties pUserPreferences, File pAutoPropertiesFile) {
 		super("FreeMind");
-		// Focus searcher
-		try {
-			System.setSecurityManager(new FreeMindSecurityManager());
-		} catch (UnsupportedOperationException e) {
-			// SecurityManager removed in Java 21+
-		}
+		// SecurityManager was removed in Java 21 (JEP 411).
+		// FreeMindSecurityManager is no longer functional.
 		defProps = pDefaultPreferences;
 		props = pUserPreferences;
 		autoPropertiesFile = pAutoPropertiesFile;

@@ -44,10 +44,10 @@ import freemind.view.mindmapview.MapView;
 /**
  * Manages the list of MapModules. As this task is very complex, I exported it
  * from Controller to this class to keep Controller simple.
- * 
+ *
  * The information exchange between controller and this class is managed by
  * oberser pattern (the controller observes changes to the map modules here).
- * 
+ *
  * TODO: Use an vector with the map modules ordered by the screen order.
  */
 public class MapModuleManager {
@@ -70,7 +70,7 @@ public class MapModuleManager {
 
 		/**
 		 * To enable/disable the previous/next map actions.
-		 * 
+		 *
 		 * @param pIndex
 		 *            TODO
 		 */
@@ -194,6 +194,7 @@ public class MapModuleManager {
 	 * @deprecated use getMapModuleVector instead (and get the displayname as
 	 *             MapModule.getDisplayName().
 	 */
+	@Deprecated
 	public Map<String, MapModule> getMapModules() {
 		HashMap<String, MapModule> returnValue = new HashMap<>();
 		for (MapModule module : mapModuleVector) {
@@ -294,11 +295,11 @@ public class MapModuleManager {
 	}
 
 	/**
-	 * 
+	 *
 	 * Checks, whether or not a given url is already opened. Unlike
 	 * tryToChangeToMapModule, it does not consider the map+extension
 	 * identifiers nor switches to the module.
-	 * 
+	 *
 	 * @return null, if not found, the map+extension identifier otherwise.
 	 */
 	public String checkIfFileIsAlreadyOpened(URL urlToCheck)
@@ -359,7 +360,7 @@ public class MapModuleManager {
 
 	/**
 	 * is null if the old mode should be closed.
-	 * 
+	 *
 	 * @return true if the set command was successful.
 	 */
 	boolean setMapModule(MapModule newMapModule, Mode newMode) {
@@ -409,7 +410,7 @@ public class MapModuleManager {
 
 	/**
 	 * Close the currently active map, return false if closing canceled.
-	 * 
+	 *
 	 * @param force
 	 *            forces the closing without any save actions.
 	 * @param pRestorable

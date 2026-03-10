@@ -25,7 +25,6 @@ package plugins.script;
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.PrintStream;
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.regex.Matcher;
@@ -34,15 +33,11 @@ import javax.swing.JOptionPane;
 
 import org.codehaus.groovy.ast.ASTNode;
 import org.codehaus.groovy.ast.ModuleNode;
-import org.codehaus.groovy.control.CompilationFailedException;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;
-import org.codehaus.groovy.runtime.InvokerHelper;
-
 import freemind.common.OptionalDontShowMeAgainDialog;
 import freemind.main.FreeMind;
 import freemind.main.FreeMindMain;
-import freemind.main.FreeMindSecurityManager;
 import freemind.main.Tools;
 import freemind.main.Tools.BooleanHolder;
 import freemind.modes.MindMapNode;
@@ -51,12 +46,11 @@ import freemind.modes.mindmapmode.hooks.MindMapHookAdapter;
 import groovy.lang.Binding;
 import groovy.lang.GroovyRuntimeException;
 import groovy.lang.GroovyShell;
-import groovy.lang.Script;
 import groovy.transform.ThreadInterrupt;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ScriptingEngine extends MindMapHookAdapter {
 	public static final String SCRIPT_PREFIX = "script";
@@ -231,10 +225,9 @@ public class ScriptingEngine extends MindMapHookAdapter {
 				execPerm = true;
 			}
 		}
-		final ScriptingSecurityManager scriptingSecurityManager = new ScriptingSecurityManager(
-				filePerm, networkPerm, execPerm);
-		final FreeMindSecurityManager securityManager = (FreeMindSecurityManager) System
-				.getSecurityManager();
+		// SecurityManager was removed in Java 21 (JEP 411).
+		// Script sandboxing via SecurityManager is no longer possible.
+		// Scripts run without security restrictions on Java 21+.
 
 		CompilerConfiguration compilerConfig = new CompilerConfiguration();
 		compilerConfig
@@ -242,41 +235,8 @@ public class ScriptingEngine extends MindMapHookAdapter {
 						ThreadInterrupt.class));
 		try {
 			System.setOut(pOutStream);
-			// copied from freeplane from
-			// http://freeplane.bzr.sourceforge.net/bzr/freeplane/freeplane_program/release_branches/1_0_x/annotate/head%3A/freeplane_plugin_script/src/org/freeplane/plugin/script/ScriptingEngine.java
 			final GroovyShell shell = new GroovyShell(null, binding,
-					compilerConfig) {
-				/**
-				 * Evaluates some script against the current Binding and returns
-				 * the result
-				 * 
-				 * @param in
-				 *            the stream reading the script
-				 * @param fileName
-				 *            is the logical file name of the script (which is
-				 *            used to create the class name of the script)
-				 */
-				public Object evaluate(Reader in, String fileName)
-						throws CompilationFailedException {
-					Script script = null;
-					try {
-						script = parse(in, fileName);
-						script.setBinding(getContext());
-						securityManager
-								.setFinalSecurityManager(scriptingSecurityManager);
-						return script.run();
-					} finally {
-						if (script != null) {
-							InvokerHelper.removeClass(script.getClass());
-							// setting the same security manager the second time
-							// causes it to be
-							// removed.
-							securityManager
-									.setFinalSecurityManager(scriptingSecurityManager);
-						}
-					}
-				}
-			};
+					compilerConfig);
 			value = shell.evaluate(script);
 		} catch (final GroovyRuntimeException e) {
 			e1 = e;
