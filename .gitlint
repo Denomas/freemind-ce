@@ -1,0 +1,19 @@
+# Gitlint configuration for Conventional Commits
+# https://jorisroovers.com/gitlint/configuration/
+
+[general]
+# Enable Conventional Commits format
+contrib=contrib-title-conventional-commits
+
+# Ignore merge commits and revert commits
+ignore=merge-commit,revert-commit
+
+[title-max-length]
+line-length=72
+
+[body-max-line-length]
+line-length=120
+
+[contrib-title-conventional-commits]
+# Allowed commit types
+types=feat,fix,docs,style,refactor,perf,test,build,ci,chore,revert
