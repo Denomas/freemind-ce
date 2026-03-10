@@ -23,6 +23,7 @@
 
 package tests.freemind;
 
+import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 
 import freemind.common.OptionalDontShowMeAgainDialog;
@@ -30,10 +31,13 @@ import freemind.common.TextTranslator;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class DontShowAgainDialogTests extends FreeMindTestBase {
 	public void testDialog() throws Exception {
+		if (GraphicsEnvironment.isHeadless()) {
+			return;
+		}
 		int showResult;
 		JFrame frame = new JFrame();
 		frame.setVisible(true);

@@ -749,7 +749,7 @@
 						<xs:enumeration value="monthly_every_nth_week"/>
 						<xs:enumeration value="weekly"/>
 						<xs:enumeration value="weekly_every_nth_day"/>
-						<xs:enumeration value="DAILY"/>
+						<xs:enumeration value="daily"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>

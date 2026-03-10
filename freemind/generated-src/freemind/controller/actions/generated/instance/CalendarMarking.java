@@ -65,7 +65,7 @@ public class CalendarMarking {
     public static final String MONTHLY_EVERY_NTH_WEEK = "monthly_every_nth_week";
     public static final String WEEKLY = "weekly";
     public static final String WEEKLY_EVERY_NTH_DAY = "weekly_every_nth_day";
-    public static final String DAILY = "DAILY";
+    public static final String DAILY = "daily";
 
     @XmlAttribute(name = "name", required = true)
     protected String name;

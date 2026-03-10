@@ -34,7 +34,7 @@ import freemind.controller.actions.generated.instance.Searchresults;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class MarshallerTests extends FreeMindTestBase {
 	/**
@@ -94,7 +94,7 @@ public class MarshallerTests extends FreeMindTestBase {
 								+ "attribution=\"Data © OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright\" \n"
 								+ "querystring=\"format=xml&amp;lat=52.45177267188509&amp;lon=13.28847885131836&amp;zoom=18&amp;addressdetails=1\">\n"
 								+ "<result place_id=\"97929939\" \n"
-								+ "osm_type=\"relation\" osm_id=\"32590\" " 
+								+ "osm_type=\"relation\" osm_id=\"32590\" "
 //								+ "ref=\"Rost- und Silberlaube\" \n"
 								+ "lat=\"52.45222935\" lon=\"13.2890019049798\">Rost- und Silberlaube, 45, \n"
 								+ "Habelschwerdter Allee, Dahlem, Steglitz-Zehlendorf, Berlin, 14195, Germany, \n"
@@ -102,7 +102,7 @@ public class MarshallerTests extends FreeMindTestBase {
 		assertNotNull(reverse);
 		Result result = reverse.getResult(0);
 		assertEquals("correct place", "97929939", result
-				.getPlaceId());
+				.getPlaceId().toString());
 		String content = result.getContent();
 		assertNotNull(content);
 		String exp = "Rost- und Silberlaube, 45,";

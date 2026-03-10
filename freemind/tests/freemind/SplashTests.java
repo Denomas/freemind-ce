@@ -20,12 +20,16 @@
 
 package tests.freemind;
 
+import java.awt.GraphicsEnvironment;
 import freemind.main.FreeMindSplashModern;
 import freemind.main.IFreeMindSplash;
 
 /** */
 public class SplashTests extends FreeMindTestBase {
 	public void testLightBuldSplash() throws InterruptedException {
+		if (GraphicsEnvironment.isHeadless()) {
+			return;
+		}
 		IFreeMindSplash splash = new FreeMindSplashModern(mFreeMindMain);
 		splash.setVisible(true);
 		splash.getFeedBack().setMaximumValue(11);

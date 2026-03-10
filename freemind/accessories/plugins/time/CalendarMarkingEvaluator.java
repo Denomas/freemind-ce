@@ -23,6 +23,7 @@ package accessories.plugins.time;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -38,6 +39,17 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 	private CalendarMarkings mCalendarMarkings;
 	private HashMap<Long, CalendarMarking> mCache = new HashMap<>();
 
+	/**
+	 * Creates a Calendar with ISO 8601 week numbering (Monday=first day, 4 minimal days).
+	 * This ensures WEEK_OF_YEAR is consistent regardless of system locale.
+	 */
+	public static Calendar createIsoCalendar() {
+		Calendar cal = Calendar.getInstance();
+		cal.setFirstDayOfWeek(Calendar.MONDAY);
+		cal.setMinimalDaysInFirstWeek(4);
+		return cal;
+	}
+
 	private static interface RepetitionHandler {
 
 		Calendar getFirst(Calendar pStartDate, CalendarMarking pMarking);
@@ -46,7 +58,7 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 	private abstract static class BasicRepetitionHandler implements RepetitionHandler {
 		public Calendar compareIfStillBefore(Calendar pDay, CalendarMarking pMarking) {
 			if(pMarking.getEndDate()>0){
-				Calendar cal2 = Calendar.getInstance();
+				Calendar cal2 = createIsoCalendar();
 				cal2.setTimeInMillis(pMarking.getEndDate());
 				if(pDay.compareTo(cal2)<=0){
 					return pDay;
@@ -69,18 +81,18 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			}
 			return pFirstDate;
 		}
-		
-	}		
+
+	}
 
 	private abstract static class DirektBeginnerHandler extends BasicRepetitionHandler {
-		
+
 		@Override
 		public Calendar getFirst(Calendar pStartDate, CalendarMarking pMarking) {
 			return pStartDate;
 		}
-		
+
 	}
-	
+
 	private static class NeverHandler extends DirektBeginnerHandler {
 
 		@Override
@@ -96,11 +108,11 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			pDay.add(Calendar.WEEK_OF_YEAR, pMarking.getRepeatEachNOccurence());
 			return compareIfStillBefore(pDay, pMarking);
 		}
-		
+
 	}
 
 	private static class WeeklyEveryNthDayHandler extends DirektBeginnerHandler {
-		
+
 		@Override
 		public Calendar getFirst(Calendar pStartDate,
 				CalendarMarking pMarking) {
@@ -108,7 +120,7 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			pStartDate.set(Calendar.DAY_OF_WEEK, pMarking.getFirstOccurence());
 			return shiftToBeAfterStartDate(pStartDate, pMarking, clone);
 		}
-		
+
 		@Override
 		public Calendar getNext(Calendar pDay, CalendarMarking pMarking) {
 			Calendar clone = (Calendar) pDay.clone();
@@ -120,11 +132,11 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			Calendar nextCal = compareIfStillBefore(pDay, pMarking);
 			return nextCal;
 		}
-		
+
 	}
-	
+
 	private static class MonthlyHandler extends DirektBeginnerHandler {
-		
+
 		@Override
 		public Calendar getNext(Calendar pDay, CalendarMarking pMarking) {
 			pDay.add(Calendar.MONTH, pMarking.getRepeatEachNOccurence());
@@ -132,9 +144,9 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 		}
 
 	}
-	
+
 	private static class MonthlyEveryNthDayHandler extends BasicRepetitionHandler {
-		
+
 		@Override
 		public Calendar getFirst(Calendar pStartDate,
 				CalendarMarking pMarking) {
@@ -142,7 +154,7 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			pStartDate.set(Calendar.DAY_OF_MONTH, pMarking.getFirstOccurence());
 			return shiftToBeAfterStartDate(pStartDate, pMarking, clone);
 		}
-		
+
 		@Override
 		public Calendar getNext(Calendar pDay, CalendarMarking pMarking) {
 			Calendar clone = (Calendar) pDay.clone();
@@ -155,9 +167,9 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 		}
 
 	}
-	
+
 	private static class MonthlyEveryNthWeekHandler extends BasicRepetitionHandler {
-		
+
 		@Override
 		public Calendar getFirst(Calendar pStartDate,
 				CalendarMarking pMarking) {
@@ -165,7 +177,7 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			pStartDate.set(Calendar.WEEK_OF_MONTH, pMarking.getFirstOccurence());
 			return shiftToBeAfterStartDate(pStartDate, pMarking, clone);
 		}
-		
+
 		@Override
 		public Calendar getNext(Calendar pDay, CalendarMarking pMarking) {
 			Calendar clone = (Calendar) pDay.clone();
@@ -176,23 +188,23 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			}
 			return compareIfStillBefore(pDay, pMarking);
 		}
-		
-	}
-	
 
-	
+	}
+
+
+
 	private static class YearlyHandler extends DirektBeginnerHandler {
-		
+
 		@Override
 		public Calendar getNext(Calendar pDay, CalendarMarking pMarking) {
 			pDay.add(Calendar.YEAR, pMarking.getRepeatEachNOccurence());
 			return compareIfStillBefore(pDay, pMarking);
 		}
-		
+
 	}
-	
+
 	private static class YearlyEveryNthDayHandler extends BasicRepetitionHandler {
-		
+
 		@Override
 		public Calendar getFirst(Calendar pStartDate,
 				CalendarMarking pMarking) {
@@ -213,9 +225,9 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 		}
 
 	}
-	
+
 	private static class YearlyEveryNthWeekHandler extends BasicRepetitionHandler {
-		
+
 		@Override
 		public Calendar getFirst(Calendar pStartDate,
 				CalendarMarking pMarking) {
@@ -223,7 +235,7 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			pStartDate.set(Calendar.WEEK_OF_YEAR, pMarking.getFirstOccurence());
 			return shiftToBeAfterStartDate(pStartDate, pMarking, userStartDate);
 		}
-		
+
 		@Override
 		public Calendar getNext(Calendar pDay, CalendarMarking pMarking) {
 			Calendar clone = (Calendar) pDay.clone();
@@ -232,18 +244,18 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 				// we switched the year. Let's start from new:
 				pDay.set(Calendar.WEEK_OF_YEAR, pMarking.getFirstOccurence());
 				if(clone.get(Calendar.YEAR) == pDay.get(Calendar.YEAR)){
-					// case that the first week is still in the old year. 
+					// case that the first week is still in the old year.
 					pDay.add(Calendar.WEEK_OF_YEAR, pMarking.getRepeatEachNOccurence());
 				}
 			}
 			Calendar nextCal = compareIfStillBefore(pDay, pMarking);
 			return nextCal;
 		}
-		
+
 	}
-	
+
 	private static class YearlyEveryNthMonthHandler extends BasicRepetitionHandler {
-		
+
 		@Override
 		public Calendar getFirst(Calendar pStartDate,
 				CalendarMarking pMarking) {
@@ -251,7 +263,7 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			pStartDate.set(Calendar.MONTH, pMarking.getFirstOccurence());
 			return shiftToBeAfterStartDate(pStartDate, pMarking, clone);
 		}
-		
+
 		@Override
 		public Calendar getNext(Calendar pDay, CalendarMarking pMarking) {
 			Calendar clone = (Calendar) pDay.clone();
@@ -262,20 +274,20 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			}
 			return compareIfStillBefore(pDay, pMarking);
 		}
-		
+
 	}
-	
+
 	private static class DailyHandler extends DirektBeginnerHandler {
-		
+
 		@Override
 		public Calendar getNext(Calendar pDay, CalendarMarking pMarking) {
 			pDay.add(Calendar.DAY_OF_YEAR, pMarking.getRepeatEachNOccurence());
 			return compareIfStillBefore(pDay, pMarking);
 		}
-		
+
 	}
-	
-	
+
+
 	private static HashMap<String, RepetitionHandler> sHandlerMap;
 	protected static java.util.logging.Logger logger = null;
 
@@ -307,11 +319,11 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 			int count = 0;
 			CalendarMarking marking = mCalendarMarkings.getCalendarMarking(i);
 			// common error for self written entries:
-			if(marking.getRepeatEachNOccurence()==0){
+			if(marking.getRepeatEachNOccurence()==null || marking.getRepeatEachNOccurence()==0){
 				marking.setRepeatEachNOccurence(1);
 			}
 			// get first occurrence:
-			Calendar firstDay = Calendar.getInstance();
+			Calendar firstDay = createIsoCalendar();
 			firstDay.setTimeInMillis(marking.getStartDate());
 			String repeatType = marking.getRepeatType();
 			if(!sHandlerMap.containsKey(repeatType)){
@@ -335,8 +347,8 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 		}
 		return retValue;
 	}
-	
-	
+
+
 	/* (non-Javadoc)
 	 * @see accessories.plugins.time.ICalenderMarkingEvaluator#isMarked(java.util.Calendar)
 	 */
@@ -350,11 +362,11 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 		for (int i = 0; i < mCalendarMarkings.sizeCalendarMarkingList(); i++) {
 			CalendarMarking marking = mCalendarMarkings.getCalendarMarking(i);
 			// common error for self written entries:
-			if(marking.getRepeatEachNOccurence()==0){
+			if(marking.getRepeatEachNOccurence()==null || marking.getRepeatEachNOccurence()==0){
 				marking.setRepeatEachNOccurence(1);
 			}
 			// get first occurrence:
-			Calendar firstDay = Calendar.getInstance();
+			Calendar firstDay = createIsoCalendar();
 			firstDay.setTimeInMillis(marking.getStartDate());
 			RepetitionHandler handler = sHandlerMap
 					.get(marking.getRepeatType());
@@ -388,7 +400,7 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 				&& pCalendar.get(Calendar.DAY_OF_MONTH) == pOtherDay
 						.get(Calendar.DAY_OF_MONTH);
 	}
-	
+
 	/**
 	 * Don't use for endless repetitions!
 	 */
@@ -396,7 +408,7 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 		for (int i = 0; i < mCalendarMarkings.sizeCalendarMarkingList(); i++) {
 			CalendarMarking marking = mCalendarMarkings.getCalendarMarking(i);
 			// get first occurrence:
-			Calendar firstDay = Calendar.getInstance();
+			Calendar firstDay = createIsoCalendar();
 			firstDay.setTimeInMillis(marking.getStartDate());
 			RepetitionHandler handler = sHandlerMap
 					.get(marking.getRepeatType());

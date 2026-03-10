@@ -20,6 +20,7 @@
 
 package tests.freemind;
 
+import java.awt.GraphicsEnvironment;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -43,16 +44,16 @@ public class FreeMindTaskTests extends FreeMindTestBase {
 	protected void setUp() throws Exception {
 		super.setUp();
 	}
-	
+
 	private class TestTask extends FreeMindTask {
 
 		/**
-		 * 
+		 *
 		 */
 		private static final int AMOUNT_OF_TIME = 10;
 
 		/**
-		 * @param pFrame 
+		 * @param pFrame
 		 * @param pAmountOfSteps
 		 */
 		public TestTask(JFrame pFrame) {
@@ -60,7 +61,7 @@ public class FreeMindTaskTests extends FreeMindTestBase {
 		}
 
 		private int i = AMOUNT_OF_TIME;
-		
+
 		/* (non-Javadoc)
 		 * @see freemind.common.FreeMindTask#processAction()
 		 */
@@ -70,15 +71,18 @@ public class FreeMindTaskTests extends FreeMindTestBase {
 			mProgressDescription = new ProgressDescription("Format {0}", new Object[] {Integer.valueOf(i)});
 			return true;
 		}
-		
+
 	}
 
 	/**
-	 * @throws InterruptedException 
-	 * @throws InvocationTargetException 
-	 * 
+	 * @throws InterruptedException
+	 * @throws InvocationTargetException
+	 *
 	 */
 	public void testTestTask() throws InterruptedException, InvocationTargetException {
+		if (GraphicsEnvironment.isHeadless()) {
+			return;
+		}
 		JFrame frame = new JFrame("Hi");
 		final TestTask task = new TestTask(frame);
 		JButton button = new JButton("Hello from FreeMind");
@@ -106,5 +110,5 @@ public class FreeMindTaskTests extends FreeMindTestBase {
 		}
 		assertEquals(0, task.i);
 	}
-	
+
 }

@@ -42,7 +42,7 @@ import freemind.main.Tools;
 
 public class TransformTest extends FreeMindTestBase {
 
-	private static final String TESTMAP_MM = "tests/freemind/testmap.mm";
+	private static final String TESTMAP_MM = "freemind/testmap.mm";
 	private static final String EXPORT_WITH_XSLT_XML = "accessories/plugins/ExportWithXSLT.xml";
 	private static final String EXPORT_TO_OOO = "accessories/plugins/ExportToOoWriter.xml";
 
@@ -101,7 +101,7 @@ public class TransformTest extends FreeMindTestBase {
 		Unmarshaller unmarshaller = XmlBindingTools.getInstance()
 				.createUnmarshaller();
 
-		URL pluginURL = ClassLoader.getSystemResource(xmlPluginFile);
+		URL pluginURL = getClass().getClassLoader().getResource(xmlPluginFile);
 		assertNotNull("file " + xmlPluginFile + " found", pluginURL);
 		// unmarshal xml:
 		Plugin plugin = null;
@@ -131,7 +131,7 @@ public class TransformTest extends FreeMindTestBase {
 
 	private void doExportWithExportPlugin(String mapFileToBeExported,
 			String destinationFileName, Properties properties) throws Exception {
-		InputStream xmlSource = ClassLoader.getSystemResource(
+		InputStream xmlSource = getClass().getClassLoader().getResource(
 				mapFileToBeExported).openStream();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		Tools.copyStream(xmlSource, out, true);
@@ -150,7 +150,7 @@ public class TransformTest extends FreeMindTestBase {
 	private void doExportWithOooPlugin(String mapFileToBeExported,
 			String destinationFileName, Properties properties)
 			throws IOException {
-		InputStream xmlSource = ClassLoader.getSystemResource(
+		InputStream xmlSource = getClass().getClassLoader().getResource(
 				mapFileToBeExported).openStream();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		Tools.copyStream(xmlSource, out, true);
