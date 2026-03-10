@@ -48,7 +48,8 @@ freemind-ce/
 │   │   ├── map/                       # OpenStreetMap integration (JMapViewer)
 │   │   ├── search/                    # Full-text search (Lucene)
 │   │   ├── help/                      # Integrated help system (JavaHelp)
-│   │   ├── latex/                     # LaTeX formula rendering
+│   │   ├── contextgraph/             # ★ Context Graph export (Markdown + XML)
+│   │   ├── latex/                     # LaTeX formula rendering (legacy, not in Gradle)
 │   │   └── collaboration/             # Real-time collaboration
 │   │       ├── socket/                # ★ TCP socket-based (in Gradle)
 │   │       ├── database/              # Database-based (legacy)

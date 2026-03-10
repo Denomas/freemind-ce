@@ -71,10 +71,12 @@ freemind/                    # Main module
 - [x] Phase 7: Context Graph Plugin — Markdown + XML export
 
 ## Remaining Work
-- [ ] Phase 5: Homebrew Cask (external infrastructure required)
-- [ ] LaTeX, Database, Jabber plugins not yet in Gradle
+- [ ] FlatLaf modern look-and-feel integration (dark mode, modern theme)
+- [ ] Compiler warnings cleanup (25 warnings: SecurityManager, deprecated APIs)
+- [ ] Homebrew Cask (`brew install freemind-ce` — needs denomas/homebrew-tap repo)
+- [ ] macOS code signing & notarization (Gatekeeper bypass currently required)
 - [ ] Property-based tests (incomplete, excluded from build)
-- [ ] FlatLaf modern look-and-feel integration
+- [ ] LaTeX, Database, Jabber plugins not yet in Gradle
 
 ## Documentation Map
 - `CLAUDE.md` — This file (always read first)

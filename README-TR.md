@@ -46,9 +46,31 @@ Releases sayfasindan hazir paketleri indirebilirsiniz: [GitHub Releases](https:/
 
 | Platform | Paket | Kurulum |
 |----------|-------|---------|
-| **macOS** | `.dmg` | Ac ve Applications'a surekle |
+| **macOS** | `.dmg` | Ac ve Applications'a surekle ([asagidaki nota bakin](#macos-gatekeeper)) |
 | **Windows** | `.exe` | Cift tikla ve kur |
 | **Linux** | `.deb` | `sudo apt install ./freemind-ce_1.1.0_amd64.deb` |
+
+#### macOS Gatekeeper
+
+FreeMind CE henuz Apple Developer sertifikasi ile imzalanmadigi icin macOS ilk acilista engelleyecektir. Cozum:
+
+**Yontem 1 — Sag tiklama (onerilen):**
+1. Finder'da `/Applications` klasorune gidin
+2. **FreeMind-CE** uzerine sag tiklayin (veya Control+tiklama)
+3. Acilan menuden **Open** secin
+4. Cikan diyalogda **Open** tusuna basin
+5. Bunu sadece bir kez yapmaniz yeterli — sonraki acilislar normal calisir
+
+**Yontem 2 — Terminal:**
+```bash
+xattr -cr /Applications/FreeMind-CE.app
+```
+
+**Yontem 3 — Sistem Ayarlari:**
+1. FreeMind-CE'yi acmayi deneyin (engellenecek)
+2. **System Settings > Privacy & Security** yolunu izleyin
+3. Asagi kaydigin — "FreeMind-CE was blocked" yazisini goreceksiniz
+4. **Open Anyway** tusuna basin
 
 ### Kaynak Koddan Paket Olusturma
 

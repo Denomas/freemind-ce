@@ -193,9 +193,9 @@ HookAdapter (base)
 
 ## Modernization Gaps (Known)
 
-1. **JiBX → JAXB migration** - `build.xml` still references JiBX; `binding/` directory has legacy bytecode-enhanced classes
-2. **LaTeX plugin** - Not in `settings.gradle.kts` (needs Gradle subproject setup)
-3. **Collaboration plugins** - Only Socket in Gradle; Database and Jabber are legacy-only
-4. **jpackage reliability** - macOS CI uses fallback DMG creation; Windows/Linux have `continue-on-error: true`
-5. **Java module system** - Requires 6 `--add-opens` flags for Swing access
-6. **UTF-8 support** - Needs verification for full Unicode compatibility in .mm files and file paths
+1. **LaTeX plugin** — Not in `settings.gradle.kts`, no `build.gradle.kts` exists yet
+2. **Collaboration plugins** — Only Socket in Gradle; Database and Jabber are legacy-only
+3. **Java module system** — Requires 6 `--add-opens` flags for Swing access
+4. **macOS code signing** — DMG is not signed/notarized; Gatekeeper blocks first launch
+5. **SecurityManager deprecation** — 25 compiler warnings from deprecated-for-removal APIs (Java 21)
+6. **FlatLaf integration** — Dependency present but not yet activated as default look-and-feel

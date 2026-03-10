@@ -148,6 +148,10 @@
 ### Help
 - `FreemindHelpStarter` - Help system integrator
 
+### Context Graph (Phase 7)
+- `ContextGraphMarkdownExport` - Markdown export with emoji icons, heading hierarchy
+- `ContextGraphXmlExport` - Structured XML export with metadata (node count, depth, date)
+
 ### Collaboration (Socket)
 - TCP socket-based real-time collaboration
 

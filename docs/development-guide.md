@@ -139,13 +139,12 @@ freemind/
 
 ## Legacy Build (Ant)
 
-The original Ant build system (`freemind/build.xml`) remains functional:
-- Uses JiBX for XML binding (legacy)
-- Targets Java 21 (`java_source_version=21`)
-- Contains macOS `.app` bundle creation
+The original Ant build system (`freemind/build.xml`) is preserved for reference but **Gradle is the primary build system**:
+- Ant build targets Java 21 (`java_source_version=21`)
+- Contains macOS `.app` bundle creation scripts
 - Plugin builds: `build_svg.xml`, `build_map.xml`, etc.
 
-**Note:** Ant build still references JiBX bytecode enhancement in `lib/jibx/`. The Gradle build uses JAXB instead.
+**Note:** Ant build references JiBX (legacy XML binding). The Gradle build uses JAXB 2.3.9 instead. Use Gradle for all development.
 
 ## Dependency Management
 

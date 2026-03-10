@@ -46,9 +46,31 @@ Grab ready-to-use installers from the [GitHub Releases](https://github.com/Denom
 
 | Platform | Package | Install |
 |----------|---------|---------|
-| **macOS** | `.dmg` | Open and drag to Applications |
+| **macOS** | `.dmg` | Open and drag to Applications ([see note below](#macos-gatekeeper)) |
 | **Windows** | `.exe` | Double-click and install |
 | **Linux** | `.deb` | `sudo apt install ./freemind-ce_1.1.0_amd64.deb` |
+
+#### macOS Gatekeeper
+
+Since FreeMind CE is not yet signed with an Apple Developer certificate, macOS will block the first launch. To allow it:
+
+**Option 1 — Right-click method (recommended):**
+1. Open Finder and navigate to `/Applications`
+2. Right-click (or Control-click) on **FreeMind-CE**
+3. Select **Open** from the context menu
+4. Click **Open** in the dialog that appears
+5. You only need to do this once — subsequent launches work normally
+
+**Option 2 — Terminal:**
+```bash
+xattr -cr /Applications/FreeMind-CE.app
+```
+
+**Option 3 — System Settings:**
+1. Try to open FreeMind-CE (it will be blocked)
+2. Go to **System Settings > Privacy & Security**
+3. Scroll down — you will see "FreeMind-CE was blocked"
+4. Click **Open Anyway**
 
 ### Build Packages from Source
 
