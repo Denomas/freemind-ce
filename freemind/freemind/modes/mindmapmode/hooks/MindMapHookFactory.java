@@ -32,7 +32,7 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import org.jibx.runtime.IUnmarshallingContext;
+import javax.xml.bind.Unmarshaller;
 
 import freemind.common.XmlBindingTools;
 import freemind.controller.actions.generated.instance.Plugin;
@@ -56,7 +56,7 @@ import freemind.modes.mindmapmode.MindMapController;
  * Manages the hook available from the class path.
 
  * @author foltin
- * 
+ *
  */
 public class MindMapHookFactory extends HookFactoryAdapter {
 	/**
@@ -145,7 +145,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 			allPlugins = new Vector<>();
 			allRegistrations = new HashSet<>();
 			// the unmarshaller:
-			IUnmarshallingContext unmarshaller = XmlBindingTools.getInstance()
+			Unmarshaller unmarshaller = XmlBindingTools.getInstance()
 					.createUnmarshaller();
 			// the loop
 			for (String xmlPluginFile : importWizard.CLASS_LIST) {
@@ -165,8 +165,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 						logger.finest("Reading: " + xmlPluginFile + " from "
 								+ pluginURL);
 						InputStream in = pluginURL.openStream();
-						plugin = (Plugin) unmarshaller.unmarshalDocument(in,
-								null);
+						plugin = (Plugin) unmarshaller.unmarshal(in);
 					} catch (Exception e) {
 						// error case
 						freemind.main.Resources.getInstance().logException(e);
@@ -261,9 +260,13 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 		}
 		String icon = descriptor.getIconPath();
 		if (icon != null) {
-			ImageIcon imageIcon = freemind.view.ImageFactory.getInstance().createIcon(descriptor
-					.getPluginClassLoader().getResource(icon));
-			action.putValue(AbstractAction.SMALL_ICON, imageIcon);
+			URL iconUrl = descriptor.getPluginClassLoader().getResource(icon);
+			if (iconUrl != null) {
+				ImageIcon imageIcon = freemind.view.ImageFactory.getInstance().createIcon(iconUrl);
+				action.putValue(AbstractAction.SMALL_ICON, imageIcon);
+			} else {
+				logger.warning("Icon not found: " + icon);
+			}
 		}
 		String key = descriptor.getKeyStroke();
 		if (key != null)
@@ -293,7 +296,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 	 * the corresponding mode is enabled. (Like singletons.) One of these can
 	 * operate as the pluginBase that is accessible to every normal
 	 * plugin_action via the getPluginBaseClass method.
-	 * 
+	 *
 	 * @return A list of RegistrationContainer elements. The field
 	 *         hookRegistrationClass of RegistrationContainer is a class that is
 	 *         (probably) of HookRegistration type. You have to register every
@@ -336,7 +339,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 	 * A plugin base class is a common registration class of multiple plugins.
 	 * It is useful to embrace several related plugins (example: EncryptedNote
 	 * -> Registration).
-	 * 
+	 *
 	 * @return the base class if declared and successfully instanciated or NULL.
 	 */
 	public Object getPluginBaseClass(String hookName) {

@@ -19,7 +19,6 @@
  *
  * Created on 23.06.2004
  */
-/*$Id: XmlBindingTools.java,v 1.1.2.2.2.5 2009/05/20 19:19:11 christianfoltin Exp $*/
 
 package freemind.common;
 
@@ -32,12 +31,10 @@ import java.io.StringWriter;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-
-import org.jibx.runtime.BindingDirectory;
-import org.jibx.runtime.IBindingFactory;
-import org.jibx.runtime.IMarshallingContext;
-import org.jibx.runtime.IUnmarshallingContext;
-import org.jibx.runtime.JiBXException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import freemind.controller.Controller;
 import freemind.controller.actions.generated.instance.WindowConfigurationStorage;
@@ -46,11 +43,12 @@ import freemind.main.Resources;
 
 /**
  * @author foltin Singleton
+ * Rewritten for JAXB (replacing JiBX) as part of FreeMind CE modernization.
  */
 public class XmlBindingTools {
 
 	private static XmlBindingTools instance;
-	private static IBindingFactory mBindingFactory;
+	private static JAXBContext jaxbContext;
 
 	private XmlBindingTools() {
 	}
@@ -59,28 +57,31 @@ public class XmlBindingTools {
 		if (instance == null) {
 			instance = new XmlBindingTools();
 			try {
-				mBindingFactory = BindingDirectory.getFactory(XmlAction.class);
-			} catch (JiBXException e) {
+				jaxbContext = JAXBContext.newInstance(
+						"freemind.controller.actions.generated.instance");
+			} catch (JAXBException e) {
 				freemind.main.Resources.getInstance().logException(e);
 			}
-
 		}
 		return instance;
 	}
 
-	public IMarshallingContext createMarshaller() {
+	public Marshaller createMarshaller() {
 		try {
-			return mBindingFactory.createMarshallingContext();
-		} catch (JiBXException e) {
+			Marshaller m = jaxbContext.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.FALSE);
+			m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+			return m;
+		} catch (JAXBException e) {
 			freemind.main.Resources.getInstance().logException(e);
 			return null;
 		}
 	}
 
-	public IUnmarshallingContext createUnmarshaller() {
+	public Unmarshaller createUnmarshaller() {
 		try {
-			return mBindingFactory.createUnmarshallingContext();
-		} catch (JiBXException e) {
+			return jaxbContext.createUnmarshaller();
+		} catch (JAXBException e) {
 			freemind.main.Resources.getInstance().logException(e);
 			return null;
 		}
@@ -114,12 +115,9 @@ public class XmlBindingTools {
 
 	public WindowConfigurationStorage decorateDialog(String marshalled,
 			JDialog dialog) {
-		// String unmarshalled = controller.getProperty(
-		// propertyName);
 		if (marshalled != null) {
 			WindowConfigurationStorage storage = (WindowConfigurationStorage) unMarshall(marshalled);
 			if (storage != null) {
-				// Check that location is on current screen.
 				Dimension screenSize;
 				if (Resources.getInstance().getBoolProperty(
 						"place_dialogs_on_first_screen")) {
@@ -140,7 +138,6 @@ public class XmlBindingTools {
 			}
 		}
 
-		// set standard dialog size of no size is stored
 		final Frame rootFrame = JOptionPane.getFrameForComponent(dialog);
 		final Dimension prefSize = rootFrame.getSize();
 		prefSize.width = prefSize.width * 3 / 4;
@@ -150,39 +147,45 @@ public class XmlBindingTools {
 	}
 
 	public String marshall(XmlAction action) {
-		// marshall:
-		// marshal to StringBuffer:
 		StringWriter writer = new StringWriter();
-		IMarshallingContext m = XmlBindingTools.getInstance()
-				.createMarshaller();
+		Marshaller m = XmlBindingTools.getInstance().createMarshaller();
 		try {
-			m.marshalDocument(action, "UTF-8", null, writer);
-		} catch (JiBXException e) {
+			m.marshal(action, writer);
+		} catch (JAXBException e) {
 			freemind.main.Resources.getInstance().logException(e);
 			return null;
 		}
 		String result = writer.toString();
 		return result;
-
 	}
 
 	public XmlAction unMarshall(String inputString) {
 		return unMarshall(new StringReader(inputString));
 	}
 
-	/**
-     */
 	public XmlAction unMarshall(Reader reader) {
 		try {
-			// unmarshall:
-			IUnmarshallingContext u = XmlBindingTools.getInstance()
-					.createUnmarshaller();
-			XmlAction doAction = (XmlAction) u.unmarshalDocument(reader, null);
+			Unmarshaller u = XmlBindingTools.getInstance().createUnmarshaller();
+			XmlAction doAction = (XmlAction) u.unmarshal(reader);
 			return doAction;
-		} catch (JiBXException e) {
+		} catch (JAXBException e) {
 			freemind.main.Resources.getInstance().logException(e);
 			return null;
 		}
 	}
 
+	/**
+	 * Generic unmarshall for property-based testing and typed deserialization.
+	 */
+	@SuppressWarnings("unchecked")
+	public <T> T unMarshall(Reader reader, Class<T> type) {
+		try {
+			Unmarshaller u = XmlBindingTools.getInstance().createUnmarshaller();
+			Object result = u.unmarshal(reader);
+			return (T) result;
+		} catch (JAXBException e) {
+			freemind.main.Resources.getInstance().logException(e);
+			return null;
+		}
+	}
 }

@@ -30,11 +30,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.BufferedWriter;
+import java.nio.charset.StandardCharsets;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -75,8 +75,8 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
-import org.jibx.runtime.IUnmarshallingContext;
-import org.jibx.runtime.JiBXException;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 import freemind.common.OptionalDontShowMeAgainDialog;
 import freemind.common.XmlBindingTools;
@@ -314,7 +314,7 @@ public class MindMapController extends ControllerAdapter implements
 	 */
 	private final class MapSourceChangeDialog implements Runnable {
 		/**
-		 * 
+		 *
 		 */
 		private boolean mReturnValue = true;
 
@@ -660,8 +660,7 @@ public class MindMapController extends ControllerAdapter implements
 							Tools.getReaderFromFile(patternsFile),
 							"patterns_updater.xslt"));
 					// save patterns directly:
-					StylePatternFactory.savePatterns(new FileWriter(
-							patternsFile), mPatternsList);
+					StylePatternFactory.savePatterns(new OutputStreamWriter(new FileOutputStream(patternsFile), StandardCharsets.UTF_8), mPatternsList);
 					success = true;
 				} catch (Exception e) {
 					freemind.main.Resources.getInstance().logException(e);
@@ -687,7 +686,7 @@ public class MindMapController extends ControllerAdapter implements
 		Reader reader = null;
 		File patternsFile = getFrame().getPatternsFile();
 		if (patternsFile != null && patternsFile.exists()) {
-			reader = new FileReader(patternsFile);
+			reader = new InputStreamReader(new FileInputStream(patternsFile), StandardCharsets.UTF_8);
 		} else {
 			System.out.println("User patterns file " + patternsFile
 					+ " not found.");
@@ -703,7 +702,7 @@ public class MindMapController extends ControllerAdapter implements
 	public List<Pattern> getPatternsList() {
 		return mPatternsList;
 	}
-	
+
 	public boolean isUndoAction() {
 		return undo.isUndoAction() || redo.isUndoAction();
 	}
@@ -730,7 +729,7 @@ public class MindMapController extends ControllerAdapter implements
 				} else {
 					model.setReadOnly(false);
 				}
-			} catch (Exception e) { 
+			} catch (Exception e) {
 				// Thrown by tryToLock
 				freemind.main.Resources.getInstance().logException(e);
 				getFrame().getController().informationMessage(
@@ -750,7 +749,7 @@ public class MindMapController extends ControllerAdapter implements
 			model.setFileTime();
 		}
 	}
-	
+
 	MindMapNode loadTree(final File pFile) throws XMLParseException,
 			IOException {
 		return loadTree(new Tools.FileReaderCreator(pFile));
@@ -759,7 +758,7 @@ public class MindMapController extends ControllerAdapter implements
 	public MindMapNode loadTree(Tools.ReaderCreator pReaderCreator)
 			throws XMLParseException, IOException {
 		return getMap().loadTree(pReaderCreator, new AskUserBeforeUpdateCallback() {
-			
+
 			@Override
 			public boolean askUserForUpdate() {
 				int showResult = new OptionalDontShowMeAgainDialog(
@@ -781,7 +780,7 @@ public class MindMapController extends ControllerAdapter implements
 	/**
 	 * Creates the patterns actions (saved in array patterns), and the pure
 	 * patterns list (saved in mPatternsList).
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	public void loadPatterns(Reader reader) throws Exception {
@@ -807,7 +806,7 @@ public class MindMapController extends ControllerAdapter implements
 	/**
 	 * This method is called after and before a change of the map module. Use it
 	 * to perform the actions that cannot be performed at creation time.
-	 * 
+	 *
 	 */
 	public void startupController() {
 		super.startupController();
@@ -961,7 +960,7 @@ public class MindMapController extends ControllerAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ControllerAdapter#onFocusNode(freemind.view.mindmapview
 	 * .NodeView)
@@ -975,7 +974,7 @@ public class MindMapController extends ControllerAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ControllerAdapter#onLostFocusNode(freemind.view.mindmapview
 	 * .NodeView)
@@ -987,7 +986,7 @@ public class MindMapController extends ControllerAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ControllerAdapter#changeSelection(freemind.view.mindmapview
 	 * .NodeView, boolean)
@@ -1115,12 +1114,12 @@ public class MindMapController extends ControllerAdapter implements
 	public MenuStructure updateMenusFromXml(InputStream in) {
 		// get from resources:
 		try {
-			IUnmarshallingContext unmarshaller = XmlBindingTools.getInstance()
+			Unmarshaller unmarshaller = XmlBindingTools.getInstance()
 					.createUnmarshaller();
 			MenuStructure menus = (MenuStructure) unmarshaller
-					.unmarshalDocument(in, null);
+					.unmarshal(in);
 			return menus;
-		} catch (JiBXException e) {
+		} catch (JAXBException e) {
 			freemind.main.Resources.getInstance().logException(e);
 			throw new IllegalArgumentException(
 					"Menu structure could not be read.");
@@ -1525,14 +1524,14 @@ public class MindMapController extends ControllerAdapter implements
 	 * getSelecteds().listIterator();it.hasNext();) { MindMapNodeModel selected
 	 * = (MindMapNodeModel)it.next(); getModel().setNodeStyle(selected,
 	 * m_style); }} private String m_style;}
-	 * 
+	 *
 	 * private class EdgeStyleAction extends AbstractAction { String style;
 	 * EdgeStyleAction(String style) { super(getText(style)); this.style =
 	 * style; } public void actionPerformed(ActionEvent e) { for(ListIterator it
 	 * = getSelecteds().listIterator();it.hasNext();) { MindMapNodeModel
 	 * selected = (MindMapNodeModel)it.next(); getModel().setEdgeStyle(selected,
 	 * style); }}}
-	 * 
+	 *
 	 * private class ApplyPatternAction extends AbstractAction { StylePattern
 	 * pattern; ApplyPatternAction(StylePattern pattern) {
 	 * super(pattern.getName()); this.pattern=pattern; } public void
@@ -1540,10 +1539,10 @@ public class MindMapController extends ControllerAdapter implements
 	 * getSelecteds().listIterator();it.hasNext();) { MindMapNodeModel selected
 	 * = (MindMapNodeModel)it.next();
 	 * ((MindMapMapModel)getModel()).applyPattern(selected, pattern); }}}
-	 * 
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
+	 *
 	 * // Nonaction classes //
 	 * ________________________________________________________________________
 	 */
@@ -1575,7 +1574,7 @@ public class MindMapController extends ControllerAdapter implements
 	public void setStrikethrough(MindMapNode node, boolean strikethrough) {
 		mActorFactory.getStrikethroughActor().setStrikethrough(node, strikethrough);
 	}
-	
+
 	public void setItalic(MindMapNode node, boolean isItalic) {
 		mActorFactory.getItalicActor().setItalic(node, isItalic);
 	}
@@ -1757,7 +1756,7 @@ public class MindMapController extends ControllerAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.mindmapmode.actions.MindMapActions#paste(java.awt.datatransfer
 	 * .Transferable, freemind.modes.MindMapNode, boolean, boolean)
@@ -1865,8 +1864,8 @@ public class MindMapController extends ControllerAdapter implements
 		}
 		super.loadURL(relative);
 	}
-	
-	
+
+
 
 	public void addHook(MindMapNode focussed, List<MindMapNode> selecteds, String hookName, Properties pHookProperties) {
 		getActorFactory().getAddHookActor().addHook(focussed, selecteds, hookName, pHookProperties);
@@ -2023,7 +2022,12 @@ public class MindMapController extends ControllerAdapter implements
 	public ActionRegistry getActionRegistry() {
 		return actionFactory;
 	}
-	
+
+	/** @deprecated Use {@link #getActionRegistry()} instead */
+	public ActionRegistry getActionFactory() {
+		return actionFactory;
+	}
+
 	public XmlActorFactory getActorFactory() {
 		return mActorFactory;
 	}
@@ -2290,7 +2294,7 @@ public class MindMapController extends ControllerAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.MindMap#insertNodeInto(javax.swing.tree.MutableTreeNode,
 	 * javax.swing.tree.MutableTreeNode)
@@ -2423,7 +2427,7 @@ public class MindMapController extends ControllerAdapter implements
 			Attribute pAttribute) {
 		getActorFactory().getInsertAttributeActor().insertAttribute(pNode, pPosition, pAttribute);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.mindmapmode.actions.MindMapActions#addAttribute(freemind.modes.MindMapNode, freemind.modes.attributes.Attribute)
 	 */

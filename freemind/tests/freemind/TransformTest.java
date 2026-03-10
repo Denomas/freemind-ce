@@ -30,7 +30,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.Properties;
 
-import org.jibx.runtime.IUnmarshallingContext;
+import javax.xml.bind.Unmarshaller;
 
 import accessories.plugins.ExportToOoWriter;
 import accessories.plugins.ExportWithXSLT;
@@ -98,7 +98,7 @@ public class TransformTest extends FreeMindTestBase {
 	private Properties getProperties(String xmlPluginFile, String pluginLabel)
 			throws Exception {
 		Properties properties = new Properties();
-		IUnmarshallingContext unmarshaller = XmlBindingTools.getInstance()
+		Unmarshaller unmarshaller = XmlBindingTools.getInstance()
 				.createUnmarshaller();
 
 		URL pluginURL = ClassLoader.getSystemResource(xmlPluginFile);
@@ -106,7 +106,7 @@ public class TransformTest extends FreeMindTestBase {
 		// unmarshal xml:
 		Plugin plugin = null;
 		InputStream in = pluginURL.openStream();
-		plugin = (Plugin) unmarshaller.unmarshalDocument(in, null);
+		plugin = (Plugin) unmarshaller.unmarshal(in);
 		for (Iterator iter = plugin.getListChoiceList().iterator(); iter
 				.hasNext();) {
 

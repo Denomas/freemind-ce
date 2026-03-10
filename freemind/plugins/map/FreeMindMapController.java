@@ -106,9 +106,9 @@ import freemind.view.mindmapview.NodeView;
 /**
  * Default map controller which implements map moving by pressing the right
  * mouse button and zooming by double click or by mouse wheel.
- * 
+ *
  * @author Jan Peter Stotz
- * 
+ *
  *         FreeMind Extensions: - Move with button 1 (consistency with FreeMind
  *         UI) OK - Single click for Set Cursor OK - Mouse Wheel: Zoom OK -
  *         Control-Mouse Wheel: ? - (Right click +) Menu: popup menu mit * If
@@ -116,11 +116,11 @@ import freemind.view.mindmapview.NodeView;
  *         with FM-UI) * Place node(s) ==> the node gets a
  *         {@link MapMarkerLocation} here. The position, the position of the map
  *         and the zoom is stored in the node. *
- * 
+ *
  *         Node Extra Menu Items: * Show node(s) in Map ==> Chooses the best
  *         view for the nodes and selects them.
- * 
- * 
+ *
+ *
  *         FIXME: On undo place node, the position is gone. (Undo action
  *         contains the initial zeros, I guess).
  */
@@ -137,7 +137,7 @@ public class FreeMindMapController extends JMapController implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private static final int MODIFIERS_WITHOUT_SHIFT = Integer.MAX_VALUE
 			^ KeyEvent.SHIFT_MASK;
@@ -280,7 +280,7 @@ public class FreeMindMapController extends JMapController implements
 		}
 
 	}
-	
+
 	private static class HttpMapnik extends Mapnik {
 		public HttpMapnik() {
 			this.baseUrl=this.baseUrl.replaceFirst("^https", "http");
@@ -392,7 +392,7 @@ public class FreeMindMapController extends JMapController implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -403,7 +403,7 @@ public class FreeMindMapController extends JMapController implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemSelectedListener#isSelected(javax.swing
 		 * .JMenuItem, javax.swing.Action)
@@ -545,7 +545,7 @@ public class FreeMindMapController extends JMapController implements
 
 	private final class MoveLeftAction extends MoveAction {
 		/**
-		 * 
+		 *
 		 */
 		public MoveLeftAction() {
 			super(getText("MapControllerPopupDialog.moveLeft"));
@@ -562,7 +562,7 @@ public class FreeMindMapController extends JMapController implements
 
 	private final class MoveRightAction extends MoveAction {
 		/**
-		 * 
+		 *
 		 */
 		public MoveRightAction() {
 			super(getText("MapControllerPopupDialog.moveRight"));
@@ -579,7 +579,7 @@ public class FreeMindMapController extends JMapController implements
 
 	private final class MoveUpAction extends MoveAction {
 		/**
-		 * 
+		 *
 		 */
 		public MoveUpAction() {
 			super(getText("MapControllerPopupDialog.moveUp"));
@@ -596,7 +596,7 @@ public class FreeMindMapController extends JMapController implements
 
 	private final class MoveDownAction extends MoveAction {
 		/**
-		 * 
+		 *
 		 */
 		public MoveDownAction() {
 			super(getText("MapControllerPopupDialog.moveDown"));
@@ -767,7 +767,7 @@ public class FreeMindMapController extends JMapController implements
 
 	private final class SetHomeAction extends AbstractAction {
 		/**
-		 * 
+		 *
 		 */
 		public SetHomeAction() {
 			super(getText("MapControllerPopupDialog.SetHome"));
@@ -1168,7 +1168,7 @@ public class FreeMindMapController extends JMapController implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void addMapPictureToNode() {
 		if (mCurrentPopupPositionHolder == null) {
@@ -1559,7 +1559,7 @@ public class FreeMindMapController extends JMapController implements
 
 	/**
 	 * Translate String
-	 * 
+	 *
 	 * @param pString
 	 * @return
 	 */
@@ -1999,7 +1999,7 @@ public class FreeMindMapController extends JMapController implements
 
 	/**
 	 * Enables or disables that the map pane can be moved using the mouse.
-	 * 
+	 *
 	 * @param movementEnabled
 	 */
 	public void setMovementEnabled(boolean movementEnabled) {
@@ -2038,7 +2038,7 @@ public class FreeMindMapController extends JMapController implements
 	 * <li>{@link MouseEvent#BUTTON2} (middle mouse button)</li>
 	 * <li>{@link MouseEvent#BUTTON3} (right mouse button)</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param movementMouseButton
 	 */
 	public void setMovementMouseButton(int movementMouseButton) {
@@ -2099,7 +2099,7 @@ public class FreeMindMapController extends JMapController implements
 
 	/**
 	 * Action handler for search result handling.
-	 * 
+	 *
 	 * @param pPlace
 	 */
 	public void setCursorPosition(Place pPlace) {
@@ -2201,7 +2201,7 @@ public class FreeMindMapController extends JMapController implements
 							Reversegeocode reverseLookup = getReverseLookup(
 									new Coordinate(lat, lon), map.getZoom());
 							if (reverseLookup.getListResultList().size() > 0) {
-								place.setDisplayName(reverseLookup.getResult(0).content);
+								place.setDisplayName(reverseLookup.getResult(0).getContent());
 							}
 						} catch (Exception e) {
 							freemind.main.Resources.getInstance().logException(
@@ -2474,7 +2474,7 @@ public class FreeMindMapController extends JMapController implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
@@ -2665,7 +2665,7 @@ public class FreeMindMapController extends JMapController implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.common.FreeMindTask#processAction()
 		 */
 		protected boolean processAction() throws Exception {

@@ -160,7 +160,7 @@
 	</xs:element>
 
 	<!-- Map actions. These actions involve whole map.-->
-	
+
 	<!-- Node actions. These actions involve exactly one node.-->
 	  <xs:complexType name="node_action">
 		<xs:complexContent>
@@ -588,25 +588,25 @@
 	  </xs:complexType>
 	</xs:element>
 
-<!-- <searchresults 
-	timestamp="Tue, 08 Nov 11 22:49:54 -0500" 
-	attribution="Data Copyright OpenStreetMap Contributors, Some Rights Reserved. CC-BY-SA 2.0." 
-	querystring="innsbruck" 
-	polygon="false" 
-	exclude_place_ids="228452,25664166,26135863,25440203" 
+<!-- <searchresults
+	timestamp="Tue, 08 Nov 11 22:49:54 -0500"
+	attribution="Data Copyright OpenStreetMap Contributors, Some Rights Reserved. CC-BY-SA 2.0."
+	querystring="innsbruck"
+	polygon="false"
+	exclude_place_ids="228452,25664166,26135863,25440203"
 	more_url="http://open.mapquestapi.com/nominatim/v1/search?format=xml&amp;exclude_place_ids=228452,25664166,26135863,25440203&amp;accept-language=&amp;q=innsbruck"
 	>
-  <place 
-  	place_id="228452" 
-  	osm_type="node" 
-  	osm_id="34840064" 
-  	place_rank="16" 
-  	boundingbox="47.2554266357,47.2754304504,11.3827679062,11.4027688599" 
-  	lat="47.2654296" 
-  	lon="11.3927685" 
-  	display_name="Innsbruck, Bezirk Innsbruck-Stadt, Innsbruck-Stadt, Tirol, Österreich, Europe" 
-  	class="place" 
-  	type="city" 
+  <place
+  	place_id="228452"
+  	osm_type="node"
+  	osm_id="34840064"
+  	place_rank="16"
+  	boundingbox="47.2554266357,47.2754304504,11.3827679062,11.4027688599"
+  	lat="47.2654296"
+  	lon="11.3927685"
+  	display_name="Innsbruck, Bezirk Innsbruck-Stadt, Innsbruck-Stadt, Tirol, Österreich, Europe"
+  	class="place"
+  	type="city"
   	icon="http://open.mapquestapi.com/nominatim/v1/images/mapicons/poi_place_city.p.20.png"
   />
 
@@ -617,16 +617,16 @@
 	  <xs:complexType>
 		<xs:complexContent>
 			<xs:extension base="xml_action">
-				<xs:attribute name="place_id" use="optional" type="xs:string"/> 
-				<xs:attribute name="osm_type" use="optional" type="xs:string"/> 
-				<xs:attribute name="osm_id" use="optional" type="xs:string"/> 
-				<xs:attribute name="place_rank" use="optional" type="xs:string"/> 
-				<xs:attribute name="boundingbox" use="optional" type="xs:string"/> 
-				<xs:attribute name="lat" use="optional" type="xs:double"/> 
-				<xs:attribute name="lon" use="optional" type="xs:double"/> 
-				<xs:attribute name="display_name" use="optional" type="xs:string"/> 
-				<xs:attribute name="class" use="optional" type="xs:string" id="ClassMember"/> 
-				<xs:attribute name="type" use="optional" type="xs:string"/> 
+				<xs:attribute name="place_id" use="optional" type="xs:string"/>
+				<xs:attribute name="osm_type" use="optional" type="xs:string"/>
+				<xs:attribute name="osm_id" use="optional" type="xs:string"/>
+				<xs:attribute name="place_rank" use="optional" type="xs:string"/>
+				<xs:attribute name="boundingbox" use="optional" type="xs:string"/>
+				<xs:attribute name="lat" use="optional" type="xs:double"/>
+				<xs:attribute name="lon" use="optional" type="xs:double"/>
+				<xs:attribute name="display_name" use="optional" type="xs:string"/>
+				<xs:attribute name="class" use="optional" type="xs:string" id="ClassMember"/>
+				<xs:attribute name="type" use="optional" type="xs:string"/>
 				<xs:attribute name="icon" use="optional" type="xs:string"/>
 			</xs:extension>
 		</xs:complexContent>
@@ -667,16 +667,14 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
-	
+
 	  <xs:complexType name="result_base" mixed="true">
-		<xs:complexContent>
 		    <xs:attribute name="lat" use="required" type="xs:double"/>
 		    <xs:attribute name="lon" use="required" type="xs:double"/>
 		    <xs:attribute name="osm_id" use="required" type="xs:integer"/>
 		    <xs:attribute name="osm_type" use="required" type="xs:NCName"/>
 		    <xs:attribute name="place_id" use="required" type="xs:integer"/>
 		    <xs:attribute name="ref" use="optional"/>
-	    </xs:complexContent>
 	  </xs:complexType>
 
 	<xs:element name="result">
@@ -688,7 +686,7 @@
 	  </xs:complexType>
 	</xs:element>
 
-<!-- 
+<!--
 			      <xs:element ref="addressparts"/>
 	<xs:element name="addressparts">
 	  <xs:complexType>
@@ -725,15 +723,15 @@
 		<xs:complexContent>
 			<xs:extension base="xml_action">
 			    <xs:sequence>
-			      <xs:element ref="calendar_marking"/>
+			      <xs:element ref="calendar_marking" maxOccurs="unbounded" minOccurs="0"/>
 			    </xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
-	
+
 	<xs:element name="calendar_marking">
-		<xs:complexContent>
+		<xs:complexType>
 		    <xs:attribute name="name" type="xs:string" use="required"/>
 			<xs:attribute name="color" use="required" type="xs:string"/>
 		    <xs:attribute name="start_date" type="xs:long" use="required"/>
@@ -751,15 +749,15 @@
 						<xs:enumeration value="monthly_every_nth_week"/>
 						<xs:enumeration value="weekly"/>
 						<xs:enumeration value="weekly_every_nth_day"/>
-						<xs:enumeration value="daily"/>
+						<xs:enumeration value="DAILY"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>
 		    <xs:attribute name="repeat_each_n_occurence" type="xs:int" use="optional"/>
 		    <xs:attribute name="first_occurence" type="xs:int" use="optional"/>
-		</xs:complexContent>
+		</xs:complexType>
 	</xs:element>
-	
+
 
 
 	<!-- Add (and remove(?)) a permanent hook to a node -->
@@ -891,9 +889,9 @@
 				<xs:sequence>
 					<xs:element ref="collaboration_map_offer" maxOccurs="unbounded" minOccurs="0"/>
 				</xs:sequence>
-				<!-- It makes a difference if the server has only one map, 
+				<!-- It makes a difference if the server has only one map,
 					or it is a single-map-server. In the first case, the creation of new maps isn't possible. -->
-				<xs:attribute name="is_single_offer" use="required" type="xs:boolean" default="false"/>
+				<xs:attribute name="is_single_offer" use="optional" type="xs:boolean" default="false"/>
 			</xs:extension>
 		</xs:complexContent>
 	  </xs:complexType>
@@ -1078,10 +1076,10 @@
 	  <xs:complexType>
 		<xs:complexContent>
 			<xs:extension base="node_action">
+			      <xs:attribute name="position" use="required" type="xs:int"/>
+			      <xs:attribute name="name" use="required" type="xs:string"/>
+			      <xs:attribute name="value" use="required" type="xs:string"/>
 			</xs:extension>
-		      <xs:attribute name="position" use="required" type="xs:int"/>
-		      <xs:attribute name="name" use="required" type="xs:string"/>
-		      <xs:attribute name="value" use="required" type="xs:string"/>
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
@@ -1090,10 +1088,10 @@
 	  <xs:complexType>
 		<xs:complexContent>
 			<xs:extension base="node_action">
+			      <xs:attribute name="position" use="required" type="xs:int"/>
+			      <xs:attribute name="name" use="required" type="xs:string"/>
+			      <xs:attribute name="value" use="required" type="xs:string"/>
 			</xs:extension>
-		      <xs:attribute name="position" use="required" type="xs:int"/>
-		      <xs:attribute name="name" use="required" type="xs:string"/>
-		      <xs:attribute name="value" use="required" type="xs:string"/>
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
@@ -1102,9 +1100,9 @@
 	  <xs:complexType>
 		<xs:complexContent>
 			<xs:extension base="node_action">
+			      <xs:attribute name="name" use="required" type="xs:string"/>
+			      <xs:attribute name="value" use="required" type="xs:string"/>
 			</xs:extension>
-		      <xs:attribute name="name" use="required" type="xs:string"/>
-		      <xs:attribute name="value" use="required" type="xs:string"/>
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
@@ -1113,14 +1111,14 @@
 	  <xs:complexType>
 		<xs:complexContent>
 			<xs:extension base="node_action">
+			      <xs:attribute name="position" use="required" type="xs:int"/>
 			</xs:extension>
-		      <xs:attribute name="position" use="required" type="xs:int"/>
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
 
- 
- 
+
+
 	<!-- Windowpositionstorage stores the window configuration of the
 		 Log file Viewer window. -->
 	<xs:element name="log_file_viewer_configuration_storage">
@@ -1134,20 +1132,19 @@
 
 
 	<!-- This element holds the sorting and size information to a column -->
-	<xs:element name="table_column_setting">
-		<xs:complexType>
+	<xs:complexType name="table_column_setting_type">
 		      <xs:attribute name="column_width" use="required" type="xs:int"/>
 		      <xs:attribute name="column_sorting" use="optional" type="xs:int"/>
-		</xs:complexType>
-	</xs:element>
+	</xs:complexType>
+	<xs:element name="table_column_setting" type="table_column_setting_type"/>
 	<xs:element name="time_window_column_setting">
 	  <xs:complexType>
 		<xs:complexContent>
-			<xs:extension base="table_column_setting"/>
+			<xs:extension base="table_column_setting_type"/>
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
-	
+
 	<!-- Script Editor settings: -->
 	<xs:element name="script_editor_window_configuration_storage">
 	  <xs:complexType>
@@ -1174,6 +1171,9 @@
 	<!-- This element holds map to last state (zoom, last selecteds, etc.) -->
 	<xs:element name="mindmap_last_state_storage">
 		<xs:complexType>
+	          <xs:sequence>
+	    	      <xs:element ref="node_list_member" maxOccurs="unbounded" minOccurs="0"/>
+	          </xs:sequence>
 			  <!--  time attribute to be able to remove the oldest entries. -->
 		      <xs:attribute name="last_changed" use="required" type="xs:long"/>
 		      <!-- -1 means, that this map wasn't open at the last session. -->
@@ -1185,9 +1185,6 @@
 		      <xs:attribute name="y" use="required" type="xs:int"/>
 		      <!--  last selecteds -->
 		      <xs:attribute name="last_selected" use="required" type="xs:string"/>
-	          <xs:sequence>
-	    	      <xs:element ref="node_list_member" maxOccurs="unbounded" minOccurs="0"/>
-	          </xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
@@ -1195,22 +1192,22 @@
 	  <xs:complexType name="mindmap_last_state_map_storage">
 		<xs:complexContent>
 			<xs:extension base="xml_action">
-		      <xs:attribute name="last_focused_tab" use="optional" type="xs:int" default="-1"/>
 	          <xs:sequence>
 	    	      <xs:element ref="mindmap_last_state_storage" maxOccurs="unbounded" minOccurs="0"/>
 	          </xs:sequence>
+		      <xs:attribute name="last_focused_tab" use="optional" type="xs:int" default="-1"/>
 			</xs:extension>
 		</xs:complexContent>
 	  </xs:complexType>
 
 
-	<!-- ======================================================================================= 
+	<!-- =======================================================================================
 		 										Patterns
 		   ======================================================================================= -->
 
-				
 
-	<xs:complexType name="pattern_property_base"><xs:complexContent><!-- if value is not present, the attribute is cleared. -->     <xs:attribute name="value" use="optional" type="xs:string"/>  </xs:complexContent>  </xs:complexType>
+
+	<xs:complexType name="pattern_property_base"><!-- if value is not present, the attribute is cleared. -->     <xs:attribute name="value" use="optional" type="xs:string"/>  </xs:complexType>
 	<xs:element name="pattern_node_background_color">  <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_node_color">             <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_node_style">             <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
@@ -1253,7 +1250,7 @@
 				    <xs:attribute name="original_name" use="optional" type="xs:string"/>
 				</xs:extension>
 			</xs:complexContent>
-		</xs:complexType>		
+		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="patterns">
@@ -1267,11 +1264,11 @@
 					</xs:sequence>
 				</xs:extension>
 			</xs:complexContent>
-		</xs:complexType>		
+		</xs:complexType>
 	</xs:element>
 
-	
-	<!-- ======================================================================================= 
+
+	<!-- =======================================================================================
 		 										Plugin XML
 		   ======================================================================================= -->
 	<xs:element name="plugin">
@@ -1365,7 +1362,7 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>
-			<xs:attribute name="isSelectable" use="optional" type="xs:boolean" default="false"/>		
+			<xs:attribute name="isSelectable" use="optional" type="xs:boolean" default="false"/>
 		</xs:complexType>
   </xs:element>
 

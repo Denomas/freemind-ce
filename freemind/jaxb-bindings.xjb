@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings version="2.1"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+
+    <jaxb:bindings schemaLocation="freemind_actions.xsd" node="/xs:schema">
+
+        <!-- Global: generate simpler collection property names -->
+        <jaxb:globalBindings>
+            <xjc:simple/>
+        </jaxb:globalBindings>
+
+        <!-- Rename compound_action's choice list to 'choiceList' -->
+        <jaxb:bindings node="//xs:element[@name='compound_action']//xs:choice">
+            <jaxb:property name="choiceList"/>
+        </jaxb:bindings>
+
+        <!-- Rename patterns choice list -->
+        <jaxb:bindings node="//xs:element[@name='patterns']//xs:choice">
+            <jaxb:property name="choiceList"/>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+
+</jaxb:bindings>
