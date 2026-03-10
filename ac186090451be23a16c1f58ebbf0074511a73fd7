@@ -1,0 +1,33 @@
+build.gradle.kts
+  bd7e19ac4215c780 11
+docs/index.md
+  bd7e19ac4215c780 8,12,32,34-35
+docs/project-overview.md
+  bd7e19ac4215c780 8,28,32-33
+freemind/freemind.properties
+  bd7e19ac4215c780 417-419
+CLAUDE.md
+  bd7e19ac4215c780 14
+README.md
+  bd7e19ac4215c780 56,74-79,198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "ac186090451be23a16c1f58ebbf0074511a73fd7",
+  "prompts": {
+    "bd7e19ac4215c780": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f608c3d5-743c-487e-ad87-736cf872dbc0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 22,
+      "total_deletions": 30,
+      "accepted_lines": 448,
+      "overriden_lines": 0
+    }
+  }
+}
