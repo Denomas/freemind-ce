@@ -83,6 +83,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.UIManager;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import com.inet.jortho.SpellChecker;
 
 import freemind.controller.Controller;
@@ -426,14 +428,17 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		// set Look&Feel
 		try {
 			String lookAndFeel = props.getProperty(RESOURCE_LOOKANDFEEL);
-			if (lookAndFeel.equals("windows")) {
+			if (lookAndFeel.equals("flatlaf-light")) {
+				FlatLightLaf.setup();
+			} else if (lookAndFeel.equals("flatlaf-dark")) {
+				FlatDarkLaf.setup();
+			} else if (lookAndFeel.equals("windows")) {
 				UIManager
 						.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 			} else if (lookAndFeel.equals("motif")) {
 				UIManager
 						.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
 			} else if (lookAndFeel.equals("mac")) {
-				// Only available on macOS
 				UIManager.setLookAndFeel("javax.swing.plaf.mac.MacLookAndFeel");
 			} else if (lookAndFeel.equals("metal")) {
 				UIManager
@@ -442,16 +447,11 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 				UIManager
 						.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 			} else if (lookAndFeel.equals("nothing")) {
-			} else if (lookAndFeel.indexOf('.') != -1) { // string contains a
-				// dot
+			} else if (lookAndFeel.indexOf('.') != -1) {
 				UIManager.setLookAndFeel(lookAndFeel);
-				// we assume class name
 			} else {
-				// default.
-				logger.info("Default (System) Look & Feel: "
-						+ UIManager.getSystemLookAndFeelClassName());
-				UIManager.setLookAndFeel(UIManager
-						.getSystemLookAndFeelClassName());
+				// default: use FlatLaf Light
+				FlatLightLaf.setup();
 			}
 		} catch (Exception ex) {
 			System.err.println("Unable to set Look & Feel.");

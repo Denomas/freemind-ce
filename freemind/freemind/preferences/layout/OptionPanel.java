@@ -83,7 +83,7 @@ import freemind.preferences.layout.GrabKeyDialog.KeyBinding;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class OptionPanel implements TextTranslator {
 	// TODO: Cancel and windowClose => Are you sure, or save.
@@ -95,13 +95,13 @@ public class OptionPanel implements TextTranslator {
 	private static final Color MARKED_BUTTON_COLOR = Color.BLUE;
 
 	private Vector<PropertyControl> controls;
-	
+
 	private KeyProperty findControlByKB(KeyBinding binding){
 		for(PropertyControl control: controls){
 			if(control instanceof KeyProperty){
 				KeyProperty k= (KeyProperty)control;
 				if(k.kb.equals(binding))
-					return k;	
+					return k;
 			}
 		}
 		return null;
@@ -119,12 +119,12 @@ public class OptionPanel implements TextTranslator {
 
 	private static final String PREFERENCE_STORAGE_PROPERTY = "OptionPanel_Window_Properties";
 	private static final String DEFAULT_LAYOUT_FORMAT = "right:max(40dlu;p), 4dlu, 120dlu, 7dlu";
-	
+
 	private Vector<KeyBinding> allBindings;
 
 	/**
 	 * @throws IOException
-	 * 
+	 *
 	 */
 	public OptionPanel(FreeMind fm, JDialog frame, OptionPanelFeedback feedback) {
 		super();
@@ -669,20 +669,24 @@ public class OptionPanel implements TextTranslator {
 		controls.add(new NewTabProperty("Appearance"));
 		controls.add(new SeparatorProperty("look_and_feel"));
 		LookAndFeelInfo[] lafInfo = UIManager.getInstalledLookAndFeels();
-		int reservedCount = 6;
+		int reservedCount = 8;
 		String[] lafNames = new String[lafInfo.length + reservedCount];
 		Vector<String> translatedLafNames = new Vector<>();
 		lafNames[0] = "default";
 		translatedLafNames.add(getText("default"));
-		lafNames[1] = "metal";
+		lafNames[1] = "flatlaf-light";
+		translatedLafNames.add("FlatLaf Light");
+		lafNames[2] = "flatlaf-dark";
+		translatedLafNames.add("FlatLaf Dark");
+		lafNames[3] = "metal";
 		translatedLafNames.add(getText("metal"));
-		lafNames[2] = "windows";
+		lafNames[4] = "windows";
 		translatedLafNames.add(getText("windows"));
-		lafNames[3] = "motif";
+		lafNames[5] = "motif";
 		translatedLafNames.add(getText("motif"));
-		lafNames[4] = "gtk";
+		lafNames[6] = "gtk";
 		translatedLafNames.add(getText("gtk"));
-		lafNames[5] = "nothing";
+		lafNames[7] = "nothing";
 		translatedLafNames.add(getText("nothing"));
 		for (int i = 0; i < lafInfo.length; i++) {
 			LookAndFeelInfo info = lafInfo[i];
@@ -697,7 +701,7 @@ public class OptionPanel implements TextTranslator {
 				FreeMind.SCALING_FACTOR_PROPERTY + TOOLTIP_EXT,
 				FreeMind.SCALING_FACTOR_PROPERTY, 100,
 				Integer.MAX_VALUE, 1));
-		
+
 		controls.add(new BooleanProperty("use_tabbed_pane.tooltip",
 				FreeMind.RESOURCES_USE_TABBED_PANE)); // true
 		controls.add(new ComboProperty(FreeMind.J_SPLIT_PANE_SPLIT_TYPE
@@ -769,7 +773,7 @@ public class OptionPanel implements TextTranslator {
 				FreeMindCommon.CREATE_THUMBNAIL_ON_SAVE + TOOLTIP_EXT,
 				FreeMindCommon.CREATE_THUMBNAIL_ON_SAVE)); // true
 		controls.add(new NumberProperty(FreeMindCommon.THUMBNAIL_SIZE
-				+ TOOLTIP_EXT, FreeMindCommon.THUMBNAIL_SIZE, 1, 10000, 1));		
+				+ TOOLTIP_EXT, FreeMindCommon.THUMBNAIL_SIZE, 1, 10000, 1));
 
 		/* ***************************************************************** */
 		controls.add(new NextLineProperty());
@@ -888,8 +892,8 @@ public class OptionPanel implements TextTranslator {
 		// B
 
 		controls.add(new KeyProperty(frame, null,
-				"keystroke_node_toggle_strikethrough")); 
-		
+				"keystroke_node_toggle_strikethrough"));
+
 		controls.add(new KeyProperty(frame, null,
 				"keystroke_node_toggle_underlined")); // control
 		// U
@@ -1172,7 +1176,7 @@ public class OptionPanel implements TextTranslator {
 			actions.add(controller.removeAllIconsAction);
 			controls.add(new NextLineProperty());
 			controls.add(new SeparatorProperty("icons"));
-			
+
 			for(IconInformation info : actions) {
 				final KeyProperty keyProperty = new KeyProperty(frame, null, info.getKeystrokeResourceName());
 				keyProperty.setLabelText(info.getDescription());
@@ -1202,7 +1206,7 @@ public class OptionPanel implements TextTranslator {
 
 		controls.add(new BooleanProperty(FreeMind.RESOUCES_PASTE_HTML_STRUCTURE+TOOLTIP_EXT,
 				FreeMind.RESOUCES_PASTE_HTML_STRUCTURE)); // true
-		
+
 		controls.add(new BooleanProperty("disable_cursor_move_paper.tooltip",
 				"disable_cursor_move_paper")); // false
 
@@ -1356,7 +1360,7 @@ public class OptionPanel implements TextTranslator {
 	public static void removeContributor(FreemindPropertyContributor contributor) {
 		sContributors.remove(contributor);
 	}
-	
+
 	//{{{ createBinding() method
 	private KeyBinding createBinding(String name, String label, String shortcut, KeyProperty keyProperty)
 	{
