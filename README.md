@@ -2,76 +2,67 @@
 
 **Denomas Engineering - 2026**
 
-[![Build Status](https://github.com/denomas/freemind-ce/actions/workflows/build.yml/badge.svg)](https://github.com/denomas/freemind-ce/actions)
+[![Build Status](https://github.com/Denomas/freemind-ce/actions/workflows/build.yml/badge.svg)](https://github.com/Denomas/freemind-ce/actions)
 [![Java 21](https://img.shields.io/badge/Java-21-orange.svg)](https://adoptium.net/)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-## 🎯 Vision
+---
 
-FreeMind Classic Edition preserves the classic FreeMind experience (speed, simplicity, template structure) while running natively on modern systems:
+## Why FreeMind CE?
 
-- ✅ **Java 21** - Modern JVM compatibility
-- ✅ **macOS** - Native support on Apple Silicon and Intel Macs
-- ✅ **Windows 11** - Full compatibility
-- ✅ **Linux** - Debian, Ubuntu, Fedora, Arch
-- ✅ **Gradle Build** - Modern dependency management
-- ✅ **JAXB** - Replaced legacy JiBX XML binding
+FreeMind was many of our first mind-mapping experience. For years we organized our ideas, projects, and dreams with this small but powerful program. It launched fast, stayed out of the way, had nothing unnecessary. Just you and your thoughts.
 
-## 🚀 Quick Start
+Time passed. Java versions changed, operating systems evolved, and original FreeMind development stopped. Freeplane became a fine alternative -- we love it too. But FreeMind's original feel, that simplicity, that speed... Some things you never forget.
+
+**FreeMind CE was born to bring that old friend back to life.**
+
+We preserved every line, every feature, every icon of the original FreeMind. We changed nothing -- we only modernized. It runs on Java 21, works natively on macOS Apple Silicon, installs cleanly on Windows 11 and Linux. It builds with Gradle and packages automatically via GitHub Actions.
+
+To all the old friends out there -- FreeMind is still here, still the same, still the fastest.
+
+We are proud to share this project with the community.
+
+---
+
+## Quick Start
 
 ### Prerequisites
 
 - **Java 21 JDK** (Temurin, OpenJDK, or Oracle)
 - **Gradle 8.6+** (wrapper included)
 
-### Installation
+### Build & Run
 
 ```bash
-# Clone the repository
-git clone https://github.com/denomas/freemind-ce.git
+git clone https://github.com/Denomas/freemind-ce.git
 cd freemind-ce
-
-# Build the project
 ./gradlew build
-
-# Run the application
 ./gradlew :freemind:run
 ```
 
-### Native Installation
+### Download Pre-built Packages
 
-#### macOS (Homebrew)
-```bash
-brew tap denomas/homebrew-tap
-brew install --cask freemind-ce
-```
+Grab ready-to-use installers from the [GitHub Releases](https://github.com/Denomas/freemind-ce/releases) page.
 
-#### Windows (Chocolatey)
-```bash
-choco install freemind-ce
-```
+| Platform | Package | Install |
+|----------|---------|---------|
+| **macOS** | `.dmg` | Open and drag to Applications |
+| **Windows** | `.exe` | Double-click and install |
+| **Linux** | `.deb` | `sudo apt install ./freemind-ce_1.1.0_amd64.deb` |
 
-#### Linux (Debian/Ubuntu)
-```bash
-sudo apt install ./freemind-ce_1.1.0-CE_amd64.deb
-```
-
-## 📦 Build Artifacts
+### Build Packages from Source
 
 | Platform | Command | Output |
 |----------|---------|--------|
-| **All** | `./gradlew build` | JAR in `build/libs/` |
-| **macOS** | `./gradlew jpackageMac` | `.dmg` installer |
-| **Windows** | `./gradlew jpackageWin` | `.exe` installer |
-| **Linux** | `./gradlew jpackageLinux` | `.deb` package |
+| **macOS** | `./gradlew :freemind:jpackageMac` | `.dmg` installer |
+| **Windows** | `gradlew.bat :freemind:jpackageWin` | `.exe` installer |
+| **Linux** | `./gradlew :freemind:jpackageLinux` | `.deb` package |
 
-## 🏗️ Architecture
-
-### Modernization Phases
+## Modernization
 
 ```
-Phase 1: Gradle Build System ✅
-Phase 2: JAXB Migration ✅
+Phase 1: Gradle Build System ✅ (replaced Ant)
+Phase 2: JAXB Migration ✅ (replaced JiBX)
 Phase 3: Java 21 Compatibility ✅
 Phase 4: Plugin Modernization ✅
 Phase 5: CI/CD & Distribution ✅
@@ -79,98 +70,72 @@ Phase 6: Standalone HTML Export ✅
 Phase 7: Context Graph Plugin ✅
 ```
 
-### Key Changes from Original FreeMind
+### What Changed from the Original?
 
-| Component | Original | Modern (CE) |
-|-----------|----------|-------------|
-| **Build Tool** | Ant | Gradle 8.6 |
-| **Java Version** | Java 1.6 | Java 21 |
+| Component | Original | CE |
+|-----------|----------|----|
+| **Build** | Ant | Gradle 8.6 (Kotlin DSL) |
+| **Java** | 1.6 | 21 |
 | **XML Binding** | JiBX | JAXB 2.3.9 |
-| **Look & Feel** | Metal | FlatLaf 3.4.1 |
-| **SVG/PDF** | Batik 1.6 | Batik 1.17 |
+| **SVG/PDF** | Batik 1.6 | Batik 1.17 / FOP 2.9 |
 | **Logging** | java.util.logging | SLF4J + Logback |
+| **CI/CD** | None | GitHub Actions (multi-platform) |
+| **Packaging** | Manual | jpackage (DMG/EXE/DEB) |
+| **Encoding** | Mixed | UTF-8 everywhere |
 
-## 📁 Project Structure
+### What Stayed the Same?
+
+Everything. The interface, icons, keyboard shortcuts, file format (.mm), plugin system, template structure. Everything you loved about FreeMind is exactly where you left it.
+
+## Project Structure
 
 ```
 freemind-ce/
 ├── freemind/              # Main application module
-│   ├── freemind/          # Core Java sources
-│   ├── accessories/       # Accessories and utilities
-│   ├── plugins/           # Plugin modules
-│   ├── images/            # Resources and icons
+│   ├── freemind/          # Core Java source code
+│   ├── accessories/       # XSLT exports, accessory plugins
+│   ├── plugins/           # Plugin modules (SVG, Script, Map, Search, Help)
+│   ├── images/            # Icons and images
+│   ├── generated-src/     # JAXB generated classes (do not touch)
 │   └── build.gradle.kts   # Module build config
-├── plugins/               # Standalone plugins
-├── admin/                 # Documentation and assets
+├── docs/                  # Project documentation
+├── .github/workflows/     # CI/CD (build + release)
 ├── build.gradle.kts       # Root build config
 └── settings.gradle.kts    # Gradle settings
 ```
 
-## 🔧 Development
-
-### Generate JAXB Classes
+## Development
 
 ```bash
+# Regenerate JAXB classes
 ./gradlew :freemind:generateJaxb
-```
 
-### Run Tests
-
-```bash
+# Run tests
 ./gradlew test
-```
 
-### Build Documentation
+# Debug mode (port 5005)
+./gradlew :freemind:run --debug-jvm
 
-```bash
+# Generate Javadoc
 ./gradlew javadoc
 ```
 
-### Debug Mode
-
-```bash
-./gradlew :freemind:run --debug-jvm
-# Connect debugger to port 5005
-```
-
-## ⌨️ Keyboard Shortcuts (macOS)
+## Keyboard Shortcuts (macOS)
 
 | Action | Shortcut |
 |--------|----------|
 | New Map | `⌘ N` |
 | Open | `⌘ O` |
 | Save | `⌘ S` |
-| Add Child | `TAB` |
-| Add Sibling | `↵ Enter` |
+| Add Child Node | `TAB` |
+| Add Sibling Node | `↵ Enter` |
 | Edit Node | `F2` |
 | Toggle Fold | `SPACE` |
 | Find | `⌘ F` |
 | Zoom In | `⌘ +` |
 | Zoom Out | `⌘ -` |
 
-## 🎨 Features
-
-### Preserved from Classic FreeMind
-- ⚡ Fast startup and rendering
-- 🎯 Simple, focused UI
-- 📐 Template system
-- 🔗 Relative/absolute links
-- 📄 HTML export with folding
-
-### New in CE
-- 🌙 Dark Mode (FlatLaf)
-- 🖥️ HiDPI/Retina support
-- 🔍 Enhanced search
-- 📱 Better multi-monitor support
-- 🛡️ Modern security practices
-
-## 🐛 Known Issues
-
-1. **Tab Key Navigation**: On macOS, `TAB` is mapped to "Add Child". Use `Ctrl+Tab` for focus traversal.
-2. **Legacy Plugins**: Some old plugins may need manual updates.
-3. **Apple Silicon**: Rosetta 2 may be required for some native features.
-
-## 📝 License
+## License
 
 FreeMind CE is licensed under **GNU General Public License v2.0** (GPL-2.0), same as the original FreeMind.
 
@@ -184,19 +149,20 @@ as published by the Free Software Foundation; either version 2
 of the License, or (at your option) any later version.
 ```
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- Original [FreeMind](https://sourceforge.net/p/freemind/) team
-- SourceForge community
+- The original [FreeMind](https://sourceforge.net/p/freemind/) team -- for creating this wonderful program
+- The SourceForge community -- the platform that was home for so many years
+- All FreeMind users -- for staying loyal
 - Apache Software Foundation (Batik, FOP)
-- FlatLaf team
 
-## 📞 Support
+## Support
 
-- **Issues**: [GitHub Issues](https://github.com/denomas/freemind-ce/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/denomas/freemind-ce/discussions)
-- **Documentation**: [`docs/`](docs/index.md) folder
+- **Issues**: [GitHub Issues](https://github.com/Denomas/freemind-ce/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Denomas/freemind-ce/discussions)
+- **Documentation**: [`docs/`](docs/index.md)
+- **Turkish README**: [README-TR.md](README-TR.md)
 
 ---
 
-**Built with ❤️ by Denomas Engineering**
+**Made with love by Denomas Engineering, for the FreeMind community.**

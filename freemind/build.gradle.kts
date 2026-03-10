@@ -81,6 +81,9 @@ application {
 // Version Catalog (Centralized Dependency Management)
 // ============================================================================
 
+// jpackage requires numeric-only version (no -CE suffix)
+val jpackageVersion = project.version.toString().replace(Regex("-.*"), "")
+
 val jaxbApiVersion = "2.3.1"
 val jaxbImplVersion = "2.3.9"
 val batikVersion = "1.17"
@@ -347,7 +350,7 @@ tasks.register<Exec>("jpackageMac") {
         "--main-jar", "freemind-ce-${project.version}.jar",
         "--main-class", "freemind.main.FreeMindStarter",
         "--icon", "images/FreeMindWindowIconModern.icns",
-        "--app-version", "${project.version}",
+        "--app-version", jpackageVersion,
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m",
         "--java-options", "-Dapple.laf.useScreenMenuBar=true"
@@ -368,8 +371,7 @@ tasks.register<Exec>("jpackageWin") {
         "--input", "build/install/freemind/lib",
         "--main-jar", "freemind-ce-${project.version}.jar",
         "--main-class", "freemind.main.FreeMindStarter",
-        "--icon", "images/FreeMindWindowIconModern.ico",
-        "--app-version", "${project.version}",
+        "--app-version", jpackageVersion,
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m"
     )
@@ -389,8 +391,8 @@ tasks.register<Exec>("jpackageLinux") {
         "--input", "build/install/freemind/lib",
         "--main-jar", "freemind-ce-${project.version}.jar",
         "--main-class", "freemind.main.FreeMindStarter",
-        "--icon", "images/FreeMindWindowIconModern.png",
-        "--app-version", "${project.version}",
+        "--icon", "images/FreeMindWindowIcon.png",
+        "--app-version", jpackageVersion,
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m"
     )

@@ -45,20 +45,30 @@ jobs:
 
       - name: Install Linux packaging dependencies
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y libfuse2
+        run: sudo apt-get update && sudo apt-get install -y fakeroot
 
-      - name: Build
+      - name: Build (Unix)
+        if: runner.os != 'Windows'
         run: ./gradlew build --no-daemon --no-configuration-cache
 
-      - name: Package
+      - name: Build (Windows)
+        if: runner.os == 'Windows'
+        run: .\gradlew.bat build --no-daemon --no-configuration-cache
+
+      - name: Package (Unix)
+        if: runner.os != 'Windows'
         run: ./gradlew :freemind:${{ matrix.package_task }} --no-daemon --no-configuration-cache
-        continue-on-error: true
+
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        run: .\gradlew.bat :freemind:${{ matrix.package_task }} --no-daemon --no-configuration-cache
 
       - name: Upload platform package
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact_name }}
           path: ${{ matrix.artifact_pattern }}
+          if-no-files-found: warn
 
       - name: Upload JAR distribution
         if: runner.os == 'Linux'
@@ -80,6 +90,9 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
+
+      - name: List downloaded artifacts
+        run: find artifacts -type f | sort
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
