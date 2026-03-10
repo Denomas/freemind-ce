@@ -35,11 +35,56 @@ jobs:
 
       - name: Build (Unix)
         if: runner.os != 'Windows'
-        run: ./gradlew build --no-daemon --no-configuration-cache
+        run: ./gradlew build -x test --no-daemon --no-configuration-cache
 
       - name: Build (Windows)
         if: runner.os == 'Windows'
-        run: .\gradlew.bat build --no-daemon --no-configuration-cache
+        run: .\gradlew.bat build -x test --no-daemon --no-configuration-cache
+
+      - name: Install Xvfb (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y xvfb
+
+      - name: Test (Linux with Xvfb)
+        if: runner.os == 'Linux'
+        run: xvfb-run ./gradlew test --no-daemon --no-configuration-cache --continue
+
+      - name: Test (macOS)
+        if: runner.os == 'macOS'
+        run: ./gradlew test --no-daemon --no-configuration-cache --continue
+
+      - name: Test (Windows)
+        if: runner.os == 'Windows'
+        run: .\gradlew.bat test --no-daemon --no-configuration-cache --continue
+
+      - name: Publish Test Report
+        uses: dorny/test-reporter@v1.9.1
+        if: always()
+        with:
+          name: Test Results (${{ matrix.os }})
+          path: freemind/build/test-results/test/*.xml
+          reporter: java-junit
+
+      - name: Upload SpotBugs Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spotbugs-report-${{ matrix.os }}
+          path: freemind/build/reports/spotbugs/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Generate Coverage Report
+        if: runner.os == 'Linux' && always()
+        run: ./gradlew :freemind:jacocoTestReport --no-daemon --no-configuration-cache -x test
+
+      - name: Upload Coverage Report
+        if: runner.os == 'Linux' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: freemind/build/reports/jacoco/
+          retention-days: 14
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
