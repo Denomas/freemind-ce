@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin label="plugins/ContextGraph">
+	<plugin_classpath jar="contextgraph/contextgraph_plugin.jar"/>
+	<plugin_action
+		documentation="%plugins/ContextGraphMarkdown_documentation"
+		name="%plugins/ContextGraphMarkdown_name"
+		base="freemind.extensions.ModeControllerHookAdapter"
+		label="plugins/ContextGraphMarkdown"
+		class_name="plugins.contextgraph.ContextGraphMarkdownExport">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportContextGraphMarkdown"/>
+		<plugin_property name="file_type" value="md"/>
+		<plugin_property name="file_description" value="%plugins/ContextGraphMarkdown_file_description"/>
+		<plugin_property name="load_file" value="true"/>
+	</plugin_action>
+	<plugin_action
+		documentation="%plugins/ContextGraphXml_documentation"
+		name="%plugins/ContextGraphXml_name"
+		base="freemind.extensions.ModeControllerHookAdapter"
+		label="plugins/ContextGraphXml"
+		class_name="plugins.contextgraph.ContextGraphXmlExport">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportContextGraphXml"/>
+		<plugin_property name="file_type" value="xml"/>
+		<plugin_property name="file_description" value="%plugins/ContextGraphXml_file_description"/>
+		<plugin_property name="load_file" value="true"/>
+	</plugin_action>
+</plugin>
