@@ -11,7 +11,7 @@
 - **Remotes:** `github` → Denomas/freemind-ce (push target), `origin` → SourceForge (upstream, read-only)
 - **Branching:** Trunk-based — all work on `main`, feature branches for large changes
 - **Releases:** Tag `v*.*.*` on main → GitHub Actions auto-builds + creates release with DMG/EXE/DEB
-- **Versioning:** Semantic — `gradle.properties` has `version=X.Y.Z`, update before tagging
+- **Versioning:** Semantic — `build.gradle.kts` (root) has `version = "X.Y.Z-CE"`, update before tagging
 - **Pre-commit:** `.pre-commit-config.yaml` — XML validation, compilation check, blocks .class/auto.properties
 
 ## Build & Run

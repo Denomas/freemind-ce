@@ -5,11 +5,11 @@
 ## Project Overview
 
 - **Name:** FreeMind Classic Edition (CE)
-- **Version:** 1.0.0-CE
+- **Version:** 1.1.0-CE
 - **Type:** Monolith Desktop Application (Java Swing)
 - **Primary Language:** Java 21
 - **Architecture:** MVC with Mode-based decomposition + Hook/Plugin framework
-- **Build System:** Gradle 8.6+ (Kotlin DSL) — legacy Ant still functional
+- **Build System:** Gradle 8.6+ (Kotlin DSL)
 - **Organization:** Denomas Engineering
 
 ## Quick Reference
@@ -29,20 +29,10 @@
 - [Component Inventory](./component-inventory.md) — UI components, event handlers, plugins, extensions
 - [Development Guide](./development-guide.md) — Prerequisites, build commands, testing, CI/CD
 
-## Existing Project Documentation (Unverified Drafts)
+## Additional References
 
-> **Note:** The following files were created during early modernization and have NOT been verified for accuracy. Use as reference only — trust the generated docs above for verified information.
-
-- [README.md](../README.md) — Project introduction (draft)
-- [DEVELOPER_GUIDE.md](../DEVELOPER_GUIDE.md) — Developer onboarding (draft)
-- [TECHNICAL_SPEC_JAXB_MIGRATION.md](../TECHNICAL_SPEC_JAXB_MIGRATION.md) — JAXB migration spec (draft)
-- [DEPLOYMENT_AUTOMATION.md](../DEPLOYMENT_AUTOMATION.md) — CI/CD details (draft)
-- [DEPENDENCIES.md](../DEPENDENCIES.md) — Dependency tracking (draft)
-- [CODE_DOCUMENTATION_STANDARDS.md](../CODE_DOCUMENTATION_STANDARDS.md) — Code style (draft)
-- [SEMANTIC_VERSIONING.md](../SEMANTIC_VERSIONING.md) — Versioning strategy (draft)
-- [COMPLETED_WORK_SUMMARY.md](../COMPLETED_WORK_SUMMARY.md) — Completed work log (draft)
-- [PROPERTY_BASED_TESTING.md](../PROPERTY_BASED_TESTING.md) — Testing strategy (draft)
-- [FREEMIND-CE-MODERNIZASYON-PLANI.md](../FREEMIND-CE-MODERNIZASYON-PLANI.md) — Modernization plan (Turkish, draft)
+- [README.md](../README.md) — Project introduction and quick start
+- [CLAUDE.md](../CLAUDE.md) — Agent & developer quick-reference guide
 
 ## Legacy Documentation
 

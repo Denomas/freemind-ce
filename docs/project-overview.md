@@ -5,7 +5,7 @@
 ## Project Identity
 
 - **Name:** FreeMind Classic Edition (CE)
-- **Version:** 1.0.0-CE
+- **Version:** 1.1.0-CE
 - **Organization:** Denomas Engineering
 - **License:** GNU General Public License v2.0
 - **Repository Type:** Monolith (single desktop application with plugin submodules)
@@ -25,12 +25,12 @@ FreeMind CE preserves the classic FreeMind mind-mapping experience (speed, simpl
 |---|---|---|---|
 | Build Tool | Apache Ant | Gradle 8.6+ (Kotlin DSL) | Done |
 | Java Version | Java 1.6 | Java 21 (Temurin) | Done |
-| XML Binding | JiBX (bytecode) | JAXB 2.3.9 | In Progress |
+| XML Binding | JiBX (bytecode) | JAXB 2.3.9 | Done |
 | Look & Feel | Metal/System | FlatLaf 3.4.1 | Done |
 | SVG/PDF | Batik 1.6 | Batik 1.17 / FOP 2.9 | Done |
 | Logging | java.util.logging | SLF4J 2.0.12 + Logback 1.4.14 | Done |
-| CI/CD | None | GitHub Actions (multi-platform) | In Progress |
-| Packaging | Manual | jpackage (DMG/EXE/DEB) | In Progress |
+| CI/CD | None | GitHub Actions (multi-platform) | Done |
+| Packaging | Manual | jpackage (DMG/EXE/DEB) | Done |
 
 ## Technology Stack
 

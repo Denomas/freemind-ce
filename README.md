@@ -53,7 +53,7 @@ choco install freemind-ce
 
 #### Linux (Debian/Ubuntu)
 ```bash
-sudo apt install ./freemind-ce_1.0.0-CE_amd64.deb
+sudo apt install ./freemind-ce_1.1.0-CE_amd64.deb
 ```
 
 ## 📦 Build Artifacts
@@ -71,10 +71,12 @@ sudo apt install ./freemind-ce_1.0.0-CE_amd64.deb
 
 ```
 Phase 1: Gradle Build System ✅
-Phase 2: JAXB Migration 🔄
-Phase 3: Java 21 Compatibility ⏳
-Phase 4: Plugin Modernization ⏳
-Phase 5: CI/CD & Distribution ⏳
+Phase 2: JAXB Migration ✅
+Phase 3: Java 21 Compatibility ✅
+Phase 4: Plugin Modernization ✅
+Phase 5: CI/CD & Distribution ✅
+Phase 6: Standalone HTML Export ✅
+Phase 7: Context Graph Plugin ✅
 ```
 
 ### Key Changes from Original FreeMind
@@ -193,7 +195,7 @@ of the License, or (at your option) any later version.
 
 - **Issues**: [GitHub Issues](https://github.com/denomas/freemind-ce/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/denomas/freemind-ce/discussions)
-- **Documentation**: `admin/docs/` folder
+- **Documentation**: [`docs/`](docs/index.md) folder
 
 ---
 
