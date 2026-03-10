@@ -54,6 +54,8 @@ import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URI;
 import java.net.URL;
+import java.awt.Image;
+import java.awt.Taskbar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -88,6 +90,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.inet.jortho.SpellChecker;
 
 import freemind.controller.Controller;
+import freemind.view.ImageFactory;
 import freemind.controller.LastStateStorageManagement;
 import freemind.controller.MenuBar;
 import freemind.controller.actions.generated.instance.MindmapLastStateStorage;
@@ -365,7 +368,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		updateLookAndFeel();
 		feedback.increase("FreeMind.progress.createController", null);
 
-		setIconImage(mWindowIcon.getImage());
+		setAppIcons();
 		// Layout everything
 		getContentPane().setLayout(new BorderLayout());
 
@@ -1287,6 +1290,39 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 	public List<Logger> getLoggerList() {
 		return Collections.unmodifiableList(mLoggerList);
+	}
+
+	private void setAppIcons() {
+		ImageFactory imageFactory = ImageFactory.getInstance();
+		String[] iconPaths = {
+			"images/FreeMindIcon16.png",
+			"images/FreeMindIcon32.png",
+			"images/FreeMindIcon128.png",
+			"images/FreeMindIcon256.png",
+			"images/FreeMindIcon512.png"
+		};
+		List<Image> icons = new ArrayList<>();
+		for (String path : iconPaths) {
+			URL resource = getResource(path);
+			if (resource != null) {
+				icons.add(imageFactory.createIcon(resource).getImage());
+			}
+		}
+		if (!icons.isEmpty()) {
+			setIconImages(icons);
+			try {
+				if (Taskbar.isTaskbarSupported()) {
+					Taskbar taskbar = Taskbar.getTaskbar();
+					if (taskbar.isSupported(Taskbar.Feature.ICON_IMAGE)) {
+						taskbar.setIconImage(icons.get(icons.size() - 1));
+					}
+				}
+			} catch (Exception e) {
+				logger.warning("Could not set taskbar icon: " + e.getMessage());
+			}
+		} else if (mWindowIcon != null) {
+			setIconImage(mWindowIcon.getImage());
+		}
 	}
 
 }
