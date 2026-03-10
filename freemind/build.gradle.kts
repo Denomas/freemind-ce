@@ -8,6 +8,9 @@
 plugins {
     java
     application
+    jacoco
+    id("com.github.spotbugs") version "6.0.7"
+    id("org.owasp.dependencycheck") version "9.0.9"
 }
 
 // ============================================================================
@@ -157,16 +160,19 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.12")
     implementation("ch.qos.logback:logback-classic:1.4.14")
 
-    // Testing (in main classpath - original project has test utils used by main code)
-    implementation("junit:junit:${junitVersion}")
-    implementation("org.mockito:mockito-core:5.10.0")
+    // Testing - JUnit 5 with vintage engine for JUnit 3 backward compatibility
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testImplementation("org.junit.vintage:junit-vintage-engine:5.10.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.10.2")
+    testImplementation("junit:junit:${junitVersion}")
+    testImplementation("org.mockito:mockito-core:5.10.0")
 
     // Property-Based Testing (jqwik)
-    implementation("net.jqwik:jqwik:1.8.2")
-    implementation("net.jqwik:jqwik-engine:1.8.2")
+    testImplementation("net.jqwik:jqwik:1.8.2")
+    testImplementation("net.jqwik:jqwik-engine:1.8.2")
 
     // Fluent Assertions (AssertJ)
-    implementation("org.assertj:assertj-core:3.25.3")
+    testImplementation("org.assertj:assertj-core:3.25.3")
 }
 
 // ============================================================================
@@ -181,15 +187,12 @@ sourceSets {
                 "accessories",
                 "de",
                 "generated-src",
-                "tests",
                 "plugins"
             ))
             // Exclude broken macOS Apple API file
             exclude("**/MacChanges.java")
             exclude("**/MacChanges.java.not_here")
             exclude("**/MacChanges.java.disabled")
-            // Exclude incomplete property-based tests (reference non-existent Mindmap/Node classes)
-            exclude("**/property/**")
             // Exclude Jabber collaboration plugin (broken API calls, unmaintained)
             exclude("**/jabber/**")
             // Exclude JApplet-based applet (JApplet removed in Java 21)
@@ -222,10 +225,17 @@ sourceSets {
     }
     test {
         java {
-            setSrcDirs(listOf<String>())
+            setSrcDirs(listOf("tests"))
+            // Exclude incomplete property-based tests (reference non-existent APIs)
+            exclude("**/property/**")
+            // Exclude AllTests suite (JUnit 3 suite causes duplicate runs under JUnit 5 vintage)
+            exclude("**/AllTests.java")
         }
         resources {
-            setSrcDirs(listOf<String>())
+            setSrcDirs(listOf("tests"))
+            include("**/*.mm")
+            include("**/*.xml")
+            include("**/*.properties")
         }
     }
 }
@@ -324,16 +334,45 @@ tasks.register<Copy>("prepareMacDist") {
 tasks.test {
     useJUnitPlatform()
 
-    // jqwik property-based testing configuration
-    systemProperty("jqwik.default.arbitrary.samples.size", "1000")
-    systemProperty("jqwik.default.arbitrary.tries", "100")
-    systemProperty("jqwik.default.arbitrary.seed", "12345") // Reproducible tests
+    // Headless mode for CI compatibility (Swing tests throw HeadlessException without this)
+    systemProperty("java.awt.headless", "true")
 
     testLogging {
         events("passed", "skipped", "failed")
         showStandardStreams = true
         exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     }
+}
+
+// ============================================================================
+// Code Coverage (JaCoCo)
+// ============================================================================
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+}
+
+// ============================================================================
+// Static Analysis (SpotBugs)
+// ============================================================================
+
+spotbugs {
+    ignoreFailures.set(true)
+    excludeFilter.set(file("config/spotbugs-exclude.xml"))
+}
+
+// ============================================================================
+// Dependency Vulnerability Scanning (OWASP)
+// ============================================================================
+
+dependencyCheck {
+    failBuildOnCVSS = 11f  // report only, never fail
+    suppressionFile = "config/owasp-suppressions.xml"
+    analyzers.assemblyEnabled = false
 }
 
 // ============================================================================
@@ -356,6 +395,8 @@ tasks.register<Exec>("jpackageMac") {
         "--main-class", "freemind.main.FreeMindStarter",
         "--icon", "images/FreeMindWindowIconModern.icns",
         "--app-version", jpackageVersion,
+        "--vendor", "Denomas Engineering",
+        "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m",
         "--java-options", "-Dapple.laf.useScreenMenuBar=true"
@@ -377,6 +418,8 @@ tasks.register<Exec>("jpackageWin") {
         "--main-jar", "freemind-ce-${project.version}.jar",
         "--main-class", "freemind.main.FreeMindStarter",
         "--app-version", jpackageVersion,
+        "--vendor", "Denomas Engineering",
+        "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m"
     )
@@ -398,6 +441,8 @@ tasks.register<Exec>("jpackageLinux") {
         "--main-class", "freemind.main.FreeMindStarter",
         "--icon", "images/FreeMindWindowIcon.png",
         "--app-version", jpackageVersion,
+        "--vendor", "Denomas Engineering",
+        "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m"
     )
