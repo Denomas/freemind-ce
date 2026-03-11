@@ -38,7 +38,7 @@ import java.util.logging.Logger;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class FreeMindCommon {
 
@@ -222,7 +222,7 @@ public class FreeMindCommon {
 	private static Logger logger = null;
 
 	/**
-	 * 
+	 *
 	 */
 	public FreeMindCommon(FreeMindMain main) {
 		super();
@@ -402,7 +402,21 @@ public class FreeMindCommon {
 			value = localValue == null ? value.substring(1).trim() : localValue;
 			setDefaultProperty(label, value);
 		}
+		if (label.startsWith("keystroke_")) {
+			value = adaptKeystrokeForPlatform(value);
+		}
 		return value;
+	}
+
+	private static String adaptKeystrokeForPlatform(String keystroke) {
+		if (keystroke == null) {
+			return null;
+		}
+		if (Tools.isMacOsX()) {
+			keystroke = keystroke.replaceAll("\\bcontrol\\b", "meta");
+			keystroke = keystroke.replaceAll("\\bINSERT\\b", "TAB");
+		}
+		return keystroke;
 	}
 
 	public void loadUIProperties(Properties props) {
