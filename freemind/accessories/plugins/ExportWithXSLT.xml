@@ -46,30 +46,6 @@
 		<plugin_property name="create_html_linked_image" value="true"/>
 		<plugin_property name="link_replacement_format_string" value="{1}"/>
 	</plugin_action>
-	<plugin_action documentation="%accessories/plugins/ExportWithXSLT_Applet.properties_documentation" name="%accessories/plugins/ExportWithXSLT_Applet.properties_name" base="freemind.extensions.ModeControllerHookAdapter" label="accessories/plugins/ExportWithXSLT_Applet.properties" class_name="accessories.plugins.ExportWithXSLT">
-		<plugin_mode class_name="freemind.modes.mindmapmode"/>
-		<plugin_menu location="menu_bar/file/export/html/exportHTML_Applet"/>
-		<plugin_property name="file_type" value="html"/>
-		<plugin_property name="file_description" value="%accessories/plugins/ExportWithXSLT_Applet.properties_webpage"/>
-		<plugin_property name="xslt_file" value="accessories/freemind2applet.xsl"/>
-		<plugin_property name="create_dir" value="true"/>
-		<plugin_property name="files_to_copy" value="freemindbrowser.jar"/>
-		<plugin_property name="file_prefix" value="browser/"/>
-		<plugin_property name="copy_map" value="true"/>
-		<plugin_property name="load_file" value="true"/>
-	</plugin_action>
-	<plugin_action documentation="%accessories/plugins/ExportWithXSLT_Flash.properties_documentation" name="%accessories/plugins/ExportWithXSLT_Flash.properties_name" base="freemind.extensions.ModeControllerHookAdapter" label="accessories/plugins/ExportWithXSLT_Flash.properties" class_name="accessories.plugins.ExportWithXSLT">
-		<plugin_mode class_name="freemind.modes.mindmapmode"/>
-		<plugin_menu location="menu_bar/file/export/html/exportHTML_Flash"/>
-		<plugin_property name="file_type" value="html"/>
-		<plugin_property name="file_description" value="%accessories/plugins/ExportWithXSLT_Applet.properties_webpage"/>
-		<plugin_property name="xslt_file" value="accessories/freemind2flash.xsl"/>
-		<plugin_property name="create_dir" value="true"/>
-		<plugin_property name="files_to_copy" value="visorFreemind.swf,flashobject.js"/>
-		<plugin_property name="file_prefix" value="accessories/plugins/flash/"/>
-		<plugin_property name="copy_map" value="true"/>
-		<plugin_property name="load_file" value="true"/>
-	</plugin_action>
 	<plugin_action documentation="%accessories/plugins/ExportWithXSLT_TASKSTJI.properties_documentation" name="%accessories/plugins/ExportWithXSLT_TASKSTJI.properties_name" base="freemind.extensions.ModeControllerHookAdapter" label="accessories/plugins/ExportWithXSLT_TASKSTJI.properties" class_name="accessories.plugins.ExportWithXSLT">
 		<plugin_mode class_name="freemind.modes.mindmapmode"/>
 		<plugin_menu location="menu_bar/file/export/other/exportTASKSTJI"/>
@@ -117,21 +93,16 @@
 		<plugin_property name="load_file" value="true"/>
 		<plugin_property name="create_html_linked_image" value="false"/>
 	</plugin_action>
-<!--     <plugin_action
-	documentation="%accessories/plugins/ExportToLatex.properties_documentation"
-	name="%accessories/plugins/ExportToLatex.properties_name" base="freemind.extensions.ModeControllerHookAdapter"
-	label="accessories/plugins/ExportToLatex.properties" class_name="accessories.plugins.ExportWithXSLT">
-	<plugin_mode class_name="freemind.modes.mindmapmode" />
-	<plugin_menu location="menu_bar/file/export/other/exportLatex" />
-	<plugin_property name="file_type" value="tex" />
-	<plugin_property name="name_extension" value="" />
-	<plugin_property name="file_description"
-		value="%accessories/plugins/ExportToLatex.properties" />
-	<plugin_property name="xslt_file" value="accessories/mm2latex.xsl" />
-	<plugin_property name="copy_map" value="false" />
-	<plugin_property name="load_file" value="false" />
-	<plugin_property name="create_dir" value="false" />
-	<plugin_property name="create_html_linked_image" value="false" />
-</plugin_action>
- -->
+	<plugin_action documentation="%accessories/plugins/ExportToLatex.properties_documentation" name="%accessories/plugins/ExportToLatex.properties_name" base="freemind.extensions.ModeControllerHookAdapter" label="accessories/plugins/ExportToLatex.properties" class_name="accessories.plugins.ExportWithXSLT">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportLatex"/>
+		<plugin_property name="file_type" value="tex"/>
+		<plugin_property name="name_extension" value=""/>
+		<plugin_property name="file_description" value="%accessories/plugins/ExportToLatex.properties_webpage"/>
+		<plugin_property name="xslt_file" value="accessories/mm2latex.xsl"/>
+		<plugin_property name="copy_map" value="false"/>
+		<plugin_property name="load_file" value="false"/>
+		<plugin_property name="create_dir" value="false"/>
+		<plugin_property name="create_html_linked_image" value="false"/>
+	</plugin_action>
 </plugin>

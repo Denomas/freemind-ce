@@ -1,80 +1,109 @@
 package plugins.latex;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.AffineTransform;
 
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
-import atp.sHotEqn;
+import org.scilab.forge.jlatexmath.TeXConstants;
+import org.scilab.forge.jlatexmath.TeXFormula;
+import org.scilab.forge.jlatexmath.TeXIcon;
 
-@SuppressWarnings("serial")
-public class JZoomedHotEqn extends sHotEqn {
-	static private double zoom = 1f;
-	static String editorTitle = null;
+public class JZoomedHotEqn extends JComponent {
+	private static double zoom = 1.0;
+	private static String editorTitle = null;
 	private LatexNodeHook model;
+	private String equation;
+	private TeXIcon texIcon;
 
 	JZoomedHotEqn(LatexNodeHook model) {
-		setDebug(false);
-		setEditable(false);
-		setBorder(true);
 		this.model = model;
-		setEquation(model.getContent(null));
+		this.equation = model.getContent(null);
+		setBorder(new LineBorder(Color.GRAY, 1));
+		setOpaque(false);
+		rebuildIcon();
+
 		if (editorTitle == null) {
 			editorTitle = model.getMindMapController().getText(
 					"plugins/latex/LatexNodeHook.editorTitle");
 		}
+
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					edit();
+					e.consume();
+				}
+			}
+		});
 	}
 
+	private void rebuildIcon() {
+		try {
+			TeXFormula formula = new TeXFormula(equation);
+			texIcon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, (float) (16 * zoom));
+			texIcon.setInsets(new Insets(2, 2, 2, 2));
+		} catch (Exception e) {
+			try {
+				TeXFormula errorFormula = new TeXFormula("\\text{" + escapeLatex(e.getMessage()) + "}");
+				texIcon = errorFormula.createTeXIcon(TeXConstants.STYLE_DISPLAY, (float) (12 * zoom));
+				texIcon.setInsets(new Insets(2, 2, 2, 2));
+			} catch (Exception e2) {
+				texIcon = null;
+			}
+		}
+	}
+
+	private static String escapeLatex(String text) {
+		if (text == null) return "error";
+		return text.replace("\\", "\\textbackslash ")
+				.replace("{", "\\{")
+				.replace("}", "\\}")
+				.replace("_", "\\_")
+				.replace("^", "\\^{}")
+				.replace("#", "\\#")
+				.replace("&", "\\&")
+				.replace("%", "\\%")
+				.replace("$", "\\$");
+	}
+
+	@Override
 	public Dimension getPreferredSize() {
-		Dimension dimension = isValid() ? super.getPreferredSize()
-				: getSizeof(getEquation());
-		dimension.height *= zoom;
-		dimension.width *= zoom;
-		return dimension;
+		if (texIcon != null) {
+			return new Dimension(texIcon.getIconWidth(), texIcon.getIconHeight());
+		}
+		return new Dimension(50, 20);
 	}
 
-	public void paint(Graphics g) {
-		if (zoom != 1F) {
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if (texIcon != null) {
 			Graphics2D g2 = (Graphics2D) g;
-			final AffineTransform transform = g2.getTransform();
-			g2.scale(zoom, zoom);
-			super.paint(g);
-			g2.setTransform(transform);
-		} else {
-			super.paint(g);
+			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+			texIcon.paintIcon(this, g2, 0, 0);
 		}
-	}
-
-	public void setBounds(int x, int y, int w, int h) {
-		if (zoom < 1f) {
-			super.setBounds(x, y, (int) (w / zoom), (int) (h / zoom));
-		} else {
-			super.setBounds(x, y, (int) (w), (int) (h));
-		}
-	}
-
-	public void mouseClicked(MouseEvent e) {
-		if (e.getButton() == MouseEvent.BUTTON1) {
-			edit();
-			e.consume();
-			return;
-		}
-		super.mouseClicked(e);
 	}
 
 	private void edit() {
-		JTextArea textArea = new JTextArea(getEquation());
+		JTextArea textArea = new JTextArea(equation);
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		final JScrollPane editorScrollPane = new JScrollPane(textArea);
-		editorScrollPane
-				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		editorScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		editorScrollPane.setPreferredSize(new Dimension(500, 160));
 		JDialog edit = new JDialog(JOptionPane.getFrameForComponent(this),
 				editorTitle, true);
@@ -89,9 +118,28 @@ public class JZoomedHotEqn extends sHotEqn {
 
 	public void setModel(LatexNodeHook model) {
 		this.model = model;
-		setEquation(model.getContent(null));
+		this.equation = model.getContent(null);
+		rebuildIcon();
 		revalidate();
 		repaint();
 	}
 
+	public void setEquation(String equation) {
+		this.equation = equation;
+		rebuildIcon();
+		revalidate();
+		repaint();
+	}
+
+	public String getEquation() {
+		return equation;
+	}
+
+	static void setZoom(double newZoom) {
+		zoom = newZoom;
+	}
+
+	static double getZoom() {
+		return zoom;
+	}
 }

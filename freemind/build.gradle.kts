@@ -147,7 +147,8 @@ dependencies {
     implementation(files("plugins/collaboration/jabber/muse.jar"))
     implementation(files("plugins/collaboration/jabber/commons-logging.jar"))
     implementation(files("plugins/help/jhall.jar"))
-    implementation(files("plugins/latex/HotEqn.jar"))
+    // LaTeX plugin (JLaTeXMath) — built as separate module :freemind:plugins:latex
+    implementation("org.scilab.forge:jlatexmath:1.0.7")
     implementation(files("plugins/collaboration/database/hsqldb.jar"))
 
     // Batik (SVG Support) - for plugins

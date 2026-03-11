@@ -22,7 +22,6 @@ package plugins.latex;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -33,7 +32,7 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author Dimitry Polivaev
- * 
+ *
  * @file LatexNodeHook.java
  * @package freemind.modes.mindmapmode
  * */
@@ -45,7 +44,7 @@ public class LatexNodeHook extends PermanentMindMapNodeHookAdapter {
 	 */
 	public LatexNodeHook() {
 		super();
-		equation = "\\mbox{I}^\\fgcolor{ff0000}{\\heartsuit}\\mbox{HotEqn}";
+		equation = "E = mc^{2}";
 		viewers = new LinkedHashSet<>();
 	}
 
@@ -95,10 +94,8 @@ public class LatexNodeHook extends PermanentMindMapNodeHookAdapter {
 
 	public void setContent(String key, String content) {
 		equation = content;
-		Iterator iterator = viewers.iterator();
-		while (iterator.hasNext()) {
-			JZoomedHotEqn comp = (JZoomedHotEqn) iterator.next();
-			comp.setModel(this);
+		for (Component comp : viewers) {
+			((JZoomedHotEqn) comp).setModel(this);
 		}
 		getController().nodeChanged(getNode());
 	}
@@ -114,9 +111,7 @@ public class LatexNodeHook extends PermanentMindMapNodeHookAdapter {
 	}
 
 	public void shutdownMapHook() {
-		Iterator iterator = viewers.iterator();
-		while (iterator.hasNext()) {
-			JZoomedHotEqn comp = (JZoomedHotEqn) iterator.next();
+		for (Component comp : viewers) {
 			comp.getParent().remove(comp);
 		}
 		super.shutdownMapHook();

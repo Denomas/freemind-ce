@@ -67,20 +67,20 @@ public class TransformTest extends FreeMindTestBase {
 				properties);
 	}
 
-	public void testExportHtmlApplet() throws Exception {
+	public void testExportLatex() throws Exception {
 		String mapFileToBeExported = TESTMAP_MM;
-		String destinationFileName = "/tmp/test_applet.html";
+		String destinationFileName = "/tmp/test_latex.tex";
 		Properties properties = getProperties(EXPORT_WITH_XSLT_XML,
-				"accessories/plugins/ExportWithXSLT_Applet.properties");
+				"accessories/plugins/ExportToLatex.properties");
 		doExportWithExportPlugin(mapFileToBeExported, destinationFileName,
 				properties);
 	}
 
-	public void testExportHtmlFlash() throws Exception {
+	public void testExportStandaloneHtml() throws Exception {
 		String mapFileToBeExported = TESTMAP_MM;
-		String destinationFileName = "/tmp/test_flash.html";
+		String destinationFileName = "/tmp/test_standalone.html";
 		Properties properties = getProperties(EXPORT_WITH_XSLT_XML,
-				"accessories/plugins/ExportWithXSLT_Flash.properties");
+				"accessories/plugins/ExportWithXSLT_StandaloneHTML.properties");
 		doExportWithExportPlugin(mapFileToBeExported, destinationFileName,
 				properties);
 	}
