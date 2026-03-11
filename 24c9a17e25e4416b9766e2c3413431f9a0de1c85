@@ -1,0 +1,33 @@
+freemind/freemind/view/mindmapview/NodeFoldingComponent.java
+  1b5fbaddcf442270 82-83
+freemind/Resources_en.properties
+  1b5fbaddcf442270 5-7
+freemind/freemind/view/mindmapview/MapView.java
+  1b5fbaddcf442270 364-368
+freemind/freemind/controller/FreeMindToolBar.java
+  1b5fbaddcf442270 79-80
+freemind/freemind/view/mindmapview/NodeView.java
+  1b5fbaddcf442270 848-853
+freemind/Resources_tr.properties
+  1b5fbaddcf442270 6-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "24c9a17e25e4416b9766e2c3413431f9a0de1c85",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 23,
+      "total_deletions": 2,
+      "accepted_lines": 21,
+      "overriden_lines": 0
+    }
+  }
+}
