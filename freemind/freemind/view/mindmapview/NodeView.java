@@ -121,7 +121,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 		}
 		if(sListener == null){
 			sListener = new FreemindPropertyListener() {
-				
+
 				public void propertyChanged(String pPropertyName,
 						String pNewValue, String pOldValue) {
 					if (Tools.safeEquals(pPropertyName,
@@ -154,7 +154,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 			add(mFoldingListener, getComponentCount()-1);
 
 			mFoldingListener.addActionListener(new ActionListener() {
-				
+
 				public void actionPerformed(ActionEvent pE) {
 					getViewFeedback().setFolded(getModel(), !getModel().isFolded());
 				}
@@ -169,11 +169,11 @@ public class NodeView extends JComponent implements TreeModelListener {
 			mFoldingListener = null;
 		}
 	}
-	
+
 	public void propertyChanged(String pPropertyName, String pNewValue,
 			String pOldValue) {
 	}
-	
+
 
 	void setMainView(MainView newMainView) {
 		if (mainView != null) {
@@ -427,7 +427,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 	/**
 	 * Returns the point the edge should start given the point of the child node
 	 * that should be connected.
-	 * 
+	 *
 	 * @param targetView
 	 *            TODO
 	 */
@@ -507,7 +507,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 	 * Selected is the n-th node from above.
 	 * Look for the last node visible on the screen and make this node the first one.
 	 * Now select the n-th node from above.
-	 * 
+	 *
 	 * Easier idea to implement:
 	 * Store node y position as y0.
 	 * Search for a node with the same parent with y position y0+height
@@ -845,6 +845,12 @@ public class NodeView extends JComponent implements TreeModelListener {
 	private void updateText() {
 		String nodeText = getModel().toString();
 		final boolean isHtml = nodeText.startsWith("<html>");
+		// Update accessible name with plain text for screen readers
+		javax.accessibility.AccessibleContext ac = getAccessibleContext();
+		if (ac != null) {
+			String plainText = isHtml ? nodeText.replaceAll("<[^>]*>", "").trim() : nodeText;
+			ac.setAccessibleName(plainText);
+		}
 		// 6) Set the text
 		// Right now, this implementation is quite logical, although it allows
 		// for nonconvex feature of nodes starting with <html>.
@@ -965,7 +971,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 			iconImages.addImage(myIcon);
 
 		}
-		
+
 		if (SHOW_ATTRIBUTE_ICON && (getModel().getAttributeTableLength()>0)) {
 			if (sAttributeIcon == null) {
 				sAttributeIcon = freemind.view.ImageFactory.getInstance().createUnscaledIcon(Resources.getInstance().getResource(
@@ -1133,7 +1139,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 	/**
 	 * Determines to a given color a color, that is the best contrary color. It
 	 * is different from {@link #getAntiColor2}.
-	 * 
+	 *
 	 * @since PPS 1.1.1
 	 */
 	protected static Color getAntiColor1(Color c) {
@@ -1150,7 +1156,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 	/**
 	 * Determines to a given color a color, that is the best contrary color. It
 	 * is different from {@link #getAntiColor1}.
-	 * 
+	 *
 	 * @since PPS 1.1.1
 	 */
 	protected static Color getAntiColor2(Color c) {
@@ -1272,7 +1278,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.TreeModelListener#treeNodesChanged(javax.swing.event
 	 * .TreeModelEvent)
@@ -1283,7 +1289,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.TreeModelListener#treeNodesInserted(javax.swing.event
 	 * .TreeModelEvent)
@@ -1305,7 +1311,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.TreeModelListener#treeNodesRemoved(javax.swing.event
 	 * .TreeModelEvent)
@@ -1368,7 +1374,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.TreeModelListener#treeStructureChanged(javax.swing.
 	 * event.TreeModelEvent)
@@ -1394,7 +1400,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	/**
 	 * @return the left/right point of the folding circle. To receive its
-	 * center, the amount has to be moved to left/right (depending on its side) 
+	 * center, the amount has to be moved to left/right (depending on its side)
 	 * by the folding circle width.
 	 */
 	public Point getFoldingMarkPosition() {
@@ -1465,7 +1471,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
 	 */
 	public void paint(Graphics g) {
@@ -1498,7 +1504,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.Component#toString()
 	 */
 	public String toString() {

@@ -39,7 +39,7 @@ public class FreeMindToolBar extends JToolBar {
 	private static Insets nullInsets = new Insets(0, 0, 0, 0);
 
 	/**
-	 * 
+	 *
 	 */
 	public FreeMindToolBar() {
 		this("", JToolBar.HORIZONTAL);
@@ -67,7 +67,7 @@ public class FreeMindToolBar extends JToolBar {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JToolBar#add(javax.swing.Action)
 	 */
 	public JButton add(Action arg0) {
@@ -76,6 +76,8 @@ public class FreeMindToolBar extends JToolBar {
 				Tools.removeMnemonic(actionName.toString()));
 		JButton returnValue = super.add(arg0);
 		returnValue.setName(actionName.toString());
+		returnValue.getAccessibleContext().setAccessibleName(
+				Tools.removeMnemonic(actionName.toString()));
 		returnValue.setText("");
 		returnValue.setMargin(nullInsets);
 		returnValue.setFocusable(false);

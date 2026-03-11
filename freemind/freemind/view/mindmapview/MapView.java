@@ -361,6 +361,11 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 		}
 		this.setAutoscrolls(true);
 
+		getAccessibleContext().setAccessibleName(
+				Resources.getInstance().getResourceString("accessibleMapView"));
+		getAccessibleContext().setAccessibleDescription(
+				Resources.getInstance().getResourceString("accessibleMapViewDescription"));
+
 		this.setLayout(new MindMapLayout());
 
 		initRoot();

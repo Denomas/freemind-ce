@@ -50,7 +50,7 @@ import freemind.modes.MindMapNode;
 
 /**
  * @author Foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class NodeFoldingComponent extends JButton {
@@ -68,7 +68,7 @@ public class NodeFoldingComponent extends JButton {
 		super();
 		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
-					this.getClass().getName());			
+					this.getClass().getName());
 		}
 		this.nodeView = view;
 		setModel(new DefaultButtonModel());
@@ -79,30 +79,32 @@ public class NodeFoldingComponent extends JButton {
 		setFocusPainted(false);
 		setFocusable(false);
 		setAlignmentY(Component.TOP_ALIGNMENT);
+		getAccessibleContext().setAccessibleName(
+				freemind.main.Resources.getInstance().getResourceString("accessibleFoldButton"));
 		setUI(new RoundImageButtonUI());
 		mIsEnabled = Resources.getInstance().getBoolProperty(
 				FreeMind.RESOURCES_DISPLAY_FOLDING_BUTTONS);
 		if (mIsEnabled) {
 			addMouseListener(new MouseListener() {
-	
+
 				public void mouseReleased(MouseEvent pE) {
 				}
-	
+
 				public void mousePressed(MouseEvent pE) {
 				}
-	
+
 				public void mouseExited(MouseEvent pE) {
 					mIsEntered = false;
 					mColorCounter = COLOR_COUNTER_MAX;
 					repaint();
 				}
-	
+
 				public void mouseEntered(MouseEvent pE) {
 					mIsEntered = true;
 					startTimer();
 					repaint();
 				}
-	
+
 				public void mouseClicked(MouseEvent pE) {
 				}
 			});
@@ -120,7 +122,7 @@ public class NodeFoldingComponent extends JButton {
 						}
 						repaint();
 					}
-	
+
 				}
 			};
 			mTimer = new Timer(delay, taskPerformer);
