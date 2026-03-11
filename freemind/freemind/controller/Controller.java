@@ -112,7 +112,7 @@ import freemind.view.mindmapview.MapView;
 public class Controller implements MapModuleChangeObserver {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final String PAGE_FORMAT_PROPERTY = "page_format";
 	private HashSet<MapModuleManager.MapTitleChangeListener> mMapTitleChangeListenerSet = new HashSet<>();
@@ -634,7 +634,7 @@ public class Controller implements MapModuleChangeObserver {
 	 * Creates a new mode (controller), activates the toolbars, title and
 	 * deactivates all actions. Does nothing, if the mode is identical to the
 	 * current mode.
-	 * 
+	 *
 	 * @return false if the change was not successful.
 	 */
 	public boolean createNewMode(String mode) {
@@ -732,7 +732,7 @@ public class Controller implements MapModuleChangeObserver {
 
 	/**
 	 * Closes the actual map.
-	 * 
+	 *
 	 * @param force
 	 *            true= without save.
 	 */
@@ -1162,7 +1162,22 @@ public class Controller implements MapModuleChangeObserver {
 			final JLabel userZoomL = new JLabel(getResourceString("user_zoom"));
 			final JTextField userZoom = new JTextField(
 					getProperty("user_zoom"), 3);
-			userZoom.setEditable(!fitToPage.isSelected());
+			boolean isFitToPage = fitToPage.isSelected();
+			userZoom.setEditable(!isFitToPage);
+
+			// Fit to N pages wide
+			int currentPagesWide = 1;
+			try {
+				currentPagesWide = Integer.parseInt(getProperty("pages_wide"));
+			} catch (Exception ex) {
+				// default 1
+			}
+			final JLabel pagesWideL = new JLabel(getResourceString("pages_wide"));
+			final javax.swing.JSpinner pagesWide = new javax.swing.JSpinner(
+					new javax.swing.SpinnerNumberModel(
+							Math.max(1, currentPagesWide), 1, 99, 1));
+			pagesWide.setEnabled(isFitToPage);
+
 			final JButton okButton = new JButton();
 			Tools.setLabelAndMnemonic(okButton, getResourceString("ok"));
 			final Tools.IntHolder eventSource = new Tools.IntHolder();
@@ -1180,42 +1195,63 @@ public class Controller implements MapModuleChangeObserver {
 			});
 			fitToPage.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
-					userZoom.setEditable(e.getStateChange() == ItemEvent.DESELECTED);
+					boolean selected = e.getStateChange() == ItemEvent.SELECTED;
+					userZoom.setEditable(!selected);
+					pagesWide.setEnabled(selected);
 				}
 			});
 
-			// c.weightx = 0.5;
 			c.gridx = 0;
 			c.gridy = 0;
 			c.gridwidth = 2;
+			c.anchor = GridBagConstraints.WEST;
+			c.insets = new Insets(0, 0, 6, 0);
 			gridbag.setConstraints(fitToPage, c);
 			panel.add(fitToPage);
 			c.gridy = 1;
 			c.gridwidth = 1;
+			c.insets = new Insets(4, 24, 4, 8);
+			gridbag.setConstraints(pagesWideL, c);
+			panel.add(pagesWideL);
+			c.gridx = 1;
+			c.insets = new Insets(4, 0, 4, 0);
+			gridbag.setConstraints(pagesWide, c);
+			panel.add(pagesWide);
+			c.gridx = 0;
+			c.gridy = 2;
+			c.gridwidth = 1;
+			c.insets = new Insets(8, 0, 4, 8);
 			gridbag.setConstraints(userZoomL, c);
 			panel.add(userZoomL);
 			c.gridx = 1;
 			c.gridwidth = 1;
+			c.insets = new Insets(8, 0, 4, 0);
 			gridbag.setConstraints(userZoom, c);
 			panel.add(userZoom);
-			c.gridy = 2;
+			c.gridy = 3;
 			c.gridx = 0;
-			c.gridwidth = 3;
-			c.insets = new Insets(10, 0, 0, 0);
+			c.gridwidth = 2;
+			c.insets = new Insets(14, 0, 0, 0);
+			c.anchor = GridBagConstraints.CENTER;
 			gridbag.setConstraints(okButton, c);
 			panel.add(okButton);
 			panel.setLayout(gridbag);
+			panel.setBorder(javax.swing.BorderFactory.createEmptyBorder(
+					16, 20, 16, 20));
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setContentPane(panel);
 			dialog.setLocationRelativeTo((JFrame) getFrame());
 			dialog.getRootPane().setDefaultButton(okButton);
-			dialog.pack(); // calculate the size
+			dialog.pack();
+			dialog.setMinimumSize(dialog.getSize());
 			dialog.setVisible(true);
 
 			if (eventSource.getValue() == 1) {
 				setProperty("user_zoom", userZoom.getText());
 				setProperty("fit_to_page", fitToPage.isSelected() ? "true"
 						: "false");
+				setProperty("pages_wide",
+						String.valueOf(pagesWide.getValue()));
 			} else
 				return;
 
@@ -1644,7 +1680,7 @@ public class Controller implements MapModuleChangeObserver {
 
 	/**
 	 * @author foltin
-	 * 
+	 *
 	 */
 	public class PropertyAction extends AbstractAction {
 
@@ -1919,25 +1955,25 @@ public class Controller implements MapModuleChangeObserver {
 	public enum SplitComponentType {
 		NOTE_PANEL(0),
 		ATTRIBUTE_PANEL(1);
-		
+
 		private int mIndex;
 
 		private SplitComponentType(int index) {
 			mIndex = index;
 		}
-		
+
 		public int getIndex() {
 			return mIndex;
 		}
-		
+
 	};
 
 	private JOptionalSplitPane mOptionalSplitPane = null;
-	
+
 	/**
 	 * Inserts a (south) component into the split pane. If the screen isn't
 	 * split yet, a split pane should be created on the fly.
-	 * 
+	 *
 	 * @param pMindMapComponent
 	 *            south panel to be inserted
 	 * @return the split pane in order to move the dividers.
@@ -1968,7 +2004,7 @@ public class Controller implements MapModuleChangeObserver {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void storeOptionSplitPanePosition() {
 		if (mOptionalSplitPane != null) {

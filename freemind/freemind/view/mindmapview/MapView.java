@@ -85,7 +85,7 @@ import freemind.preferences.FreemindPropertyListener;
  */
 @SuppressWarnings("serial")
 public class MapView extends JPanel implements ViewAbstraction, Printable, Autoscroll {
-	
+
 	/**
 	 * Currently, this listener does nothing. But it should move the map
 	 * according to the resize event, such that the current map's center stays
@@ -180,7 +180,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 			if (pNode.getModel() == null)
 				return;
 			getViewFeedback().changeSelection(pNode, pIsSelected);
-			
+
 		}
 
 		public int size() {
@@ -260,6 +260,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 	private Color background = null;
 	private Rectangle boundingRectangle = null;
 	private boolean fitToPage = true;
+	private int pagesWide = 1;
 
 	int mPaintingTime;
 	int mPaintingAmount;
@@ -424,7 +425,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 	}
 
 
-	
+
 	private void createPropertyChangeListener() {
 		propertyChangeListener = new FreemindPropertyListener() {
 
@@ -473,7 +474,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 		};
 		Controller.addPropertyChangeListener(propertyChangeListener);
 	}
-	
+
 	private static void setAntialiasEdges(boolean pAntialiasEdges) {
 		antialiasEdges = pAntialiasEdges;
 	}
@@ -847,7 +848,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 		centerNode(getRoot());
 	}
 
-	
+
 	public void select(NodeView node) {
 		if (node == null) {
 			logger.warning("Select with null NodeView called!");
@@ -859,7 +860,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 		setSiblingMaxLevel(node.getModel().getNodeLevel());
 	}
 
-	
+
 	/**
 	 * Select the node, resulting in only that one being selected.
 	 */
@@ -1182,7 +1183,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.Container#validateTree()
 	 */
 	protected void validateTree() {
@@ -1231,7 +1232,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
 	 */
 	public void paint(Graphics g) {
@@ -1412,6 +1413,14 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 			}
 			boundingRectangle = getInnerBounds();
 			fitToPage = Resources.getInstance().getBoolProperty("fit_to_page");
+			pagesWide = 1;
+			try {
+				pagesWide = Integer.parseInt(
+						Resources.getInstance().getProperty("pages_wide"));
+				if (pagesWide < 1) pagesWide = 1;
+			} catch (Exception e) {
+				pagesWide = 1;
+			}
 		} else {
 			logger.warning("Called preparePrinting although isPrinting is true.");
 		}
@@ -1473,29 +1482,50 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 		// page
 		// printing really works, have look at Book class.
 
-		if (fitToPage && pageIndex > 0) {
-			return Printable.NO_SUCH_PAGE;
-		}
-
 		Graphics2D graphics2D = (Graphics2D) graphics;
 
 		try {
 			preparePrinting();
 
 			double zoomFactor = 1;
+			int nrPagesInWidth = 1;
+			int nrPagesInHeight = 1;
+
 			if (fitToPage) {
-				double zoomFactorX = pageFormat.getImageableWidth()
-						/ boundingRectangle.getWidth();
-				double zoomFactorY = pageFormat.getImageableHeight()
-						/ boundingRectangle.getHeight();
-				zoomFactor = Math.min(zoomFactorX, zoomFactorY);
+				if (pagesWide <= 1) {
+					// Fit entire map to single page
+					if (pageIndex > 0) {
+						return Printable.NO_SUCH_PAGE;
+					}
+					double zoomFactorX = pageFormat.getImageableWidth()
+							/ boundingRectangle.getWidth();
+					double zoomFactorY = pageFormat.getImageableHeight()
+							/ boundingRectangle.getHeight();
+					zoomFactor = Math.min(zoomFactorX, zoomFactorY);
+				} else {
+					// Fit to N pages wide, calculate height proportionally
+					zoomFactor = pagesWide * pageFormat.getImageableWidth()
+							/ boundingRectangle.getWidth();
+					nrPagesInWidth = pagesWide;
+					nrPagesInHeight = (int) Math.ceil(zoomFactor
+							* boundingRectangle.getHeight()
+							/ pageFormat.getImageableHeight());
+					if (pageIndex >= nrPagesInWidth * nrPagesInHeight) {
+						return Printable.NO_SUCH_PAGE;
+					}
+					int yPageCoord = (int) Math.floor(pageIndex / nrPagesInWidth);
+					int xPageCoord = pageIndex - yPageCoord * nrPagesInWidth;
+					graphics2D.translate(-pageFormat.getImageableWidth()
+							* xPageCoord, -pageFormat.getImageableHeight()
+							* yPageCoord);
+				}
 			} else {
 				zoomFactor = userZoomFactor;
 
-				int nrPagesInWidth = (int) Math.ceil(zoomFactor
+				nrPagesInWidth = (int) Math.ceil(zoomFactor
 						* boundingRectangle.getWidth()
 						/ pageFormat.getImageableWidth());
-				int nrPagesInHeight = (int) Math.ceil(zoomFactor
+				nrPagesInHeight = (int) Math.ceil(zoomFactor
 						* boundingRectangle.getHeight()
 						/ pageFormat.getImageableHeight());
 				if (pageIndex >= nrPagesInWidth * nrPagesInHeight) {
@@ -1587,7 +1617,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.dnd.Autoscroll#getAutoscrollInsets()
 	 */
 	public Insets getAutoscrollInsets() {
@@ -1601,7 +1631,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.dnd.Autoscroll#autoscroll(java.awt.Point)
 	 */
 	public void autoscroll(Point cursorLocn) {
@@ -1628,7 +1658,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getPreferredSize()
 	 */
 	public Dimension getPreferredSize() {
@@ -1749,7 +1779,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.MindMapNode#acceptViewVisitor(freemind.view.mindmapview
 	 * .NodeViewVisitor)
@@ -1762,5 +1792,5 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 
 	}
 
-	
+
 }
