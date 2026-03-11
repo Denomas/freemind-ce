@@ -1,0 +1,23 @@
+freemind/freemind/main/FreeMindCommon.java
+  c40946108e95727a 405-407,411-419
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "6cc69daba1be513a966a4c8e03b2e983ab8d462a",
+  "prompts": {
+    "c40946108e95727a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "688bfcb2-72ea-40ac-9f61-c909e2f793e9",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 497,
+      "total_deletions": 184,
+      "accepted_lines": 313,
+      "overriden_lines": 0
+    }
+  }
+}
