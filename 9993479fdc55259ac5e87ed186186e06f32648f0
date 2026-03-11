@@ -1,0 +1,31 @@
+freemind/Resources_tr.properties
+  1b5fbaddcf442270 195
+freemind/freemind.properties
+  1b5fbaddcf442270 97-101
+freemind/freemind/controller/Controller.java
+  1b5fbaddcf442270 1165-1180,1198-1200,1207-1208,1213-1221,1223,1228,1231,1233-1235,1239-1240,1246,1253-1254
+freemind/freemind/view/mindmapview/MapView.java
+  1b5fbaddcf442270 263,1416-1423,1491-1493,1495-1499,1504-1521
+freemind/Resources_en.properties
+  1b5fbaddcf442270 194
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "9993479fdc55259ac5e87ed186186e06f32648f0",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 96,
+      "total_deletions": 23,
+      "accepted_lines": 84,
+      "overriden_lines": 0
+    }
+  }
+}
