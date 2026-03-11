@@ -27,10 +27,12 @@ import java.util.ListIterator;
 import javax.swing.JOptionPane;
 
 import freemind.extensions.ExportHook;
+import freemind.extensions.PermanentNodeHook;
 import freemind.main.Tools;
 import freemind.modes.MindIcon;
 import freemind.modes.MindIconEmoji;
 import freemind.modes.MindMapNode;
+import plugins.latex.LatexNodeHook;
 
 public class ContextGraphXmlExport extends ExportHook {
 
@@ -136,8 +138,10 @@ public class ContextGraphXmlExport extends ExportHook {
 				&& !node.getChildren().isEmpty();
 		boolean hasNote = note != null && !note.trim().isEmpty();
 		boolean hasLink = link != null && !link.trim().isEmpty();
+		String latexEquation = getLatexEquation(node);
+		boolean hasLatex = latexEquation != null;
 
-		if (!hasChildren && !hasNote && !hasLink) {
+		if (!hasChildren && !hasNote && !hasLink && !hasLatex) {
 			writer.write(indent + "<node" + attrs + "/>");
 			writer.newLine();
 			return;
@@ -158,6 +162,12 @@ public class ContextGraphXmlExport extends ExportHook {
 			writer.newLine();
 		}
 
+		// LaTeX equations
+		if (hasLatex) {
+			writer.write(indent + "  <latex><![CDATA[" + latexEquation + "]]></latex>");
+			writer.newLine();
+		}
+
 		// Children
 		for (ListIterator<MindMapNode> it = node.childrenUnfolded(); it
 				.hasNext();) {
@@ -166,6 +176,15 @@ public class ContextGraphXmlExport extends ExportHook {
 
 		writer.write(indent + "</node>");
 		writer.newLine();
+	}
+
+	private String getLatexEquation(MindMapNode node) {
+		for (PermanentNodeHook hook : node.getActivatedHooks()) {
+			if (hook instanceof LatexNodeHook) {
+				return ((LatexNodeHook) hook).getContent(null);
+			}
+		}
+		return null;
 	}
 
 	private String getPlainText(MindMapNode node) {

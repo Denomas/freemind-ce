@@ -26,12 +26,14 @@ import java.util.ListIterator;
 import javax.swing.JOptionPane;
 
 import freemind.extensions.ExportHook;
+import freemind.extensions.PermanentNodeHook;
 import freemind.main.Tools;
 import freemind.modes.MindIcon;
 import freemind.modes.MindMapCloud;
 import freemind.modes.MindMapEdge;
 import freemind.modes.MindMapNode;
 import freemind.modes.attributes.Attribute;
+import plugins.latex.LatexNodeHook;
 
 public class JsonExport extends ExportHook {
 
@@ -223,6 +225,14 @@ public class JsonExport extends ExportHook {
 			writer.write("}");
 		}
 
+		// LaTeX equations (from hooks)
+		String latexEquation = getLatexEquation(node);
+		if (latexEquation != null) {
+			writer.write(",");
+			writer.newLine();
+			writer.write(indent + "  \"latex\": " + jsonString(latexEquation));
+		}
+
 		// Children
 		if (children != null && !children.isEmpty()) {
 			writer.write(",");
@@ -245,6 +255,15 @@ public class JsonExport extends ExportHook {
 
 		writer.newLine();
 		writer.write(indent + "}");
+	}
+
+	private String getLatexEquation(MindMapNode node) {
+		for (PermanentNodeHook hook : node.getActivatedHooks()) {
+			if (hook instanceof LatexNodeHook) {
+				return ((LatexNodeHook) hook).getContent(null);
+			}
+		}
+		return null;
 	}
 
 	private String getPlainText(MindMapNode node) {

@@ -26,10 +26,12 @@ import java.util.ListIterator;
 import javax.swing.JOptionPane;
 
 import freemind.extensions.ExportHook;
+import freemind.extensions.PermanentNodeHook;
 import freemind.main.Tools;
 import freemind.modes.MindIcon;
 import freemind.modes.MindIconEmoji;
 import freemind.modes.MindMapNode;
+import plugins.latex.LatexNodeHook;
 
 public class ContextGraphMarkdownExport extends ExportHook {
 
@@ -105,6 +107,13 @@ public class ContextGraphMarkdownExport extends ExportHook {
 			}
 		}
 
+		// Write LaTeX equations
+		String latexEquation = getLatexEquation(node);
+		if (latexEquation != null) {
+			writer.write("$$" + latexEquation + "$$");
+			writer.newLine();
+		}
+
 		writer.newLine();
 		writeChildren(writer, node, level);
 	}
@@ -115,6 +124,15 @@ public class ContextGraphMarkdownExport extends ExportHook {
 				.hasNext();) {
 			writeNode(writer, it.next(), level + 1);
 		}
+	}
+
+	private String getLatexEquation(MindMapNode node) {
+		for (PermanentNodeHook hook : node.getActivatedHooks()) {
+			if (hook instanceof LatexNodeHook) {
+				return ((LatexNodeHook) hook).getContent(null);
+			}
+		}
+		return null;
 	}
 
 	private String getPlainText(MindMapNode node) {
