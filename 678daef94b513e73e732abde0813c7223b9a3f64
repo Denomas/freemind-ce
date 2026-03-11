@@ -1,0 +1,29 @@
+freemind/build.gradle.kts
+  1b5fbaddcf442270 450-497
+.github/workflows/release.yml
+  1b5fbaddcf442270 17-18,37-65,70-71,73-74,82-168,170,172,175,187
+.github/release-notes-template.md
+  1b5fbaddcf442270 1-42
+freemind/appimage/freemind-ce.desktop
+  1b5fbaddcf442270 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "678daef94b513e73e732abde0813c7223b9a3f64",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 260,
+      "total_deletions": 68,
+      "accepted_lines": 228,
+      "overriden_lines": 0
+    }
+  }
+}
