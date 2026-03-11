@@ -4,7 +4,7 @@
  *
  *   Copyright (C) 2002 by Thomas Alexandre (alexthomas(at)ganttproject.org)
  *   Copyright (C) 2005-2008 by Christian Foltin and Daniel Polansky
- *    
+ *
  ***************************************************************************/
 
 /***************************************************************************
@@ -47,7 +47,7 @@ import freemind.view.ImageFactory;
 public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 
 	private static final String FREEMIND_SPLASH = "images/Freemind_Splash_Butterfly_Modern.png";
-	
+
 	private static final int SPLASH_HEIGHT = 200;
 	private static final int SPLASH_WIDTH = 300;
 
@@ -144,23 +144,24 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 		JLabel splashImageLabel = new JLabel(splashImage) {
 			private Integer mWidth = null;
 			private final Font progressFont = new Font("SansSerif", Font.PLAIN, 10);
-			private Font versionTextFont = Tools.isAvailableFontFamily("Century Gothic") ? new Font("Century Gothic", Font.BOLD, 14) : new Font("Arial", Font.BOLD, 12);
+			private Font versionTextFont = Tools.isAvailableFontFamily("Century Gothic") ? new Font("Century Gothic", Font.BOLD, 14) : new Font("SansSerif", Font.BOLD, 13);
 
 			private int calcYRelative(int y){
 				return (int) (((float)y)/SPLASH_HEIGHT*splashImage.getIconHeight());
 			}
-			
+
 			private int calcXRelative(int x){
 				return (int) (((float)x)/SPLASH_WIDTH*splashImage.getIconWidth());
 			}
-			
+
 			public void paint(Graphics g) {
 				super.paint(g);
 				Graphics2D g2 = (Graphics2D) g;
 				g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
 						RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+						RenderingHints.VALUE_ANTIALIAS_ON);
 				g2.setFont(versionTextFont);
-				// Determine width of string to center it
 				String freemindVersion = frame.getFreemindVersion().toString();
 				if (mWidth == null) {
 					mWidth = Integer.valueOf(g2.getFontMetrics().stringWidth(
@@ -169,7 +170,7 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 				int yCoordinate = calcYRelative(58);
 				int xCoordinate = (int) (getSize().getWidth() / 2 - mWidth
 						.intValue() / 2);
-				g2.setColor(new Color(0x4d, 0x63, 0xb4));
+				g2.setColor(new Color(0x4a, 0x90, 0xd9));
 				g2.drawString(freemindVersion, xCoordinate, yCoordinate);
 				// Draw progress bar
 				String progressString = (String) getClientProperty("progressString");
@@ -178,22 +179,18 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 					int xBase = calcXRelative(7);
 					int yBase = calcYRelative(185);
 					int width = calcXRelative(281);
-					g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-							RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+					int barHeight = calcYRelative(4);
+					int arcSize = barHeight;
 					g2.setFont(progressFont);
-					// g2.setColor(new Color(0x80,0x80,0x80));
-					g2.setColor(new Color(0xff, 0xff, 0xff));
+					g2.setColor(new Color(0xff, 0xff, 0xff, 200));
 					g2.drawString(progressString, xBase + calcXRelative(1), yBase - calcYRelative(4));
-					g2.setColor(new Color(0xc8, 0xdf, 0x8b));
-					g2.draw(new Rectangle(xBase + calcXRelative(2), yBase, width, calcYRelative(3)));
-					// g2.setColor(new Color(0xd0,0xd0,0xd0));
-					// g2.draw(new Rectangle(xBase+1, yBase+1, width, 2));
-					// g2.setColor(new Color(0xf4,0xf4,0xf4));
-					// g2.fill(new Rectangle(xBase+1, yBase+1, width-1, 2));
-					// g2.setColor(new Color(0x4d,0x63,0xb4));
-					g2.setColor(new Color(0xff, 0xff, 0xff));
-					g2.fill(new Rectangle(xBase + calcXRelative(1), yBase + calcYRelative(1),
-							(int) (width * percent.doubleValue()), calcYRelative(2)));
+					g2.setColor(new Color(0xff, 0xff, 0xff, 60));
+					g2.fillRoundRect(xBase, yBase, width, barHeight, arcSize, arcSize);
+					g2.setColor(new Color(0x4a, 0x90, 0xd9));
+					int progressWidth = (int) (width * percent.doubleValue());
+					if (progressWidth > 0) {
+						g2.fillRoundRect(xBase, yBase, progressWidth, barHeight, arcSize, arcSize);
+					}
 				}
 			}
 		};
