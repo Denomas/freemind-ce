@@ -226,8 +226,6 @@ sourceSets {
     test {
         java {
             setSrcDirs(listOf("tests"))
-            // Exclude incomplete property-based tests (reference non-existent APIs)
-            exclude("**/property/**")
             // Exclude AllTests suite (JUnit 3 suite causes duplicate runs under JUnit 5 vintage)
             exclude("**/AllTests.java")
         }

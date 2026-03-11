@@ -74,6 +74,7 @@ Desktop.ini
 # Auto-generated at runtime
 freemind/version.properties
 freemind/auto.properties
+freemind/.jqwik-database
 
 # JiBX binding JAR (obsolete — replaced by JAXB)
 freemind/lib/bindings.jar
