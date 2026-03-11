@@ -447,6 +447,54 @@ tasks.register<Exec>("jpackageLinux") {
     )
 }
 
+tasks.register<Exec>("jpackageLinuxRpm") {
+    description = "Creates Linux .rpm package"
+    group = "Distribution"
+    dependsOn(tasks.installDist)
+    doFirst { mkdir("build/jpackage") }
+
+    commandLine(
+        "jpackage",
+        "--type", "rpm",
+        "--dest", "build/jpackage",
+        "--name", "freemind-ce",
+        "--input", "build/install/freemind/lib",
+        "--main-jar", "freemind-ce-${project.version}.jar",
+        "--main-class", "freemind.main.FreeMindStarter",
+        "--icon", "images/FreeMindWindowIcon.png",
+        "--app-version", jpackageVersion,
+        "--vendor", "Denomas Engineering",
+        "--file-associations", "file-associations.properties",
+        "--java-options", "-Xms64m",
+        "--java-options", "-Xmx512m"
+    )
+}
+
+tasks.register<Exec>("jpackageWinMsi") {
+    description = "Creates Windows .msi installer package"
+    group = "Distribution"
+    dependsOn(tasks.installDist)
+    doFirst { mkdir("build/jpackage") }
+
+    commandLine(
+        "jpackage",
+        "--type", "msi",
+        "--dest", "build/jpackage",
+        "--name", "FreeMind-CE",
+        "--input", "build/install/freemind/lib",
+        "--main-jar", "freemind-ce-${project.version}.jar",
+        "--main-class", "freemind.main.FreeMindStarter",
+        "--app-version", jpackageVersion,
+        "--vendor", "Denomas Engineering",
+        "--file-associations", "file-associations.properties",
+        "--win-per-user-install",
+        "--win-menu",
+        "--win-shortcut-prompt",
+        "--java-options", "-Xms64m",
+        "--java-options", "-Xmx512m"
+    )
+}
+
 // ============================================================================
 // Documentation Tasks
 // ============================================================================

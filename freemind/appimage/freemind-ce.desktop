@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=FreeMind CE
+Comment=Mind-mapping software
+Exec=freemind-ce
+Icon=freemind-ce
+Categories=Office;ProjectManagement;
+MimeType=application/x-freemind;
+Terminal=false
+StartupNotify=true
+StartupWMClass=freemind-main-FreeMindStarter

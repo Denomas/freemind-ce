@@ -14,25 +14,9 @@ env:
   JAVA_VERSION: '21'
 
 jobs:
-  build-and-package:
-    name: Package (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        include:
-          - os: macos-latest
-            artifact_name: FreeMindCE-macOS
-            package_task: jpackageMac
-            artifact_pattern: freemind/build/jpackage/*.dmg
-          - os: windows-latest
-            artifact_name: FreeMindCE-Windows
-            package_task: jpackageWin
-            artifact_pattern: freemind/build/jpackage/*.exe
-          - os: ubuntu-latest
-            artifact_name: FreeMindCE-Linux
-            package_task: jpackageLinux
-            artifact_pattern: freemind/build/jpackage/*.deb
-
+  build-macos:
+    name: Package (macOS)
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,47 +29,154 @@ jobs:
           cache: 'gradle'
 
       - name: Make gradlew executable
-        if: runner.os != 'Windows'
         run: chmod +x ./gradlew
 
-      - name: Install Linux packaging dependencies
-        if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y fakeroot
-
-      - name: Build (Unix)
-        if: runner.os != 'Windows'
+      - name: Build
         run: ./gradlew build -x test --no-daemon --no-configuration-cache
 
-      - name: Build (Windows)
-        if: runner.os == 'Windows'
-        run: .\gradlew.bat build -x test --no-daemon --no-configuration-cache
+      - name: Package DMG
+        run: ./gradlew :freemind:jpackageMac --no-daemon --no-configuration-cache
 
-      - name: Package (Unix)
-        if: runner.os != 'Windows'
-        run: ./gradlew :freemind:${{ matrix.package_task }} --no-daemon --no-configuration-cache
-
-      - name: Package (Windows)
-        if: runner.os == 'Windows'
-        run: .\gradlew.bat :freemind:${{ matrix.package_task }} --no-daemon --no-configuration-cache
-
-      - name: Rename artifacts to consistent format
-        shell: bash
+      - name: Rename artifacts
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           cd freemind/build/jpackage
           for f in *.dmg; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-macOS.dmg"; done
-          for f in *.exe; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Windows.exe"; done
-          for f in *.deb; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Linux.deb"; done
 
-      - name: Upload platform package
+      - name: Upload packages
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.artifact_name }}
+          name: FreeMindCE-macOS
+          path: freemind/build/jpackage/FreeMind-CE-*
+          if-no-files-found: error
+
+  build-windows:
+    name: Package (Windows)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Build
+        run: .\gradlew.bat build -x test --no-daemon --no-configuration-cache
+
+      - name: Package EXE
+        run: .\gradlew.bat :freemind:jpackageWin --no-daemon --no-configuration-cache
+
+      - name: Package MSI
+        run: .\gradlew.bat :freemind:jpackageWinMsi --no-daemon --no-configuration-cache
+
+      - name: Rename artifacts
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          cd freemind/build/jpackage
+          for f in *.exe; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Windows.exe"; done
+          for f in *.msi; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Windows.msi"; done
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: FreeMindCE-Windows
+          path: freemind/build/jpackage/FreeMind-CE-*
+          if-no-files-found: error
+
+  build-linux:
+    name: Package (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Install packaging dependencies
+        run: sudo apt-get update && sudo apt-get install -y fakeroot rpm
+
+      - name: Build
+        run: ./gradlew build -x test --no-daemon --no-configuration-cache
+
+      - name: Package DEB
+        run: ./gradlew :freemind:jpackageLinux --no-daemon --no-configuration-cache
+
+      - name: Package RPM
+        run: ./gradlew :freemind:jpackageLinuxRpm --no-daemon --no-configuration-cache
+
+      - name: Create portable archive
+        run: |
+          ./gradlew :freemind:installDist --no-daemon --no-configuration-cache
+          VERSION="${GITHUB_REF_NAME#v}"
+          cd freemind/build/install
+          tar -czf "../jpackage/FreeMind-CE-${VERSION}-portable.tar.gz" freemind/
+
+      - name: Build AppImage
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          # Download appimagetool
+          wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool
+          chmod +x appimagetool
+
+          # Create AppDir structure from installed dist
+          APPDIR="FreeMind-CE.AppDir"
+          mkdir -p "${APPDIR}/usr/bin" "${APPDIR}/usr/lib" "${APPDIR}/usr/share/icons/hicolor/256x256/apps"
+
+          # Copy application files
+          cp -r freemind/build/install/freemind/lib/* "${APPDIR}/usr/lib/"
+
+          # Create launcher script
+          cat > "${APPDIR}/usr/bin/freemind-ce" << 'LAUNCHER'
+          #!/bin/bash
+          APPDIR="$(dirname "$(dirname "$(readlink -f "$0")")")"
+          exec java -Xms64m -Xmx512m -cp "${APPDIR}/lib/*" freemind.main.FreeMindStarter "$@"
+          LAUNCHER
+          chmod +x "${APPDIR}/usr/bin/freemind-ce"
+
+          # Copy desktop file and icon
+          cp freemind/appimage/freemind-ce.desktop "${APPDIR}/"
+          cp freemind/images/FreeMindWindowIcon.png "${APPDIR}/freemind-ce.png"
+          cp freemind/images/FreeMindWindowIcon.png "${APPDIR}/usr/share/icons/hicolor/256x256/apps/freemind-ce.png"
+
+          # Create AppRun
+          cat > "${APPDIR}/AppRun" << 'APPRUN'
+          #!/bin/bash
+          APPDIR="$(dirname "$(readlink -f "$0")")"
+          exec "${APPDIR}/usr/bin/freemind-ce" "$@"
+          APPRUN
+          chmod +x "${APPDIR}/AppRun"
+
+          # Build AppImage
+          ARCH=x86_64 ./appimagetool "${APPDIR}" "freemind/build/jpackage/FreeMind-CE-${VERSION}-Linux-x86_64.AppImage"
+
+      - name: Rename artifacts
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          cd freemind/build/jpackage
+          for f in *.deb; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Linux.deb"; done
+          for f in *.rpm; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Linux.rpm"; done
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: FreeMindCE-Linux
           path: freemind/build/jpackage/FreeMind-CE-*
           if-no-files-found: error
 
       - name: Upload JAR distribution
-        if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
         with:
           name: FreeMindCE-jar
@@ -93,7 +184,7 @@ jobs:
 
   release:
     name: Create GitHub Release
-    needs: build-and-package
+    needs: [build-macos, build-windows, build-linux]
     runs-on: ubuntu-latest
     permissions:
       contents: write
