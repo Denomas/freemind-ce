@@ -30,6 +30,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.KeyStroke;
+import javax.swing.UIManager;
+
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 import freemind.main.Resources;
 import freemind.main.Tools;
@@ -76,7 +79,7 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 
 	/**
 	 * Get the value of name.
-	 * 
+	 *
 	 * @return Value of name.
 	 */
 	public String getName() {
@@ -87,7 +90,7 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 
 	/**
 	 * Set the value of name.
-	 * 
+	 *
 	 * @param name
 	 *            Value to assign to name.
 	 */
@@ -144,21 +147,26 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 		if (associatedIcon != null)
 			return associatedIcon;
 		if (name != null) {
-			URL imageURL = Resources.getInstance().getResource(
-					getIconFileName());
-			if (imageURL == null) { // As standard icon not found, try user's
-				try {
-					final File file = new File(Resources.getInstance()
-							.getFreemindDirectory(), "icons/" + getName()
-							+ ".png");
-					if (file.canRead()) {
-						imageURL = Tools.fileToUrl(file);
+			// Try SVG first (HiDPI, dark mode aware via FlatLaf)
+			ImageIcon icon = tryLoadSvgIcon();
+			if (icon == null) {
+				// Fall back to PNG
+				URL imageURL = Resources.getInstance().getResource(
+						getIconFileName());
+				if (imageURL == null) {
+					try {
+						final File file = new File(Resources.getInstance()
+								.getFreemindDirectory(), "icons/" + getName()
+								+ ".png");
+						if (file.canRead()) {
+							imageURL = Tools.fileToUrl(file);
+						}
+					} catch (Exception e) {
 					}
-				} catch (Exception e) {
 				}
+				icon = imageURL == null ? iconNotFound : freemind.view.ImageFactory.getInstance().createIcon(
+						imageURL);
 			}
-			ImageIcon icon = imageURL == null ? iconNotFound : freemind.view.ImageFactory.getInstance().createIcon(
-					imageURL);
 			setIcon(icon);
 			return icon;
 		} else {
@@ -167,9 +175,33 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 		}
 	}
 
+	private ImageIcon tryLoadSvgIcon() {
+		String svgPath = "images/icons-svg/" + getName() + ".svg";
+		URL svgUrl = Resources.getInstance().getResource(svgPath);
+		if (svgUrl != null) {
+			try {
+				boolean isDark = UIManager.getLookAndFeel().getName().toLowerCase().contains("dark");
+				if (isDark) {
+					String darkPath = "images/icons-svg/" + getName() + "_dark.svg";
+					URL darkUrl = Resources.getInstance().getResource(darkPath);
+					if (darkUrl != null) {
+						svgPath = darkPath;
+					}
+				}
+				FlatSVGIcon svgIcon = new FlatSVGIcon(svgPath, 16, 16);
+				if (svgIcon.hasFound()) {
+					return svgIcon;
+				}
+			} catch (Exception e) {
+				// SVG loading failed, will fall back to PNG
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * Set the value of icon.
-	 * 
+	 *
 	 * @param _associatedIcon
 	 *            Value to assign to icon.
 	 */
@@ -184,7 +216,7 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 		}
 		return associatedIcon;
 	}
-	
+
 	public static Vector<String> getAllIconNames() {
 		if (mAllIconNames != null)
 			return mAllIconNames;
@@ -221,7 +253,7 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	public int compareTo(MindIcon icon) {
