@@ -1,0 +1,23 @@
+freemind/freemind/modes/MindIcon.java
+  1b5fbaddcf442270 33-35,150-153,163-164,167-168,178-199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "d4c97822ddb73e6f94692e77824511430a01ed60",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 44,
+      "total_deletions": 12,
+      "accepted_lines": 35,
+      "overriden_lines": 0
+    }
+  }
+}
