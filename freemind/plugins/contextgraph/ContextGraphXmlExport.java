@@ -88,7 +88,7 @@ public class ContextGraphXmlExport extends ExportHook {
 			freemind.main.Resources.getInstance().logException(e);
 			JOptionPane.showMessageDialog(
 					getController().getFrame().getContentPane(),
-					e.getLocalizedMessage(), "Export Error",
+					e.getLocalizedMessage(), getResourceString("export_error"),
 					JOptionPane.ERROR_MESSAGE);
 		} finally {
 			getController().getFrame().setWaitingCursor(false);
