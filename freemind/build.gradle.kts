@@ -35,6 +35,7 @@ tasks.processResources {
     filteringCharset = "UTF-8"
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     // Root-level resource files needed on classpath
+    from(layout.projectDirectory.file("FlatLaf.properties"))
     from(layout.projectDirectory.file("freemind.properties"))
     from(layout.projectDirectory.file("patterns.xml"))
     from(layout.projectDirectory.file("patterns_updater.xslt"))
