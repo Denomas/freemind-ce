@@ -1,0 +1,27 @@
+freemind/plugins/contextgraph/ContextGraphMarkdownExport.java
+  c40946108e95727a 29,34,110-116,129-137
+freemind/plugins/contextgraph/JsonExport.java
+  c40946108e95727a 29,36,228-235,260-268
+freemind/plugins/contextgraph/ContextGraphXmlExport.java
+  c40946108e95727a 30,35,141-142,144,165-170,181-189
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "1c48294e8ae2276b0b8a201437f40c2ea3d242e1",
+  "prompts": {
+    "c40946108e95727a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "688bfcb2-72ea-40ac-9f61-c909e2f793e9",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 59,
+      "total_deletions": 3,
+      "accepted_lines": 57,
+      "overriden_lines": 0
+    }
+  }
+}
