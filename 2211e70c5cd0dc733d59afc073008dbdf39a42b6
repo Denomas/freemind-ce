@@ -1,0 +1,29 @@
+freemind/tests/freemind/property/XMLRoundTripPropertyTest.java
+  c40946108e95727a 1,3,5,15-16,21-46,49,51-66,70,72-82,86,88-100,104,106-110,114,117-119,122-124,128-129,133-134
+freemind/tests/freemind/property/TreeStructurePropertyTest.java
+  c40946108e95727a 1,3-5,16,18-19,26,28-30,34,36-42,46,48-55,59,61-70,72,75-86,90-98,104-118,121-122
+freemind/tests/freemind/property/generators/MindmapGenerators.java
+  c40946108e95727a 1,3,6,10,15-24,27-45,48-55,59-85,89-105,107,110
+.gitignore
+  c40946108e95727a 77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "2211e70c5cd0dc733d59afc073008dbdf39a42b6",
+  "prompts": {
+    "c40946108e95727a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "688bfcb2-72ea-40ac-9f61-c909e2f793e9",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 272,
+      "total_deletions": 292,
+      "accepted_lines": 257,
+      "overriden_lines": 0
+    }
+  }
+}
