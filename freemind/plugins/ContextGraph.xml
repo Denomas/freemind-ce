@@ -25,4 +25,16 @@
 		<plugin_property name="file_description" value="%plugins/ContextGraphXml_file_description"/>
 		<plugin_property name="load_file" value="true"/>
 	</plugin_action>
+	<plugin_action
+		documentation="%plugins/JsonExport_documentation"
+		name="%plugins/JsonExport_name"
+		base="freemind.extensions.ModeControllerHookAdapter"
+		label="plugins/JsonExport"
+		class_name="plugins.contextgraph.JsonExport">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportJson"/>
+		<plugin_property name="file_type" value="json"/>
+		<plugin_property name="file_description" value="%plugins/JsonExport_file_description"/>
+		<plugin_property name="load_file" value="false"/>
+	</plugin_action>
 </plugin>
