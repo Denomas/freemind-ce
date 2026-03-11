@@ -37,4 +37,16 @@
 		<plugin_property name="file_description" value="%plugins/JsonExport_file_description"/>
 		<plugin_property name="load_file" value="false"/>
 	</plugin_action>
+	<plugin_action
+		documentation="%plugins/YamlExport_documentation"
+		name="%plugins/YamlExport_name"
+		base="freemind.extensions.ModeControllerHookAdapter"
+		label="plugins/YamlExport"
+		class_name="plugins.contextgraph.YamlExport">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportYaml"/>
+		<plugin_property name="file_type" value="yaml"/>
+		<plugin_property name="file_description" value="%plugins/YamlExport_file_description"/>
+		<plugin_property name="load_file" value="false"/>
+	</plugin_action>
 </plugin>
