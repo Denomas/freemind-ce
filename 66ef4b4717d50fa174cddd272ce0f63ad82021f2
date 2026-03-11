@@ -1,0 +1,23 @@
+freemind/Resources_tr.properties
+  c40946108e95727a 1736-2034
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "66ef4b4717d50fa174cddd272ce0f63ad82021f2",
+  "prompts": {
+    "c40946108e95727a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "688bfcb2-72ea-40ac-9f61-c909e2f793e9",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 299,
+      "overriden_lines": 0
+    }
+  }
+}
