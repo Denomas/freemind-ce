@@ -1,0 +1,33 @@
+freemind/plugins/contextgraph/ContextGraphMarkdownExport.java
+  1b5fbaddcf442270 67
+freemind/plugins/contextgraph/ContextGraphXmlExport.java
+  1b5fbaddcf442270 91
+freemind/Resources_tr.properties
+  1b5fbaddcf442270 42
+freemind/Resources_en.properties
+  1b5fbaddcf442270 41
+freemind/plugins/contextgraph/JsonExport.java
+  1b5fbaddcf442270 79
+freemind/plugins/contextgraph/YamlExport.java
+  1b5fbaddcf442270 75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "aa8974f54ed52b16053126ca7b64d3353ce550ce",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 6,
+      "total_deletions": 4,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  }
+}
