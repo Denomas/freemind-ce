@@ -1,0 +1,35 @@
+freemind/plugins/Latex.xml
+  c40946108e95727a 4-6
+freemind/Resources_en.properties
+  c40946108e95727a 1782-1784,1791-1793
+freemind/plugins/latex/LatexNodeHook.java
+  c40946108e95727a 47,97-98,114
+settings.gradle.kts
+  c40946108e95727a 30,40
+freemind/build.gradle.kts
+  c40946108e95727a 150-151
+freemind/plugins/latex/JZoomedHotEqn.java
+  c40946108e95727a 3,7-9,12,17,19-21,23-25,27-28,32-36,42-50,53-65,69-85,87,90-97,102,121-122,127-144
+freemind/plugins/latex/build.gradle.kts
+  c40946108e95727a 1-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "506a0f1ccb1baf8556677de1cca91eaffdc466b8",
+  "prompts": {
+    "c40946108e95727a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "688bfcb2-72ea-40ac-9f61-c909e2f793e9",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 458,
+      "total_deletions": 59,
+      "accepted_lines": 451,
+      "overriden_lines": 0
+    }
+  }
+}
