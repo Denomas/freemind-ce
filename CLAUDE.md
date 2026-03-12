@@ -12,7 +12,7 @@ make help     # Show all available make targets
 > See raw Gradle commands in `Makefile` if needed.
 
 - Entry point: `freemind.main.FreeMindStarter`
-- Version: `build.gradle.kts` (root) → `version = "X.Y.Z-CE"`
+- Version: `build.gradle.kts` (root) → `version = "X.Y.Z"`
 
 ## Serena Code Intelligence
 

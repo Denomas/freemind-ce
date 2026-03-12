@@ -85,7 +85,7 @@ application {
 // Version Catalog (Centralized Dependency Management)
 // ============================================================================
 
-// jpackage requires numeric-only version (no -CE suffix)
+// jpackage requires numeric-only version (strips any suffix like -SNAPSHOT)
 val jpackageVersion = project.version.toString().replace(Regex("-.*"), "")
 
 val jaxbApiVersion = "2.3.1"

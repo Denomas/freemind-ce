@@ -12,7 +12,7 @@ body:
     attributes:
       label: FreeMind CE Version
       description: Which version are you using?
-      placeholder: "e.g., 1.1.0-CE"
+      placeholder: "e.g., 1.2.0"
     validations:
       required: true
 
