@@ -1,0 +1,29 @@
+build.gradle.kts
+  1b5fbaddcf442270 11
+freemind/build.gradle.kts
+  1b5fbaddcf442270 88
+CLAUDE.md
+  1b5fbaddcf442270 15
+.github/ISSUE_TEMPLATE/bug_report.yml
+  1b5fbaddcf442270 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "eb54f27e003e1258f9259ba0a2d5dd4210e0aade",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 4,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
