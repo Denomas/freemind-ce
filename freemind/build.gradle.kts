@@ -377,11 +377,17 @@ afterEvaluate {
 }
 
 // SpotBugs scans the main sourceSet classpath which includes plugin modules.
-// Gradle requires explicit task dependencies when one task uses the output of
-// another. Declare that spotbugsMain depends on all plugin resource tasks.
+// The plugins directory is part of main sourceSet, so Gradle sees plugin outputs
+// as implicit inputs to SpotBugs. Declare explicit dependencies on all plugin
+// tasks that produce output in the shared directory to avoid validation errors.
 tasks.matching { it.name.startsWith("spotbugs") }.configureEach {
     rootProject.subprojects.filter { it.path.startsWith(":freemind:plugins:") }.forEach { plugin ->
-        plugin.tasks.matching { it.name == "processResources" || it.name == "processTestResources" }.all {
+        plugin.tasks.matching {
+            it.name in setOf(
+                "compileJava", "compileTestJava", "processResources",
+                "processTestResources", "classes", "testClasses", "jar", "test"
+            )
+        }.all {
             this@configureEach.dependsOn(this)
         }
     }

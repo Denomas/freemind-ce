@@ -14,8 +14,55 @@ env:
   JAVA_VERSION: '21'
 
 jobs:
+  # Gate: Run full build + tests before packaging anything
+  validate:
+    name: Validate (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: true  # Stop all if any platform fails
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Make gradlew executable
+        if: runner.os != 'Windows'
+        run: chmod +x ./gradlew
+
+      - name: Install Xvfb (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y xvfb
+
+      - name: Build + Test (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          ./gradlew build -x test --no-daemon --no-configuration-cache
+          xvfb-run ./gradlew test --no-daemon --no-configuration-cache
+
+      - name: Build + Test (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          ./gradlew build -x test --no-daemon --no-configuration-cache
+          ./gradlew test --no-daemon --no-configuration-cache
+
+      - name: Build + Test (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          .\gradlew.bat build -x test --no-daemon --no-configuration-cache
+          .\gradlew.bat test --no-daemon --no-configuration-cache
+
   build-macos:
     name: Package (macOS)
+    needs: validate
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -52,6 +99,7 @@ jobs:
 
   build-windows:
     name: Package (Windows)
+    needs: validate
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -90,6 +138,7 @@ jobs:
 
   build-linux:
     name: Package (Linux)
+    needs: validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
