@@ -1,0 +1,35 @@
+.github/workflows/labeler.yml
+  1b5fbaddcf442270 1-42
+.github/workflows/security-scan.yml
+  1b5fbaddcf442270 10,19,22,27-28,38,44-78
+.github/labeler.yml
+  1b5fbaddcf442270 1-49
+.github/workflows/pr-title.yml
+  1b5fbaddcf442270 1-39
+.github/workflows/stale.yml
+  1b5fbaddcf442270 1-39
+.github/workflows/scorecard.yml
+  1b5fbaddcf442270 1-39
+.github/ISSUE_TEMPLATE/config.yml
+  1b5fbaddcf442270 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "401e89f5c6c0f541e10f42716617dc9c995c6d17",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 258,
+      "total_deletions": 4,
+      "accepted_lines": 258,
+      "overriden_lines": 0
+    }
+  }
+}
