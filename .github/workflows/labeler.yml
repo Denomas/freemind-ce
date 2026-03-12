@@ -1,7 +1,7 @@
 name: PR Labeler
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
 
 env:
@@ -17,26 +17,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label PR by file paths
-        uses: actions/labeler@v5
+        uses: actions/labeler@v6
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           sync-labels: true
 
-  size:
-    name: PR Size Label
-    runs-on: ubuntu-latest
-    steps:
       - name: Label PR by size
-        uses: codelytv/pr-size-labeler@v1
-        with:
+        uses: pascalgn/size-label-action@v0.5.5
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          xs_label: 'size/XS'
-          xs_max_size: 10
-          s_label: 'size/S'
-          s_max_size: 50
-          m_label: 'size/M'
-          m_max_size: 200
-          l_label: 'size/L'
-          l_max_size: 500
-          xl_label: 'size/XL'
-          fail_if_xl: false
+        with:
+          sizes: >
+            {
+              "0":    "size/XS",
+              "10":   "size/S",
+              "50":   "size/M",
+              "200":  "size/L",
+              "500":  "size/XL"
+            }
