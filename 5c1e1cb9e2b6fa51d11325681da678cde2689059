@@ -1,0 +1,27 @@
+freemind/plugins/contextgraph/CleanXmlExport.java
+  1b5fbaddcf442270 1-348
+freemind/plugins/contextgraph/CleanYamlExport.java
+  1b5fbaddcf442270 1-400
+freemind/plugins/contextgraph/CleanJsonExport.java
+  1b5fbaddcf442270 1-379
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "5c1e1cb9e2b6fa51d11325681da678cde2689059",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 1127,
+      "overriden_lines": 0
+    }
+  }
+}
