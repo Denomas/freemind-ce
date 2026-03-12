@@ -103,6 +103,13 @@ freemind/bin/
 # Claude Code local settings (per-developer)
 .claude/
 
+# Serena LSP agent (keep .serena/project.yml versioned)
+.serena/project.local.yml
+.serena/memories/
+.serena/cache/
+.serena/logs/
+.serena/.gitignore
+
 # BMAD workflow framework and output artifacts (local tooling)
 _bmad/
 _bmad-output/

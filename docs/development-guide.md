@@ -18,17 +18,44 @@
 git clone <repo-url> freemind-ce
 cd freemind-ce
 
-# Build the project
-./gradlew build
-
-# Run the application
-./gradlew :freemind:run
-
-# Run tests
-./gradlew test
+# Build and run using Make (recommended)
+make build    # Compile + test
+make run      # Run FreeMind CE
+make help     # Show all available targets
 ```
 
-## Build Commands
+## Makefile Shortcuts (Recommended)
+
+The project includes a cross-platform `Makefile` that auto-detects `JAVA_HOME` and wraps Gradle with the correct flags. It supports macOS (Homebrew/MacPorts), Linux (apt/dnf/SDKMAN), and Windows (WSL/Git Bash). Use `make help` to see all targets:
+
+| Target | Description |
+|---|---|
+| **Development** | |
+| `make build` | Build the project (compile + test) |
+| `make run` | Run FreeMind CE |
+| `make debug` | Run in debug mode (attach debugger on port 5005) |
+| `make test` | Run tests only |
+| `make coverage` | Run tests with JaCoCo coverage report |
+| `make check` | Build + all quality checks |
+| `make clean` | Clean all build artifacts |
+| `make jaxb` | Regenerate JAXB classes from XSD schema |
+| `make javadoc` | Generate API documentation |
+| **Packaging** | |
+| `make package` | Build native package for current OS (auto-detect) |
+| `make package-mac` | Build macOS DMG package |
+| `make package-win` | Build Windows EXE installer |
+| `make package-linux` | Build Linux DEB package |
+| `make dist-zip` | Create distribution ZIP archive |
+| `make install-dist` | Create local distribution layout |
+| **General** | |
+| `make info` | Show detected Java and system info |
+| `make help` | Show this help message |
+
+To override Java detection: `JAVA_HOME=/path/to/jdk make build`
+
+## Raw Gradle Commands
+
+For cases where you need direct Gradle access (CI, IDE integration, advanced options):
 
 | Command | Purpose |
 |---|---|
@@ -44,6 +71,8 @@ cd freemind-ce
 | `./gradlew :freemind:jpackageLinux` | Create Linux .deb |
 | `./gradlew :freemind:prepareMacDist` | Prepare macOS key mappings |
 | `./gradlew javadoc` | Generate API documentation |
+
+> **Important:** Always use `--no-configuration-cache` flag with raw Gradle commands. The Makefile handles this automatically.
 
 ## JVM Arguments (applied automatically via `./gradlew :freemind:run`)
 
@@ -157,6 +186,55 @@ Dependencies are managed in `freemind/build.gradle.kts` with version variables:
 - `junitVersion = "4.13.2"`
 
 Repositories: Maven Central + JitPack
+
+## Serena Code Intelligence
+
+The project includes [Serena](https://github.com/oraios/serena) configuration for LSP-powered semantic code analysis. The config file `.serena/project.yml` is versioned in the repository.
+
+### Installation
+
+**Prerequisites:** [uv](https://docs.astral.sh/uv/getting-started/installation/) (Python package manager)
+
+```bash
+# Add Serena MCP server to Claude Code
+claude mcp add serena -- uvx --from git+https://github.com/oraios/serena \
+  serena start-mcp-server --context=claude-code --project-from-cwd
+
+# Index the codebase (creates LSP cache for fast symbol lookup)
+uvx --from git+https://github.com/oraios/serena serena project index .
+
+# Verify everything works
+uvx --from git+https://github.com/oraios/serena serena project health-check .
+```
+
+### Configuration
+
+| File | Purpose | Versioned |
+|------|---------|-----------|
+| `.serena/project.yml` | Project config (language, encoding, ignored paths) | Yes |
+| `.serena/project.local.yml` | Local overrides (developer-specific) | No (.gitignore) |
+| `~/.serena/serena_config.yml` | Global Serena config (backend, dashboard, timeouts) | No |
+| `.serena/memories/` | Project-specific AI memories | No (.gitignore) |
+
+### Java LSP Configuration
+
+For Java 21 support, add to `~/.serena/serena_config.yml`:
+
+```yaml
+ls_specific_settings:
+  java:
+    gradle_java_home: "/path/to/your/java-21-home"
+```
+
+On macOS with Homebrew: `/opt/homebrew/Cellar/openjdk@21/21.0.10/libexec/openjdk.jdk/Contents/Home`
+
+### Re-indexing
+
+Re-index after major codebase changes (new files, moved packages, renamed classes):
+
+```bash
+uvx --from git+https://github.com/oraios/serena serena project index .
+```
 
 ## Common Development Tasks
 

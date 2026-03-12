@@ -15,18 +15,15 @@ Thank you for your interest in contributing to FreeMind CE! This guide will help
 git clone https://github.com/Denomas/freemind-ce.git
 cd freemind-ce
 
-# Set up Java (macOS with Homebrew)
-export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
-
-# Build the project
-./gradlew :freemind:build --no-configuration-cache
-
-# Run the application
-./gradlew :freemind:run --no-configuration-cache
-
-# Run tests
-./gradlew :freemind:test --no-configuration-cache
+# Build, run, and test using Make (recommended)
+make build    # Compile + test
+make run      # Run FreeMind CE
+make test     # Run tests only
+make help     # Show all available targets
 ```
+
+> **Note:** The Makefile sets `JAVA_HOME` and `--no-configuration-cache` automatically.
+> If you prefer raw Gradle commands, see [docs/development-guide.md](docs/development-guide.md).
 
 ## Development Workflow
 
@@ -93,17 +90,87 @@ feat: infrastructure modernization (tests, CI, release, docs)
 
 ### Before Committing
 
-1. **Build must pass:** `./gradlew :freemind:build --no-configuration-cache`
-2. **Tests must pass:** `./gradlew :freemind:test --no-configuration-cache`
+1. **Build must pass:** `make build`
+2. **Tests must pass:** `make test`
 3. **Review your diff:** `git diff --staged` — make sure no debug code, secrets, or unrelated changes are included
 4. **Stage intentionally:** use `git add <file>` for specific files, avoid `git add -A` or `git add .`
 5. **No generated artifacts:** never commit `build/`, `*.class`, `auto.properties`, or IDE-specific files
+
+## Serena Code Intelligence (Required)
+
+This project uses [Serena](https://github.com/oraios/serena) as a semantic code analysis tool via MCP (Model Context Protocol). Serena provides LSP-powered symbol navigation, reference tracking, and impact analysis — ensuring every change is fully understood before it is committed.
+
+### Why Serena?
+
+- **Symbol-level precision:** Find all references to a method/class across the entire codebase
+- **Impact analysis:** Understand what breaks when you change a symbol
+- **Semantic editing:** Modify code at the symbol level, not just text search-and-replace
+- **Token efficiency:** Read only the symbols you need, not entire files
+
+### Setup (One-Time)
+
+```bash
+# 1. Install uv (Python package manager) if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2. Add Serena as MCP server for Claude Code (per-project)
+claude mcp add serena -- uvx --from git+https://github.com/oraios/serena \
+  serena start-mcp-server --context=claude-code --project-from-cwd
+
+# 3. Create project config (already done — .serena/project.yml is versioned)
+# Only needed if starting a new project:
+# uvx --from git+https://github.com/oraios/serena serena project create --language java .
+
+# 4. Index the codebase (recommended after major changes)
+uvx --from git+https://github.com/oraios/serena serena project index .
+
+# 5. Verify setup
+uvx --from git+https://github.com/oraios/serena serena project health-check .
+```
+
+### Pre-Commit SOP (Standard Operating Procedure)
+
+**Every developer must follow this checklist before committing:**
+
+1. **Build passes:** `make build`
+2. **Verify with Serena:** Use `find_symbol` and `find_referencing_symbols` to confirm:
+   - All references to modified symbols still compile and work correctly
+   - No orphaned references exist (dead code from renames/deletions)
+   - Interface contracts are preserved (method signatures, return types)
+3. **Run the app:** `make run` — visually verify UI changes
+4. **Review log files:** Check `~/.freemind/log.0` for new SEVERE/WARNING entries
+5. **Clean diff:** `git diff --staged` — no debug code, no unrelated changes
+
+### Key Serena Tools for Code Review
+
+| Tool | Use Case |
+|------|----------|
+| `find_symbol` | Locate a class, method, or field by name |
+| `find_referencing_symbols` | Find all code that calls/uses a symbol |
+| `get_symbols_overview` | Get a file's class/method structure without reading the entire file |
+| `replace_symbol_body` | Replace an entire method/class definition precisely |
+| `insert_after_symbol` / `insert_before_symbol` | Add code at exact positions |
+| `search_for_pattern` | Regex search across the codebase (for non-code files too) |
+
+### Example Workflow
+
+```
+# Before changing NodeAdapter.setNoteText():
+
+1. find_symbol("NodeAdapter/setNoteText") → read current implementation
+2. find_referencing_symbols("NodeAdapter/setNoteText") → see all callers
+3. Make the change
+4. find_referencing_symbols again → verify all callers still compatible
+5. make build → compile + test
+6. make run → visual verification
+7. Commit
+```
 
 ## Code Style
 
 - Follow existing patterns in the codebase
 - No `@SuppressWarnings` — fix root causes
-- Never modify files in `generated-src/` — regenerate with `./gradlew :freemind:generateJaxb`
+- Never modify files in `generated-src/` — regenerate with `make jaxb`
 - Never ignore `*.jar` in `.gitignore` — the project depends on ~90 tracked local JARs
 - Preserve backward compatibility with existing `.mm` files
 
@@ -111,8 +178,8 @@ feat: infrastructure modernization (tests, CI, release, docs)
 
 - Tests use **JUnit 3** (`extends TestCase`) running under JUnit 5 vintage engine
 - Test base class: `FreeMindTestBase` (provides mock FreeMindMain context)
-- Run tests: `./gradlew :freemind:test --no-configuration-cache`
-- Coverage report: `./gradlew :freemind:jacocoTestReport --no-configuration-cache`
+- Run tests: `make test`
+- Coverage report: `make coverage` (opens `freemind/build/reports/jacoco/test/html/index.html`)
 
 ## Project Structure
 

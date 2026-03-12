@@ -3,20 +3,35 @@
 ## Quick Start
 
 ```bash
-export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
-./gradlew :freemind:build --no-configuration-cache
-./gradlew :freemind:run --no-configuration-cache
+make build    # Build the project (compile + test)
+make run      # Run FreeMind CE
+make help     # Show all available make targets
 ```
 
-- Always use `--no-configuration-cache` (config cache serialization issue)
+> **Note:** `make` wraps Gradle with correct `JAVA_HOME` and `--no-configuration-cache` flags automatically.
+> See raw Gradle commands in `Makefile` if needed.
+
 - Entry point: `freemind.main.FreeMindStarter`
 - Version: `build.gradle.kts` (root) → `version = "X.Y.Z-CE"`
+
+## Serena Code Intelligence
+
+This project uses [Serena](https://github.com/oraios/serena) for LSP-powered semantic code analysis via MCP.
+
+- **Config:** `.serena/project.yml` (versioned)
+- **Setup:** `claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context=claude-code --project-from-cwd`
+- **Index:** `uvx --from git+https://github.com/oraios/serena serena project index .`
+- **Pre-commit:** Always use `find_referencing_symbols` to verify impact of changes before committing
+
+For full setup → [`CONTRIBUTING.md`](CONTRIBUTING.md#serena-code-intelligence-required) | [`docs/development-guide.md`](docs/development-guide.md#serena-code-intelligence)
 
 ## Repository Layout
 
 ```
 freemind-ce/
 ├── CLAUDE.md                 # This file — read first
+├── Makefile                  # Development shortcuts (make help)
+├── .serena/project.yml       # Serena LSP config (versioned)
 ├── docs/
 │   ├── architecture.md       # MVC, modes, action framework → READ FOR DESIGN
 │   ├── component-inventory.md # UI components, plugins → READ FOR FINDING CODE
@@ -80,31 +95,33 @@ Not in Gradle: latex, collaboration/database, collaboration/jabber
 ## Critical Rules
 
 1. **Never ignore `*.jar` in .gitignore** — project depends on ~90 tracked local JARs in `lib/`
-2. **Never modify `generated-src/`** — regenerate with `./gradlew :freemind:generateJaxb`
+2. **Never modify `generated-src/`** — regenerate with `make jaxb`
 3. **Never commit `auto.properties`** — runtime-generated user config
-4. **Test before commit** — `./gradlew build` must pass, run the app to verify
+4. **Test before commit** — `make build` must pass, `make run` to verify
 5. **No @SuppressWarnings** — fix root causes, don't suppress
 6. **Preserve backward compatibility** — existing .mm files must keep working
+7. **Verify with Serena before commit** — use `find_referencing_symbols` to check impact of all changes
 
 ## Common Tasks
 
 ```bash
-# Full build (all platforms)
-./gradlew build --no-configuration-cache
-
-# Run the app
-./gradlew :freemind:run --no-configuration-cache
-
-# Regenerate JAXB classes
-./gradlew :freemind:generateJaxb
-
-# Package for macOS/Windows/Linux
-./gradlew :freemind:jpackageMac
-./gradlew :freemind:jpackageWin
-./gradlew :freemind:jpackageLinux
-
-# Debug mode (port 5005)
-./gradlew :freemind:run --debug-jvm
+make build          # Full build (compile + test)
+make run            # Run the app
+make test           # Run tests only
+make coverage       # Tests + JaCoCo coverage report
+make debug          # Debug mode (port 5005)
+make clean          # Clean build artifacts
+make check          # Build + all quality checks
+make jaxb           # Regenerate JAXB classes
+make javadoc        # Generate API documentation
+make package        # Native package for current OS (auto-detect)
+make package-mac    # Package for macOS (.dmg)
+make package-win    # Package for Windows (.exe)
+make package-linux  # Package for Linux (.deb)
+make dist-zip       # Distribution ZIP archive
+make install-dist   # Local distribution layout
+make info           # Show detected Java and system info
+make help           # Show all targets
 ```
 
 ## Where to Look Next
