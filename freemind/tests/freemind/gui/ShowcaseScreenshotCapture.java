@@ -103,6 +103,8 @@ public class ShowcaseScreenshotCapture {
         userProps.setProperty("load_last_maps_and_layout", "false");
         userProps.setProperty("single_instance", "false");
         userProps.setProperty("don_t_open_port", "true");
+        // Auto-accept version conversion dialogs for old-format .mm files
+        userProps.setProperty("resources_convert_to_current_version", "true");
         // Set window size
         userProps.setProperty("appwindow_width", "1400");
         userProps.setProperty("appwindow_height", "900");

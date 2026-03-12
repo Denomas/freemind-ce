@@ -444,6 +444,131 @@ class EdgeCaseGuiTest extends GuiTestBase {
         edge_resizeSimulation();
     }
 
+    // ========================================================================
+    // Legacy version conversion tests
+    // ========================================================================
+
+    @Test
+    void edge_loadLegacyVersion080() throws Exception {
+        String xml = "<map version=\"0.8.0\"><node TEXT='Legacy080'/></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getText()).isEqualTo("Legacy080");
+
+        String savedXml = saveMap();
+        assertThat(savedXml).contains("version=\"1.1.0\"");
+    }
+
+    @Test
+    void edge_loadLegacyVersion090() throws Exception {
+        String xml = "<map version=\"0.9.0\"><node TEXT='Legacy090'/></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getText()).isEqualTo("Legacy090");
+
+        String savedXml = saveMap();
+        assertThat(savedXml).contains("version=\"1.1.0\"");
+    }
+
+    @Test
+    void edge_loadLegacyVersion090Beta8() throws Exception {
+        String xml = "<map version=\"0.9.0_Beta_8\"><node TEXT='LegacyBeta8'/></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getText()).isEqualTo("LegacyBeta8");
+
+        String savedXml = saveMap();
+        assertThat(savedXml).contains("version=\"1.1.0\"");
+    }
+
+    @Test
+    void edge_loadLegacyVersion100() throws Exception {
+        String xml = "<map version=\"1.0.0\"><node TEXT='Legacy100'/></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getText()).isEqualTo("Legacy100");
+
+        String savedXml = saveMap();
+        assertThat(savedXml).contains("version=\"1.1.0\"");
+    }
+
+    @Test
+    void edge_loadLegacyVersion101() throws Exception {
+        String xml = "<map version=\"1.0.1\"><node TEXT='Legacy101'/></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getText()).isEqualTo("Legacy101");
+
+        String savedXml = saveMap();
+        assertThat(savedXml).contains("version=\"1.1.0\"");
+    }
+
+    @Test
+    void edge_loadLegacyVersion071() throws Exception {
+        // 0.7.1 is in EXPECTED_START_STRINGS — no conversion needed
+        String xml = "<map version=\"0.7.1\"><node TEXT='Legacy071'/></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getText()).isEqualTo("Legacy071");
+    }
+
+    @Test
+    void edge_loadCurrentVersion110() throws Exception {
+        // Current version — no conversion
+        String xml = "<map version=\"1.1.0\"><node TEXT='Current'/></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getText()).isEqualTo("Current");
+
+        String savedXml = saveMap();
+        assertThat(savedXml).contains("version=\"1.1.0\"");
+    }
+
+    @Test
+    void edge_legacyVersionPreservesChildren() throws Exception {
+        String xml = "<map version=\"0.9.0\">"
+            + "<node TEXT='Root'>"
+            + "<node TEXT='Child1'/>"
+            + "<node TEXT='Child2'><node TEXT='Grandchild'/></node>"
+            + "</node></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getChildCount()).isEqualTo(2);
+        assertThat(((MindMapNode) root.getChildAt(0)).getText()).isEqualTo("Child1");
+
+        MindMapNode child2 = (MindMapNode) root.getChildAt(1);
+        assertThat(child2.getText()).isEqualTo("Child2");
+        assertThat(child2.getChildCount()).isEqualTo(1);
+        assertThat(((MindMapNode) child2.getChildAt(0)).getText()).isEqualTo("Grandchild");
+    }
+
+    @Test
+    void edge_legacyVersionPreservesAttributes() throws Exception {
+        String xml = "<map version=\"1.0.1\">"
+            + "<node TEXT='Root' COLOR='#ff0000' BACKGROUND_COLOR='#00ff00' STYLE='bubble'>"
+            + "<font NAME='Arial' SIZE='16' BOLD='true'/>"
+            + "<edge COLOR='#0000ff' WIDTH='2'/>"
+            + "</node></map>";
+        MindMapNode root = loadMap(xml);
+        assertThat(root.getText()).isEqualTo("Root");
+        assertThat(root.getColor()).isNotNull();
+
+        String savedXml = saveMap();
+        assertThat(savedXml).contains("version=\"1.1.0\"");
+        assertThat(savedXml).contains("Root");
+    }
+
+    @Test
+    void edge_legacyVersionRoundTrip() throws Exception {
+        // Load legacy, save as current, reload — must still work
+        String legacyXml = "<map version=\"0.9.0\"><node TEXT='RoundTrip'>"
+            + "<node TEXT='A'/><node TEXT='B'/></node></map>";
+        loadMap(legacyXml);
+
+        String currentXml = saveMap();
+        assertThat(currentXml).contains("version=\"1.1.0\"");
+
+        // Reload the saved current-version XML
+        mapFeedback = new ExtendedMapFeedbackImpl();
+        map = new MindMapMapModel(mapFeedback);
+        mapFeedback.setMap(map);
+        MindMapNode root2 = loadMap(currentXml);
+        assertThat(root2.getText()).isEqualTo("RoundTrip");
+        assertThat(root2.getChildCount()).isEqualTo(2);
+    }
+
     @Test
     void edge_corruptedFileRecovery() throws Exception {
         // Attempt to load malformed XML — should not crash

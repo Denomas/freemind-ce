@@ -1,4 +1,4 @@
-<map version="1.1.0">
+<map version="0.9.0_Beta_8">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1202364738019" ID="Freemind_Link_1150612791" MODIFIED="1202364741991" TEXT="sorting_test">
 <node CREATED="1202364743010" ID="Freemind_Link_312051561" MODIFIED="1202364743462" POSITION="right" TEXT="a"/>
