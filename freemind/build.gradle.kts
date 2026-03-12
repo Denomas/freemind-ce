@@ -363,6 +363,17 @@ tasks.jacocoTestReport {
 spotbugs {
     ignoreFailures.set(true)
     excludeFilter.set(file("config/spotbugs-exclude.xml"))
+    // SpotBugs 6.x: configure report format via extension
+    showProgress.set(false)
+}
+
+// Enable HTML reports for all SpotBugs tasks
+afterEvaluate {
+    tasks.withType(com.github.spotbugs.snom.SpotBugsTask::class.java).configureEach {
+        reports.maybeCreate("html").apply {
+            required.set(true)
+        }
+    }
 }
 
 // SpotBugs scans the main sourceSet classpath which includes plugin modules.
