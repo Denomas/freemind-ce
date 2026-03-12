@@ -15,23 +15,24 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  # Gate: Run full build + tests before packaging anything
+  # Gate 1: Run full build + tests on all platforms and Java versions
   validate:
-    name: Validate (${{ matrix.os }})
+    name: Validate (${{ matrix.os }}, Java ${{ matrix.java }})
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-      fail-fast: true  # Stop all if any platform fails
+        os: [ubuntu-24.04, ubuntu-22.04, windows-2025, windows-2022, macos-15, macos-14, macos-13]
+        java: ['21', '22', '23', '24']
+      fail-fast: true  # Stop all if any platform/java combo fails
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
+      - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@v5
         with:
-          java-version: ${{ env.JAVA_VERSION }}
+          java-version: ${{ matrix.java }}
           distribution: 'temurin'
 
       - name: Setup Gradle
@@ -63,9 +64,71 @@ jobs:
           .\gradlew.bat build -x test --no-daemon --no-configuration-cache
           .\gradlew.bat test --no-daemon --no-configuration-cache
 
+  # Gate 2: Run GUI tests on all platforms and Java versions
+  gui-tests:
+    name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
+    needs: validate
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, ubuntu-22.04, windows-2025, windows-2022, macos-15, macos-14, macos-13]
+        java: ['21', '22', '23', '24']
+      fail-fast: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Make gradlew executable
+        if: runner.os != 'Windows'
+        run: chmod +x ./gradlew
+
+      - name: Build (Unix)
+        if: runner.os != 'Windows'
+        run: ./gradlew build -x test --no-daemon --no-configuration-cache
+
+      - name: Build (Windows)
+        if: runner.os == 'Windows'
+        run: .\gradlew.bat build -x test --no-daemon --no-configuration-cache
+
+      - name: Install Xvfb (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y xvfb
+
+      - name: GUI Tests (Linux with Xvfb)
+        if: runner.os == 'Linux'
+        run: xvfb-run ./gradlew testGui --no-daemon --no-configuration-cache --continue
+
+      - name: GUI Tests (macOS)
+        if: runner.os == 'macOS'
+        run: ./gradlew testGui --no-daemon --no-configuration-cache --continue
+
+      - name: GUI Tests (Windows)
+        if: runner.os == 'Windows'
+        run: .\gradlew.bat testGui --no-daemon --no-configuration-cache --continue
+
+      - name: Upload GUI Test Screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-gui-screenshots-${{ matrix.os }}-java${{ matrix.java }}
+          path: freemind/build/test-screenshots/
+          retention-days: 30
+          if-no-files-found: ignore
+
+  # Packaging — only runs after ALL validate + GUI tests pass
   build-macos:
     name: Package (macOS)
-    needs: validate
+    needs: [validate, gui-tests]
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -104,7 +167,7 @@ jobs:
 
   build-windows:
     name: Package (Windows)
-    needs: validate
+    needs: [validate, gui-tests]
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -145,7 +208,7 @@ jobs:
 
   build-linux:
     name: Package (Linux)
-    needs: validate
+    needs: [validate, gui-tests]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

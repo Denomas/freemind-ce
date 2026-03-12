@@ -10,26 +10,26 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
-  JAVA_VERSION: '21'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
-    name: Build (${{ matrix.os }})
+    name: Build (${{ matrix.os }}, Java ${{ matrix.java }})
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-      fail-fast: false
+        os: [ubuntu-24.04, ubuntu-22.04, windows-2025, windows-2022, macos-15, macos-14, macos-13]
+        java: ['21', '22', '23', '24']
+      fail-fast: true
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
+      - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@v5
         with:
-          java-version: ${{ env.JAVA_VERSION }}
+          java-version: ${{ matrix.java }}
           distribution: 'temurin'
 
       - name: Setup Gradle
@@ -63,11 +63,11 @@ jobs:
         if: runner.os == 'Windows'
         run: .\gradlew.bat test --no-daemon --no-configuration-cache --continue
 
-      - name: Publish Test Report
+      - name: Publish Unit Test Report
         uses: dorny/test-reporter@v2
         if: always()
         with:
-          name: Test Results (${{ matrix.os }})
+          name: Unit Tests (${{ matrix.os }}, Java ${{ matrix.java }})
           path: freemind/build/test-results/test/*.xml
           reporter: java-junit
 
@@ -75,17 +75,17 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: spotbugs-report-${{ matrix.os }}
+          name: spotbugs-report-${{ matrix.os }}-java${{ matrix.java }}
           path: freemind/build/reports/spotbugs/
           retention-days: 14
           if-no-files-found: ignore
 
       - name: Generate Coverage Report
-        if: runner.os == 'Linux' && always()
+        if: matrix.os == 'ubuntu-24.04' && matrix.java == '21' && always()
         run: ./gradlew :freemind:jacocoTestReport --no-daemon --no-configuration-cache -x test
 
       - name: Upload Coverage Report
-        if: runner.os == 'Linux' && always()
+        if: matrix.os == 'ubuntu-24.04' && matrix.java == '21' && always()
         uses: actions/upload-artifact@v7
         with:
           name: coverage-report
@@ -93,6 +93,7 @@ jobs:
           retention-days: 14
 
       - name: Upload build artifacts
+        if: matrix.java == '21'
         uses: actions/upload-artifact@v7
         with:
           name: build-${{ matrix.os }}
@@ -101,3 +102,72 @@ jobs:
             freemind/build/distributions/*
           retention-days: 14
           if-no-files-found: warn
+
+  gui-tests:
+    name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
+    needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, ubuntu-22.04, windows-2025, windows-2022, macos-15, macos-14, macos-13]
+        java: ['21', '22', '23', '24']
+      fail-fast: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Make gradlew executable
+        if: runner.os != 'Windows'
+        run: chmod +x ./gradlew
+
+      - name: Build (Unix)
+        if: runner.os != 'Windows'
+        run: ./gradlew build -x test --no-daemon --no-configuration-cache
+
+      - name: Build (Windows)
+        if: runner.os == 'Windows'
+        run: .\gradlew.bat build -x test --no-daemon --no-configuration-cache
+
+      - name: Install Xvfb (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y xvfb
+
+      - name: GUI Tests (Linux with Xvfb)
+        if: runner.os == 'Linux'
+        run: xvfb-run ./gradlew testGui --no-daemon --no-configuration-cache --continue
+
+      - name: GUI Tests (macOS)
+        if: runner.os == 'macOS'
+        run: ./gradlew testGui --no-daemon --no-configuration-cache --continue
+
+      - name: GUI Tests (Windows)
+        if: runner.os == 'Windows'
+        run: .\gradlew.bat testGui --no-daemon --no-configuration-cache --continue
+
+      - name: Upload GUI Test Screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: gui-test-screenshots-${{ matrix.os }}-java${{ matrix.java }}
+          path: freemind/build/test-screenshots/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Publish GUI Test Report
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
+          path: freemind/build/test-results/testGui/*.xml
+          reporter: java-junit
+          fail-on-empty: false
