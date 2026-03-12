@@ -1,4 +1,4 @@
-<map version="1.0.1">
+<map version="1.1.0">
 <node TEXT="FreeMind CE&#xa;Feature Showcase" COLOR="#000000" BACKGROUND_COLOR="#e8f4fd" STYLE="bubble">
 <font NAME="SansSerif" SIZE="20" BOLD="true"/>
 <edge COLOR="#2196F3" WIDTH="4"/>

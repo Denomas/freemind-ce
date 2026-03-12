@@ -33,6 +33,10 @@ public class ShowcaseScreenshotCapture {
     public static void main(String[] args) {
         System.out.println("=== FreeMind CE Showcase Screenshot Capture ===");
 
+        // Ensure ~/.freemind/ directory exists for logging and patterns
+        File freemindDir = new File(System.getProperty("user.home"), ".freemind");
+        freemindDir.mkdirs();
+
         File outputDir = new File(OUTPUT_DIR);
         outputDir.mkdirs();
 

@@ -1,4 +1,4 @@
-<map version="0.9.0">
+<map version="1.1.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node COLOR="#000000" CREATED="1201282183606" ID="Freemind_Link_1027666650" MODIFIED="1202399146245" STYLE="fork" TEXT="Features 0.9.0">
 <font NAME="SansSerif" SIZE="20"/>

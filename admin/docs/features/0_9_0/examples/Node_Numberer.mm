@@ -1,4 +1,4 @@
-<map version="0.9.0_Beta_8">
+<map version="1.1.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#333333" CREATED="1203420272703" ID="Freemind_Link_677606044" MODIFIED="1209011595972" STYLE="bubble">

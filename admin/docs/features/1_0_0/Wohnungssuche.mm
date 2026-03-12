@@ -1,4 +1,4 @@
-<map version="1.0.0">
+<map version="1.1.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node COLOR="#000000" CREATED="1351182531694" ID="ID_1749153312" MODIFIED="1351182549373" TEXT="Wohnungssuche">
 <font NAME="SansSerif" SIZE="20"/>
