@@ -141,68 +141,47 @@ jobs:
           retention-days: 30
           if-no-files-found: ignore
 
-      - name: Embed Showcase & Test Screenshots in Job Summary
+      - name: Screenshot Summary
         if: always()
         shell: bash
         run: |
-          encode_base64() {
-            base64 -w 0 "$1" 2>/dev/null || base64 -i "$1"
-          }
+          {
+            echo "## Screenshots: ${{ matrix.os }} / Java ${{ matrix.java }}"
+            echo ""
 
-          echo "::group::Screenshot Summary Debug"
-          echo "GITHUB_STEP_SUMMARY=$GITHUB_STEP_SUMMARY"
-
-          # === SHOWCASE SCREENSHOTS ===
-          SHOWCASE_DIR="freemind/build/test-screenshots/showcase"
-          if [ -d "$SHOWCASE_DIR" ]; then
-            SHOWCASE_IMAGES=$(find "$SHOWCASE_DIR" -name "window_*.jpg" -type f | sort | head -3)
-            TOTAL=$(find "$SHOWCASE_DIR" \( -name "*.png" -o -name "*.jpg" \) -type f | wc -l | tr -d ' ')
-            echo "Found $TOTAL total showcase files, embedding up to 3 window JPEGs"
-            if [ -n "$SHOWCASE_IMAGES" ]; then
-              {
-                echo "# E2E Showcase: FreeMind CE on ${{ matrix.os }} (Java ${{ matrix.java }})"
-                echo ""
-                echo "> Window screenshots of FreeMind CE with real mindmap files. All $TOTAL screenshots in **release-gui-screenshots** artifact."
-                echo ""
-              } >> "$GITHUB_STEP_SUMMARY"
-              for IMG in $SHOWCASE_IMAGES; do
-                FSIZE=$(wc -c < "$IMG" | tr -d ' ')
-                echo "  Embedding: $IMG ($FSIZE bytes)"
-                BASENAME=$(basename "$IMG" .jpg)
-                BASE64=$(encode_base64 "$IMG")
-                B64LEN=${#BASE64}
-                echo "  Base64 length: $B64LEN chars (~$((B64LEN / 1024)) KB)"
-                {
-                  echo "## $BASENAME"
-                  echo "<img src=\"data:image/jpeg;base64,$BASE64\" alt=\"$BASENAME\" width=\"100%\">"
-                  echo ""
-                } >> "$GITHUB_STEP_SUMMARY"
+            # Showcase screenshots
+            SHOWCASE_DIR="freemind/build/test-screenshots/showcase"
+            if [ -d "$SHOWCASE_DIR" ]; then
+              WINDOW_COUNT=$(find "$SHOWCASE_DIR" -name "window_*.jpg" -type f | wc -l | tr -d ' ')
+              DESKTOP_COUNT=$(find "$SHOWCASE_DIR" -name "desktop_*.png" -type f | wc -l | tr -d ' ')
+              echo "### E2E Showcase"
+              echo "| Type | Count |"
+              echo "|------|-------|"
+              echo "| Window screenshots (JPEG) | $WINDOW_COUNT |"
+              echo "| Desktop screenshots (PNG) | $DESKTOP_COUNT |"
+              echo ""
+              echo "Showcase files opened:"
+              for IMG in $(find "$SHOWCASE_DIR" -name "window_*.jpg" -type f | sort); do
+                NAME=$(basename "$IMG" .jpg | sed 's/window_showcase_//')
+                SIZE=$(( $(wc -c < "$IMG") / 1024 ))
+                echo "- **$NAME** (${SIZE} KB)"
               done
-              echo "---" >> "$GITHUB_STEP_SUMMARY"
+              echo ""
             fi
-          else
-            echo "No showcase directory found at $SHOWCASE_DIR"
-          fi
 
-          # === GUI TEST SCREENSHOTS (count only) ===
-          SCREENSHOT_DIR="freemind/build/test-screenshots"
-          if [ -d "$SCREENSHOT_DIR" ]; then
-            TEST_IMAGES=$(find "$SCREENSHOT_DIR" -name "*.png" -type f -not -path "*/showcase/*" | sort)
-            if [ -n "$TEST_IMAGES" ]; then
-              COUNT=$(echo "$TEST_IMAGES" | wc -l | tr -d ' ')
-              echo "Found $COUNT test screenshots"
-              {
+            # Test screenshots
+            SCREENSHOT_DIR="freemind/build/test-screenshots"
+            if [ -d "$SCREENSHOT_DIR" ]; then
+              TEST_COUNT=$(find "$SCREENSHOT_DIR" -name "*.png" -type f -not -path "*/showcase/*" | wc -l | tr -d ' ')
+              if [ "$TEST_COUNT" -gt 0 ]; then
+                echo "### GUI Test Screenshots"
+                echo "**$TEST_COUNT** test screenshots captured across all test classes."
                 echo ""
-                echo "## GUI Test Screenshots"
-                echo ""
-                echo "$COUNT test screenshots captured. Download the **release-gui-screenshots** artifact to view all."
-              } >> "$GITHUB_STEP_SUMMARY"
+              fi
             fi
-          fi
 
-          FINAL_SIZE=$(wc -c < "$GITHUB_STEP_SUMMARY" 2>/dev/null | tr -d ' ' || echo 0)
-          echo "Final summary size: $FINAL_SIZE bytes ($((FINAL_SIZE / 1024)) KB)"
-          echo "::endgroup::"
+            echo "> Download the **release-gui-screenshots** artifact to view all images."
+          } >> "$GITHUB_STEP_SUMMARY"
 
   # Packaging — only runs after ALL validate + GUI tests pass
   build-macos:
