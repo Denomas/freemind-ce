@@ -1,0 +1,27 @@
+.github/workflows/build.yml
+  1b5fbaddcf442270 14,76,89,96
+.github/workflows/release.yml
+  1b5fbaddcf442270 15,99,140,231,238,252
+.github/workflows/release-please.yml
+  1b5fbaddcf442270 15-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "ddd3112cad473fd328a05a7ca8d782f48ac27052",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 13,
+      "total_deletions": 8,
+      "accepted_lines": 13,
+      "overriden_lines": 0
+    }
+  }
+}
