@@ -51,7 +51,9 @@ ci: add OWASP dependency scanning
 chore: update .gitignore patterns
 ```
 
-**Allowed types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+**Allowed types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`, `deps`
+
+> **Note:** PR titles are automatically validated against this format. PRs with non-conforming titles will fail the CI check.
 
 ### Atomic Commits
 
