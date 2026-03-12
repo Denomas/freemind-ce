@@ -1,0 +1,25 @@
+CONTRIBUTING.md
+  19de32e92f7747a3 101,103,114-119,155,157,159-166,168-223,225-255,257-259,261-262,265-281,283-286,288-296,299-308
+CLAUDE.md
+  19de32e92f7747a3 19,21,29,31-49,51,132
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "b78bbbbd9603fe5dcee1ed9be4db721000ccbd90",
+  "prompts": {
+    "19de32e92f7747a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "44427e1a-d4a3-46d2-8ee5-e6d5141c91d7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 174,
+      "overriden_lines": 0
+    }
+  }
+}
