@@ -145,19 +145,33 @@ jobs:
         if: always()
         shell: bash
         run: |
-          # === SHOWCASE SCREENSHOTS (full-size, at the top) ===
+          MAX_SUMMARY_KB=900  # Stay under GitHub's 1024KB limit
+          SUMMARY_SIZE=0
+
+          encode_base64() {
+            base64 -w 0 "$1" 2>/dev/null || base64 -i "$1"
+          }
+
+          # === SHOWCASE SCREENSHOTS (window captures only, limited count) ===
           SHOWCASE_DIR="freemind/build/test-screenshots/showcase"
           if [ -d "$SHOWCASE_DIR" ]; then
-            SHOWCASE_IMAGES=$(find "$SHOWCASE_DIR" -name "*.png" -type f | sort)
+            SHOWCASE_IMAGES=$(find "$SHOWCASE_DIR" -name "window_*.png" -type f | sort | head -5)
+            TOTAL_SHOWCASE=$(find "$SHOWCASE_DIR" -name "*.png" -type f | wc -l | tr -d ' ')
             if [ -n "$SHOWCASE_IMAGES" ]; then
-              echo "# E2E Showcase: FreeMind CE Running on ${{ matrix.os }} (Java ${{ matrix.java }})" >> "$GITHUB_STEP_SUMMARY"
+              echo "# E2E Showcase: FreeMind CE on ${{ matrix.os }} (Java ${{ matrix.java }})" >> "$GITHUB_STEP_SUMMARY"
               echo "" >> "$GITHUB_STEP_SUMMARY"
-              echo "> Full desktop screenshots proving end-to-end functionality with real mindmap files." >> "$GITHUB_STEP_SUMMARY"
+              echo "> Showing up to 5 window screenshots. All $TOTAL_SHOWCASE screenshots available in the **gui-test-screenshots** artifact." >> "$GITHUB_STEP_SUMMARY"
               echo "" >> "$GITHUB_STEP_SUMMARY"
               for IMG in $SHOWCASE_IMAGES; do
+                IMG_KB=$(( $(wc -c < "$IMG") * 4 / 3 / 1024 ))
+                SUMMARY_SIZE=$((SUMMARY_SIZE + IMG_KB))
+                if [ "$SUMMARY_SIZE" -gt "$MAX_SUMMARY_KB" ]; then
+                  echo "*Remaining screenshots omitted (summary size limit). See artifacts.*" >> "$GITHUB_STEP_SUMMARY"
+                  break
+                fi
                 BASENAME=$(basename "$IMG" .png)
                 echo "## $BASENAME" >> "$GITHUB_STEP_SUMMARY"
-                BASE64=$(base64 -w 0 "$IMG" 2>/dev/null || base64 -i "$IMG")
+                BASE64=$(encode_base64 "$IMG")
                 echo "<img src=\"data:image/png;base64,$BASE64\" alt=\"$BASENAME\" width=\"100%\">" >> "$GITHUB_STEP_SUMMARY"
                 echo "" >> "$GITHUB_STEP_SUMMARY"
               done
@@ -166,26 +180,33 @@ jobs:
             fi
           fi
 
-          # === GUI TEST SCREENSHOTS (collapsible) ===
+          # === GUI TEST SCREENSHOTS (summary only, no embedding) ===
           SCREENSHOT_DIR="freemind/build/test-screenshots"
-          if [ ! -d "$SCREENSHOT_DIR" ]; then
-            exit 0
-          fi
-          IMAGES=$(find "$SCREENSHOT_DIR" -name "*.png" -type f -not -path "*/showcase/*" | sort)
-          if [ -n "$IMAGES" ]; then
-            COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
-            echo "## GUI Test Screenshots ($COUNT images)" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "<details><summary>Click to expand all test screenshots</summary>" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            for IMG in $IMAGES; do
-              BASENAME=$(basename "$IMG" .png)
-              echo "### $BASENAME" >> "$GITHUB_STEP_SUMMARY"
-              BASE64=$(base64 -w 0 "$IMG" 2>/dev/null || base64 -i "$IMG")
-              echo "<img src=\"data:image/png;base64,$BASE64\" alt=\"$BASENAME\" width=\"700\">" >> "$GITHUB_STEP_SUMMARY"
+          if [ -d "$SCREENSHOT_DIR" ]; then
+            IMAGES=$(find "$SCREENSHOT_DIR" -name "*.png" -type f -not -path "*/showcase/*" | sort)
+            if [ -n "$IMAGES" ]; then
+              COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
+              echo "## GUI Test Screenshots" >> "$GITHUB_STEP_SUMMARY"
               echo "" >> "$GITHUB_STEP_SUMMARY"
-            done
-            echo "</details>" >> "$GITHUB_STEP_SUMMARY"
+              echo "$COUNT test screenshots captured. Download the **gui-test-screenshots** artifact to view all." >> "$GITHUB_STEP_SUMMARY"
+              echo "" >> "$GITHUB_STEP_SUMMARY"
+              EMBEDDED=0
+              echo "<details><summary>Preview (first 3)</summary>" >> "$GITHUB_STEP_SUMMARY"
+              echo "" >> "$GITHUB_STEP_SUMMARY"
+              for IMG in $IMAGES; do
+                [ "$EMBEDDED" -ge 3 ] && break
+                IMG_KB=$(( $(wc -c < "$IMG") * 4 / 3 / 1024 ))
+                SUMMARY_SIZE=$((SUMMARY_SIZE + IMG_KB))
+                [ "$SUMMARY_SIZE" -gt "$MAX_SUMMARY_KB" ] && break
+                BASENAME=$(basename "$IMG" .png)
+                echo "### $BASENAME" >> "$GITHUB_STEP_SUMMARY"
+                BASE64=$(encode_base64 "$IMG")
+                echo "<img src=\"data:image/png;base64,$BASE64\" alt=\"$BASENAME\" width=\"700\">" >> "$GITHUB_STEP_SUMMARY"
+                echo "" >> "$GITHUB_STEP_SUMMARY"
+                EMBEDDED=$((EMBEDDED + 1))
+              done
+              echo "</details>" >> "$GITHUB_STEP_SUMMARY"
+            fi
           fi
 
   # Packaging — only runs after ALL validate + GUI tests pass
