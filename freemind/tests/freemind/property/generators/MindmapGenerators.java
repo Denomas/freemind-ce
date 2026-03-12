@@ -109,4 +109,37 @@ public class MindmapGenerators {
             .ofMaxLength(100)
             .map(s -> s + "<>&\"'");
     }
+
+    @Provide
+    public Arbitrary<String> unicodeStrings() {
+        return Arbitraries.oneOf(
+            // Latin Extended (Turkish, German, etc.)
+            Arbitraries.strings().withCharRange('\u00C0', '\u017F').ofMinLength(1).ofMaxLength(30),
+            // Cyrillic
+            Arbitraries.strings().withCharRange('\u0400', '\u04FF').ofMinLength(1).ofMaxLength(30),
+            // Arabic
+            Arbitraries.strings().withCharRange('\u0600', '\u06FF').ofMinLength(1).ofMaxLength(30),
+            // CJK Unified Ideographs
+            Arbitraries.strings().withCharRange('\u4E00', '\u9FFF').ofMinLength(1).ofMaxLength(20),
+            // Hiragana
+            Arbitraries.strings().withCharRange('\u3040', '\u309F').ofMinLength(1).ofMaxLength(20),
+            // Hangul Syllables
+            Arbitraries.strings().withCharRange('\uAC00', '\uD7AF').ofMinLength(1).ofMaxLength(20),
+            // Devanagari
+            Arbitraries.strings().withCharRange('\u0900', '\u097F').ofMinLength(1).ofMaxLength(30),
+            // Thai
+            Arbitraries.strings().withCharRange('\u0E00', '\u0E7F').ofMinLength(1).ofMaxLength(30),
+            // Mixed: ASCII + various Unicode
+            Arbitraries.strings().withCharRange(' ', '~').ofMinLength(1).ofMaxLength(15)
+                .map(ascii -> ascii + "\u00FC\u00E4\u0411\u4E16")
+        );
+    }
+
+    @Provide
+    public Arbitrary<String> htmlWithUnicode() {
+        return unicodeStrings().map(text ->
+            "<html>\n  <head>\n    \n  </head>\n  <body>\n    <p>\n      "
+                + text + "\n    </p>\n  </body>\n</html>\n"
+        );
+    }
 }

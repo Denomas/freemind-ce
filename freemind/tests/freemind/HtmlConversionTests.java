@@ -43,7 +43,7 @@ import freemind.modes.mindmapmode.actions.xml.actors.PasteActor;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class HtmlConversionTests extends FreeMindTestBase {
 
@@ -56,7 +56,7 @@ public class HtmlConversionTests extends FreeMindTestBase {
 		private String mHtmlData;
 
 		/**
-		 * 
+		 *
 		 */
 		public HtmlTransfer(String pHtmlData) {
 			mHtmlData = pHtmlData;
@@ -66,7 +66,7 @@ public class HtmlConversionTests extends FreeMindTestBase {
 				freemind.main.Resources.getInstance().logException(e);
 			}
 		}
-		
+
 		@Override
 		public DataFlavor[] getTransferDataFlavors() {
 			return new DataFlavor[] {mFlavor};
@@ -171,12 +171,15 @@ public class HtmlConversionTests extends FreeMindTestBase {
 	/**
 	 * I suspected, that the toXhtml method inserts some spaces into the output,
 	 * but it doesn't seem to be the case.
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	public void testSpaceHandling() throws Exception {
 		String input = getInputStringWithManySpaces(HtmlTools.SP);
-		assertEquals(input, HtmlTools.getInstance().toXhtml(input));
+		String result = HtmlTools.getInstance().toXhtml(input);
+		// After UTF-8 fix: &#160; entities are decoded to actual NBSP characters
+		String expected = input.replace(HtmlTools.SP, HtmlTools.NBSP);
+		assertEquals(expected, result);
 	}
 
 	// public void testSpaceHandlingInShtml() throws Exception {
@@ -547,10 +550,10 @@ public class HtmlConversionTests extends FreeMindTestBase {
 //			@Override
 //			public void tail(Node pNode, int pDepth) {
 //				System.out.println("/Node: " + pNode.getClass() + ", " + pNode);
-//				
+//
 //			}}).traverse(Jsoup.parse(testHtml2));
 
-		
+
 		MindMapNode rootNode = new TestMindMapNode();
 		rootNode.setText("myRoot");
 		NodeCreator creator = new NodeCreator() {
@@ -574,21 +577,21 @@ public class HtmlConversionTests extends FreeMindTestBase {
 			@Override
 			public void setLink(String pLink, MindMapNode pNode) {
 			}
-			
+
 		};
 		instance.insertHtmlIntoNodes(testHtml1, rootNode, creator);
-		
+
 		assertEquals(1, created.getValue());
 		assertEquals("Only one in the first level", 1, rootNode.getChildCount());
 		created.setValue(0);
 		rootNode = new TestMindMapNode();
 		rootNode.setText("myRoot2");
 		instance.insertHtmlIntoNodes(testHtml2, rootNode, creator);
-		
+
 		assertEquals(5, created.getValue());
 		assertEquals("Only two in the first level", 2, rootNode.getChildCount());
 
-		
+
 		created.setValue(0);
 		rootNode = new TestMindMapNode();
 		rootNode.setText("myRoot3");
@@ -607,5 +610,5 @@ public class HtmlConversionTests extends FreeMindTestBase {
 		// this is one less, as the determine... strips the html header and uses its own.
 		assertEquals(9, actor.determineAmountOfNewNodes(new HtmlTransfer(testHtml3)));
 	}
-	
+
 }
