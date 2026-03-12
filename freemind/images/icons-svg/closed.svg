@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" version="1.1" viewBox="0 0 32.003 32.003">
+ <defs>
+  <linearGradient id="a" x1="268.63" x2="219.96" y1="238.03" y2="124.52" gradientTransform="matrix(.29291 0 0 .29291 -59.404 -48.412)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#fc2814" offset="0"/>
+   <stop stop-color="#fff2ff" offset="1"/>
+  </linearGradient>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m31.003 16.002a14.999 14.999 0 0 1-15 15 14.999 14.999 0 0 1-15-15 14.999 14.999 0 0 1 15-15 14.999 14.999 0 0 1 15 15z" fill="url(#a)" fill-rule="evenodd" font-size="61.543px" stroke="#ff0000" stroke-opacity=".58333" stroke-width="2.003"/>
+ <text transform="scale(1.3532 .73898)" x="-0.38480523" y="38.759769" fill="#ffffff" font-family="'Bitstream Vera Sans'" font-size="53.775px" stroke="#ffffff" stroke-width=".81342px" space="preserve"><tspan x="-0.38480523" y="38.759769" stroke-width=".81342">-</tspan></text>
+</svg>
