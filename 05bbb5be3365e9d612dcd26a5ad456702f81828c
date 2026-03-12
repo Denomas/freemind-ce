@@ -1,0 +1,25 @@
+freemind/freemind/main/Tools.java
+  1b5fbaddcf442270 403-414
+freemind/tests/freemind/ToolsTests.java
+  1b5fbaddcf442270 128-131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "05bbb5be3365e9d612dcd26a5ad456702f81828c",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 16,
+      "total_deletions": 3,
+      "accepted_lines": 16,
+      "overriden_lines": 0
+    }
+  }
+}
