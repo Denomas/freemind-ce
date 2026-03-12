@@ -1,11 +1,9 @@
 name: Build
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
-  workflow_call:  # Allow other workflows to call this as a reusable workflow
+  workflow_call:  # Called by release-please.yml on push to main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
