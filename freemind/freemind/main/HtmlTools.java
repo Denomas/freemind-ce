@@ -62,7 +62,7 @@ public class HtmlTools {
 			+ "br|area|base|basefont|" + "bgsound|button|col|colgroup|embed|hr"
 			+ "|img|input|isindex|keygen|link|meta"
 			+ "|object|plaintext|spacer|wbr" + ")(\\s[^>]*)?)/>");
-	
+
 	private static final Pattern TAGS_PATTERN = Pattern.compile("(?s)<[^><]*>");
 
 	private static final Pattern LEVEL_PATTERN = Pattern.compile("level([0-9]+)");
@@ -70,7 +70,7 @@ public class HtmlTools {
 	public static final String SP = "&#160;";
 
 	/**
-     * 
+     *
      */
 	private HtmlTools() {
 		super();
@@ -93,7 +93,16 @@ public class HtmlTools {
 			String resultXml = writer.toString();
 			// for safety:
 			if (isWellformedXml(resultXml)) {
-				logger.fine("Leave toXhtml with " + resultXml);
+				// Decode numeric HTML entities (&#287; → ğ) back to UTF-8.
+				// XHTMLWriter's underlying HTMLEditorKit encodes non-ASCII
+				// characters as numeric entities, but we want native UTF-8.
+				String decoded = unescapeHTMLUnicodeEntity(resultXml);
+				if (isWellformedXml(decoded)) {
+					logger.fine("Leave toXhtml with " + decoded);
+					return decoded;
+				}
+				// Fallback to entity-encoded version if decoding breaks XML
+				logger.fine("Leave toXhtml with entity-encoded " + resultXml);
 				return resultXml;
 			}
 		} catch (IOException e) {
@@ -340,9 +349,9 @@ public class HtmlTools {
 	 * Converts XML unicode entity-encoded characters into plain Java unicode
 	 * characters; for example, ''&amp;#xff;'' gets converted. Removes all
 	 * XML-invalid entity characters, such as &amp;#xb;.
-	 * 
+	 *
 	 * Opposite to {@link HtmlTools#unicodeToHTMLUnicodeEntity(String, boolean)}
-	 * 
+	 *
 	 * @param text
 	 *            input
 	 * @return the converted output.
@@ -609,7 +618,7 @@ public class HtmlTools {
 	/**
 	 * Determines whether the character is valid in XML. Invalid characters
 	 * include most of the range x00-x1F, and more.
-	 * 
+	 *
 	 * @see http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char.
 	 */
 	public static boolean isXMLValidCharacter(char character) {
@@ -623,13 +632,13 @@ public class HtmlTools {
 
 	/** Precondition: The input text contains XML unicode entities rather
 	   than Java unicode text.
-	
+
 	   The algorithm:
 	   Search the string for XML entities. For each XML entity inspect
 	   whether it is valid. If valid, append it. To be on the safe side,
 	   also inspect for no-entity unicode whether it is XML-valid, and
 	   pass on only XML-valid characters.
-	
+
 	   This method uses the method isXMLValidCharacter, which makes use
 	   of http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char. */
 	public static String removeInvalidXmlCharacters(String text) {
@@ -790,7 +799,7 @@ public class HtmlTools {
 					} else {
 						Matcher matcher = LEVEL_PATTERN.matcher(element.attr("style"));
 						if(element.tagName().equals("p") && matcher.find()) {
-							// special handling for outlook 
+							// special handling for outlook
 							int newLevel = Integer.valueOf(matcher.group(1));
 							while(newLevel>mLevel) {
 //								System.out.println("Level increase from: " + mLevel + " to " + newLevel);
@@ -850,14 +859,14 @@ public class HtmlTools {
 				mCurrentNode = null;
 			}
 		}
-		
+
 		private void backToParent() {
 			mParentNode = mParentNode.getParentNode();
 		}
 	}
 
 
-	
+
 	/**
 	 * Uses JSoup to parse HTML
 	 */
