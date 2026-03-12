@@ -363,6 +363,11 @@ tasks.register<Test>("testGui") {
     // GUI tests need a real display — not headless
     systemProperty("java.awt.headless", "false")
 
+    // Always re-run GUI tests — never use Gradle cache.
+    // GUI tests depend on platform-specific rendering (fonts, display server)
+    // so cached results from another runner or Java version are not reliable.
+    outputs.upToDateWhen { false }
+
     testLogging {
         events("passed", "skipped", "failed")
         showStandardStreams = true
