@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: release-please-${{ github.ref }}
+  cancel-in-progress: false  # Never cancel release-please runs
+
 permissions:
   contents: write
   pull-requests: write
@@ -30,7 +34,7 @@ jobs:
 
       - name: Trigger release workflow
         if: ${{ steps.release.outputs.release_created }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Dispatch release build
         if: ${{ steps.release.outputs.release_created }}

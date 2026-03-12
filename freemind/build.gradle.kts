@@ -9,8 +9,8 @@ plugins {
     java
     application
     jacoco
-    id("com.github.spotbugs") version "6.0.7"
-    id("org.owasp.dependencycheck") version "9.0.9"
+    id("com.github.spotbugs") version "6.4.8"
+    id("org.owasp.dependencycheck") version "12.2.0"
 }
 
 // ============================================================================
@@ -90,9 +90,9 @@ val jpackageVersion = project.version.toString().replace(Regex("-.*"), "")
 
 val jaxbApiVersion = "2.3.1"
 val jaxbImplVersion = "2.3.9"
-val batikVersion = "1.17"
-val fopVersion = "2.9"
-val flatlafVersion = "3.4.1"
+val batikVersion = "1.19"
+val fopVersion = "2.11"
+val flatlafVersion = "3.7"
 val jgoodiesVersion = "1.9.0"
 val junitVersion = "4.13.2"
 
@@ -159,22 +159,22 @@ dependencies {
     implementation("org.apache.xmlgraphics:fop:${fopVersion}")
 
     // Logging (SLF4J + Logback)
-    implementation("org.slf4j:slf4j-api:2.0.12")
-    implementation("ch.qos.logback:logback-classic:1.4.14")
+    implementation("org.slf4j:slf4j-api:2.0.17")
+    implementation("ch.qos.logback:logback-classic:1.5.32")
 
     // Testing - JUnit 5 with vintage engine for JUnit 3 backward compatibility
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
-    testImplementation("org.junit.vintage:junit-vintage-engine:5.10.2")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.10.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.14.3")
+    testImplementation("org.junit.vintage:junit-vintage-engine:5.14.3")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.14.3")
     testImplementation("junit:junit:${junitVersion}")
-    testImplementation("org.mockito:mockito-core:5.10.0")
+    testImplementation("org.mockito:mockito-core:5.22.0")
 
     // Property-Based Testing (jqwik)
-    testImplementation("net.jqwik:jqwik:1.8.2")
-    testImplementation("net.jqwik:jqwik-engine:1.8.2")
+    testImplementation("net.jqwik:jqwik:1.9.3")
+    testImplementation("net.jqwik:jqwik-engine:1.9.3")
 
     // Fluent Assertions (AssertJ)
-    testImplementation("org.assertj:assertj-core:3.25.3")
+    testImplementation("org.assertj:assertj-core:3.27.7")
 }
 
 // ============================================================================
