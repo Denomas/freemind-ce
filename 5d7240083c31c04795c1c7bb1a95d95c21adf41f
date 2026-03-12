@@ -1,0 +1,29 @@
+.github/workflows/release.yml
+  1b5fbaddcf442270 28,31,36-37,71,74,78-80,110,113,118-119,151,154,158-160
+.github/workflows/release-please.yml
+  1b5fbaddcf442270 7-10,37
+freemind/build.gradle.kts
+  1b5fbaddcf442270 12-13,93-95,162-163,166-168,170,173-174,177
+.github/workflows/build.yml
+  1b5fbaddcf442270 10-13,28,31,35-37,68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "5d7240083c31c04795c1c7bb1a95d95c21adf41f",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 54,
+      "total_deletions": 36,
+      "accepted_lines": 49,
+      "overriden_lines": 0
+    }
+  }
+}
