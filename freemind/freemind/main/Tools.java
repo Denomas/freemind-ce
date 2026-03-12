@@ -400,6 +400,18 @@ public class Tools {
 				|| !base.getHost().equals(target.getHost())) {
 			return target.toString();
 		}
+		// On Windows, different drive letters (e.g. C: vs O:) cannot have
+		// relative paths between them — return absolute URL in that case.
+		if (isWindows() && "file".equals(base.getProtocol())) {
+			String basePath = base.getFile().toLowerCase();
+			String targetPath = target.getFile().toLowerCase();
+			// file URLs on Windows look like /C:/... — compare the drive letter
+			if (basePath.length() >= 3 && targetPath.length() >= 3
+					&& basePath.charAt(2) == ':' && targetPath.charAt(2) == ':'
+					&& basePath.charAt(1) != targetPath.charAt(1)) {
+				return target.toString();
+			}
+		}
 		String baseString = base.getFile();
 		String targetString = target.getFile();
 		String result = "";

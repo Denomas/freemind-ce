@@ -125,9 +125,10 @@ public class ToolsTests extends FreeMindTestBase {
 	 */
 	public void testRelativeUrlsWindows() throws Exception {
 		if (Tools.isWindows()) {
-			String pathname = WINDOWS_PATH_WITH_SPECIAL_CHAR;
-			File input = new File(pathname);
-			String expected = pathname;
+			File input = new File(WINDOWS_PATH_WITH_SPECIAL_CHAR);
+			// Different drive letters (o: vs c:) cannot have relative paths,
+			// so the result should be the absolute URL of the input file.
+			String expected = Tools.fileToUrl(input).toString();
 			File mapFile = new File(WINDOWS_PATH_C_USERS_TMP_IM_MM);
 			testCorrectRelativism(input, expected, mapFile);
 		}
