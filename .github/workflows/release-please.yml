@@ -12,6 +12,9 @@ permissions:
   contents: write
   pull-requests: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   # Step 1: Run the full build + test pipeline first
   validate:

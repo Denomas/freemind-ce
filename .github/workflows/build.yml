@@ -11,6 +11,7 @@ concurrency:
 
 env:
   JAVA_VERSION: '21'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
@@ -72,7 +73,7 @@ jobs:
 
       - name: Upload SpotBugs Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: spotbugs-report-${{ matrix.os }}
           path: freemind/build/reports/spotbugs/
@@ -85,14 +86,14 @@ jobs:
 
       - name: Upload Coverage Report
         if: runner.os == 'Linux' && always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: coverage-report
           path: freemind/build/reports/jacoco/
           retention-days: 14
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: build-${{ matrix.os }}
           path: |

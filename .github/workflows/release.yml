@@ -12,6 +12,7 @@ on:
 
 env:
   JAVA_VERSION: '21'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   # Gate: Run full build + tests before packaging anything
@@ -95,7 +96,7 @@ jobs:
           for f in *.dmg; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-macOS.dmg"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: FreeMindCE-macOS
           path: freemind/build/jpackage/FreeMind-CE-*
@@ -136,7 +137,7 @@ jobs:
           for f in *.msi; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Windows.msi"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: FreeMindCE-Windows
           path: freemind/build/jpackage/FreeMind-CE-*
@@ -227,14 +228,14 @@ jobs:
           for f in *.rpm; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Linux.rpm"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: FreeMindCE-Linux
           path: freemind/build/jpackage/FreeMind-CE-*
           if-no-files-found: error
 
       - name: Upload JAR distribution
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: FreeMindCE-jar
           path: freemind/build/distributions/*
@@ -248,7 +249,7 @@ jobs:
 
     steps:
       - name: Download all artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           path: artifacts
           merge-multiple: true
