@@ -1,0 +1,27 @@
+.github/workflows/build.yml
+  19de32e92f7747a3 197-198,214-216
+.github/workflows/release.yml
+  19de32e92f7747a3 158-159,175-176
+freemind/tests/freemind/gui/ShowcaseScreenshotCapture.java
+  19de32e92f7747a3 203-204,206-209,211,214,217,225-241
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "51b2179d12432b6009ae6b1e7815026e3fb41195",
+  "prompts": {
+    "19de32e92f7747a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "44427e1a-d4a3-46d2-8ee5-e6d5141c91d7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 39,
+      "total_deletions": 16,
+      "accepted_lines": 37,
+      "overriden_lines": 0
+    }
+  }
+}
