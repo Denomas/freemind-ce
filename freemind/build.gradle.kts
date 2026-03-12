@@ -133,7 +133,7 @@ dependencies {
     // Apache Xalan (XSLT Processing)
     implementation("xalan:xalan:2.7.3")
     implementation("xalan:serializer:2.7.3")
-    implementation("xml-apis:xml-apis:1.4.01")
+    implementation("xml-apis:xml-apis:2.0.2")
     implementation("xerces:xercesImpl:2.12.2")
 
     // Jsoup (HTML Parsing) - 1.10.3 matches existing NodeTraversor API usage
