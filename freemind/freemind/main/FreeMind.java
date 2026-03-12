@@ -317,12 +317,15 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 				String propsLoc = "version.properties";
 				URL versionUrl = this.getClass().getClassLoader()
 						.getResource(propsLoc);
-				Properties buildNumberPros = new Properties();
-				InputStream stream = versionUrl.openStream();
-				buildNumberPros.load(stream);
-				info.append("\nBuild: "
-						+ buildNumberPros.getProperty("build.number") + "\n");
-				stream.close();
+				if (versionUrl != null) {
+					Properties buildNumberPros = new Properties();
+					try (InputStream stream = versionUrl.openStream()) {
+						buildNumberPros.load(stream);
+					}
+					info.append("\nBuild: "
+							+ buildNumberPros.getProperty("build.number")
+							+ "\n");
+				}
 			} catch (Exception e) {
 				info.append("Problems reading build number file: " + e);
 			}
@@ -877,6 +880,20 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 	private void fireStartupDone() {
 		mStartupDone = true;
+		// Re-apply the content component to the current tab. During startup,
+		// split panes may have been created before any tabs existed
+		// (selectedIndex=-1), leaving them orphaned. This mirrors the logic in
+		// Controller.tabSelectionChanged() that fixes the layout on tab switch.
+		// Swing components must be manipulated on the EDT.
+		SwingUtilities.invokeLater(() -> {
+			if (mTabbedPane != null && mSplitPane != null) {
+				int idx = mTabbedPane.getSelectedIndex();
+				if (idx >= 0) {
+					mScrollPane.setVisible(true);
+					mTabbedPane.setComponentAt(idx, mContentComponent);
+				}
+			}
+		});
 		for (StartupDoneListener listener : mStartupDoneListeners) {
 			listener.startupDone();
 		}
@@ -1182,6 +1199,11 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 			return mSplitPane;
 		}
 		removeContentComponent();
+		// JTabbedPane may have set the scroll pane invisible when a tab was
+		// removed or its content was swapped out. Ensure it is visible before
+		// placing it into the split pane, otherwise the bottom component
+		// (note/attribute panel) will take all available space.
+		mScrollPane.setVisible(true);
 		int splitType = JSplitPane.VERTICAL_SPLIT;
 		String splitProperty = getProperty(J_SPLIT_PANE_SPLIT_TYPE);
 		if(Tools.safeEquals(splitProperty, HORIZONTAL_SPLIT_RIGHT)) {
@@ -1191,57 +1213,89 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		} else {
 			logger.warning("Split type not known: " + splitProperty);
 		}
-		mSplitPane = new JSplitPane(splitType, mScrollPane, pMindMapComponent);
+		mScrollPane.setMinimumSize(new Dimension(100, 100));
+		pMindMapComponent.setPreferredSize(new Dimension(100, 200));
+		mSplitPane = new JSplitPane(splitType, mScrollPane, pMindMapComponent) {
+			private int mDesiredLocation = -1;
+			private boolean mFixScheduled;
+			@Override
+			public void setDividerLocation(int location) {
+				if (location > 0) {
+					mDesiredLocation = location;
+				}
+				// BasicSplitPaneUI's layout manager resets the divider to 0
+				// when the split pane transitions from 0x0 to its real size
+				// (proportional calculation: divider/0*newSize → 0). Reject
+				// any reset to 0 when we have a valid saved position.
+				if (location <= 0 && mDesiredLocation > 0) {
+					location = mDesiredLocation;
+					// The layout manager wraps its setDividerLocation call in
+					// ignoreDividerLocationChange=true, which prevents the UI
+					// from recording this as an explicit location. Schedule a
+					// re-application outside that block so the UI properly
+					// marks dividerLocationIsSet=true and stops resetting.
+					if (!mFixScheduled) {
+						mFixScheduled = true;
+						final int loc = mDesiredLocation;
+						SwingUtilities.invokeLater(() -> {
+							mFixScheduled = false;
+							super.setDividerLocation(loc);
+						});
+					}
+				}
+				super.setDividerLocation(location);
+			}
+		};
 		mSplitPane.setContinuousLayout(true);
 		mSplitPane.setOneTouchExpandable(false);
-		/*
-		 * This means that the mind map area gets all the space that results
-		 * from resizing the window.
-		 */
 		mSplitPane.setResizeWeight(1.0d);
-		// split panes eat F8 and F6. This is corrected here.
 		Tools.correctJSplitPaneKeyMap();
 		mContentComponent = mSplitPane;
 		setContentComponent();
-		// set divider position:
 		setSplitLocation();
-		// after making this window visible, the size is adjusted. To get the right split location, we postpone this.
-		addComponentListener(new ComponentAdapter(){
-		@Override
-			public void componentResized(ComponentEvent pE) {
-				setSplitLocation();
-				removeComponentListener(this);
-			}
-		});
 		return mSplitPane;
 	}
 
 	private void setSplitLocation() {
+		if (mSplitPane == null) {
+			return;
+		}
 		int splitPanePosition = getIntProperty(SPLIT_PANE_POSITION, -1);
 		int lastSplitPanePosition = getIntProperty(SPLIT_PANE_LAST_POSITION, -1);
-		if (mSplitPane != null && splitPanePosition != -1 && lastSplitPanePosition != -1) {
-			// Ensure the mindmap area (top component) has a reasonable minimum size.
-			// A divider position below 100px makes the mindmap nearly invisible.
-			int minPosition = 100;
-			if (splitPanePosition < minPosition) {
-				int paneHeight = mSplitPane.getHeight();
-				splitPanePosition = paneHeight > 0 ? (int)(paneHeight * 0.7) : 600;
-			}
-			if (lastSplitPanePosition < minPosition) {
-				int paneHeight = mSplitPane.getHeight();
-				lastSplitPanePosition = paneHeight > 0 ? (int)(paneHeight * 0.7) : 600;
-			}
-			mSplitPane.setDividerLocation(splitPanePosition);
-			mSplitPane.setLastDividerLocation(lastSplitPanePosition);
+		int paneSize = mSplitPane.getOrientation() == JSplitPane.VERTICAL_SPLIT
+				? mSplitPane.getHeight() : mSplitPane.getWidth();
+		int defaultPosition = paneSize > 0 ? (int)(paneSize * 0.7) : -1;
+		if (defaultPosition <= 0) {
+			// Last resort: use content pane size
+			paneSize = mSplitPane.getOrientation() == JSplitPane.VERTICAL_SPLIT
+					? getContentPane().getHeight() : getContentPane().getWidth();
+			defaultPosition = paneSize > 0 ? (int)(paneSize * 0.7) : 600;
 		}
+		int minPosition = 100;
+		if (splitPanePosition <= 0 || splitPanePosition < minPosition) {
+			splitPanePosition = defaultPosition;
+		}
+		if (lastSplitPanePosition <= 0 || lastSplitPanePosition < minPosition) {
+			lastSplitPanePosition = defaultPosition;
+		}
+		mSplitPane.setDividerLocation(splitPanePosition);
+		mSplitPane.setLastDividerLocation(lastSplitPanePosition);
 	}
 
 	public void removeSplitPane() {
 		if (mSplitPane != null) {
-			setProperty(SPLIT_PANE_POSITION,
-					"" + mSplitPane.getDividerLocation());
-			setProperty(SPLIT_PANE_LAST_POSITION,
-					"" + mSplitPane.getLastDividerLocation());
+			// Only persist the divider location when the split pane has been
+			// laid out (non-zero size). During startup the split pane may not
+			// have real dimensions yet, and getDividerLocation() would return 0
+			// which would overwrite a valid saved position.
+			int divLoc = mSplitPane.getDividerLocation();
+			int lastDivLoc = mSplitPane.getLastDividerLocation();
+			if (divLoc > 0) {
+				setProperty(SPLIT_PANE_POSITION, "" + divLoc);
+			}
+			if (lastDivLoc > 0) {
+				setProperty(SPLIT_PANE_LAST_POSITION, "" + lastDivLoc);
+			}
 			removeContentComponent();
 			mContentComponent = mScrollPane;
 			setContentComponent();
