@@ -1,0 +1,25 @@
+.github/workflows/build.yml
+  19de32e92f7747a3 182,187-188,190,193-199,201-205,207,210,213-216,218,221-222
+.github/workflows/release.yml
+  19de32e92f7747a3 144,149-150,152,155-161,163-167,169,172,175-178,180,183-184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "050aa1292002dfb35429bd042ec6c1f3543b5f2b",
+  "prompts": {
+    "19de32e92f7747a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "44427e1a-d4a3-46d2-8ee5-e6d5141c91d7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 62,
+      "total_deletions": 104,
+      "accepted_lines": 50,
+      "overriden_lines": 0
+    }
+  }
+}
