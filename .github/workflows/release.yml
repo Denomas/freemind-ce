@@ -157,7 +157,7 @@ jobs:
               for IMG in $SHOWCASE_IMAGES; do
                 BASENAME=$(basename "$IMG" .png)
                 echo "## $BASENAME" >> "$GITHUB_STEP_SUMMARY"
-                BASE64=$(base64 -w 0 "$IMG" 2>/dev/null || base64 "$IMG")
+                BASE64=$(base64 -w 0 "$IMG" 2>/dev/null || base64 -i "$IMG")
                 echo "<img src=\"data:image/png;base64,$BASE64\" alt=\"$BASENAME\" width=\"100%\">" >> "$GITHUB_STEP_SUMMARY"
                 echo "" >> "$GITHUB_STEP_SUMMARY"
               done
@@ -181,7 +181,7 @@ jobs:
             for IMG in $IMAGES; do
               BASENAME=$(basename "$IMG" .png)
               echo "### $BASENAME" >> "$GITHUB_STEP_SUMMARY"
-              BASE64=$(base64 -w 0 "$IMG" 2>/dev/null || base64 "$IMG")
+              BASE64=$(base64 -w 0 "$IMG" 2>/dev/null || base64 -i "$IMG")
               echo "<img src=\"data:image/png;base64,$BASE64\" alt=\"$BASENAME\" width=\"700\">" >> "$GITHUB_STEP_SUMMARY"
               echo "" >> "$GITHUB_STEP_SUMMARY"
             done
