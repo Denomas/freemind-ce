@@ -1,0 +1,63 @@
+freemind/tests/freemind/gui/KeyboardShortcutsGuiTest.java
+  19de32e92f7747a3 316-320
+freemind/tests/freemind/gui/FormatMenuGuiTest.java
+  19de32e92f7747a3 379-383
+freemind/tests/freemind/gui/ImportGuiTest.java
+  19de32e92f7747a3 354-358
+freemind/tests/freemind/gui/NodeEditingGuiTest.java
+  19de32e92f7747a3 363-367
+freemind/tests/freemind/gui/MapViewUnicodeGuiTest.java
+  19de32e92f7747a3 111-115
+freemind/tests/freemind/gui/FileOperationsGuiTest.java
+  19de32e92f7747a3 491-495
+freemind/tests/freemind/gui/ApplicationLaunchGuiTest.java
+  19de32e92f7747a3 311-315
+freemind/tests/freemind/gui/CollaborationGuiTest.java
+  19de32e92f7747a3 267-271
+freemind/tests/freemind/gui/EdgeCaseGuiTest.java
+  19de32e92f7747a3 464-468
+freemind/tests/freemind/gui/DialogsGuiTest.java
+  19de32e92f7747a3 458-462
+freemind/tests/freemind/gui/ContextMenuGuiTest.java
+  19de32e92f7747a3 199-203
+freemind/tests/freemind/gui/EditMenuGuiTest.java
+  19de32e92f7747a3 364-368
+freemind/tests/freemind/gui/NavigateMenuGuiTest.java
+  19de32e92f7747a3 452-456
+freemind/tests/freemind/gui/ToolbarGuiTest.java
+  19de32e92f7747a3 230-234
+freemind/tests/freemind/gui/NodeCrudGuiTest.java
+  19de32e92f7747a3 311-315
+freemind/tests/freemind/gui/ScreenshotCapture.java
+  19de32e92f7747a3 102-195
+freemind/tests/freemind/gui/ExportGuiTest.java
+  19de32e92f7747a3 603-607
+freemind/tests/freemind/gui/InsertMenuGuiTest.java
+  19de32e92f7747a3 298-302
+freemind/tests/freemind/gui/GuiTestBase.java
+  19de32e92f7747a3 64-66,69-70,72-76,80-86
+freemind/tests/freemind/gui/HelpMenuGuiTest.java
+  19de32e92f7747a3 9,111-115
+freemind/tests/freemind/gui/ToolsMenuGuiTest.java
+  19de32e92f7747a3 313-317
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "4f6dd49d403dffd3d5f08be38b277bd02be81f7e",
+  "prompts": {
+    "19de32e92f7747a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "44427e1a-d4a3-46d2-8ee5-e6d5141c91d7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 1040,
+      "total_deletions": 48,
+      "accepted_lines": 1015,
+      "overriden_lines": 0
+    }
+  }
+}
