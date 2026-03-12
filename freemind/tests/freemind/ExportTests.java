@@ -27,6 +27,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -49,7 +50,9 @@ public class ExportTests extends FreeMindTestBase {
 	public void testExportPng() throws Exception {
 		System.setProperty("java.awt.headless", "true");
 		IndependantMapViewCreator creator = new IndependantMapViewCreator();
-		creator.exportFileToPng(TESTMAP_MM, "/tmp/test.png", mFreeMindMain);
+		creator.exportFileToPng(TESTMAP_MM,
+				System.getProperty("java.io.tmpdir") + File.separator + "test.png",
+				mFreeMindMain);
 
 		System.out.println("Done.");
 	}

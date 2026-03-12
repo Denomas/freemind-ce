@@ -42,6 +42,7 @@ import freemind.main.Tools;
 
 public class TransformTest extends FreeMindTestBase {
 
+	private static final String TMPDIR = System.getProperty("java.io.tmpdir") + File.separator;
 	private static final String TESTMAP_MM = "freemind/testmap.mm";
 	private static final String EXPORT_WITH_XSLT_XML = "accessories/plugins/ExportWithXSLT.xml";
 	private static final String EXPORT_TO_OOO = "accessories/plugins/ExportToOoWriter.xml";
@@ -51,7 +52,7 @@ public class TransformTest extends FreeMindTestBase {
 
 	public void testExportHtml() throws Exception {
 		String mapFileToBeExported = TESTMAP_MM;
-		String destinationFileName = "/tmp/test1.html";
+		String destinationFileName = TMPDIR + "test1.html";
 		Properties properties = getProperties(EXPORT_WITH_XSLT_XML,
 				"accessories/plugins/ExportWithXSLT_HTML.properties");
 		doExportWithExportPlugin(mapFileToBeExported, destinationFileName,
@@ -60,7 +61,7 @@ public class TransformTest extends FreeMindTestBase {
 
 	public void testExportHtmlWithImage() throws Exception {
 		String mapFileToBeExported = TESTMAP_MM;
-		String destinationFileName = "/tmp/test2.html";
+		String destinationFileName = TMPDIR + "test2.html";
 		Properties properties = getProperties(EXPORT_WITH_XSLT_XML,
 				"accessories/plugins/ExportWithXSLT_HTML3.properties");
 		doExportWithExportPlugin(mapFileToBeExported, destinationFileName,
@@ -69,7 +70,7 @@ public class TransformTest extends FreeMindTestBase {
 
 	public void testExportLatex() throws Exception {
 		String mapFileToBeExported = TESTMAP_MM;
-		String destinationFileName = "/tmp/test_latex.tex";
+		String destinationFileName = TMPDIR + "test_latex.tex";
 		Properties properties = getProperties(EXPORT_WITH_XSLT_XML,
 				"accessories/plugins/ExportToLatex.properties");
 		doExportWithExportPlugin(mapFileToBeExported, destinationFileName,
@@ -78,7 +79,7 @@ public class TransformTest extends FreeMindTestBase {
 
 	public void testExportStandaloneHtml() throws Exception {
 		String mapFileToBeExported = TESTMAP_MM;
-		String destinationFileName = "/tmp/test_standalone.html";
+		String destinationFileName = TMPDIR + "test_standalone.html";
 		Properties properties = getProperties(EXPORT_WITH_XSLT_XML,
 				"accessories/plugins/ExportWithXSLT_StandaloneHTML.properties");
 		doExportWithExportPlugin(mapFileToBeExported, destinationFileName,
@@ -87,7 +88,7 @@ public class TransformTest extends FreeMindTestBase {
 
 	public void testExportOoo() throws Exception {
 		String mapFileToBeExported = TESTMAP_MM;
-		String destinationFileName = "/tmp/test_ooo.odt";
+		String destinationFileName = TMPDIR + "test_ooo.odt";
 		Properties properties = getProperties(EXPORT_TO_OOO,
 				"accessories/plugins/ExportToOoWriter.properties");
 

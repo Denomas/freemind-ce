@@ -55,7 +55,7 @@ public class CollaborationTests extends FreeMindTestBase {
 	public static final String PUBLISHED_MAP_NAME = "published_map_name.mm";
 
 	/**
-	 * 
+	 *
 	 */
 	public CollaborationTests() {
 		// TODO Auto-generated constructor stub
@@ -69,17 +69,17 @@ public class CollaborationTests extends FreeMindTestBase {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private static final String FILE = "bla.mm";
 
 	/**
-	 * 
+	 *
 	 */
-	private static final String PATHNAME = "/tmp/";
+	private static final String PATHNAME = System.getProperty("java.io.tmpdir") + File.separator;
 
 	/**
-	 * 
+	 *
 	 */
 	private static final int PORT = 9001;
 
@@ -89,7 +89,7 @@ public class CollaborationTests extends FreeMindTestBase {
 			+ "</node>" + "</map>";
 
 	/**
-	 * 
+	 *
 	 */
 	private static final String PASSWORD = "aa";
 
@@ -105,7 +105,7 @@ public class CollaborationTests extends FreeMindTestBase {
 			mMaster.terminate();
 		}
 	}
-	
+
 	public class NormalTestClient extends CollaborationTestClient  {
 		public boolean mTransactionReceived = false;
 		private CollaborationTransaction mTransactionPaket;
@@ -137,7 +137,7 @@ public class CollaborationTests extends FreeMindTestBase {
 			send(helloCommand);
 			setCurrentState(STATE_WAIT_FOR_WELCOME);
 		}
-		
+
 		public void reactOnWelcome(CollaborationWelcome collWelcome)
 				throws IOException {
 			String map = collWelcome.getMap();
@@ -151,17 +151,17 @@ public class CollaborationTests extends FreeMindTestBase {
 			logger.info(getName() + ":" + "Lock received: " + mLockId);
 			setCurrentState(STATE_LOCK_RECEIVED);
 		}
-		
+
 		public void reactOnTransaction(CollaborationTransaction trans) {
 			mTransactionReceived = true;
 			mTransactionPaket = trans;
 			logger.info(getName() + ":" + "Transaction received: " + trans.getDoAction());
 			setCurrentState(STATE_IDLE);
 		}
-		
+
 
 	}
-	
+
 	public void testNormalStartup() throws Exception {
 		PrintWriter writer = new PrintWriter(PATHNAME + FILE, "UTF-8");
 		writer.println(INITIAL_MAP);
@@ -204,10 +204,10 @@ public class CollaborationTests extends FreeMindTestBase {
 		PrintWriter writer = new PrintWriter(PATHNAME + FILE, "UTF-8");
 		writer.println(INITIAL_MAP);
 		writer.close();
-		
+
 		mMaster = new StandaloneMindMapMaster(
 				getFrame(), new File(PATHNAME), PASSWORD, PORT);
-		
+
 		Socket socket = new Socket("localhost", PORT);
 		socket.setSoTimeout(MindMapMaster.SOCKET_TIMEOUT_IN_MILLIES);
 		ExtendedMapFeedbackImpl mapFeedback = new ExtendedMapFeedbackImpl();
@@ -251,9 +251,9 @@ public class CollaborationTests extends FreeMindTestBase {
 		assertEquals("Correct class", testClient.mLockId, testClient2.mTransactionPaket.getId());
 		testClient.terminateSocket();
 		testClient2.terminateSocket();
-		
+
 	}
-	
+
 	public void waitForState(CollaborationTestClient testClient, int stateIdle)
 			throws InterruptedException {
 		int timeout = 60;
@@ -269,7 +269,7 @@ public class CollaborationTests extends FreeMindTestBase {
 		assertFalse(fileToBeCreated.exists());
 		mMaster = new StandaloneMindMapMaster(
 				getFrame(), new File(PATHNAME), PASSWORD, PORT);
-		
+
 		Socket socket = new Socket("localhost", PORT);
 		socket.setSoTimeout(MindMapMaster.SOCKET_TIMEOUT_IN_MILLIES);
 		ExtendedMapFeedbackImpl mapFeedback = new ExtendedMapFeedbackImpl();
@@ -289,13 +289,13 @@ public class CollaborationTests extends FreeMindTestBase {
 			Thread.sleep(100);
 		}
 		assertTrue(fileToBeCreated.exists());
-		
+
 	}
-	
+
 	public void testPublishExistingMapWrongName() throws Exception {
 		mMaster = new StandaloneMindMapMaster(
 				getFrame(), new File(PATHNAME), PASSWORD, PORT);
-		
+
 		Socket socket = new Socket("localhost", PORT);
 		socket.setSoTimeout(MindMapMaster.SOCKET_TIMEOUT_IN_MILLIES);
 		ExtendedMapFeedbackImpl mapFeedback = new ExtendedMapFeedbackImpl();
@@ -322,7 +322,7 @@ public class CollaborationTests extends FreeMindTestBase {
 //		testClient.terminateSocket();
 
 	}
-	
+
 	public class CreateNewMapClient extends CollaborationTestClient {
 
 		public boolean mWrongMap = false;
@@ -356,7 +356,7 @@ public class CollaborationTests extends FreeMindTestBase {
 		public void reactOnOffers(final CollaborationOffers collOffers) {
 			fail("no offers please");
 		}
-		
+
 		public void reactOnWelcome(CollaborationWelcome collWelcome)
 				throws IOException {
 			fail("no welcome please");
@@ -367,13 +367,13 @@ public class CollaborationTests extends FreeMindTestBase {
 			logger.info(getName() + ":" + "Lock received: " + mLockId);
 			setCurrentState(STATE_LOCK_RECEIVED);
 		}
-		
+
 		public void reactOnTransaction(CollaborationTransaction trans) {
 			logger.info(getName() + ":" + "Transaction received: " + trans.getDoAction());
 			setCurrentState(STATE_IDLE);
 		}
-		
+
 
 	}
-	
+
 }
