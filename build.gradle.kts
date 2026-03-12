@@ -8,7 +8,7 @@
 // Global configuration
 allprojects {
     group = "com.denomas.freemind"
-    version = "1.1.0"
+    version = "1.1.0" // x-release-please-version
 }
 
 // Shared repositories

@@ -35,11 +35,11 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-      - name: Trigger release workflow
+      - name: Dispatch release build
         if: ${{ steps.release.outputs.release_created }}
         uses: actions/checkout@v6
 
-      - name: Dispatch release build
+      - name: Trigger artifact build for release
         if: ${{ steps.release.outputs.release_created }}
         run: gh workflow run release.yml --ref "${{ steps.release.outputs.tag_name }}"
         env:
