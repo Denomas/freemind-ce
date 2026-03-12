@@ -1,0 +1,27 @@
+freemind/tests/resources/showcase/showcase-full-features.mm
+  19de32e92f7747a3 1-254
+freemind/build.gradle.kts
+  19de32e92f7747a3 378-392
+freemind/tests/freemind/gui/ShowcaseScreenshotCapture.java
+  19de32e92f7747a3 1-220
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "dd980959bf276a46830763d254bf1414211c73fd",
+  "prompts": {
+    "19de32e92f7747a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "44427e1a-d4a3-46d2-8ee5-e6d5141c91d7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 794,
+      "overriden_lines": 0
+    }
+  }
+}
