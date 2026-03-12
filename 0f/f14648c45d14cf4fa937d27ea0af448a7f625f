@@ -1,0 +1,36 @@
+freemind/freemind/main/HtmlTools.java
+  8bffe6a49f32a6c4 96-105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "0ff14648c45d14cf4fa937d27ea0af448a7f625f",
+  "prompts": {
+    "19de32e92f7747a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "44427e1a-d4a3-46d2-8ee5-e6d5141c91d7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 4695,
+      "overriden_lines": 0
+    },
+    "8bffe6a49f32a6c4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a26e6201-a7e6-4e4c-8a47-ea9feb22c3aa",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 3363,
+      "overriden_lines": 0
+    }
+  }
+}
