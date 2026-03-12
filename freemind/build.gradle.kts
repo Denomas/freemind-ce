@@ -365,6 +365,17 @@ spotbugs {
     excludeFilter.set(file("config/spotbugs-exclude.xml"))
 }
 
+// SpotBugs scans the main sourceSet classpath which includes plugin modules.
+// Gradle requires explicit task dependencies when one task uses the output of
+// another. Declare that spotbugsMain depends on all plugin resource tasks.
+tasks.matching { it.name.startsWith("spotbugs") }.configureEach {
+    rootProject.subprojects.filter { it.path.startsWith(":freemind:plugins:") }.forEach { plugin ->
+        plugin.tasks.matching { it.name == "processResources" || it.name == "processTestResources" }.all {
+            this@configureEach.dependsOn(this)
+        }
+    }
+}
+
 // ============================================================================
 // Dependency Vulnerability Scanning (OWASP)
 // ============================================================================
