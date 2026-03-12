@@ -16,7 +16,9 @@ make help     # Show all available make targets
   - Source of truth: `.release-please-manifest.json`
   - Auto-synced: `build.gradle.kts` (via `x-release-please-version` annotation)
 
-## Serena Code Intelligence
+## Serena Code Intelligence (MANDATORY)
+
+> **Serena usage is MANDATORY — not optional.** Every code analysis must start with Serena tools. Every subagent must use Serena. No exceptions.
 
 This project uses [Serena](https://github.com/oraios/serena) for LSP-powered semantic code analysis via MCP.
 
@@ -24,8 +26,29 @@ This project uses [Serena](https://github.com/oraios/serena) for LSP-powered sem
 - **Setup:** `claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context=claude-code --project-from-cwd`
 - **Index:** `uvx --from git+https://github.com/oraios/serena serena project index .`
 - **Pre-commit:** Always use `find_referencing_symbols` to verify impact of changes before committing
+- **Subagents:** When spawning subagents, ALWAYS include "Use Serena tools for code analysis" in the task description
 
-For full setup → [`CONTRIBUTING.md`](CONTRIBUTING.md#serena-code-intelligence-required) | [`docs/development-guide.md`](docs/development-guide.md#serena-code-intelligence)
+### Quick Reference (18 Tools)
+
+| Category | Tools | Purpose |
+|----------|-------|---------|
+| **Exploration** | `get_symbols_overview`, `find_symbol`, `find_referencing_symbols` | Understand code structure, find symbols, trace references |
+| **Search** | `search_for_pattern`, `find_file`, `list_dir` | Regex search, file discovery, directory listing |
+| **Editing** | `replace_symbol_body`, `insert_after_symbol`, `insert_before_symbol`, `rename_symbol` | Symbol-level code modification, codebase-wide rename |
+| **Memory** | `write_memory`, `read_memory`, `list_memories`, `edit_memory`, `delete_memory`, `rename_memory` | Persistent project knowledge across sessions |
+| **Setup** | `check_onboarding_performed`, `onboarding` | First-time project setup |
+
+### Mandatory Workflow
+
+```
+1. get_symbols_overview(file)     → understand structure
+2. find_symbol(name, body=True)   → read specific code
+3. Make changes
+4. find_referencing_symbols(name) → verify all references intact
+5. make build                     → compile + test
+```
+
+For complete tool reference with parameters, examples, and anti-patterns → [`CONTRIBUTING.md`](CONTRIBUTING.md#complete-serena-tool-reference-18-tools)
 
 ## Repository Layout
 
@@ -106,6 +129,7 @@ Not in Gradle: latex, collaboration/database, collaboration/jabber
 5. **No @SuppressWarnings** — fix root causes, don't suppress
 6. **Preserve backward compatibility** — existing .mm files must keep working
 7. **Verify with Serena before commit** — use `find_referencing_symbols` to check impact of all changes
+8. **Serena is MANDATORY for all agents** — every subagent task must include Serena usage as a requirement; start all analysis with `get_symbols_overview` and `find_symbol`
 
 ## Common Tasks
 
