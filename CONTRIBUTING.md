@@ -180,8 +180,82 @@ uvx --from git+https://github.com/oraios/serena serena project health-check .
 
 - Tests use **JUnit 3** (`extends TestCase`) running under JUnit 5 vintage engine
 - Test base class: `FreeMindTestBase` (provides mock FreeMindMain context)
-- Run tests: `make test`
+- GUI tests extend `GuiTestBase` (AssertJ Swing, `@Tag("gui")`, automatic screenshots)
+- Property-based tests use jqwik with centralized generators in `MindmapGenerators`
+- Run tests: `make test` (unit) / `make test-gui` (GUI)
 - Coverage report: `make coverage` (opens `freemind/build/reports/jacoco/test/html/index.html`)
+
+## CI/CD Standard Operating Procedure (SOP)
+
+### 1. Zero-Tolerance Policy
+
+ALL tests MUST pass on ALL platforms and ALL Java versions before merge or release.
+No exceptions. No manual overrides. No `continue-on-error`.
+A single failure on any combination blocks the entire pipeline.
+
+### 2. Test Matrix
+
+Every PR and every release runs on this complete matrix:
+
+|  | ubuntu-24.04 | ubuntu-22.04 | win-2025 | win-2022 | macos-15 | macos-14 | macos-13 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Java 21 (LTS)** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Java 22** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Java 23** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Java 24** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+**Total: 56 required checks** (28 Build + 28 GUI Tests).
+
+Runner images: [actions/runner-images](https://github.com/actions/runner-images)
+
+### 3. CI Jobs
+
+| Job | Purpose | Blocks merge/release? |
+|---|---|---|
+| `Build (os, java)` | Compile + unit tests + SpotBugs | **Yes** — 28 required checks |
+| `GUI Tests (os, java)` | GUI integration tests + screenshots | **Yes** — 28 required checks |
+
+### 4. Branch Workflow
+
+- **All changes** via feature branch → Pull Request → main
+- **No direct push to main** (enforced by GitHub Ruleset)
+- PR requires: all 56 checks pass + code review
+- Squash merge preferred for clean history
+
+### 5. GUI Test Requirements
+
+- Every new UI feature **MUST** include GUI tests before merge
+- Tests must capture screenshots for visual verification on every platform
+- Tests must cover: happy path, error path, edge cases
+- No UI change is too small to test
+- GUI test base class: `GuiTestBase` (AssertJ Swing, automatic screenshots)
+
+### 6. Release Gating
+
+```
+Push to main → build.yml (56 checks) → release-please PR
+Tag → release.yml validate (28) + gui-tests (28) → packaging
+Any failure at any stage blocks release completely.
+```
+
+### 7. New Runner/Java Version Procedure
+
+When a new GitHub Actions runner image or Java GA version becomes available:
+
+1. Add to matrix in `build.yml` and `release.yml`
+2. Add required status checks to GitHub Ruleset via `gh api`
+3. Update the SOP table above
+4. Verify all existing tests pass on the new combination
+5. Fix any compatibility issues before merging
+
+New Java GA versions must be added within 30 days of release.
+New runner images must be added within 30 days of availability.
+
+### 8. Test Philosophy
+
+> "Being lazy in writing tests means facing much bigger workloads later.
+> Our goal is to reduce future workload by testing every user scenario,
+> every edge case, every state, comprehensively, now."
 
 ## Project Structure
 
