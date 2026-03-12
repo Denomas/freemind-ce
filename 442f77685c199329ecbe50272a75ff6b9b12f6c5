@@ -1,0 +1,25 @@
+.gitignore
+  1b5fbaddcf442270 26-28
+Makefile
+  1b5fbaddcf442270 1-141
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "442f77685c199329ecbe50272a75ff6b9b12f6c5",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 2,
+      "accepted_lines": 1271,
+      "overriden_lines": 0
+    }
+  }
+}
