@@ -49,4 +49,40 @@
 		<plugin_property name="file_description" value="%plugins/YamlExport_file_description"/>
 		<plugin_property name="load_file" value="false"/>
 	</plugin_action>
+	<plugin_action
+		documentation="%plugins/CleanXmlExport_documentation"
+		name="%plugins/CleanXmlExport_name"
+		base="freemind.extensions.ModeControllerHookAdapter"
+		label="plugins/CleanXmlExport"
+		class_name="plugins.contextgraph.CleanXmlExport">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportCleanXml"/>
+		<plugin_property name="file_type" value="xml"/>
+		<plugin_property name="file_description" value="%plugins/CleanXmlExport_file_description"/>
+		<plugin_property name="load_file" value="true"/>
+	</plugin_action>
+	<plugin_action
+		documentation="%plugins/CleanJsonExport_documentation"
+		name="%plugins/CleanJsonExport_name"
+		base="freemind.extensions.ModeControllerHookAdapter"
+		label="plugins/CleanJsonExport"
+		class_name="plugins.contextgraph.CleanJsonExport">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportCleanJson"/>
+		<plugin_property name="file_type" value="json"/>
+		<plugin_property name="file_description" value="%plugins/CleanJsonExport_file_description"/>
+		<plugin_property name="load_file" value="false"/>
+	</plugin_action>
+	<plugin_action
+		documentation="%plugins/CleanYamlExport_documentation"
+		name="%plugins/CleanYamlExport_name"
+		base="freemind.extensions.ModeControllerHookAdapter"
+		label="plugins/CleanYamlExport"
+		class_name="plugins.contextgraph.CleanYamlExport">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportCleanYaml"/>
+		<plugin_property name="file_type" value="yaml"/>
+		<plugin_property name="file_description" value="%plugins/CleanYamlExport_file_description"/>
+		<plugin_property name="load_file" value="false"/>
+	</plugin_action>
 </plugin>
