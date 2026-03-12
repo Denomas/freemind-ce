@@ -21,17 +21,3 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           sync-labels: true
-
-      - name: Label PR by size
-        uses: pascalgn/size-label-action@v0.5.5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          sizes: >
-            {
-              "0":    "size/XS",
-              "10":   "size/S",
-              "50":   "size/M",
-              "200":  "size/L",
-              "500":  "size/XL"
-            }
