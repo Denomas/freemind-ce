@@ -1,0 +1,49 @@
+# Configuration for actions/labeler — maps file paths to PR labels
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**'
+          - 'Makefile'
+
+build:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'build.gradle.kts'
+          - 'freemind/build.gradle.kts'
+          - 'settings.gradle.kts'
+          - 'gradle/**'
+
+java:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'freemind/freemind/**/*.java'
+
+plugins:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'freemind/plugins/**'
+          - 'freemind/accessories/plugins/**'
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'docs/**'
+          - '*.md'
+          - '!CHANGELOG.md'
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'freemind/tests/**'
+
+i18n:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'freemind/Resources_*.properties'
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'freemind/lib/**'
+          - '**/build.gradle.kts'
