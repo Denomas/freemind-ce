@@ -2160,10 +2160,10 @@ public class XMLElement {
 	public String toString() {
 		try {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
-			OutputStreamWriter writer = new OutputStreamWriter(out);
+			OutputStreamWriter writer = new OutputStreamWriter(out, "UTF-8");
 			this.write(writer);
 			writer.flush();
-			return new String(out.toByteArray());
+			return new String(out.toByteArray(), "UTF-8");
 		} catch (IOException e) {
 			// Java exception handling suxx
 			return super.toString();
@@ -2329,13 +2329,18 @@ public class XMLElement {
 				break;
 			default:
 				int unicode = (int) ch;
-				if ((unicode < 32) || (unicode > 126)) {
+				if (unicode < 32 || unicode == 127) {
+					// XML control characters — must be encoded
 					writer.write('&');
 					writer.write('#');
 					writer.write('x');
 					writer.write(Integer.toString(unicode, 16));
 					writer.write(';');
+				} else if (unicode >= 0xD800 && unicode <= 0xDFFF
+						|| unicode == 0xFFFE || unicode == 0xFFFF) {
+					// XML-invalid characters (surrogates, BOM) — silently drop
 				} else {
+					// Printable ASCII and Unicode (UTF-8 safe)
 					writer.write(ch);
 				}
 			}

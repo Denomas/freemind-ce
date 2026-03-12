@@ -61,7 +61,7 @@ import freemind.modes.ModeController;
 
 /**
  * @author foltin
- * 
+ *
  *         Exports the map using an XSLT script. The parameterization is
  *         described in the corresponding Export... .xml-file.
  */
@@ -84,7 +84,7 @@ public class ExportWithXSLT extends ExportHook {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public ExportWithXSLT() {
 		super();
@@ -92,7 +92,7 @@ public class ExportWithXSLT extends ExportHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.MindMapHook#startupMapHook()
 	 */
 	public void startupMapHook() {
@@ -142,7 +142,7 @@ public class ExportWithXSLT extends ExportHook {
 	 * @param saveFile
 	 * @return If ok: null, else: the resource identifier of the error string.
 	 * @throws Exception
-	 * 
+	 *
 	 */
 	public String transform(File saveFile) throws Exception {
 		// get AREA:
@@ -199,7 +199,7 @@ public class ExportWithXSLT extends ExportHook {
 		// Generating output Stream
 		BufferedWriter fileout = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(pDirectoryName
-						+ File.separator + "map.mm")));
+						+ File.separator + "map.mm"), "UTF-8"));
 		getController().getMap().getFilteredXml(fileout);
 		return success;
 	}

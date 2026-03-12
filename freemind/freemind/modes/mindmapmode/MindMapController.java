@@ -2046,7 +2046,7 @@ public class MindMapController extends ControllerAdapter implements
 	static public void saveHTML(MindMapNodeModel rootNodeOfBranch, File file)
 			throws IOException {
 		BufferedWriter fileout = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream(file)));
+				new FileOutputStream(file), "UTF-8"));
 		MindMapHTMLWriter htmlWriter = new MindMapHTMLWriter(fileout);
 		htmlWriter.saveHTML(rootNodeOfBranch);
 	}

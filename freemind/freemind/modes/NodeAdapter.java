@@ -141,7 +141,7 @@ public abstract class NodeAdapter implements MindMapNode {
 	private static FreemindPropertyListener sSaveIdPropertyChangeListener;
 	private static boolean sSaveOnlyIntrinsicallyNeededIds = false;
 	private Vector<Attribute> mAttributeVector = null;
-	
+
 	//
 	// Constructors
 	//
@@ -322,11 +322,11 @@ public abstract class NodeAdapter implements MindMapNode {
 		}
 	}
 
-	
+
 	public String getBareStyle(){
 		return style;
 	}
-	
+
 	/** A Node-Style like MindMapNode.STYLE_FORK or MindMapNode.STYLE_BUBBLE */
 	public String getStyle() {
 		String returnedString = style; /* Style string returned */
@@ -419,7 +419,7 @@ public abstract class NodeAdapter implements MindMapNode {
 			toggleStrikethrough();
 		}
 	}
-	
+
 	public void toggleStrikethrough() {
 		establishOwnFont();
 		Map  attributes = font.getAttributes();
@@ -506,7 +506,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		}
 		return false;
 	}
-	
+
 	public boolean isFolded() {
 		return folded;
 	}
@@ -653,7 +653,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapNode#sortedChildrenUnfolded()
 	 */
 	public ListIterator<MindMapNode> sortedChildrenUnfolded() {
@@ -901,7 +901,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapNode#addHook(freemind.modes.NodeHook)
 	 */
 	public PermanentNodeHook addHook(PermanentNodeHook hook) {
@@ -968,7 +968,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapNode#getHooks()
 	 */
 	public List<PermanentNodeHook> getHooks() {
@@ -979,7 +979,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapNode#getActivatedHooks()
 	 */
 	public Collection<PermanentNodeHook> getActivatedHooks() {
@@ -991,7 +991,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapNode#removeHook(freemind.modes.NodeHook)
 	 */
 	public void removeHook(PermanentNodeHook hook) {
@@ -1064,7 +1064,7 @@ public abstract class NodeAdapter implements MindMapNode {
 					}
 				} catch (Exception e) {
 					freemind.main.Resources.getInstance().logException(e);
-				} 
+				}
 			}
 		} else {
 			if(result.containsKey(TOOLTIP_PREVIEW_KEY)){
@@ -1100,7 +1100,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapNode#getNodeId()
 	 */
 	public String getObjectId(ModeController controller) {
@@ -1308,8 +1308,11 @@ public abstract class NodeAdapter implements MindMapNode {
 	}
 
 	public static String convertToEncodedContent(String xmlText2) {
-		String replace = HtmlTools.makeValidXml(xmlText2);
-		return HtmlTools.unicodeToHTMLUnicodeEntity(replace, true);
+		// Swing's HTMLWriter encodes non-ASCII characters as decimal
+		// entities (e.g. ü → &#252;). Since .mm files are written as
+		// UTF-8, decode them back to preserve readable Unicode text.
+		String cleaned = HtmlTools.makeValidXml(xmlText2);
+		return HtmlTools.unescapeHTMLUnicodeEntity(cleaned);
 	}
 
 	private void saveChildren(Writer writer, MindMapLinkRegistry registry,
@@ -1461,7 +1464,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		}
 		return Collections.unmodifiableList(mAttributeVector);
 	}
-	
+
 	@Override
 	public int getAttributeTableLength() {
 		if(mAttributeVector==null) {
@@ -1527,7 +1530,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		getAttributeVector().add(pAttribute);
 		return getAttributeVector().indexOf(pAttribute);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.MindMapNode#insertAttribute(int, freemind.modes.attributes.Attribute)
 	 */
@@ -1536,13 +1539,13 @@ public abstract class NodeAdapter implements MindMapNode {
 		checkAttributePosition(pPosition);
 		getAttributeVector().add(pPosition, pAttribute);
 	}
-	
+
 	@Override
 	public void removeAttribute(int pPosition) {
 		checkAttributePosition(pPosition);
 		mAttributeVector.remove(pPosition);
 	}
-	
+
 	private Vector<Attribute> getAttributeVector() {
 		if(mAttributeVector==null) {
 			mAttributeVector = new Vector<Attribute>();

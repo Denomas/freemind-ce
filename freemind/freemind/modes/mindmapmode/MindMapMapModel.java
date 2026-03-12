@@ -171,7 +171,7 @@ public class MindMapMapModel extends MapAdapter {
 		// Returns success of the operation.
 		try {
 			BufferedWriter fileout = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream(file)));
+					new FileOutputStream(file), "UTF-8"));
 			rootNodeOfBranch.saveTXT(fileout,/* depth= */0);
 			fileout.close();
 			return true;
@@ -271,9 +271,10 @@ public class MindMapMapModel extends MapAdapter {
 			if (timerForAutomaticSaving != null) {
 				timerForAutomaticSaving.cancel();
 			}
-			// Generating output Stream
+			// Generating output Stream — explicit UTF-8 encoding ensures
+			// non-ASCII characters are written correctly on all platforms.
 			BufferedWriter fileout = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream(file)));
+					new FileOutputStream(file), "UTF-8"));
 			getXml(fileout);
 
 			if (!isInternal) {
