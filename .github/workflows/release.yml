@@ -96,7 +96,7 @@ jobs:
           for f in *.dmg; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-macOS.dmg"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: FreeMindCE-macOS
           path: freemind/build/jpackage/FreeMind-CE-*
@@ -137,7 +137,7 @@ jobs:
           for f in *.msi; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Windows.msi"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: FreeMindCE-Windows
           path: freemind/build/jpackage/FreeMind-CE-*
@@ -228,14 +228,14 @@ jobs:
           for f in *.rpm; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Linux.rpm"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: FreeMindCE-Linux
           path: freemind/build/jpackage/FreeMind-CE-*
           if-no-files-found: error
 
       - name: Upload JAR distribution
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: FreeMindCE-jar
           path: freemind/build/distributions/*
@@ -249,7 +249,7 @@ jobs:
 
     steps:
       - name: Download all artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           path: artifacts
           merge-multiple: true
