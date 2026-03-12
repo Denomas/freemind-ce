@@ -5,7 +5,7 @@
       "release-type": "simple",
       "include-component-in-tag": false,
       "include-v-in-tag": true,
-      "bootstrap-sha": "eb54f27e003e1258f9259ba0a2d5dd4210e0aade",
+      "bootstrap-sha": "d8c8fe2c",
       "extra-files": [
         "build.gradle.kts"
       ],

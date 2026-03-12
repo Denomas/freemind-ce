@@ -1,0 +1,15 @@
+# Default owners for everything in the repo
+* @Denomas
+
+# CI/CD and build system
+.github/ @Denomas
+build.gradle.kts @Denomas
+freemind/build.gradle.kts @Denomas
+Makefile @Denomas
+
+# Core application
+freemind/freemind/ @Denomas
+
+# Plugins
+freemind/plugins/ @Denomas
+freemind/accessories/ @Denomas
