@@ -105,4 +105,28 @@
 		<plugin_property name="create_dir" value="false"/>
 		<plugin_property name="create_html_linked_image" value="false"/>
 	</plugin_action>
+	<plugin_action documentation="%accessories/plugins/ExportToLatexArticle.properties_documentation" name="%accessories/plugins/ExportToLatexArticle.properties_name" base="freemind.extensions.ModeControllerHookAdapter" label="accessories/plugins/ExportToLatexArticle.properties" class_name="accessories.plugins.ExportWithXSLT">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportLatexArticle"/>
+		<plugin_property name="file_type" value="tex"/>
+		<plugin_property name="name_extension" value=""/>
+		<plugin_property name="file_description" value="%accessories/plugins/ExportToLatexArticle.properties_webpage"/>
+		<plugin_property name="xslt_file" value="accessories/mm2latexartcl.xsl"/>
+		<plugin_property name="copy_map" value="false"/>
+		<plugin_property name="load_file" value="false"/>
+		<plugin_property name="create_dir" value="false"/>
+		<plugin_property name="create_html_linked_image" value="false"/>
+	</plugin_action>
+	<plugin_action documentation="%accessories/plugins/ExportToLatexBook.properties_documentation" name="%accessories/plugins/ExportToLatexBook.properties_name" base="freemind.extensions.ModeControllerHookAdapter" label="accessories/plugins/ExportToLatexBook.properties" class_name="accessories.plugins.ExportWithXSLT">
+		<plugin_mode class_name="freemind.modes.mindmapmode"/>
+		<plugin_menu location="menu_bar/file/export/other/exportLatexBook"/>
+		<plugin_property name="file_type" value="tex"/>
+		<plugin_property name="name_extension" value=""/>
+		<plugin_property name="file_description" value="%accessories/plugins/ExportToLatexBook.properties_webpage"/>
+		<plugin_property name="xslt_file" value="accessories/mm2latexbook.xsl"/>
+		<plugin_property name="copy_map" value="false"/>
+		<plugin_property name="load_file" value="false"/>
+		<plugin_property name="create_dir" value="false"/>
+		<plugin_property name="create_html_linked_image" value="false"/>
+	</plugin_action>
 </plugin>
