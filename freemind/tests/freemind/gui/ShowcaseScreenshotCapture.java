@@ -194,31 +194,51 @@ public class ShowcaseScreenshotCapture {
         String baseName = new File(mmFilePath).getName().replace(".mm", "");
         // Sanitize filename
         baseName = baseName.replaceAll("[^a-zA-Z0-9_.-]", "_");
-        String filename = "showcase_" + baseName + ".png";
 
         try {
-            // First: capture the FreeMind window specifically
             FreeMind frame = findFreeMindFrame();
             if (frame != null && frame.isVisible()) {
-                // Capture just the application window
                 Rectangle bounds = frame.getBounds();
                 Robot robot = new Robot();
-                BufferedImage windowShot = robot.createScreenCapture(bounds);
-                File windowFile = new File(outputDir, "window_" + filename);
-                ImageIO.write(windowShot, "png", windowFile);
-                System.out.println("  Window screenshot: " + windowFile.getAbsolutePath());
 
-                // Also capture full desktop
+                // Window screenshot as JPEG (much smaller for CI summary embedding)
+                BufferedImage windowShot = robot.createScreenCapture(bounds);
+                File windowFile = new File(outputDir, "window_showcase_" + baseName + ".jpg");
+                writeJpeg(windowShot, windowFile, 0.75f);
+                System.out.println("  Window screenshot: " + windowFile.getAbsolutePath()
+                        + " (" + (windowFile.length() / 1024) + " KB)");
+
+                // Desktop screenshot as PNG (full quality, for artifact download)
                 Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
                 BufferedImage desktopShot = robot.createScreenCapture(screenRect);
-                File desktopFile = new File(outputDir, "desktop_" + filename);
+                File desktopFile = new File(outputDir, "desktop_showcase_" + baseName + ".png");
                 ImageIO.write(desktopShot, "png", desktopFile);
-                System.out.println("  Desktop screenshot: " + desktopFile.getAbsolutePath());
+                System.out.println("  Desktop screenshot: " + desktopFile.getAbsolutePath()
+                        + " (" + (desktopFile.length() / 1024) + " KB)");
             } else {
                 System.err.println("  FreeMind window not visible for: " + mmFilePath);
             }
         } catch (Exception e) {
             System.err.println("  Screenshot failed for " + mmFilePath + ": " + e.getMessage());
+        }
+    }
+
+    private static void writeJpeg(BufferedImage image, File file, float quality) throws IOException {
+        // Convert to RGB (JPEG doesn't support alpha)
+        BufferedImage rgb = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
+        rgb.createGraphics().drawImage(image, 0, 0, null);
+
+        var writers = ImageIO.getImageWritersByFormatName("jpeg");
+        if (writers.hasNext()) {
+            var writer = writers.next();
+            var param = writer.getDefaultWriteParam();
+            param.setCompressionMode(javax.imageio.ImageWriteParam.MODE_EXPLICIT);
+            param.setCompressionQuality(quality);
+            try (var out = ImageIO.createImageOutputStream(file)) {
+                writer.setOutput(out);
+                writer.write(null, new javax.imageio.IIOImage(rgb, null, null), param);
+            }
+            writer.dispose();
         }
     }
 }

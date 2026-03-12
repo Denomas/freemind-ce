@@ -155,8 +155,8 @@ jobs:
           # === SHOWCASE SCREENSHOTS (window captures only, limited count) ===
           SHOWCASE_DIR="freemind/build/test-screenshots/showcase"
           if [ -d "$SHOWCASE_DIR" ]; then
-            SHOWCASE_IMAGES=$(find "$SHOWCASE_DIR" -name "window_*.png" -type f | sort | head -5)
-            TOTAL_SHOWCASE=$(find "$SHOWCASE_DIR" -name "*.png" -type f | wc -l | tr -d ' ')
+            SHOWCASE_IMAGES=$(find "$SHOWCASE_DIR" -name "window_*.jpg" -type f | sort | head -5)
+            TOTAL_SHOWCASE=$(find "$SHOWCASE_DIR" \( -name "*.png" -o -name "*.jpg" \) -type f | wc -l | tr -d ' ')
             if [ -n "$SHOWCASE_IMAGES" ]; then
               echo "# E2E Showcase: FreeMind CE on ${{ matrix.os }} (Java ${{ matrix.java }})" >> "$GITHUB_STEP_SUMMARY"
               echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -172,7 +172,8 @@ jobs:
                 BASENAME=$(basename "$IMG" .png)
                 echo "## $BASENAME" >> "$GITHUB_STEP_SUMMARY"
                 BASE64=$(encode_base64 "$IMG")
-                echo "<img src=\"data:image/png;base64,$BASE64\" alt=\"$BASENAME\" width=\"100%\">" >> "$GITHUB_STEP_SUMMARY"
+                case "$IMG" in *.jpg|*.jpeg) MIME="image/jpeg" ;; *) MIME="image/png" ;; esac
+                echo "<img src=\"data:$MIME;base64,$BASE64\" alt=\"$BASENAME\" width=\"100%\">" >> "$GITHUB_STEP_SUMMARY"
                 echo "" >> "$GITHUB_STEP_SUMMARY"
               done
               echo "---" >> "$GITHUB_STEP_SUMMARY"
