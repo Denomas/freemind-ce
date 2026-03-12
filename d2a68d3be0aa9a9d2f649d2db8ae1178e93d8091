@@ -1,0 +1,25 @@
+freemind/Resources_tr.properties
+  1b5fbaddcf442270 1523-1524,1875-1883
+freemind/Resources_en.properties
+  1b5fbaddcf442270 1519-1520,1804-1812
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "d2a68d3be0aa9a9d2f649d2db8ae1178e93d8091",
+  "prompts": {
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 1539,
+      "overriden_lines": 0
+    }
+  }
+}
