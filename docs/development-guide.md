@@ -152,6 +152,17 @@ freemind/
 | `ScriptEditorPanelTest.java` | Scripting UI |
 | `tests/freemind/property/` | Property-based tests (jqwik) |
 
+## Git Remotes
+
+| Remote | URL | Purpose |
+|--------|-----|---------|
+| `origin` | `https://github.com/Denomas/freemind-ce.git` | Primary repository (push/pull) |
+| `upstream` | `git://git.code.sf.net/p/freemind/code` | Original FreeMind on SourceForge (read-only) |
+
+- **Branch:** `main` — trunk-based development, all work here
+- **Tracking:** `main` tracks `origin/main`
+- **Releases:** Tag `v*.*.*` on `main` triggers GitHub Actions release workflow
+
 ## CI/CD Pipeline
 
 **GitHub Actions** (`.github/workflows/build.yml`):

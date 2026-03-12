@@ -52,7 +52,7 @@ freemind-ce/
 
 ## Git & Release
 
-- **Remotes:** `github` → Denomas/freemind-ce (push target), `origin` → SourceForge (read-only)
+- **Remotes:** `origin` → Denomas/freemind-ce (GitHub, primary), `upstream` → SourceForge (read-only, original project)
 - **Branch:** `main` — trunk-based, all work here
 - **Release:** Tag `v*.*.*` on main → GitHub Actions auto-builds DMG/EXE/DEB
 - **Pre-commit:** `.pre-commit-config.yaml` — XML validation, Java compilation, whitespace
