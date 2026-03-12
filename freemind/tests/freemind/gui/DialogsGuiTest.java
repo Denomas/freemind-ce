@@ -455,4 +455,9 @@ class DialogsGuiTest extends GuiTestBase {
         MindMapNode root = loadMap(map, "<map><node TEXT='Chosen'/></map>");
         assertThat(root.getText()).isEqualTo("Chosen");
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
+    }
 }

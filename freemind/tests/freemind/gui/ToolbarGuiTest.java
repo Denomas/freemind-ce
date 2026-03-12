@@ -227,4 +227,9 @@ class ToolbarGuiTest extends GuiTestBase {
         assertThat(findNodeByText(root, "A")).isNotNull();
         assertThat(findNodeByText(root, "B")).isNotNull();
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

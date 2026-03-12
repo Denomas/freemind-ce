@@ -295,4 +295,9 @@ class InsertMenuGuiTest extends GuiTestBase {
         assertThat(child.getIcons()).isNotNull();
         assertThat(child.getIcons()).isEmpty();
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

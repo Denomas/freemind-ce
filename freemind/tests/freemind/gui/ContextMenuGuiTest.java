@@ -196,4 +196,9 @@ class ContextMenuGuiTest extends GuiTestBase {
         // Menubar toggle is GUI-only; verify model works regardless
         assertThat(freeMindMain).isNotNull();
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

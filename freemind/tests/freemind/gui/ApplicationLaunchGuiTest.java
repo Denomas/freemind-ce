@@ -308,4 +308,9 @@ class ApplicationLaunchGuiTest extends GuiTestBase {
             return null;
         });
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
+    }
 }

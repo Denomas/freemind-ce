@@ -360,4 +360,9 @@ class NodeEditingGuiTest extends GuiTestBase {
         MindMapNode pasted = createChildNode(mapFeedback, root, text);
         assertThat(pasted.getText()).isEqualTo("CutMe");
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

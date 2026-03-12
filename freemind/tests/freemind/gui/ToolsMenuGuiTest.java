@@ -310,4 +310,9 @@ class ToolsMenuGuiTest extends GuiTestBase {
                 .isNotEmpty();
         }
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
+    }
 }

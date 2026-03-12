@@ -461,6 +461,11 @@ class EdgeCaseGuiTest extends GuiTestBase {
         assertThat(root.getText()).isEqualTo("Recovered");
     }
 
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
+    }
+
     // ========================================================================
     // Helpers
     // ========================================================================

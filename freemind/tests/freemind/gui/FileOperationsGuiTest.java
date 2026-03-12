@@ -488,6 +488,11 @@ class FileOperationsGuiTest extends GuiTestBase {
         assertThat(root.getChildCount()).isGreaterThan(0);
     }
 
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
+    }
+
     // ========================================================================
     // Helpers
     // ========================================================================

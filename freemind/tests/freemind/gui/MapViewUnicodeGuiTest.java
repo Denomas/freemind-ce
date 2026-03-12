@@ -108,4 +108,9 @@ class MapViewUnicodeGuiTest extends GuiTestBase {
         map.getFilteredXml(writer);
         return writer.toString();
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
+    }
 }

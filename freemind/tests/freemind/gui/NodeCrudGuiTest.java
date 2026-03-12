@@ -308,4 +308,9 @@ class NodeCrudGuiTest extends GuiTestBase {
     void node_rootNodeText() {
         assertThat(root.getText()).isEqualTo("ROOT");
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

@@ -313,4 +313,9 @@ class KeyboardShortcutsGuiTest extends GuiTestBase {
         loadMap(fixture.model, "<map><node TEXT='ZoomOut'/></map>");
         assertThat(saveMapToXml(fixture.model)).contains("ZoomOut");
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
+    }
 }

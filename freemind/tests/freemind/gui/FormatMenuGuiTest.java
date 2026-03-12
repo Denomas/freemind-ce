@@ -376,4 +376,9 @@ class FormatMenuGuiTest extends GuiTestBase {
         assertThat(child.isBold()).isTrue();
         assertThat(child.getFontSize()).isEqualTo("14");
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

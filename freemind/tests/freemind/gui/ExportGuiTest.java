@@ -600,6 +600,11 @@ class ExportGuiTest extends GuiTestBase {
         assertThat(xml).contains("CleanYaml");
     }
 
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
+    }
+
     // ========================================================================
     // Helpers
     // ========================================================================

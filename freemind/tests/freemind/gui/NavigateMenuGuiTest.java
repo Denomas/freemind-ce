@@ -449,4 +449,9 @@ class NavigateMenuGuiTest extends GuiTestBase {
         MindMapNode clone = createChildNode(mapFeedback, root, original.getText());
         assertThat(clone.getText()).isEqualTo(original.getText());
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

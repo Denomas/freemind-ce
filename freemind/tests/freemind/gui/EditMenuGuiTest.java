@@ -361,4 +361,9 @@ class EditMenuGuiTest extends GuiTestBase {
         assertThat(findNodeByText(r1, "Target1")).isNotNull();
         assertThat(findNodeByText(r2, "Target2")).isNotNull();
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

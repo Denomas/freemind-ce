@@ -6,6 +6,7 @@ import freemind.main.Resources;
 import freemind.main.Tools;
 import freemind.modes.ExtendedMapFeedbackImpl;
 import freemind.modes.MapAdapter;
+import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapMapModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -106,5 +107,10 @@ class HelpMenuGuiTest extends GuiTestBase {
     void help_keyDocumentation() throws Exception {
         // Keyboard shortcuts documentation; verify properties exist
         assertThat(freeMindMain).isNotNull();
+    }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return map != null ? map.getRootNode() : null;
     }
 }

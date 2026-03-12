@@ -61,11 +61,29 @@ public abstract class GuiTestBase {
                 .orElse(m.getName()))
             .orElse("unknown");
 
-        // Try to capture active window
+        String filename = ScreenshotCapture.filename(testName, "after");
+
+        // Try to capture active window first
         Window activeWindow = javax.swing.FocusManager.getCurrentManager().getActiveWindow();
         if (activeWindow != null && activeWindow.isShowing()) {
-            ScreenshotCapture.capture(activeWindow, ScreenshotCapture.filename(testName, "after"));
+            ScreenshotCapture.capture(activeWindow, filename);
+            return;
         }
+
+        // Fall back to tree state screenshot from the map model
+        MindMapNode mapRoot = getMapRootForScreenshot();
+        if (mapRoot != null) {
+            ScreenshotCapture.captureTreeState(mapRoot, testName, filename);
+        }
+    }
+
+    /**
+     * Returns the map root node for screenshot capture.
+     * Subclasses should override this to expose their map root.
+     * Returns null by default (no tree state screenshot).
+     */
+    protected MindMapNode getMapRootForScreenshot() {
+        return null;
     }
 
     // ========================================================================

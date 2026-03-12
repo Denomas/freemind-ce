@@ -351,4 +351,9 @@ class ImportGuiTest extends GuiTestBase {
     void import_folderStructure() throws Exception {
         import_folderStructureSimulation();
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }

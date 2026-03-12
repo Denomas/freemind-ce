@@ -264,4 +264,9 @@ class CollaborationGuiTest extends GuiTestBase {
         assertThat(root.getText()).isEqualTo("DbSlave");
         assertNodeExists(root, "SyncedNode");
     }
+
+    @Override
+    protected MindMapNode getMapRootForScreenshot() {
+        return root;
+    }
 }
