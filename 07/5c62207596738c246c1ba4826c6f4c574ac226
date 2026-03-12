@@ -1,0 +1,25 @@
+freemind/tests/freemind/gui/ShowcaseScreenshotCapture.java
+  19de32e92f7747a3 106-107
+freemind/tests/freemind/gui/EdgeCaseGuiTest.java
+  19de32e92f7747a3 447-571
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "075c62207596738c246c1ba4826c6f4c574ac226",
+  "prompts": {
+    "19de32e92f7747a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "44427e1a-d4a3-46d2-8ee5-e6d5141c91d7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 127,
+      "total_deletions": 0,
+      "accepted_lines": 127,
+      "overriden_lines": 0
+    }
+  }
+}
