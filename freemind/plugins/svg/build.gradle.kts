@@ -13,8 +13,8 @@ java {
     }
 }
 
-val batikVersion = "1.17"
-val fopVersion = "2.9"
+val batikVersion = "1.19"
+val fopVersion = "2.11"
 
 dependencies {
     // Compile-only dependency on main freemind module
@@ -25,7 +25,7 @@ dependencies {
 
     // Apache FOP (PDF)
     implementation("org.apache.xmlgraphics:fop:${fopVersion}")
-    implementation("org.apache.xmlgraphics:xmlgraphics-commons:2.9")
+    implementation("org.apache.xmlgraphics:xmlgraphics-commons:2.11")
 
     // Rhino (JavaScript Engine for Batik)
     implementation("org.mozilla:rhino:1.7.14")
