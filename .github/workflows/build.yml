@@ -154,6 +154,22 @@ jobs:
         if: runner.os == 'Windows'
         run: .\gradlew.bat testGui --no-daemon --no-configuration-cache --continue
 
+      - name: E2E Showcase Screenshots (Linux with Xvfb)
+        if: runner.os == 'Linux'
+        run: xvfb-run ./gradlew :freemind:showcaseScreenshots --no-daemon --no-configuration-cache || true
+        timeout-minutes: 5
+
+      - name: E2E Showcase Screenshots (macOS)
+        if: runner.os == 'macOS'
+        run: ./gradlew :freemind:showcaseScreenshots --no-daemon --no-configuration-cache || true
+        timeout-minutes: 5
+
+      - name: E2E Showcase Screenshots (Windows)
+        if: runner.os == 'Windows'
+        run: .\gradlew.bat :freemind:showcaseScreenshots --no-daemon --no-configuration-cache
+        timeout-minutes: 5
+        continue-on-error: true
+
       - name: Upload GUI Test Screenshots
         if: always()
         uses: actions/upload-artifact@v7
@@ -162,6 +178,58 @@ jobs:
           path: freemind/build/test-screenshots/
           retention-days: 14
           if-no-files-found: ignore
+
+      - name: Embed Showcase & Test Screenshots in Job Summary
+        if: always()
+        shell: bash
+        run: |
+          # === SHOWCASE SCREENSHOTS (full-size, at the top) ===
+          SHOWCASE_DIR="freemind/build/test-screenshots/showcase"
+          if [ -d "$SHOWCASE_DIR" ]; then
+            SHOWCASE_IMAGES=$(find "$SHOWCASE_DIR" -name "*.png" -type f | sort)
+            if [ -n "$SHOWCASE_IMAGES" ]; then
+              SCOUNT=$(echo "$SHOWCASE_IMAGES" | wc -l | tr -d ' ')
+              echo "# E2E Showcase: FreeMind CE Running on ${{ matrix.os }} (Java ${{ matrix.java }})" >> "$GITHUB_STEP_SUMMARY"
+              echo "" >> "$GITHUB_STEP_SUMMARY"
+              echo "> Full desktop screenshots proving end-to-end functionality with real mindmap files." >> "$GITHUB_STEP_SUMMARY"
+              echo "" >> "$GITHUB_STEP_SUMMARY"
+              for IMG in $SHOWCASE_IMAGES; do
+                BASENAME=$(basename "$IMG" .png)
+                echo "## $BASENAME" >> "$GITHUB_STEP_SUMMARY"
+                BASE64=$(base64 -w 0 "$IMG" 2>/dev/null || base64 "$IMG")
+                echo "<img src=\"data:image/png;base64,$BASE64\" alt=\"$BASENAME\" width=\"100%\">" >> "$GITHUB_STEP_SUMMARY"
+                echo "" >> "$GITHUB_STEP_SUMMARY"
+              done
+              echo "---" >> "$GITHUB_STEP_SUMMARY"
+              echo "" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          fi
+
+          # === GUI TEST SCREENSHOTS (collapsible, below showcase) ===
+          SCREENSHOT_DIR="freemind/build/test-screenshots"
+          if [ ! -d "$SCREENSHOT_DIR" ]; then
+            echo "No screenshot directory found." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          # Exclude showcase directory from test screenshots
+          IMAGES=$(find "$SCREENSHOT_DIR" -name "*.png" -type f -not -path "*/showcase/*" | sort)
+          if [ -z "$IMAGES" ]; then
+            echo "No test screenshots were captured." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
+          echo "## GUI Test Screenshots ($COUNT images)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "<details><summary>Click to expand all test screenshots</summary>" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          for IMG in $IMAGES; do
+            BASENAME=$(basename "$IMG" .png)
+            echo "### $BASENAME" >> "$GITHUB_STEP_SUMMARY"
+            BASE64=$(base64 -w 0 "$IMG" 2>/dev/null || base64 "$IMG")
+            echo "<img src=\"data:image/png;base64,$BASE64\" alt=\"$BASENAME\" width=\"700\">" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          done
+          echo "</details>" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish GUI Test Report
         uses: dorny/test-reporter@v2
