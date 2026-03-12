@@ -137,7 +137,7 @@ dependencies {
     implementation("xerces:xercesImpl:2.12.2")
 
     // Jsoup (HTML Parsing) - 1.10.3 matches existing NodeTraversor API usage
-    implementation("org.jsoup:jsoup:1.10.3")
+    implementation("org.jsoup:jsoup:1.22.1")
 
     // Plugin dependencies (local JARs)
     implementation(files("plugins/script/groovy-all.jar"))
