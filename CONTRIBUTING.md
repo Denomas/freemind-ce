@@ -197,14 +197,16 @@ A single failure on any combination blocks the entire pipeline.
 
 Every PR and every release runs on this complete matrix:
 
-|  | ubuntu-24.04 | ubuntu-22.04 | win-2025 | win-2022 | macos-15 | macos-14 | macos-13 |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Java 21 (LTS)** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Java 22** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Java 23** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Java 24** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | ubuntu-24.04 | ubuntu-22.04 | win-2025 | win-2022 | macos-15 | macos-14 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Java 21 (LTS)** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Java 22** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Java 23** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Java 24** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-**Total: 56 required checks** (28 Build + 28 GUI Tests).
+**Total: 48 required checks** (24 Build + 24 GUI Tests).
+
+> **Note:** `macos-13` was removed because GitHub Actions discontinued the runner image.
 
 Runner images: [actions/runner-images](https://github.com/actions/runner-images)
 
@@ -212,14 +214,14 @@ Runner images: [actions/runner-images](https://github.com/actions/runner-images)
 
 | Job | Purpose | Blocks merge/release? |
 |---|---|---|
-| `Build (os, java)` | Compile + unit tests + SpotBugs | **Yes** — 28 required checks |
-| `GUI Tests (os, java)` | GUI integration tests + screenshots | **Yes** — 28 required checks |
+| `Build (os, java)` | Compile + unit tests + SpotBugs | **Yes** — 24 required checks |
+| `GUI Tests (os, java)` | GUI integration tests + screenshots | **Yes** — 24 required checks |
 
 ### 4. Branch Workflow
 
 - **All changes** via feature branch → Pull Request → main
 - **No direct push to main** (enforced by GitHub Ruleset)
-- PR requires: all 56 checks pass + code review
+- PR requires: all 48 checks pass + code review
 - Squash merge preferred for clean history
 
 ### 5. GUI Test Requirements
@@ -233,8 +235,8 @@ Runner images: [actions/runner-images](https://github.com/actions/runner-images)
 ### 6. Release Gating
 
 ```
-Push to main → build.yml (56 checks) → release-please PR
-Tag → release.yml validate (28) + gui-tests (28) → packaging
+Push to main → build.yml (48 checks) → release-please PR
+Tag → release.yml validate (24) + gui-tests (24) → packaging
 Any failure at any stage blocks release completely.
 ```
 

@@ -58,7 +58,7 @@ freemind-ce/
 - **Branch:** `main` — trunk-based, all changes via PR (no direct push)
 - **Release:** Tag `v*.*.*` on main → GitHub Actions auto-builds DMG/EXE/DEB
 - **Pre-commit:** `.pre-commit-config.yaml` — XML validation, Java compilation, whitespace
-- **CI Zero-Tolerance:** 7 runners × 4 Java versions (21, 22, 23, 24) = 56 blocking checks
+- **CI Zero-Tolerance:** 6 runners × 4 Java versions (21, 22, 23, 24) = 48 blocking checks
 - **GUI tests are fully blocking** — no `continue-on-error`, any failure blocks merge/release
 - **Every UI change requires GUI tests** with screenshots — see [`CONTRIBUTING.md` SOP](CONTRIBUTING.md#cicd-standard-operating-procedure-sop)
 
