@@ -58,7 +58,7 @@ GRADLE       := ./gradlew
 GRADLE_FLAGS := --no-configuration-cache
 GRADLE_CMD   = JAVA_HOME=$(JAVA_HOME) $(GRADLE)
 
-.PHONY: help build run debug clean test coverage jaxb javadoc \
+.PHONY: help build run debug clean test test-gui coverage jaxb javadoc \
         package package-mac package-win package-linux \
         dist-zip install-dist check info all
 
@@ -95,6 +95,9 @@ clean: ## Clean all build artifacts
 
 test: ## Run tests only
 	$(GRADLE_CMD) :freemind:test $(GRADLE_FLAGS)
+
+test-gui: ## Run GUI tests with screenshots (requires display)
+	$(GRADLE_CMD) :freemind:testGui $(GRADLE_FLAGS)
 
 coverage: ## Run tests with JaCoCo coverage report
 	$(GRADLE_CMD) :freemind:test :freemind:jacocoTestReport $(GRADLE_FLAGS)

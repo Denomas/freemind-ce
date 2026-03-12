@@ -175,6 +175,9 @@ dependencies {
 
     // Fluent Assertions (AssertJ)
     testImplementation("org.assertj:assertj-core:3.27.7")
+
+    // AssertJ Swing (GUI testing with screenshots)
+    testImplementation("org.assertj:assertj-swing-junit:3.17.1")
 }
 
 // ============================================================================
@@ -332,10 +335,33 @@ tasks.register<Copy>("prepareMacDist") {
 // ============================================================================
 
 tasks.test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags("gui")
+    }
 
     // Headless mode for CI compatibility (Swing tests throw HeadlessException without this)
     systemProperty("java.awt.headless", "true")
+
+    testLogging {
+        events("passed", "skipped", "failed")
+        showStandardStreams = true
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+    }
+}
+
+tasks.register<Test>("testGui") {
+    description = "Runs GUI tests with screenshot capture (requires display)"
+    group = "Verification"
+
+    testClassesDirs = sourceSets["test"].output.classesDirs
+    classpath = sourceSets["test"].runtimeClasspath
+
+    useJUnitPlatform {
+        includeTags("gui")
+    }
+
+    // GUI tests need a real display — not headless
+    systemProperty("java.awt.headless", "false")
 
     testLogging {
         events("passed", "skipped", "failed")
