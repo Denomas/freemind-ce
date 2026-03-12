@@ -375,6 +375,21 @@ tasks.register<Test>("testGui") {
     }
 }
 
+tasks.register<JavaExec>("showcaseScreenshots") {
+    description = "Launches FreeMind CE with showcase mindmaps and captures full-screen desktop screenshots"
+    group = "Verification"
+
+    classpath = sourceSets["test"].runtimeClasspath
+    mainClass.set("tests.freemind.gui.ShowcaseScreenshotCapture")
+    systemProperty("java.awt.headless", "false")
+
+    // Run from project root so relative paths to .mm files work
+    workingDir = rootProject.projectDir
+
+    // Always re-run
+    outputs.upToDateWhen { false }
+}
+
 // ============================================================================
 // Code Coverage (JaCoCo)
 // ============================================================================
