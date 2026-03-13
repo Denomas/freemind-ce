@@ -10,6 +10,8 @@ on:
         description: 'Release tag (e.g., v1.2.0) — only needed for manual runs'
         required: false
 
+permissions: {}
+
 env:
   JAVA_VERSION: '21'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -18,6 +20,8 @@ jobs:
   # Gate 1: Run full build + tests on all platforms and Java versions
   validate:
     name: Validate (${{ matrix.os }}, Java ${{ matrix.java }})
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -67,6 +71,8 @@ jobs:
   # Gate 2: Run GUI tests on all platforms and Java versions
   gui-tests:
     name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
+    permissions:
+      contents: read
     needs: validate
     runs-on: ${{ matrix.os }}
     strategy:
@@ -186,6 +192,8 @@ jobs:
   # Packaging — only runs after ALL validate + GUI tests pass
   build-macos:
     name: Package (macOS)
+    permissions:
+      contents: read
     needs: [validate, gui-tests]
     runs-on: macos-latest
     steps:
@@ -225,6 +233,8 @@ jobs:
 
   build-windows:
     name: Package (Windows)
+    permissions:
+      contents: read
     needs: [validate, gui-tests]
     runs-on: windows-latest
     steps:
@@ -266,6 +276,8 @@ jobs:
 
   build-linux:
     name: Package (Linux)
+    permissions:
+      contents: read
     needs: [validate, gui-tests]
     runs-on: ubuntu-latest
     steps:

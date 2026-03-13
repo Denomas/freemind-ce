@@ -93,7 +93,8 @@ val jaxbImplVersion = "2.3.9"
 val batikVersion = "1.19"
 val fopVersion = "2.11"
 val flatlafVersion = "3.7"
-val jgoodiesVersion = "1.9.0"
+val jgoodiesFormsVersion = "1.8.0"
+val jgoodiesCommonVersion = "1.8.1"
 val junitVersion = "4.13.2"
 
 // ============================================================================
@@ -119,9 +120,9 @@ dependencies {
     implementation("com.formdev:flatlaf:${flatlafVersion}")
     implementation("com.formdev:flatlaf-extras:${flatlafVersion}")
 
-    // JGoodies (Forms and Look) - local JARs (1.8.0 has setDefaultDialogBorder API)
-    implementation(files("lib/jgoodies-forms-1.8.0.jar"))
-    implementation(files("lib/jgoodies-common-1.8.1.jar"))
+    // JGoodies (Forms and Look) - 1.8.0 has setDefaultDialogBorder API
+    implementation("com.jgoodies:jgoodies-forms:${jgoodiesFormsVersion}")
+    implementation("com.jgoodies:jgoodies-common:${jgoodiesCommonVersion}")
 
     // JOrtho (Spell Checker) - local JAR, not on Maven Central
     implementation(files("lib/jortho.jar"))
@@ -139,18 +140,15 @@ dependencies {
     // Jsoup (HTML Parsing) - 1.10.3 matches existing NodeTraversor API usage
     implementation("org.jsoup:jsoup:1.10.3")
 
-    // Plugin dependencies (local JARs)
-    implementation(files("plugins/script/groovy-all.jar"))
+    // Plugin dependencies
+    implementation("org.codehaus.groovy:groovy-all:2.1.8")
     implementation(files("plugins/map/JMapViewer.jar"))
-    implementation(files("plugins/search/lucene-core-9.12.3.jar"))
-    implementation(files("plugins/search/lucene-analysis-common-9.12.3.jar"))
-    implementation(files("plugins/search/lucene-queryparser-9.12.3.jar"))
-    implementation(files("plugins/collaboration/jabber/muse.jar"))
-    implementation(files("plugins/collaboration/jabber/commons-logging.jar"))
+    implementation("org.apache.lucene:lucene-core:9.12.3")
+    implementation("org.apache.lucene:lucene-analysis-common:9.12.3")
+    implementation("org.apache.lucene:lucene-queryparser:9.12.3")
     implementation(files("plugins/help/jhall.jar"))
     // LaTeX plugin (JLaTeXMath) — built as separate module :freemind:plugins:latex
     implementation("org.scilab.forge:jlatexmath:1.0.7")
-    implementation(files("plugins/collaboration/database/hsqldb.jar"))
 
     // Batik (SVG Support) - for plugins
     implementation("org.apache.xmlgraphics:batik-all:${batikVersion}")
@@ -172,6 +170,10 @@ dependencies {
     // Property-Based Testing (jqwik)
     testImplementation("net.jqwik:jqwik:1.9.3")
     testImplementation("net.jqwik:jqwik-engine:1.9.3")
+
+    // Fuzz Testing (Jazzer via JUnit integration)
+    testImplementation("com.code-intelligence:jazzer-api:0.22.1")
+    testImplementation("com.code-intelligence:jazzer-junit:0.22.1")
 
     // Fluent Assertions (AssertJ)
     testImplementation("org.assertj:assertj-core:3.27.7")
@@ -200,6 +202,8 @@ sourceSets {
             exclude("**/MacChanges.java.disabled")
             // Exclude Jabber collaboration plugin (broken API calls, unmaintained)
             exclude("**/jabber/**")
+            // Exclude Database collaboration plugin (hsqldb removed, unmaintained)
+            exclude("**/database/**")
             // Exclude JApplet-based applet (JApplet removed in Java 21)
             exclude("**/FreeMindApplet.java")
             // Exclude SecurityManager classes (removed in Java 21, JEP 411)

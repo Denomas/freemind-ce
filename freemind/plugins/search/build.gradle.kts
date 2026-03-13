@@ -17,10 +17,10 @@ dependencies {
     // Compile-only dependency on main freemind module
     compileOnly(project(":freemind"))
 
-    // Apache Lucene 9.12.3 - local JARs
-    implementation(files("lucene-core-9.12.3.jar"))
-    implementation(files("lucene-analysis-common-9.12.3.jar"))
-    implementation(files("lucene-queryparser-9.12.3.jar"))
+    // Apache Lucene 9.12.3
+    implementation("org.apache.lucene:lucene-core:9.12.3")
+    implementation("org.apache.lucene:lucene-analysis-common:9.12.3")
+    implementation("org.apache.lucene:lucene-queryparser:9.12.3")
 }
 
 tasks.jar {

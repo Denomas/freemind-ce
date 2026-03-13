@@ -1,0 +1,57 @@
+name: Fuzz Testing
+
+on:
+  schedule:
+    - cron: '0 4 * * 3'  # Wednesday 4am UTC
+  workflow_dispatch:
+
+permissions: {}
+
+env:
+  JAVA_VERSION: '21'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  fuzz:
+    name: Jazzer Fuzz Tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build (compile only)
+        run: ./gradlew :freemind:compileTestJava --no-daemon --no-configuration-cache
+
+      - name: Run fuzz tests
+        run: |
+          ./gradlew :freemind:test --no-daemon --no-configuration-cache \
+            --tests "tests.freemind.fuzz.*" \
+            -Djazzer.fuzz=true
+        timeout-minutes: 30
+
+      - name: Upload crash artifacts
+        if: failure()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
+        with:
+          name: fuzz-crashes
+          path: |
+            **/crash-*
+            **/Jacoco-*
+            freemind/build/test-results/
+          retention-days: 30
