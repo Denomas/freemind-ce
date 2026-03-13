@@ -9,9 +9,10 @@ repos:
       - id: check-merge-conflict
 
       # Prevent large files (>500KB) from being added
-      # Existing tracked JARs are excluded — only NEW large files are caught
+      # Library JARs in lib/ and plugins/ are excluded — these are tracked dependencies
       - id: check-added-large-files
         args: ['--maxkb=500']
+        exclude: '\.jar$'
 
       # Ensure files end with a newline
       - id: end-of-file-fixer

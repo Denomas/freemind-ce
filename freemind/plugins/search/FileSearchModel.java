@@ -24,10 +24,8 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
-import org.apache.lucene.search.TopScoreDocCollector;
+import org.apache.lucene.store.ByteBuffersDirectory;
 import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.RAMDirectory;
-import org.apache.lucene.util.Version;
 
 /**
  * This terminal application creates an Apache Lucene index in a folder and adds
@@ -41,8 +39,7 @@ public class FileSearchModel {
 		filename, path, contents
 	}
 
-	private static StandardAnalyzer analyzer = new StandardAnalyzer(
-			Version.LUCENE_46);
+	private static StandardAnalyzer analyzer = new StandardAnalyzer();
 
 	private ArrayList<File> queue = new ArrayList<File>();
 
@@ -59,18 +56,14 @@ public class FileSearchModel {
 	 */
 	public TopDocs doSearch(Query q, int hitsPerPage, IndexSearcher searcher)
 			throws ParseException, IOException {
-		TopScoreDocCollector collector = TopScoreDocCollector.create(
-				hitsPerPage, true);
-		searcher.search(q, collector);
-		TopDocs topDocs = collector.topDocs();
-		return topDocs;
+		return searcher.search(q, hitsPerPage);
 	}
 
 	protected Query getQuery(String querystring) throws ParseException {
 		// the "title" arg specifies the default field to use
 		// when no field is explicitly specified in the query.
-		Query q = new QueryParser(Version.LUCENE_46,
-				FileAttribute.contents.name(), analyzer).parse(querystring);
+		Query q = new QueryParser(FileAttribute.contents.name(), analyzer)
+				.parse(querystring);
 		return q;
 	}
 
@@ -102,9 +95,8 @@ public class FileSearchModel {
 	 */
 	public Directory indexFileOrDirectory(String... fileName)
 			throws IOException {
-		Directory index = new RAMDirectory();
-		IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_46,
-				analyzer);
+		Directory index = new ByteBuffersDirectory();
+		IndexWriterConfig config = new IndexWriterConfig(analyzer);
 		IndexWriter writer = new IndexWriter(index, config);
 
 		for (int i = 0; i < fileName.length; i++) {
@@ -120,9 +112,8 @@ public class FileSearchModel {
 	}
 
 	public Directory indexFileOrDirectory(File... fileName) throws IOException {
-		Directory index = new RAMDirectory();
-		IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_46,
-				analyzer);
+		Directory index = new ByteBuffersDirectory();
+		IndexWriterConfig config = new IndexWriterConfig(analyzer);
 		IndexWriter writer = new IndexWriter(index, config);
 
 		for (int i = 0; i < fileName.length; i++) {
@@ -191,7 +182,7 @@ public class FileSearchModel {
 	}
 
 	public int indexFiles(IndexWriter writer) throws IOException {
-		int originalNumDocs = writer.numDocs();
+		int added = 0;
 		for (File f : queue) {
 			Reader fr = null;
 			try {
@@ -208,6 +199,7 @@ public class FileSearchModel {
 						.getName(), Field.Store.YES));
 
 				writer.addDocument(doc);
+				added++;
 				_logger.info("Added: " + f);
 			} catch (Exception e) {
 				_logger.warning("Could not add: " + f);
@@ -216,8 +208,6 @@ public class FileSearchModel {
 			}
 		}
 
-		int newNumDocs = writer.numDocs();
-		int added = newNumDocs - originalNumDocs;
 		_logger.info(added + " documents added.");
 		queue.clear();
 		return added;
