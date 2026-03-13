@@ -120,7 +120,8 @@ public class FreeMindCommon {
 			if (in == null) {
 				return null;
 			}
-			PropertyResourceBundle bundle = new PropertyResourceBundle(in);
+			PropertyResourceBundle bundle = new PropertyResourceBundle(
+					new java.io.InputStreamReader(in, java.nio.charset.StandardCharsets.UTF_8));
 			in.close();
 			return bundle;
 		}

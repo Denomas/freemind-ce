@@ -533,17 +533,17 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 	public void saveProperties(boolean pIsShutdown) {
 		try {
-			OutputStream out = new FileOutputStream(autoPropertiesFile);
-			final OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-					out, "8859_1");
-			outputStreamWriter.write("#FreeMind ");
-			outputStreamWriter.write(VERSION.toString());
-			outputStreamWriter.write('\n');
-			outputStreamWriter.flush();
+			OutputStreamWriter writer = new OutputStreamWriter(
+					new FileOutputStream(autoPropertiesFile),
+					java.nio.charset.StandardCharsets.UTF_8);
+			writer.write("#FreeMind ");
+			writer.write(VERSION.toString());
+			writer.write('\n');
+			writer.flush();
 			//to save as few props as possible.
 			Properties toBeStored = Tools.copyChangedProperties(props, defProps);
-			toBeStored.store(out, null);
-			out.close();
+			toBeStored.store(writer, null);
+			writer.close();
 		} catch (Exception ex) {
 			Resources.getInstance().logException(ex);
 		}

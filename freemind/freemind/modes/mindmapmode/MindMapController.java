@@ -691,7 +691,7 @@ public class MindMapController extends ControllerAdapter implements
 			System.out.println("User patterns file " + patternsFile
 					+ " not found.");
 			reader = new InputStreamReader(getResource("patterns.xml")
-					.openStream());
+					.openStream(), java.nio.charset.StandardCharsets.UTF_8);
 		}
 		return reader;
 	}

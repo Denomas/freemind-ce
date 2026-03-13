@@ -46,7 +46,7 @@ import freemind.modes.common.dialogs.EnterPasswordDialog;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class SignedScriptHandler {
 
@@ -153,7 +153,7 @@ public class SignedScriptHandler {
 				keyName = content.mKeyName;
 			}
 			instance.initSign((PrivateKey) mKeyStore.getKey(keyName, password));
-			instance.update(content.mScript.getBytes());
+			instance.update(content.mScript.getBytes(java.nio.charset.StandardCharsets.UTF_8));
 			byte[] signature = instance.sign();
 			content.mSignature = Tools.toBase64(signature);
 			// System.out.println("Signed: " +content);
@@ -208,7 +208,7 @@ public class SignedScriptHandler {
 					instanceVerify.initVerify(mKeyStore
 							.getCertificate(content.mKeyName));
 				}
-				instanceVerify.update(content.mScript.getBytes());
+				instanceVerify.update(content.mScript.getBytes(java.nio.charset.StandardCharsets.UTF_8));
 				boolean verify = instanceVerify.verify(Tools
 						.fromBase64(content.mSignature));
 				// System.out.println("Signature result: " + verify);

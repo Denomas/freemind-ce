@@ -439,7 +439,8 @@ public class BrowseController extends ViewControllerAdapter {
 		InputStreamReader urlStreamReader = null;
 
 		try {
-			urlStreamReader = new InputStreamReader(url.openStream());
+			urlStreamReader = new InputStreamReader(url.openStream(),
+					java.nio.charset.StandardCharsets.UTF_8);
 		} catch (SecurityException ex) {
 			getFrame().getController()
 					.errorMessage(

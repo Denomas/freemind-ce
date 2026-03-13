@@ -42,9 +42,9 @@ import javax.swing.JOptionPane;
  * java 1.1 compatibility. Currently, it is unclear, if this works as expected.
  * But in any case, almost no dependencies to other FreeMind sources should be
  * used here.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public class FreeMindStarter {
 	/** Doubled variable on purpose. See header of this class. */
@@ -65,7 +65,7 @@ public class FreeMindStarter {
 
 		// workaround for java bug http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=7075600
 		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
-		
+
 		try {
 		FreeMind.main(args, defaultPreferences, userPreferences,
 		 starter.getUserPreferencesFile(defaultPreferences));
@@ -137,11 +137,12 @@ public class FreeMindStarter {
 		Properties auto = null;
 		auto = new Properties(defaultPreferences);
 		try {
-			InputStream in = null;
 			File autoPropertiesFile = getUserPreferencesFile(defaultPreferences);
-			in = new FileInputStream(autoPropertiesFile);
-			auto.load(in);
-			in.close();
+			java.io.InputStreamReader reader = new java.io.InputStreamReader(
+					new FileInputStream(autoPropertiesFile),
+					java.nio.charset.StandardCharsets.UTF_8);
+			auto.load(reader);
+			reader.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.err.println("Panic! Error while loading default properties.");
@@ -172,16 +173,18 @@ public class FreeMindStarter {
 				this.getClass().getClassLoader().getResource(propsLoc);
 		Properties props = new Properties();
 		try {
-			InputStream in = defaultPropsURL.openStream();
-			props.load(in);
-			in.close();
+			java.io.InputStreamReader reader = new java.io.InputStreamReader(
+					defaultPropsURL.openStream(),
+					java.nio.charset.StandardCharsets.UTF_8);
+			props.load(reader);
+			reader.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.err.println("Panic! Error while loading default properties.");
 		}
 		return props;
 	}
-	
+
 	public static class ProxyAuthenticator extends Authenticator {
 
 	    private String user, password;

@@ -2433,8 +2433,7 @@ public class FreeMindMapController extends JMapController implements
 			    in = ((HttpURLConnection) urlConnection).getErrorStream();
 			else
 			    in = urlConnection.getInputStream();
-			result = Tools.getFile(new InputStreamReader(in));
-			result = new String(result.getBytes(), "UTF-8");
+			result = Tools.getFile(new InputStreamReader(in, java.nio.charset.StandardCharsets.UTF_8));
 			// some proxies are using the Location field to reload the correct document via the proxy
 			if(status >= 400 && result.contains("document.location.reload")) {
 				HttpURLConnection huc = (HttpURLConnection) urlConnection;

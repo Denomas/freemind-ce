@@ -815,7 +815,7 @@ public class Tools {
 
 	/** Method to be called from XSLT */
 	public static String toBase64(String text) {
-		return toBase64(text.getBytes());
+		return toBase64(text.getBytes(java.nio.charset.StandardCharsets.UTF_8));
 	}
 
 	/**

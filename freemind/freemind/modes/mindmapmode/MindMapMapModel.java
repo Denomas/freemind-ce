@@ -427,10 +427,10 @@ public class MindMapMapModel extends MapAdapter {
 			} // ^ just like above.
 			// ^ On Windows95, the necessary libraries are missing.
 			semaphoreOutputStream.write(System.getProperty("user.name")
-					.getBytes());
+					.getBytes(java.nio.charset.StandardCharsets.UTF_8));
 			semaphoreOutputStream.write('\n');
 			semaphoreOutputStream.write(String.valueOf(
-					System.currentTimeMillis()).getBytes());
+					System.currentTimeMillis()).getBytes(java.nio.charset.StandardCharsets.UTF_8));
 			semaphoreOutputStream.close();
 			semaphoreOutputStream = null;
 			Tools.setHidden(inSemaphoreFile, true, /* synchro= */false); // Exception
