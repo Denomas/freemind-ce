@@ -13,7 +13,43 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      code: ${{ steps.check.outputs.code }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+      - name: Check for code changes
+        id: check
+        run: |
+          # Push to main ve workflow_call (release akışı) → her zaman full build
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "code=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Non-PR event, running full build"
+            exit 0
+          fi
+          # PR: doc-only mı kontrol et (negated pathspec: doc dışı değişiklik var mı?)
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.event.pull_request.head.sha }}"
+          if git diff --quiet "$BASE...$HEAD" -- \
+            ':!**/*.md' ':!docs/**' ':!_bmad-output/**' \
+            ':!LICENSE' ':!COPYING' ':!.gitattributes' \
+            ':!.github/ISSUE_TEMPLATE/**' ':!.github/PULL_REQUEST_TEMPLATE/**' \
+            ':!.github/release-notes-template.md'; then
+            echo "code=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Documentation-only change — skipping build & test matrix"
+          else
+            echo "code=true" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
     name: Build (${{ matrix.os }}, Java ${{ matrix.java }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -105,7 +141,8 @@ jobs:
 
   gui-tests:
     name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
-    needs: build
+    needs: [changes, build]
+    if: ${{ needs.changes.outputs.code == 'true' }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -229,3 +266,25 @@ jobs:
           path: freemind/build/test-results/testGui/*.xml
           reporter: java-junit
           fail-on-empty: false
+
+  ci:
+    name: CI
+    if: always()
+    needs: [changes, build, gui-tests]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Evaluate results
+        run: |
+          echo "Code changed: ${{ needs.changes.outputs.code }}"
+          echo "Build: ${{ needs.build.result }}"
+          echo "GUI Tests: ${{ needs.gui-tests.result }}"
+          if [[ "${{ contains(needs.*.result, 'failure') }}" == "true" ]]; then
+            echo "::error::One or more jobs failed"
+            exit 1
+          fi
+          if [[ "${{ contains(needs.*.result, 'cancelled') }}" == "true" ]]; then
+            echo "::error::One or more jobs were cancelled"
+            exit 1
+          fi
+          echo "All checks passed"

@@ -8,6 +8,7 @@
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![Platforms](https://img.shields.io/badge/Platforms-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://github.com/Denomas/freemind-ce/releases/latest)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Denomas/freemind-ce/badge)](https://scorecard.dev/viewer/?uri=github.com/Denomas/freemind-ce)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12156/badge)](https://www.bestpractices.dev/projects/12156)
 
 ---
 

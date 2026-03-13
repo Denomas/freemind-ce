@@ -5,6 +5,8 @@
 [![Build Status](https://github.com/Denomas/freemind-ce/actions/workflows/build.yml/badge.svg)](https://github.com/Denomas/freemind-ce/actions)
 [![Java 21](https://img.shields.io/badge/Java-21-orange.svg)](https://adoptium.net/)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Denomas/freemind-ce/badge)](https://scorecard.dev/viewer/?uri=github.com/Denomas/freemind-ce)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12156/badge)](https://www.bestpractices.dev/projects/12156)
 
 ---
 
