@@ -1,0 +1,27 @@
+freemind/freemind/main/FreeMindCommon.java
+  a27ec2a67bce6788 137
+freemind/freemind/modes/mindmapmode/hooks/MindMapHookFactory.java
+  a27ec2a67bce6788 332-333
+freemind/accessories/plugins/NodeNoteRegistration.java
+  a27ec2a67bce6788 182,188-197
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "73f976463708e3139be2cd428f4c352176a7d7b9",
+  "prompts": {
+    "a27ec2a67bce6788": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7eb77277-3c21-4efb-80cc-0d6dcee926e5",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 43,
+      "total_deletions": 32,
+      "accepted_lines": 14,
+      "overriden_lines": 0
+    }
+  }
+}
