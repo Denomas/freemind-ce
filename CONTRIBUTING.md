@@ -360,7 +360,7 @@ Runner images: [actions/runner-images](https://github.com/actions/runner-images)
 
 **Path filtering** skips the 48-job build/test matrix when a PR only changes documentation files:
 
-- `**/*.md`, `docs/**`, `_bmad-output/**`
+- `**/*.md`, `docs/**`
 - `LICENSE`, `COPYING`, `.gitattributes`
 - `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
 

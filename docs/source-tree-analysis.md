@@ -1,7 +1,5 @@
 # FreeMind CE - Source Tree Analysis
 
-> Generated: 2026-03-10 | Scan Level: Deep
-
 ## Project Root Structure
 
 ```
@@ -48,16 +46,21 @@ freemind-ce/
 │   │   ├── map/                       # OpenStreetMap integration (JMapViewer)
 │   │   ├── search/                    # Full-text search (Lucene)
 │   │   ├── help/                      # Integrated help system (JavaHelp)
-│   │   ├── contextgraph/             # ★ Context Graph export (Markdown + XML)
-│   │   ├── latex/                     # LaTeX formula rendering (legacy, not in Gradle)
+│   │   ├── contextgraph/             # ★ Context Graph export (Markdown + XML, in Gradle)
+│   │   ├── latex/                     # LaTeX formula rendering (not in Gradle yet)
 │   │   └── collaboration/             # Real-time collaboration
 │   │       ├── socket/                # ★ TCP socket-based (in Gradle)
 │   │       ├── database/              # Database-based (legacy)
 │   │       └── jabber/                # XMPP-based (legacy)
 │   │
+│   ├── generated-src/                 # JAXB generated classes (DO NOT EDIT)
+│   │
 │   ├── tests/                         # Test suites
 │   │   └── freemind/
+│   │       ├── gui/                   # ★ GUI tests (AssertJ Swing, 22 test classes)
+│   │       ├── fuzz/                  # Fuzz tests
 │   │       ├── findreplace/           # Search/replace tests
+│   │       ├── unicode/               # Unicode handling tests
 │   │       └── property/              # Property-based tests (jqwik)
 │   │           └── generators/        # Custom test generators
 │   │
@@ -80,27 +83,37 @@ freemind-ce/
 │   └── *.properties                   # 30+ language resource bundles
 │
 ├── admin/                             # Administrative assets (legacy)
-│   ├── docs/                          # Historical documentation (HTML)
-│   ├── installer/                     # Legacy installer configs (mac/rpm/windows)
 │   └── software/                      # Related software (openstreetmap, sortmm)
 │
 ├── pda/                               # Palm OS version (historical, inactive)
-├── flash/                             # Flash viewer (deprecated technology)
-├── mediawiki/                         # MediaWiki extension (reference)
-├── plugins/wsl/                       # WSL plugin (standalone)
 │
 ├── .github/workflows/                 # ★ CI/CD Pipelines
-│   ├── build.yml                      # Multi-platform build + packaging
-│   └── property-tests.yml             # Property-based test workflow
+│   ├── build.yml                      # Multi-platform build + test (path filtering + CI aggregator)
+│   ├── release-please.yml             # Automated release PR management
+│   ├── release.yml                    # Release packaging (DMG/EXE/DEB) on tag
+│   ├── scorecard.yml                  # OpenSSF Scorecard security analysis
+│   ├── security-scan.yml              # OWASP dependency vulnerability scan
+│   ├── fuzz.yml                       # Fuzz testing
+│   ├── pr-title.yml                   # Conventional Commit title validation
+│   ├── labeler.yml                    # Auto-label PRs by changed paths
+│   ├── stale.yml                      # Stale issue/PR management
+│   └── dependabot-auto-merge.yml      # Auto-merge Dependabot PRs
 │
 ├── gradle/                            # Gradle wrapper files
 ├── docs/                              # ★ Generated project documentation
 │
+├── .pre-commit-config.yaml            # Pre-commit hooks (XML validation, Java compile, whitespace)
+├── CLAUDE.md                          # ★ Agent & developer quick-reference guide
+├── CONTRIBUTING.md                    # Contribution guidelines, CI/CD SOP, Serena reference
+├── CHANGELOG.md                       # Auto-generated changelog (release-please)
+├── SECURITY.md                        # Security policy
+├── CODE_OF_CONDUCT.md                 # Code of conduct
 ├── build.gradle.kts                   # Root Gradle config
-├── settings.gradle.kts                # Module includes (6 plugins)
+├── settings.gradle.kts                # Module includes (7 plugins)
 ├── gradle.properties                  # Gradle JVM/cache settings
 ├── gradlew                            # Gradle wrapper script
-└── README.md                          # Project README (draft)
+├── Makefile                           # ★ Development shortcuts (make help)
+└── README.md                          # Project README
 ```
 
 ## Critical Folders

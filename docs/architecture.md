@@ -1,10 +1,8 @@
 # FreeMind CE - Architecture Document
 
-> Generated: 2026-03-10 | Scan Level: Deep | Source: Verified code analysis
-
 ## Executive Summary
 
-FreeMind CE is a Java 21 Swing desktop application for creating and editing mind maps. It uses an MVC architecture with a mode-based operation system, an XML action framework for undo/redo, and a hook-based plugin system for extensibility. The application is being modernized from a legacy Java 1.6/Ant codebase to Java 21/Gradle with JAXB replacing JiBX for XML binding.
+FreeMind CE is a Java 21 Swing desktop application for creating and editing mind maps. It uses an MVC architecture with a mode-based operation system, an XML action framework for undo/redo, and a hook-based plugin system for extensibility. The codebase has been fully modernized from Java 1.6/Ant/JiBX to Java 21/Gradle/JAXB, with FlatLaf as the default look-and-feel and a comprehensive CI/CD pipeline.
 
 ## Architecture Pattern
 
@@ -152,12 +150,10 @@ HookAdapter (base)
 
 ## Build Architecture
 
-**Dual Build System (transition period):**
-
 | System | Config | Status |
 |---|---|---|
-| Gradle 8.6+ | `build.gradle.kts` (root + modules) | Primary (modern) |
-| Apache Ant | `freemind/build.xml` | Legacy (still functional) |
+| Gradle 8.6+ | `build.gradle.kts` (root + modules) | **Primary** |
+| Apache Ant | `freemind/build.xml` | Legacy reference only (uses JiBX, not maintained) |
 
 **Gradle Module Structure:**
 ```
@@ -167,35 +163,38 @@ HookAdapter (base)
 :freemind:plugins:map                  (map viewer)
 :freemind:plugins:search               (search)
 :freemind:plugins:help                 (help)
+:freemind:plugins:contextgraph         (context graph export)
 :freemind:plugins:collaboration:socket (collaboration)
 ```
 
 ## Deployment Architecture
 
 **Packaging:** `jpackage` (JDK 21 built-in)
-- macOS: `.dmg` (with fallback manual DMG creation)
+- macOS: `.dmg`
 - Windows: `.exe` installer
 - Linux: `.deb` package
 
-**CI/CD:** GitHub Actions (`build.yml`)
-- Multi-platform matrix: ubuntu-latest, windows-latest, macos-latest
-- Build → Test → Package (per platform) → Release (on tag)
-- Artifact retention: 30 days
+**CI/CD:** GitHub Actions — see [Development Guide](./development-guide.md#cicd-pipeline) for full details.
+- **Build matrix:** 6 OS runners × 4 Java versions (21–24) = 48 checks
+- **Path filtering:** Doc-only PRs skip the matrix, pass via `CI` aggregator (~30s)
+- **Required check:** Single `CI` aggregator job in GitHub Ruleset
+- **Artifact retention:** 14 days
 
 ## Testing Strategy
 
 | Type | Framework | Location |
 |---|---|---|
-| Unit Tests | JUnit 4.13.2 | `freemind/tests/` |
+| Unit Tests | JUnit 4.13.2 (JUnit 5 vintage engine) | `freemind/tests/` |
+| GUI Tests | AssertJ Swing 3.25.3 | `freemind/tests/freemind/gui/` |
+| Property-Based | jqwik 1.8.2 | `freemind/tests/freemind/property/` |
+| Fuzz Tests | Custom | `freemind/tests/freemind/fuzz/` |
 | Mocking | Mockito 5.10.0 | Test classes |
-| Property-Based | jqwik 1.8.2 | `tests/freemind/property/` |
-| Assertions | AssertJ 3.25.3 | Test classes |
+| Test Base | `FreeMindTestBase` | Headless FreeMind context for unit tests |
+| GUI Test Base | `GuiTestBase` | AssertJ Swing robot, automatic screenshots, `@Tag("gui")` |
 
-## Modernization Gaps (Known)
+## Known Gaps
 
-1. **LaTeX plugin** — Not in `settings.gradle.kts`, no `build.gradle.kts` exists yet
+1. **LaTeX plugin** — Not in `settings.gradle.kts`, planned for v1.3.0 (HotEqn → JLaTeXMath)
 2. **Collaboration plugins** — Only Socket in Gradle; Database and Jabber are legacy-only
 3. **Java module system** — Requires 6 `--add-opens` flags for Swing access
 4. **macOS code signing** — DMG is not signed/notarized; Gatekeeper blocks first launch
-5. **SecurityManager deprecation** — 25 compiler warnings from deprecated-for-removal APIs (Java 21)
-6. **FlatLaf integration** — Dependency present but not yet activated as default look-and-feel

@@ -1,7 +1,5 @@
 # FreeMind CE - Component Inventory
 
-> Generated: 2026-03-10 | Scan Level: Deep
-
 ## UI Components
 
 ### Map Canvas & Rendering
@@ -166,3 +164,42 @@
 | Hook Factory | `HookFactory` | Plugin instantiation |
 | Hook Registration | `HookRegistration` | Registration metadata |
 | Hook Descriptor | `HookDescriptorBase` | Plugin descriptor |
+
+## Testing Components
+
+### Test Infrastructure
+
+| Component | Class | Purpose |
+|---|---|---|
+| Unit Test Base | `FreeMindTestBase` | Headless FreeMind context (HeadlessFreeMind stub) |
+| GUI Test Base | `GuiTestBase` | AssertJ Swing robot setup, automatic screenshots, `@Tag("gui")` |
+| Screenshot Capture | `ScreenshotCapture` | Screenshot utility for GUI tests |
+| Showcase Screenshots | `ShowcaseScreenshotCapture` | E2E showcase screenshot generation |
+| Controller Mock | `MindMapControllerMock` | Test double for MindMapController |
+| MindMap Mock | `MindMapMock` | Test double for MindMap model |
+
+### GUI Test Classes (22 tests)
+
+| Test | Purpose |
+|---|---|
+| `ApplicationLaunchGuiTest` | App startup and window state |
+| `NodeCrudGuiTest` | Node create/read/update/delete |
+| `NodeEditingGuiTest` | Node text editing |
+| `ContextMenuGuiTest` | Right-click context menus |
+| `KeyboardShortcutsGuiTest` | Keyboard shortcut actions |
+| `FileOperationsGuiTest` | File open/save/close |
+| `EditMenuGuiTest` | Edit menu actions |
+| `ViewMenuGuiTest` | View menu actions |
+| `InsertMenuGuiTest` | Insert menu actions |
+| `FormatMenuGuiTest` | Format menu actions |
+| `NavigateMenuGuiTest` | Navigate menu actions |
+| `ToolsMenuGuiTest` | Tools menu actions |
+| `HelpMenuGuiTest` | Help menu actions |
+| `ToolbarGuiTest` | Toolbar button actions |
+| `DialogsGuiTest` | Dialog interactions |
+| `ExportGuiTest` | Export operations |
+| `ImportGuiTest` | Import operations |
+| `CollaborationGuiTest` | Collaboration features |
+| `EdgeCaseGuiTest` | Edge cases and error paths |
+| `MapViewUnicodeGuiTest` | Unicode rendering in map view |
+| `NoteEditorUnicodeGuiTest` | Unicode in note editor |
