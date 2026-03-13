@@ -1,0 +1,23 @@
+.github/workflows/scorecard.yml
+  8fb91c3a906d6274 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "7cb8de3fe5ea7cf57f4e9af321c78ab4e76735c2",
+  "prompts": {
+    "8fb91c3a906d6274": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35ec460f-0b33-4e3b-be85-cc677c48f721",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
