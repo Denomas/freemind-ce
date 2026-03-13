@@ -15,9 +15,6 @@ env:
 jobs:
   build:
     name: Build (${{ matrix.os }}, Java ${{ matrix.java }})
-    permissions:
-      contents: read
-      checks: write
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -108,9 +105,6 @@ jobs:
 
   gui-tests:
     name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
-    permissions:
-      contents: read
-      checks: write
     needs: build
     runs-on: ${{ matrix.os }}
     strategy:
