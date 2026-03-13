@@ -93,9 +93,9 @@ freemind-ce/
 ## Architecture (Summary)
 
 - **Pattern:** MVC + Mode-based (Browse/MindMap/File) + Hook/Plugin
-- **XML Binding:** JAXB 2.3.9 (schema: `freemind_actions.xsd`)
+- **XML Binding:** JAXB 2.3.1/2.3.9 (schema: `freemind_actions.xsd`)
 - **Plugins:** Registered via XML descriptors in `plugins/`, loaded by `ImportWizard`
-- **L&F:** FlatLaf 3.4.1 (light/dark), configured in `freemind.properties`
+- **L&F:** FlatLaf 3.7 (light/dark), configured in `freemind.properties`
 
 For full architecture details → [`docs/architecture.md`](docs/architecture.md)
 
