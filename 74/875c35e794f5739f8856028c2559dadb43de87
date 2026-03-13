@@ -1,0 +1,23 @@
+freemind/build.gradle.kts
+  09cc95dec4dd06e1 494,563
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "74875c35e794f5739f8856028c2559dadb43de87",
+  "prompts": {
+    "09cc95dec4dd06e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "66fcec9e-7bf7-4e46-8877-068ad49a94cb",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
