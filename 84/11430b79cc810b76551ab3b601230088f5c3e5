@@ -1,0 +1,39 @@
+freemind/freemind/main/FreeMindCommon.java
+  09cc95dec4dd06e1 124
+freemind/freemind/modes/browsemode/BrowseController.java
+  09cc95dec4dd06e1 442-443
+freemind/freemind/modes/mindmapmode/MindMapMapModel.java
+  09cc95dec4dd06e1 430,433
+freemind/plugins/map/FreeMindMapController.java
+  09cc95dec4dd06e1 2436
+freemind/freemind/main/FreeMind.java
+  09cc95dec4dd06e1 536-542,545-546
+freemind/freemind/modes/mindmapmode/MindMapController.java
+  09cc95dec4dd06e1 694
+freemind/plugins/script/SignedScriptHandler.java
+  09cc95dec4dd06e1 156,211
+freemind/freemind/main/Tools.java
+  09cc95dec4dd06e1 818
+freemind/freemind/main/FreeMindStarter.java
+  09cc95dec4dd06e1 141-145,176-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "8411430b79cc810b76551ab3b601230088f5c3e5",
+  "prompts": {
+    "09cc95dec4dd06e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "66fcec9e-7bf7-4e46-8877-068ad49a94cb",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 2219,
+      "total_deletions": 60,
+      "accepted_lines": 2200,
+      "overriden_lines": 0
+    }
+  }
+}
