@@ -1,0 +1,23 @@
+.github/workflows/build.yml
+  b39a99399bea05b7 40-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "5d1226cc827057bf241cb4aa8ea51b524f694f0f",
+  "prompts": {
+    "b39a99399bea05b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3b7bb367-4a6a-477b-b2fe-91cb5c87e5ca",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 4,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
