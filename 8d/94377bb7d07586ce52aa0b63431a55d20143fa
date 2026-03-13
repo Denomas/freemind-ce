@@ -1,0 +1,65 @@
+freemind/plugins/search/build.gradle.kts
+  a27ec2a67bce6788 3
+freemind/plugins/svg/build.gradle.kts
+  a27ec2a67bce6788 3
+.gitignore
+  a27ec2a67bce6788 117-119
+freemind/Resources_en.properties
+  a27ec2a67bce6788 4,100
+freemind/freemind/main/FreeMindSplashModern.java
+  a27ec2a67bce6788 48-49,125,149,177-183
+freemind/plugins/map/build.gradle.kts
+  a27ec2a67bce6788 3
+build.gradle.kts
+  a27ec2a67bce6788 3
+README.md
+  a27ec2a67bce6788 3,194
+README-TR.md
+  a27ec2a67bce6788 3,191
+freemind/plugins/script/build.gradle.kts
+  a27ec2a67bce6788 3
+settings.gradle.kts
+  a27ec2a67bce6788 3
+freemind/plugins/latex/build.gradle.kts
+  a27ec2a67bce6788 3
+freemind/freemind/controller/MenuBar.java
+  a27ec2a67bce6788 177
+.github/workflows/release.yml
+  a27ec2a67bce6788 321-324,381-383
+freemind/build.gradle.kts
+  a27ec2a67bce6788 3,290,460-482,486,499,517,530,549,562,579,592,609,622
+freemind/Resources_tr.properties
+  a27ec2a67bce6788 5,101
+gradle.properties
+  a27ec2a67bce6788 2
+freemind/freemind.properties
+  a27ec2a67bce6788 533
+freemind/accessories/plugins/time/TimeManagement.java
+  a27ec2a67bce6788 500,504-507,509-514,516
+freemind/plugins/contextgraph/build.gradle.kts
+  a27ec2a67bce6788 3
+freemind/plugins/collaboration/socket/build.gradle.kts
+  a27ec2a67bce6788 3
+freemind/plugins/help/build.gradle.kts
+  a27ec2a67bce6788 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "8d94377bb7d07586ce52aa0b63431a55d20143fa",
+  "prompts": {
+    "a27ec2a67bce6788": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7eb77277-3c21-4efb-80cc-0d6dcee926e5",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 95,
+      "total_deletions": 43,
+      "accepted_lines": 89,
+      "overriden_lines": 0
+    }
+  }
+}
