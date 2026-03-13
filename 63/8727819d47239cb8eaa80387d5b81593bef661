@@ -1,0 +1,35 @@
+docs/index.md
+  b39a99399bea05b7 14,16,18,32,37-44,50
+docs/architecture.md
+  b39a99399bea05b7 5,155-156,166,177-181,187-190,192-193,195,197
+CLAUDE.md
+  b39a99399bea05b7 96,98
+docs/development-guide.md
+  b39a99399bea05b7 16,97,130-138,141-145,147,149,151-157,162-165,231-235
+docs/component-inventory.md
+  b39a99399bea05b7 167-205
+docs/source-tree-analysis.md
+  b39a99399bea05b7 49-50,56-57,60-61,63,91-100,105-110,112,115-116
+docs/project-overview.md
+  b39a99399bea05b7 7,26-29,31-33,40,42-46,48,51-57,73,82,94-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "638727819d47239cb8eaa80387d5b81593bef661",
+  "prompts": {
+    "b39a99399bea05b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3b7bb367-4a6a-477b-b2fe-91cb5c87e5ca",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 160,
+      "total_deletions": 109,
+      "accepted_lines": 159,
+      "overriden_lines": 0
+    }
+  }
+}
