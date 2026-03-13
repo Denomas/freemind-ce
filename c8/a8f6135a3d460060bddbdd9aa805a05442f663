@@ -1,0 +1,27 @@
+CLAUDE.md
+  b39a99399bea05b7 138
+CONTRIBUTING.md
+  b39a99399bea05b7 363
+.github/workflows/build.yml
+  b39a99399bea05b7 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "c8a8f6135a3d460060bddbdd9aa805a05442f663",
+  "prompts": {
+    "b39a99399bea05b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3b7bb367-4a6a-477b-b2fe-91cb5c87e5ca",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 43,
+      "total_deletions": 32,
+      "accepted_lines": 40,
+      "overriden_lines": 0
+    }
+  }
+}
