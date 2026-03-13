@@ -1,0 +1,39 @@
+.github/workflows/security-scan.yml
+  09cc95dec4dd06e1 8-11,23,26,32,42,57,60,65,71,80
+.github/workflows/release-please.yml
+  09cc95dec4dd06e1 33,41
+.github/workflows/dependabot-auto-merge.yml
+  09cc95dec4dd06e1 22,27
+.github/workflows/stale.yml
+  09cc95dec4dd06e1 19
+.github/workflows/pr-title.yml
+  09cc95dec4dd06e1 19
+.github/workflows/labeler.yml
+  09cc95dec4dd06e1 20
+.github/workflows/build.yml
+  09cc95dec4dd06e1 12-15,31,34,40,71,80,93,101,122,125,131,179,229
+.github/workflows/scorecard.yml
+  09cc95dec4dd06e1 24,29,36
+.github/workflows/release.yml
+  09cc95dec4dd06e1 30,33,39,80,83,89,137,193,196,202,220,232,235,241,261,273,276,282,352,359,373,388
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "599189b6debcae81fff2d1e8dee0d3e686f9d864",
+  "prompts": {
+    "09cc95dec4dd06e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "66fcec9e-7bf7-4e46-8877-068ad49a94cb",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 61,
+      "overriden_lines": 0
+    }
+  }
+}
