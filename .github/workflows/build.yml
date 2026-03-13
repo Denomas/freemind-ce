@@ -37,10 +37,10 @@ jobs:
           BASE="${{ github.event.pull_request.base.sha }}"
           HEAD="${{ github.event.pull_request.head.sha }}"
           if git diff --quiet "$BASE...$HEAD" -- \
-            ':!**/*.md' ':!docs/**' ':!_bmad-output/**' \
-            ':!LICENSE' ':!COPYING' ':!.gitattributes' \
-            ':!.github/ISSUE_TEMPLATE/**' ':!.github/PULL_REQUEST_TEMPLATE/**' \
-            ':!.github/release-notes-template.md'; then
+            ':(exclude)**/*.md' ':(exclude)docs/**' ':(exclude)_bmad-output/**' \
+            ':(exclude)LICENSE' ':(exclude)COPYING' ':(exclude).gitattributes' \
+            ':(exclude).github/ISSUE_TEMPLATE/**' ':(exclude).github/PULL_REQUEST_TEMPLATE/**' \
+            ':(exclude).github/release-notes-template.md'; then
             echo "code=false" >> "$GITHUB_OUTPUT"
             echo "::notice::Documentation-only change — skipping build & test matrix"
           else
