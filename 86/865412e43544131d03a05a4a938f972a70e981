@@ -1,0 +1,49 @@
+.github/workflows/scorecard.yml
+  8fb91c3a906d6274 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "86865412e43544131d03a05a4a938f972a70e981",
+  "prompts": {
+    "09cc95dec4dd06e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "66fcec9e-7bf7-4e46-8877-068ad49a94cb",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    },
+    "1b5fbaddcf442270": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec08a64a-88be-47fe-9ee0-a5072eff241b",
+        "model": "unknown"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 14,
+      "accepted_lines": 35,
+      "overriden_lines": 0
+    },
+    "8fb91c3a906d6274": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35ec460f-0b33-4e3b-be85-cc677c48f721",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
