@@ -458,6 +458,20 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		} catch (Exception ex) {
 			System.err.println("Unable to set Look & Feel.");
 		}
+		// Load FlatLaf.properties for theme customization (accent color, rounding, etc.)
+		try {
+			java.io.InputStream flatLafProps = getClass().getResourceAsStream("/FlatLaf.properties");
+			if (flatLafProps != null) {
+				java.util.Properties flProps = new java.util.Properties();
+				flProps.load(flatLafProps);
+				flatLafProps.close();
+				for (String key : flProps.stringPropertyNames()) {
+					javax.swing.UIManager.put(key, flProps.getProperty(key));
+				}
+			}
+		} catch (Exception ex) {
+			System.err.println("Could not load FlatLaf.properties: " + ex.getMessage());
+		}
 		mFreeMindCommon.loadUIProperties(defProps);
 	}
 

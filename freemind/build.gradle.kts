@@ -477,7 +477,14 @@ tasks.register<Exec>("jpackageMac") {
         "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m",
-        "--java-options", "-Dapple.laf.useScreenMenuBar=true"
+        "--java-options", "-Xss8M",
+        "--java-options", "-Dapple.laf.useScreenMenuBar=true",
+        "--java-options", "--add-opens=java.desktop/java.awt=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/java.awt.event=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.lang=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.util=ALL-UNNAMED"
     )
 }
 
@@ -499,8 +506,17 @@ tasks.register<Exec>("jpackageWin") {
         "--app-version", jpackageVersion,
         "--vendor", "Denomas Engineering",
         "--file-associations", "file-associations.properties",
+        "--win-shortcut",
+        "--win-menu",
         "--java-options", "-Xms64m",
-        "--java-options", "-Xmx512m"
+        "--java-options", "-Xmx512m",
+        "--java-options", "-Xss8M",
+        "--java-options", "--add-opens=java.desktop/java.awt=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/java.awt.event=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.lang=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.util=ALL-UNNAMED"
     )
 }
 
@@ -523,7 +539,14 @@ tasks.register<Exec>("jpackageLinux") {
         "--vendor", "Denomas Engineering",
         "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
-        "--java-options", "-Xmx512m"
+        "--java-options", "-Xmx512m",
+        "--java-options", "-Xss8M",
+        "--java-options", "--add-opens=java.desktop/java.awt=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/java.awt.event=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.lang=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.util=ALL-UNNAMED"
     )
 }
 
@@ -546,7 +569,14 @@ tasks.register<Exec>("jpackageLinuxRpm") {
         "--vendor", "Denomas Engineering",
         "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
-        "--java-options", "-Xmx512m"
+        "--java-options", "-Xmx512m",
+        "--java-options", "-Xss8M",
+        "--java-options", "--add-opens=java.desktop/java.awt=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/java.awt.event=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.lang=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.util=ALL-UNNAMED"
     )
 }
 
@@ -569,10 +599,18 @@ tasks.register<Exec>("jpackageWinMsi") {
         "--vendor", "Denomas Engineering",
         "--file-associations", "file-associations.properties",
         "--win-per-user-install",
+        "--win-shortcut",
         "--win-menu",
         "--win-shortcut-prompt",
         "--java-options", "-Xms64m",
-        "--java-options", "-Xmx512m"
+        "--java-options", "-Xmx512m",
+        "--java-options", "-Xss8M",
+        "--java-options", "--add-opens=java.desktop/java.awt=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/java.awt.event=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.lang=ALL-UNNAMED",
+        "--java-options", "--add-opens=java.base/java.util=ALL-UNNAMED"
     )
 }
 
