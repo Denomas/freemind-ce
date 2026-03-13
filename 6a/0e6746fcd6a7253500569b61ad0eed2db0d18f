@@ -1,0 +1,23 @@
+freemind/Resources_pt_BR.properties
+  09cc95dec4dd06e1 658,666,800-801,900,909,1048,1226
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "6a0e6746fcd6a7253500569b61ad0eed2db0d18f",
+  "prompts": {
+    "09cc95dec4dd06e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "66fcec9e-7bf7-4e46-8877-068ad49a94cb",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 2171,
+      "overriden_lines": 0
+    }
+  }
+}
