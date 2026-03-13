@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.3.0](https://github.com/Denomas/freemind-ce/compare/v1.2.0...v1.3.0) (2026-03-13)
+
+
+### Features
+
+* activate LaTeX Article/Book exports and add redo.svg icon ([cf844bd](https://github.com/Denomas/freemind-ce/commit/cf844bdaa2690e083a11a424a35133927267614f))
+* add isWellformedXml method to HtmlTools ([0ff1464](https://github.com/Denomas/freemind-ce/commit/0ff14648c45d14cf4fa937d27ea0af448a7f625f))
+* add Windows .ico icon for jpackage installer branding ([74875c3](https://github.com/Denomas/freemind-ce/commit/74875c35e794f5739f8856028c2559dadb43de87))
+* convert all translation files from \uXXXX escapes to native UTF-8 ([6a0e674](https://github.com/Denomas/freemind-ce/commit/6a0e6746fcd6a7253500569b61ad0eed2db0d18f))
+
+
+### Bug Fixes
+
+* **ci:** add workflow_dispatch trigger to release-please ([c25bee3](https://github.com/Denomas/freemind-ce/commit/c25bee3ff5fb55c7d398b9d6177f58443959c41c))
+* **ci:** grant checks:write permission for reusable workflow calls ([c6fbea3](https://github.com/Denomas/freemind-ce/commit/c6fbea3bed7878b0b0ee9e6c34245809d4b5360b))
+* **ci:** limit screenshot summary to stay under GitHub 1024KB limit ([ed037d2](https://github.com/Denomas/freemind-ce/commit/ed037d288bcacbc8cfa252a57125694966cb0305))
+* **ci:** move build.yml permissions to job-level for workflow_call compatibility ([fba70f5](https://github.com/Denomas/freemind-ce/commit/fba70f5fa1b233ce8f5637ce46a18e2eb523bb00))
+* **ci:** replace base64 images with text summary in job summary ([050aa12](https://github.com/Denomas/freemind-ce/commit/050aa1292002dfb35429bd042ec6c1f3543b5f2b))
+* **ci:** save showcase window screenshots as JPEG for smaller summary size ([51b2179](https://github.com/Denomas/freemind-ce/commit/51b2179d12432b6009ae6b1e7815026e3fb41195))
+* **ci:** simplify screenshot summary with debug logging ([de9171e](https://github.com/Denomas/freemind-ce/commit/de9171ebe06b90121957c49d3d0f6c57ecf50cc4))
+* **ci:** update ossf/scorecard-action SHA after upstream tag re-push ([8686541](https://github.com/Denomas/freemind-ce/commit/86865412e43544131d03a05a4a938f972a70e981))
+* **ci:** use correct base64 flag for macOS in screenshot embedding ([455688a](https://github.com/Denomas/freemind-ce/commit/455688a47fa0b28dfb9a58a61a419bc7e9484a7b))
+* disable Gradle cache for testGui task ([b60dc69](https://github.com/Denomas/freemind-ce/commit/b60dc693e0624773d5ff35a6c634c3aca33f0b5a))
+* enforce UTF-8 encoding across all file I/O operations ([8411430](https://github.com/Denomas/freemind-ce/commit/8411430b79cc810b76551ab3b601230088f5c3e5))
+* restore original .mm file versions and add legacy version conversion tests ([075c622](https://github.com/Denomas/freemind-ce/commit/075c62207596738c246c1ba4826c6f4c574ac226))
+* **security:** move all workflow permissions to job-level ([df3dadc](https://github.com/Denomas/freemind-ce/commit/df3dadc8f8084fddaf0dc367ca696dd58d2a5b9d))
+* **security:** pin GitHub Actions to SHA hashes and add permissions ([599189b](https://github.com/Denomas/freemind-ce/commit/599189b6debcae81fff2d1e8dee0d3e686f9d864))
+* **security:** remove binary artifacts and harden workflow permissions ([41bc5ca](https://github.com/Denomas/freemind-ce/commit/41bc5ca2759895539ed96644242e457738b3f7cf))
+* **security:** upgrade Lucene from 4.6.0 to 9.12.3 ([b477629](https://github.com/Denomas/freemind-ce/commit/b4776291e60230fce7687fe2f26e8e6a234c04c3)), closes [#11](https://github.com/Denomas/freemind-ce/issues/11)
+* update showcase .mm files to version 1.1.0 and ensure .freemind dir exists ([f74754e](https://github.com/Denomas/freemind-ce/commit/f74754e04b4bfbbe8a8eb88a44b9168db55d7886))
+
 ## [1.2.0](https://github.com/Denomas/freemind-ce/compare/v1.1.0...v1.2.0) (2026-03-12)
 
 
