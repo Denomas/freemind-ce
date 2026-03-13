@@ -189,7 +189,7 @@ The build workflow uses **path filtering** to skip the full matrix on doc-only P
 | `CI` | Aggregator — evaluates all results, **single required check** in GitHub Ruleset | Always |
 
 **Doc-only paths** (changes limited to these skip the matrix):
-`**/*.md`, `docs/**`, `_bmad-output/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
+`**/*.md`, `docs/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
 
 **Flow:**
 ```
