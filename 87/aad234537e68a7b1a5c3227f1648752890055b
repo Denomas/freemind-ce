@@ -1,0 +1,44 @@
+README-TR.md
+  8fb91c3a906d6274 8-9
+.github/workflows/release-please.yml
+  b39a99399bea05b7 6-15
+.github/workflows/scorecard.yml
+  b39a99399bea05b7 8-17
+README.md
+  8fb91c3a906d6274 11
+.github/workflows/build.yml
+  b39a99399bea05b7 16-49,51-52,144-145,269-290
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "87aad234537e68a7b1a5c3227f1648752890055b",
+  "prompts": {
+    "8fb91c3a906d6274": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35ec460f-0b33-4e3b-be85-cc677c48f721",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 0,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    },
+    "b39a99399bea05b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3b7bb367-4a6a-477b-b2fe-91cb5c87e5ca",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 80,
+      "total_deletions": 1,
+      "accepted_lines": 80,
+      "overriden_lines": 0
+    }
+  }
+}
