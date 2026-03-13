@@ -1,0 +1,31 @@
+freemind/Resources_en.properties
+  a27ec2a67bce6788 268,270,273,315,691,1205,1233,1291-1294,1772,1839,1841,2039,2066,2068,2070
+freemind/config/owasp-suppressions.xml
+  a27ec2a67bce6788 13
+freemind/freemind/main/FreeMind.java
+  a27ec2a67bce6788 461-474
+freemind/build.gradle.kts
+  a27ec2a67bce6788 480-487,509-510,512-519,542-549,572-579,602,606-613
+.github/workflows/release.yml
+  a27ec2a67bce6788 262-323,373
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "427b4c92d3fb6bf8fc3f6ee61910251700768c44",
+  "prompts": {
+    "a27ec2a67bce6788": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7eb77277-3c21-4efb-80cc-0d6dcee926e5",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 141,
+      "total_deletions": 27,
+      "accepted_lines": 139,
+      "overriden_lines": 0
+    }
+  }
+}
