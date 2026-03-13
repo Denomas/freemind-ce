@@ -1,0 +1,21 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "776bf3f10acdc741ec2359b91358ee4c6971f75a",
+  "prompts": {
+    "8fb91c3a906d6274": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35ec460f-0b33-4e3b-be85-cc677c48f721",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 6,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
