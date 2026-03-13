@@ -134,7 +134,7 @@ public class FreeMindCommon {
 					// private string, only translate on demand
 					return key;
 				} else {
-					logger.severe("Warning - resource string not found:\n" + key);
+					logger.fine("Missing translation for key: " + key);
 					return defaultResources.getString(key) + POSTFIX_TRANSLATE_ME;
 				}
 			}

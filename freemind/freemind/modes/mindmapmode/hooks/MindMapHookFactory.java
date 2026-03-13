@@ -329,7 +329,8 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 				container.isPluginBase = descriptor.getIsPluginBase();
 				returnValue.add(container);
 			} catch (ClassNotFoundException e) {
-				freemind.main.Resources.getInstance().logException(e);
+				logger.warning("Plugin registration class not found (plugin not compiled?): "
+						+ descriptor.getClassName());
 			}
 		}
 		return returnValue;
