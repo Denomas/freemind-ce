@@ -9,16 +9,15 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
-permissions:
-  contents: read
-  checks: write
-
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
     name: Build (${{ matrix.os }}, Java ${{ matrix.java }})
+    permissions:
+      contents: read
+      checks: write
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -109,6 +108,9 @@ jobs:
 
   gui-tests:
     name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
+    permissions:
+      contents: read
+      checks: write
     needs: build
     runs-on: ${{ matrix.os }}
     strategy:
