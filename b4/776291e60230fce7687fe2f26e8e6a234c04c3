@@ -1,0 +1,31 @@
+freemind/plugins/search/FileSearchModel.java
+  09cc95dec4dd06e1 27,59,98,115,185,202
+.pre-commit-config.yaml
+  09cc95dec4dd06e1 12,15
+freemind/plugins/search/build.gradle.kts
+  09cc95dec4dd06e1 20-23
+freemind/plugins/Search.xml
+  09cc95dec4dd06e1 4-6
+freemind/build.gradle.kts
+  09cc95dec4dd06e1 145-147
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "b4776291e60230fce7687fe2f26e8e6a234c04c3",
+  "prompts": {
+    "09cc95dec4dd06e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "66fcec9e-7bf7-4e46-8877-068ad49a94cb",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 84,
+      "total_deletions": 89,
+      "accepted_lines": 79,
+      "overriden_lines": 0
+    }
+  }
+}
