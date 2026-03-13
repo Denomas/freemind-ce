@@ -165,17 +165,44 @@ freemind/
 
 ## CI/CD Pipeline
 
-**GitHub Actions** (`.github/workflows/build.yml`):
+### Build Workflow (`.github/workflows/build.yml`)
 
-1. **Build** - Matrix: Ubuntu, Windows, macOS (parallel)
-   - Checkout → Java 21 setup → Gradle build → Tests → Upload artifacts
-2. **Package macOS** - jpackage DMG (with manual fallback)
-3. **Package Windows** - jpackage EXE
-4. **Package Linux** - jpackage DEB
-5. **Release** - Upload to GitHub Releases (on release event)
-6. **Homebrew Update** - Optional tap update
+The build workflow uses **path filtering** to skip the full matrix on doc-only PRs:
 
-**Triggers:** Push to main/develop, PRs on main, release creation
+| Job | Purpose | Runs on doc-only PR? |
+|---|---|---|
+| `Detect changes` | Pure `git diff` with negated pathspecs — determines if code changed | Always |
+| `Build (os, java)` | Compile + unit tests + SpotBugs (6 OS × 4 Java = 24 combinations) | Skipped |
+| `GUI Tests (os, java)` | GUI integration tests + screenshots (24 combinations) | Skipped |
+| `CI` | Aggregator — evaluates all results, **single required check** in GitHub Ruleset | Always |
+
+**Doc-only paths** (changes limited to these skip the matrix):
+`**/*.md`, `docs/**`, `_bmad-output/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
+
+**Flow:**
+```
+PR (code change):   changes(code=true)  → build(24) → gui-tests(24) → CI ✅
+PR (docs only):     changes(code=false) → build(SKIP) → gui-tests(SKIP) → CI ✅ (~30s)
+Push to main:       changes(code=true)  → build(24) → gui-tests(24) → CI ✅
+workflow_call:      changes(code=true)  → build(24) → gui-tests(24) → CI ✅
+```
+
+### Other Workflows
+
+| Workflow | Trigger | Path filtering |
+|---|---|---|
+| `release-please.yml` | Push to main + `workflow_dispatch` | `paths-ignore` skips doc-only pushes |
+| `scorecard.yml` | Weekly schedule + push to main + `workflow_dispatch` | `paths-ignore` skips doc-only pushes |
+| `release.yml` | Tag `v*.*.*` | No filtering — always runs full matrix + packaging |
+
+### Packaging
+
+- **macOS:** jpackage DMG
+- **Windows:** jpackage EXE
+- **Linux:** jpackage DEB
+- **Release:** Upload to GitHub Releases (on tag event)
+
+**Triggers:** PRs on main (build.yml), push to main via release-please (workflow_call), tag creation (release.yml)
 
 ## Legacy Build (Ant)
 

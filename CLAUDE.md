@@ -81,7 +81,12 @@ freemind-ce/
 - **Branch:** `main` — trunk-based, all changes via PR (no direct push)
 - **Release:** Tag `v*.*.*` on main → GitHub Actions auto-builds DMG/EXE/DEB
 - **Pre-commit:** `.pre-commit-config.yaml` — XML validation, Java compilation, whitespace
-- **CI Zero-Tolerance:** 6 runners × 4 Java versions (21, 22, 23, 24) = 48 blocking checks
+- **CI Zero-Tolerance:** 6 runners × 4 Java versions (21, 22, 23, 24) = 48 checks, gated by single `CI` aggregator
+- **Path filtering:** Doc-only PRs skip the 48-job matrix — `CI` aggregator passes directly (~30s)
+  - Detection: pure `git diff` with negated pathspecs (no 3rd-party actions)
+  - Doc paths: `**/*.md`, `docs/**`, `_bmad-output/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
+  - Non-PR events (push to main, `workflow_call`) always run full build
+- **Required check:** Single `CI` job in GitHub Ruleset (not 48 individual checks)
 - **GUI tests are fully blocking** — no `continue-on-error`, any failure blocks merge/release
 - **Every UI change requires GUI tests** with screenshots — see [`CONTRIBUTING.md` SOP](CONTRIBUTING.md#cicd-standard-operating-procedure-sop)
 

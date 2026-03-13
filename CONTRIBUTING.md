@@ -349,18 +349,37 @@ Every PR and every release runs on this complete matrix:
 
 Runner images: [actions/runner-images](https://github.com/actions/runner-images)
 
-### 3. CI Jobs
+### 3. CI Jobs & Path Filtering
 
-| Job | Purpose | Blocks merge/release? |
+| Job | Purpose | Runs on doc-only PR? |
 |---|---|---|
-| `Build (os, java)` | Compile + unit tests + SpotBugs | **Yes** — 24 required checks |
-| `GUI Tests (os, java)` | GUI integration tests + screenshots | **Yes** — 24 required checks |
+| `Detect changes` | Determines if PR contains code changes (pure `git diff` with negated pathspecs) | **Always** |
+| `Build (os, java)` | Compile + unit tests + SpotBugs (24 matrix combinations) | **Skipped** |
+| `GUI Tests (os, java)` | GUI integration tests + screenshots (24 matrix combinations) | **Skipped** |
+| `CI` | Aggregator — evaluates all job results, single required check in GitHub Ruleset | **Always** |
+
+**Path filtering** skips the 48-job build/test matrix when a PR only changes documentation files:
+
+- `**/*.md`, `docs/**`, `_bmad-output/**`
+- `LICENSE`, `COPYING`, `.gitattributes`
+- `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
+
+Non-PR events (`push` to main, `workflow_call` from release-please) **always run the full matrix**.
+
+**CI flow diagram:**
+
+```
+PR (code change):   changes(code=true)  → build(24) → gui-tests(24) → CI ✅
+PR (docs only):     changes(code=false) → build(SKIP) → gui-tests(SKIP) → CI ✅
+Push to main:       changes(code=true)  → build(24) → gui-tests(24) → CI ✅
+workflow_call:      changes(code=true)  → build(24) → gui-tests(24) → CI ✅
+```
 
 ### 4. Branch Workflow
 
 - **All changes** via feature branch → Pull Request → main
 - **No direct push to main** (enforced by GitHub Ruleset)
-- PR requires: all 48 checks pass + code review
+- PR requires: `CI` check pass + code review (single required check, not 48 individual)
 - Squash merge preferred for clean history
 
 ### 5. GUI Test Requirements
@@ -374,17 +393,22 @@ Runner images: [actions/runner-images](https://github.com/actions/runner-images)
 ### 6. Release Gating
 
 ```
-Push to main → build.yml (48 checks) → release-please PR
+Push to main → release-please.yml (paths-ignore skips doc-only pushes)
+  → build.yml (changes → build(24) → gui-tests(24) → CI) → release-please PR
 Tag → release.yml validate (24) + gui-tests (24) → packaging
 Any failure at any stage blocks release completely.
 ```
+
+> **Note:** `release-please.yml` and `scorecard.yml` use `paths-ignore` on push triggers.
+> Doc-only pushes to main skip these workflows entirely. The next code push catches up
+> because release-please accumulates all commits since the last release.
 
 ### 7. New Runner/Java Version Procedure
 
 When a new GitHub Actions runner image or Java GA version becomes available:
 
 1. Add to matrix in `build.yml` and `release.yml`
-2. Add required status checks to GitHub Ruleset via `gh api`
+2. No ruleset update needed — single `CI` aggregator check covers all matrix combinations automatically
 3. Update the SOP table above
 4. Verify all existing tests pass on the new combination
 5. Fix any compatibility issues before merging
