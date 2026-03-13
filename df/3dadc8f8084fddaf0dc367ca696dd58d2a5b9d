@@ -1,0 +1,25 @@
+.github/workflows/release-please.yml
+  8fb91c3a906d6274 12,21-23,28
+.github/workflows/security-scan.yml
+  8fb91c3a906d6274 8,17-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "df3dadc8f8084fddaf0dc367ca696dd58d2a5b9d",
+  "prompts": {
+    "8fb91c3a906d6274": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35ec460f-0b33-4e3b-be85-cc677c48f721",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 9,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    }
+  }
+}
