@@ -71,7 +71,7 @@ import freemind.view.MapModule;
 
 /**
  * @author foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class TimeManagement extends MindMapHookAdapter implements
@@ -80,7 +80,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 	private static final String WINDOW_PREFERENCE_STORAGE_PROPERTY = TimeManagement.class
 			.getName() + "_properties";
 
-	
+
 	private interface NodeFactory {
 		MindMapNode getNode(MindMapNode pNode);
 	}
@@ -208,11 +208,11 @@ public class TimeManagement extends MindMapHookAdapter implements
 	}
 
 	private class AddMarkAction extends AbstractAction {
-		
+
 		public AddMarkAction() {
 			putValue(Action.NAME, getMindMapController().getText("plugins/TimeManagement.xml_addMarkingsButton"));
 		}
-		
+
 		public void actionPerformed(ActionEvent actionEvent) {
 			Calendar cal = getCalendar();
 			Resources res = Resources.getInstance();
@@ -229,14 +229,14 @@ public class TimeManagement extends MindMapHookAdapter implements
 				calendar.repaint();
 			}
 		}
-		
+
 	}
 	private class RemoveMarkAction extends AbstractAction {
-		
+
 		public RemoveMarkAction() {
 			putValue(Action.NAME, getMindMapController().getText("plugins/TimeManagement.removeMarkingsButton"));
 		}
-		
+
 		public void actionPerformed(ActionEvent actionEvent) {
 			Calendar cal = getCalendar();
 			Resources res = Resources.getInstance();
@@ -257,9 +257,9 @@ public class TimeManagement extends MindMapHookAdapter implements
 			getMindMapController().setProperty(FreeMindCommon.TIME_MANAGEMENT_MARKING_XML, bind.marshall(result));
 			calendar.repaint();
 		}
-		
+
 	}
-	
+
 	public final static String REMINDER_HOOK_NAME = "plugins/TimeManagementReminder.xml";
 
 	private static Calendar lastDate = null;
@@ -497,14 +497,23 @@ public class TimeManagement extends MindMapHookAdapter implements
 	 *
 	 */
 	private void disposeDialog() {
-		WindowConfigurationStorage storage = new WindowConfigurationStorage();
-		getMindMapController().storeDialogPositions(mDialog, storage,
-				WINDOW_PREFERENCE_STORAGE_PROPERTY);
-		mDialog.setVisible(false);
-		mDialog.dispose();
-		lastDate = getCalendar();
-		lastActivePosition = calendar.getCurrentMonthPosition();
-		sCurrentlyOpenTimeManagement = null;
+		try {
+			WindowConfigurationStorage storage = new WindowConfigurationStorage();
+			getMindMapController().storeDialogPositions(mDialog, storage,
+					WINDOW_PREFERENCE_STORAGE_PROPERTY);
+		} catch (Exception e) {
+			Resources.getInstance().logException(e);
+		}
+		try {
+			lastDate = getCalendar();
+			lastActivePosition = calendar.getCurrentMonthPosition();
+		} catch (Exception e) {
+			Resources.getInstance().logException(e);
+		} finally {
+			mDialog.setVisible(false);
+			mDialog.dispose();
+			sCurrentlyOpenTimeManagement = null;
+		}
 	}
 
 	/**
@@ -551,7 +560,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.mindmapmode.hooks.MindMapHookAdapter#getMindMapController
 	 * ()
@@ -561,7 +570,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void requestFocusForDay() {
 		calendar.getDayChooser().getSelectedDay().requestFocus();

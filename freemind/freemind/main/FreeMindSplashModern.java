@@ -43,8 +43,9 @@ import freemind.view.ImageFactory;
  * Class to put a splash during launching the application.
  */
 
-@SuppressWarnings("serial")
 public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
+
+	private static final long serialVersionUID = 1L;
 
 	private static final String FREEMIND_SPLASH = "images/Freemind_Splash_Butterfly_Modern.png";
 
@@ -121,7 +122,7 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 	}
 
 	public FreeMindSplashModern(final FreeMindMain frame) {
-		super("FreeMind");
+		super("FreeMind CE");
 		this.frame = frame;
 		if (logger == null) {
 			logger = frame.getLogger(this.getClass().getName());
@@ -145,6 +146,7 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 			private Integer mWidth = null;
 			private final Font progressFont = new Font("SansSerif", Font.PLAIN, 10);
 			private Font versionTextFont = Tools.isAvailableFontFamily("Century Gothic") ? new Font("Century Gothic", Font.BOLD, 14) : new Font("SansSerif", Font.BOLD, 13);
+			private Font classicEditionFont = new Font("Serif", Font.ITALIC, 10);
 
 			private int calcYRelative(int y){
 				return (int) (((float)y)/SPLASH_HEIGHT*splashImage.getIconHeight());
@@ -172,6 +174,13 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 						.intValue() / 2);
 				g2.setColor(new Color(0x4a, 0x90, 0xd9));
 				g2.drawString(freemindVersion, xCoordinate, yCoordinate);
+				// Draw "Classic Edition" subtitle
+				g2.setFont(classicEditionFont);
+				String ceText = "Classic Edition";
+				int ceWidth = g2.getFontMetrics().stringWidth(ceText);
+				int ceX = (int) (getSize().getWidth() / 2 - ceWidth / 2);
+				g2.setColor(new Color(0x4a, 0x90, 0xd9, 180));
+				g2.drawString(ceText, ceX, calcYRelative(80));
 				// Draw progress bar
 				String progressString = (String) getClientProperty("progressString");
 				if (progressString != null) {

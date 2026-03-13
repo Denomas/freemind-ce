@@ -1,6 +1,6 @@
 /*
  * FreeMind CE - Root Build Configuration
- * Denomas Engineering - 2026
+ * Denomas - 2026
  *
  * Modern Java 21 + Gradle build system for FreeMind Classic Edition
  */

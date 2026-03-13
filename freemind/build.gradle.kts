@@ -1,6 +1,6 @@
 /*
  * FreeMind CE - Main Module Build Configuration
- * Denomas Engineering - 2026
+ * Denomas - 2026
  *
  * Modern Java 21 + Gradle + JAXB build system
  */
@@ -287,7 +287,7 @@ tasks.jar {
     manifest {
         attributes(
             "Main-Class" to "freemind.main.FreeMindStarter",
-            "Built-By" to "Denomas Engineering",
+            "Built-By" to "Denomas",
             "Implementation-Title" to "FreeMind Classic Edition",
             "Implementation-Version" to project.version,
             "Class-Path" to configurations.runtimeClasspath.get().files.joinToString(" ") { it.name }
@@ -457,10 +457,33 @@ dependencyCheck {
 // JPackage Task (Modern Java Packaging)
 // ============================================================================
 
+// Copy doc/ into jpackage input directory (after installDist, before jpackage)
+// jpackage --input maps lib/ → app/ in installed app.
+// getFreemindBaseDir() resolves to <install>/app/ for jpackage'd apps.
+// So doc/ must be inside lib/doc/ → becomes app/doc/ after installation.
+val copyDocForJpackage by tasks.registering(Copy::class) {
+    description = "Copies doc/ folder into jpackage input directory"
+    group = "Distribution"
+    dependsOn(tasks.installDist)
+    from("doc")
+    into("build/install/freemind/lib/doc")
+    doLast {
+        require(file("build/install/freemind/lib/doc/freemind.mm").exists()) {
+            "doc/freemind.mm not found in jpackage input — Help menu will be broken!"
+        }
+        require(file("build/install/freemind/lib/doc/FM_Key_Mappings_Quick_Guide.pdf").exists()) {
+            "FM_Key_Mappings_Quick_Guide.pdf not found in jpackage input — Key Documentation will be broken!"
+        }
+        require(file("build/install/freemind/lib/doc/FM_Key_Mappings_Quick_Guide_ru.pdf").exists()) {
+            "Locale-specific PDFs not found in jpackage input — localized Help will be broken!"
+        }
+    }
+}
+
 tasks.register<Exec>("jpackageMac") {
     description = "Creates macOS .dmg package"
     group = "Distribution"
-    dependsOn(tasks.installDist)
+    dependsOn(copyDocForJpackage)
     doFirst { mkdir("build/jpackage") }
 
     commandLine(
@@ -473,7 +496,7 @@ tasks.register<Exec>("jpackageMac") {
         "--main-class", "freemind.main.FreeMindStarter",
         "--icon", "images/FreeMindWindowIconModern.icns",
         "--app-version", jpackageVersion,
-        "--vendor", "Denomas Engineering",
+        "--vendor", "Denomas",
         "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m",
@@ -491,7 +514,7 @@ tasks.register<Exec>("jpackageMac") {
 tasks.register<Exec>("jpackageWin") {
     description = "Creates Windows .exe package"
     group = "Distribution"
-    dependsOn(tasks.installDist)
+    dependsOn(copyDocForJpackage)
     doFirst { mkdir("build/jpackage") }
 
     commandLine(
@@ -504,7 +527,7 @@ tasks.register<Exec>("jpackageWin") {
         "--main-class", "freemind.main.FreeMindStarter",
         "--icon", "images/FreeMindWindowIcon.ico",
         "--app-version", jpackageVersion,
-        "--vendor", "Denomas Engineering",
+        "--vendor", "Denomas",
         "--file-associations", "file-associations.properties",
         "--win-shortcut",
         "--win-menu",
@@ -523,7 +546,7 @@ tasks.register<Exec>("jpackageWin") {
 tasks.register<Exec>("jpackageLinux") {
     description = "Creates Linux .deb package"
     group = "Distribution"
-    dependsOn(tasks.installDist)
+    dependsOn(copyDocForJpackage)
     doFirst { mkdir("build/jpackage") }
 
     commandLine(
@@ -536,7 +559,7 @@ tasks.register<Exec>("jpackageLinux") {
         "--main-class", "freemind.main.FreeMindStarter",
         "--icon", "images/FreeMindWindowIcon.png",
         "--app-version", jpackageVersion,
-        "--vendor", "Denomas Engineering",
+        "--vendor", "Denomas",
         "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m",
@@ -553,7 +576,7 @@ tasks.register<Exec>("jpackageLinux") {
 tasks.register<Exec>("jpackageLinuxRpm") {
     description = "Creates Linux .rpm package"
     group = "Distribution"
-    dependsOn(tasks.installDist)
+    dependsOn(copyDocForJpackage)
     doFirst { mkdir("build/jpackage") }
 
     commandLine(
@@ -566,7 +589,7 @@ tasks.register<Exec>("jpackageLinuxRpm") {
         "--main-class", "freemind.main.FreeMindStarter",
         "--icon", "images/FreeMindWindowIcon.png",
         "--app-version", jpackageVersion,
-        "--vendor", "Denomas Engineering",
+        "--vendor", "Denomas",
         "--file-associations", "file-associations.properties",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m",
@@ -583,7 +606,7 @@ tasks.register<Exec>("jpackageLinuxRpm") {
 tasks.register<Exec>("jpackageWinMsi") {
     description = "Creates Windows .msi installer package"
     group = "Distribution"
-    dependsOn(tasks.installDist)
+    dependsOn(copyDocForJpackage)
     doFirst { mkdir("build/jpackage") }
 
     commandLine(
@@ -596,7 +619,7 @@ tasks.register<Exec>("jpackageWinMsi") {
         "--main-class", "freemind.main.FreeMindStarter",
         "--icon", "images/FreeMindWindowIcon.ico",
         "--app-version", jpackageVersion,
-        "--vendor", "Denomas Engineering",
+        "--vendor", "Denomas",
         "--file-associations", "file-associations.properties",
         "--win-per-user-install",
         "--win-shortcut",

@@ -114,3 +114,6 @@ freemind/bin/
 # BMAD workflow framework and output artifacts (local tooling)
 _bmad/
 _bmad-output/
+
+# Content marketing materials (local only, not committed)
+docs/content-marketing/

@@ -1,6 +1,6 @@
 /*
  * FreeMind CE - Collaboration/Socket Plugin Build Configuration
- * Denomas Engineering - 2026
+ * Denomas - 2026
  */
 
 plugins {

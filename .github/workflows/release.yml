@@ -318,6 +318,10 @@ jobs:
             freemind.bat
           README
 
+          # Bundle doc/ at root level for portable (getFreemindBaseDir strips "lib")
+          cp -r freemind/doc freemind/build/install/freemind/doc
+          ls freemind/build/install/freemind/doc/freemind.mm || { echo "ERROR: doc/freemind.mm not found"; exit 1; }
+
           cd freemind/build/install
           powershell -Command "Compress-Archive -Path 'freemind\*' -DestinationPath '..\jpackage\FreeMind-CE-${VERSION}-Windows-portable.zip'"
 
@@ -374,6 +378,9 @@ jobs:
         run: |
           ./gradlew :freemind:installDist --no-daemon --no-configuration-cache
           VERSION="${GITHUB_REF_NAME#v}"
+          # Bundle doc/ at root level for portable (getFreemindBaseDir strips "lib")
+          cp -r freemind/doc freemind/build/install/freemind/doc
+          ls freemind/build/install/freemind/doc/freemind.mm || { echo "ERROR: doc/freemind.mm not found"; exit 1; }
           cd freemind/build/install
           tar -czf "../jpackage/FreeMind-CE-${VERSION}-portable.tar.gz" freemind/
 

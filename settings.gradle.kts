@@ -1,6 +1,6 @@
 /*
  * FreeMind CE - Modern Gradle Settings
- * Denomas Engineering - 2026
+ * Denomas - 2026
  */
 
 pluginManagement {

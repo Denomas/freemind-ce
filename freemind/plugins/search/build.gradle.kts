@@ -1,6 +1,6 @@
 /*
  * FreeMind CE - Search Plugin Build Configuration
- * Denomas Engineering - 2026
+ * Denomas - 2026
  */
 
 plugins {
