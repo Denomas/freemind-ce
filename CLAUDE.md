@@ -84,7 +84,7 @@ freemind-ce/
 - **CI Zero-Tolerance:** 6 runners × 4 Java versions (21, 22, 23, 24) = 48 checks, gated by single `CI` aggregator
 - **Path filtering:** Doc-only PRs skip the 48-job matrix — `CI` aggregator passes directly (~30s)
   - Detection: pure `git diff` with negated pathspecs (no 3rd-party actions)
-  - Doc paths: `**/*.md`, `docs/**`, `_bmad-output/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
+  - Doc paths: `**/*.md`, `docs/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
   - Non-PR events (push to main, `workflow_call`) always run full build
 - **Required check:** Single `CI` job in GitHub Ruleset (not 48 individual checks)
 - **GUI tests are fully blocking** — no `continue-on-error`, any failure blocks merge/release
@@ -93,9 +93,9 @@ freemind-ce/
 ## Architecture (Summary)
 
 - **Pattern:** MVC + Mode-based (Browse/MindMap/File) + Hook/Plugin
-- **XML Binding:** JAXB 2.3.9 (schema: `freemind_actions.xsd`)
+- **XML Binding:** JAXB 2.3.1/2.3.9 (schema: `freemind_actions.xsd`)
 - **Plugins:** Registered via XML descriptors in `plugins/`, loaded by `ImportWizard`
-- **L&F:** FlatLaf 3.4.1 (light/dark), configured in `freemind.properties`
+- **L&F:** FlatLaf 3.7 (light/dark), configured in `freemind.properties`
 
 For full architecture details → [`docs/architecture.md`](docs/architecture.md)
 
@@ -135,6 +135,7 @@ Not in Gradle: latex, collaboration/database, collaboration/jabber
 6. **Preserve backward compatibility** — existing .mm files must keep working
 7. **Verify with Serena before commit** — use `find_referencing_symbols` to check impact of all changes
 8. **Serena is MANDATORY for all agents** — every subagent task must include Serena usage as a requirement; start all analysis with `get_symbols_overview` and `find_symbol`
+9. **Always check `.gitignore` before CI paths** — never reference gitignored paths in GitHub Actions workflows (`paths-ignore`, pathspecs, etc.). They don't exist in the CI runner. Always run `grep <path> .gitignore` before adding any path to workflow files.
 
 ## Common Tasks
 

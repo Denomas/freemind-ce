@@ -1,7 +1,5 @@
 # FreeMind CE - Development Guide
 
-> Generated: 2026-03-10 | Scan Level: Deep | Source: Verified build files
-
 ## Prerequisites
 
 | Requirement | Version | Notes |
@@ -15,7 +13,7 @@
 
 ```bash
 # Clone repository
-git clone <repo-url> freemind-ce
+git clone https://github.com/Denomas/freemind-ce.git
 cd freemind-ce
 
 # Build and run using Make (recommended)
@@ -96,6 +94,7 @@ For cases where you need direct Gradle access (CI, IDE integration, advanced opt
 :freemind:plugins:map                  → OpenStreetMap viewer
 :freemind:plugins:search               → Full-text search
 :freemind:plugins:help                 → Help system
+:freemind:plugins:contextgraph         → Context graph export
 :freemind:plugins:collaboration:socket → Real-time collaboration
 ```
 
@@ -128,29 +127,42 @@ freemind/
 
 ### Running Tests
 ```bash
-# All tests
-./gradlew test
+# Using Make (recommended)
+make test           # Unit tests only
+make test-gui       # GUI tests only
+make coverage       # Tests + JaCoCo coverage report
 
-# With detailed output
-./gradlew test --info
+# Using Gradle directly
+./gradlew test --no-configuration-cache                    # Unit tests
+./gradlew testGui --no-configuration-cache                 # GUI tests
+./gradlew test --no-configuration-cache --info              # Verbose output
 ```
 
-### Test Configuration (automatic)
-- JUnit Platform enabled
-- jqwik: sample size 1000, tries 100, seed 12345 (reproducible)
-- Full exception format logging
+### Test Framework
+- **JUnit 4** test classes (`extends TestCase`) running on **JUnit 5 vintage engine**
+- **GUI tests:** AssertJ Swing with `GuiTestBase` base class, `@Tag("gui")`, automatic screenshots
+- **Property-based:** jqwik (sample size 1000, tries 100, seed 12345 — reproducible)
+- **Test base:** `FreeMindTestBase` provides headless FreeMind context via `HeadlessFreeMind`
 
-### Test Files
-| Test | Purpose |
+### Test Structure
+
+| Directory/File | Purpose |
 |---|---|
-| `AllTests.java` | Test suite aggregator |
+| `tests/freemind/gui/` | 22 GUI test classes (AssertJ Swing) |
+| `tests/freemind/property/` | Property-based tests (jqwik) |
+| `tests/freemind/fuzz/` | Fuzz tests |
+| `tests/freemind/findreplace/` | Search/replace tests |
+| `tests/freemind/unicode/` | Unicode handling tests |
+| `FreeMindTestBase.java` | Unit test base class |
+| `GuiTestBase.java` | GUI test base class (robot, screenshots) |
 | `MarshallerTests.java` | JAXB XML serialization |
 | `LayoutTests.java` | UI layout verification |
-| `FindTextTests.java` | Search functionality |
 | `TransformTest.java` | XSLT transformation |
 | `CollaborationTests.java` | Collaboration module |
-| `ScriptEditorPanelTest.java` | Scripting UI |
-| `tests/freemind/property/` | Property-based tests (jqwik) |
+| `ExportTests.java` | Export functionality |
+| `ContextGraphExportTest.java` | Context graph plugin |
+| `HtmlConversionTests.java` | HTML export |
+| `StandaloneMapTests.java` | Standalone map operations |
 
 ## Git Remotes
 
@@ -177,7 +189,7 @@ The build workflow uses **path filtering** to skip the full matrix on doc-only P
 | `CI` | Aggregator — evaluates all results, **single required check** in GitHub Ruleset | Always |
 
 **Doc-only paths** (changes limited to these skip the matrix):
-`**/*.md`, `docs/**`, `_bmad-output/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
+`**/*.md`, `docs/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
 
 **Flow:**
 ```
@@ -216,11 +228,11 @@ The original Ant build system (`freemind/build.xml`) is preserved for reference 
 ## Dependency Management
 
 Dependencies are managed in `freemind/build.gradle.kts` with version variables:
-- `jaxbVersion = "2.3.9"`
-- `batikVersion = "1.17"`
-- `fopVersion = "2.9"`
-- `flatlafVersion = "3.4.1"`
-- `jgoodiesVersion = "1.9.0"`
+- `jaxbImplVersion = "2.3.9"` / `jaxbApiVersion = "2.3.1"`
+- `batikVersion = "1.19"`
+- `fopVersion = "2.11"`
+- `flatlafVersion = "3.7"`
+- `jgoodiesFormsVersion = "1.8.0"` / `jgoodiesCommonVersion = "1.8.1"`
 - `junitVersion = "4.13.2"`
 
 Repositories: Maven Central + JitPack

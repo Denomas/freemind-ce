@@ -37,7 +37,7 @@ jobs:
           BASE="${{ github.event.pull_request.base.sha }}"
           HEAD="${{ github.event.pull_request.head.sha }}"
           if git diff --quiet "$BASE...$HEAD" -- \
-            ':!**/*.md' ':!docs/**' ':!_bmad-output/**' \
+            ':!**/*.md' ':!docs/**' \
             ':!LICENSE' ':!COPYING' ':!.gitattributes' \
             ':!.github/ISSUE_TEMPLATE/**' ':!.github/PULL_REQUEST_TEMPLATE/**' \
             ':!.github/release-notes-template.md'; then
