@@ -220,6 +220,7 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 		// Put image at the middle of the screen
 		setLocation(screenSize.width / 2 - (labelSize.width / 2),
 				screenSize.height / 2 - (labelSize.height / 2));
+		getAccessibleContext().setAccessibleName("FreeMind CE Loading");
 
 	}
 

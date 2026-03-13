@@ -35,11 +35,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 import freemind.common.TextTranslator;
+import freemind.main.Resources;
 import freemind.main.Tools;
 
 /** */
-@SuppressWarnings("serial")
 public class EnterPasswordDialog extends JDialog {
+
+	private static final long serialVersionUID = 1L;
 
 	public static final int CANCEL = -1;
 
@@ -84,6 +86,7 @@ public class EnterPasswordDialog extends JDialog {
 		this.mTranslator = pTranslator;
 		this.enterTwoPasswords = enterTwoPasswords;
 		initialize();
+		getAccessibleContext().setAccessibleName(Resources.getInstance().getResourceString("accessories/plugins/EnterPassword.properties_name"));
 	}
 
 	/**

@@ -77,7 +77,7 @@ import freemind.modes.mindmapmode.actions.IconAction;
 
 /**
  * @author foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class StylePatternFrame extends JPanel implements TextTranslator,
@@ -128,9 +128,9 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 	private static final String SET_NODE_FONT_BOLD = SET_RESOURCE;
 
 	private static final String NODE_FONT_STRIKETHROUGH = "nodefontStrikethrough";
-	
+
 	private static final String SET_NODE_FONT_STRIKETHROUGH = SET_RESOURCE;
-	
+
 	private static final String NODE_FONT_ITALIC = "nodefontitalic";
 
 	private static final String SET_NODE_FONT_ITALIC = SET_RESOURCE;
@@ -192,9 +192,9 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 	private BooleanProperty mNodeFontBold;
 
 	private ThreeCheckBoxProperty mSetNodeFontStrikethrough;
-	
+
 	private BooleanProperty mNodeFontStrikethrough;
-	
+
 	private ThreeCheckBoxProperty mSetNodeFontItalic;
 
 	private BooleanProperty mNodeFontItalic;
@@ -257,6 +257,7 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		mTranslator = pTranslator;
 		mMindMapController = pMindMapController;
 		mType = pType;
+		getAccessibleContext().setAccessibleName(pTranslator.getText("ManagePatterns"));
 	}
 
 	/**
@@ -699,7 +700,7 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 
 	/**
 	 * For the child pattern box, the list is set here.
-	 * 
+	 *
 	 */
 	public void setPatternList(List<Pattern> patternList) {
 		this.mPatternList = patternList;

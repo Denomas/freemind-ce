@@ -120,6 +120,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 		setSelectedPosition(lastPosition);
 		select(getSelectedPosition());
 		addKeyListener(this);
+		getAccessibleContext().setAccessibleName(freeMindMain.getResourceString("select_icon"));
 		pack();
 	}
 
@@ -237,7 +238,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(KeyEvent keyEvent) {
@@ -304,7 +305,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(KeyEvent arg0) {
@@ -312,7 +313,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	public void keyTyped(KeyEvent arg0) {
@@ -320,7 +321,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
 	public void mouseClicked(MouseEvent mouseEvent) {
@@ -329,7 +330,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
 	 */
 	public void mouseEntered(MouseEvent arg0) {
@@ -338,7 +339,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
 	 */
 	public void mouseExited(MouseEvent arg0) {
@@ -346,7 +347,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
 	 */
 	public void mousePressed(MouseEvent arg0) {
@@ -354,7 +355,7 @@ public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
 	 */
