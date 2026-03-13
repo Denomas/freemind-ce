@@ -9,11 +9,7 @@ concurrency:
   group: release-please-${{ github.ref }}
   cancel-in-progress: false  # Never cancel release-please runs
 
-permissions:
-  contents: write
-  pull-requests: write
-  actions: write
-  checks: write
+permissions: {}
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -22,10 +18,17 @@ jobs:
   # Step 1: Run the full build + test pipeline first
   validate:
     name: Validate Build
+    permissions:
+      contents: read
+      checks: write
     uses: ./.github/workflows/build.yml
 
   # Step 2: Only create/update Release PR if build passes
   release-please:
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
     needs: validate
     runs-on: ubuntu-latest
     outputs:

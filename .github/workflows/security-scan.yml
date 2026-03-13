@@ -5,9 +5,7 @@ on:
     - cron: '0 6 * * 1'  # Monday 6am UTC
   workflow_dispatch:
 
-permissions:
-  contents: read
-  security-events: write
+permissions: {}
 
 env:
   JAVA_VERSION: '21'
@@ -16,6 +14,8 @@ env:
 jobs:
   owasp-check:
     name: OWASP Dependency Check
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
 
     steps:
