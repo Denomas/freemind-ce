@@ -1,0 +1,33 @@
+freemind/plugins/script/build.gradle.kts
+  8fb91c3a906d6274 20-21
+.github/workflows/fuzz.yml
+  8fb91c3a906d6274 1-57
+.github/workflows/release.yml
+  8fb91c3a906d6274 13-14,23-24,74-75,195-196,236-237,279-280
+freemind/tests/freemind/fuzz/MindMapParsingFuzzTest.java
+  8fb91c3a906d6274 1-121
+freemind/build.gradle.kts
+  8fb91c3a906d6274 96-97,124-125,144,146-148,174-177,205-206
+freemind/plugins/search/build.gradle.kts
+  8fb91c3a906d6274 20-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "41bc5ca2759895539ed96644242e457738b3f7cf",
+  "prompts": {
+    "8fb91c3a906d6274": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35ec460f-0b33-4e3b-be85-cc677c48f721",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 212,
+      "total_deletions": 18,
+      "accepted_lines": 210,
+      "overriden_lines": 0
+    }
+  }
+}
