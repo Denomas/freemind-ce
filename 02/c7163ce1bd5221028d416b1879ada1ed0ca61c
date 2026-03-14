@@ -1,0 +1,27 @@
+freemind/tests/freemind/FlatLafPropertiesTest.java
+  a27ec2a67bce6788 1-91
+freemind/tests/freemind/DefaultPropertiesTest.java
+  a27ec2a67bce6788 1-175
+freemind/tests/freemind/AccessibilityTest.java
+  a27ec2a67bce6788 1-99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "02c7163ce1bd5221028d416b1879ada1ed0ca61c",
+  "prompts": {
+    "a27ec2a67bce6788": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7eb77277-3c21-4efb-80cc-0d6dcee926e5",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 365,
+      "total_deletions": 0,
+      "accepted_lines": 365,
+      "overriden_lines": 0
+    }
+  }
+}
