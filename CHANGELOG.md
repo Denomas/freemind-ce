@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/Denomas/freemind-ce/compare/v1.3.0...v1.3.1) (2026-03-14)
+
+
+### Bug Fixes
+
+* v1.3.1 packaging fixes, bug fixes, accessibility, and polish ([#18](https://github.com/Denomas/freemind-ce/issues/18)) ([92a4d32](https://github.com/Denomas/freemind-ce/commit/92a4d32fd4f64e4850ff435e2e61ac051e428ced))
+
 ## [1.3.0](https://github.com/Denomas/freemind-ce/compare/v1.2.0...v1.3.0) (2026-03-13)
 
 
