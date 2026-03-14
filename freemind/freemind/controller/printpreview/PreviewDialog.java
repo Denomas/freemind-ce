@@ -77,6 +77,7 @@ public class PreviewDialog extends JDialog implements ActionListener {
 		dialog.add(ok);
 		getContentPane().add(dialog, "South");
 		Tools.addEscapeActionToDialog(this);
+		getAccessibleContext().setAccessibleName(title);
 	}
 
 	private JButton getButton(String iconName, AbstractAction action) {

@@ -1,6 +1,6 @@
 # FreeMind Classic Edition (CE)
 
-**Denomas Engineering - 2026**
+**Denomas - 2026**
 
 [![Build Status](https://github.com/Denomas/freemind-ce/actions/workflows/build.yml/badge.svg)](https://github.com/Denomas/freemind-ce/actions)
 [![Java 21](https://img.shields.io/badge/Java-21-orange.svg)](https://adoptium.net/)
@@ -188,4 +188,4 @@ of the License, or (at your option) any later version.
 
 ---
 
-**Denomas Engineering tarafindan, FreeMind sevgisiyle.**
+**Denomas tarafindan, FreeMind sevgisiyle.**

@@ -84,7 +84,7 @@ public class MenuBar extends JMenuBar {
 
 	/**
 	 * This is the only public method. It restores all menus.
-	 * 
+	 *
 	 * @param newModeController
 	 */
 	public void updateMenus(ModeController newModeController) {
@@ -174,6 +174,7 @@ public class MenuBar extends JMenuBar {
 		menuHolder.addAction(c.faq, HELP_MENU + "doc/faq");
 		menuHolder.addAction(c.keyDocumentation, HELP_MENU
 				+ "doc/keyDocumentation");
+		menuHolder.addAction(c.webDocu, HELP_MENU + "doc/webDocu");
 		menuHolder.addSeparator(HELP_MENU);
 		menuHolder.addCategory(HELP_MENU + "bugs");
 		menuHolder.addSeparator(HELP_MENU);
@@ -429,7 +430,7 @@ public class MenuBar extends JMenuBar {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JMenuBar#processKeyBinding(javax.swing.KeyStroke,
 	 * java.awt.event.KeyEvent, int, boolean)
 	 */

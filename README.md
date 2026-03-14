@@ -1,6 +1,6 @@
 # FreeMind Classic Edition (CE)
 
-**Denomas Engineering - 2026**
+**Denomas - 2026**
 
 [![Build Status](https://github.com/Denomas/freemind-ce/actions/workflows/build.yml/badge.svg)](https://github.com/Denomas/freemind-ce/actions)
 [![Latest Release](https://img.shields.io/github/v/release/Denomas/freemind-ce)](https://github.com/Denomas/freemind-ce/releases/latest)
@@ -191,4 +191,4 @@ of the License, or (at your option) any later version.
 
 ---
 
-**Made with love by Denomas Engineering, for the FreeMind community.**
+**Made with love by Denomas, for the FreeMind community.**

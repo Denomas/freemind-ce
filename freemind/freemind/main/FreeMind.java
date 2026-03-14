@@ -100,8 +100,9 @@ import freemind.preferences.FreemindPropertyListener;
 import freemind.view.MapModule;
 import freemind.view.mindmapview.MapView;
 
-@SuppressWarnings("serial")
 public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
+
+	private static final long serialVersionUID = 1L;
 
 	public static final String J_SPLIT_PANE_SPLIT_TYPE = "JSplitPane.SPLIT_TYPE";
 
@@ -358,6 +359,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		}
 		mFreeMindCommon = new FreeMindCommon(this);
 		Resources.createInstance(this);
+		getAccessibleContext().setAccessibleName("FreeMind CE - Mind Mapping");
 	}
 
 	void init(FeedBack feedback) {
@@ -458,6 +460,9 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		} catch (Exception ex) {
 			System.err.println("Unable to set Look & Feel.");
 		}
+		// FlatLaf.properties is auto-loaded from classpath root by FlatLaf.setup()
+		// No manual loading needed — FlatLaf parses its own expression syntax
+		// (@accentColor, lighten(), etc.) which cannot be put as raw strings into UIManager.
 		mFreeMindCommon.loadUIProperties(defProps);
 	}
 

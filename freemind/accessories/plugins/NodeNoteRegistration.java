@@ -64,7 +64,7 @@ import freemind.modes.common.plugins.NodeNoteBase;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.view.mindmapview.NodeView;
 
-public class NodeNoteRegistration implements HookRegistration, 
+public class NodeNoteRegistration implements HookRegistration,
 		MenuItemSelectedListener {
 	public static final class SimplyHtmlResources implements TextResources {
 		public String getString(String pKey) {
@@ -179,13 +179,23 @@ public class NodeNoteRegistration implements HookRegistration,
 			}
 
 			String note = node.getNoteText();
-			if (note != null) {
-				noteViewerComponent.setCurrentDocumentContent(note);
-				mLastContentEmpty = false;
-			} else if (!mLastContentEmpty) {
-				noteViewerComponent.setCurrentDocumentContent("");
-				mLastContentEmpty = true;
+			boolean isEmpty = (note == null);
+			try {
+				if (note != null) {
+					noteViewerComponent.setCurrentDocumentContent(note);
+				} else if (!mLastContentEmpty) {
+					noteViewerComponent.setCurrentDocumentContent("");
+				}
+			} catch (NullPointerException npe) {
+				// Known SimplyHTML + FlatLaf incompatibility: FontSizePicker.setValue()
+				// calls setEditable() which triggers FlatComboBoxUI.configureEditor()
+				// with a null editor. Non-fatal — note content is still set correctly.
+				StackTraceElement[] stack = npe.getStackTrace();
+				if (stack.length == 0 || !stack[0].getClassName().contains("FlatComboBoxUI")) {
+					throw npe;
+				}
 			}
+			mLastContentEmpty = isEmpty;
 			mNoteDocumentListener.setNode(node);
 			document.addDocumentListener(mNoteDocumentListener);
 		}
@@ -237,7 +247,7 @@ public class NodeNoteRegistration implements HookRegistration,
 				setStateIcon(node, true);
 			}
 		}
-		
+
 		public void onUpdateNodeHook(MindMapNode node) {
 			// update display only, if the node is displayed.
 			String newText = node.getNoteText();
@@ -249,7 +259,7 @@ public class NodeNoteRegistration implements HookRegistration,
 			}
 			setStateIcon(node, !(newText == null || newText.equals("")));
 		}
-		
+
 		public void onPreDeleteNode(MindMapNode node) {
 		}
 
@@ -309,7 +319,7 @@ public class NodeNoteRegistration implements HookRegistration,
 	}
 
 	/**
-	 * @return true, if the split pane is to be shown. 
+	 * @return true, if the split pane is to be shown.
 	 * E.g. when freemind was closed before, the state of the split pane was stored and
 	 * is restored at the next start.
 	 */
@@ -376,7 +386,7 @@ public class NodeNoteRegistration implements HookRegistration,
 					"experimental_font_sizing_for_long_node_editors")) {
 				/*
 				 * This is a proposal of Dan, but it doesn't work as expected.
-				 * 
+				 *
 				 * http://sourceforge.net/tracker/?func=detail&aid=2800933&group_id
 				 * =7118&atid=107118
 				 */

@@ -10,7 +10,7 @@
     <!-- jortho.jar: spell checker, no Maven Central entry, no known CVEs -->
     <!-- SimplyHTML.jar: WYSIWYG editor, no Maven Central entry, no known CVEs -->
     <!-- JGoodies: UI forms library, no known CVEs for 1.8.x -->
-    <!-- HotEqn.jar: LaTeX renderer, will be replaced by JLaTeXMath in v1.3.0 -->
+    <!-- HotEqn.jar: LaTeX renderer, replaced by JLaTeXMath in v1.3.0 -->
     <!-- groovy-all.jar: may flag CVEs for older Groovy — review individually -->
 
     <!-- Note: If OWASP flags specific CVEs for these JARs, add individual

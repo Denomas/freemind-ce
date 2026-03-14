@@ -259,6 +259,74 @@ jobs:
       - name: Package MSI
         run: .\gradlew.bat :freemind:jpackageWinMsi --no-daemon --no-configuration-cache
 
+      - name: Create portable archive (ZIP for Windows)
+        shell: bash
+        run: |
+          ./gradlew.bat :freemind:installDist --no-daemon --no-configuration-cache
+          VERSION="${GITHUB_REF_NAME#v}"
+
+          # Add a Windows-friendly launcher to the portable distribution
+          cat > freemind/build/install/freemind/freemind.bat << 'LAUNCHER'
+          @echo off
+          setlocal
+
+          :: Try JAVA_HOME first
+          if defined JAVA_HOME (
+              set "JAVA_CMD=%JAVA_HOME%\bin\java.exe"
+              if exist "%JAVA_CMD%" goto :run
+          )
+
+          :: Try java on PATH
+          where java >nul 2>&1
+          if %errorlevel% equ 0 (
+              set "JAVA_CMD=java"
+              goto :run
+          )
+
+          echo.
+          echo ERROR: Java not found.
+          echo Please install Java 21 or later from https://adoptium.net
+          echo or set the JAVA_HOME environment variable.
+          echo.
+          pause
+          exit /b 1
+
+          :run
+          set "APP_DIR=%~dp0"
+          "%JAVA_CMD%" -Xms64m -Xmx512m -Xss8M ^
+              --add-opens=java.desktop/java.awt=ALL-UNNAMED ^
+              --add-opens=java.desktop/java.awt.event=ALL-UNNAMED ^
+              --add-opens=java.desktop/javax.swing=ALL-UNNAMED ^
+              --add-opens=java.desktop/javax.swing.text=ALL-UNNAMED ^
+              --add-opens=java.base/java.lang=ALL-UNNAMED ^
+              --add-opens=java.base/java.util=ALL-UNNAMED ^
+              -cp "%APP_DIR%lib\*" freemind.main.FreeMindStarter %*
+          LAUNCHER
+
+          cat > freemind/build/install/freemind/README.txt << 'README'
+          FreeMind CE — Portable Edition
+          ==============================
+
+          Requirements:
+            Java 21 or later (https://adoptium.net)
+
+          Usage:
+            Double-click freemind.bat or run it from Command Prompt.
+
+          If Java is installed but not on your PATH, set JAVA_HOME:
+            set JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-21
+            freemind.bat
+          README
+
+          # Bundle doc/ at root level for portable (getFreemindBaseDir strips "lib")
+          cp -r freemind/doc freemind/build/install/freemind/doc
+          # Remove jpackage-specific lib/doc/ to avoid double-bundling
+          rm -rf freemind/build/install/freemind/lib/doc
+          ls freemind/build/install/freemind/doc/freemind.mm || { echo "ERROR: doc/freemind.mm not found"; exit 1; }
+
+          cd freemind/build/install
+          powershell -Command "Compress-Archive -Path 'freemind\*' -DestinationPath '..\jpackage\FreeMind-CE-${VERSION}-Windows-portable.zip'"
+
       - name: Rename artifacts
         shell: bash
         run: |
@@ -308,10 +376,15 @@ jobs:
       - name: Package RPM
         run: ./gradlew :freemind:jpackageLinuxRpm --no-daemon --no-configuration-cache
 
-      - name: Create portable archive
+      - name: Create portable archive (tar.gz for Linux)
         run: |
           ./gradlew :freemind:installDist --no-daemon --no-configuration-cache
           VERSION="${GITHUB_REF_NAME#v}"
+          # Bundle doc/ at root level for portable (getFreemindBaseDir strips "lib")
+          cp -r freemind/doc freemind/build/install/freemind/doc
+          # Remove jpackage-specific lib/doc/ to avoid double-bundling
+          rm -rf freemind/build/install/freemind/lib/doc
+          ls freemind/build/install/freemind/doc/freemind.mm || { echo "ERROR: doc/freemind.mm not found"; exit 1; }
           cd freemind/build/install
           tar -czf "../jpackage/FreeMind-CE-${VERSION}-portable.tar.gz" freemind/
 

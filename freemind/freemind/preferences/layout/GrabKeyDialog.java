@@ -96,7 +96,7 @@ public class GrabKeyDialog extends JDialog {
 	// {{{ GrabKeyDialog constructor
 	/**
 	 * Create and show a new modal dialog.
-	 * 
+	 *
 	 * @param parent
 	 *            center dialog on this component.
 	 * @param binding
@@ -118,7 +118,7 @@ public class GrabKeyDialog extends JDialog {
 	// {{{ GrabKeyDialog constructor
 	/**
 	 * Create and show a new modal dialog.
-	 * 
+	 *
 	 * @param parent
 	 *            center dialog on this component.
 	 * @param binding
@@ -143,6 +143,7 @@ public class GrabKeyDialog extends JDialog {
 		setTitle(getText("grab-key.title"));
 
 		init(binding, allBindings, debugBuffer);
+		getAccessibleContext().setAccessibleName(getText("grab-key.title"));
 	} // }}}
 
 	// {{{ getShortcut() method
@@ -161,7 +162,7 @@ public class GrabKeyDialog extends JDialog {
 	// {{{ isOK() method
 	/**
 	 * Returns true, if the dialog has not been cancelled.
-	 * 
+	 *
 	 * @since jEdit 3.2pre9
 	 */
 	public boolean isOK() {
@@ -180,7 +181,7 @@ public class GrabKeyDialog extends JDialog {
 	// {{{ getFocusTraversalKeysEnabled() method
 	/**
 	 * Makes the tab key work in Java 1.4.
-	 * 
+	 *
 	 * @since jEdit 3.2pre4
 	 */
 	public boolean getFocusTraversalKeysEnabled() {
@@ -231,7 +232,7 @@ public class GrabKeyDialog extends JDialog {
 
 			/**
 			 * Makes the tab key work in Java 1.4.
-			 * 
+			 *
 			 * @since jEdit 3.2pre4
 			 */
 			public boolean getFocusTraversalKeysEnabled() {
@@ -384,7 +385,7 @@ public class GrabKeyDialog extends JDialog {
 	// {{{ KeyBinding class
 	/**
 	 * A jEdit action or macro with its two possible shortcuts.
-	 * 
+	 *
 	 * @since jEdit 3.2pre8
 	 */
 	public static class KeyBinding {
@@ -411,7 +412,7 @@ public class GrabKeyDialog extends JDialog {
 		// {{{ getFocusTraversalKeysEnabled() method
 		/**
 		 * Makes the tab key work in Java 1.4.
-		 * 
+		 *
 		 * @since jEdit 3.2pre4
 		 */
 		public boolean getFocusTraversalKeysEnabled() {
@@ -521,7 +522,7 @@ public class GrabKeyDialog extends JDialog {
 
 			// check whether this shortcut already exists
 			bindingReset = getKeyBinding(shortcutString);
-			
+
 			if (bindingReset == null || bindingReset == binding) {
 				isOK = true;
 				return true;

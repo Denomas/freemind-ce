@@ -76,7 +76,7 @@ import freemind.modes.attributes.Attribute;
 
 /**
  * @author dimitri
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class FilterComposerDialog extends JDialog {
@@ -89,7 +89,7 @@ public class FilterComposerDialog extends JDialog {
 	private class AddConditionAction extends AbstractAction {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -142,7 +142,7 @@ public class FilterComposerDialog extends JDialog {
 	private class DeleteConditionAction extends AbstractAction {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -174,7 +174,7 @@ public class FilterComposerDialog extends JDialog {
 	private class CreateNotSatisfiedConditionAction extends AbstractAction {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -207,7 +207,7 @@ public class FilterComposerDialog extends JDialog {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -234,7 +234,7 @@ public class FilterComposerDialog extends JDialog {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -262,7 +262,7 @@ public class FilterComposerDialog extends JDialog {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * javax.swing.event.ListSelectionListener#valueChanged(javax.swing.
 		 * event.ListSelectionEvent)
@@ -427,7 +427,7 @@ public class FilterComposerDialog extends JDialog {
 	private class SelectedAttributeChangeListener implements ItemListener {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * javax.swing.event.ListSelectionListener#valueChanged(javax.swing.
 		 * event.ListSelectionEvent)
@@ -437,26 +437,26 @@ public class FilterComposerDialog extends JDialog {
 				if (attributes.getSelectedIndex() == NODE_POSITION) {
 					simpleCondition.setModel(simpleNodeConditionComboBoxModel);
 					simpleCondition.setEnabled(true);
-					
+
 					values.setEditable(true);
 					values.setEnabled(true);
 					nodes.setExtensionList(null);
 					values.setModel(nodes);
-					
+
 					caseInsensitive.setEnabled(true);
 					return;
 				}
 				if (attributes.getSelectedIndex() == ICON_POSITION) {
 					simpleCondition.setModel(simpleIconConditionComboBoxModel);
                     simpleCondition.setEnabled(true);
-					
+
                     values.setEditable(false);
 					values.setEnabled(true);
 					values.setModel(icons);
 					if (icons.getSize() >= 1) {
 						values.setSelectedIndex(0);
 					}
-					
+
 					caseInsensitive.setEnabled(false);
 					return;
 				}
@@ -520,6 +520,7 @@ public class FilterComposerDialog extends JDialog {
 
 	public FilterComposerDialog(Controller controller, final FilterToolbar pFilterToolbar) {
 		super(controller.getJFrame(), controller.getResourceString("filter_dialog"));
+		getAccessibleContext().setAccessibleName(controller.getResourceString("filter_dialog"));
 		mController = controller;
 
 		this.mFilterController = controller.getFilterController();
@@ -546,7 +547,7 @@ public class FilterComposerDialog extends JDialog {
 		simpleConditionBox.add(Box.createHorizontalGlue());
 		simpleConditionBox.add(simpleCondition);
 		simpleCondition.setRenderer(mFilterController.getConditionRenderer());
-		
+
 		simpleAttributeConditionComboBoxModel = new DefaultComboBoxModel(FilterController
 				.getConditionFactory().getAttributeConditionNames());
 
@@ -707,7 +708,7 @@ public class FilterComposerDialog extends JDialog {
 			addAttributeValuesRecursively(pKey, child, pAttributesInMap);
 		}
 	}
-	
+
 	private String getAttributeValue() {
 		if (attributes.getSelectedIndex() == ICON_POSITION) {
 			MindIcon mi = (MindIcon) values.getSelectedItem();

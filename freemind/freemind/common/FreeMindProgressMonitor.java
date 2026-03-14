@@ -84,6 +84,7 @@ public class FreeMindProgressMonitor extends JDialog {
 		// Tools.addEscapeActionToDialog(this);
 		pack();
 		setSize(new Dimension(600, 200));
+		getAccessibleContext().setAccessibleName(getString(pTitle));
 		String marshaled = Resources.getInstance().getProperty(
 				PROGRESS_MONITOR_WINDOW_CONFIGURATION_STORAGE);
 		if (marshaled != null) {
