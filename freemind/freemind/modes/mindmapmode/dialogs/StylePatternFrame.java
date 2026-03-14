@@ -257,7 +257,7 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		mTranslator = pTranslator;
 		mMindMapController = pMindMapController;
 		mType = pType;
-		getAccessibleContext().setAccessibleName(pTranslator.getText("ManagePatterns"));
+		getAccessibleContext().setAccessibleName(pTranslator.getText("accessories/plugins/ManagePatterns.dialog.title"));
 	}
 
 	/**

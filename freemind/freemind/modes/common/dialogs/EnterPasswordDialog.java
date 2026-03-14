@@ -86,7 +86,7 @@ public class EnterPasswordDialog extends JDialog {
 		this.mTranslator = pTranslator;
 		this.enterTwoPasswords = enterTwoPasswords;
 		initialize();
-		getAccessibleContext().setAccessibleName(Resources.getInstance().getResourceString("accessories/plugins/EnterPassword.properties_name"));
+		getAccessibleContext().setAccessibleName(Resources.getInstance().getResourceString("accessories/plugins/EnterPassword.properties_name").replace("&", ""));
 	}
 
 	/**

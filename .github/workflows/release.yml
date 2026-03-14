@@ -320,6 +320,8 @@ jobs:
 
           # Bundle doc/ at root level for portable (getFreemindBaseDir strips "lib")
           cp -r freemind/doc freemind/build/install/freemind/doc
+          # Remove jpackage-specific lib/doc/ to avoid double-bundling
+          rm -rf freemind/build/install/freemind/lib/doc
           ls freemind/build/install/freemind/doc/freemind.mm || { echo "ERROR: doc/freemind.mm not found"; exit 1; }
 
           cd freemind/build/install
@@ -380,6 +382,8 @@ jobs:
           VERSION="${GITHUB_REF_NAME#v}"
           # Bundle doc/ at root level for portable (getFreemindBaseDir strips "lib")
           cp -r freemind/doc freemind/build/install/freemind/doc
+          # Remove jpackage-specific lib/doc/ to avoid double-bundling
+          rm -rf freemind/build/install/freemind/lib/doc
           ls freemind/build/install/freemind/doc/freemind.mm || { echo "ERROR: doc/freemind.mm not found"; exit 1; }
           cd freemind/build/install
           tar -czf "../jpackage/FreeMind-CE-${VERSION}-portable.tar.gz" freemind/

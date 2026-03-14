@@ -179,13 +179,12 @@ public class NodeNoteRegistration implements HookRegistration,
 			}
 
 			String note = node.getNoteText();
+			boolean isEmpty = (note == null);
 			try {
 				if (note != null) {
 					noteViewerComponent.setCurrentDocumentContent(note);
-					mLastContentEmpty = false;
 				} else if (!mLastContentEmpty) {
 					noteViewerComponent.setCurrentDocumentContent("");
-					mLastContentEmpty = true;
 				}
 			} catch (NullPointerException npe) {
 				// Known SimplyHTML + FlatLaf incompatibility: FontSizePicker.setValue()
@@ -196,6 +195,7 @@ public class NodeNoteRegistration implements HookRegistration,
 					throw npe;
 				}
 			}
+			mLastContentEmpty = isEmpty;
 			mNoteDocumentListener.setNode(node);
 			document.addDocumentListener(mNoteDocumentListener);
 		}
