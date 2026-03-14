@@ -164,7 +164,23 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 	private Logger logger = null;
 
-	protected static final VersionInformation VERSION = new VersionInformation("1.1.0 Beta 2");
+	protected static final VersionInformation VERSION = loadVersionFromProperties();
+
+	private static VersionInformation loadVersionFromProperties() {
+		try (InputStream is = FreeMind.class.getResourceAsStream("/version.properties")) {
+			if (is != null) {
+				Properties props = new Properties();
+				props.load(is);
+				String ver = props.getProperty("freemind.version");
+				if (ver != null && !ver.isEmpty()) {
+					return new VersionInformation(ver);
+				}
+			}
+		} catch (Exception e) {
+			// Fall back to hardcoded version
+		}
+		return new VersionInformation("1.1.0 Beta 2");
+	}
 
 	public static final String XML_VERSION = "1.1.0";
 

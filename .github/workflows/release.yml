@@ -292,6 +292,21 @@ jobs:
           exit /b 1
 
           :run
+          :: Check Java version (--add-opens requires Java 9+, FreeMind CE requires 21+)
+          for /f "tokens=3" %%v in ('"%JAVA_CMD%" -version 2^>^&1 ^| findstr /i "version"') do (
+              set "JAVA_VER=%%~v"
+          )
+          for /f "tokens=1 delims=." %%m in ("%JAVA_VER%") do set "JAVA_MAJOR=%%m"
+          if %JAVA_MAJOR% LSS 21 (
+              echo.
+              echo ERROR: Java %JAVA_VER% is too old. FreeMind CE requires Java 21 or later.
+              echo Your current Java: "%JAVA_CMD%"
+              echo Please install Java 21+ from https://adoptium.net
+              echo.
+              pause
+              exit /b 1
+          )
+
           set "APP_DIR=%~dp0"
           "%JAVA_CMD%" -Xms64m -Xmx512m -Xss8M ^
               --add-opens=java.desktop/java.awt=ALL-UNNAMED ^
@@ -307,8 +322,13 @@ jobs:
           FreeMind CE — Portable Edition
           ==============================
 
+          NOTE: Most users should install the EXE or MSI installer instead.
+          Those installers bundle Java and work without any extra setup.
+          The portable edition is for advanced users who manage their own Java.
+
           Requirements:
             Java 21 or later (https://adoptium.net)
+            The standard Java from java.com is version 8 and will NOT work.
 
           Usage:
             Double-click freemind.bat or run it from Command Prompt.
