@@ -48,7 +48,6 @@ import freemind.view.mindmapview.NodeView;
  * it can be removed afterwards.
  *
  * @author foltin
- * @date 01.10.2011
  */
 public class ChangeRootNode extends MindMapNodeHookAdapter {
 	private static final String TRANSACTION_NAME = "ChangeRootNode";

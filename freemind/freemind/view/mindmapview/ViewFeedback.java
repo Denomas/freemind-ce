@@ -37,7 +37,6 @@ import freemind.modes.MindMapNode;
  * to offer view related methods.
  *
  * @author foltin
- * @date 25.04.2014
  */
 public interface ViewFeedback {
 

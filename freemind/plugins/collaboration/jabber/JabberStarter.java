@@ -34,9 +34,7 @@ import freemind.modes.mindmapmode.MindMapController;
  */
 public class JabberStarter extends ModeControllerHookAdapter {
 
-    /**
-     *
-     */
+
 
     public void startupMapHook() {
         super.startupMapHook();

@@ -48,8 +48,7 @@ public class PermanentNodeHookAdapter extends NodeHookAdapter implements
 	// Logging:
 	// private static java.util.logging.Logger logger;
 
-	/**
-	 */
+
 	public PermanentNodeHookAdapter() {
 		super();
 		// if(logger == null)
@@ -161,8 +160,7 @@ public class PermanentNodeHookAdapter extends NodeHookAdapter implements
 
 	public static final String PARAMETERS = "Parameters";
 
-	/**
-	 */
+
 	protected HashMap<String, String> loadNameValuePairs(XMLElement xml) {
 		HashMap<String, String> result = new HashMap<>();
 		if(xml.getChildren().isEmpty()) {
@@ -178,8 +176,7 @@ public class PermanentNodeHookAdapter extends NodeHookAdapter implements
 		return result;
 	}
 
-	/**
-	 */
+
 	protected void saveNameValuePairs(HashMap<String, Object> nameValuePairs, XMLElement xml) {
 		if(!nameValuePairs.isEmpty()) {
 			XMLElement child = new XMLElement();
@@ -202,8 +199,7 @@ public class PermanentNodeHookAdapter extends NodeHookAdapter implements
 	public void onViewRemovedHook(NodeView nodeView) {
 	}
 
-	/**
-     */
+
 	protected void setToolTip(String key, String value) {
 		setToolTip(getNode(), key, value);
 	}

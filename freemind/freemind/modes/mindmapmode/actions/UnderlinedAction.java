@@ -35,8 +35,7 @@ public class UnderlinedAction extends NodeGeneralAction implements
 		MenuItemSelectedListener {
 	private final MindMapController modeController;
 
-	/**
-	 */
+
 	public UnderlinedAction(MindMapController modeController) {
 		super(modeController, "underlined", "images/Underline24.gif");
 		this.modeController = modeController;

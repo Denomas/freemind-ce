@@ -120,8 +120,7 @@ public class HookDescriptorPluginAction extends HookDescriptorBase {
 		return getFromPropertiesIfNecessary(pluginAction.getKeyStroke());
 	}
 
-	/**
-	 */
+
 	public Properties getProperties() {
 		return properties;
 	}

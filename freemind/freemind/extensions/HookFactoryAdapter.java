@@ -35,9 +35,7 @@ public abstract class HookFactoryAdapter implements HookFactory {
 	/** Contains PluginType -> Object (baseClass) relations. */
 	protected HashMap<String, HookRegistration> allRegistrationInstances;
 
-	/**
-	 *
-	 */
+
 	protected HookFactoryAdapter() {
 		super();
 	}

@@ -208,8 +208,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 		}
 	}
 
-	/**
-	 */
+
 	private String getDialogTitle() {
 		return mController
 				.getText("accessories/plugins/ManagePatterns.dialog.title");

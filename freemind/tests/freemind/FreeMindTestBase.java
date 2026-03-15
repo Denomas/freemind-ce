@@ -28,16 +28,13 @@ public abstract class FreeMindTestBase extends TestCase {
 
 	protected HeadlessFreeMind mFreeMindMain;
 
-	/**
-     *
-     */
+
 	public FreeMindTestBase() {
 		super();
 
 	}
 
-	/**
-     */
+
 	public FreeMindTestBase(String arg0) {
 		super(arg0);
 

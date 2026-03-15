@@ -40,9 +40,7 @@ public class FitToPage extends ModeControllerHookAdapter {
 
 	private MapView view;
 
-	/**
-	 *
-	 */
+
 	public FitToPage() {
 		super();
 	}

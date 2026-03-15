@@ -441,9 +441,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 //		eventQueue.push(new MyEventQueue());
 	}// Constructor
 
-	/**
-	 *
-	 */
+
 	private void updateLookAndFeel() {
 		// set Look&Feel
 		try {

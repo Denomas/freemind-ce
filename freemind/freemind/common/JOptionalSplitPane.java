@@ -42,7 +42,6 @@ import freemind.main.Resources;
  * internally. Future: if more than two, it can use a JTabbedPane.
  *
  * @author foltin
- * @date 26.08.2014
  */
 @SuppressWarnings("serial")
 public class JOptionalSplitPane extends JPanel {

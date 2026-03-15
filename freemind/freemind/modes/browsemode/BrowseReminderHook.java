@@ -31,9 +31,7 @@ import freemind.modes.common.plugins.ReminderHookBase;
  */
 public class BrowseReminderHook extends ReminderHookBase {
 
-	/**
-	 *
-	 */
+
 	public BrowseReminderHook() {
 		super();
 	}

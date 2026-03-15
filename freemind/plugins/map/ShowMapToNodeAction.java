@@ -25,7 +25,6 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * @date 12.12.2011
  */
 public class ShowMapToNodeAction extends MindMapNodeHookAdapter {
 

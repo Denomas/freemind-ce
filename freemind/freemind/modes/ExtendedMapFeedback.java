@@ -38,7 +38,6 @@ import freemind.modes.mindmapmode.actions.xml.actors.XmlActorFactory;
  * MapFeedback extended by the xml based node change management.
  *
  * @author foltin
- * @date 16.03.2014
  */
 public interface ExtendedMapFeedback extends MapFeedback, MindMapActions {
 	/**

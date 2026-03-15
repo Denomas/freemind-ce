@@ -42,7 +42,6 @@ import freemind.modes.MindMapNode;
  * </ul>
  *
  * @author foltin
- * @date 17.10.2004
  */
 public interface NodeHook extends MindMapHook {
 

@@ -31,7 +31,6 @@ import freemind.view.mindmapview.ViewFeedback;
 
 /**
  * @author foltin
- * @date 16.03.2014
  */
 public abstract class XmlActorAdapter implements ActorXml {
 
@@ -39,9 +38,7 @@ public abstract class XmlActorAdapter implements ActorXml {
 
 	protected static java.util.logging.Logger logger = null;
 
-	/**
-	 *
-	 */
+
 	public XmlActorAdapter(ExtendedMapFeedback pMapFeedback) {
 		mMapFeedback = pMapFeedback;
 		if (logger == null) {
@@ -97,7 +94,7 @@ public abstract class XmlActorAdapter implements ActorXml {
 	}
 
 	/**
-	 * @param pSelected
+	 * @param pNode
 	 * @return
 	 */
 	protected String getNodeID(MindMapNode pNode) {
@@ -117,8 +114,7 @@ public abstract class XmlActorAdapter implements ActorXml {
 	}
 
 
-	/**
-	 */
+
 	protected MindMapLinkRegistry getLinkRegistry() {
 		return getExMapFeedback().getMap().getLinkRegistry();
 	}

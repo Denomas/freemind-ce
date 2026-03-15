@@ -35,7 +35,6 @@ import freemind.modes.mindmapmode.actions.xml.actors.PasteActor.NodeCoordinate;
 
 /**
  * @author foltin
- * @date 11.04.2014
  */
 public class CutActor extends XmlActorAdapter {
 

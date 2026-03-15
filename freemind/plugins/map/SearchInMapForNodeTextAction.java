@@ -34,13 +34,10 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * @date 1.4.2012
  */
 public class SearchInMapForNodeTextAction extends MindMapNodeHookAdapter {
 
-	/**
-	 *
-	 */
+
 	private static final String REALLY_SEARCH_FOR_NODE_TEXT_IN_WEB = "really_search_for_node_text_in_web";
 	static final String NODE_CONTEXT_PLUGIN_NAME = "plugins/map/MapDialog_SearchInMapForNodeTextAction.properties";
 

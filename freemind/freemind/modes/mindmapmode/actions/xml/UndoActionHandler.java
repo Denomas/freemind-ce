@@ -31,8 +31,7 @@ public class UndoActionHandler {
 	private final UndoAction undo;
 	private final RedoAction redo;
 
-	/**
-     */
+
 	public UndoActionHandler(MindMapController adapter, UndoAction undo,
 			RedoAction redo) {
 		this.controller = adapter;

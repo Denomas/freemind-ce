@@ -174,8 +174,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	// public void close() {
 	// }
 
-	/**
-	 */
+
 	private void removeNodes(MindMapNode node) {
 		node.removeAllHooks();
 		mMapFeedback.fireNodePreDeleteEvent(node);
@@ -519,8 +518,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 		return mMapFeedback;
 	}
 
-	/**
-     */
+
 	public SortedMapListModel getIcons() {
 		SortedMapListModel mapIcons;
 		mapIcons = new SortedMapListModel();

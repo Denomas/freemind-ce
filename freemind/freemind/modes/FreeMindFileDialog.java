@@ -28,7 +28,6 @@ import javax.swing.filechooser.FileFilter;
 
 /**
  * @author foltin
- * @date 23.02.2012
  */
 public interface FreeMindFileDialog  {
 

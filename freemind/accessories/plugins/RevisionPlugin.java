@@ -43,9 +43,7 @@ public class RevisionPlugin extends PermanentMindMapNodeHookAdapter implements
 
 	private Color color;
 
-	/**
-	 *
-	 */
+
 	public RevisionPlugin() {
 		super();
 	}

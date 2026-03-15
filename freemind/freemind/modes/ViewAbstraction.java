@@ -30,7 +30,6 @@ import freemind.view.mindmapview.NodeView;
  * Handles selections, focus, etc.
  *
  * @author foltin
- * @date 18.03.2014
  */
 public interface ViewAbstraction {
 

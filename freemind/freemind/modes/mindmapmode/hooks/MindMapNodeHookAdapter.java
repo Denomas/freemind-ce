@@ -30,9 +30,7 @@ import freemind.modes.mindmapmode.MindMapController;
  * */
 public class MindMapNodeHookAdapter extends NodeHookAdapter {
 
-	/**
-     *
-     */
+
 	public MindMapNodeHookAdapter() {
 		super();
 

@@ -51,8 +51,7 @@ public class HookAdapter implements MindMapHook {
 	private PluginBaseClassSearcher baseClass;
 	protected MapFeedback mapFeedback;
 
-	/**
-	 */
+
 	public HookAdapter() {
 		if (logger == null)
 			logger = freemind.main.Resources.getInstance().getLogger(
@@ -92,26 +91,22 @@ public class HookAdapter implements MindMapHook {
 		controller = null;
 	}
 
-	/**
-	 */
+
 	protected ModeController getController() {
 		return controller;
 	}
 
-	/**
-	 */
+
 	protected Properties getProperties() {
 		return properties;
 	}
 
-	/**
-	 */
+
 	public void setProperties(Properties properties) {
 		this.properties = properties;
 	}
 
-	/**
-	 */
+
 	public void setController(MapFeedback controller) {
 		this.mapFeedback = controller;
 		if (controller instanceof ModeController) {

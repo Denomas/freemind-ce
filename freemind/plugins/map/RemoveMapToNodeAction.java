@@ -29,7 +29,6 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * @date 13.12.2011
  */
 public class RemoveMapToNodeAction extends MindMapNodeHookAdapter {
 

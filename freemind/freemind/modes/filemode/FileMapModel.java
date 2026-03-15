@@ -71,9 +71,7 @@ public class FileMapModel extends MapAdapter {
 		return true;
 	}
 
-	/**
-     *
-     */
+
 
 	public void destroy() {
 		/*

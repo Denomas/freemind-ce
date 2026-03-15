@@ -130,15 +130,12 @@ public class FreeMindMapController extends JMapController implements
 		KeyListener {
 	/**
 	 * @author foltin
-	 * @date 27.07.2012
 	 */
 	public interface CursorPositionListener {
 		void cursorPositionChanged(ICoordinate pCursorPosition);
 	}
 
-	/**
-	 *
-	 */
+
 	private static final int MODIFIERS_WITHOUT_SHIFT = Integer.MAX_VALUE
 			^ KeyEvent.SHIFT_MASK;
 
@@ -373,7 +370,6 @@ public class FreeMindMapController extends JMapController implements
 
 	/**
 	 * @author foltin
-	 * @date 16.11.2011
 	 */
 	public class ChangeTileSource extends AbstractAction implements
 			MenuItemSelectedListener {
@@ -416,7 +412,6 @@ public class FreeMindMapController extends JMapController implements
 
 	/**
 	 * @author foltin
-	 * @date 31.10.2011
 	 */
 	private final class PlaceNodeAction extends AbstractAction {
 
@@ -432,7 +427,6 @@ public class FreeMindMapController extends JMapController implements
 
 	/**
 	 * @author foltin
-	 * @date 31.10.2011
 	 */
 	private final class ShowNodeAction extends AbstractAction {
 
@@ -447,7 +441,6 @@ public class FreeMindMapController extends JMapController implements
 
 	/**
 	 * @author foltin
-	 * @date 31.10.2011
 	 */
 	private abstract class MoveAction extends AbstractAction {
 
@@ -544,9 +537,7 @@ public class FreeMindMapController extends JMapController implements
 	}
 
 	private final class MoveLeftAction extends MoveAction {
-		/**
-		 *
-		 */
+
 		public MoveLeftAction() {
 			super(getText("MapControllerPopupDialog.moveLeft"));
 		}
@@ -561,9 +552,7 @@ public class FreeMindMapController extends JMapController implements
 	}
 
 	private final class MoveRightAction extends MoveAction {
-		/**
-		 *
-		 */
+
 		public MoveRightAction() {
 			super(getText("MapControllerPopupDialog.moveRight"));
 		}
@@ -578,9 +567,7 @@ public class FreeMindMapController extends JMapController implements
 	}
 
 	private final class MoveUpAction extends MoveAction {
-		/**
-		 *
-		 */
+
 		public MoveUpAction() {
 			super(getText("MapControllerPopupDialog.moveUp"));
 		}
@@ -595,9 +582,7 @@ public class FreeMindMapController extends JMapController implements
 	}
 
 	private final class MoveDownAction extends MoveAction {
-		/**
-		 *
-		 */
+
 		public MoveDownAction() {
 			super(getText("MapControllerPopupDialog.moveDown"));
 		}
@@ -766,9 +751,7 @@ public class FreeMindMapController extends JMapController implements
 	}
 
 	private final class SetHomeAction extends AbstractAction {
-		/**
-		 *
-		 */
+
 		public SetHomeAction() {
 			super(getText("MapControllerPopupDialog.SetHome"));
 		}
@@ -1167,9 +1150,7 @@ public class FreeMindMapController extends JMapController implements
 		return (JCursorMapViewer) map;
 	}
 
-	/**
-	 *
-	 */
+
 	public void addMapPictureToNode() {
 		if (mCurrentPopupPositionHolder == null) {
 			// strange.
@@ -1398,8 +1379,7 @@ public class FreeMindMapController extends JMapController implements
 		}
 	}
 
-	/**
-	 */
+
 	public void showSelectedNodes() {
 		MindMapNode selected = mMindMapController.getSelected();
 		List<MindMapNode> selecteds = mMindMapController.getSelecteds();

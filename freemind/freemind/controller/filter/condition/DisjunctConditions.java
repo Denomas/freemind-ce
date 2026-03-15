@@ -43,9 +43,7 @@ public class DisjunctConditions implements Condition {
 	static final String NAME = "disjunct_condition";
 	private Object[] conditions;
 
-	/**
-     *
-     */
+
 	public DisjunctConditions(Object[] conditions) {
 		this.conditions = conditions;
 	}

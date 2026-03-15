@@ -306,14 +306,12 @@ public class NodeView extends JComponent implements TreeModelListener {
 		}
 	}
 
-	/**
-     */
+
 	public void setText(String string) {
 		mainView.setText(string);
 	}
 
-	/**
-     */
+
 	public String getText() {
 		return mainView.getText();
 	}
@@ -633,8 +631,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 		return null;
 	}
 
-	/**
-	 */
+
 	public boolean isContentVisible() {
 		return getModel().isVisible();
 	}
@@ -1082,8 +1079,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 		return maxToolTipWidth;
 	}
 
-	/**
-     */
+
 	public void setIcon(MultipleImage image) {
 		mainView.setIcon(image);
 	}

@@ -56,10 +56,9 @@ package freemind.main;
 /**
  * An XMLParseException is thrown when an error occures while parsing an XML
  * string.
- * <P>
- * $Revision: 1.7.34.3 $<BR>
+ * <p>
+ * $Revision: 1.7.34.3 $<br>
  * $Date: 2006/07/25 20:28:20 $
- * <P>
  *
  * @see XMLElement
  *
@@ -82,7 +81,7 @@ public class XMLParseException extends RuntimeException {
 	 * <dt><b>Invariants:</b></dt>
 	 * <dd>
 	 * <ul>
-	 * <li><code>lineNr &gt 0 || lineNr == NO_LINE</code>
+	 * <li><code>lineNr &gt; 0 || lineNr == NO_LINE</code>
 	 * </ul>
 	 * </dd>
 	 * </dl>
@@ -97,25 +96,23 @@ public class XMLParseException extends RuntimeException {
 	 * @param message
 	 *            A message describing what went wrong.
 	 *
-	 *            </dl>
-	 *            <dl>
-	 *            <dt><b>Preconditions:</b></dt>
-	 *            <dd>
-	 *            <ul>
-	 *            <li><code>message != null</code>
-	 *            </ul>
-	 *            </dd>
-	 *            </dl>
+	 * <dl>
+	 * <dt><b>Preconditions:</b></dt>
+	 * <dd>
+	 * <ul>
+	 * <li><code>message != null</code>
+	 * </ul>
+	 * </dd>
+	 * </dl>
 	 *
-	 *            <dl>
-	 *            <dt><b>Postconditions:</b></dt>
-	 *            <dd>
-	 *            <ul>
-	 *            <li>getLineNr() => NO_LINE
-	 *            </ul>
-	 *            </dd>
-	 *            </dl>
-	 *            <dl>
+	 * <dl>
+	 * <dt><b>Postconditions:</b></dt>
+	 * <dd>
+	 * <ul>
+	 * <li>getLineNr() =&gt; NO_LINE
+	 * </ul>
+	 * </dd>
+	 * </dl>
 	 */
 	public XMLParseException(String name, String message) {
 		super("XML Parse Exception during parsing of "
@@ -134,26 +131,24 @@ public class XMLParseException extends RuntimeException {
 	 * @param message
 	 *            A message describing what went wrong.
 	 *
-	 *            </dl>
-	 *            <dl>
-	 *            <dt><b>Preconditions:</b></dt>
-	 *            <dd>
-	 *            <ul>
-	 *            <li><code>message != null</code>
-	 *            <li><code>lineNr &gt; 0</code>
-	 *            </ul>
-	 *            </dd>
-	 *            </dl>
+	 * <dl>
+	 * <dt><b>Preconditions:</b></dt>
+	 * <dd>
+	 * <ul>
+	 * <li><code>message != null</code>
+	 * <li><code>lineNr &gt; 0</code>
+	 * </ul>
+	 * </dd>
+	 * </dl>
 	 *
-	 *            <dl>
-	 *            <dt><b>Postconditions:</b></dt>
-	 *            <dd>
-	 *            <ul>
-	 *            <li>getLineNr() => lineNr
-	 *            </ul>
-	 *            </dd>
-	 *            </dl>
-	 *            <dl>
+	 * <dl>
+	 * <dt><b>Postconditions:</b></dt>
+	 * <dd>
+	 * <ul>
+	 * <li>getLineNr() =&gt; lineNr
+	 * </ul>
+	 * </dd>
+	 * </dl>
 	 */
 	public XMLParseException(String name, int lineNr, String message) {
 		super("XML Parse Exception during parsing of "

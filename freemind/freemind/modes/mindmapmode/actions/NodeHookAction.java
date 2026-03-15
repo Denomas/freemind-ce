@@ -73,8 +73,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 
 
 
-	/**
-	 */
+
 	private HookInstanciationMethod getInstanciationMethod(String hookName) {
 		HookFactory factory = getHookFactory();
 		// determine instanciation method
@@ -83,8 +82,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 		return instMethod;
 	}
 
-	/**
-	 */
+
 	private HookFactory getHookFactory() {
 		HookFactory factory = mMindMapController.getHookFactory();
 		return factory;
@@ -113,8 +111,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 		return true;
 	}
 
-	/**
-	 */
+
 	public String getHookName() {
 		return _hookName;
 	}

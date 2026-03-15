@@ -72,8 +72,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 
 	private boolean isShuttingDown = false;
 
-	/**
-     */
+
 	public EncryptedMindMapNode(Object userObject, MindMap map) {
 		super(userObject, map);
 		if (encryptedIcon == null) {
@@ -148,8 +147,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 		return  (MindMapMapModel) getMapFeedback().getMap();
 	}
 
-	/**
-     */
+
 	public boolean checkPassword(StringBuffer givenPassword) {
 
 		if (password != null) {
@@ -178,8 +176,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 		return true;
 	}
 
-	/**
-     */
+
 	private boolean equals(StringBuffer givenPassword, StringBuffer password2) {
 		if (givenPassword.length() != password.length())
 			return false;
@@ -252,9 +249,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 		this.password = password;
 	}
 
-	/**
-     *
-     */
+
 
 	public boolean isFolded() {
 		if (isAccessible()) {
@@ -263,9 +258,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 		return true;
 	}
 
-	/**
-     *
-     */
+
 
 	public void setFolded(boolean folded) {
 		if (isAccessible()) {
@@ -275,9 +268,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 		}
 	}
 
-	/**
-     *
-     */
+
 
 	public void setAdditionalInfo(String info) {
 		encryptedContent = info;
@@ -292,9 +283,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 		return encryptedContent;
 	}
 
-	/**
-     *
-     */
+
 
 	public XMLElement save(Writer writer, MindMapLinkRegistry registry,
 			boolean saveHidden, boolean saveChildren) throws IOException {
@@ -337,8 +326,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 		}
 	}
 
-	/**
-     */
+
 	private String encryptXml(StringBuffer childXml) {
 		try {
 			// Create encrypter/decrypter class

@@ -75,8 +75,7 @@ public class FormatNewNodes implements ActionHandler, ActionFilter,
 		detectFormatChanges(action);
 	}
 
-	/**
-	 */
+
 	private void detectFormatChanges(XmlAction doAction) {
 		if (doAction instanceof CompoundAction) {
 			CompoundAction compAction = (CompoundAction) doAction;

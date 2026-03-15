@@ -39,9 +39,7 @@ public class RemindValueProperty extends ThreeCheckBoxProperty {
 		mDontTouchValue = "";
 	}
 
-	/**
-     *
-     */
+
 	protected void setState(int newState) {
 		state = newState;
 		String[] strings;

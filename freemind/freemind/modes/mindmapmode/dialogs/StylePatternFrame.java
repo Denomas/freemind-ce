@@ -547,8 +547,7 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				defaultValue, new IdentityTransformer());
 	}
 
-	/**
-	 */
+
 	private void setPatternControls(PatternPropertyBase patternProperty,
 			PropertyBean threeCheckBoxProperty, PropertyBean property,
 			String defaultValue, ValueTransformator transformer) {
@@ -657,8 +656,7 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				transformer);
 	}
 
-	/**
-	 */
+
 	private PatternPropertyBase getPatternResult(
 			PatternPropertyBase baseProperty,
 			ThreeCheckBoxProperty threeCheckBoxProperty, PropertyBean property,

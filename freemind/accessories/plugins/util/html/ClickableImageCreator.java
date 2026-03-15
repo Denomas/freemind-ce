@@ -117,8 +117,7 @@ public class ClickableImageCreator {
 		createArea(root);
 	}
 
-	/**
-     */
+
 	private void createArea(MindMapNode node) {
 		if (mapView == null) {
 			return;

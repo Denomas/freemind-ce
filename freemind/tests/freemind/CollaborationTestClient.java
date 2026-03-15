@@ -49,7 +49,6 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /**
  * @author foltin
- * @date 07.05.2014
  */
 public abstract class CollaborationTestClient extends CommunicationBase {
 

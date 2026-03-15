@@ -38,21 +38,14 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * @date 30.06.2011
  */
 public class ToolsTests extends FreeMindTestBase {
 
-	/**
-	 *
-	 */
+
 	private static final String UNIX_PATH_WITH_SPEACIAL_CHAR = "/Users/foltin/downloads/Ja\u0308nstra\u00dfe 270c.pdf";
-	/**
-	 *
-	 */
+
 	private static final String WINDOWS_PATH_WITH_SPECIAL_CHAR = "o:\\Users\\foltin\\downloads\\Ja\u0308nstra\u00dfe 270c.pdf";
-	/**
-	 *
-	 */
+
 	private static final String WINDOWS_PATH_C_USERS_TMP_IM_MM = "c:\\Users\\foltin\\tmp\\im.mm";
 
 	/*
@@ -262,9 +255,7 @@ public class ToolsTests extends FreeMindTestBase {
 		return false;
 	}
 
-	/**
-	 *
-	 */
+
 	public void testVisitor() {
 		A a = new A();
 		B b = new B();

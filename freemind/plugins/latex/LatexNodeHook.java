@@ -32,16 +32,12 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author Dimitry Polivaev
- *
- * @file LatexNodeHook.java
- * @package freemind.modes.mindmapmode
- * */
+ */
 public class LatexNodeHook extends PermanentMindMapNodeHookAdapter {
 	private String equation;
 	private Set<Component> viewers;
 
-	/**
-	 */
+
 	public LatexNodeHook() {
 		super();
 		equation = "E = mc^{2}";

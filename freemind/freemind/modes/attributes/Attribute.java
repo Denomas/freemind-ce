@@ -30,8 +30,7 @@ public class Attribute {
 	private String name;
 	private String value;
 
-	/**
-     */
+
 	public Attribute(String name) {
 		this.name = name;
 		this.value = "";

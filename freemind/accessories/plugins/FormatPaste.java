@@ -51,8 +51,7 @@ public class FormatPaste extends MindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-     */
+
 	private void pasteFormat(MindMapNode node) {
 		if (pattern == null) {
 			JOptionPane.showMessageDialog(getMindMapController().getFrame()
@@ -64,8 +63,7 @@ public class FormatPaste extends MindMapNodeHookAdapter {
 		getMindMapController().applyPattern(node, pattern);
 	}
 
-	/**
-     */
+
 	private void copyFormat(MindMapNode node) {
 		pattern = StylePatternFactory.createPatternFromNode(node);
 	}

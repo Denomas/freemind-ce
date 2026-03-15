@@ -37,17 +37,12 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 06.09.2012
  */
 public abstract class CommunicationBase extends TerminateableThread {
 
-	/**
-	 *
-	 */
+
 	private static final int TIMEOUT_FOR_READ_ERROR_IN_MS = 30000;
-	/**
-	 *
-	 */
+
 	private static final String STRING_CONTINUATION_SUFFIX = "<cont>";
 	protected Socket mSocket;
 
@@ -89,7 +84,7 @@ public abstract class CommunicationBase extends TerminateableThread {
 	private StringBuffer mCurrentCommand = new StringBuffer();
 
 	/**
-	 * @param pMessage
+	 * @param pCommand
 	 * @return true, if successful.
 	 */
 	public synchronized boolean send(CollaborationActionBase pCommand) {

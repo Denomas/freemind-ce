@@ -31,7 +31,6 @@ import freemind.modes.MindMapNode;
 
 /**
  * @author foltin
- * @date 11.07.2013
  */
 abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 	protected final int LISTENER_VIEW_WIDTH = 10;
@@ -96,9 +95,7 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 		shutDown();
 	}
 
-	/**
-	 *
-	 */
+
 	private void layoutOtherItems() {
 		final int componentCount = view.getComponentCount();
 		for (int i = 0; i < componentCount; i++) {

@@ -67,7 +67,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 20.03.2014
  */
 public class PasteActor extends XmlActorAdapter {
 
@@ -314,9 +313,7 @@ public class PasteActor extends XmlActorAdapter {
 			mNodeCreator = pNodeCreator;
 		}
 
-		/**
-		 *
-		 */
+
 		private DirectHtmlFlavorHandler() {
 			mNodeCreator = new NodeCreator() {
 
@@ -519,8 +516,7 @@ public class PasteActor extends XmlActorAdapter {
 		setWaitingCursor(false);
 	}
 
-	/**
-     */
+
 	private DataFlavorHandler[] getFlavorHandlers() {
 		DataFlavorHandler[] dataFlavorHandlerList = new DataFlavorHandler[] {
 				new FileListFlavorHandler(), new MindMapNodesFlavorHandler(),
@@ -718,8 +714,7 @@ public class PasteActor extends XmlActorAdapter {
 		return pastedNode;
 	}
 
-	/**
-     */
+
 	private void insertNodeInto(MindMapNodeModel node, MindMapNode parent, int i) {
 		getExMapFeedback().insertNodeInto(node, parent, i);
 	}
@@ -917,9 +912,7 @@ public class PasteActor extends XmlActorAdapter {
 	protected void setWaitingCursor(boolean waitingCursor) {
 		getExMapFeedback().setWaitingCursor(waitingCursor);
 	}
-	/**
-	 *
-	 */
+
 	public void processUnfinishedLinksInHooks(MindMapNode node) {
 		for (Iterator<MindMapNode> i = node.childrenUnfolded(); i.hasNext();) {
 			MindMapNode child = i.next();

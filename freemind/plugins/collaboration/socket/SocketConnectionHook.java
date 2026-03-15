@@ -43,9 +43,7 @@ public class SocketConnectionHook extends SocketBasics implements
 
 	private ClientCommunication mClientCommunication;
 
-	/**
-     *
-     */
+
 
 	public void startupMapHook() {
 		super.startupMapHook();

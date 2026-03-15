@@ -77,9 +77,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 	/** Contains PluginRegistrationType -> PluginType relations. */
 	protected static HashSet<HookDescriptorRegistration> allRegistrations;
 
-	/**
-	 *
-	 */
+
 	public MindMapHookFactory() {
 		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
@@ -133,9 +131,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 		return returnValue;
 	}
 
-	/**
-	 *
-	 */
+
 	private void actualizePlugins() {
 		if (importWizard == null) {
 			importWizard = new ImportWizard();
@@ -243,8 +239,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 		hook.setPluginBaseClass(pluginBaseClassSearcher);
 	}
 
-	/**
-	 */
+
 	public void decorateAction(String hookName, AbstractAction action) {
 		HookDescriptorPluginAction descriptor = getHookDescriptor(hookName);
 		String name = descriptor.getName();
@@ -284,8 +279,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 		return descriptor.menuPositions;
 	}
 
-	/**
-	 */
+
 	public HookInstanciationMethod getInstanciationMethod(String hookName) {
 		HookDescriptorPluginAction descriptor = getHookDescriptor(hookName);
 		return descriptor.getInstanciationMethod();
@@ -349,8 +343,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 		return getPluginBaseClass(descriptor);
 	}
 
-	/**
-	 */
+
 	private Object getPluginBaseClass(HookDescriptorPluginAction descriptor) {
 		// test if registration is present:
 		Object baseClass = null;
@@ -361,8 +354,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 		return baseClass;
 	}
 
-	/**
-	 */
+
 	private HookDescriptorPluginAction getHookDescriptor(String hookName) {
 		HookDescriptorPluginAction descriptor = (HookDescriptorPluginAction) pluginInfo
 				.get(hookName);

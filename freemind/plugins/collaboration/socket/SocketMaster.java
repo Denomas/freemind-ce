@@ -36,7 +36,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 03.05.2014
  */
 public abstract class SocketMaster extends SocketBasics {
 

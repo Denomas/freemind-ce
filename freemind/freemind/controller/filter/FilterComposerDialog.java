@@ -718,8 +718,7 @@ public class FilterComposerDialog extends JDialog {
 		return item != null ? item.toString() : "";
 	}
 
-	/**
-     */
+
 	void mapChanged(MindMap newMap) {
 		if (newMap != null) {
 			icons.setExtensionList(newMap.getIcons());
@@ -754,8 +753,7 @@ public class FilterComposerDialog extends JDialog {
 		return false;
 	}
 
-	/**
-     */
+
 	public void setSelectedItem(Object selectedItem) {
 		conditionList.setSelectedValue(selectedItem, true);
 

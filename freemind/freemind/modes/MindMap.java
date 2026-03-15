@@ -118,8 +118,7 @@ public interface MindMap extends TreeModel {
 
 	Filter getFilter();
 
-	/**
-     */
+
 	void setFilter(Filter inactiveFilter);
 
 	void nodeStructureChanged(TreeNode node);
@@ -138,7 +137,6 @@ public interface MindMap extends TreeModel {
 	 * edited from somebody else), this observer can be used to notice this.
 	 *
 	 * @author foltin
-	 * @date 04.07.2011
 	 */
 	public interface MapSourceChangedObserver {
 		/**

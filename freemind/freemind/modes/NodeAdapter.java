@@ -173,8 +173,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	}
 
-	/**
-     */
+
 	public void setMap(MindMap pMap) {
 		this.map = pMap;
 	}
@@ -1027,8 +1026,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		}
 	}
 
-	/**
-	 */
+
 	public SortedMap<String, String> getToolTip() {
 		boolean toolTipChanged = false;
 		TreeMap<String, String> result = toolTip;
@@ -1083,8 +1081,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		return Collections.unmodifiableSortedMap(result);
 	}
 
-	/**
-	 */
+
 	public void setToolTip(String key, String string) {
 		createToolTip();
 		if (string == null) {
@@ -1367,9 +1364,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		this.shiftY = shiftY;
 	}
 
-	/**
-     *
-     */
+
 
 	public void setAdditionalInfo(String info) {
 	}

@@ -71,12 +71,12 @@ import javax.swing.filechooser.FileFilter;
  * Extensions are of the type ".foo", which is typically found on Windows and
  * Unix boxes, but not on Macinthosh. Case is ignored.
  *
- * Example - create a new filter that filerts out all files but gif and jpg
+ * Example - create a new filter that filters out all files but gif and jpg
  * image files:
  *
- * JFileChooser chooser = new JFileChooser(); ExampleFileFilter filter = new
+ * {@code JFileChooser chooser = new JFileChooser(); ExampleFileFilter filter = new
  * ExampleFileFilter( new String{"gif", "jpg"}, "JPEG & GIF Images")
- * chooser.addChoosableFileFilter(filter); chooser.showOpenDialog(this);
+ * chooser.addChoosableFileFilter(filter); chooser.showOpenDialog(this);}
  *
  * @version 1.14 01/23/03
  * @author Jeff Dinkins

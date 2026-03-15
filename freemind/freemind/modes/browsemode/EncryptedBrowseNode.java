@@ -58,14 +58,12 @@ public class EncryptedBrowseNode extends BrowseNodeModel {
 
 	private final MapFeedback mMapFeedback;
 
-	/**
-	 */
+
 	public EncryptedBrowseNode(MapFeedback pMapFeedback) {
 		this(null, pMapFeedback);
 	}
 
-	/**
-	 */
+
 	public EncryptedBrowseNode(Object userObject, MapFeedback pMapFeedback) {
 		super(userObject, pMapFeedback.getMap());
 		this.mMapFeedback = pMapFeedback;
@@ -141,9 +139,7 @@ public class EncryptedBrowseNode extends BrowseNodeModel {
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	public void setAdditionalInfo(String info) {
 		encryptedContent = info;
 		isDecrypted = false;

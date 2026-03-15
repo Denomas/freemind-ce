@@ -48,7 +48,6 @@ import freemind.modes.mindmapmode.hooks.MindMapHookFactory;
 
 /**
  * @author foltin
- * @date 16.03.2014
  */
 public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 		implements ExtendedMapFeedback {
@@ -56,7 +55,6 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 
 	/**
 	 * @author foltin
-	 * @date 11.04.2014
 	 */
 	private final class DummyTransferable implements Transferable {
 		@Override
@@ -81,9 +79,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	protected XmlActorFactory mActorFactory;
 	private MindMapHookFactory mNodeHookFactory;
 
-	/**
-	 *
-	 */
+
 	public ExtendedMapFeedbackAdapter() {
 		super();
 		mActionRegistry = new ActionRegistry();
@@ -93,7 +89,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	}
 
 	/**
-	 * @throws {@link IllegalArgumentException} when node isn't found.
+	 * @throws IllegalArgumentException when node isn't found.
 	 */
 	@Override
 	public NodeAdapter getNodeFromID(String nodeID) {

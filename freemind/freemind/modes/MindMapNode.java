@@ -54,7 +54,7 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * @return the text representation of the nodes content. HTML is represented
-	 *         as <html>....</html> see getXmlText
+	 *         as {@code <html>....</html>} see getXmlText
 	 */
 	String getText();
 
@@ -65,8 +65,8 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * @return the text representation of the nodes content as valid XML. HTML
-	 *         is represented as <html>....</html> with proper tags (like \<br/\>
-	 *         instead of \<br\>
+	 *         is represented as {@code <html>....</html>} with proper tags (like {@code <br/>}
+	 *         instead of {@code <br>}
 	 *         and so on).
 	 */
 	String getXmlText();
@@ -78,8 +78,8 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * @return the text representation of the notes content as valid XML. HTML
-	 *         is represented as <html>....</html> with proper tags (like <br/>
-	 *         instead of <br>
+	 *         is represented as {@code <html>....</html>} with proper tags (like {@code <br/>}
+	 *         instead of {@code <br>}
 	 *         and so on).
 	 */
 	String getXmlNoteText();
@@ -200,7 +200,7 @@ public interface MindMapNode extends MutableTreeNode {
 	 * object. node.isChild..(parent) == true means: parent -> .. -> node exists
 	 * in the tree.
 	 *
-	 * @see isDecendantOf
+	 * @see #isDescendantOf(MindMapNode)
 	 */
 	boolean isDescendantOfOrEqual(MindMapNode pParentNode);
 
@@ -292,8 +292,6 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * Removes all hooks from this node.
-	 *
-	 * @param node
 	 */
 	public void removeAllHooks();
 
@@ -315,7 +313,7 @@ public interface MindMapNode extends MutableTreeNode {
 	/**
 	 * Is only used to store encrypted content of an encrypted mind map node.
 	 *
-	 * @see MindMapNode.setAdditionalInfo(String)
+	 * @see MindMapNode#setAdditionalInfo(String)
 	 */
 	public String getAdditionalInfo();
 

@@ -36,9 +36,7 @@ import freemind.extensions.ModeControllerHookAdapter;
  */
 public class FreemindHelpStarter extends ModeControllerHookAdapter {
 
-	/**
-     *
-     */
+
 
 	public void startupMapHook() {
 		super.startupMapHook();

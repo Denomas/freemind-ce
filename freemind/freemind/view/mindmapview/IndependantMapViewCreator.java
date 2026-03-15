@@ -48,7 +48,6 @@ import freemind.modes.mindmapmode.MindMapMapModel;
 
 /**
  * @author foltin
- * @date 28.09.2011
  */
 public class IndependantMapViewCreator extends MapFeedbackAdapter {
 
@@ -120,10 +119,10 @@ public class IndependantMapViewCreator extends MapFeedbackAdapter {
 	}
 
 	/**
-	 * @param parent
 	 * @param mapView
 	 * @param outputFileName
 	 * @param scale
+	 * @param destSize
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */

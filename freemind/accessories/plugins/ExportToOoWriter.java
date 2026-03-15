@@ -54,9 +54,7 @@ import freemind.main.Tools;
 public class ExportToOoWriter extends ExportHook {
 	private static java.util.logging.Logger logger = null;
 
-	/**
-	 *
-	 */
+
 	public ExportToOoWriter() {
 		super();
 		if (logger == null) {

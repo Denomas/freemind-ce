@@ -29,7 +29,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 27.03.2014
  */
 public class NodeStyleActor extends XmlActorAdapter {
 

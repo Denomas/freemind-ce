@@ -224,8 +224,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 			return mySelected.contains(node);
 		}
 
-		/**
-		 */
+
 		public void moveToFirst(NodeView newSelected) {
 			if (contains(newSelected)) {
 				int pos = mySelected.indexOf(newSelected);

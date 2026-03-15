@@ -49,14 +49,11 @@ import plugins.collaboration.socket.StandaloneMindMapMaster;
 
 /**
  * @author foltin
- * @date 08.05.2014
  */
 public class CollaborationTests extends FreeMindTestBase {
 	public static final String PUBLISHED_MAP_NAME = "published_map_name.mm";
 
-	/**
-	 *
-	 */
+
 	public CollaborationTests() {
 		// TODO Auto-generated constructor stub
 	}
@@ -68,19 +65,13 @@ public class CollaborationTests extends FreeMindTestBase {
 		super(pArg0);
 	}
 
-	/**
-	 *
-	 */
+
 	private static final String FILE = "bla.mm";
 
-	/**
-	 *
-	 */
+
 	private static final String PATHNAME = System.getProperty("java.io.tmpdir") + File.separator;
 
-	/**
-	 *
-	 */
+
 	private static final int PORT = 9001;
 
 	private static final String INITIAL_MAP = "<map>" + "<node ID='1' TEXT='ROOT'>"
@@ -88,9 +79,7 @@ public class CollaborationTests extends FreeMindTestBase {
 			+ "<node ID='4' TEXT='Child2'/>" + "<node ID='5' TEXT='Child3'/>" + "</node>"
 			+ "</node>" + "</map>";
 
-	/**
-	 *
-	 */
+
 	private static final String PASSWORD = "aa";
 
 	private StandaloneMindMapMaster mMaster;

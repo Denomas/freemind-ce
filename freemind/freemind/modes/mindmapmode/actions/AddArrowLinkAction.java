@@ -41,8 +41,7 @@ public class AddArrowLinkAction extends MindmapAction {
 
 	private final MindMapController modeController;
 
-	/**
-     */
+
 	public AddArrowLinkAction(MindMapController modeController) {
 		super("paste_as_link", "images/designer.png", modeController);
 		this.modeController = modeController;

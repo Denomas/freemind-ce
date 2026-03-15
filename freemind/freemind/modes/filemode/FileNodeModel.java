@@ -112,9 +112,7 @@ public class FileNodeModel extends NodeAdapter {
 		return !file.isFile() || (children != null && !children.isEmpty());
 	}
 
-	/**
-     *
-     */
+
 	public ListIterator<MindMapNode> childrenFolded() {
 		if (!isRoot()) {
 			if (isFolded() || isLeaf()) {

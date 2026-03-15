@@ -50,8 +50,7 @@ public class RevertAction extends MindmapAction  {
 
 	private final MindMapController mindMapController;
 
-	/**
-	 */
+
 	public RevertAction(MindMapController modeController) {
 		super("RevertAction", (String) null, modeController);
 		mindMapController = modeController;

@@ -83,9 +83,7 @@ public class ExportWithXSLT extends ExportHook {
 				nameExtension);
 	}
 
-	/**
-	 *
-	 */
+
 	public ExportWithXSLT() {
 		super();
 	}
@@ -204,8 +202,7 @@ public class ExportWithXSLT extends ExportHook {
 		return success;
 	}
 
-	/**
-     */
+
 	private boolean copyIcons(String directoryName) {
 		boolean success;
 		String iconDirectoryName = directoryName + File.separatorChar + "icons";
@@ -217,8 +214,7 @@ public class ExportWithXSLT extends ExportHook {
 		return success;
 	}
 
-	/**
-     */
+
 	private void createImageFromMap(String directoryName) {
 		// in the test case, we don't have a viewer and skip the image.
 		if (getController().getView() == null)
@@ -235,8 +231,7 @@ public class ExportWithXSLT extends ExportHook {
 		}
 	}
 
-	/**
-     */
+
 	private void copyIconsToDirectory(String directoryName2) {
 		Vector<String> iconNames = MindIcon.getAllIconNames();
 		for (int i = 0; i < iconNames.size(); ++i) {
@@ -265,8 +260,7 @@ public class ExportWithXSLT extends ExportHook {
 
 	}
 
-	/**
-     */
+
 	private void copyFilesFromResourcesToDirectory(String directoryName,
 			String files, String filePrefix) {
 		StringTokenizer tokenizer = new StringTokenizer(files, ",");
@@ -276,8 +270,7 @@ public class ExportWithXSLT extends ExportHook {
 		}
 	}
 
-	/**
-     */
+
 	private boolean createDirectory(String directoryName) {
 		File dir = new File(directoryName);
 		// create directory, if not exists:

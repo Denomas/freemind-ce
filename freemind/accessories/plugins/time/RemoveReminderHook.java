@@ -35,9 +35,7 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
  */
 public class RemoveReminderHook extends MindMapNodeHookAdapter {
 
-	/**
-	 *
-	 */
+
 	public RemoveReminderHook() {
 		super();
 		// TODO Auto-generated constructor stub

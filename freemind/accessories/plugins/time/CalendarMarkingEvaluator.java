@@ -32,7 +32,6 @@ import freemind.controller.actions.generated.instance.CalendarMarkings;
 
 /**
  * @author foltin
- * @date 05.07.2015
  */
 public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 

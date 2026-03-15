@@ -41,7 +41,6 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * @date 13.08.2013
  */
 @SuppressWarnings("serial")
 public class LayoutTests extends FreeMindTestBase {

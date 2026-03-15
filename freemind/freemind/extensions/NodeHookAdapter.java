@@ -34,9 +34,7 @@ public abstract class NodeHookAdapter extends HookAdapter implements NodeHook {
 
 	private MindMapNode node;
 
-	/**
-	 *
-	 */
+
 	public NodeHookAdapter() {
 		super();
 	}
@@ -50,32 +48,27 @@ public abstract class NodeHookAdapter extends HookAdapter implements NodeHook {
 		logger.finest("invoke(node) called.");
 	}
 
-	/**
-	 */
+
 	public MindMapNode getNode() {
 		return node;
 	}
 
-	/**
-	 */
+
 	public void setNode(MindMapNode node) {
 		this.node = node;
 	}
 
-	/**
-	 */
+
 	protected MindMap getMap() {
 		return map;
 	}
 
-	/**
-	 */
+
 	protected void nodeChanged(MindMapNode node) {
 		getController().nodeChanged(node);
 	}
 
-	/**
-	 */
+
 	public void setMap(MindMap map) {
 		this.map = map;
 	}

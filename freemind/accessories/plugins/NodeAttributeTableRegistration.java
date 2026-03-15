@@ -212,20 +212,16 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 
 	/**
 	 * @author foltin
-	 * @date 4.09.2014
 	 */
 	@SuppressWarnings("serial")
 	public final class AttributeTableModel extends AbstractTableModel {
-		/**
-		 *
-		 */
+
 		private final String[] COLUMNS = new String[] { KEY_COLUMN_TEXT,
 				VALUE_COLUMN_TEXT };
 		Vector<AttributeHolder> mData = new Vector<AttributeHolder>();
 		private final TextTranslator mTextTranslator;
 
-		/**
-		 */
+
 		public AttributeTableModel(TextTranslator pTextTranslator) {
 			super();
 			mTextTranslator = pTextTranslator;
@@ -333,9 +329,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 			return true;
 		}
 
-		/**
-		 *
-		 */
+
 		public void clear() {
 			mData.clear();
 			fireTableDataChanged();
@@ -544,9 +538,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 		mAttributeTable.getSelectionModel().setSelectionInterval(0, 0);
 	}
 
-	/**
-	 *
-	 */
+
 	protected void makeMapDirty() {
 		controller.setSaved(false);
 	}

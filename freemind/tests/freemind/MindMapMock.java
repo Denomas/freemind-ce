@@ -54,9 +54,7 @@ public class MindMapMock implements MindMap {
 
 	private final String mapXmlString;
 
-	/**
-     *
-     */
+
 	public MindMapMock(String mapXmlString) {
 		super();
 		this.mapXmlString = mapXmlString;

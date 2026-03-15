@@ -47,8 +47,7 @@ import freemind.view.mindmapview.NodeView;
  */
 public class IconSelectionPlugin extends MindMapNodeHookAdapter {
 
-	/**
-	 */
+
 	public IconSelectionPlugin() {
 		super();
 	}

@@ -34,9 +34,7 @@ import freemind.modes.mindmapmode.MindMapController;
  * */
 public class PermanentMindMapNodeHookAdapter extends PermanentNodeHookAdapter {
 
-	/**
-     *
-     */
+
 	public PermanentMindMapNodeHookAdapter() {
 		super();
 

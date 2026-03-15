@@ -53,9 +53,7 @@ public class DatabaseStarter extends DatabaseBasics implements
 
 	private File mTempDbFile;
 
-	/**
-     *
-     */
+
 
 	public void startupMapHook() {
 		super.startupMapHook();

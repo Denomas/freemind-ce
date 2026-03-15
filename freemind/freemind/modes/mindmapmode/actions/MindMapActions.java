@@ -95,8 +95,7 @@ public interface MindMapActions {
 	 * */
 	void moveNodes(MindMapNode selected, List<MindMapNode> selecteds, int direction);
 
-	/**
-	 */
+
 	void setFolded(MindMapNode node, boolean folded);
 
 	/**

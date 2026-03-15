@@ -31,7 +31,6 @@ import freemind.view.mindmapview.ViewFeedback;
  * a MindMap and its descendants.
  *
  * @author foltin
- * @date 30.01.2014
  */
 public interface MapFeedback {
 	/**
@@ -67,7 +66,7 @@ public interface MapFeedback {
 			MindMapNode pParent);
 	/**
 	 * @param pTextId
-	 * @return the string from Resources_<lang>.properties belonging to the pResourceId.
+	 * @return the string from the localized Resources properties belonging to the pResourceId.
 	 */
 	String getResourceString(String pTextId);
 	/**

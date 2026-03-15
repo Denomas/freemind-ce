@@ -51,9 +51,7 @@ import freemind.main.Tools;
  */
 public class StructuredMenuHolder {
 
-	/**
-	 *
-	 */
+
 	public static final String AMOUNT_OF_VISIBLE_MENU_ITEMS = "AMOUNT_OF_VISIBLE_MENU_ITEMS";
 	public static final int ICON_SIZE = 16;
 	private String mOutputString;
@@ -83,15 +81,13 @@ public class StructuredMenuHolder {
 
 	}
 
-	/**
-	 */
+
 	public JMenu addMenu(JMenu item, String category) {
 		StringTokenizer tokens = new StringTokenizer(category, "/");
 		return (JMenu) addMenu(item, tokens);
 	}
 
-	/**
-	 */
+
 	public JMenuItem addMenuItem(JMenuItem item, String category) {
 		StringTokenizer tokens = new StringTokenizer(category, "/");
 		StructuredMenuItemHolder holder = new StructuredMenuItemHolder();
@@ -164,8 +160,7 @@ public class StructuredMenuHolder {
 		categoryPair.order.add(categoryPair.token);
 	}
 
-	/**
-	 */
+
 	private Object addMenu(Object item, StringTokenizer tokens) {
 		MapTokenPair categoryPair = getCategoryMap(tokens, menuMap);
 		// add the item:
@@ -289,8 +284,7 @@ public class StructuredMenuHolder {
 		}, myMap, new DefaultMenuAdderCreator());
 	}
 
-	/**
-	 */
+
 	public void updateMenus(final JToolBar bar, String prefix) {
 		MapTokenPair pair = getCategoryMap(new StringTokenizer(prefix, "/"),
 				menuMap);
@@ -328,9 +322,7 @@ public class StructuredMenuHolder {
 
 	private static class MenuItemAdder implements MenuAdder {
 
-		/**
-		 *
-		 */
+
 		private int mAmountOfVisibleMenuItems = 20;
 		private int mItemCounter = 0;
 		private int mMenuCounter = 0;
@@ -384,8 +376,7 @@ public class StructuredMenuHolder {
 		}
 	}
 
-	/**
-     */
+
 	static private void adjustMenuItem(JMenuItem item) {
 		if (item.getIcon() == null) {
 			item.setIcon(blindIcon);

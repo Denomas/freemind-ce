@@ -34,7 +34,6 @@ import freemind.common.FreeMindTask;
 
 /**
  * @author foltin
- * @date 08.04.2013
  */
 public class FreeMindTaskTests extends FreeMindTestBase {
 
@@ -47,9 +46,7 @@ public class FreeMindTaskTests extends FreeMindTestBase {
 
 	private class TestTask extends FreeMindTask {
 
-		/**
-		 *
-		 */
+
 		private static final int AMOUNT_OF_TIME = 10;
 
 		/**

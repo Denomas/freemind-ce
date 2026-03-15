@@ -57,9 +57,7 @@ public class SortNodes extends MindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	public SortNodes() {
 		super();
 	}

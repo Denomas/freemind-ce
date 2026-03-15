@@ -62,7 +62,7 @@ import javax.swing.SwingUtilities;
  * <p>
  *
  * In most cases, the script will call the static
- * {@link #handleClient(boolean,String,String[])} method, but of course more
+ * {@link #handleClient(java.net.Socket, java.io.DataInputStream)} method, but of course more
  * complicated stuff can be done too.
  *
  * @author Slava Pestov

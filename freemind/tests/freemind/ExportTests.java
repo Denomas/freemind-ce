@@ -42,7 +42,6 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author foltin
- * @date 12.08.2011
  */
 public class ExportTests extends FreeMindTestBase {
 	private static final String TESTMAP_MM = "tests/freemind/testmap.mm";

@@ -35,8 +35,7 @@ public class ItalicAction extends NodeGeneralAction implements
 		MenuItemSelectedListener {
 	private final MindMapController modeController;
 
-	/**
-	 */
+
 	public ItalicAction(MindMapController modeController) {
 		super(modeController, "italic", "images/Italic16.gif");
 		this.modeController = modeController;

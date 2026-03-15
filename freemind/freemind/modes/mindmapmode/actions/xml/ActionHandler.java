@@ -33,12 +33,10 @@ public interface ActionHandler {
 
 	void executeAction(XmlAction action);
 
-	/**
-	 */
+
 	void startTransaction(String name);
 
-	/**
-	 */
+
 	void endTransaction(String name);
 
 }

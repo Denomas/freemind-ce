@@ -56,9 +56,7 @@ public class ConditionFactory {
 
 
 
-	/**
-     *
-     */
+
 	public ConditionFactory() {
 	}
 

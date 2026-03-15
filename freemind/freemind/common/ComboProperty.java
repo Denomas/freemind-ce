@@ -89,14 +89,12 @@ public class ComboProperty extends PropertyBean implements PropertyControl {
 				possibleTranslations)));
 	}
 
-	/**
-	 */
+
 	private void fillPossibleValues(String[] possibles) {
 		fillPossibleValues(Arrays.asList(possibles));
 	}
 
-	/**
-	 */
+
 	private void fillPossibleValues(List<String> possibles) {
 		this.possibleValues = new Vector<>();
 		possibleValues.addAll(possibles);

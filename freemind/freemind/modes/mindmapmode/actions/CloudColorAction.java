@@ -59,9 +59,7 @@ public class CloudColorAction extends MindmapAction implements MenuItemEnabledLi
 		}
 	}
 
-	/**
-     *
-     */
+
 
 	public boolean isEnabled(JMenuItem item, Action action) {
 		return super.isEnabled(item, action) && (controller != null) && (controller.getSelected() != null)

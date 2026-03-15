@@ -31,7 +31,6 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * @date 15.05.2012
  */
 public class ShowCloneNodes extends MindMapNodeHookAdapter{
 

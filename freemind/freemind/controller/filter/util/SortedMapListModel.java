@@ -90,8 +90,7 @@ public class SortedMapListModel extends AbstractListModel implements
 		return model.last();
 	}
 
-	/**
- */
+
 	public int getIndexOf(Object o) {
 		Iterator<Object> i = iterator();
 		int count = -1;

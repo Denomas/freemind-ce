@@ -50,9 +50,7 @@ public class MindMapMouseWheelEventHandler implements MouseWheelListener {
 	private static java.util.logging.Logger logger = null;
 	private ControllerAdapter mController;
 
-	/**
-	 *
-	 */
+
 	public MindMapMouseWheelEventHandler(ControllerAdapter controller) {
 		super();
 		mController = controller;

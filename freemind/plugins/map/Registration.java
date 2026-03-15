@@ -75,13 +75,11 @@ public class Registration implements HookRegistration, ActorXml,
 	 * Clean the file cache periodically.
 	 *
 	 * @author foltin
-	 * @date 27.04.2012
 	 */
 	public class CachePurger extends TimerTask {
 
 		/**
 		 * @author foltin
-		 * @date 27.04.2012
 		 */
 		private final class AgeFilter implements FileFilter {
 			private final long mYoungestFileToAccept;

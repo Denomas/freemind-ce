@@ -47,9 +47,7 @@ import freemind.view.MapModule;
 public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 		MapTitleContributor, FirstActionFilter {
 
-	/**
-	 *
-	 */
+
 	private static final String PLUGINS_COLLABORATION_SOCKET = "plugins/collaboration/socket/";
 	public final static String MASTER_HOOK_LABEL = PLUGINS_COLLABORATION_SOCKET
 			+ "socket_master_plugin";

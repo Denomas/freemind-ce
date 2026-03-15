@@ -26,7 +26,6 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * @date 06.08.2012
  */
 public class PasswordProperty extends StringProperty {
 

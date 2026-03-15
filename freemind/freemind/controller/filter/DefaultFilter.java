@@ -41,8 +41,7 @@ public class DefaultFilter implements Filter {
 	private Condition condition = null;
 	private int options = 0;
 
-	/**
-     */
+
 	public DefaultFilter(Condition condition, boolean areAnchestorsShown,
 			boolean areDescendantsShown) {
 		super();

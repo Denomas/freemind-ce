@@ -46,9 +46,7 @@ import freemind.view.mindmapview.MapView;
  */
 public class SplitNode extends MindMapNodeHookAdapter {
 
-	/**
-	 *
-	 */
+
 	public SplitNode() {
 		super();
 	}

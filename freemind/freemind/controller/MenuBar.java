@@ -422,8 +422,7 @@ public class MenuBar extends JMenuBar {
 		}
 	}
 
-	/**
-     */
+
 	public StructuredMenuHolder getMenuHolder() {
 		return menuHolder;
 	}

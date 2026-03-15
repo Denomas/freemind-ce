@@ -30,7 +30,6 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * @date 11.10.2013
  */
 public class DeactivateCloneAction extends MindMapNodeHookAdapter implements MenuItemEnabledListener {
 

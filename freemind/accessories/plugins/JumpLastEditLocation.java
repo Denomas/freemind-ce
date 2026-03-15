@@ -135,8 +135,7 @@ public class JumpLastEditLocation extends MindMapNodeHookAdapter {
 			detectFormatChanges(action);
 		}
 
-		/**
-		 */
+
 		private void detectFormatChanges(XmlAction doAction) {
 			if (doAction instanceof CompoundAction) {
 				CompoundAction compAction = (CompoundAction) doAction;

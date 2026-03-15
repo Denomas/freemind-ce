@@ -159,20 +159,17 @@ public class ArrowLinkView {
 		}
 	}
 
-	/**
-     */
+
 	private boolean isTargetVisible() {
 		return (target != null && target.isContentVisible());
 	}
 
-	/**
-     */
+
 	private boolean isSourceVisible() {
 		return (source != null && source.isContentVisible());
 	}
 
-	/**
-	 */
+
 	private Point calcInclination(NodeView node, double dellength) {
 		/*
 		 * int w = node.getWidth(); int h = node.getHeight(); double r =
@@ -308,8 +305,7 @@ public class ArrowLinkView {
 		return getMap().getZoom();
 	}
 
-	/**
-     */
+
 	public void changeInclination(int originX, int originY, int newX, int newY) {
 		// TODO Auto-generated method stub
 

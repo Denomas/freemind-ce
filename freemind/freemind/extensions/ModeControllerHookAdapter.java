@@ -37,8 +37,7 @@ public class ModeControllerHookAdapter extends HookAdapter implements
 	// Logging:
 	// private static java.util.logging.Logger logger;
 
-	/**
-	 */
+
 	public ModeControllerHookAdapter() {
 		super();
 		// if(logger == null)

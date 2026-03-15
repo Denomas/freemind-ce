@@ -44,9 +44,7 @@ public interface PermanentNodeHook extends NodeHook {
 
 	void onFocusNode(NodeView nodeView);
 
-	/**
-	 *
-	 */
+
 	void onLostFocusNode(NodeView nodeView);
 
 	/**
@@ -103,12 +101,10 @@ public interface PermanentNodeHook extends NodeHook {
 	 */
 	void onUpdateChildrenHook(MindMapNode updatedNode);
 
-	/**
-	 */
+
 	void save(XMLElement hookElement);
 
-	/**
-	 */
+
 	void loadFrom(XMLElement child);
 
 	/**

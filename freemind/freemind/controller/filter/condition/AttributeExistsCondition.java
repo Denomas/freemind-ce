@@ -37,8 +37,7 @@ public class AttributeExistsCondition extends NodeCondition {
 	static final String NAME = "attribute_exists_condition";
 	private String attribute;
 
-	/**
-     */
+
 	public AttributeExistsCondition(String attribute) {
 		super();
 		this.attribute = attribute;

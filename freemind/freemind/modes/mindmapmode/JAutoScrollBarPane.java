@@ -35,8 +35,7 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class JAutoScrollBarPane extends JScrollPane {
 
-	/**
-     */
+
 	public JAutoScrollBarPane(Component view) {
 		super(view, VERTICAL_SCROLLBAR_NEVER, HORIZONTAL_SCROLLBAR_NEVER);
 	}

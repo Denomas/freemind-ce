@@ -63,7 +63,6 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 
 	/**
 	 * @author foltin
-	 * @date 21.02.2014
 	 */
 	private final class DemoMapFeedback extends ExtendedMapFeedbackAdapter {
 		MindMap mMap;

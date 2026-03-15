@@ -149,9 +149,7 @@ class FilterToolbar extends FreeMindToolBar {
 	}
 
 	private class UnfoldAncestorsAction extends AbstractAction {
-		/**
-         *
-         */
+
 		UnfoldAncestorsAction() {
 			super("", freemind.view.ImageFactory.getInstance().createIcon(Resources.getInstance().getResource(
 					"images/unfold.png")));
@@ -253,9 +251,7 @@ class FilterToolbar extends FreeMindToolBar {
 				.addPropertyChangeListener(filterChangeListener);
 	}
 
-	/**
-     *
-     */
+
 	public void resetFilter() {
 		activeFilter = null;
 
@@ -276,14 +272,12 @@ class FilterToolbar extends FreeMindToolBar {
 		}
 	}
 
-	/**
-     */
+
 	FilterComposerDialog getFilterDialog() {
 		return filterDialog;
 	}
 
-	/**
-     */
+
 	void mapChanged(MindMap newMap) {
 		if (!isVisible())
 			return;

@@ -39,9 +39,7 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
  */
 public class ChangeNodeLevelAction extends MindMapNodeHookAdapter {
 
-	/**
-	 *
-	 */
+
 	public ChangeNodeLevelAction() {
 		super();
 	}

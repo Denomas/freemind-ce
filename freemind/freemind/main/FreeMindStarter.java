@@ -37,7 +37,7 @@ import javax.swing.JOptionPane;
 
 /**
  * This class should check the java version and start freemind. In order to be
- * able to check, it must be startable with java versions < 1.4. We have
+ * able to check, it must be startable with java versions &lt; 1.4. We have
  * therefore a section in the build.xml that explicitly compiles this class for
  * java 1.1 compatibility. Currently, it is unclear, if this works as expected.
  * But in any case, almost no dependencies to other FreeMind sources should be

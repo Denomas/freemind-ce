@@ -139,8 +139,7 @@ public class ImportWizard {
 		}
 	}
 
-	/**
-     */
+
 	private boolean isInteresting(String current) {
 		int length = current.length();
 		if (length < lookFor.length()) {

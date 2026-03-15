@@ -38,9 +38,7 @@ import freemind.modes.mindmapmode.hooks.MindMapHookAdapter;
 /** */
 public class ManagePatterns extends MindMapHookAdapter {
 
-	/**
-	 *
-	 */
+
 	public ManagePatterns() {
 		super();
 

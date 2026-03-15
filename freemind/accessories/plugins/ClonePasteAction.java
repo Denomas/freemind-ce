@@ -69,14 +69,11 @@ import freemind.view.mindmapview.NodeView;
  * This is the "paste node as clone" action from the menu.
  *
  * @author foltin
- * @date 25.4.2011
  *
  */
 public class ClonePasteAction extends MindMapNodeHookAdapter {
 
-	/**
-	 *
-	 */
+
 	public ClonePasteAction() {
 	}
 
@@ -154,9 +151,7 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 		private HashSet<ClonePropertiesObserver> mObserverSet = new HashSet<>();
 		protected static java.util.logging.Logger logger = null;
 
-		/**
-		 *
-		 */
+
 		public CloneProperties() {
 			if (logger == null) {
 				logger = freemind.main.Resources.getInstance().getLogger(

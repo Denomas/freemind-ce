@@ -29,7 +29,6 @@ import freemind.view.mindmapview.MapView;
  * parts of links (ie. source, destination or both).
  *
  * @author foltin
- * @date 27.10.2012
  */
 public class ArrowLinkTarget extends ArrowLinkAdapter {
 	private String mSourceLabel;

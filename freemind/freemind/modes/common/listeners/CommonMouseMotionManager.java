@@ -43,9 +43,7 @@ public class CommonMouseMotionManager implements MapMouseMotionReceiver {
 
 	// |= oldX >=0 iff we are in the drag
 
-	/**
-	 *
-	 */
+
 	public CommonMouseMotionManager(ModeController controller) {
 		super();
 		this.mController = controller;

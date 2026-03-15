@@ -267,8 +267,7 @@ public class BrowseController extends ViewControllerAdapter {
 		return null;
 	}
 
-	/**
-	 */
+
 	private GotoLinkNodeAction getGotoLinkNodeAction(MindMapNode destination) {
 		return new GotoLinkNodeAction(this, destination);
 	}

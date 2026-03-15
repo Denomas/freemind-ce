@@ -66,8 +66,7 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 		associatedIcon = null;
 	}
 
-	/**
-     */
+
 	private MindIcon(String name, ImageIcon icon) {
 		setName(name);
 		associatedIcon = icon;
@@ -239,8 +238,7 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 		return icon;
 	}
 
-	/**
-     */
+
 	public static MindIcon factory(String iconName, ImageIcon icon) {
 		if (createdIcons.containsKey(iconName)) {
 			return (MindIcon) createdIcons.get(iconName);
@@ -272,8 +270,7 @@ public class MindIcon implements Comparable<MindIcon>, IconInformation {
 		return number;
 	}
 
-	/**
-     */
+
 	public JComponent getRendererComponent() {
 		if (component == null) {
 			component = new JLabel(getIcon());

@@ -62,12 +62,10 @@ public abstract class AbstractXmlAction extends MindmapAction {
 		return (String) getValue(Action.SHORT_DESCRIPTION);
 	}
 
-	/**
-	 */
+
 	protected abstract void xmlActionPerformed(ActionEvent arg0);
 
-	/**
-	 */
+
 	public MindMapController getMindMapController() {
 		return controller;
 	}
@@ -81,8 +79,7 @@ public abstract class AbstractXmlAction extends MindmapAction {
 		}
 	}
 
-	/**
-	 */
+
 	public ActorXml getActor() {
 		return actor;
 	}

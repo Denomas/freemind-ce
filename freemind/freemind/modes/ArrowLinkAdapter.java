@@ -28,13 +28,9 @@ import freemind.main.XMLElement;
 public abstract class ArrowLinkAdapter extends LinkAdapter implements
 		MindMapArrowLink {
 
-	/**
-	 *
-	 */
+
 	private static final String ARROW_DEFAULT_UP = "DEFAULT";
-	/**
-	 *
-	 */
+
 	private static final String ARROW_NONE_UC = "NONE";
 
 	/** the zero is the start point of the line; */

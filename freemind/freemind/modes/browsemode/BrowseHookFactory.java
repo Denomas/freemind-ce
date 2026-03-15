@@ -40,9 +40,7 @@ import freemind.modes.common.plugins.ReminderHookBase;
  */
 public class BrowseHookFactory extends HookFactoryAdapter {
 
-	/**
-	 *
-	 */
+
 	public BrowseHookFactory() {
 		super();
 	}

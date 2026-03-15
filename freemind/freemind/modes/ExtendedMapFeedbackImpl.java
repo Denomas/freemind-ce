@@ -32,7 +32,6 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /**
  * @author foltin
- * @date 21.02.2014
  */
 public final class ExtendedMapFeedbackImpl extends ExtendedMapFeedbackAdapter {
 	private MindMap mMap;

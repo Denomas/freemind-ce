@@ -242,7 +242,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 
 	/**
 	 * Sets the month. This is a bound property. Values are valid between 0
-	 * (January) and 11 (December). A value < 0 will be treated as 0, a value >
+	 * (January) and 11 (December). A value &lt; 0 will be treated as 0, a value &gt;
 	 * 11 will be treated as 11.
 	 *
 	 * @param newMonth

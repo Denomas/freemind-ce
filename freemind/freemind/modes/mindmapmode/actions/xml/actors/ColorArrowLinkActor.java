@@ -32,7 +32,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 01.04.2014
  */
 public class ColorArrowLinkActor extends XmlActorAdapter {
 
@@ -47,8 +46,7 @@ public class ColorArrowLinkActor extends XmlActorAdapter {
 		execute(getActionPair(arrowLink, color));
 	}
 
-	/**
-     */
+
 	private ActionPair getActionPair(MindMapLink arrowLink, Color color) {
 		return new ActionPair(createArrowLinkColorXmlAction(arrowLink, color),
 				createArrowLinkColorXmlAction(arrowLink, arrowLink.getColor()));

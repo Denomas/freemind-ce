@@ -33,9 +33,7 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
  */
 @SuppressWarnings("serial")
 public class NodeColorBlendAction extends NodeGeneralAction {
-	/**
-     *
-     */
+
 	public NodeColorBlendAction(final MindMapController modeController) {
 		super(modeController, "blend_color", null, new SingleNodeOperation() {
 

@@ -74,7 +74,6 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /**
  * @author foltin
- * @date 06.09.2012
  */
 @SuppressWarnings("serial")
 public class ClientCommunication extends CommunicationBase {
@@ -93,8 +92,6 @@ public class ClientCommunication extends CommunicationBase {
 	 * @param pClient
 	 * @param pController
 	 * @param pPassword
-	 * @param pOut
-	 * @param pIn
 	 * @throws IOException
 	 */
 	public ClientCommunication(String pName, Socket pClient,

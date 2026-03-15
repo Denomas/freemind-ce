@@ -40,8 +40,7 @@ import freemind.modes.mindmapmode.MindMapController;
 public class RemoveIconAction extends NodeGeneralAction implements
 		IconInformation {
 
-	/**
-     */
+
 	public RemoveIconAction(MindMapController modeController) {
 		super(modeController, "remove_last_icon", "images/remove.png");
 		setDoActionClass(RemoveIconXmlAction.class);

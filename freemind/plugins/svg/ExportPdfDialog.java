@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package plugins.svg;
 
 import java.awt.Dimension;

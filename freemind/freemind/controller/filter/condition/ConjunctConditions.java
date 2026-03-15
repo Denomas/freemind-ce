@@ -43,9 +43,7 @@ public class ConjunctConditions implements Condition {
 	static final String NAME = "conjunct_condition";
 	private Object[] conditions;
 
-	/**
-     *
-     */
+
 	public ConjunctConditions(Object[] conditions) {
 		this.conditions = conditions;
 	}

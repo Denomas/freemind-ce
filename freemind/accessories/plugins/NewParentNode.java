@@ -35,7 +35,7 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author foltin The original version was sent by Stephen Viles (sviles)
- *         https://sourceforge.net/tracker/?func=detail&atid=307118&aid=881217&
+ *         https://sourceforge.net/tracker/?func=detail&amp;atid=307118&amp;aid=881217&amp;
  *         group_id=7118
  *
  *         Initial Comment: The "New Parent Node" action creates a node as a
@@ -54,9 +54,7 @@ import freemind.view.mindmapview.MapView;
  */
 public class NewParentNode extends MindMapNodeHookAdapter {
 
-	/**
-	 *
-	 */
+
 	public NewParentNode() {
 		super();
 	}

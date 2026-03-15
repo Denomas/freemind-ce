@@ -43,9 +43,7 @@ public class DatabaseConnector extends DatabaseBasics {
 
 	private static final String HOST_PROPERTY = "plugins.collaboration.database.host";
 
-	/**
-     *
-     */
+
 
 	public void startupMapHook() {
 		super.startupMapHook();

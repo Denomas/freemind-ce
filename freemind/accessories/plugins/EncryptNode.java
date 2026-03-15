@@ -110,9 +110,7 @@ public class EncryptNode extends MindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-     *
-     */
+
 	public EncryptNode() {
 		super();
 	}
@@ -138,9 +136,7 @@ public class EncryptNode extends MindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-     *
-     */
+
 	private void newEncryptedMap() {
 		final StringBuffer password = getUsersPassword();
 		if (password == null) {
@@ -162,8 +158,7 @@ public class EncryptNode extends MindMapNodeHookAdapter {
 		mindmapcontroller.newMap(newModel, newModeController);
 	}
 
-	/**
-     */
+
 	private void encrypt(MindMapNode node) {
 		final StringBuffer password = getUsersPassword();
 		if (password == null) {
@@ -189,8 +184,7 @@ public class EncryptNode extends MindMapNodeHookAdapter {
 		mindmapcontroller.setNewNodeCreator(null);
 	}
 
-	/**
-     */
+
 	private StringBuffer getUsersPassword() {
 		// get password:
 		final EnterPasswordDialog pwdDialog = new EnterPasswordDialog(
@@ -205,8 +199,7 @@ public class EncryptNode extends MindMapNodeHookAdapter {
 		return password;
 	}
 
-	/**
-     */
+
 	private void toggleCryptState(MindMapNode node) {
 		final MindMapController mindMapController = getMindMapController();
 		if (node instanceof EncryptedMindMapNode) {
@@ -234,8 +227,7 @@ public class EncryptNode extends MindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-     */
+
 	private void doPasswordCheckAndDecryptNode(EncryptedMindMapNode encNode) {
 		while (true) {
 			// get password:

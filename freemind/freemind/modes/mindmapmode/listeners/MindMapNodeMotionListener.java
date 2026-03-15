@@ -168,8 +168,7 @@ public class MindMapNodeMotionListener extends NodeMotionAdapter {
 		}
 	}
 
-	/**
-     */
+
 	private NodeView getNodeView(MouseEvent e) {
 		return ((NodeMotionListenerView) e.getSource()).getMovedView();
 	}
@@ -217,8 +216,7 @@ public class MindMapNodeMotionListener extends NodeMotionAdapter {
 		stopDrag();
 	}
 
-	/**
-     */
+
 	private void resetPositions(MindMapNode node) {
 		node.getParentNode().setVGap(originalParentVGap);
 		node.setHGap(originalHGap);

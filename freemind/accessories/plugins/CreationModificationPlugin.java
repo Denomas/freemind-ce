@@ -37,9 +37,7 @@ public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter 
 
 	private String tooltipFormat;
 
-	/**
-	 *
-	 */
+
 	public CreationModificationPlugin() {
 		super();
 	}
@@ -63,9 +61,7 @@ public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter 
 		super.shutdownMapHook();
 	}
 
-	/**
-	 *
-	 */
+
 	private void removeToolTipRecursively(MindMapNode node) {
 		setToolTip(node, getName(), null);
 		for (Iterator<MindMapNode> i = node.childrenUnfolded(); i.hasNext();) {
@@ -114,8 +110,7 @@ public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter 
 		setStyleRecursive(node);
 	}
 
-	/**
-	 */
+
 	private void setStyleRecursive(MindMapNode node) {
 		logger.finest("setStyle " + node);
 		setStyle(node);

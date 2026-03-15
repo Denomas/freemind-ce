@@ -129,9 +129,7 @@ import freemind.view.mindmapview.NodeView;
  *
  */
 public class Tools {
-	/**
-	 *
-	 */
+
 	public static final String FREEMIND_LIB_FREEMIND_JAR = "lib/freemind.jar";
 
 	private static java.util.logging.Logger logger = null;
@@ -276,8 +274,7 @@ public class Tools {
 		return file;
 	}
 
-	/**
-     */
+
 	public static String[] getAvailableFonts() {
 		if (sEnvFonts == null) {
 			GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -704,8 +701,7 @@ public class Tools {
 			mAlgorithm = pAlgorithm;
 		}
 
-		/**
-		 */
+
 		private void init(byte[] mSalt) {
 			if (mSalt != null) {
 				this.salt = mSalt;
@@ -807,8 +803,7 @@ public class Tools {
 
 	}
 
-	/**
-     */
+
 	public static String toBase64(byte[] byteBuffer) {
 		return new String(Base64Coding.encode64(byteBuffer));
 	}
@@ -819,7 +814,6 @@ public class Tools {
 	}
 
 	/**
-	 * @throws IOException
 	 */
 	public static byte[] fromBase64(String base64String) {
 		return Base64Coding.decode64(base64String);
@@ -888,8 +882,7 @@ public class Tools {
 		return byteArrayToUTF8String(decompressedData);
 	}
 
-	/**
-     */
+
 	public static String byteArrayToUTF8String(byte[] compressedData) {
 		// Decode using utf-8
 		try {
@@ -899,8 +892,7 @@ public class Tools {
 		}
 	}
 
-	/**
-     */
+
 	public static byte[] uTF8StringToByteArray(String uncompressedData) {
 		// Code using utf-8
 		try {
@@ -1309,20 +1301,16 @@ public class Tools {
 
 	interface NameMnemonicHolder {
 
-		/**
-		 */
+
 		String getText();
 
-		/**
-		 */
+
 		void setText(String replaceAll);
 
-		/**
-		 */
+
 		void setMnemonic(char charAfterMnemoSign);
 
-		/**
-		 */
+
 		void setDisplayedMnemonicIndex(int mnemoSignIndex);
 
 	}
@@ -1481,8 +1469,8 @@ public class Tools {
 
 	/**
 	 * Ampersand indicates that the character after it is a mnemo, unless the
-	 * character is a space. In "Find & Replace", ampersand does not label
-	 * mnemo, while in "&About", mnemo is "Alt + A".
+	 * character is a space. In "Find &amp; Replace", ampersand does not label
+	 * mnemo, while in "&amp;About", mnemo is "Alt + A".
 	 */
 	public static void setLabelAndMnemonic(AbstractButton btn, String inLabel) {
 		setLabelAndMnemonic(new ButtonHolder(btn), inLabel);
@@ -1490,8 +1478,8 @@ public class Tools {
 
 	/**
 	 * Ampersand indicates that the character after it is a mnemo, unless the
-	 * character is a space. In "Find & Replace", ampersand does not label
-	 * mnemo, while in "&About", mnemo is "Alt + A".
+	 * character is a space. In "Find &amp; Replace", ampersand does not label
+	 * mnemo, while in "&amp;About", mnemo is "Alt + A".
 	 */
 	public static void setLabelAndMnemonic(Action action, String inLabel) {
 		setLabelAndMnemonic(new ActionHolder(action), inLabel);
@@ -1627,8 +1615,8 @@ public class Tools {
 	/**
 	 * Adapts the font size inside of a component to the zoom
 	 *
-	 * @param c
-	 *            component
+	 * @param font
+	 *            the font to update
 	 * @param zoom
 	 *            zoom factor
 	 * @param normalFontSize
@@ -1837,8 +1825,7 @@ public class Tools {
 						pNode.getParentNode(), pMindMapController)));
 	}
 
-	/**
-     */
+
 	public static Clipboard getClipboard() {
 		return Toolkit.getDefaultToolkit().getSystemClipboard();
 	}
@@ -1888,7 +1875,7 @@ public class Tools {
 	 * copied from HomePane.java 15 mai 2006
 	 *
 	 * Sweet Home 3D, Copyright (c) 2006 Emmanuel PUYBARET / eTeks
-	 * <info@eteks.com>
+	 * &lt;info@eteks.com&gt;
 	 *
 	 * - This listener manages accelerator keys that may require the use of
 	 * shift key depending on keyboard layout (like + - or ?)
@@ -1941,7 +1928,7 @@ public class Tools {
 	}
 
 	/**
-	 * @param pPageFormat
+	 * @param pPaper
 	 * @param pPageFormatProperty
 	 */
 	public static void setPageFormatFromString(Paper pPaper,
@@ -1978,7 +1965,7 @@ public class Tools {
 	}
 
 	/**
-	 * @param pPageFormat
+	 * @param pPaper
 	 * @return
 	 */
 	public static String getPageFormatAsString(Paper pPaper) {
@@ -2119,8 +2106,7 @@ public class Tools {
 		return buffer;
 	}
 
-	/**
-	 */
+
 	public static int edgeWidthStringToInt(String value) {
 		if (value == null) {
 			return EdgeAdapter.DEFAULT_WIDTH;

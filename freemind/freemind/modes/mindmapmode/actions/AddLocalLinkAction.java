@@ -41,8 +41,7 @@ public class AddLocalLinkAction extends MindmapAction {
 
 	private final MindMapController modeController;
 
-	/**
-     */
+
 	public AddLocalLinkAction(MindMapController modeController) {
 		super("paste_as_local_link", "images/stock_right.png", modeController);
 		this.modeController = modeController;

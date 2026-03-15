@@ -33,8 +33,7 @@ public interface ActorXml {
 
 	public void act(XmlAction action);
 
-	/**
-	 */
+
 	Class<?> getDoActionClass();
 
 }

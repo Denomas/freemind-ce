@@ -35,7 +35,6 @@ import javax.swing.RootPaneContainer;
  * Long running tasks inside FreeMind should derive from this class.
  *
  * @author foltin
- * @date 08.04.2013
  */
 public abstract class FreeMindTask extends Thread {
 

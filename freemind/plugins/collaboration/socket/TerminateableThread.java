@@ -24,7 +24,6 @@ package plugins.collaboration.socket;
 /**
  * Thread with termination methods.
  * @author foltin
- * @date 05.09.2012
  */
 public abstract class TerminateableThread extends Thread {
 
@@ -33,9 +32,7 @@ public abstract class TerminateableThread extends Thread {
 	protected static java.util.logging.Logger logger = null;
 	protected int mSleepTime;
 
-	/**
-	 *
-	 */
+
 	public TerminateableThread(String pName) {
 		super(pName);
 		if (logger == null) {

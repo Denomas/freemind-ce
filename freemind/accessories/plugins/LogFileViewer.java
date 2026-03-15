@@ -304,7 +304,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 	}
 
 	/**
-	 * @TODO: This is a bit dirty here, better would be to ask the resources class
+	 * TODO: This is a bit dirty here, better would be to ask the resources class
 	 * for the static logger, but this would result in too much new interfaces.
 	 */
 	protected LogFileLogHandler getBaseHandler() {
@@ -327,9 +327,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 		return mMyMindMapController;
 	}
 
-	/**
-	 *
-	 */
+
 	public void disposeDialog() {
 		mUpdateTextAreaThread.commitSuicide();
 		mUpdateTextAreaThread = null;
@@ -468,9 +466,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 			mSuicided = true;
 		}
 
-		/**
-		 *
-		 */
+
 		public void commitSuicide() {
 			mCommitSuicide  = true;
 			int timeout = 100;

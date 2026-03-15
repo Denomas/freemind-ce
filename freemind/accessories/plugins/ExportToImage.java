@@ -48,9 +48,7 @@ import freemind.extensions.ExportHook;
  */
 public class ExportToImage extends ExportHook {
 
-	/**
-	 *
-	 */
+
 	public ExportToImage() {
 		super();
 	}

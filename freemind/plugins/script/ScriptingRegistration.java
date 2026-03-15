@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package plugins.script;
 
 import java.io.File;

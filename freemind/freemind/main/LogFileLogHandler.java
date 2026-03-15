@@ -25,7 +25,6 @@ import java.util.logging.LogRecord;
 
 /**
  * @author foltin
- * @date 19.04.2012
  */
 public class LogFileLogHandler extends Handler {
 
@@ -35,9 +34,7 @@ public class LogFileLogHandler extends Handler {
 		void receiveLog(LogRecord pRecord);
 	}
 
-	/**
-	 *
-	 */
+
 	public LogFileLogHandler(LogReceiver pLogReceiver) {
 		mLogReceiver = pLogReceiver;
 	}

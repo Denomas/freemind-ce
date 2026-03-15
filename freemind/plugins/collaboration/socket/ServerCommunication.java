@@ -53,7 +53,6 @@ import freemind.modes.ExtendedMapFeedback;
  * is thus instantiated for each master (e.g. by the MindMapMaster).
  *
  * @author foltin
- * @date 13.09.2012
  */
 public class ServerCommunication extends CommunicationBase {
 	public static final String SERVER_VERSION = "2.1";

@@ -80,9 +80,7 @@ import freemind.main.Tools;
  */
 @SuppressWarnings("serial")
 public class ScriptEditorPanel extends JDialog implements MenuListener {
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 3221975191441136520L;
 
 	private static final String WINDOW_PREFERENCE_STORAGE_PROPERTY = "plugins.script.ScriptEditorPanel/window_positions";

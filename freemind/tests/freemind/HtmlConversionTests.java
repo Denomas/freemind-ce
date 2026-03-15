@@ -49,15 +49,12 @@ public class HtmlConversionTests extends FreeMindTestBase {
 
 	/**
 	 * @author foltin
-	 * @date 22.12.2014
 	 */
 	private final class HtmlTransfer implements Transferable {
 		private DataFlavor mFlavor;
 		private String mHtmlData;
 
-		/**
-		 *
-		 */
+
 		public HtmlTransfer(String pHtmlData) {
 			mHtmlData = pHtmlData;
 			try {
@@ -120,8 +117,7 @@ public class HtmlConversionTests extends FreeMindTestBase {
 		matchingTest("< /\n" + XMLElement.XML_NODE_XHTML_CONTENT_TAG + " >");
 	}
 
-	/**
-     */
+
 	private void matchingTest(String string) {
 		assertTrue(string
 				.matches(XMLElement.XML_NODE_XHTML_CONTENT_END_TAG_REGEXP));

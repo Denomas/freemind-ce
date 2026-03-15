@@ -28,9 +28,7 @@ import freemind.modes.mindmapmode.MindMapController;
 @SuppressWarnings("serial")
 public class SelectBranchAction extends MindmapAction {
 
-	/**
-     *
-     */
+
 	public SelectBranchAction(final MindMapController modeController) {
 		super("select_branch", (String) null, modeController);
 	}

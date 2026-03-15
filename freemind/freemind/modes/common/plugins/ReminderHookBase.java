@@ -66,9 +66,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 
 	// private Vector dateVector = new Vector();
 
-	/**
-	 *
-	 */
+
 	public ReminderHookBase() {
 		super();
 	}
@@ -117,8 +115,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 		logger.info("Invoke for node: " + node.getObjectId(getController()));
 	}
 
-	/**
-	 */
+
 	private void scheduleTimer() {
 		timer = new Timer(getRemindUserAtAsSecondsFromNow(),
 				new TimerBlinkTask(false));
@@ -152,8 +149,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 
 	public class TimerBlinkTask implements ActionListener {
 
-		/**
-		 */
+
 		public TimerBlinkTask(boolean stateAdded) {
 			super();
 			this.stateAdded = stateAdded;

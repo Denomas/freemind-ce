@@ -80,8 +80,7 @@ public class TimeManagementOrganizer implements HookRegistration,
 		return true;
 	}
 
-	/**
-	 */
+
 	public static ReminderHookBase getHook(MindMapNode node) {
 		for (PermanentNodeHook element : node.getActivatedHooks()) {
 			if (element instanceof ReminderHookBase) {

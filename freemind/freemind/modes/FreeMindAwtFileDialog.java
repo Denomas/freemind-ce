@@ -36,7 +36,6 @@ import javax.xml.transform.stream.StreamResult;
 /**
  * File Chooser for Mac
  * @author foltin
- * @date 23.02.2012
  */
 @SuppressWarnings("serial")
 public class FreeMindAwtFileDialog extends FileDialog implements
@@ -113,12 +112,9 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 
 	/**
 	 * @author foltin
-	 * @date 27.02.2012
 	 */
 	private final class FreeMindFilenameFilter implements FilenameFilter {
-		/**
-		 *
-		 */
+
 		private FileFilter mCustomFilter = new NullFilter();
 		/**
 		 * Filter for dirs, files or both.
@@ -145,9 +141,7 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	public FreeMindAwtFileDialog() {
 		super((Frame) null);
 		if (logger == null) {

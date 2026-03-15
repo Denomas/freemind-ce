@@ -40,7 +40,6 @@ public class MindMapLinkRegistry {
 	 * structure, but reversed.
 	 *
 	 * @author foltin
-	 * @date 23.01.2012
 	 */
 	@SuppressWarnings("serial")
 	private class SynchronousVector extends Vector<MindMapLink> {

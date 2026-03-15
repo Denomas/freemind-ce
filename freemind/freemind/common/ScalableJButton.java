@@ -27,8 +27,7 @@ import javax.swing.JButton;
 
 /**
  * @author foltin
- * @date 19.06.2015
- * @see http://stackoverflow.com/questions/8183949/swing-scale-a-text-font-of-component
+ * @see <a href="http://stackoverflow.com/questions/8183949/swing-scale-a-text-font-of-component">Swing scale a text font of component</a>
  */
 public class ScalableJButton extends JButton implements ComponentListener {
 	protected static java.util.logging.Logger logger = null;

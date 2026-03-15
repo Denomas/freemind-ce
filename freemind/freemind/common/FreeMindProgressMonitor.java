@@ -40,23 +40,18 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * @date 01.04.2013
  */
 @SuppressWarnings("serial")
 public class FreeMindProgressMonitor extends JDialog {
 
-	/**
-	 *
-	 */
+
 	private static final String PROGRESS_MONITOR_WINDOW_CONFIGURATION_STORAGE = "progress_monitor_window_configuration_storage";
 	private JLabel mLabel;
 	private JProgressBar mProgressBar;
 	private JButton mCancelButton;
 	protected boolean mCanceled = false;
 
-	/**
-	 *
-	 */
+
 	public FreeMindProgressMonitor(String pTitle) {
 		setTitle(getString(pTitle));
 		mLabel = new JLabel("!");

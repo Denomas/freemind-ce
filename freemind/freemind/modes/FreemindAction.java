@@ -31,7 +31,6 @@ import freemind.controller.MenuItemEnabledListener;
  * Common class for all actions that are disabled, when no map is open.
  *
  * @author foltin
- * @date 22.10.2013
  */
 @SuppressWarnings("serial")
 public abstract class FreemindAction extends AbstractAction implements MenuItemEnabledListener{

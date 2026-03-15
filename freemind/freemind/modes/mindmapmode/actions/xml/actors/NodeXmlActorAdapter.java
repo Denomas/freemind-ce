@@ -25,7 +25,6 @@ import freemind.modes.mindmapmode.actions.NodeActorXml;
 
 /**
  * @author foltin
- * @date 16.03.2014
  */
 public abstract class NodeXmlActorAdapter extends XmlActorAdapter implements NodeActorXml {
 

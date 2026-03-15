@@ -36,7 +36,6 @@ import freemind.modes.MindMapNode;
  * Thus, it doesn't know much about its position.
  *
  * @author foltin
- * @date 16.08.2012
  */
 public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 
@@ -77,9 +76,7 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 				(enabled) ? getMapLocationIcon() : null);
 	}
 
-	/**
-	 *
-	 */
+
 	public MapNodePositionHolderBase() {
 		super();
 	}
@@ -141,9 +138,7 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 		return imageHtml;
 	}
 
-	/**
-	 *
-	 */
+
 	protected void hideTooltip() {
 		setToolTip(NODE_MAP_HOOK_NAME, null);
 	}

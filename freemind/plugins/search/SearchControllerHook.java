@@ -44,8 +44,7 @@ import freemind.view.MapModule;
 public class SearchControllerHook extends MindMapHookAdapter implements
 		ISearchController {
 
-	/**
-	 */
+
 	public SearchControllerHook() {
 		super();
 		if (logger == null) {
@@ -58,9 +57,7 @@ public class SearchControllerHook extends MindMapHookAdapter implements
 		return getController().getFrame().getLogger(className.getName());
 	}
 
-	/**
-	 *
-	 */
+
 	/* (non-Javadoc)
 	 * @see freemind.extensions.HookAdapter#startupMapHook()
 	 */

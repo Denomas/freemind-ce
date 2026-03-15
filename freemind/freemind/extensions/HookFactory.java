@@ -71,8 +71,7 @@ public interface HookFactory {
 	 */
 	public abstract List<String> getHookMenuPositions(String hookName);
 
-	/**
-	 */
+
 	public abstract HookInstanciationMethod getInstanciationMethod(
 			String hookName);
 

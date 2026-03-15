@@ -30,8 +30,7 @@ import freemind.modes.mindmapmode.MindMapController;
 @SuppressWarnings("serial")
 public class StrikethroughAction extends NodeGeneralAction implements
 		MenuItemSelectedListener {
-	/**
-	 */
+
 	public StrikethroughAction(MindMapController modeController) {
 		super(modeController, "Strikethrough", "images/format-text-strikethrough.png");
 		setDoActionClass(StrikethroughNodeAction.class);

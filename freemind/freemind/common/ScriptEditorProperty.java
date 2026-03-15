@@ -54,8 +54,7 @@ public class ScriptEditorProperty extends PropertyBean implements
 
 	private static java.util.logging.Logger logger = null;
 
-	/**
-	 */
+
 	public ScriptEditorProperty(String description, String label,
 			MindMapController pMindMapController) {
 		super();
@@ -107,8 +106,7 @@ public class ScriptEditorProperty extends PropertyBean implements
 		}
 	}
 
-	/**
-	 */
+
 	private void setScriptValue(String result) {
 		if (result == null) {
 			result = "";

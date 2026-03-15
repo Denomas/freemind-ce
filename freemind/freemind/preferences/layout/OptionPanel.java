@@ -123,7 +123,6 @@ public class OptionPanel implements TextTranslator {
 	private Vector<KeyBinding> allBindings;
 
 	/**
-	 * @throws IOException
 	 *
 	 */
 	public OptionPanel(FreeMind fm, JDialog frame, OptionPanelFeedback feedback) {
@@ -149,8 +148,7 @@ public class OptionPanel implements TextTranslator {
 		void writeProperties(Properties props);
 	}
 
-	/**
-	 */
+
 	public void setProperties() {
 		for (Iterator<PropertyControl> i = controls.iterator(); i.hasNext();) {
 			PropertyControl control = i.next();
@@ -253,8 +251,7 @@ public class OptionPanel implements TextTranslator {
 				BorderLayout.SOUTH);
 	}
 
-	/**
-	 */
+
 	public String getText(String string) {
 		if (string == null)
 			return null;
@@ -268,8 +265,7 @@ public class OptionPanel implements TextTranslator {
 		}
 	}
 
-	/**
-	 */
+
 	private void registerTabButton(JButton tabButton, String name,
 			ChangeTabAction changeTabAction) {
 		tabButtonMap.put(name, tabButton);
@@ -363,8 +359,7 @@ public class OptionPanel implements TextTranslator {
 		private RowSpec rowSpec;
 		GrabKeyDialog.KeyBinding kb;
 
-		/**
-		 */
+
 		public KeyProperty(final JDialog frame, String description, String label) {
 			super();
 			this.description = description;

@@ -43,16 +43,13 @@ import freemind.view.mindmapview.ViewFeedback;
 
 /**
  * @author foltin
- * @date 07.02.2014
  */
 public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	private HashMap<String, Font> fontMap = new HashMap<String, Font>();
 	protected static java.util.logging.Logger logger = null;
 
-	/**
-	 *
-	 */
+
 	public MapFeedbackAdapter() {
 		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(

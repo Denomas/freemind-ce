@@ -364,9 +364,7 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 
 	private static Patterns patterns = null;
 
-	/**
-     *
-     */
+
 	public AutomaticLayout() {
 		super();
 
@@ -446,8 +444,7 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-     */
+
 	private void setStyleRecursive(MindMapNode node) {
 		logger.finest("setStyle " + node);
 		setStyle(node);

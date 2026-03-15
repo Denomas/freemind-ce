@@ -45,11 +45,9 @@ public class FileSearchModel {
 
 	/**
 	 *
-	 * @param querystring
+	 * @param q
 	 * @param hitsPerPage
 	 * @param searcher
-	 * @param q
-	 * @param index
 	 * @return
 	 * @throws ParseException
 	 * @throws IOException

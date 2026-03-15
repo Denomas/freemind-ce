@@ -438,8 +438,7 @@ public class FindAction extends FreemindAction {
 		return false;
 	}
 
-	/**
-	 */
+
 	private void centerNode(MindMapNode node) {
 		// Select the node and scroll to it.
 		controller.centerNode(node);

@@ -72,8 +72,7 @@ public class ThreeCheckBoxProperty extends PropertyBean implements
 
 	JButton mButton = new JButton();
 
-	/**
-     */
+
 	public ThreeCheckBoxProperty(String description, String label) {
 		super();
 		this.description = description;
@@ -148,9 +147,7 @@ public class ThreeCheckBoxProperty extends PropertyBean implements
 		mButton.setEnabled(pEnabled);
 	}
 
-	/**
-     *
-     */
+
 	protected void setState(int newState) {
 		state = newState;
 		Icon[] icons;

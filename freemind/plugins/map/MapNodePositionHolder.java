@@ -37,12 +37,9 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * @date 27.10.2011
  */
 public class MapNodePositionHolder extends MapNodePositionHolderBase {
-	/**
-	 *
-	 */
+
 	private static final String MAP_LOCATION = "map_location";
 	private Coordinate mPosition = new Coordinate(0, 0);
 	private Coordinate mMapCenter = new Coordinate(0, 0);

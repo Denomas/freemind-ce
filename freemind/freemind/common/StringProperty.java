@@ -37,8 +37,7 @@ public class StringProperty extends PropertyBean implements PropertyControl {
 
 	JTextField mTextField;
 
-	/**
-	 */
+
 	public StringProperty(String description, String label) {
 		super();
 		initializeTextfield();

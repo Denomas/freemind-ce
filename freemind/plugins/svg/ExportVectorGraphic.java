@@ -59,8 +59,7 @@ import freemind.view.mindmapview.NodeView;
  */
 public class ExportVectorGraphic extends ExportHook {
 
-	/**
-	 */
+
 	protected SVGGraphics2D fillSVGGraphics2D(MapView view) {
 		// NodeAdapter root = (NodeAdapter) getController().getMap().getRoot();
 		SVGGraphics2D g2d = createSvgGraphics2D();

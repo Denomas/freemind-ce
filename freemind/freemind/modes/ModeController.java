@@ -211,7 +211,7 @@ public interface ModeController extends TextTranslator, MapFeedback,
 		void onFocusNode(NodeView node);
 
 		/**
-		 * Is sent when a node has lost its focus (see {@link onSelectHook()}).
+		 * Is sent when a node has lost its focus (see {@link #onFocusNode(NodeView)}).
 		 */
 		void onLostFocusNode(NodeView node);
 

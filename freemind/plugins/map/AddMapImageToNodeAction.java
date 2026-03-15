@@ -27,7 +27,6 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * @date 14.12.2011
  */
 public class AddMapImageToNodeAction extends MindMapNodeHookAdapter {
 

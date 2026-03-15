@@ -31,7 +31,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 26.03.2014
  */
 public class EdgeStyleActor extends XmlActorAdapter {
 

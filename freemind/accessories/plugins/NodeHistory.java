@@ -198,9 +198,7 @@ public class NodeHistory extends MindMapNodeHookAdapter {
 
 	}
 
-	/**
-	 *
-	 */
+
 	public NodeHistory() {
 		super();
 	}

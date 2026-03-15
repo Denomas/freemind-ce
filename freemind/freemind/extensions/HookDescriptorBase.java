@@ -51,7 +51,6 @@ public class HookDescriptorBase {
 
 	/**
 	 * @param pluginBase
-	 * @param frame
 	 * @param xmlPluginFile
 	 */
 	public HookDescriptorBase(final Plugin pluginBase,
@@ -65,8 +64,7 @@ public class HookDescriptorBase {
 		}
 	}
 
-	/**
-	 */
+
 	protected String getFromResourceIfNecessary(String string) {
 		if (string == null) {
 			return string;

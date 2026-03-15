@@ -32,8 +32,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class JCondition extends JPanel {
 
-	/**
-     */
+
 	public JCondition() {
 		super();
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));

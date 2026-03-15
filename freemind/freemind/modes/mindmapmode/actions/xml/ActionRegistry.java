@@ -50,9 +50,7 @@ public class ActionRegistry {
 	private UndoActionHandler undoActionHandler;
 	private static java.util.logging.Logger logger = null;
 
-	/**
-	 *
-	 */
+
 	public ActionRegistry() {
 		super();
 		if (logger == null) {
@@ -177,14 +175,12 @@ public class ActionRegistry {
 		return returnValue;
 	}
 
-	/**
-	 */
+
 	public void registerActor(ActorXml actor, Class<?> action) {
 		registeredActors.put(action, actor);
 	}
 
-	/**
-	 */
+
 	public void deregisterActor(Class<?> action) {
 		registeredActors.remove(action);
 	}

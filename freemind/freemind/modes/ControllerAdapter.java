@@ -210,8 +210,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 
 	}
 
-	/**
-	 */
+
 	public void nodeStructureChanged(MindMapNode node) {
 		getMap().nodeStructureChanged(node);
 	}
@@ -405,8 +404,8 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 	}
 
 	/**
+	 * @param url
 	 * @param model
-	 * @param pFile
 	 * @throws URISyntaxException
 	 * @throws IOException
 	 * @throws XMLParseException
@@ -1357,8 +1356,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 		return forNodesFlavor;
 	}
 
-	/**
-     */
+
 	public Color getSelectionColor() {
 		return selectionColor;
 	}
@@ -1373,9 +1371,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 
 	}
 
-	/**
-     *
-     */
+
 
 	public void shutdownController() {
 		setAllActions(false);
@@ -1543,7 +1539,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 
 
 	/**
-	 * @throws {@link IllegalArgumentException} when node isn't found.
+	 * @throws IllegalArgumentException when node isn't found.
 	 */
 	@Override
 	public NodeAdapter getNodeFromID(String nodeID) {

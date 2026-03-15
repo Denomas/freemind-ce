@@ -170,13 +170,10 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/**
 	 * @author foltin
-	 * @date 25.04.2012
 	 */
 	public final class ResultTableModel extends AbstractTableModel implements
 			CursorPositionListener {
-		/**
-		 *
-		 */
+
 		private final String[] COLUMNS = new String[] {
 				SEARCH_DESCRIPTION_COLUMN_TEXT, SEARCH_DISTANCE_COLUMN_TEXT };
 		Vector<Place> mData = new Vector<>();
@@ -286,9 +283,7 @@ public class MapDialog extends MindMapHookAdapter implements
 			return null;
 		}
 
-		/**
-		 *
-		 */
+
 		public void clear() {
 			// clear old search results:
 			for (Place place : mMapSearchMarkerLocationHash.keySet()) {
@@ -681,9 +676,7 @@ public class MapDialog extends MindMapHookAdapter implements
 		return map.getFreeMindMapController();
 	}
 
-	/**
-	 *
-	 */
+
 	public void disposeDialog() {
 		Registration registration = (Registration) getPluginBaseClass();
 		if (registration != null) {
@@ -923,7 +916,7 @@ public class MapDialog extends MindMapHookAdapter implements
 	}
 
 	/**
-	 * @return < MapNodePositionHolder, MapMarkerLocation > of those nodes
+	 * @return a map of MapNodePositionHolder to MapMarkerLocation of those nodes
 	 *         currently displayed (ie. not hidden)
 	 */
 	public Map<MapNodePositionHolder, MapMarkerLocation> getMarkerMap() {
@@ -999,9 +992,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	}
 
-	/**
-	 *
-	 */
+
 	public void setSingleSearch() {
 		mSingleSearch = true;
 
@@ -1014,9 +1005,7 @@ public class MapDialog extends MindMapHookAdapter implements
 		return mLimitSearchToRegion;
 	}
 
-	/**
-	 *
-	 */
+
 	public void toggleLimitSearchToRegion() {
 		mLimitSearchToRegion = !mLimitSearchToRegion;
 		if (mLimitSearchToRegion) {

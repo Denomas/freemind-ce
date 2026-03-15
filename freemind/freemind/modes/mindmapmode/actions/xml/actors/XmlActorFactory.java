@@ -26,7 +26,6 @@ import freemind.modes.ExtendedMapFeedback;
  * Creates all XmlActors needed for the MindMapController
  *
  * @author foltin
- * @date 16.03.2014
  */
 public class XmlActorFactory {
 

@@ -67,8 +67,7 @@ public class UndoAction extends AbstractXmlAction {
 		isUndoAction = false;
 	}
 
-	/**
-     */
+
 	public boolean isUndoAction() {
 		return isUndoAction;
 	}
@@ -93,8 +92,7 @@ public class UndoAction extends AbstractXmlAction {
 		}
 	}
 
-	/**
-     */
+
 	protected void informUndoPartner(ActionPair pair) {
 		this.controller.redo.add(pair.reverse());
 		this.controller.redo.setEnabled(true);

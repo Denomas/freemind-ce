@@ -69,9 +69,7 @@ public class HtmlTools {
 
 	public static final String SP = "&#160;";
 
-	/**
-     *
-     */
+
 	private HtmlTools() {
 		super();
 		logger = Resources.getInstance().getLogger(HtmlTools.class.getName());
@@ -308,14 +306,14 @@ public class HtmlTools {
 	}
 
 	/**
-	 * Searches for <html> tag in text.
+	 * Searches for {@code <html>} tag in text.
      */
 	public static boolean isHtmlNode(String text) {
 		return HTML_PATTERN.matcher(text.toLowerCase(Locale.ENGLISH)).matches();
 	}
 
 	/**
-	 * Changes all unicode characters into &#xxx values.
+	 * Changes all unicode characters into {@code &#xxx;} values.
 	 * Opposite to {@link HtmlTools#unescapeHTMLUnicodeEntity(String)}
 	 */
 	public static String unicodeToHTMLUnicodeEntity(String text, boolean pPreserveNewlines) {
@@ -407,7 +405,7 @@ public class HtmlTools {
 	}
 
 	/**
-	 * Removes all tags (<..>) from a string if it starts with "<html>..." to
+	 * Removes all tags ({@code <..>}) from a string if it starts with "{@code <html>}..." to
 	 * make it compareable.
 	 */
 	public static String removeHtmlTagsFromString(String text) {
@@ -619,7 +617,7 @@ public class HtmlTools {
 	 * Determines whether the character is valid in XML. Invalid characters
 	 * include most of the range x00-x1F, and more.
 	 *
-	 * @see http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char.
+	 * @see <a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">XML Character Reference</a>
 	 */
 	public static boolean isXMLValidCharacter(char character) {
 		// Order the tests in such a sequence that the most probable
@@ -749,7 +747,6 @@ public class HtmlTools {
 
 	/**
 	 * @author foltin
-	 * @date 10.12.2014
 	 */
 	private final class HtmlNodeVisitor implements NodeVisitor {
 		boolean isNewline = true;

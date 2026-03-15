@@ -380,8 +380,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 
 	}
 
-	/**
-	 */
+
 	private JPanel getTimePanel() {
 		if (timePanel == null) {
 			timePanel = new JPanel();
@@ -493,9 +492,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 				properties);
 	}
 
-	/**
-	 *
-	 */
+
 	private void disposeDialog() {
 		try {
 			WindowConfigurationStorage storage = new WindowConfigurationStorage();
@@ -516,8 +513,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 		}
 	}
 
-	/**
-	 */
+
 	private Date getCalendarDate() {
 		Calendar cal = getCalendar();
 		try {
@@ -569,9 +565,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 		return mController;
 	}
 
-	/**
-	 *
-	 */
+
 	private void requestFocusForDay() {
 		calendar.getDayChooser().getSelectedDay().requestFocus();
 	}

@@ -35,7 +35,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 10.04.2014
  */
 public class ToggleFoldedActor extends XmlActorAdapter {
 
@@ -128,8 +127,7 @@ public class ToggleFoldedActor extends XmlActorAdapter {
 		return FoldAction.class;
 	}
 
-	/**
-	 */
+
 	public void setFolded(MindMapNode node, boolean folded) {
 		FoldAction doAction = createSingleFoldAction(folded, node, false);
 		FoldAction undoAction = createSingleFoldAction(!folded, node, true);

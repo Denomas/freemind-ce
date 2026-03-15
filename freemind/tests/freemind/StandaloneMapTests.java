@@ -45,12 +45,9 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /**
  * @author foltin
- * @date 16.03.2014
  */
 public class StandaloneMapTests extends FreeMindTestBase {
-	/**
-	 *
-	 */
+
 	private static final String INITIAL_MAP = "<map>" + "<node TEXT='ROOT'>"
 			+ "<node TEXT='FormatMe'>"
 			+ "<node TEXT='Child1'/>"

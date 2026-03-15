@@ -43,9 +43,7 @@ public class ConditionNotSatisfiedDecorator implements Condition {
 	static final String NAME = "negate_condition";
 	private Condition originalCondition;
 
-	/**
-     *
-     */
+
 	public ConditionNotSatisfiedDecorator(Condition originalCondition) {
 		super();
 		this.originalCondition = originalCondition;

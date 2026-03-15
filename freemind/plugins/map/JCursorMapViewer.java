@@ -51,7 +51,6 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * @date 24.10.2011
  */
 @SuppressWarnings("serial")
 final class JCursorMapViewer extends JMapViewer {

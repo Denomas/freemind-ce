@@ -30,7 +30,6 @@ import javax.swing.filechooser.FileFilter;
 /**
  * File Chooser for OS windows and linux (without Mac)
  * @author foltin
- * @date 23.02.2012
  */
 @SuppressWarnings("serial")
 public class FreeMindJFileDialog extends JFileChooser implements FreeMindFileDialog  {

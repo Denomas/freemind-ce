@@ -428,9 +428,7 @@ public class TimeList extends MindMapHookAdapter implements
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	protected void toggleViewFoldedNodes() {
 		mViewFoldedNodes = ! mViewFoldedNodes;
 		updateModel();
@@ -467,7 +465,6 @@ public class TimeList extends MindMapHookAdapter implements
 
 	/**
 	 * @author foltin
-	 * @date 25.04.2012
 	 */
 	private final class MindmapTableModel extends DefaultTableModel {
 		/*
@@ -496,7 +493,6 @@ public class TimeList extends MindMapHookAdapter implements
 
 	/**
 	 * @author foltin
-	 * @date 25.04.2012
 	 */
 	private final class ToggleViewFoldedNodesAction extends AbstractAction implements MenuItemSelectedListener {
 		/**
@@ -612,8 +608,7 @@ public class TimeList extends MindMapHookAdapter implements
 		}
 	}
 
-	/**
-     */
+
 	private MindMapNode getMindMapNode(int focussedRow) {
 		MindMapNode selectedNode = ((NodeHolder) mTimeTable.getModel()
 				.getValueAt(focussedRow, NODE_TEXT_COLUMN)).node;
@@ -684,9 +679,7 @@ public class TimeList extends MindMapHookAdapter implements
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	private void disposeDialog() {
 		// store window positions:
 
@@ -925,9 +918,7 @@ public class TimeList extends MindMapHookAdapter implements
 		 */
 		private String originalNodeText = null;
 
-		/**
-		 *
-		 */
+
 		public NodeHolder(MindMapNode node) {
 			this.node = node;
 		}
@@ -968,9 +959,7 @@ public class TimeList extends MindMapHookAdapter implements
 		private String untaggedNotesText = null;
 		private String originalNotesText = null;
 
-		/**
-		 *
-		 */
+
 		public NotesHolder(MindMapNode node) {
 			this.node = node;
 		}
