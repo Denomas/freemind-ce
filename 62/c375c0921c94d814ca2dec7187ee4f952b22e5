@@ -1,0 +1,25 @@
+freemind/freemind/main/FreeMind.java
+  7843d3304d80a742 694,698
+freemind/plugins/script/ScriptEditorPanel.java
+  7843d3304d80a742 517
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "62c375c0921c94d814ca2dec7187ee4f952b22e5",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
