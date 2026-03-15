@@ -1,0 +1,31 @@
+freemind/plugins/script/ScriptEditorPanel.java
+  7843d3304d80a742 35,128
+freemind/freemind/main/LoggingOutputStream.java
+  7843d3304d80a742 5,48
+freemind/freemind/modes/FreeMindAwtFileDialog.java
+  7843d3304d80a742 31,303
+freemind/plugins/script/SignedScriptHandler.java
+  7843d3304d80a742 30,157,198,212,220-221
+freemind/freemind/controller/MindMapNodesSelection.java
+  7843d3304d80a742 31,105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "e6fa306225d67a6fb28ed06b768180c8c398f5c5",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 18,
+      "total_deletions": 13,
+      "accepted_lines": 14,
+      "overriden_lines": 0
+    }
+  }
+}
