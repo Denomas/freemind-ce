@@ -319,7 +319,7 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 			}
 			if (cloneSet.isEmpty()) {
 				// remove entire clone
-				mCloneIdsMap.remove(cloneSet);
+				mCloneIdsMap.remove(pCloneId);
 				mClonePropertiesMap.remove(pCloneId);
 			}
 		}

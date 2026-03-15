@@ -73,8 +73,7 @@ public class AttributeExistsCondition extends NodeCondition {
 	}
 
 	protected String createDesctiption() {
-		final String simpleCondition = Resources.getInstance()
-				.getResourceString(ConditionFactory.FILTER_EXIST);
+		final String simpleCondition = ConditionFactory.FILTER_EXIST.toString();
 		return ConditionFactory.createDescription(attribute, simpleCondition,
 				null, false);
 	}

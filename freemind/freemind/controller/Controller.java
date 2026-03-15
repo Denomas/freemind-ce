@@ -1296,8 +1296,12 @@ public class Controller implements MapModuleChangeObserver {
 				// if the current language does not provide its own translation,
 				// POSTFIX_TRANSLATE_ME is appended:
 				map = Tools.removeTranslateComment(map);
+				if (map == null) {
+					logger.warning("browsemode_initial_map resource not configured");
+					return;
+				}
 				URL url = null;
-				if (map != null && map.startsWith(".")) {
+				if (map.startsWith(".")) {
 					url = localDocumentationLinkConverter.convertLocalLink(map);
 				} else {
 					url = Tools.fileToUrl(new File(map));
@@ -1338,9 +1342,13 @@ public class Controller implements MapModuleChangeObserver {
 			// if the current language does not provide its own translation,
 			// POSTFIX_TRANSLATE_ME is appended:
 			urlText = Tools.removeTranslateComment(urlText);
+			if (urlText == null) {
+				logger.warning("pdfKeyDocLocation resource not configured");
+				return;
+			}
 			try {
 				URL url = null;
-				if (urlText != null && urlText.startsWith(".")) {
+				if (urlText.startsWith(".")) {
 					url = localDocumentationLinkConverter
 							.convertLocalLink(urlText);
 				} else {

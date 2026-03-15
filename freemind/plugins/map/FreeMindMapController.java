@@ -2181,7 +2181,7 @@ public class FreeMindMapController extends JMapController implements
 							// Try reverse lookup:
 							Reversegeocode reverseLookup = getReverseLookup(
 									new Coordinate(lat, lon), map.getZoom());
-							if (reverseLookup.getListResultList().size() > 0) {
+							if (reverseLookup != null && reverseLookup.getListResultList().size() > 0) {
 								place.setDisplayName(reverseLookup.getResult(0).getContent());
 							}
 						} catch (Exception e) {

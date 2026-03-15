@@ -38,8 +38,8 @@ public class ConditionFactory {
 	static final NamedObject FILTER_NODE= Resources.getInstance().createTranslatedString("filter_node");
 	static final NamedObject FILTER_ICON = Resources.getInstance().createTranslatedString("filter_icon");
 
-	static final String FILTER_DOES_NOT_EXIST = "filter_does_not_exist";
-	static final String FILTER_EXIST = "filter_exist";
+	static final NamedObject FILTER_DOES_NOT_EXIST = Resources.getInstance().createTranslatedString("filter_does_not_exist");
+	static final NamedObject FILTER_EXIST = Resources.getInstance().createTranslatedString("filter_exist");
 	static final NamedObject FILTER_CONTAINS = Resources.getInstance().createTranslatedString("filter_contains");
 	static final NamedObject FILTER_NOT_CONTAINS = Resources.getInstance().createTranslatedString("filter_not_contains") ;
 	static final NamedObject FILTER_IS_NOT_EQUAL_TO = Resources.getInstance().createTranslatedString("filter_is_not_equal_to") ;
@@ -177,8 +177,8 @@ public class ConditionFactory {
 	}
 
 	public NamedObject[] getAttributeConditionNames() {
-		return new NamedObject[] { Resources.getInstance().createTranslatedString(FILTER_EXIST),
-				Resources.getInstance().createTranslatedString(FILTER_DOES_NOT_EXIST), FILTER_IS_EQUAL_TO,
+		return new NamedObject[] { FILTER_EXIST,
+				FILTER_DOES_NOT_EXIST, FILTER_IS_EQUAL_TO,
 				FILTER_IS_NOT_EQUAL_TO, FILTER_GT, FILTER_GE, FILTER_LE, FILTER_LT, };
 	}
 
