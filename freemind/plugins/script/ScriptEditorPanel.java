@@ -32,6 +32,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -124,7 +125,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 		public void write(final byte[] pB) throws IOException {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
-					mScriptResultField.append(new String(pB));
+					mScriptResultField.append(new String(pB, StandardCharsets.UTF_8));
 				}
 			});
 		}

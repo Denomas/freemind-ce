@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
@@ -299,7 +300,7 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 		selectedFile = dialog.getSelectedFile();
 		System.out.println("Dir '" + dialog.getDirectory() + "', File: '" + dialog.getFile() + "', selected File: '" + selectedFile + "'" );
 		StreamResult streamResult = new StreamResult(new FileOutputStream(selectedFile));
-		streamResult.getOutputStream().write("bla".getBytes());
+		streamResult.getOutputStream().write("bla".getBytes(StandardCharsets.UTF_8));
 		streamResult.getOutputStream().close();
 		System.out.println("File exists: " + selectedFile.exists());
 	}

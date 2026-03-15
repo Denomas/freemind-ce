@@ -27,6 +27,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.Signature;
@@ -153,7 +154,7 @@ public class SignedScriptHandler {
 				keyName = content.mKeyName;
 			}
 			instance.initSign((PrivateKey) mKeyStore.getKey(keyName, password));
-			instance.update(content.mScript.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+			instance.update(content.mScript.getBytes(StandardCharsets.UTF_8));
 			byte[] signature = instance.sign();
 			content.mSignature = Tools.toBase64(signature);
 			// System.out.println("Signed: " +content);
@@ -194,7 +195,7 @@ public class SignedScriptHandler {
 							+ "\n-----END CERTIFICATE-----\n";
 					CertificateFactory cf = CertificateFactory
 							.getInstance("X.509");
-					Collection<? extends Certificate> c = cf.generateCertificates(new ByteArrayInputStream(cer.getBytes()));
+					Collection<? extends Certificate> c = cf.generateCertificates(new ByteArrayInputStream(cer.getBytes(StandardCharsets.UTF_8)));
 					Iterator<? extends Certificate> i = c.iterator();
 					if (i.hasNext()) {
 						Certificate cert = i.next();
@@ -208,7 +209,7 @@ public class SignedScriptHandler {
 					instanceVerify.initVerify(mKeyStore
 							.getCertificate(content.mKeyName));
 				}
-				instanceVerify.update(content.mScript.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+				instanceVerify.update(content.mScript.getBytes(StandardCharsets.UTF_8));
 				boolean verify = instanceVerify.verify(Tools
 						.fromBase64(content.mSignature));
 				// System.out.println("Signature result: " + verify);
@@ -216,8 +217,8 @@ public class SignedScriptHandler {
 			} catch (Exception e) {
 				Resources.getInstance().logException(e);
 				try {
-					pOutStream.write(e.toString().getBytes());
-					pOutStream.write("\n".getBytes());
+					pOutStream.write(e.toString().getBytes(StandardCharsets.UTF_8));
+					pOutStream.write("\n".getBytes(StandardCharsets.UTF_8));
 				} catch (Exception e1) {
 					Resources.getInstance().logException(e1);
 				}

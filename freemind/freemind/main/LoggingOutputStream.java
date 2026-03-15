@@ -2,6 +2,7 @@ package freemind.main;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,7 +45,7 @@ class LoggingOutputStream extends ByteArrayOutputStream {
 		String record;
 		synchronized (this) {
 			super.flush();
-			record = this.toString();
+			record = this.toString(StandardCharsets.UTF_8);
 			super.reset();
 		}
 
