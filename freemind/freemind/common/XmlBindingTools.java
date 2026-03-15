@@ -47,23 +47,28 @@ import freemind.main.Resources;
  */
 public class XmlBindingTools {
 
-	private static volatile XmlBindingTools instance;
 	private static JAXBContext jaxbContext;
 
-	private XmlBindingTools() {
-	}
+	private static class Holder {
+		static final XmlBindingTools INSTANCE = createInstance();
 
-	public static synchronized XmlBindingTools getInstance() {
-		if (instance == null) {
-			instance = new XmlBindingTools();
+		private static XmlBindingTools createInstance() {
+			XmlBindingTools tools = new XmlBindingTools();
 			try {
 				jaxbContext = JAXBContext.newInstance(
 						"freemind.controller.actions.generated.instance");
 			} catch (JAXBException e) {
 				freemind.main.Resources.getInstance().logException(e);
 			}
+			return tools;
 		}
-		return instance;
+	}
+
+	private XmlBindingTools() {
+	}
+
+	public static XmlBindingTools getInstance() {
+		return Holder.INSTANCE;
 	}
 
 	public Marshaller createMarshaller() {
