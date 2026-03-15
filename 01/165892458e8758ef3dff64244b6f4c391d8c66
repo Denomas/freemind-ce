@@ -1,0 +1,44 @@
+freemind/accessories/tohtml.xsl
+  7843d3304d80a742 8,13,16,27,57-58,65,68,71-72,84,100,112,120,124-125,130-131,137,139,149
+freemind/accessories/marktree.js
+  7843d3304d80a742 2,10,21,101,116,159,205,210,226,232,244,248,265,275,279,285,318,335,337,345,348,359,374,384-385,396-398,408,410,428,439
+freemind/accessories/mm2tsk.xsl
+  7843d3304d80a742 32,34
+freemind/accessories/masterfile.tex
+  7843d3304d80a742 23
+freemind/plugins/help/doc/credits.htm
+  7843d3304d80a742 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "01165892458e8758ef3dff64244b6f4c391d8c66",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 1536,
+      "total_deletions": 2,
+      "accepted_lines": 769,
+      "overriden_lines": 0
+    },
+    "fb4bb86da7797a45": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "95c12e0f-740c-4a1c-b579-48e1ff2fb4c5",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 382,
+      "total_deletions": 0,
+      "accepted_lines": 382,
+      "overriden_lines": 0
+    }
+  }
+}
