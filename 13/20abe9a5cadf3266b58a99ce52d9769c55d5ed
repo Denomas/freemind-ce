@@ -1,0 +1,23 @@
+freemind/accessories/plugins/time/TimeManagement.java
+  7843d3304d80a742 489
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "1320abe9a5cadf3266b58a99ce52d9769c55d5ed",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
