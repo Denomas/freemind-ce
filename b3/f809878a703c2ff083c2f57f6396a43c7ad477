@@ -1,0 +1,31 @@
+freemind/freemind/modes/NodeAdapter.java
+  7843d3304d80a742 158,168,170,173
+freemind/freemind/main/FreeMind.java
+  7843d3304d80a742 662,671,705
+freemind/plugins/collaboration/socket/CommunicationBase.java
+  7843d3304d80a742 83
+freemind/accessories/plugins/time/CalendarMarkingEvaluator.java
+  7843d3304d80a742 290,293-308
+freemind/freemind/common/XmlBindingTools.java
+  7843d3304d80a742 50,56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "b3f809878a703c2ff083c2f57f6396a43c7ad477",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 71,
+      "total_deletions": 65,
+      "accepted_lines": 27,
+      "overriden_lines": 0
+    }
+  }
+}
