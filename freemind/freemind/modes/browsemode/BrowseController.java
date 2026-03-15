@@ -60,7 +60,6 @@ import freemind.modes.common.plugins.NodeNoteBase;
 import freemind.modes.viewmodes.ViewControllerAdapter;
 import freemind.view.mindmapview.MainView;
 public class BrowseController extends ViewControllerAdapter {
-	private static final long serialVersionUID = 1L;
 
 
 	private JPopupMenu popupmenu;

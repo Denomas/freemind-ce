@@ -61,7 +61,6 @@ import freemind.modes.ModeController;
  *
  */
 public class EditNodeTextField extends EditNodeBase {
-	private static final long serialVersionUID = 1L;
 
 	final int EDIT = 1;
 	final int CANCEL = 2;

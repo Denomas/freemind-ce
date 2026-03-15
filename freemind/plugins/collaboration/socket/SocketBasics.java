@@ -46,7 +46,6 @@ import freemind.view.MapModule;
 
 public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 		MapTitleContributor, FirstActionFilter {
-	private static final long serialVersionUID = 1L;
 
 
 

@@ -76,7 +76,6 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
  * @author foltin
  */
 public class ClientCommunication extends CommunicationBase {
-	private static final long serialVersionUID = 1L;
 
 
 	private static final int MAX_LOCK_RETRIES = 5;

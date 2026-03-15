@@ -103,7 +103,6 @@ import freemind.view.mindmapview.ViewFeedback;
  */
 public abstract class ControllerAdapter extends MapFeedbackAdapter implements ModeController,
 		DirectoryResultListener {
-	private static final long serialVersionUID = 1L;
 
 
 

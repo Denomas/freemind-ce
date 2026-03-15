@@ -64,7 +64,6 @@ import freemind.modes.mindmapmode.hooks.MindMapHookAdapter;
 import freemind.view.MapModule;
 public class LogFileViewer extends MindMapHookAdapter implements
 		MapModuleChangeObserver, LogReceiver {
-	private static final long serialVersionUID = 1L;
 
 
 	public static class Registration implements HookRegistration {

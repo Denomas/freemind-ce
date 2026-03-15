@@ -127,7 +127,6 @@ import freemind.view.mindmapview.NodeView;
 public class FreeMindMapController extends JMapController implements
 		MouseListener, MouseMotionListener, MouseWheelListener, ActionListener,
 		KeyListener {
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @author foltin

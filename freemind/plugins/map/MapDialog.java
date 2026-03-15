@@ -78,7 +78,6 @@ import freemind.view.mindmapview.NodeView;
 public class MapDialog extends MindMapHookAdapter implements
 		JMapViewerEventListener, MapModuleChangeObserver,
 		MapNodePositionListener, NodeSelectionListener, NodeVisibilityListener {
-	private static final long serialVersionUID = 1L;
 
 
 	private static final String WINDOW_PREFERENCE_STORAGE_PROPERTY = MapDialog.class
