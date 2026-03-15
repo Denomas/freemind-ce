@@ -36,9 +36,9 @@ import freemind.modes.MindIcon;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.actions.xml.actors.AddIconActor;
-
-@SuppressWarnings("serial")
 public class IconAction extends MindmapAction implements IconInformation {
+	private static final long serialVersionUID = 1L;
+
 	public MindIcon icon;
 	private final MindMapController modeController;
 

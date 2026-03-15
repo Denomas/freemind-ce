@@ -44,9 +44,9 @@ import freemind.main.Tools;
 import freemind.modes.MindMapNode;
 import freemind.view.ImageFactory;
 import freemind.view.mindmapview.MapView;
-
-@SuppressWarnings("serial")
 public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
+	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * A combo box that doesn't fill the complete screen.

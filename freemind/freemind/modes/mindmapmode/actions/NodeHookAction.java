@@ -36,10 +36,10 @@ import freemind.extensions.HookFactory;
 import freemind.extensions.HookInstanciationMethod;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class NodeHookAction extends MindmapAction implements HookAction,
 		MenuItemEnabledListener, MenuItemSelectedListener {
+	private static final long serialVersionUID = 1L;
+
 	String _hookName;
 	MindMapController mMindMapController;
 

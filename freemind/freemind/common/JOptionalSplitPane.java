@@ -43,8 +43,9 @@ import freemind.main.Resources;
  *
  * @author foltin
  */
-@SuppressWarnings("serial")
 public class JOptionalSplitPane extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 
 	private HashMap<Integer, JComponent> mComponentHash = new HashMap<Integer, JComponent>();
 	private JComponent mBasicComponent = null;

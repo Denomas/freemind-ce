@@ -37,9 +37,10 @@ import javax.xml.transform.stream.StreamResult;
  * File Chooser for Mac
  * @author foltin
  */
-@SuppressWarnings("serial")
 public class FreeMindAwtFileDialog extends FileDialog implements
 		FreeMindFileDialog {
+	private static final long serialVersionUID = 1L;
+
 
 	private static final String APPLE_AWT_FILE_DIALOG_FOR_DIRECTORIES = "apple.awt.fileDialogForDirectories";
 	protected static java.util.logging.Logger logger = null;

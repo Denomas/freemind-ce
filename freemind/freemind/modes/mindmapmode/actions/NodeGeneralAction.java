@@ -39,9 +39,9 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 import freemind.modes.mindmapmode.actions.xml.AbstractXmlAction;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
 import freemind.modes.mindmapmode.actions.xml.ActorXml;
-
-@SuppressWarnings("serial")
 public class NodeGeneralAction extends AbstractXmlAction {
+	private static final long serialVersionUID = 1L;
+
 	protected final MindMapController modeController;
 
 	SingleNodeOperation singleNodeOperation;

@@ -61,6 +61,8 @@ import freemind.modes.ModeController;
  *
  */
 public class EditNodeTextField extends EditNodeBase {
+	private static final long serialVersionUID = 1L;
+
 	final int EDIT = 1;
 	final int CANCEL = 2;
 	int cursorWidth = 1;
@@ -102,8 +104,6 @@ public class EditNodeTextField extends EditNodeBase {
 					this.getClass().getName());
 		}
 	}
-
-	@SuppressWarnings("serial")
 	public void show() {
 		// Make fields for short texts editable
 		textfield = (getText().length() < 8) ? new JTextField(getText(), 8)

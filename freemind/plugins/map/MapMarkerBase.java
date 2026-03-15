@@ -36,8 +36,9 @@ import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
 /**
  * @author foltin
  */
-@SuppressWarnings("serial")
 public abstract class MapMarkerBase extends JLabel implements MapMarker {
+	private static final long serialVersionUID = 1L;
+
 
 
 	public static final int CIRCLE_RADIUS = 5;

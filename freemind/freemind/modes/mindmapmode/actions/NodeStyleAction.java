@@ -33,9 +33,9 @@ import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.MindMapNodeModel;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
-
-@SuppressWarnings("serial")
 public class NodeStyleAction extends NodeGeneralAction implements MenuItemSelectedListener {
+	private static final long serialVersionUID = 1L;
+
 	private final String mStyle;
 
 	public NodeStyleAction(MindMapController controller, String style) {

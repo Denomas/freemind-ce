@@ -28,9 +28,9 @@ import java.awt.event.ActionEvent;
 import freemind.controller.Controller;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class EdgeColorAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController controller;
 
 	public EdgeColorAction(MindMapController controller) {

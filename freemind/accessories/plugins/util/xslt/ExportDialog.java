@@ -42,9 +42,9 @@ import accessories.plugins.util.window.WindowClosingAdapter;
 import freemind.main.ExampleFileFilter;
 import freemind.modes.FreeMindFileDialog;
 import freemind.modes.ModeController;
-
-@SuppressWarnings("serial")
 public class ExportDialog extends JFrame {
+	private static final long serialVersionUID = 1L;
+
 	private static final String ACCESSORIES_PLUGINS_UTIL_XSLT_EXPORT_DIALOG_STORE_TARGET = "accessories.plugins.util.xslt.ExportDialog.store.target"; //$NON-NLS-1$
 	private static final String ACCESSORIES_PLUGINS_UTIL_XSLT_EXPORT_DIALOG_STORE_XSLT = "accessories.plugins.util.xslt.ExportDialog.store.xslt"; //$NON-NLS-1$
 

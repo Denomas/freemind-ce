@@ -38,8 +38,9 @@ import freemind.main.Tools;
  * @author Dimitri
  *
  */
-@SuppressWarnings("serial")
 public class NodeMotionListenerView extends JComponent {
+	private static final long serialVersionUID = 1L;
+
 	protected static java.util.logging.Logger logger = null;
 	public NodeMotionListenerView(NodeView view) {
 		super();

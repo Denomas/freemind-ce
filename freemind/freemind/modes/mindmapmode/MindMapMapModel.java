@@ -60,9 +60,9 @@ import freemind.modes.MindMap;
 import freemind.modes.MindMapLinkRegistry;
 import freemind.modes.MindMapNode;
 import freemind.modes.NodeAdapter;
-
-@SuppressWarnings("serial")
 public class MindMapMapModel extends MapAdapter {
+	private static final long serialVersionUID = 1L;
+
 
 	public static final String RESTORE_MODE_MIND_MAP = "MindMap:";
 

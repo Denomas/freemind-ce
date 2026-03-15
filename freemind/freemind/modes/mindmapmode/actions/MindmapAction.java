@@ -33,8 +33,9 @@ import freemind.modes.mindmapmode.actions.xml.ActorXml;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public abstract class MindmapAction extends FreemindAction  {
+	private static final long serialVersionUID = 1L;
+
 
 	private final MindMapController pMindMapController;
 

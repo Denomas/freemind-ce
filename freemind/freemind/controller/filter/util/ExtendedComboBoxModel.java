@@ -32,8 +32,9 @@ import javax.swing.event.ListDataListener;
 /**
  * @author dimitri 14.05.2005
  */
-@SuppressWarnings("serial")
 public class ExtendedComboBoxModel extends DefaultComboBoxModel {
+	private static final long serialVersionUID = 1L;
+
 
 	private class ExtensionDataListener implements ListDataListener {
 

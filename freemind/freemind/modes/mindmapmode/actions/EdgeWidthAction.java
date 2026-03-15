@@ -32,9 +32,9 @@ import freemind.modes.EdgeAdapter;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.MindMapNodeModel;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
-
-@SuppressWarnings("serial")
 public class EdgeWidthAction extends NodeGeneralAction implements MenuItemSelectedListener {
+	private static final long serialVersionUID = 1L;
+
 	private int mWidth;
 
 	public EdgeWidthAction(MindMapController controller, int width) {

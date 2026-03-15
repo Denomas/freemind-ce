@@ -90,9 +90,9 @@ import javax.swing.table.TableModel;
  * @author Parwinder Sekhon
  * @version 2.0 02/27/04
  */
-
-@SuppressWarnings("serial")
 public class TableSorter extends AbstractTableModel {
+	private static final long serialVersionUID = 1L;
+
 	protected TableModel tableModel;
 
 	public static final int DESCENDING = -1;

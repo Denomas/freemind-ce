@@ -28,8 +28,9 @@ import freemind.main.Resources;
 /**
  * @author foltin
  */
-@SuppressWarnings("serial")
 public class ScalableJTable extends JTable {
+	private static final long serialVersionUID = 1L;
+
 	public ScalableJTable() {
 		int scale = Resources.getInstance().getIntProperty(FreeMind.SCALING_FACTOR_PROPERTY, 100);
 		setRowHeight(getRowHeight()*scale/100);

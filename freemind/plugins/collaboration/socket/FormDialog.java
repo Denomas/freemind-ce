@@ -43,10 +43,10 @@ import freemind.common.PropertyBean;
 import freemind.common.PropertyControl;
 import freemind.main.Tools;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class FormDialog extends JDialog implements
 		PropertyChangeListener {
+	private static final long serialVersionUID = 1L;
+
 
 	public static interface FormDialogValidator {
 		/**

@@ -94,9 +94,10 @@ import freemind.view.mindmapview.MultipleImage;
  *
  *         TODO: - Extract HTML from nodes and notes.
  */
-@SuppressWarnings("serial")
 public class TimeList extends MindMapHookAdapter implements
 		MapModuleChangeObserver {
+	private static final long serialVersionUID = 1L;
+
 
 	private static final int TYPE_DELAY_TIME = 500;
 

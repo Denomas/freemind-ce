@@ -35,9 +35,9 @@ import javax.swing.Action;
 import freemind.controller.Controller;
 import freemind.modes.mindmapmode.MindMapArrowLinkModel;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class ColorArrowLinkAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 
 	MindMapArrowLinkModel arrowLink;
 

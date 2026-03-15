@@ -78,8 +78,9 @@ import freemind.modes.attributes.Attribute;
  * @author dimitri
  *
  */
-@SuppressWarnings("serial")
 public class FilterComposerDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+
 	private static final Dimension maxButtonDimension = new Dimension(1000,
 			1000);
 

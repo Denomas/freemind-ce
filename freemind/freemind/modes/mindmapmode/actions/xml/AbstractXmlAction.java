@@ -35,8 +35,9 @@ import freemind.modes.mindmapmode.actions.MindmapAction;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public abstract class AbstractXmlAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private ActorXml actor;
 

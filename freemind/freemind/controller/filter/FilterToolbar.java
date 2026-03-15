@@ -49,9 +49,9 @@ import freemind.controller.filter.condition.SelectedViewCondition;
 import freemind.main.Resources;
 import freemind.modes.MindMap;
 import freemind.modes.MindMapNode;
-
-@SuppressWarnings("serial")
 class FilterToolbar extends FreeMindToolBar {
+	private static final long serialVersionUID = 1L;
+
 	private FilterController mFilterController;
 	private FilterComposerDialog filterDialog = null;
 	private JComboBox<Condition> activeFilterConditionComboBox;

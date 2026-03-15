@@ -32,9 +32,9 @@ import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.MindMapMapModel;
 import freemind.modes.mindmapmode.MindMapNodeModel;
-
-@SuppressWarnings("serial")
 public class NodeBackgroundColorAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController controller;
 
 	public NodeBackgroundColorAction(MindMapController controller) {

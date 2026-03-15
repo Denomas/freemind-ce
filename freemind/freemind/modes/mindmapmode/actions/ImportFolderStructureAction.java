@@ -30,9 +30,9 @@ import freemind.main.Tools;
 import freemind.modes.FreeMindFileDialog;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class ImportFolderStructureAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	// Logging:
 	private static java.util.logging.Logger logger;
 	private final MindMapController controller;

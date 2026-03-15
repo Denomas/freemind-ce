@@ -108,8 +108,9 @@ import freemind.view.mindmapview.MapView;
  * Provides the methods to edit/change a Node. Forwards all messages to
  * MapModel(editing) or MapView(navigation).
  */
-@SuppressWarnings("serial")
 public class Controller implements MapModuleChangeObserver {
+	private static final long serialVersionUID = 1L;
+
 
 
 	private static final String PAGE_FORMAT_PROPERTY = "page_format";

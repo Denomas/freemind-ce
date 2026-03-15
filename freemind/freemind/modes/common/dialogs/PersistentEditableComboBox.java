@@ -28,9 +28,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 
 import freemind.modes.ModeController;
-
-@SuppressWarnings("serial")
 public class PersistentEditableComboBox extends JComboBox {
+	private static final long serialVersionUID = 1L;
+
 	private ActionListener actionListener = null;
 
 	private boolean sendExternalEvents = true;

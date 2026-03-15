@@ -41,8 +41,9 @@ import freemind.main.Tools;
 /**
  * @author foltin
  */
-@SuppressWarnings("serial")
 public class FreeMindProgressMonitor extends JDialog {
+	private static final long serialVersionUID = 1L;
+
 
 
 	private static final String PROGRESS_MONITOR_WINDOW_CONFIGURATION_STORAGE = "progress_monitor_window_configuration_storage";

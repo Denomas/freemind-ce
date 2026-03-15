@@ -37,8 +37,9 @@ import freemind.modes.mindmapmode.MindMapMapModel;
 import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /** */
-@SuppressWarnings("serial")
 public class ExportBranchAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController mMindMapController;
 
 	public ExportBranchAction(MindMapController pMindMapController) {

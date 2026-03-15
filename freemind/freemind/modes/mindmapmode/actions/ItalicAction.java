@@ -29,10 +29,10 @@ import javax.swing.JMenuItem;
 import freemind.controller.MenuItemSelectedListener;
 import freemind.controller.actions.generated.instance.ItalicNodeAction;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class ItalicAction extends NodeGeneralAction implements
 		MenuItemSelectedListener {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController modeController;
 
 

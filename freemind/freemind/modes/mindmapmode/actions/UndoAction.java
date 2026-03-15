@@ -37,9 +37,9 @@ import freemind.main.Tools;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.actions.xml.AbstractXmlAction;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
-
-@SuppressWarnings("serial")
 public class UndoAction extends AbstractXmlAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private MindMapController controller;
 	private boolean isUndoAction;

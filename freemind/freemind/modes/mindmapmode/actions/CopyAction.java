@@ -29,9 +29,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class CopyAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController controller;
 
 	public CopyAction(MindMapController controller) {

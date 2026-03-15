@@ -30,8 +30,8 @@ import freemind.modes.EdgeAdapter;
 import freemind.modes.MindMapNode;
 
 class NodeViewFactory {
+	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings("serial")
 	private static class ContentPane extends JComponent {
 		static private LayoutManager layoutManager = new ContentPaneLayout();
 

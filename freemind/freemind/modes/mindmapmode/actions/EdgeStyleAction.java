@@ -32,9 +32,9 @@ import freemind.main.Tools;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.MindMapNodeModel;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
-
-@SuppressWarnings("serial")
 public class EdgeStyleAction extends NodeGeneralAction implements MenuItemSelectedListener {
+	private static final long serialVersionUID = 1L;
+
 	private String mStyle;
 
 	public EdgeStyleAction(MindMapController controller, String style) {

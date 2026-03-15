@@ -31,10 +31,10 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import javax.swing.AbstractListModel;
-
-@SuppressWarnings("serial")
 public class SortedMapListModel extends AbstractListModel implements
 		SortedListModel {
+	private static final long serialVersionUID = 1L;
+
 	SortedSet model;
 
 	public SortedMapListModel() {

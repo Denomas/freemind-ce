@@ -79,9 +79,10 @@ import freemind.modes.mindmapmode.actions.IconAction;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public class StylePatternFrame extends JPanel implements TextTranslator,
 		PropertyChangeListener {
+	private static final long serialVersionUID = 1L;
+
 	public static final class StylePatternFrameType {
 		private StylePatternFrameType() {
 

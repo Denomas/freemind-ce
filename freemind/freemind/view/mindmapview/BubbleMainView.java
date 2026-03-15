@@ -29,9 +29,9 @@ import java.awt.Stroke;
 
 import freemind.main.Tools;
 import freemind.modes.MindMapNode;
-
-@SuppressWarnings("serial")
 class BubbleMainView extends MainView {
+	private static final long serialVersionUID = 1L;
+
 	final static Stroke DEF_STROKE = new BasicStroke();
 
 	/*

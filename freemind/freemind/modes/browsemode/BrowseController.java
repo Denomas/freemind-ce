@@ -59,9 +59,9 @@ import freemind.modes.common.plugins.MapNodePositionHolderBase;
 import freemind.modes.common.plugins.NodeNoteBase;
 import freemind.modes.viewmodes.ViewControllerAdapter;
 import freemind.view.mindmapview.MainView;
-
-@SuppressWarnings("serial")
 public class BrowseController extends ViewControllerAdapter {
+	private static final long serialVersionUID = 1L;
+
 
 	private JPopupMenu popupmenu;
 	private JToolBar toolbar;

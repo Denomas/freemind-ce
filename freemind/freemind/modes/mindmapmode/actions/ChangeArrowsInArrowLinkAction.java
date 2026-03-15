@@ -31,9 +31,9 @@ import java.awt.event.ActionEvent;
 
 import freemind.modes.mindmapmode.MindMapArrowLinkModel;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class ChangeArrowsInArrowLinkAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	MindMapArrowLinkModel arrowLink;
 
 	boolean hasStartArrow;

@@ -30,9 +30,9 @@ import java.awt.event.ActionEvent;
 import freemind.controller.Controller;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class NodeColorAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController controller;
 
 	public NodeColorAction(MindMapController controller) {

@@ -32,9 +32,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class SetLinkByTextFieldAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController controller;
 
 	public SetLinkByTextFieldAction(MindMapController controller) {

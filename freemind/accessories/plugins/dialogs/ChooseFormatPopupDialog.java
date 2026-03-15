@@ -57,9 +57,10 @@ import freemind.modes.mindmapmode.dialogs.StylePatternFrame.StylePatternFrameTyp
 import freemind.view.mindmapview.MapView;
 
 /** */
-@SuppressWarnings("serial")
 public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 		KeyListener {
+	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * @author foltin

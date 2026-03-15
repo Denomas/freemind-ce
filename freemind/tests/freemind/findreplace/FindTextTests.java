@@ -32,6 +32,8 @@ import accessories.plugins.time.TimeList.NodeHolder;
 import freemind.main.HtmlTools;
 
 public class FindTextTests extends FreeMindTestBase {
+	private static final long serialVersionUID = 1L;
+
 
 	public void testTagRemoval() throws Exception {
 		String input = "<html>test</html>";
@@ -56,7 +58,6 @@ public class FindTextTests extends FreeMindTestBase {
 	 *
 	 * @throws Exception
 	 */
-	@SuppressWarnings("serial")
 	public void testFlatNodeTableFilter() throws Exception {
 		AbstractTableModel tm = new AbstractTableModel() {
 

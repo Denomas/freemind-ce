@@ -25,9 +25,9 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JLabel;
-
-@SuppressWarnings("serial")
 class BrowseAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 	private JLabel pageNumber;
 
 	public BrowseAction(Preview preview, JLabel pageNumber, int pageStep) {

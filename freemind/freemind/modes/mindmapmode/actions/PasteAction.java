@@ -29,9 +29,9 @@ import javax.swing.AbstractAction;
 import freemind.controller.actions.generated.instance.PasteNodeAction;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class PasteAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private static java.util.logging.Logger logger;
 	private final MindMapController mMindMapController;

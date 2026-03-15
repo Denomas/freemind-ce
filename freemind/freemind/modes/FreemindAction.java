@@ -32,8 +32,9 @@ import freemind.controller.MenuItemEnabledListener;
  *
  * @author foltin
  */
-@SuppressWarnings("serial")
 public abstract class FreemindAction extends AbstractAction implements MenuItemEnabledListener{
+	private static final long serialVersionUID = 1L;
+
 
 	private final ControllerAdapter pControllerAdapter;
 	protected static java.util.logging.Logger logger = null;

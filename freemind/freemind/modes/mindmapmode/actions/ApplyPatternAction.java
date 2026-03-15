@@ -35,10 +35,10 @@ import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.MindMapController.MindMapControllerPlugin;
 import freemind.modes.mindmapmode.MindMapMapModel;
 import freemind.modes.mindmapmode.MindMapNodeModel;
-
-@SuppressWarnings("serial")
 public class ApplyPatternAction extends NodeGeneralAction implements
 		SingleNodeOperation {
+	private static final long serialVersionUID = 1L;
+
 	public interface ExternalPatternAction extends MindMapControllerPlugin {
 		public void act(MindMapNode node, Pattern pattern);
 	}

@@ -40,9 +40,9 @@ import javax.swing.JToolBar;
 
 import freemind.main.Tools;
 import freemind.view.mindmapview.MapView;
-
-@SuppressWarnings("serial")
 public class PreviewDialog extends JDialog implements ActionListener {
+	private static final long serialVersionUID = 1L;
+
 	private final static double DEFAULT_ZOOM_FACTOR_STEP = 0.1;
 	private JLabel pageNumber;
 

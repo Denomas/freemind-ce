@@ -30,9 +30,9 @@ import freemind.main.HtmlTools;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.view.mindmapview.MapView;
-
-@SuppressWarnings("serial")
 public class JoinNodesAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController controller;
 
 	public JoinNodesAction(MindMapController controller) {

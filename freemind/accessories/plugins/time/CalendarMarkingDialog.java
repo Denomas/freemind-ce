@@ -34,9 +34,9 @@ import freemind.controller.actions.generated.instance.CalendarMarkings;
 import freemind.controller.actions.generated.instance.WindowConfigurationStorage;
 import freemind.main.Tools;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class CalendarMarkingDialog extends JDialog implements ActionListener, ChangeListener, PropertyChangeListener {
+	private static final long serialVersionUID = 1L;
+
 
 	private static final String WINDOW_PREFERENCE_STORAGE_PROPERTY = "CalendarMarkingDialog_WindowPosition";
 	public static final int CANCEL = -1;

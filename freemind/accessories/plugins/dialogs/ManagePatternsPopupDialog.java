@@ -72,9 +72,10 @@ import freemind.modes.mindmapmode.dialogs.StylePatternFrame.StylePatternFrameTyp
 import freemind.swing.DefaultListModel;
 
 /** */
-@SuppressWarnings("serial")
 public class ManagePatternsPopupDialog extends JDialog implements
 		TextTranslator, KeyListener {
+	private static final long serialVersionUID = 1L;
+
 	private static Pattern sLastSelectedPattern = null;
 
 	private static final String STACK_PATTERN_FRAME = "PATTERN";

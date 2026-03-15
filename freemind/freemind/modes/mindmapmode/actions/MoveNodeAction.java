@@ -25,9 +25,9 @@ package freemind.modes.mindmapmode.actions;
 
 import freemind.controller.actions.generated.instance.MoveNodeXmlAction;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class MoveNodeAction extends NodeGeneralAction  {
+	private static final long serialVersionUID = 1L;
+
 
 
 	public MoveNodeAction(MindMapController modeController) {

@@ -28,8 +28,9 @@ import freemind.main.Tools;
  *         Class is responsible for a dialog to input all pdf export parameters
  *         like page orientation or format
  */
-@SuppressWarnings("serial")
 public class ExportPdfDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+
 
 	private static final String PORTRAIT = "portrait";
 

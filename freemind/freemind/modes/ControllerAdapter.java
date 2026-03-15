@@ -101,9 +101,10 @@ import freemind.view.mindmapview.ViewFeedback;
  * default Actions you may want to use for easy editing of your model. Take
  * MindMapController as a sample.
  */
-@SuppressWarnings("serial")
 public abstract class ControllerAdapter extends MapFeedbackAdapter implements ModeController,
 		DirectoryResultListener {
+	private static final long serialVersionUID = 1L;
+
 
 
 	private Mode mode;

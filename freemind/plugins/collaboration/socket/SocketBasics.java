@@ -46,6 +46,8 @@ import freemind.view.MapModule;
 
 public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 		MapTitleContributor, FirstActionFilter {
+	private static final long serialVersionUID = 1L;
+
 
 
 	private static final String PLUGINS_COLLABORATION_SOCKET = "plugins/collaboration/socket/";
@@ -239,8 +241,6 @@ public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 	public ActionPair getEmptyActionPair() {
 		return new ActionPair(new CompoundAction(), new CompoundAction());
 	}
-
-	@SuppressWarnings("serial")
 	protected static class UnableToGetLockException extends Exception {
 
 	}

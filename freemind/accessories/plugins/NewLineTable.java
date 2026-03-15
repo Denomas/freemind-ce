@@ -29,8 +29,9 @@ import freemind.common.ScalableJTable;
 /**
  * Taken from http://stackoverflow.com/questions/2316563/how-can-i-sort-java-jtable-with-an-empty-row-and-force-the-empty-row-always-be-l
  */
-@SuppressWarnings("serial")
 public class NewLineTable extends ScalableJTable {
+    private static final long serialVersionUID = 1L;
+
 
     @Override
     public int getRowCount() {

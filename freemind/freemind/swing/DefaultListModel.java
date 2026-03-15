@@ -8,9 +8,9 @@ import java.util.Enumeration;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
-
-@SuppressWarnings("serial")
 public class DefaultListModel<E> extends AbstractListModel<E>{
+    private static final long serialVersionUID = 1L;
+
     private Vector<E> delegate = new Vector<E>();
 
     /**

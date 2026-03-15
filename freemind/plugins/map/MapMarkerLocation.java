@@ -22,9 +22,9 @@ package plugins.map;
 
 
 import freemind.modes.MindMapNode;
-
-@SuppressWarnings("serial")
 public class MapMarkerLocation extends MapMarkerBase {
+	private static final long serialVersionUID = 1L;
+
 
 	private final MapNodePositionHolder mNodePositionHolder;
 	/**

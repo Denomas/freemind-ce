@@ -28,9 +28,9 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
-
-@SuppressWarnings("serial")
 public class VariableSizeCardLayout extends CardLayout {
+	private static final long serialVersionUID = 1L;
+
 
 	public VariableSizeCardLayout() {
 		super();

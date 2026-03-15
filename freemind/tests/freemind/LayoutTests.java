@@ -42,8 +42,9 @@ import freemind.view.mindmapview.NodeView;
 /**
  * @author foltin
  */
-@SuppressWarnings("serial")
 public class LayoutTests extends FreeMindTestBase {
+	private static final long serialVersionUID = 1L;
+
 
 	private MindMapNodeModel mRoot;
 	private MindMapNodeModel mChild1;

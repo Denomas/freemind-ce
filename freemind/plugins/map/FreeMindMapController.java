@@ -124,10 +124,11 @@ import freemind.view.mindmapview.NodeView;
  *         FIXME: On undo place node, the position is gone. (Undo action
  *         contains the initial zeros, I guess).
  */
-@SuppressWarnings("serial")
 public class FreeMindMapController extends JMapController implements
 		MouseListener, MouseMotionListener, MouseWheelListener, ActionListener,
 		KeyListener {
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * @author foltin
 	 */

@@ -31,10 +31,10 @@ import javax.swing.JMenuItem;
 import freemind.controller.MenuItemSelectedListener;
 import freemind.controller.actions.generated.instance.BoldNodeAction;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class BoldAction extends NodeGeneralAction implements
 		MenuItemSelectedListener {
+	private static final long serialVersionUID = 1L;
+
 
 	public BoldAction(MindMapController modeController) {
 		super(modeController, "bold", "images/Bold16.gif");

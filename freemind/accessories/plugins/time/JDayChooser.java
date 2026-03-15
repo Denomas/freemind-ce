@@ -66,8 +66,6 @@ import freemind.preferences.FreemindPropertyListener;
  */
 public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 		FocusListener {
-
-	@SuppressWarnings("serial")
 	public static class ChangeAwareButton extends ScalableJButton {
 		/**
 		 * @param pString

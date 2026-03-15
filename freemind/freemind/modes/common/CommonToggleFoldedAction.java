@@ -37,8 +37,9 @@ import freemind.modes.MindMapNode;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public class CommonToggleFoldedAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private ControllerAdapter modeController;
 

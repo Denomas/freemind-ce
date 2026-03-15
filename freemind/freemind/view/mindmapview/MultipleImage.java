@@ -29,9 +29,9 @@ import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-
-@SuppressWarnings("serial")
 public class MultipleImage extends ImageIcon {
+	private static final long serialVersionUID = 1L;
+
 	private Vector<ImageIcon> mImages = new Vector<>();
 	private double zoomFactor = 1;
 	private boolean isDirty;

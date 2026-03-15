@@ -32,8 +32,9 @@ import freemind.modes.MindMapNode;
 import freemind.modes.ModeController;
 
 /** Follow a graphical link (AKA connector) action. */
-@SuppressWarnings("serial")
 public class GotoLinkNodeAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 	MindMapNode source;
 
 	private final ModeController controller;

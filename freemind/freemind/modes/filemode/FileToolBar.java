@@ -22,9 +22,9 @@ package freemind.modes.filemode;
 
 import javax.swing.JButton;
 import javax.swing.JToolBar;
-
-@SuppressWarnings("serial")
 public class FileToolBar extends JToolBar {
+	private static final long serialVersionUID = 1L;
+
 
 	private FileController c;
 

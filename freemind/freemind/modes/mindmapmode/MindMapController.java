@@ -213,9 +213,10 @@ import freemind.view.MapModule;
 import freemind.view.mindmapview.MainView;
 import freemind.view.mindmapview.MapView;
 import freemind.view.mindmapview.NodeView;
-@SuppressWarnings("serial")
 public class MindMapController extends ControllerAdapter implements
 		ExtendedMapFeedback, MapSourceChangedObserver {
+	private static final long serialVersionUID = 1L;
+
 
 	public static final String REGEXP_FOR_NUMBERS_IN_STRINGS = "([+\\-]?[0-9]*[.,]?[0-9]+)\\b";
 	/**

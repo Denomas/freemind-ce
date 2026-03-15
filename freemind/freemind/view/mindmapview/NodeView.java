@@ -68,8 +68,9 @@ import freemind.preferences.FreemindPropertyListener;
  * This class represents a single Node of a MindMap (in analogy to
  * TreeCellRenderer).
  */
-@SuppressWarnings("serial")
 public class NodeView extends JComponent implements TreeModelListener {
+	private static final long serialVersionUID = 1L;
+
 
 	public void setFocusCycleRoot(boolean pFocusCycleRoot) {
 		// FIXME: On purpose removed. test this!

@@ -26,9 +26,9 @@ package freemind.modes.mindmapmode.actions;
 import java.awt.event.ActionEvent;
 
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class ToggleFoldedAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController modeController;
 
 	public ToggleFoldedAction(MindMapController controller) {

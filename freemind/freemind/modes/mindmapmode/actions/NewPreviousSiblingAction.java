@@ -25,9 +25,9 @@ package freemind.modes.mindmapmode.actions;
 import java.awt.event.ActionEvent;
 
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class NewPreviousSiblingAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController controller;
 
 	public NewPreviousSiblingAction(MindMapController controller) {

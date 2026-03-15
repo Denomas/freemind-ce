@@ -34,10 +34,9 @@ import javax.swing.WindowConstants;
 
 import freemind.main.Tools;
 import freemind.modes.mindmapmode.MindMapToolBar;
-
-
-@SuppressWarnings("serial")
 public class JColorCombo extends JComboBox<ColorPair> {
+	private static final long serialVersionUID = 1L;
+
 
 
 	public static class ColorIcon extends ImageIcon {

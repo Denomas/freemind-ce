@@ -34,6 +34,8 @@ import freemind.main.Tools;
  * maps have a different registry.
  */
 public class MindMapLinkRegistry {
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * All elements put into this sort of vectors are put into the
 	 * SourceToLinks, too. This structure is kept synchronous to the IDToLinks
@@ -41,7 +43,6 @@ public class MindMapLinkRegistry {
 	 *
 	 * @author foltin
 	 */
-	@SuppressWarnings("serial")
 	private class SynchronousVector extends Vector<MindMapLink> {
 		/*
 		 * (non-Javadoc)

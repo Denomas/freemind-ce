@@ -36,8 +36,9 @@ import freemind.modes.mindmapmode.MindMapController;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public class AddArrowLinkAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private final MindMapController modeController;
 

@@ -36,8 +36,9 @@ import freemind.modes.mindmapmode.MindMapController;
 /**
  * @author foltin
  */
-@SuppressWarnings("serial")
 public class PasteAsPlainTextAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private MindMapController mMindMapController;
 	private static Logger logger;

@@ -39,8 +39,9 @@ import freemind.modes.MindMapNode;
 /**
  * Base class for all node views.
  * */
-@SuppressWarnings("serial")
 public abstract class MainView extends JLabel {
+	private static final long serialVersionUID = 1L;
+
 	static Dimension minimumSize = new Dimension(0, 0);
 	static Dimension maximumSize = new Dimension(Integer.MAX_VALUE,
 			Integer.MAX_VALUE);

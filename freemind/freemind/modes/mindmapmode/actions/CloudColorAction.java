@@ -33,9 +33,9 @@ import freemind.controller.Controller;
 import freemind.controller.MenuItemEnabledListener;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class CloudColorAction extends MindmapAction implements MenuItemEnabledListener {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController controller;
 
 	public CloudColorAction(MindMapController controller) {

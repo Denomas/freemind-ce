@@ -50,9 +50,9 @@ import freemind.main.FreeMind;
 import freemind.main.Resources;
 import freemind.main.Tools;
 import freemind.main.XMLParseException;
-
-@SuppressWarnings("serial")
 public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
+	private static final long serialVersionUID = 1L;
+
 	public static final String MAP_INITIAL_START = "<map version=\"";
 	public static final String FREEMIND_VERSION_UPDATER_XSLT = "freemind/modes/mindmapmode/freemind_version_updater.xslt";
 	/**

@@ -213,7 +213,6 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 	/**
 	 * @author foltin
 	 */
-	@SuppressWarnings("serial")
 	public final class AttributeTableModel extends AbstractTableModel {
 
 		private final String[] COLUMNS = new String[] { KEY_COLUMN_TEXT,

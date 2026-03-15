@@ -52,8 +52,9 @@ import freemind.modes.mindmapmode.MindMapController;
 /**
  * @author foltin
  */
-@SuppressWarnings("serial")
 final class JCursorMapViewer extends JMapViewer {
+	private static final long serialVersionUID = 1L;
+
 
 	private static final class ScalableTileController extends TileController {
 		private ScalableTileController(TileSource pSource,

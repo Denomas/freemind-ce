@@ -51,6 +51,8 @@ import freemind.main.Tools;
  *
  */
 public class OptionalDontShowMeAgainDialog {
+	private static final long serialVersionUID = 1L;
+
 	public final static int ONLY_OK_SELECTION_IS_STORED = 0;
 	public final static int BOTH_OK_AND_CANCEL_OPTIONS_ARE_STORED = 1;
 	private final String mTitleId;
@@ -125,8 +127,6 @@ public class OptionalDontShowMeAgainDialog {
 	public int getResult() {
 		return mResult;
 	}
-
-	@SuppressWarnings("serial")
 	public OptionalDontShowMeAgainDialog show() {
 		String property = mDontShowPropertyHandler.getProperty();
 		if (Tools.safeEquals(property, "true")) {

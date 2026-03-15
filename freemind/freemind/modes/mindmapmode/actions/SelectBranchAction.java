@@ -25,8 +25,9 @@ import java.awt.event.ActionEvent;
 import freemind.modes.mindmapmode.MindMapController;
 
 /** */
-@SuppressWarnings("serial")
 public class SelectBranchAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 
 
 	public SelectBranchAction(final MindMapController modeController) {

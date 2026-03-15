@@ -37,8 +37,9 @@ import accessories.plugins.time.TimeList.NotesHolder;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public class FlatNodeTableFilterModel extends AbstractTableModel {
+	private static final long serialVersionUID = 1L;
+
 
 	private final TableModel mTableModel;
 	private String mFilterRegexp;

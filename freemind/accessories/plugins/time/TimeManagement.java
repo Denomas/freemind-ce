@@ -73,9 +73,10 @@ import freemind.view.MapModule;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public class TimeManagement extends MindMapHookAdapter implements
 		PropertyChangeListener, ActionListener, MapModuleChangeObserver {
+	private static final long serialVersionUID = 1L;
+
 
 	private static final String WINDOW_PREFERENCE_STORAGE_PROPERTY = TimeManagement.class
 			.getName() + "_properties";

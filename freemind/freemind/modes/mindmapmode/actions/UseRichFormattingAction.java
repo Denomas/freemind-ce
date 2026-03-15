@@ -26,9 +26,9 @@ import freemind.main.HtmlTools;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.MindMapMapModel;
 import freemind.modes.mindmapmode.MindMapNodeModel;
-
-@SuppressWarnings("serial")
 public class UseRichFormattingAction extends NodeGeneralAction {
+	private static final long serialVersionUID = 1L;
+
 	public UseRichFormattingAction(final MindMapController modeController) {
 		super(modeController, "use_rich_formatting", null,
 				new SingleNodeOperation() {

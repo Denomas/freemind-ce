@@ -31,8 +31,9 @@ import javax.swing.filechooser.FileFilter;
  * File Chooser for OS windows and linux (without Mac)
  * @author foltin
  */
-@SuppressWarnings("serial")
 public class FreeMindJFileDialog extends JFileChooser implements FreeMindFileDialog  {
+	private static final long serialVersionUID = 1L;
+
 
 	private DirectoryResultListener mDirectoryResultListener = null;
 

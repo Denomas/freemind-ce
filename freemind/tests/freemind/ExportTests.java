@@ -44,6 +44,8 @@ import freemind.view.mindmapview.MapView;
  * @author foltin
  */
 public class ExportTests extends FreeMindTestBase {
+	private static final long serialVersionUID = 1L;
+
 	private static final String TESTMAP_MM = "tests/freemind/testmap.mm";
 
 	public void testExportPng() throws Exception {
@@ -55,8 +57,6 @@ public class ExportTests extends FreeMindTestBase {
 
 		System.out.println("Done.");
 	}
-
-	@SuppressWarnings("serial")
 	public static void main(String[] args) throws FileNotFoundException,
 			XMLParseException, IOException, URISyntaxException {
 		HeadlessFreeMind mFreeMindMain = new HeadlessFreeMind();

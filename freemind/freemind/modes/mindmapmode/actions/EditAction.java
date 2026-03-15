@@ -49,9 +49,9 @@ import freemind.view.mindmapview.NodeView;
 //
 //Node editing
 //
-
-@SuppressWarnings("serial")
 public class EditAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private static final Pattern HTML_HEAD = Pattern.compile(
 			"\\s*<head>.*</head>", Pattern.DOTALL);
 	private final MindMapController mMindMapController;

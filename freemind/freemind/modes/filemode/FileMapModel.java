@@ -35,9 +35,9 @@ import freemind.modes.MindMapLinkRegistry;
 import freemind.modes.MindMapNode;
 import freemind.modes.ModeController;
 import freemind.modes.NodeAdapter;
-
-@SuppressWarnings("serial")
 public class FileMapModel extends MapAdapter {
+	private static final long serialVersionUID = 1L;
+
 
 	private MindMapLinkRegistry linkRegistry;
 

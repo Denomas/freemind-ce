@@ -45,10 +45,10 @@ import javax.swing.border.BevelBorder;
 
 import freemind.main.FreeMindMain;
 import freemind.modes.IconInformation;
-
-@SuppressWarnings("serial")
 public class IconSelectionPopupDialog extends JDialog implements KeyListener,
 		MouseListener {
+	private static final long serialVersionUID = 1L;
+
 	private Vector<IconInformation> icons;
 	private int result;
 	private JPanel iconPanel = new JPanel();

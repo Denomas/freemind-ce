@@ -78,7 +78,6 @@ import freemind.main.Tools;
  *         <li>show line/column numbers in status bar</li>
  *         </ul>
  */
-@SuppressWarnings("serial")
 public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 	private static final long serialVersionUID = 3221975191441136520L;

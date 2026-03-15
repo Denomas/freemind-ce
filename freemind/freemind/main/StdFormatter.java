@@ -23,9 +23,9 @@ package freemind.main;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.SimpleFormatter;
-
-@SuppressWarnings("serial")
 class StdFormatter extends SimpleFormatter {
+	private static final long serialVersionUID = 1L;
+
 
 	private static class StdOutErrLevel extends Level {
 		public StdOutErrLevel(String name, int value) {

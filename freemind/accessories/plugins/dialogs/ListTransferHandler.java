@@ -29,9 +29,9 @@ import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.TransferHandler;
 import freemind.swing.DefaultListModel;
-
-@SuppressWarnings("serial")
 public class ListTransferHandler extends TransferHandler {
+	private static final long serialVersionUID = 1L;
+
 
 	static private DataFlavor localListFlavor;
 	static private DataFlavor[] dataFlavors;

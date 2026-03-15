@@ -45,9 +45,9 @@ import freemind.modes.ModeController;
 import freemind.modes.common.actions.NewMapAction;
 import freemind.modes.viewmodes.ViewControllerAdapter;
 import freemind.view.mindmapview.MainView;
-
-@SuppressWarnings("serial")
 public class FileController extends ViewControllerAdapter {
+	private static final long serialVersionUID = 1L;
+
 
 	Action newMap = new NewMapAction(this);
 	Action center = new CenterAction();

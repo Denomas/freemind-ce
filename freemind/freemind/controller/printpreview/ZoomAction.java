@@ -23,9 +23,9 @@ package freemind.controller.printpreview;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-
-@SuppressWarnings("serial")
 class ZoomAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 	public ZoomAction(Preview preview, double zoomStep) {
 		super();
 		this.preview = preview;
