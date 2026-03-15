@@ -288,8 +288,8 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 	private FreeMindCommon mFreeMindCommon;
 
-	private static FileHandler mFileHandler;
-	private static boolean mFileHandlerError = false;
+	private static volatile FileHandler mFileHandler;
+	private static volatile boolean mFileHandlerError = false;
 
 	/**
 	 * The main map's scroll pane.
@@ -313,7 +313,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	private Vector<Logger> mLoggerList = new Vector<>();
 
 
-	private static LogFileLogHandler sLogFileHandler;
+	private static volatile LogFileLogHandler sLogFileHandler;
 
 	public FreeMind(Properties pDefaultPreferences,
 			Properties pUserPreferences, File pAutoPropertiesFile) {
@@ -659,6 +659,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	public Logger getLogger(String forClass) {
 		Logger loggerForClass = java.util.logging.Logger.getLogger(forClass);
 		mLoggerList.add(loggerForClass);
+		if (mFileHandler == null && !mFileHandlerError) {
 		synchronized (FreeMind.class) {
 			if (mFileHandler == null && !mFileHandlerError) {
 				// initialize handlers using an old System.err:
@@ -704,6 +705,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 					// freemind.main.Resources.getInstance().logExecption(e);
 				}
 			}
+		}
 		}
 		if (sLogFileHandler != null) {
 			loggerForClass.addHandler(sLogFileHandler);
