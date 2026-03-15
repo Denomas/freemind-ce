@@ -143,7 +143,7 @@ class FilterToolbar extends FreeMindToolBar {
 			if (selectedItem != null) {
 				getFilterDialog().setSelectedItem(selectedItem);
 			}
-			getFilterDialog().show();
+			getFilterDialog().setVisible(true);
 		}
 
 	}

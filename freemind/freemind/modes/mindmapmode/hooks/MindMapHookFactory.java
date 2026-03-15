@@ -200,7 +200,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 			ClassLoader loader = descriptor.getPluginClassLoader();
 			Class hookClass = Class.forName(descriptor.getClassName(), true,
 					loader);
-			MindMapHook hook = (MindMapHook) hookClass.newInstance();
+			MindMapHook hook = (MindMapHook) hookClass.getDeclaredConstructor().newInstance();
 			decorateHook(hookName, descriptor, hook);
 			return hook;
 		} catch (Throwable e) {
@@ -323,7 +323,7 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 				container.isPluginBase = descriptor.getIsPluginBase();
 				returnValue.add(container);
 			} catch (ClassNotFoundException e) {
-				logger.warning("Plugin registration class not found (plugin not compiled?): "
+				logger.fine("Plugin registration class not found (plugin not compiled?): "
 						+ descriptor.getClassName());
 			}
 		}

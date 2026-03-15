@@ -88,7 +88,7 @@ public class ModesCreator {
 		if (mCreatedModes.get(modeName) == null) {
 			try {
 				Mode mode = null;
-				mode = (Mode) Class.forName(modeName).newInstance();
+				mode = (Mode) Class.forName(modeName).getDeclaredConstructor().newInstance();
 				logger.info("Initializing mode " + modeAlias);
 				mode.init(c);
 				logger.info("Done: Initializing mode " + modeAlias);
