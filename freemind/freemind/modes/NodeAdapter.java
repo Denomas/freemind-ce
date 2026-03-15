@@ -155,20 +155,22 @@ public abstract class NodeAdapter implements MindMapNode {
 			logger = Resources.getInstance().getLogger(this.getClass().getName());
 		// create creation time:
 		setHistoryInformation(new HistoryInformation());
-		if (sSaveIdPropertyChangeListener == null) {
-			sSaveIdPropertyChangeListener = new FreemindPropertyListener() {
+		synchronized (NodeAdapter.class) {
+			if (sSaveIdPropertyChangeListener == null) {
+				sSaveIdPropertyChangeListener = new FreemindPropertyListener() {
 
-				public void propertyChanged(String propertyName,
-						String newValue, String oldValue) {
-					if (propertyName
-							.equals(FreeMindCommon.SAVE_ONLY_INTRISICALLY_NEEDED_IDS)) {
-						sSaveOnlyIntrinsicallyNeededIds = Boolean.valueOf(
-								newValue).booleanValue();
+					public void propertyChanged(String propertyName,
+							String newValue, String oldValue) {
+						if (propertyName
+								.equals(FreeMindCommon.SAVE_ONLY_INTRISICALLY_NEEDED_IDS)) {
+							sSaveOnlyIntrinsicallyNeededIds = Boolean.valueOf(
+									newValue).booleanValue();
+						}
 					}
-				}
-			};
-			Controller
-					.addPropertyChangeListenerAndPropagate(sSaveIdPropertyChangeListener);
+				};
+				Controller
+						.addPropertyChangeListenerAndPropagate(sSaveIdPropertyChangeListener);
+			}
 		}
 
 	}

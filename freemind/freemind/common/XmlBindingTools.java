@@ -47,13 +47,13 @@ import freemind.main.Resources;
  */
 public class XmlBindingTools {
 
-	private static XmlBindingTools instance;
+	private static volatile XmlBindingTools instance;
 	private static JAXBContext jaxbContext;
 
 	private XmlBindingTools() {
 	}
 
-	public static XmlBindingTools getInstance() {
+	public static synchronized XmlBindingTools getInstance() {
 		if (instance == null) {
 			instance = new XmlBindingTools();
 			try {

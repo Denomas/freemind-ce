@@ -659,48 +659,50 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	public Logger getLogger(String forClass) {
 		Logger loggerForClass = java.util.logging.Logger.getLogger(forClass);
 		mLoggerList.add(loggerForClass);
-		if (mFileHandler == null && !mFileHandlerError) {
-			// initialize handlers using an old System.err:
-			final Logger parentLogger = loggerForClass.getParent();
-			final Handler[] handlers = parentLogger.getHandlers();
-			for (int i = 0; i < handlers.length; i++) {
-				final Handler handler = handlers[i];
-				if (handler instanceof ConsoleHandler) {
-					parentLogger.removeHandler(handler);
+		synchronized (FreeMind.class) {
+			if (mFileHandler == null && !mFileHandlerError) {
+				// initialize handlers using an old System.err:
+				final Logger parentLogger = loggerForClass.getParent();
+				final Handler[] handlers = parentLogger.getHandlers();
+				for (int i = 0; i < handlers.length; i++) {
+					final Handler handler = handlers[i];
+					if (handler instanceof ConsoleHandler) {
+						parentLogger.removeHandler(handler);
+					}
 				}
-			}
 
-			try {
-				mFileHandler = new FileHandler(getFreemindDirectory()
-						+ File.separator + LOG_FILE_NAME, 1400000, 5, false);
-				mFileHandler.setFormatter(new StdFormatter());
-				mFileHandler.setLevel(Level.INFO);
-				parentLogger.addHandler(mFileHandler);
+				try {
+					mFileHandler = new FileHandler(getFreemindDirectory()
+							+ File.separator + LOG_FILE_NAME, 1400000, 5, false);
+					mFileHandler.setFormatter(new StdFormatter());
+					mFileHandler.setLevel(Level.INFO);
+					parentLogger.addHandler(mFileHandler);
 
-				final ConsoleHandler stdConsoleHandler = new ConsoleHandler();
-				stdConsoleHandler.setFormatter(new StdFormatter());
-				stdConsoleHandler.setLevel(Level.WARNING);
-				parentLogger.addHandler(stdConsoleHandler);
+					final ConsoleHandler stdConsoleHandler = new ConsoleHandler();
+					stdConsoleHandler.setFormatter(new StdFormatter());
+					stdConsoleHandler.setLevel(Level.WARNING);
+					parentLogger.addHandler(stdConsoleHandler);
 
-				sLogFileHandler = new LogFileLogHandler();
-				sLogFileHandler.setFormatter(new SimpleFormatter());
-				sLogFileHandler.setLevel(Level.INFO);
+					sLogFileHandler = new LogFileLogHandler();
+					sLogFileHandler.setFormatter(new SimpleFormatter());
+					sLogFileHandler.setLevel(Level.INFO);
 
-				LoggingOutputStream los;
-				Logger logger = Logger.getLogger(StdFormatter.STDOUT.getName());
-				los = new LoggingOutputStream(logger, StdFormatter.STDOUT);
-				System.setOut(new PrintStream(los, true));
+					LoggingOutputStream los;
+					Logger logger = Logger.getLogger(StdFormatter.STDOUT.getName());
+					los = new LoggingOutputStream(logger, StdFormatter.STDOUT);
+					System.setOut(new PrintStream(los, true));
 
-				logger = Logger.getLogger(StdFormatter.STDERR.getName());
-				los = new LoggingOutputStream(logger, StdFormatter.STDERR);
-				System.setErr(new PrintStream(los, true));
+					logger = Logger.getLogger(StdFormatter.STDERR.getName());
+					los = new LoggingOutputStream(logger, StdFormatter.STDERR);
+					System.setErr(new PrintStream(los, true));
 
-			} catch (Exception e) {
-				System.err.println("Error creating logging File Handler");
-				e.printStackTrace();
-				mFileHandlerError = true;
-				// to avoid infinite recursion.
-				// freemind.main.Resources.getInstance().logExecption(e);
+				} catch (Exception e) {
+					System.err.println("Error creating logging File Handler");
+					e.printStackTrace();
+					mFileHandlerError = true;
+					// to avoid infinite recursion.
+					// freemind.main.Resources.getInstance().logExecption(e);
+				}
 			}
 		}
 		if (sLogFileHandler != null) {
