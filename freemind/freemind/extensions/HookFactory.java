@@ -81,7 +81,7 @@ public interface HookFactory {
 	 * the corresponding mode is enabled. (Like singletons.) One of these can
 	 * operate as the pluginBase that is accessible to every normal
 	 * plugin_action via the getPluginBaseClass method.
-	 * 
+	 *
 	 * @return A list of RegistrationContainer elements. The field
 	 *         hookRegistrationClass of RegistrationContainer is a class that is
 	 *         (probably) of HookRegistration type. You have to register every
@@ -95,7 +95,7 @@ public interface HookFactory {
 	 * the factory observes every object creation. <br>
 	 * Moreover, the factory can tell other hooks it creates, who is its base
 	 * plugin.
-	 * 
+	 *
 	 */
 	public abstract void registerRegistrationContainer(
 			HookFactory.RegistrationContainer container,
@@ -107,7 +107,7 @@ public interface HookFactory {
 	 * A plugin base class is a common registration class of multiple plugins.
 	 * It is useful to embrace several related plugins (example: EncryptedNote
 	 * -> Registration).
-	 * 
+	 *
 	 * @return the base class if declared and successfully instanciated or NULL.
 	 */
 	public abstract Object getPluginBaseClass(String hookName);

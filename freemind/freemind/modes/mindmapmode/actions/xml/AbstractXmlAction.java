@@ -33,7 +33,7 @@ import freemind.modes.mindmapmode.actions.MindmapAction;
 
 /**
  * @author foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public abstract class AbstractXmlAction extends MindmapAction {
@@ -50,7 +50,7 @@ public abstract class AbstractXmlAction extends MindmapAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */

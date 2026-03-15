@@ -34,7 +34,7 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class RemoveIconAction extends NodeGeneralAction implements
@@ -47,7 +47,7 @@ public class RemoveIconAction extends NodeGeneralAction implements
 		setDoActionClass(RemoveIconXmlAction.class);
 	}
 
-	
+
 
 	/**
 	 * @param iconAction

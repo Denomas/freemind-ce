@@ -113,7 +113,7 @@ public class FileNodeModel extends NodeAdapter {
 	}
 
 	/**
-     * 
+     *
      */
 	public ListIterator<MindMapNode> childrenFolded() {
 		if (!isRoot()) {

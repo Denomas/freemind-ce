@@ -39,7 +39,7 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class RemoveNote extends MindMapNodeHookAdapter {
 	public RemoveNote() {

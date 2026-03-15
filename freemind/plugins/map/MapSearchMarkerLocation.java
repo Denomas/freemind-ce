@@ -65,7 +65,7 @@ public class MapSearchMarkerLocation extends MapMarkerBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.map.MapMarkerBase#paintCenter(java.awt.Graphics,
 	 * java.awt.Point)
 	 */

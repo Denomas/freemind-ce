@@ -46,7 +46,7 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class DatabaseStarter extends DatabaseBasics implements
 		PermanentNodeHook, DontSaveMarker {

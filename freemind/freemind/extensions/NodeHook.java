@@ -28,19 +28,19 @@ import freemind.modes.MindMapNode;
 /**
  * This is a general base interface for hooks that implement actions belonging to nodes.
  * They are normally started due to a user interaction.
- *  
- * There are two different types of NodeHooks: 
+ *
+ * There are two different types of NodeHooks:
  * <ol>
  * <li> non-permanent hooks: do something and terminate.
- * <li> permanent hooks: when started, they stick to the node, are stored with it and 
- * 		recreated, when the map with the node is loaded the next time. 
+ * <li> permanent hooks: when started, they stick to the node, are stored with it and
+ * 		recreated, when the map with the node is loaded the next time.
  * </ol>
- * Examples are 
- * <ul> 
+ * Examples are
+ * <ul>
  * <li> {@link ApplyFormatPlugin}: non-permanent
  * <li> {@link AutomaticLayout}: a permanent hook that formats the node depending on its depth.
  * </ul>
- * 
+ *
  * @author foltin
  * @date 17.10.2004
  */

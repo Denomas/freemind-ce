@@ -44,7 +44,7 @@ public class NewChildAction extends MindmapAction  {
 			logger = c.getFrame().getLogger(NewChildAction.class.getName());
 		}
 	}
-	
+
 	MindMapController getModeController() {
 		return c;
 	}

@@ -32,7 +32,7 @@ import freemind.main.Resources;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ScriptingSecurityManager extends SecurityManager {
 

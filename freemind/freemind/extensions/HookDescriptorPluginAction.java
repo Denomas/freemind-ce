@@ -34,12 +34,12 @@ import freemind.controller.actions.generated.instance.PluginProperty;
 /**
  * This is an information class that holds all outer properties of a hook, i.e.
  * all contents of the XML description file.
- * 
+ *
  * Don't use this class for anything except for the implementation of a
  * HookFactory.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public class HookDescriptorPluginAction extends HookDescriptorBase {
 	private Properties properties;

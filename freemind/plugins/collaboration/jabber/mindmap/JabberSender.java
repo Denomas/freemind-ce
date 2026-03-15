@@ -42,7 +42,7 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author RReppel
- * 
+ *
  * To change the template for this generated type comment go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
@@ -89,7 +89,7 @@ public class JabberSender implements ActionFilter {
     /**
      * Sends a request to share a map. The receiving user can either accept or
      * decline the request.
-     * 
+     *
      * @param requestingUser
      *            The user who requests the map to be shared.
      * @param requestReceiverUser
@@ -114,7 +114,7 @@ public class JabberSender implements ActionFilter {
 
     /**
      * Sends a request to stop sharing a map.
-     *  
+     *
      */
     public void sendMapSharingStopRequest() {
         try {
@@ -134,26 +134,26 @@ public class JabberSender implements ActionFilter {
      */
     private CollaborationAction createCollaborationAction(
             String requestingUser, String command) {
-    
+
         CollaborationAction collaboration = new CollaborationAction();
         collaboration.setCmd(command);
         collaboration.setUser(requestingUser);
         collaboration.setTimestamp(String.valueOf(System
                 .currentTimeMillis()));
         return collaboration;
-         
+
     }
 
     /**
      * Sends whether a map sharing invitation was accepted or declined.
-     * 
+     *
      * @param sentFromUser
      *            The name of the user accepting or declining the invitation.
      * @param sendToUser
      *            The user who had requested that his/her map be shared.
      * @param accepted
      *            true = accept, false = decline.
-     *  
+     *
      */
     public void sendMapSharingInvitationResponse(String sentFromUser,
             String sendToUser, boolean accepted) {
@@ -221,7 +221,7 @@ public class JabberSender implements ActionFilter {
     /**
      * True if there is a shared map at present, false otherwise. If this value
      * is false, the sender will ignore requests to send Freemind commands.
-     * 
+     *
      * @param shared
      */
     public void isMapShared(boolean shared) {
@@ -230,7 +230,7 @@ public class JabberSender implements ActionFilter {
 
     /**
      * Sets name of the user with whom the map is shared.
-     * 
+     *
      * @param username
      */
     public void setShareMapUser(String username) {
@@ -238,7 +238,7 @@ public class JabberSender implements ActionFilter {
     }
 
     /**
-     * The overloaded filter action. Each action comes here along and is sent to the other 
+     * The overloaded filter action. Each action comes here along and is sent to the other
      * participants.
      */
     public ActionPair filterAction(ActionPair pair) {

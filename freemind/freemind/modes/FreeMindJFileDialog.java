@@ -43,9 +43,9 @@ public class FreeMindJFileDialog extends JFileChooser implements FreeMindFileDia
 	public void registerDirectoryResultListener(
 			DirectoryResultListener pDirectoryResultListener) {
 				mDirectoryResultListener = pDirectoryResultListener;
-		
+
 	}
-	
+
 	protected void callDirectoryListener(final int result) {
 		if(result == JFileChooser.APPROVE_OPTION && mDirectoryResultListener != null) {
 			try {
@@ -55,7 +55,7 @@ public class FreeMindJFileDialog extends JFileChooser implements FreeMindFileDia
 			}
 		}
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see javax.swing.JFileChooser#showOpenDialog(java.awt.Component)
 	 */

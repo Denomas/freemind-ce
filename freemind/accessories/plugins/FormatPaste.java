@@ -32,7 +32,7 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class FormatPaste extends MindMapNodeHookAdapter {
 	private static Pattern pattern = null;

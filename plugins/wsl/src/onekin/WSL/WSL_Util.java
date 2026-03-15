@@ -47,19 +47,19 @@ public class WSL_Util {
 
 	public WSL_Util() {
 		}
-	
+
 	public Object[] checkModel(File currentMap){
 		Vector<Object> list = new Vector<Object>();
 		ImageIcon warning = new ImageIcon(getClass().getClassLoader().getResource(messagebox_warning));
 		ImageIcon error = new ImageIcon(getClass().getClassLoader().getResource(stop_sign));
-	
+
 	    InputStream xsltFile = getClass().getClassLoader().getResourceAsStream(WSL_check_model);
 	    String xml = transform(new StreamSource(currentMap), xsltFile);
 	    String[] token;
 	    if (xml != null && xml.length() != 0 ) {
-	    	
+
 	    	token = xml.split("/");
-	    	
+
 	    	for(int i =0; i < token.length ; i++){
 	    		if(token[i].contains("ERROR")){
 	    			list.add(error);
@@ -77,7 +77,7 @@ public class WSL_Util {
 	    Source xsltSource = new StreamSource(xsltStream);
 	    StringWriter writer = new StringWriter();
 	    Result result = new StreamResult(writer);
-	
+
 	    // create an instance of TransformerFactory
 	    try {
 	        TransformerFactory transFact = TransformerFactory.newInstance();
@@ -88,9 +88,9 @@ public class WSL_Util {
 	        return null;
 	    }
 	    return writer.toString();
-	}	
+	}
 	/**
-	 * This method copies a source folder to a 
+	 * This method copies a source folder to a
 	 * target folder
 	 * @param srcFolder
 	 * @param destFolder
@@ -105,7 +105,7 @@ public class WSL_Util {
 	         	for (int i=0; i < oChildren.length; i++) {
 	         		copyFolder(new File(srcFolder, oChildren[i]), new File(destFolder, oChildren[i]));
 	            }
-	        } 
+	        }
 		else {
 			if(destFolder.isDirectory()){
 				copyFile(srcFolder, new File(destFolder, srcFolder.getName()));
@@ -115,7 +115,7 @@ public class WSL_Util {
 	        	}
 			}
 		}
-	
+
 	/**
 	 * This method copies a source file to a target file
 	 * @param srcFile

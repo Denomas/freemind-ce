@@ -78,9 +78,9 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 			NodeLifetimeListener {
 
 		private boolean mDontUpdateModel = false;
-		
+
 		private MindMapNode mCurrentNode = null;
-		
+
 		@Override
 		public void onCreateNodeHook(MindMapNode pNode) {
 		}
@@ -209,7 +209,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 		void addValue(Object pAValue, int pColumnIndex);
 		void removeValue(int pRowIndex);
 	}
-	
+
 	/**
 	 * @author foltin
 	 * @date 4.09.2014
@@ -217,7 +217,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 	@SuppressWarnings("serial")
 	public final class AttributeTableModel extends AbstractTableModel {
 		/**
-		 * 
+		 *
 		 */
 		private final String[] COLUMNS = new String[] { KEY_COLUMN_TEXT,
 				VALUE_COLUMN_TEXT };
@@ -245,7 +245,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 		/**
 		 * @param pAttribute
 		 * @param pMakeMapDirty if true, the map is made dirty to reflect the change.
-		 * @return 
+		 * @return
 		 */
 		public int addAttributeHolder(AttributeHolder pAttribute, boolean pMakeMapDirty) {
 			mData.add(pAttribute);
@@ -262,10 +262,10 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 			makeMapDirty();
 			fireTableRowsDeleted(pIndex, pIndex);
 		}
-		
+
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.AbstractTableModel#getColumnClass(int)
 		 */
 		public Class getColumnClass(int arg0) {
@@ -284,7 +284,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.AbstractTableModel#getColumnName(int)
 		 */
 		public String getColumnName(int pColumn) {
@@ -293,7 +293,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.TableModel#getRowCount()
 		 */
 		public int getRowCount() {
@@ -302,7 +302,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.TableModel#getColumnCount()
 		 */
 		public int getColumnCount() {
@@ -311,7 +311,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.TableModel#getValueAt(int, int)
 		 */
 		public Object getValueAt(int pRowIndex, int pColumnIndex) {
@@ -332,15 +332,15 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 		public boolean isCellEditable(int pRowIndex, int pColumnIndex) {
 			return true;
 		}
-		
+
 		/**
-		 * 
+		 *
 		 */
 		public void clear() {
 			mData.clear();
 			fireTableDataChanged();
 		}
-		
+
 		/* (non-Javadoc)
 		 * @see javax.swing.table.AbstractTableModel#setValueAt(java.lang.Object, int, int)
 		 */
@@ -367,7 +367,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 		}
 
 	}
-	
+
 	private final MindMapController controller;
 
 	private final java.util.logging.Logger logger;
@@ -452,7 +452,7 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 		JMenuItem menuItem = new JMenuItem(controller.getText(DELETE_ROW_TEXT_ID));
 		mPopupMenu.add(menuItem);
 		menuItem.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
 				Component c = (Component) e.getSource();
 				JPopupMenu popup = (JPopupMenu) c.getParent();
@@ -492,10 +492,10 @@ public class NodeAttributeTableRegistration implements HookRegistration,
                 }
 			}
         });
-		
+
 	}
-	
-	
+
+
 
 	public void deRegister() {
 		// store sortings:
@@ -538,14 +538,14 @@ public class NodeAttributeTableRegistration implements HookRegistration,
 	public boolean isSelected(JMenuItem pCheckItem, Action pAction) {
 		return getSplitPaneVisible();
 	}
-	
+
 	public void focusAttributeTable() {
 		mAttributeTable.requestFocus();
 		mAttributeTable.getSelectionModel().setSelectionInterval(0, 0);
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	protected void makeMapDirty() {
 		controller.setSaved(false);

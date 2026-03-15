@@ -35,7 +35,7 @@ public interface FreeMindFileDialog  {
 	public interface DirectoryResultListener {
 		void setChosenDirectory(File pDir);
 	}
-	
+
 	public int showOpenDialog(Component pParent) throws HeadlessException;
 
 	public int showSaveDialog(Component pParent) throws HeadlessException;
@@ -43,7 +43,7 @@ public interface FreeMindFileDialog  {
 	public void setDialogTitle(String pDialogTitle);
 
 	/**
-	 * Sets the default file filter (that one that is activated at showup). 
+	 * Sets the default file filter (that one that is activated at showup).
 	 * @see #addChoosableFileFilter(FileFilter)
 	 */
 	public void addChoosableFileFilterAsDefault(FileFilter pFilter);
@@ -83,6 +83,6 @@ public interface FreeMindFileDialog  {
 	public void setSelectedFile(File pFile);
 
 	public void registerDirectoryResultListener(DirectoryResultListener pDirectoryResultListener);
-	
-	
+
+
 }

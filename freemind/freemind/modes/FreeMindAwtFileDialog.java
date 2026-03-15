@@ -60,9 +60,9 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 		public String getDescription() {
 			return "NullFilter";
 		}
-		
+
 	}
-	
+
 	private final class DirFilter extends FileFilter {
 
 		public boolean accept(File pF) {
@@ -75,39 +75,39 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 		public String getDescription() {
 			return "DirFilter";
 		}
-		
+
 	}
-	
+
 	private final class FileOnlyFilter extends FileFilter {
-		
+
 		public boolean accept(File pF) {
 			return pF.isFile();
 		}
-		
+
 		/* (non-Javadoc)
 		 * @see javax.swing.filechooser.FileFilter#getDescription()
 		 */
 		public String getDescription() {
 			return "FileFilter";
 		}
-		
+
 	}
-	
+
 	private final class FileAndDirFilter extends FileFilter {
-		
+
 		public boolean accept(File pF) {
 			return pF.isFile() || pF.isDirectory();
 		}
-		
+
 		/* (non-Javadoc)
 		 * @see javax.swing.filechooser.FileFilter#getDescription()
 		 */
 		public String getDescription() {
 			return "FileAndDirFilter";
 		}
-		
+
 	}
-	
+
 	private FreeMindFilenameFilter mFilter;
 	private DirectoryResultListener mDirectoryResultListener = null;
 
@@ -117,7 +117,7 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 	 */
 	private final class FreeMindFilenameFilter implements FilenameFilter {
 		/**
-		 * 
+		 *
 		 */
 		private FileFilter mCustomFilter = new NullFilter();
 		/**
@@ -146,7 +146,7 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public FreeMindAwtFileDialog() {
 		super((Frame) null);
@@ -159,7 +159,7 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 		System.setProperty(APPLE_AWT_FILE_DIALOG_FOR_DIRECTORIES, "false");
 
 	}
-	
+
 	protected void callDirectoryListener() {
 		if(getFile() != null) {
 			if(mDirectoryResultListener != null) {
@@ -173,11 +173,11 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 			}
 		}
 	}
-	
+
 	protected int getReturnValue() {
 		return (getFile() == null)?JFileChooser.CANCEL_OPTION:JFileChooser.APPROVE_OPTION;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.FreeMindFileDialog#showOpenDialog(java.awt.Component)
 	 */
@@ -211,7 +211,7 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 	public void addChoosableFileFilter(FileFilter pFilter) {
 		mFilter.setCustomFilter(pFilter);
 	}
-	
+
 
 
 	/* (non-Javadoc)
@@ -291,9 +291,9 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 			DirectoryResultListener pDirectoryResultListener) {
 				mDirectoryResultListener = pDirectoryResultListener;
 	}
-	
+
 	public static void main(String[] args) throws IOException {
-	
+
 		FreeMindAwtFileDialog dialog = new FreeMindAwtFileDialog();
 		dialog.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		dialog.showOpenDialog(null);

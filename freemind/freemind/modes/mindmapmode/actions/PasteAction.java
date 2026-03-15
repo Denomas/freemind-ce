@@ -58,7 +58,7 @@ public class PasteAction extends AbstractAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.actions.ActorXml#getDoActionClass()
 	 */
 	public Class<PasteNodeAction> getDoActionClass() {

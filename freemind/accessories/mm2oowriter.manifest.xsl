@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!--
-    adapted from mm2oowriter.xsl by Ondrej Popp  
+    adapted from mm2oowriter.xsl by Ondrej Popp
 /*FreeMind - A Program for creating and viewing Mindmaps
  *Copyright (C) 2000-2008  Christian Foltin and others.
  *
@@ -28,7 +28,7 @@
 
 	<xsl:output method="xml" version="1.0" indent="yes" encoding="UTF-8" omit-xml-declaration="no"/>
 	<xsl:strip-space elements="*"/>
-	
+
 	<xsl:template match="map">
 <manifest:manifest xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0">
  <manifest:file-entry manifest:media-type="application/vnd.oasis.opendocument.text" manifest:full-path="/"/>
@@ -51,5 +51,5 @@
  <manifest:file-entry manifest:media-type="text/xml" manifest:full-path="settings.xml"/>
 </manifest:manifest>
 	</xsl:template>
-	
+
 </xsl:stylesheet>

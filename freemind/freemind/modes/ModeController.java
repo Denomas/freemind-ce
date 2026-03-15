@@ -113,7 +113,7 @@ public interface ModeController extends TextTranslator, MapFeedback,
 	// node identifier (fc, 2.5.2004):
 	/**
 	 * Given a node identifier, this method returns the corresponding node.
-	 * 
+	 *
 	 * @throws IllegalArgumentException
 	 *             if the id is unknown.
 	 */
@@ -156,7 +156,7 @@ public interface ModeController extends TextTranslator, MapFeedback,
 
 	/**
 	 * nodes with greater depth occur first.
-	 * 
+	 *
 	 * @param inPlaceList
 	 *            the given list is sorted by reference.
 	 */
@@ -164,7 +164,7 @@ public interface ModeController extends TextTranslator, MapFeedback,
 
 	/**
 	 * This extends the currently selected nodes.
-	 * 
+	 *
 	 * @return true, if the method changed the selection.
 	 */
 	boolean extendSelection(MouseEvent e);
@@ -225,7 +225,7 @@ public interface ModeController extends TextTranslator, MapFeedback,
 		 * Informs whether or not the node belongs to the group of selected
 		 * nodes (in contrast to the focused node above). The nodes selection is
 		 * already changed, when this method is called.
-		 * 
+		 *
 		 * @param pNode
 		 * @param pIsSelected
 		 *            true, if the node is selected now.
@@ -276,7 +276,7 @@ public interface ModeController extends TextTranslator, MapFeedback,
 	/**
 	 * The onCreateNodeHook is called for every node (depest nodes first) after
 	 * registration.
-	 * 
+	 *
 	 * @param pFireCreateEvent
 	 *            TODO
 	 */

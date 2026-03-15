@@ -32,11 +32,11 @@ import freemind.main.Resources;
 import freemind.main.Tools;
 
 /**
- * 
+ *
  * The oval appearing to move nodes to other positions.
- * 
+ *
  * @author Dimitri
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class NodeMotionListenerView extends JComponent {

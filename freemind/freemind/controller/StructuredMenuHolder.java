@@ -47,12 +47,12 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class StructuredMenuHolder {
 
 	/**
-	 * 
+	 *
 	 */
 	public static final String AMOUNT_OF_VISIBLE_MENU_ITEMS = "AMOUNT_OF_VISIBLE_MENU_ITEMS";
 	public static final int ICON_SIZE = 16;
@@ -103,7 +103,7 @@ public class StructuredMenuHolder {
 	}
 
 	/**
-	 * @param item is an action. If it derives from MenuItemSelectedListener, 
+	 * @param item is an action. If it derives from MenuItemSelectedListener,
 	 * a check box is used.
 	 */
 	public JMenuItem addAction(Action item, String category) {
@@ -127,7 +127,7 @@ public class StructuredMenuHolder {
 
 	/**
 	 * Under Mac, no HTML is rendered for menus.
-	 * 
+	 *
 	 * @param holder
 	 */
 	private void adjustTooltips(StructuredMenuItemHolder holder) {
@@ -329,12 +329,12 @@ public class StructuredMenuHolder {
 	private static class MenuItemAdder implements MenuAdder {
 
 		/**
-		 * 
+		 *
 		 */
 		private int mAmountOfVisibleMenuItems = 20;
 		private int mItemCounter = 0;
 		private int mMenuCounter = 0;
-		
+
 		private JMenu mBaseMenuItem;
 
 		private JMenu myMenuItem;
@@ -406,7 +406,7 @@ public class StructuredMenuHolder {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.StructuredMenuHolder.MenuAdderCreator#createAdder
 		 * (javax.swing.JMenu)
@@ -467,7 +467,7 @@ public class StructuredMenuHolder {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
@@ -482,7 +482,7 @@ public class StructuredMenuHolder {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.StructuredMenuHolder.MenuAdderCreator#createAdder
 		 * (javax.swing.JMenu)

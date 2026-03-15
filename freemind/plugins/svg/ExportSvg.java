@@ -36,7 +36,7 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ExportSvg extends ExportVectorGraphic {
 

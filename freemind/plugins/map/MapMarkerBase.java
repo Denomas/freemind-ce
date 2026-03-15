@@ -41,11 +41,11 @@ import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
 public abstract class MapMarkerBase extends JLabel implements MapMarker {
 
 	/**
-	 * 
+	 *
 	 */
 	public static final int CIRCLE_RADIUS = 5;
 	/**
-	 * 
+	 *
 	 */
 	private static final int CIRCLE_DIAMETER = CIRCLE_RADIUS * 2;
 	protected MapDialog mMapDialog;
@@ -64,7 +64,7 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	private static Style sStyle = new Style();
 
 	/**
-	 * 
+	 *
 	 */
 	public MapMarkerBase(MapDialog pMapDialog) {
 		super();
@@ -149,7 +149,7 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	public boolean isSelected() {
 		return mSelected;
 	}
-	
+
 	public Coordinate getCoordinate() {
 		return new Coordinate(getLat(), getLon());
 	}
@@ -162,7 +162,7 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	@Override
 	public void setLayer(Layer pLayer) {
 		sLayer = pLayer;
-		
+
 	}
 
 	@Override

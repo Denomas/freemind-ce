@@ -41,7 +41,7 @@ import freemind.view.mindmapview.NodeView;
  */
 public class MapNodePositionHolder extends MapNodePositionHolderBase {
 	/**
-	 * 
+	 *
 	 */
 	private static final String MAP_LOCATION = "map_location";
 	private Coordinate mPosition = new Coordinate(0, 0);
@@ -52,7 +52,7 @@ public class MapNodePositionHolder extends MapNodePositionHolderBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.NodeHookAdapter#invoke(freemind.modes.MindMapNode)
 	 */
@@ -73,7 +73,7 @@ public class MapNodePositionHolder extends MapNodePositionHolderBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.PermanentNodeHookAdapter#shutdownMapHook()
 	 */
 	public void shutdownMapHook() {
@@ -83,7 +83,7 @@ public class MapNodePositionHolder extends MapNodePositionHolderBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHookAdapter#save(freemind.main.XMLElement
 	 * )
@@ -123,7 +123,7 @@ public class MapNodePositionHolder extends MapNodePositionHolderBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.PermanentNodeHookAdapter#loadFrom(freemind.main.
 	 * XMLElement)
 	 */
@@ -261,7 +261,7 @@ public class MapNodePositionHolder extends MapNodePositionHolderBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHookAdapter#onViewCreatedHook(freemind
 	 * .view.mindmapview.NodeView)
@@ -274,7 +274,7 @@ public class MapNodePositionHolder extends MapNodePositionHolderBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHookAdapter#onViewRemovedHook(freemind
 	 * .view.mindmapview.NodeView)
@@ -293,7 +293,7 @@ public class MapNodePositionHolder extends MapNodePositionHolderBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHookAdapter#saveHtml(java.io.Writer)
 	 */
@@ -368,5 +368,5 @@ public class MapNodePositionHolder extends MapNodePositionHolderBase {
 	}
 
 
-	
+
 }

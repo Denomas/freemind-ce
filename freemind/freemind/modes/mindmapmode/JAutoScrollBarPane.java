@@ -70,7 +70,7 @@ public class JAutoScrollBarPane extends JScrollPane {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getPreferredSize()
 	 */
 	public Dimension getPreferredSize() {

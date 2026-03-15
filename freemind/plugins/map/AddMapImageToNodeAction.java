@@ -47,5 +47,5 @@ public class AddMapImageToNodeAction extends MindMapNodeHookAdapter {
 		}
 
 	}
-	
+
 }

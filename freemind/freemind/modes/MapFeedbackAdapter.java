@@ -51,7 +51,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 	protected static java.util.logging.Logger logger = null;
 
 	/**
-	 * 
+	 *
 	 */
 	public MapFeedbackAdapter() {
 		if (logger == null) {
@@ -62,7 +62,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.MapFeedback#fireNodePreDeleteEvent(freemind.modes.MindMapNode
 	 * )
@@ -71,13 +71,13 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 	public void fireNodePreDeleteEvent(MindMapNode pNode) {
 
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.MapFeedback#fireNodePostDeleteEvent(freemind.modes.MindMapNode, freemind.modes.MindMapNode)
 	 */
 	@Override
 	public void fireNodePostDeleteEvent(MindMapNode pNode, MindMapNode pParent) {
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -86,10 +86,10 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 	@Override
 	public void fireRecursiveNodeCreateEvent(MindMapNode pNode) {
 	}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.MapFeedback#firePreSaveEvent(freemind.modes.MindMapNode)
 	 */
@@ -100,7 +100,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MapFeedback#nodeChanged(freemind.modes.MindMapNode)
 	 */
 	@Override
@@ -112,7 +112,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MapFeedback#nodeRefresh(freemind.modes.MindMapNode)
 	 */
 	@Override
@@ -122,7 +122,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MapFeedback#paste(freemind.modes.MindMapNode,
 	 * freemind.modes.MindMapNode)
 	 */
@@ -133,7 +133,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MapFeedback#getResourceString(java.lang.String)
 	 */
 	@Override
@@ -149,7 +149,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 	public String getProperty(String pResourceId) {
 		return Resources.getInstance().getProperty(pResourceId);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.MapFeedback#getIntProperty(java.lang.String, int)
 	 */
@@ -165,10 +165,10 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 	public void setProperty(String pProperty, String pValue) {
 		Resources.getInstance().getProperties().setProperty(pProperty, pValue);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MapFeedback#out(java.lang.String)
 	 */
 	@Override
@@ -178,7 +178,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MapFeedback#getDefaultFont()
 	 */
 	@Override
@@ -197,7 +197,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MapFeedback#createNodeHook(java.lang.String,
 	 * freemind.modes.MindMapNode)
 	 */
@@ -211,7 +211,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.MapFeedback#invokeHooksRecursively(freemind.modes.MindMapNode
 	 * , freemind.modes.MindMap)
@@ -232,78 +232,78 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 	@Override
 	public void changeSelection(NodeView pNode, boolean pIsSelected) {
-		
-		
+
+
 	}
 
 	@Override
 	public void onLostFocusNode(NodeView pNode) {
-		
-		
+
+
 	}
 
 	@Override
 	public void onFocusNode(NodeView pNode) {
-		
-		
+
+
 	}
 
 	@Override
 	public void setFolded(MindMapNode pModel, boolean pB) {
-		
+
 	}
 
 	@Override
 	public void onViewCreatedHook(NodeView pNewView) {
-		
-		
+
+
 	}
 
 	@Override
 	public void onViewRemovedHook(NodeView pNodeView) {
-		
-		
+
+
 	}
 
 	@Override
 	public NodeMouseMotionListener getNodeMouseMotionListener() {
-		
+
 		return null;
 	}
 
 	@Override
 	public NodeMotionListener getNodeMotionListener() {
-		
+
 		return null;
 	}
 
 	@Override
 	public NodeKeyListener getNodeKeyListener() {
-		
+
 		return null;
 	}
 
 	@Override
 	public NodeDragListener getNodeDragListener() {
-		
+
 		return null;
 	}
 
 	@Override
 	public NodeDropListener getNodeDropListener() {
-		
+
 		return null;
 	}
 
 	@Override
 	public MapMouseMotionListener getMapMouseMotionListener() {
-		
+
 		return null;
 	}
 
 	@Override
 	public MapMouseWheelListener getMapMouseWheelListener() {
-		
+
 		return null;
 	}
 
@@ -322,7 +322,7 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 	public ViewAbstraction getViewAbstraction() {
 		return null;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.view.mindmapview.ViewFeedback#select(freemind.view.mindmapview.NodeView)
 	 */
@@ -335,12 +335,12 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 	public NodeView getNodeView(MindMapNode node) {
 		return null;
 	}
-	
+
 	/**
 	 * This class sortes nodes by ascending depth of their paths to root. This
 	 * is useful to assure that children are cutted <b>before </b> their
 	 * fathers!!!.
-	 * 
+	 *
 	 * Moreover, it sorts nodes with the same depth according to their position
 	 * relative to each other.
 	 */
@@ -378,5 +378,5 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 	}
 
 
-	
+
 }

@@ -40,7 +40,7 @@ public class ChangeArrowsInArrowLinkActor extends XmlActorAdapter {
 	public ChangeArrowsInArrowLinkActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public void changeArrowsOfArrowLink(MindMapArrowLink arrowLink,
 			boolean hasStartArrow, boolean hasEndArrow) {
 		execute(getActionPair(arrowLink, hasStartArrow, hasEndArrow));

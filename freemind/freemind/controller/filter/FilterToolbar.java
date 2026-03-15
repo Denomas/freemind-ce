@@ -68,7 +68,7 @@ class FilterToolbar extends FreeMindToolBar {
 			ItemListener, PropertyChangeListener {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -85,7 +85,7 @@ class FilterToolbar extends FreeMindToolBar {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ItemListener#itemStateChanged(java.awt.event.ItemEvent
 		 * )
@@ -125,7 +125,7 @@ class FilterToolbar extends FreeMindToolBar {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )

@@ -3,10 +3,10 @@
 <xsl:stylesheet version="1.0"     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"    xmlns:xlink="http://www.w3.org/1999/xlink">
     <xsl:output method="text" indent="no"/>
     <xsl:strip-space elements="*"/>
-        
-     <xsl:template match="map">            
-        <xsl:apply-templates select="node"/>        
-    </xsl:template> 
+
+     <xsl:template match="map">
+        <xsl:apply-templates select="node"/>
+    </xsl:template>
 
     <!-- NODE -->
     <xsl:template match="node">
@@ -30,7 +30,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- ATTRIBUTE -->
     <xsl:template match="attribute">
         <xsl:variable name="depth">
@@ -47,14 +47,14 @@
                 <xsl:text>&#xA;</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>      
+    </xsl:template>
 
    <!-- ATTRIBUTE TASK_ID-->
     <xsl:template match="attribute" mode="task_id">
         <xsl:if test="@NAME='task'">
             <xsl:value-of select="@VALUE"/>
         </xsl:if>
-    </xsl:template>      
+    </xsl:template>
 
     <!-- NODE TASK -->
     <xsl:template match="node" mode="task">
@@ -86,7 +86,7 @@
             </xsl:otherwise>
         </xsl:choose>
    </xsl:template>
- 
+
     <!-- Node Depth Mesurement -->
     <xsl:template match="node" mode="depthMesurement">
         <xsl:param name="depth" select=" '0' "/>
@@ -94,7 +94,7 @@
                 <xsl:with-param name="depth" select="$depth + 1"/>
             </xsl:apply-templates>
     </xsl:template>
-        
+
     <!-- Map Depth Mesurement -->
     <xsl:template match="map" mode="depthMesurement">
         <xsl:param name="depth" select=" '0' "/>
@@ -109,6 +109,6 @@
                 <xsl:with-param name="count" select="$count - 1"/>
             </xsl:call-template>
         </xsl:if>
-    </xsl:template> 
+    </xsl:template>
 
 </xsl:stylesheet>

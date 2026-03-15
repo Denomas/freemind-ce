@@ -31,7 +31,7 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class CommonMouseMotionManager implements MapMouseMotionReceiver {
 

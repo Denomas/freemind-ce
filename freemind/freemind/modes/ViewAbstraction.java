@@ -28,7 +28,7 @@ import freemind.view.mindmapview.NodeView;
 /**
  * Abstraction for the MapView
  * Handles selections, focus, etc.
- * 
+ *
  * @author foltin
  * @date 18.03.2014
  */
@@ -42,7 +42,7 @@ public interface ViewAbstraction {
 	/**
 	 * Removes the selection for this node. Take care, that at least one selected node
 	 * is remaining.
-	 * 
+	 *
 	 * @param node
 	 */
 	void deselect(NodeView node);
@@ -54,7 +54,7 @@ public interface ViewAbstraction {
 	LinkedList<NodeView> getSelecteds();
 
 	NodeView getSelected();
-	
+
 	/**
 	 * @return an ArrayList of MindMapNode objects. If both ancestor and
 	 *         descendant node are selected, only the ancestor is returned

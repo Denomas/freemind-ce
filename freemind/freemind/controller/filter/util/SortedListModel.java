@@ -32,7 +32,7 @@ import javax.swing.ListModel;
 public interface SortedListModel extends ListModel {
 
 	/**
-     * 
+     *
      */
 	void clear();
 

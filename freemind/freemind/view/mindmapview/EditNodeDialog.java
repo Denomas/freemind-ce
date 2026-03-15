@@ -50,7 +50,7 @@ import freemind.modes.ModeController;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class EditNodeDialog extends EditNodeBase {
 	private KeyEvent firstEvent;
@@ -276,7 +276,7 @@ public class EditNodeDialog extends EditNodeBase {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.view.mindmapview.EditNodeBase.Dialog#cancel()
 		 */
 		protected void cancel() {
@@ -286,7 +286,7 @@ public class EditNodeDialog extends EditNodeBase {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.view.mindmapview.EditNodeBase.Dialog#split()
 		 */
 		protected void split() {
@@ -297,7 +297,7 @@ public class EditNodeDialog extends EditNodeBase {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.view.mindmapview.EditNodeBase.Dialog#submit()
 		 */
 		protected void submit() {
@@ -307,7 +307,7 @@ public class EditNodeDialog extends EditNodeBase {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.view.mindmapview.EditNodeBase.Dialog#isChanged()
 		 */
 		protected boolean isChanged() {

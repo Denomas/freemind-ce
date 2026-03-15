@@ -48,12 +48,12 @@ public abstract class SocketMaster extends SocketBasics {
 		Vector<ServerCommunication> mConnections = new Vector<ServerCommunication>();
 		public String mLockMutex = new String();
 	}
-	
+
 	protected HashMap<ExtendedMapFeedback, SessionData> mSessions = new HashMap<ExtendedMapFeedback, SocketMaster.SessionData>();
 	protected int mPort;
 	protected HashMap<String, ExtendedMapFeedback> mFileMap = new HashMap<String, ExtendedMapFeedback>();
 
-	
+
 	public synchronized void removeConnection(ServerCommunication client) {
 		synchronized (mSessions) {
 			ExtendedMapFeedback controller = client.getController();
@@ -64,12 +64,12 @@ public abstract class SocketMaster extends SocketBasics {
 		// correct the map title, as we probably don't have clients anymore
 		setTitle();
 	}
-	
+
 	/**
 	 * Updates the title of the dialog or display, is called, when changes occur.
 	 */
 	protected abstract void setTitle();
-	
+
 	/**
 	 * @return the path to where all maps are stored.
 	 */
@@ -81,7 +81,7 @@ public abstract class SocketMaster extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#getPort()
 	 */
 	public int getPort() {
@@ -90,7 +90,7 @@ public abstract class SocketMaster extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#lock()
 	 */
 	protected String lock(String pUserName, ExtendedMapFeedback pController) throws UnableToGetLockException,
@@ -122,7 +122,7 @@ public abstract class SocketMaster extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * plugins.collaboration.socket.SocketBasics#sendCommand(java.lang.String,
 	 * java.lang.String, java.lang.String)
@@ -140,7 +140,7 @@ public abstract class SocketMaster extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#unlock()
 	 */
 	protected void unlock(ExtendedMapFeedback pController) {
@@ -173,7 +173,7 @@ public abstract class SocketMaster extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#getUsers()
 	 */
 	public String getUsers(ExtendedMapFeedback pController) {
@@ -188,7 +188,7 @@ public abstract class SocketMaster extends SocketBasics {
 		}
 		return users.toString();
 	}
-	
+
 	protected void executeTransaction(final ActionPair pair, ExtendedMapFeedback pController) {
 		getSessionData(pController);
 		mFilterEnabled = false;
@@ -198,7 +198,7 @@ public abstract class SocketMaster extends SocketBasics {
 			mFilterEnabled = true;
 		}
 	}
-	
+
 	public CollaborationUserInformation getMasterInformation(ExtendedMapFeedback pController) {
 		CollaborationUserInformation userInfo = new CollaborationUserInformation();
 		userInfo.setUserIds(getUsers(pController));
@@ -223,7 +223,7 @@ public abstract class SocketMaster extends SocketBasics {
 			ExtendedMapFeedback pController) {
 		synchronized (mSessions) {
 			mSessions.get(pController).mConnections.addElement(pServerCommunication);
-		}		
+		}
 	}
 
 	public ExtendedMapFeedback createMapOnServer(String fileName,
@@ -231,14 +231,14 @@ public abstract class SocketMaster extends SocketBasics {
 		ExtendedMapFeedbackImpl mapFeedback = new ExtendedMapFeedbackImpl();
 
 		MindMapMapModel map = new MindMapMapModel(mapFeedback);
-		mapFeedback.setMap(map); 
+		mapFeedback.setMap(map);
 		MindMapNode root = map.loadTree(readerCreator,
 				MapAdapter.sDontAskInstance);
 		map.setRoot(root);
 		mapFeedback.invokeHooksRecursively(root, map);
 		mapFeedback.getActionRegistry().registerFilter(this);
 		map.setFile(pFile);
-		
+
 		addSession(fileName, mapFeedback);
 		return mapFeedback;
 	}
@@ -253,5 +253,5 @@ public abstract class SocketMaster extends SocketBasics {
 
 
 
-	
+
 }

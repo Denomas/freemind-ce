@@ -22,20 +22,20 @@
 <xsl:text>
 \documentclass[a4paper,12pt,single,pdftex]{scrbook}
 \usepackage{ngerman}
- \usepackage{color}  
- \usepackage{html}  
- \usepackage{times}  
- \usepackage{graphicx} 
- \usepackage{fancyheadings}  
- \usepackage{hyperref}  
- \setlength{\parindent}{0.6pt} 
- \setlength{\parskip}{0.6pt} 
+ \usepackage{color}
+ \usepackage{html}
+ \usepackage{times}
+ \usepackage{graphicx}
+ \usepackage{fancyheadings}
+ \usepackage{hyperref}
+ \setlength{\parindent}{0.6pt}
+ \setlength{\parskip}{0.6pt}
  \title{</xsl:text><xsl:value-of select="node/@TEXT"/><xsl:text>}
  </xsl:text>
 <!-- ======= Document Begining ====== -->
 <xsl:text>
 
-\begin{document} 
+\begin{document}
 \maketitle
 %\newpage
 \tableofcontents
@@ -204,7 +204,7 @@
  <xsl:otherwise><xsl:value-of select="$SS"/></xsl:otherwise>
 </xsl:choose>
 
-<xsl:text></xsl:text> 
+<xsl:text></xsl:text>
 
 <xsl:call-template name="LaTeXChar">
 <xsl:with-param name="i" select="$i - 1"/>

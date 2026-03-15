@@ -65,7 +65,7 @@ public class SortedMapListModel extends AbstractListModel implements
 		model.addAll(pObjects);
 		fireContentsChanged(this, 0, getSize());
 	}
-	
+
 	public void clear() {
 		int oldSize = getSize();
 		if (oldSize > 0) {
@@ -105,7 +105,7 @@ public class SortedMapListModel extends AbstractListModel implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.util.SortedListModel#replace(java.lang.Object,
 	 * java.lang.Object)
@@ -122,7 +122,7 @@ public class SortedMapListModel extends AbstractListModel implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.util.SortedListModel#delete(java.lang.Object)
 	 */

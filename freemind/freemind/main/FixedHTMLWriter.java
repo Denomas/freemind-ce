@@ -2,7 +2,7 @@ package freemind.main;
 
 /*
  * XHTMLWriter -- A simple XHTML document writer
- * 
+ *
  * (C) 2004 Richard "Shred" Koerber
  *   http://www.shredzone.net/
  *
@@ -29,7 +29,7 @@ import javax.swing.text.html.HTMLWriter;
  * The result will be a valid XML file, but it is not granted that the file will
  * really be XHTML 1.0 transitional conformous. The basic purpose of this class
  * is to give an XSL processor access to plain HTML files.
- * 
+ *
  * @author Richard "Shred" K�rber
  */
 public class FixedHTMLWriter extends HTMLWriter {
@@ -37,7 +37,7 @@ public class FixedHTMLWriter extends HTMLWriter {
 
 	/**
 	 * Create a new XHTMLWriter that will write the entire HTMLDocument.
-	 * 
+	 *
 	 * @param writer
 	 *            Writer to write to
 	 * @param doc
@@ -49,7 +49,7 @@ public class FixedHTMLWriter extends HTMLWriter {
 
 	/**
 	 * Create a new XHTMLWriter that will write a part of a HTMLDocument.
-	 * 
+	 *
 	 * @param writer
 	 *            Writer to write to
 	 * @param doc
@@ -94,7 +94,7 @@ public class FixedHTMLWriter extends HTMLWriter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.text.html.HTMLWriter#writeAttributes(javax.swing.text.
 	 * AttributeSet)
 	 */

@@ -81,7 +81,7 @@ import freemind.main.Tools;
 @SuppressWarnings("serial")
 public class ScriptEditorPanel extends JDialog implements MenuListener {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 3221975191441136520L;
 
@@ -156,7 +156,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing
 		 * .JMenuItem, javax.swing.Action)
@@ -182,7 +182,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing
 		 * .JMenuItem, javax.swing.Action)
@@ -313,7 +313,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 		boolean isDirty();
 
 		/**
-		 * 
+		 *
 		 * @return the index of the new script.
 		 */
 		int addNewScript();
@@ -484,7 +484,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 	/**
 	 * @param pIsCanceled
 	 *            TODO
-	 * 
+	 *
 	 */
 	private void disposeDialog(boolean pIsCanceled) {
 		// the script should be stopped.
@@ -558,7 +558,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.MenuListener#menuSelected(javax.swing.event.MenuEvent)
 	 */
@@ -574,7 +574,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.MenuListener#menuDeselected(javax.swing.event.MenuEvent
 	 * )
@@ -587,7 +587,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.MenuListener#menuCanceled(javax.swing.event.MenuEvent)
 	 */

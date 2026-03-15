@@ -81,5 +81,5 @@ public class RemoveAllIconsActor extends NodeXmlActorAdapter {
 	}
 
 
-	
+
 }

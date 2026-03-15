@@ -41,7 +41,7 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * This plugin formats new nodes using the formats given to former nodes.
- * 
+ *
  * @author foltin
  */
 public class FormatNewNodes implements ActionHandler, ActionFilter,

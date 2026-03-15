@@ -70,9 +70,9 @@ import freemind.view.MapModule;
 import freemind.view.mindmapview.NodeView;
 
 /**
- * 
+ *
  * Demonstrates the usage of {@link JMapViewer}
- * 
+ *
  * @author Jan Peter Stotz adapted for FreeMind by Chris.
  */
 @SuppressWarnings("serial")
@@ -175,7 +175,7 @@ public class MapDialog extends MindMapHookAdapter implements
 	public final class ResultTableModel extends AbstractTableModel implements
 			CursorPositionListener {
 		/**
-		 * 
+		 *
 		 */
 		private final String[] COLUMNS = new String[] {
 				SEARCH_DESCRIPTION_COLUMN_TEXT, SEARCH_DISTANCE_COLUMN_TEXT };
@@ -196,7 +196,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.AbstractTableModel#getColumnClass(int)
 		 */
 		public Class<?> getColumnClass(int arg0) {
@@ -239,7 +239,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.AbstractTableModel#getColumnName(int)
 		 */
 		public String getColumnName(int pColumn) {
@@ -248,7 +248,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.TableModel#getRowCount()
 		 */
 		public int getRowCount() {
@@ -257,7 +257,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.TableModel#getColumnCount()
 		 */
 		public int getColumnCount() {
@@ -266,7 +266,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.TableModel#getValueAt(int, int)
 		 */
 		public Object getValueAt(int pRowIndex, int pColumnIndex) {
@@ -287,7 +287,7 @@ public class MapDialog extends MindMapHookAdapter implements
 		}
 
 		/**
-		 * 
+		 *
 		 */
 		public void clear() {
 			// clear old search results:
@@ -303,7 +303,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see plugins.map.FreeMindMapController.CursorPositionListener#
 		 * cursorPositionChanged(org.openstreetmap.gui.jmapviewer.Coordinate)
 		 */
@@ -315,7 +315,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.HookAdapter#startupMapHook()
 	 */
 	public void startupMapHook() {
@@ -682,7 +682,7 @@ public class MapDialog extends MindMapHookAdapter implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void disposeDialog() {
 		Registration registration = (Registration) getPluginBaseClass();
@@ -762,7 +762,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * isMapModuleChangeAllowed(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -774,7 +774,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * beforeMapModuleChange(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -785,7 +785,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.MapModuleManager.MapModuleChangeObserver#afterMapClose
 	 * (freemind.view.MapModule, freemind.modes.Mode)
@@ -796,7 +796,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * afterMapModuleChange(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -808,7 +808,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * numberOfOpenMapInformation(int, int)
 	 */
@@ -817,7 +817,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * plugins.map.MapNodePositionHolder.MapNodePositionListener#registerMapNode
 	 * (plugins.map.MapNodePositionHolder)
@@ -828,7 +828,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * plugins.map.MapNodePositionHolder.MapNodePositionListener#deregisterMapNode
 	 * (plugins.map.MapNodePositionHolder)
@@ -840,7 +840,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController.NodeSelectionListener#onUpdateNodeHook(
 	 * freemind.modes.MindMapNode)
@@ -859,7 +859,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController.NodeSelectionListener#onSelectHook(freemind
 	 * .view.mindmapview.NodeView)
@@ -883,7 +883,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController.NodeSelectionListener#onDeselectHook(freemind
 	 * .view.mindmapview.NodeView)
@@ -894,7 +894,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController.NodeSelectionListener#onSaveNode(freemind
 	 * .modes.MindMapNode)
@@ -904,7 +904,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController.NodeSelectionListener#onSelectionChange
 	 * (freemind.modes.MindMapNode, boolean)
@@ -959,7 +959,7 @@ public class MapDialog extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * plugins.map.Registration.NodeVisibilityListener#nodeVisibilityChanged
 	 * (boolean)
@@ -1000,7 +1000,7 @@ public class MapDialog extends MindMapHookAdapter implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void setSingleSearch() {
 		mSingleSearch = true;
@@ -1015,7 +1015,7 @@ public class MapDialog extends MindMapHookAdapter implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void toggleLimitSearchToRegion() {
 		mLimitSearchToRegion = !mLimitSearchToRegion;

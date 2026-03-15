@@ -29,7 +29,7 @@ public class MapMarkerLocation extends MapMarkerBase {
 	private final MapNodePositionHolder mNodePositionHolder;
 	/**
 	 * @param pNodePositionHolder
-	 * @param pMapDialog 
+	 * @param pMapDialog
 	 */
 	public MapMarkerLocation(MapNodePositionHolder pNodePositionHolder, MapDialog pMapDialog) {
 		super(pMapDialog);

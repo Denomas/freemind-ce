@@ -6,7 +6,7 @@
 	<plugin_action
 		documentation="%accessories/plugins/JumpLastEditLocation.properties_documentation"
 		name="%accessories/plugins/JumpLastEditLocation.properties_name" base="freemind.extensions.NodeHookAdapter"
-		label="accessories/plugins/JumpLastEditLocation.properties" 
+		label="accessories/plugins/JumpLastEditLocation.properties"
 		class_name="accessories.plugins.JumpLastEditLocation"
 		key_stroke="%keystroke_accessories/plugins/JumpLastEditLocation.properties.properties_key"
 		instanciation="Once">

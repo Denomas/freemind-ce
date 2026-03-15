@@ -47,24 +47,24 @@ import freemind.modes.MindMap;
 import freemind.modes.ModeController;
 
 public class WSL_Main extends  ExportHook {
-	
+
 	private static String extensions = "";
 	private HashMap<String, String> databaseVars = new HashMap<String, String>();
 	private final String curDir = System.getProperty("user.dir");
-	private final String configFile= curDir 
+	private final String configFile= curDir
 		+ File.separator + "plugins/WSL/resources/localSettings.conf";
 	private final String WSL_mm2php = "wsl_resources/WSL_mm2php.xsl";
 	private final String WSL_mm2sql = "wsl_resources/WSL_mm2sql.xsl";
 	private final String createWikiMarkup = "wsl_resources/word2wiki/createWikiMarkup.xsl";
 	private final String createTemplateWikiMarkup = "wsl_resources/word2wiki/createTemplateWikiMarkup.xsl";
-	private final String mySQLScript = curDir 
+	private final String mySQLScript = curDir
 		+ File.separator + "plugins/WSL/resources/mySQLScript.sql";
 	private final String extensionsDir = curDir + File.separator + "plugins/WSL/resources/extensions";
 	private final String skinsDir = curDir + File.separator +"plugins/WSL/resources/skins";
 	private File localSettings;
 	private static String extensionsToInstall = "";
 	private WSL_Util wsl_util;
-	
+
     public WSL_Main() {
 		super();
 		System.out.println("Main constructor");
@@ -117,7 +117,7 @@ public class WSL_Main extends  ExportHook {
 	    }
 	    getController().getFrame().setWaitingCursor(false);
 	 }
-	
+
 //	public ModeController getThisController() {
 //		return getController();
 //	}
@@ -153,18 +153,18 @@ public class WSL_Main extends  ExportHook {
     		} else{
     			wsl_util.copyFile(new File(getCurrentFile().getParent().replace("\\", "/")+logo), new File(localSettings.getParent().replace("\\", "/")+"/skins/common/images"+logoName.replace(" ", "_")));
     		}
-    		
+
     		phpToAdd = phpToAdd.replace("__@logo@__"+logo.replace(" ", "%20"), "$wgScriptPath/skins/common/images"+logoName.replace(" ", "_"));
-    		
+
 		    String extensionsRequire="";
-		    String phpToInsExtensions="\nif (!$wgCommandLineMode) {\n";  
+		    String phpToInsExtensions="\nif (!$wgCommandLineMode) {\n";
 		    String[] splitExtensions = extensionsToInstall.split("\\s");
 		    for(int i =0; i < splitExtensions.length ; i++){
 		    	if(!splitExtensions[i].equals("")){
-		    		extensionsRequire= extensionsRequire + "require_once( \"$IP/extensions/" + splitExtensions[i] + "/"+ splitExtensions[i]  +".php\");\n";	
+		    		extensionsRequire= extensionsRequire + "require_once( \"$IP/extensions/" + splitExtensions[i] + "/"+ splitExtensions[i]  +".php\");\n";
 		    	}
 		    }
-		    
+
 		    // Comment (with "#") emailPage if it isn't chosen
 		    if(!emailPage){
 		    	extensionsRequire = new StringBuffer(extensionsRequire).insert(extensionsRequire.indexOf("require_once( \"$IP/extensions/EmailPage"), "#").toString();
@@ -193,7 +193,7 @@ public class WSL_Main extends  ExportHook {
 //	        freemind.main.Resources.getInstance().logException(e);
 //	    }
 	}
-	
+
 	private void finish() {
 	    JOptionPane.showMessageDialog (null, "WSL finished the wiki", "WSL done", JOptionPane.INFORMATION_MESSAGE);
 	    getController().getFrame().setWaitingCursor(false);
@@ -213,7 +213,7 @@ public class WSL_Main extends  ExportHook {
 	    getController().getFrame().setWaitingCursor(false);
 		return true;
 	}
-	
+
 	private boolean confirmDialog(Object[] list) {
         int response = 0;
 		if (list.length == 0){
@@ -222,7 +222,7 @@ public class WSL_Main extends  ExportHook {
 		}else{
 			response = JOptionPane.showConfirmDialog(null, list, "WSL Checking Report. Do you want to continue?",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-		}	            
+		}
 	        if (response == JOptionPane.NO_OPTION) {
 	        	return false;
 	        } else if (response == JOptionPane.YES_OPTION) {
@@ -234,7 +234,7 @@ public class WSL_Main extends  ExportHook {
 	}
 
 	/**
-	 * This method parses the LocalSettings file to 
+	 * This method parses the LocalSettings file to
 	 * extract the configuration values
 	 * @return
 	 * @throws Exception
@@ -270,7 +270,7 @@ public class WSL_Main extends  ExportHook {
 //		    }
 	    return true;
 	}
-	
+
 	/**
 	 * This method extracts the value of a line between " and "
 	 * @param strLine
@@ -279,7 +279,7 @@ public class WSL_Main extends  ExportHook {
 	private String getValue(String strLine) {
 		return strLine.substring(strLine.indexOf("\""), strLine.lastIndexOf("\"")+1);
 	}
-	
+
 	/**
 	 * This method creates the MySQL script executing
 	 * a XSL transformation
@@ -292,7 +292,7 @@ public class WSL_Main extends  ExportHook {
 			File currentMMFile = getCurrentFile();
 	        // search xslt file and apply the transformation
 		    InputStream xsltFile = getClass().getClassLoader().getResourceAsStream(WSL_mm2sql);
-			// Transform the source file to create the sql script    
+			// Transform the source file to create the sql script
 		    String xml = wsl_util.transform(new StreamSource(currentMMFile), xsltFile);
 
 		    // Look for the pattern that indicates xmlWord content to wiki syntax
@@ -321,7 +321,7 @@ public class WSL_Main extends  ExportHook {
 		        String word2wiki = wsl_util.transform(new StreamSource(currentMMFile.getParent()+ File.separator + sourceFile), xsltFileWikiMarkup).replaceAll("'", "&#39;");
 		        xml = xml.replace(entirePattern, word2wiki);
 		    }
-		    
+
 		    // Write MySQL to output file
 		    if (xml != null) {
 		    	FileWriter fw = new FileWriter(mySQLFile);
@@ -344,21 +344,21 @@ public class WSL_Main extends  ExportHook {
 //	        JOptionPane.showMessageDialog(getController().getFrame().getContentPane(), e.toString()+" "+e.getLocalizedMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
 //	    }
 //	}
-	
+
     public File getCurrentFile() {
 //    	MapView view = getController().getView();
-//        
+//
 //    	if (view == null)
 //    		return null;
 //
     	ModeController mc = getController();
     	mc.getFrame().setWaitingCursor(true);
 		MindMap model = getController().getMap();
-		
+
 		if(model == null){
-			return null; // there may be no map open	
+			return null; // there may be no map open
 		}
-			
+
 		if((model.getFile() == null) || model.isReadOnly()) {
 			if(mc.save()) {
 				return null;
@@ -382,7 +382,7 @@ public class WSL_Main extends  ExportHook {
 				" \" source " + mySQLScript + "\"";
 
 	    	Process proc = Runtime.getRuntime().exec(cmd);
-	    	
+
 			// raise error in pop up if it fails ToDo
 			if (verbose) {
 	    		System.err.println(cmd);
@@ -403,10 +403,10 @@ public class WSL_Main extends  ExportHook {
 					}
 			}
 		}
-	
+
 	/**
 	 * This method copies the extension files to
-	 * plugins/WSL/resources/extensions 
+	 * plugins/WSL/resources/extensions
 	 */
 	private void installMediaWikiExtensions() throws IOException {
 		File extensionsRoot = new File (extensionsDir);
@@ -414,16 +414,16 @@ public class WSL_Main extends  ExportHook {
 
 	    for (int i = 0; i < sourceExtensions.length; i++) {
 	    	if (sourceExtensions[i].isDirectory() && !extensions.toLowerCase().contains(sourceExtensions[i].getName().toLowerCase())) {
-	    		File dir = new File(localSettings.getParent() + File.separator + "extensions" 
+	    		File dir = new File(localSettings.getParent() + File.separator + "extensions"
 	    				+ File.separator + sourceExtensions[i].getName());
 	    		extensionsToInstall = extensionsToInstall + " " + sourceExtensions[i].getName();
 	    		wsl_util.copyFolder(sourceExtensions[i], dir);
-	    	} 
+	    	}
 	     }
 	}
-	
+
 	/**
-	 * This method copies the skins files to 
+	 * This method copies the skins files to
 	 * plugins/WSL/resources/skins
 	 */
 	private void installMediaWikiSkins() throws IOException {
@@ -431,14 +431,14 @@ public class WSL_Main extends  ExportHook {
 	    File[] sourceExtensions = skinsRoot.listFiles();
 	    for (int i = 0; i < sourceExtensions.length; i++) {
 	    	if (sourceExtensions[i].isDirectory()) {
-	    		wsl_util.copyFolder(sourceExtensions[i], new File(localSettings.getParent()+ 
+	    		wsl_util.copyFolder(sourceExtensions[i], new File(localSettings.getParent()+
 	    				File.separator + "skins" + File.separator + sourceExtensions[i].getName()));
 	    	}
 	    	else if (sourceExtensions[i].isFile()){
-	    		wsl_util.copyFile(sourceExtensions[i], new File(localSettings.getParent()+ 
+	    		wsl_util.copyFile(sourceExtensions[i], new File(localSettings.getParent()+
 	    				File.separator + "skins" + File.separator + sourceExtensions[i].getName()));
 	    	}
 	     }
 	}
-	
+
 }

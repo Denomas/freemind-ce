@@ -57,7 +57,7 @@ public class RightNodeViewLayout extends NodeViewLayoutAdapter {
 			final int y = Math.max(getSpaceAround(), -childVerticalShift);
 			getContent().setBounds(x, y, 0, contentHeight);
 		}
-		
+
 		placeRightChildren(childVerticalShift);
 	}
 

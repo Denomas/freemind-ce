@@ -50,5 +50,5 @@ public class PasswordProperty extends StringProperty {
 		String pwInPlain = Tools.decompress(value);
 		super.setValue(pwInPlain);
 	}
-	
+
 }

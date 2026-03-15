@@ -5,19 +5,19 @@
     (http://www.gnu.org/copyleft/gpl.html)
     Check 'mm2wordml_utf8_TEMPLATE.mm' for detailed instructions on how to use
     this sheet.
---> 
+-->
 <xsl:stylesheet version="1.0"
-	 xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml" 
-	 xmlns:v="urn:schemas-microsoft-com:vml" 
-	 xmlns:w10="urn:schemas-microsoft-com:office:word" 
-	 xmlns:sl="http://schemas.microsoft.com/schemaLibrary/2003/core" 
-	 xmlns:aml="http://schemas.microsoft.com/aml/2001/core" 
-	 xmlns:wx="http://schemas.microsoft.com/office/word/2003/auxHint" 
-	 xmlns:o="urn:schemas-microsoft-com:office:office" 
-	 xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" 
-	 w:macrosPresent="no" 
-	 w:embeddedObjPresent="no" 
-	 w:ocxPresent="no" 
+	 xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml"
+	 xmlns:v="urn:schemas-microsoft-com:vml"
+	 xmlns:w10="urn:schemas-microsoft-com:office:word"
+	 xmlns:sl="http://schemas.microsoft.com/schemaLibrary/2003/core"
+	 xmlns:aml="http://schemas.microsoft.com/aml/2001/core"
+	 xmlns:wx="http://schemas.microsoft.com/office/word/2003/auxHint"
+	 xmlns:o="urn:schemas-microsoft-com:office:office"
+	 xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+	 w:macrosPresent="no"
+	 w:embeddedObjPresent="no"
+	 w:ocxPresent="no"
 	 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="xml"  indent="yes" encoding="UTF-8" standalone="yes"/>
 
@@ -426,4 +426,4 @@
 </w:styles>
 </xsl:template>
 
-</xsl:stylesheet> 
+</xsl:stylesheet>

@@ -33,9 +33,9 @@ import java.security.Permission;
  * between is securely controlled by that different security manager. Moreover,
  * only by double registering the manager is removed. So, no malicious code can
  * remove the active security manager.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public final class FreeMindSecurityManager extends SecurityManager {
 
@@ -47,7 +47,7 @@ public final class FreeMindSecurityManager extends SecurityManager {
 	/**
 	 * @param pFinalSecurityManager
 	 *            set twice the same to remove it.
-	 * 
+	 *
 	 */
 	public void setFinalSecurityManager(SecurityManager pFinalSecurityManager) {
 		if (pFinalSecurityManager == mFinalSecurityManager) {

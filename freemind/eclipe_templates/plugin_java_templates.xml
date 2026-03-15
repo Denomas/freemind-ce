@@ -45,7 +45,7 @@ ${PluginName}_close=Close
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.HookAdapter#startupMapHook()
 	 */
 	public void startupMapHook() {
@@ -90,7 +90,7 @@ ${PluginName}_close=Close
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void disposeDialog() {
 
@@ -108,7 +108,7 @@ ${PluginName}_close=Close
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * isMapModuleChangeAllowed(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -120,7 +120,7 @@ ${PluginName}_close=Close
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * beforeMapModuleChange(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -131,7 +131,7 @@ ${PluginName}_close=Close
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.MapModuleManager.MapModuleChangeObserver#afterMapClose
 	 * (freemind.view.MapModule, freemind.modes.Mode)
@@ -142,7 +142,7 @@ ${PluginName}_close=Close
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * afterMapModuleChange(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -154,7 +154,7 @@ ${PluginName}_close=Close
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * numberOfOpenMapInformation(int, int)
 	 */

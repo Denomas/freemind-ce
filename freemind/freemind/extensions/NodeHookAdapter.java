@@ -24,9 +24,9 @@ import freemind.modes.MindMapNode;
 
 /**
  * Straight forward implementation with some helpers.
- * 
+ *
  * @author foltin
- * 
+ *
  * */
 public abstract class NodeHookAdapter extends HookAdapter implements NodeHook {
 
@@ -35,7 +35,7 @@ public abstract class NodeHookAdapter extends HookAdapter implements NodeHook {
 	private MindMapNode node;
 
 	/**
-	 * 
+	 *
 	 */
 	public NodeHookAdapter() {
 		super();
@@ -43,7 +43,7 @@ public abstract class NodeHookAdapter extends HookAdapter implements NodeHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.NodeHook#invoke()
 	 */
 	public void invoke(MindMapNode node) {

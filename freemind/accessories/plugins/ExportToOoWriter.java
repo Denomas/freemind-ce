@@ -49,13 +49,13 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ExportToOoWriter extends ExportHook {
 	private static java.util.logging.Logger logger = null;
 
 	/**
-	 * 
+	 *
 	 */
 	public ExportToOoWriter() {
 		super();
@@ -67,7 +67,7 @@ public class ExportToOoWriter extends ExportHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.MindMapHook#startupMapHook()
 	 */
 	public void startupMapHook() {

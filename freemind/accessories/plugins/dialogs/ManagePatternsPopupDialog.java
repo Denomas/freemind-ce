@@ -111,7 +111,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 	public static final int CANCEL = -1;
 
 	public static final int OK = 1;
-	
+
 	public static final int STAY = 2;
 
 	private int result = CANCEL;
@@ -168,8 +168,8 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/**
 	 * This method initializes this
-	 * 
-	 * 
+	 *
+	 *
 	 * @return void
 	 */
 	private void initialize(List<Pattern> patternList) {
@@ -237,8 +237,8 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/**
 	 * This method initializes jContentPane
-	 * 
-	 * 
+	 *
+	 *
 	 * @return javax.swing.JPanel
 	 */
 	private javax.swing.JPanel getJContentPane(List<Pattern> patternList) {
@@ -476,7 +476,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/**
 	 * This method initializes jButton
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJOKButton() {
@@ -499,7 +499,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/**
 	 * This method initializes jButton1
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJCancelButton() {
@@ -560,7 +560,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 							 result= STAY;
 							 return;
 						 }
-						 
+
 					}
 				}
 			}
@@ -583,7 +583,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(KeyEvent keyEvent) {
@@ -598,7 +598,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(KeyEvent keyEvent) {
@@ -607,7 +607,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	public void keyTyped(KeyEvent keyEvent) {

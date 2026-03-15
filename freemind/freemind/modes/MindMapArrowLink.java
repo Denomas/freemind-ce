@@ -28,7 +28,7 @@ import freemind.view.mindmapview.MapView;
 public interface MindMapArrowLink extends MindMapLink {
 
 	/**
-	 * Means: yes, it has the default arrow 
+	 * Means: yes, it has the default arrow
 	 */
 	public static final String ARROW_DEFAULT = "Default";
 	/**

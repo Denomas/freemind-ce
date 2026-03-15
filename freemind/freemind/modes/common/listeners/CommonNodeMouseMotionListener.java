@@ -156,18 +156,18 @@ public class CommonNodeMouseMotionListener implements NodeMouseMotionObserver {
 		// between pressed and released events, the event clicked
 		// is not triggered.
 		// The behavior is not tested on Linux.
-		
+
 		logger.fine("Event: mouseReleased");
 		MouseEvent ev = e;
-		/* 
-		 * For Mac see 
+		/*
+		 * For Mac see
 		 * https://developer.apple.com/library/mac/#documentation/Java/Conceptual/Java14Development/07-NativePlatformIntegration/NativePlatformIntegration.html
 		 * */
 		if(Tools.isLinux() || Tools.isMacOsX()) {
 			ev = mMousePressedEvent;
-		} 
+		}
 		handlePopupMenu(ev);
-		
+
 		if (ev.isConsumed()) {
 			return;
 		}

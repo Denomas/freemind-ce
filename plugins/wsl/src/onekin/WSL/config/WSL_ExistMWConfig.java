@@ -44,7 +44,7 @@ import freemind.main.XMLParseException;
 public class WSL_ExistMWConfig extends ModeControllerHookAdapter {
 	private String question="WSL needs to know the location of the MediaWiki LocalSettings.php";
 	private final String localSettings = System.getProperty("user.dir") + File.separator + "plugins/WSL/resources/localSettings.conf";
-	
+
 	public WSL_ExistMWConfig() {
 		super();
 		}

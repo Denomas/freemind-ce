@@ -12,14 +12,14 @@
   -->
 
 <xsl:stylesheet version="1.0"
- xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
- xmlns:ap="http://schemas.mindjet.com/MindManager/Application/2003" 
-	xmlns:cor="http://schemas.mindjet.com/MindManager/Core/2003" 
-	xmlns:pri="http://schemas.mindjet.com/MindManager/Primitive/2003" 
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns:ap="http://schemas.mindjet.com/MindManager/Application/2003"
+	xmlns:cor="http://schemas.mindjet.com/MindManager/Core/2003"
+	xmlns:pri="http://schemas.mindjet.com/MindManager/Primitive/2003"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:xhtml="http://www.w3.org/1999/xhtml" >
 
-	<xsl:strip-space elements="*" /> 
+	<xsl:strip-space elements="*" />
 	<xsl:output method="xml" indent="yes" encoding="UTF-8" />
 
 	<xsl:template match="/ap:Map">
@@ -57,7 +57,7 @@
 						<xsl:text>bubble</xsl:text>
 					</xsl:attribute>
 				</xsl:when>
-			</xsl:choose>			
+			</xsl:choose>
 			<xsl:apply-templates select="./ap:NotesGroup" />
 			<xsl:apply-templates select="./ap:SubTopics/ap:Topic" />
 <!--			<xsl:for-each select="./ap:SubTopics/ap:Topic">
@@ -148,6 +148,6 @@
 
 
 	<xsl:template match = "node()|@*" />
-	
+
 
 </xsl:stylesheet>

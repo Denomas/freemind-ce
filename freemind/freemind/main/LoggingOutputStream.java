@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 /**
  * An OutputStream that writes contents to a Logger upon each call to flush()
- * 
+ *
  * See http://blogs.sun.com/nickstephen/entry/java_redirecting_system_out_and
  */
 class LoggingOutputStream extends ByteArrayOutputStream {
@@ -19,7 +19,7 @@ class LoggingOutputStream extends ByteArrayOutputStream {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param logger
 	 *            Logger to write to
 	 * @param level
@@ -35,7 +35,7 @@ class LoggingOutputStream extends ByteArrayOutputStream {
 	/**
 	 * upon flush() write the existing contents of the OutputStream to the
 	 * logger as a log record.
-	 * 
+	 *
 	 * @throws java.io.IOException
 	 *             in case of error
 	 */

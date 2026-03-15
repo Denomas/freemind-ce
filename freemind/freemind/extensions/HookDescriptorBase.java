@@ -37,7 +37,7 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class HookDescriptorBase {
 	public static final String FREEMIND_BASE_DIR_STRING = "${freemind.base.dir}";
@@ -121,7 +121,7 @@ public class HookDescriptorBase {
 
 	/**
 	 * This string is used to identify known classloaders as they are cached.
-	 * 
+	 *
 	 */
 	private String createPluginClasspathString(List<PluginClasspath> pluginClasspathList) {
 		String result = "";

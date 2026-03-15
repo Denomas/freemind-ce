@@ -34,7 +34,7 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class RemoveAllIconsAction extends NodeGeneralAction implements

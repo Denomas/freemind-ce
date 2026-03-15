@@ -65,8 +65,8 @@
 		</xsl:choose>
 	</xsl:variable>
 
-  <!-- Define 'tex-img-float' how images are to be handled 
-       if defined but empty: show images inline 
+  <!-- Define 'tex-img-float' how images are to be handled
+       if defined but empty: show images inline
        every other value: used as position attribute in \begin{figure}[htb]'
        if undefined: Default 'htb'
        -->
@@ -79,7 +79,7 @@
 		</xsl:choose>
 	</xsl:variable>
 
-	
+
 	<xsl:template match="map">
 	<!-- As to now we do not use anys header  because this is to be included in a latex-book -->
 	<xsl:apply-templates mode="heading"/>
@@ -248,17 +248,17 @@
 
 		<xsl:apply-templates select="hook|@LINK"/>
 		<xsl:call-template name="output-notecontent" />
-		
+
 		<xsl:if test="node/arrowlink">
 		<xsl:text>siehe auch \ref{</xsl:text><xsl:value-of select="node/arrowlink/@destination"/><xsl:text>}</xsl:text>
 		</xsl:if>
 	</xsl:template>
 
-	
+
 	<xsl:template match="hook|@LINK">
 		<xsl:text>Siehe auch \url{</xsl:text><xsl:value-of select="."/><xsl:text>}</xsl:text>
 	</xsl:template>
-	
+
 <!--	<xsl:template match="hook[@NAME='accessories/plugins/NodeNote.properties']">
 		<xsl:choose>
 			<xsl:when test="./text">
@@ -267,8 +267,8 @@
 				</text:p>
 			</xsl:when>
 		</xsl:choose>
-	</xsl:template> 
-	
+	</xsl:template>
+
 	<xsl:template match="node" mode="childoutputOrdered">
 		<xsl:param name="nodeText"></xsl:param>
 			<text:ordered-list text:style-name="L1"
@@ -281,8 +281,8 @@
 				</text:list-item>
 			</text:ordered-list>
 	</xsl:template>
-	
-	
+
+
 	<xsl:template match="map" mode="childoutputOrdered">
 		<xsl:param name="nodeText"></xsl:param>
 		<xsl:copy-of select="$nodeText"/>
@@ -299,14 +299,14 @@
 		<xsl:value-of select="$depth"/>
 	</xsl:template>
 
-		
-	<!-- Give links out. 
+
+	<!-- Give links out.
 	<xsl:template match="@LINK">
 			<xsl:element name="text:a" namespace="text">
 				<xsl:attribute namespace="xlink" name="xlink:type">simple</xsl:attribute>
 				<xsl:attribute namespace="xlink" name="xlink:href">
 				        -->
-					<!-- Convert relative links, such that they start with "../". 
+					<!-- Convert relative links, such that they start with "../".
 					     This is due to the fact, that OOo calculates all relative links from the document itself! -->
 					     <!--
 					<xsl:choose>
@@ -347,11 +347,11 @@
 			</xsl:otherwise>
 			</xsl:choose>
 	</xsl:template> <!-- xsl:template name="output-nodecontent" -->
-	
+
 	<xsl:template name="output-notecontent">
 		<xsl:if test="richcontent[@TYPE='NOTE']">
 			<xsl:apply-templates select="richcontent[@TYPE='NOTE']/html/body" mode="richcontent" >
-				<xsl:with-param name="style">Standard</xsl:with-param>					
+				<xsl:with-param name="style">Standard</xsl:with-param>
 			</xsl:apply-templates>
 		</xsl:if>
 	</xsl:template> <!-- xsl:template name="output-note" -->
@@ -360,7 +360,7 @@
 	<xsl:template name="textnode">
 		<!--
 		<xsl:variable name="anzahl" select="count(./node)" />  Anzahl unterlagerter Knoten feststellen
-		<xsl:variable name="anzahlEigene" select="count(../node)" />  Anzahl Knoten auf eigener Ebene feststellen 
+		<xsl:variable name="anzahlEigene" select="count(../node)" />  Anzahl Knoten auf eigener Ebene feststellen
 		<xsl:text>(textnode-anfang </xsl:text><xsl:value-of select="$anzahlEigene" /><xsl:text>/</xsl:text><xsl:value-of select="$anzahl" /><xsl:text>)</xsl:text>
 		-->
 		<xsl:call-template name="format_text">
@@ -375,7 +375,7 @@
 		</xsl:call-template>
 	<!-- <xsl:text>(textnode-ende)</xsl:text> -->
 	</xsl:template> <!-- xsl:template name="textnode" -->
-	
+
 
 	<!-- replace ASCII line breaks through ODF line breaks (br) -->
 	<xsl:template name="format_text">
@@ -406,9 +406,9 @@
 			<xsl:with-param name="format" select="$format" />
 			<xsl:with-param name="caption" select="$caption" />
 		</xsl:apply-templates>
-	</xsl:template> 
+	</xsl:template>
 
-	<xsl:template match="text()" mode="richcontent">	<xsl:copy-of select="string(.)"/></xsl:template> 
+	<xsl:template match="text()" mode="richcontent">	<xsl:copy-of select="string(.)"/></xsl:template>
 
 	<xsl:template match="table" mode="richcontent">
 		<xsl:param name="id" /> <!-- id for label -->
@@ -429,14 +429,14 @@
 		<xsl:apply-templates mode="richcontent" />
 		<xsl:text>\end{tabular}
 		</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 
 
 	<xsl:template match="tr" mode="richcontent">
 		<xsl:apply-templates mode="richcontent" />
 		<xsl:text>\\ \hline
 		</xsl:text> <!-- Record separator -->
-	</xsl:template> 
+	</xsl:template>
 
 
 	<xsl:template match="td" mode="richcontent">
@@ -444,21 +444,21 @@
 		</xsl:apply-templates>
 <!--		<xsl:value-of  disable-output-escaping="yes" select="." /> -->
 		<xsl:if test="position() != last()"><xsl:text disable-output-escaping="yes">&#38;</xsl:text></xsl:if> <!-- Field separator -->
-	</xsl:template> 
+	</xsl:template>
 
 
 
 	<xsl:template match="br" mode="richcontent">
 		<xsl:text>\par{}</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 
 	<xsl:template match="b" mode="richcontent">
 		<xsl:text>{\bf </xsl:text><xsl:value-of select="." /><xsl:text>}</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 
 	<xsl:template match="i" mode="richcontent">
 		<xsl:text>\emph{</xsl:text><xsl:value-of select="." /><xsl:text>}</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 
 	<xsl:template match="img" mode="richcontent">
 		<xsl:param name="id"/> <!-- id for label -->
@@ -476,11 +476,11 @@
 			\end{figure}
 			</xsl:text>
 		</xsl:if>
-	</xsl:template> 
+	</xsl:template>
 
 	<xsl:template match="u" mode="richcontent">
 		<xsl:text>\underline{</xsl:text><xsl:value-of select="." /><xsl:text>}</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="ul" mode="richcontent">
 		<xsl:param name="style">Standard</xsl:param>
 		<xsl:text>\begin{itemize}
@@ -488,7 +488,7 @@
 			<xsl:apply-templates select="text()|*" mode="richcontentul"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		<xsl:text>\end{itemize}
 		</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 
 	<xsl:template match="ol" mode="richcontent">
 		<xsl:param name="style">Standard</xsl:param>
@@ -497,16 +497,16 @@
 			<xsl:apply-templates select="text()|*" mode="richcontentol"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		<xsl:text>\end{enumerate}
 		</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 
 	<xsl:template match="li" mode="richcontentul">
 		<xsl:text>\item </xsl:text><xsl:value-of select="@text" /><xsl:text>
 		</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="li" mode="richcontentol">
 		<xsl:text>\item </xsl:text><xsl:value-of select="@text" /><xsl:text>
 		</xsl:text>
-	</xsl:template> 
+	</xsl:template>
 
 
 <!-- Zu kompliziert
@@ -517,17 +517,17 @@
 			<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		</text:p>
       </text:list-item>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="li" mode="richcontentol">
 		<xsl:param name="style">Standard</xsl:param>
 	    <text:list-item>
         <text:p text:style-name="P2">
-			<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>			
+			<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		</text:p>
       </text:list-item>
-	</xsl:template> 
--->	
-	<!-- Table: 
+	</xsl:template>
+-->
+	<!-- Table:
 		    <table:table table:name="Table1" table:style-name="Table1">
       <table:table-column table:style-name="Table1.A" table:number-columns-repeated="3"/>
       <table:table-row>
@@ -565,6 +565,6 @@
       </table:table-row>
     </table:table>
 -->
-	
-	
+
+
 </xsl:stylesheet>

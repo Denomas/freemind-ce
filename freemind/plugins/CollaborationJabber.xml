@@ -8,11 +8,11 @@
 	<plugin_classpath jar="collaboration/jabber/log4j.jar"  />
 	<plugin_classpath jar="collaboration/jabber/muse.jar"/>
 	<plugin_classpath jar="collaboration/jabber/jabber_plugin.jar"/>
-	<plugin_action 
-		documentation="TODO" 
-		name="Start Collaboration Mode" 
-		base="freemind.extensions.ModeControllerHookAdapter" 
-		label="plugins/collaboration/jabber/jabber_plugin" 
+	<plugin_action
+		documentation="TODO"
+		name="Start Collaboration Mode"
+		base="freemind.extensions.ModeControllerHookAdapter"
+		label="plugins/collaboration/jabber/jabber_plugin"
 		class_name="plugins.collaboration.jabber.JabberStarter">
 		<plugin_mode class_name="freemind.modes.mindmapmode"/>
 		<plugin_menu location="menu_bar/extras/first/collaboration/jabber"/>

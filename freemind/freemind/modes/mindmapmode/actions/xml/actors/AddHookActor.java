@@ -68,7 +68,7 @@ public class AddHookActor extends XmlActorAdapter {
 	private HookFactory getHookFactory() {
 		return getExMapFeedback().getHookFactory();
 	}
-	
+
 	/**
 	 */
 	private HookInstanciationMethod getInstanciationMethod(String hookName) {
@@ -134,7 +134,7 @@ public class AddHookActor extends XmlActorAdapter {
 												.getStringAttribute(name));
 										hookNodeAction.addNodeChildParameter(nodeHookChild);
 									}
-	
+
 								} else {
 									logger.warning("Unusual save mechanism, implement me.");
 								}

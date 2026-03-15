@@ -5,7 +5,7 @@
  <xsl:apply-templates/>
  </xsl:template>
   <xsl:template name="linebreak">
-   <xsl:text> 
+   <xsl:text>
 </xsl:text>
   </xsl:template>
   <xsl:template match="map">
@@ -32,5 +32,3 @@
     </xsl:if>
  </xsl:template>
 </xsl:stylesheet>
-
- 	  	 

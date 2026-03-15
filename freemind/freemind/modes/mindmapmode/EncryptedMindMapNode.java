@@ -1,17 +1,17 @@
 /*
  * FreeMind - A Program for creating and viewing Mindmaps Copyright (C)
  * 2000-2001 Joerg Mueller <joergmueller@bigfoot.com> See COPYING for Details
- * 
+ *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
  * Foundation; either version 2 of the License, or (at your option) any later
  * version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along with
  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
  * Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -235,7 +235,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapNode#getIcons()
 	 */
 	public void updateIcon() {
@@ -253,7 +253,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 	}
 
 	/**
-     *  
+     *
      */
 
 	public boolean isFolded() {
@@ -264,7 +264,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 	}
 
 	/**
-     *  
+     *
      */
 
 	public void setFolded(boolean folded) {
@@ -276,7 +276,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 	}
 
 	/**
-     *  
+     *
      */
 
 	public void setAdditionalInfo(String info) {
@@ -293,7 +293,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 	}
 
 	/**
-     *  
+     *
      */
 
 	public XMLElement save(Writer writer, MindMapLinkRegistry registry,
@@ -378,7 +378,7 @@ public class EncryptedMindMapNode extends MindMapNodeModel {
 	 * encrypted, it has no children. Thus, the formely existing children can't
 	 * be removed. Thus, this flag postpones the childlessness of a node until it
 	 * tree structure is updated.
-	 * 
+	 *
 	 * @param isShuttingDown
 	 *            The isShuttingDown to set.
 	 */

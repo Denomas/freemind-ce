@@ -55,7 +55,7 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ExportVectorGraphic extends ExportHook {
 
@@ -89,7 +89,7 @@ public class ExportVectorGraphic extends ExportHook {
 		try {
 			view.preparePrinting();
 			Rectangle innerBounds = null;
-			
+
 			for (NodeView nodeView : view.getViewers(pNode)) {
 				if (innerBounds == null) {
 					innerBounds = nodeView.getInnerBounds();

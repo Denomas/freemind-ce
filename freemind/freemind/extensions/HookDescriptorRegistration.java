@@ -30,7 +30,7 @@ import freemind.controller.actions.generated.instance.PluginRegistration;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class HookDescriptorRegistration extends HookDescriptorBase {
 

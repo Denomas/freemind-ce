@@ -34,7 +34,7 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class AddLocalLinkAction extends MindmapAction {
@@ -74,7 +74,7 @@ public class AddLocalLinkAction extends MindmapAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.FreemindAction#isEnabled(javax.swing.JMenuItem,
 	 * javax.swing.Action)
 	 */

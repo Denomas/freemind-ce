@@ -240,7 +240,7 @@ public class MindMapNodeDropListener implements DropTargetListener {
 	/**
 	 * The method is called when the cursor carrying the dragged item enteres
 	 * the area of the node. The name "dragEnter" seems to be confusing to me.
-	 * 
+	 *
 	 * I think the difference between dragAcceptable and dropAcceptable is that
 	 * in dragAcceptable, you tell if the type of the thing being dragged is OK,
 	 * where in dropAcceptable, you tell if your really willing to accept the

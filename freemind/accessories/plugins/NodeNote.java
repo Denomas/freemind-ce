@@ -26,7 +26,7 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class NodeNote extends MindMapNodeHookAdapter {
 

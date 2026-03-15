@@ -33,11 +33,11 @@ import freemind.modes.MindMapNode;
 import freemind.view.mindmapview.NodeView;
 
 /**
- * Basic interface for all node hooks that are permanent. 
+ * Basic interface for all node hooks that are permanent.
  * Thus, there are methods that inform the plugin about changes on the node, it is stick to.
- * Moreover, methods for loading and saving the hook are present.  
- * 
- * 
+ * Moreover, methods for loading and saving the hook are present.
+ *
+ *
  * @author foltin
  */
 public interface PermanentNodeHook extends NodeHook {
@@ -45,7 +45,7 @@ public interface PermanentNodeHook extends NodeHook {
 	void onFocusNode(NodeView nodeView);
 
 	/**
-	 * 
+	 *
 	 */
 	void onLostFocusNode(NodeView nodeView);
 
@@ -68,7 +68,7 @@ public interface PermanentNodeHook extends NodeHook {
 	 * Is called if the addedChildNode is inserted as a direct child of the
 	 * node, this hook is attached to. The cases in which this method is called
 	 * contain new nodes, paste, move, etc.
-	 * 
+	 *
 	 * Ah, don't call propagate in this method, as paste introduces nodes with
 	 * the hook and you'll have them twice, ... see onNewChild
 	 */
@@ -92,7 +92,7 @@ public interface PermanentNodeHook extends NodeHook {
 	/**
 	 * This method is called, if a child is removed to me or to any of my
 	 * children. (See onUpdateChildrenHook)
-	 * 
+	 *
 	 * @param oldDad
 	 *            TODO
 	 */
@@ -119,7 +119,7 @@ public interface PermanentNodeHook extends NodeHook {
 	/**
 	 * Can be used to contribute to the standard html export.
 	 * @param pFileout
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	void saveHtml(Writer pFileout) throws IOException;
 }

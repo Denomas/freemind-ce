@@ -71,5 +71,5 @@ public class BrowsePopupMenu extends JPopupMenu implements PopupMenuListener {
 	 */
 	public void popupMenuCanceled(PopupMenuEvent pE) {
 	}
-	
+
 }

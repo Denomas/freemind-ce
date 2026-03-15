@@ -41,10 +41,10 @@ import freemind.modes.attributes.Attribute;
  * nodes. Whenever you want to change the mindmap choose one of these actions as
  * they do proper redisplay, inform others about the actions, the actions are
  * all undoable etc.etc.
- * 
+ *
  * All these methods do redisplay, because they are offered from the
  * MindMapController for use.
- * 
+ *
  * @author foltin see MindMapController
  * */
 public interface MindMapActions {
@@ -109,7 +109,7 @@ public interface MindMapActions {
 	public void setBold(MindMapNode node, boolean bolded);
 
 	public void setStrikethrough(MindMapNode node, boolean strikethrough);
-	
+
 	public void setItalic(MindMapNode node, boolean isItalic);
 
 	public void setNodeColor(MindMapNode node, Color color);
@@ -197,7 +197,7 @@ public interface MindMapActions {
 	 * may exist per node, it returns this instance if it already exists.
 	 * */
 	NodeHook createNodeHook(String hookName, MindMapNode node);
-	
+
 	void invokeHooksRecursively(MindMapNode node, MindMap map);
 
 	// end hooks
@@ -209,7 +209,7 @@ public interface MindMapActions {
 			int shiftY);
 
 	void setAttribute(MindMapNode node, int pPosition, Attribute pAttribute);
-	
+
 	/**
 	 * Inserts a new attribute at a given place of the attributes table.
 	 * To insert an attribute as the last item, {link {@link #addAttribute(MindMapNode, Attribute)} instead.
@@ -218,7 +218,7 @@ public interface MindMapActions {
 
 	/**
 	 * Inserts a new attribute at the end of the attributes table.
-	 * 
+	 *
 	 * @param node
 	 *            to which the attribute is added
 	 * @param pAttribute
@@ -229,7 +229,7 @@ public interface MindMapActions {
 
 	/**
 	 * Removes the attribute at the given position
-	 * 
+	 *
 	 * @param pPosition
 	 *            the position to delete.
 	 * */

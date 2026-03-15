@@ -58,7 +58,7 @@ public final class ExtendedMapFeedbackImpl extends ExtendedMapFeedbackAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ExtendedMapFeedbackAdapter#copy(freemind.modes.MindMapNode
 	 * , boolean)

@@ -129,8 +129,8 @@ public class CalendarMarkingDialog extends JDialog implements ActionListener, Ch
 
 	/**
 	 * This method initializes jContentPane
-	 * 
-	 * 
+	 *
+	 *
 	 * @return javax.swing.JPanel
 	 */
 	private javax.swing.JPanel getJContentPane() {
@@ -217,7 +217,7 @@ public class CalendarMarkingDialog extends JDialog implements ActionListener, Ch
 					      .addGroup(layout.createParallelGroup().addComponent(examplesLabel).addComponent(mTextArea))
 					      .addGroup(layout.createParallelGroup().addComponent(okButton).addComponent(cancelButton))
 					);
-			
+
 			getRootPane().setDefaultButton(okButton);
 			repetitionType.addActionListener(this);
 			repeatEachNOccurence.addChangeListener(this);
@@ -245,7 +245,7 @@ public class CalendarMarkingDialog extends JDialog implements ActionListener, Ch
 		int selectedIndex = repetitionType.getSelectedIndex();
 		if(selectedIndex < 0 || selectedIndex >= mRepetitionTypesList.size()){
 			logger.severe("Selected combo box index out of range: " + selectedIndex);
-		} else {	
+		} else {
 			marking.setRepeatType(mRepetitionTypesList.get(selectedIndex));
 		}
 		return marking;
@@ -269,10 +269,10 @@ public class CalendarMarkingDialog extends JDialog implements ActionListener, Ch
 			repetitionType.setSelectedIndex(0);
 		}
 	}
-	
+
 	/**
 	 * This method initializes jButton
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJOKButton() {
@@ -301,7 +301,7 @@ public class CalendarMarkingDialog extends JDialog implements ActionListener, Ch
 
 	/**
 	 * This method initializes jButton1
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJCancelButton() {
@@ -348,7 +348,7 @@ public class CalendarMarkingDialog extends JDialog implements ActionListener, Ch
 			} else {
 				ignoreNextEvent = false;
 			}
-		} 
+		}
 		showExamples();
 	}
 

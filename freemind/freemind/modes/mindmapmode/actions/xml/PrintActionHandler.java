@@ -28,7 +28,7 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class PrintActionHandler implements ActionHandler {
 
@@ -49,7 +49,7 @@ public class PrintActionHandler implements ActionHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#startTransaction(java.lang.
 	 * String)
@@ -60,7 +60,7 @@ public class PrintActionHandler implements ActionHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#endTransaction(java.lang.String
 	 * )
@@ -71,7 +71,7 @@ public class PrintActionHandler implements ActionHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#executeAction(freemind.controller
 	 * .actions.ActionPair)

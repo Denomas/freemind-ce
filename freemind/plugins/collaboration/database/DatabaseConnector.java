@@ -37,7 +37,7 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class DatabaseConnector extends DatabaseBasics {
 

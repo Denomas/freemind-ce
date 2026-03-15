@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-	<xsl:template 
+	<xsl:template
 		match="/ | node() | @* | comment() | processing-instruction()">
 		<xsl:copy>
 			<xsl:apply-templates select="@* | node()"/>
@@ -9,7 +9,7 @@
 	</xsl:template>
 
 	<xsl:template match="node">
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@background_color">
 				<xsl:element name="pattern_node_background_color">
 					<xsl:attribute name="value"><xsl:value-of select="@background_color"/></xsl:attribute>
@@ -19,7 +19,7 @@
 				<pattern_node_background_color/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@color">
 				<xsl:element name="pattern_node_color">
 					<xsl:attribute name="value"><xsl:value-of select="@color"/></xsl:attribute>
@@ -29,7 +29,7 @@
 				<pattern_node_color/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@style">
 				<xsl:element name="pattern_node_style">
 					<xsl:attribute name="value"><xsl:value-of select="@style"/></xsl:attribute>
@@ -39,7 +39,7 @@
 				<pattern_node_style/>
 			</xsl:otherwise>
 		</xsl:choose>
-<!--		<xsl:choose> 
+<!--		<xsl:choose>
 			<xsl:when test="@text">
 				<xsl:element name="pattern_node_text">
 					<xsl:attribute name="value"><xsl:value-of select="@text"/></xsl:attribute>
@@ -50,7 +50,7 @@
 			</xsl:otherwise>
 		</xsl:choose>-->
 		<xsl:apply-templates select="font"/>
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@icon and @icon != 'none'">
 				<xsl:element name="pattern_icon">
 					<xsl:attribute name="value"><xsl:value-of select="@icon"/></xsl:attribute>
@@ -66,9 +66,9 @@
 		<xsl:apply-templates select="child"/>
 	</xsl:template>
 
-	
+
 	<xsl:template match="edge">
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@color">
 				<xsl:element name="pattern_edge_color">
 					<xsl:attribute name="value"><xsl:value-of select="@color"/></xsl:attribute>
@@ -78,7 +78,7 @@
 				<pattern_edge_color/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@style">
 				<xsl:element name="pattern_edge_style">
 					<xsl:attribute name="value"><xsl:value-of select="@style"/></xsl:attribute>
@@ -88,7 +88,7 @@
 				<pattern_edge_style/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@width">
 				<xsl:element name="pattern_edge_width">
 					<xsl:attribute name="value"><xsl:value-of select="@width"/></xsl:attribute>
@@ -101,7 +101,7 @@
 	</xsl:template>
 
 	<xsl:template match="font">
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@name">
 				<xsl:element name="pattern_node_font_name">
 					<xsl:attribute name="value"><xsl:value-of select="@name"/></xsl:attribute>
@@ -111,7 +111,7 @@
 				<pattern_node_font_name/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@bold">
 				<xsl:element name="pattern_node_font_bold">
 					<xsl:attribute name="value"><xsl:value-of select="@bold"/></xsl:attribute>
@@ -121,7 +121,7 @@
 				<pattern_node_font_bold/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@italic">
 				<xsl:element name="pattern_node_font_italic">
 					<xsl:attribute name="value"><xsl:value-of select="@italic"/></xsl:attribute>
@@ -131,7 +131,7 @@
 				<pattern_node_font_italic/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:choose> 
+		<xsl:choose>
 			<xsl:when test="@size">
 				<xsl:element name="pattern_node_font_size">
 					<xsl:attribute name="value"><xsl:value-of select="@size"/></xsl:attribute>

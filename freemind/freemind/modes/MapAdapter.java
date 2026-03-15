@@ -114,7 +114,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 					try {
 						boolean changeAccepted = observer.mapSourceChanged(MapAdapter.this);
 						if(!changeAccepted) {
-							// this is a trick: at the next save/load the correct value is set again. 
+							// this is a trick: at the next save/load the correct value is set again.
 							mFileTime = Long.MAX_VALUE;
 						} else {
 							mFileTime = lastModified;
@@ -149,7 +149,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 
 	/**
 	 * Attempts to lock the map using semaphore file.
-	 * 
+	 *
 	 * @return If the map is locked, return the name of the locking user, return
 	 *         null otherwise.
 	 * @throws Exception
@@ -185,7 +185,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 			removeNodes(child);
 		}
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.MindMap#removeNodeFromParent(freemind.modes.MindMapNode)
 	 */
@@ -205,14 +205,14 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	public boolean isReadOnly() {
 		return readOnly;
 	}
-	
+
 	public void setReadOnly(boolean pIsReadOnly) {
 		readOnly = pIsReadOnly;
 	}
 
 	/**
 	 * Counts the amount of actions performed.
-	 * 
+	 *
 	 * @param saved
 	 *            true if the file was saved recently. False otherwise.
 	 */
@@ -325,7 +325,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	public MindMapLinkRegistry getLinkRegistry() {
 		return null;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see javax.swing.tree.DefaultTreeModel#insertNodeInto(javax.swing.tree.MutableTreeNode, javax.swing.tree.MutableTreeNode, int)
 	 */
@@ -363,7 +363,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	 * Notifies all listeners that have registered interest for notification on
 	 * this event type. The event instance is lazily created using the
 	 * parameters passed into the fire method.
-	 * 
+	 *
 	 * @param source
 	 *            the node being changed
 	 * @param path
@@ -554,9 +554,9 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 		MindMapNode node = xmlAdapter.getMapChild();
 		return node;
 	}
-	
+
 	public static DontAskUserBeforeUpdateAdapter sDontAskInstance = new DontAskUserBeforeUpdateAdapter();
-	
+
 	public static class DontAskUserBeforeUpdateAdapter implements AskUserBeforeUpdateCallback {
 
 		/* (non-Javadoc)
@@ -566,9 +566,9 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 		public boolean askUserForUpdate() {
 			return true;
 		}
-		
+
 	}
-	
+
 	@Override
 	public MindMapNode loadTree(Tools.ReaderCreator pReaderCreator,
 			AskUserBeforeUpdateCallback pAskUserBeforeUpdateCallback) throws XMLParseException, IOException {
@@ -626,6 +626,6 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 		}
 	}
 
-	
-	
+
+
 }

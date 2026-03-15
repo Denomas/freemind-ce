@@ -34,7 +34,7 @@ import freemind.main.XMLElement;
  * @author dimitri 17.05.2005
  */
 public class ConditionFactory {
-	
+
 	static final NamedObject FILTER_NODE= Resources.getInstance().createTranslatedString("filter_node");
 	static final NamedObject FILTER_ICON = Resources.getInstance().createTranslatedString("filter_icon");
 
@@ -48,12 +48,12 @@ public class ConditionFactory {
 	static final NamedObject FILTER_LT = NamedObject.literal("<");
 	static final NamedObject FILTER_GE = NamedObject.literal(">=");
 	static final NamedObject FILTER_GT = NamedObject.literal(">");
-	
+
 	static final String FILTER_IGNORE_CASE = "filter_ignore_case";
-	
-	
-	
-	
+
+
+
+
 
 
 	/**

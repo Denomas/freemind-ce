@@ -34,7 +34,7 @@ public abstract class TerminateableThread extends Thread {
 	protected int mSleepTime;
 
 	/**
-	 * 
+	 *
 	 */
 	public TerminateableThread(String pName) {
 		super(pName);
@@ -58,7 +58,7 @@ public abstract class TerminateableThread extends Thread {
 					Thread.sleep(mSleepTime);
 				} catch (InterruptedException e) {
 					freemind.main.Resources.getInstance().logException(e);
-					
+
 				}
 			}
 		}

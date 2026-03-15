@@ -37,7 +37,7 @@ import freemind.modes.mindmapmode.hooks.MindMapHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ScriptEditor extends MindMapHookAdapter {
 	private final class AttributeHolder {

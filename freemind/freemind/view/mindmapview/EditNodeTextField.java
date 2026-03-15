@@ -58,7 +58,7 @@ import freemind.modes.ModeController;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class EditNodeTextField extends EditNodeBase {
 	final int EDIT = 1;

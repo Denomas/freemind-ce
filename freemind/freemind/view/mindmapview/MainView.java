@@ -79,7 +79,7 @@ public abstract class MainView extends JLabel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getPreferredSize()
 	 */
 	public Dimension getPreferredSize() {
@@ -189,7 +189,7 @@ public abstract class MainView extends JLabel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getHeight()
 	 */
 	public int getHeight() {
@@ -204,7 +204,7 @@ public abstract class MainView extends JLabel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getWidth()
 	 */
 	public int getWidth() {

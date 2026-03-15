@@ -102,7 +102,7 @@ public class LastOpenedList {
 	}
 
 	/**
-     * 
+     *
      */
 	void load(String data) {
 		// Take care that there are no ";" in restorable names!

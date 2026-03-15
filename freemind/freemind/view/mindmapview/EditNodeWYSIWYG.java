@@ -51,7 +51,7 @@ import freemind.modes.ModeController;
 
 /**
  * @author Daniel Polansky
- * 
+ *
  */
 public class EditNodeWYSIWYG extends EditNodeBase {
 
@@ -161,7 +161,7 @@ public class EditNodeWYSIWYG extends EditNodeBase {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.view.mindmapview.EditNodeBase.Dialog#close()
 		 */
 		protected void submit() {
@@ -182,7 +182,7 @@ public class EditNodeWYSIWYG extends EditNodeBase {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.view.mindmapview.EditNodeBase.Dialog#split()
 		 */
 		protected void split() {
@@ -196,7 +196,7 @@ public class EditNodeWYSIWYG extends EditNodeBase {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.view.mindmapview.EditNodeBase.Dialog#close()
 		 */
 		protected void cancel() {
@@ -241,7 +241,7 @@ public class EditNodeWYSIWYG extends EditNodeBase {
 					"experimental_font_sizing_for_long_node_editors")) {
 				/*
 				 * This is a proposal of Dan, but it doesn't work as expected.
-				 * 
+				 *
 				 * http://sourceforge.net/tracker/?func=detail&aid=2800933&group_id
 				 * =7118&atid=107118
 				 */

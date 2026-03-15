@@ -85,7 +85,7 @@ public class NewLineTable extends ScalableJTable {
 				}});
         }
     }
-    
+
     /* (non-Javadoc)
      * @see javax.swing.JTable#isCellEditable(int, int)
      */

@@ -1,5 +1,5 @@
 <project name="freemind_plugins" default="dist" basedir=".">
-	
+
 	<property name="plugin.xml" location="${src}/plugins/MapViewer.xml" />
 	<property name="plugin.dir" value="plugins/map"/>
 	<property name="local.plugin.dir" location="${src}/plugins/map"/>

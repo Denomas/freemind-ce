@@ -31,10 +31,10 @@ import freemind.modes.mindmapmode.actions.xml.ActionFilter.FinalActionFilter;
 import freemind.modes.mindmapmode.actions.xml.ActionFilter.FirstActionFilter;
 
 /**
- * Manages the actors and filters for xml transactions inside FreeMind. 
- * 
+ * Manages the actors and filters for xml transactions inside FreeMind.
+ *
  * @author foltin
- * 
+ *
  */
 public class ActionRegistry {
 
@@ -211,7 +211,7 @@ public class ActionRegistry {
 		throw new IllegalArgumentException("No actor present for xmlaction"
 				+ actionClass);
 	}
-	
+
 	public void registerUndoHandler(UndoActionHandler undoActionHandler) {
 		this.undoActionHandler = undoActionHandler;
 	}

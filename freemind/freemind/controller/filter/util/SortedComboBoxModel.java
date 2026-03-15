@@ -35,7 +35,7 @@ public class SortedComboBoxModel extends SortedMapListModel implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.ComboBoxModel#setSelectedItem(java.lang.Object)
 	 */
 	public void setSelectedItem(Object o) {
@@ -45,7 +45,7 @@ public class SortedComboBoxModel extends SortedMapListModel implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.ComboBoxModel#getSelectedItem()
 	 */
 	public Object getSelectedItem() {

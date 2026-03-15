@@ -36,7 +36,7 @@ import freemind.modes.common.plugins.ReminderHookBase;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class BrowseHookFactory extends HookFactoryAdapter {
 
@@ -49,7 +49,7 @@ public class BrowseHookFactory extends HookFactoryAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.HookFactory#getPossibleNodeHooks()
 	 */
 	public Vector<String> getPossibleNodeHooks() {
@@ -58,7 +58,7 @@ public class BrowseHookFactory extends HookFactoryAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.HookFactory#getPossibleModeControllerHooks()
 	 */
 	public Vector<String> getPossibleModeControllerHooks() {
@@ -67,7 +67,7 @@ public class BrowseHookFactory extends HookFactoryAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.HookFactory#createModeControllerHook(java.lang.String
 	 * )
@@ -79,7 +79,7 @@ public class BrowseHookFactory extends HookFactoryAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.HookFactory#createNodeHook(java.lang.String)
 	 */
 	public NodeHook createNodeHook(String hookName) {
@@ -101,7 +101,7 @@ public class BrowseHookFactory extends HookFactoryAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.HookFactory#getHookMenuPositions(java.lang.String)
 	 */
@@ -112,7 +112,7 @@ public class BrowseHookFactory extends HookFactoryAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.HookFactory#getInstanciationMethod(java.lang.String)
 	 */
@@ -123,7 +123,7 @@ public class BrowseHookFactory extends HookFactoryAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.HookFactory#getRegistrations()
 	 */
 	public List<RegistrationContainer> getRegistrations() {
@@ -133,7 +133,7 @@ public class BrowseHookFactory extends HookFactoryAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.HookFactory#getPluginBaseClass(java.lang.String)
 	 */
 	public Object getPluginBaseClass(String hookName) {

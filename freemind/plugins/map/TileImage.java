@@ -135,7 +135,7 @@ public class TileImage implements ImageObserver {
 			freemind.main.Resources.getInstance().logException(e);
 		}
 	}
-	
+
 	public String save() {
 		try {
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -185,7 +185,7 @@ public class TileImage implements ImageObserver {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.image.ImageObserver#imageUpdate(java.awt.Image, int,
 	 * int, int, int, int)
 	 */

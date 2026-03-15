@@ -40,7 +40,7 @@ public class EditFmNode extends Container {
 		this.model = model;
 		this.icons = icons;
 	}
-	
+
 	public void onStart() {
 		btnQuit = new Button("Quit");
 		add(btnQuit, LEFT, BOTTOM);
@@ -79,7 +79,7 @@ public class EditFmNode extends Container {
 	}
 
 	/** Populate the container edit fields etc. with the contents of this node.
-	 * 
+	 *
 	 * @param n	Node to take editable data from.
 	 */
 	public void populateContainer(Node n) {

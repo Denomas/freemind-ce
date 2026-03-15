@@ -40,7 +40,7 @@ public class AddIconActor extends XmlActorAdapter {
 	public AddIconActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public void addIcon(MindMapNode node, MindIcon icon) {
 		execute(getAddLastIconActionPair(node, icon));
 	}
@@ -70,7 +70,7 @@ public class AddIconActor extends XmlActorAdapter {
 		action.setIconPosition(iconPosition);
 		return action;
 	}
-	
+
 	/**
      */
 	private ActionPair getAddLastIconActionPair(MindMapNode node, MindIcon icon) {

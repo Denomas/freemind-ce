@@ -42,7 +42,7 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public abstract class ViewControllerAdapter extends ControllerAdapter {
 
@@ -185,5 +185,5 @@ public abstract class ViewControllerAdapter extends ControllerAdapter {
 		return new PermanentNodeHookSubstituteUnknown(pLoadName);
 	}
 
-	
+
 }

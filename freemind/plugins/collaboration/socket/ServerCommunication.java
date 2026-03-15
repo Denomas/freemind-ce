@@ -51,7 +51,7 @@ import freemind.modes.ExtendedMapFeedback;
 /**
  * This class handles the communication from the master to a single client. It
  * is thus instantiated for each master (e.g. by the MindMapMaster).
- * 
+ *
  * @author foltin
  * @date 13.09.2012
  */
@@ -143,7 +143,7 @@ public class ServerCommunication extends CommunicationBase {
 					}
 					logger.info("New map " + map + " published.");
 					// create new controller and load map
-					
+
 					mController = mMindMapMaster.createMapOnServer(
 							map,
 							new Tools.StringReaderCreator(commandPublish
@@ -162,7 +162,7 @@ public class ServerCommunication extends CommunicationBase {
 						terminateSocket();
 					}
 				}
-			}			
+			}
 		}
 		// FIXME: Security check here!
 		if (pCommand instanceof CollaborationHello) {

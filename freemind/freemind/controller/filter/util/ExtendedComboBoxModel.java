@@ -39,7 +39,7 @@ public class ExtendedComboBoxModel extends DefaultComboBoxModel {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * javax.swing.event.ListDataListener#intervalAdded(javax.swing.event
 		 * .ListDataEvent)
@@ -52,7 +52,7 @@ public class ExtendedComboBoxModel extends DefaultComboBoxModel {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * javax.swing.event.ListDataListener#intervalRemoved(javax.swing.event
 		 * .ListDataEvent)
@@ -65,7 +65,7 @@ public class ExtendedComboBoxModel extends DefaultComboBoxModel {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * javax.swing.event.ListDataListener#contentsChanged(javax.swing.event
 		 * .ListDataEvent)

@@ -75,14 +75,14 @@ public interface MindMap extends TreeModel {
 
 	/**
 	 * writes the content of the map to a writer.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	void getXml(Writer fileout) throws IOException;
 
 	/**
 	 * writes the content of the map to a writer.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	void getFilteredXml(Writer fileout) throws IOException;
@@ -126,7 +126,7 @@ public interface MindMap extends TreeModel {
 
 	/**
 	 * Use this method to make the map dirty/clean.
-	 * 
+	 *
 	 * @param isSaved
 	 * @return true, if the map state has changed (and thus the title must be
 	 *         changed).
@@ -136,7 +136,7 @@ public interface MindMap extends TreeModel {
 	/**
 	 * When the map source is changed (eg. on disk, there is a newer version
 	 * edited from somebody else), this observer can be used to notice this.
-	 * 
+	 *
 	 * @author foltin
 	 * @date 04.07.2011
 	 */
@@ -214,7 +214,7 @@ public interface MindMap extends TreeModel {
 
 	void insertNodeInto(MindMapNode pNode,
 			MindMapNode pParentNode, int pIndex);
-	
+
 	void removeNodeFromParent(MindMapNode node);
 
 }

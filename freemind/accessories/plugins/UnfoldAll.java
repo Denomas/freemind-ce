@@ -38,7 +38,7 @@ import freemind.view.mindmapview.ViewFeedback.MouseWheelEventHandler;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class UnfoldAll extends MindMapNodeHookAdapter {
 
@@ -86,7 +86,7 @@ public class UnfoldAll extends MindMapNodeHookAdapter {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public UnfoldAll() {
 		super();
@@ -151,7 +151,7 @@ public class UnfoldAll extends MindMapNodeHookAdapter {
 	 * Unfolds every node that has only children which themselves have children.
 	 * As this function is a bit difficult to describe and perhaps not so
 	 * useful, it is currently not introduced into the menus.
-	 * 
+	 *
 	 * @param node
 	 *            node to start from.
 	 */

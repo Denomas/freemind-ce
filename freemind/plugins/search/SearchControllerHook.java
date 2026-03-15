@@ -30,16 +30,16 @@ import freemind.modes.mindmapmode.hooks.MindMapHookAdapter;
 import freemind.view.MapModule;
 
 /**
- * 
- * 
- * 
+ *
+ *
+ *
  * @author Stephen Leonard
  * @since 14 Feb 2014
- * 
+ *
  * @version $Author:: $: Author of last commit
  * @version $Rev:: $: Revision of last commit
  * @version $Date:: $: Date of last commit
- * 
+ *
  */
 public class SearchControllerHook extends MindMapHookAdapter implements
 		ISearchController {
@@ -59,7 +59,7 @@ public class SearchControllerHook extends MindMapHookAdapter implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	/* (non-Javadoc)
 	 * @see freemind.extensions.HookAdapter#startupMapHook()

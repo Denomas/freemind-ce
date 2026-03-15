@@ -40,7 +40,7 @@ public abstract class XmlActorAdapter implements ActorXml {
 	protected static java.util.logging.Logger logger = null;
 
 	/**
-	 * 
+	 *
 	 */
 	public XmlActorAdapter(ExtendedMapFeedback pMapFeedback) {
 		mMapFeedback = pMapFeedback;
@@ -51,7 +51,7 @@ public abstract class XmlActorAdapter implements ActorXml {
 		addActor(this);
 	}
 
-	
+
 	/**
 	 * @deprecated replaced by {@link XmlActorAdapter#getExMapFeedback()}
 	 * @return
@@ -71,13 +71,13 @@ public abstract class XmlActorAdapter implements ActorXml {
 	public ViewFeedback getViewFeedback() {
 		return getExMapFeedback().getViewFeedback();
 	}
-	
+
 	/**
 	 * @param pActionPair
 	 */
 	protected void execute(ActionPair pActionPair) {
 		getExMapFeedback().doTransaction(getDoActionClass().getName(), pActionPair);
-		
+
 	}
 
 	/**
@@ -111,7 +111,7 @@ public abstract class XmlActorAdapter implements ActorXml {
 					actor.getDoActionClass());
 		}
 	}
-	
+
 	protected XmlActorFactory getXmlActorFactory() {
 		return getExMapFeedback().getActorFactory();
 	}
@@ -122,5 +122,5 @@ public abstract class XmlActorAdapter implements ActorXml {
 	protected MindMapLinkRegistry getLinkRegistry() {
 		return getExMapFeedback().getMap().getLinkRegistry();
 	}
-	
+
 }

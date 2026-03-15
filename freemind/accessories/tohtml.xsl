@@ -5,15 +5,15 @@
 
  Distributed under the terms of the MIT License.
  See "LICENCE.MIT" or http://www.opensource.org/licenses/mit-license.php for details.
- 
+
  Software distributed under the License is distributed on an "AS IS" basis,
  WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
  for the specific language governing rights and limitations under the
  License.
- 
+
  Miika Nurminen (minurmin@cc.jyu.fi) 13.7.2004.
 
-Transforms Freemind (0.6.7) mm file to HTML 4.0 transitional. 
+Transforms Freemind (0.6.7) mm file to HTML 4.0 transitional.
 Output is valid (possibly apart HTML entered by user in Freemind).
 
 -->
@@ -24,7 +24,7 @@ Output is valid (possibly apart HTML entered by user in Freemind).
 <xsl:output method="html"
             version="1.0"
             encoding="iso-8859-1"
-            doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"  
+            doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"
             doctype-system="http://www.w3.org/TR/html4/loose.dtd"
 />
 
@@ -54,22 +54,22 @@ Output is valid (possibly apart HTML entered by user in Freemind).
 
 <xsl:template name="link">
   <xsl:if test="string-length(@LINK) &gt; 0">
-    - [ <a> <xsl:attribute name="href"><xsl:value-of select="@LINK" />  
-    </xsl:attribute><xsl:value-of select="@LINK"/></a> ]   
+    - [ <a> <xsl:attribute name="href"><xsl:value-of select="@LINK" />
+    </xsl:attribute><xsl:value-of select="@LINK"/></a> ]
   </xsl:if>
 </xsl:template>
 
 <!-- cutting off inline html headers -->
 <xsl:template name="html">
     <xsl:choose>
-        <xsl:when test="(substring(@TEXT,string-length(@TEXT)-13,14)='&lt;/body&gt;&lt;/html&gt;') and 
+        <xsl:when test="(substring(@TEXT,string-length(@TEXT)-13,14)='&lt;/body&gt;&lt;/html&gt;') and
                                    (substring(@TEXT,1,12)='&lt;html&gt;&lt;body&gt;')">
          <xsl:value-of select="substring(@TEXT,13,string-length(@TEXT)-26)"  disable-output-escaping="yes"/>
-        </xsl:when>              
+        </xsl:when>
         <xsl:when test="substring(@TEXT,string-length(@TEXT)-6,7)='&lt;/html&gt;'">
             <xsl:value-of select="substring(@TEXT,7,string-length(@TEXT)-14)"  disable-output-escaping="yes"/>
-        </xsl:when>              
-        <xsl:otherwise> 
+        </xsl:when>
+        <xsl:otherwise>
             <xsl:value-of select="substring(@TEXT,7,string-length(@TEXT))"  disable-output-escaping="yes"/>
         </xsl:otherwise>
     </xsl:choose>
@@ -81,7 +81,7 @@ Output is valid (possibly apart HTML entered by user in Freemind).
        <xsl:if test="string-length(@COLOR) &gt; 0">color:<xsl:value-of select="@COLOR" />;
        </xsl:if>
        <xsl:apply-templates select="font" />
-       </xsl:attribute>                    
+       </xsl:attribute>
     <xsl:value-of select="@TEXT" />
   </xsl:element>
     <xsl:call-template name="link" />
@@ -97,7 +97,7 @@ Output is valid (possibly apart HTML entered by user in Freemind).
        <xsl:if test="string-length(@COLOR) &gt; 0">color:<xsl:value-of select="@COLOR" />;
        </xsl:if>
        <xsl:apply-templates select="font" />
-       </xsl:attribute>                    
+       </xsl:attribute>
     <xsl:value-of select="@TEXT" />
   </xsl:element>
     <xsl:call-template name="link" />
@@ -109,7 +109,7 @@ Output is valid (possibly apart HTML entered by user in Freemind).
 
 <xsl:template match="node">
   <xsl:choose>
-  <xsl:when test="(string-length(normalize-space(@TEXT)) = 0) and (string-length(normalize-space(@LINK))= 0)">      
+  <xsl:when test="(string-length(normalize-space(@TEXT)) = 0) and (string-length(normalize-space(@LINK))= 0)">
 
      <xsl:if test="count(child::node)>0" > <!-- anonoymous nodes are not processed, but their children are -->
 <xsl:apply-templates select="node[@POSITION='left']"/>
@@ -117,26 +117,26 @@ Output is valid (possibly apart HTML entered by user in Freemind).
 <xsl:apply-templates select="node[not(@POSITION)]"/>
 </xsl:if>
      <xsl:if test="count(child::node)=0" > <!-- anonoymous nodes are not processed, but their children are -->
-      <li></li><!-- must be here to render valid html -->  
+      <li></li><!-- must be here to render valid html -->
 </xsl:if>
 
   </xsl:when>
-  <xsl:when test="(string-length((@TEXT)) > 0) or (string-length(@LINK) > 0)">      
-    <xsl:if test="count(child::node)=0"> 
+  <xsl:when test="(string-length((@TEXT)) > 0) or (string-length(@LINK) > 0)">
+    <xsl:if test="count(child::node)=0">
      <li>
         <xsl:choose>
           <xsl:when test="substring(@TEXT,1,6)='&lt;html&gt;'">
             <xsl:call-template name="html" />
-          </xsl:when>              
-          <xsl:otherwise> 
+          </xsl:when>
+          <xsl:otherwise>
             <xsl:call-template name="spantext" />
           </xsl:otherwise>
         </xsl:choose>
         </li>
     </xsl:if>
-    <xsl:if test="count(child::node)>0" > 
+    <xsl:if test="count(child::node)>0" >
                 <li>
-            <xsl:choose>        
+            <xsl:choose>
             <xsl:when test="substring(@TEXT,1,6)='&lt;html&gt;'">
               <xsl:call-template name="html" />
             </xsl:when>
@@ -146,7 +146,7 @@ Output is valid (possibly apart HTML entered by user in Freemind).
           </xsl:choose>
           <ul>
       			<xsl:apply-templates select="node[@POSITION='left']"/>
-				<xsl:apply-templates select="node[@POSITION='right']"/>    
+				<xsl:apply-templates select="node[@POSITION='right']"/>
 				<xsl:apply-templates select="node[not(@POSITION)]"/>
           </ul>
           </li>

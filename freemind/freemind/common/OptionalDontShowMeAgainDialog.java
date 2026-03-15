@@ -46,9 +46,9 @@ import freemind.main.Tools;
 
 /**
  * Dialog with a decision that can be disabled.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public class OptionalDontShowMeAgainDialog {
 	public final static int ONLY_OK_SELECTION_IS_STORED = 0;
@@ -65,7 +65,7 @@ public class OptionalDontShowMeAgainDialog {
 	private final Component mComponent;
 
 	protected static java.util.logging.Logger logger = null;
-	
+
 	public interface DontShowPropertyHandler {
 		/**
 		 * @return accepted are the following values as return values: * ""
@@ -80,7 +80,7 @@ public class OptionalDontShowMeAgainDialog {
 
 	/**
 	 * Standard property handler, if you have a controller and a property.
-	 * 
+	 *
 	 */
 	public static class StandardPropertyHandler implements
 			DontShowPropertyHandler {

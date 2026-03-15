@@ -119,7 +119,7 @@ public class LayoutTests extends FreeMindTestBase {
 		assertEquals(yCoordinateChild1, getYCoordinate(mChild1));
 		assertEquals(yCoordinate, getYCoordinate(mChild2));
 	}
-	
+
 	public void testYShiftNegativeWith3Childs() throws Exception {
 		MindMapNodeModel child3 = new MindMapNodeModel("CHILD3", mModel);
 		mModel.insertNodeInto(child3, mRoot, 2);
@@ -138,7 +138,7 @@ public class LayoutTests extends FreeMindTestBase {
 		assertEquals(yCoordinate, getYCoordinate(mChild2));
 		assertEquals(yCoordinate3 - delta, getYCoordinate(child3));
 	}
-	
+
 	public void testScrollMap() throws Exception {
 		layout(mMapView);
 		int yCoordinateRoot = getYCoordinateToViewport(mRoot);
@@ -149,7 +149,7 @@ public class LayoutTests extends FreeMindTestBase {
 		assertEquals(viewPosition.y + delta, mMapView.getViewPosition().y);
 		assertEquals(yCoordinateRoot - delta, getYCoordinateToViewport(mRoot));
 	}
-	
+
 	public void testYShiftNegativeWith3ChildsWithRootMovement() throws Exception {
 		MindMapNodeModel child3 = new MindMapNodeModel("CHILD3", mModel);
 		mModel.insertNodeInto(child3, mRoot, 2);
@@ -168,7 +168,7 @@ public class LayoutTests extends FreeMindTestBase {
 		assertEquals(yCoordinate + delta, getYCoordinateToViewport(mChild2));
 		assertEquals(yCoordinate3, getYCoordinateToViewport(child3));
 	}
-	
+
 	public void testYShiftNegativeWith3ChildsYCalcToRoot() throws Exception {
 		MindMapNodeModel child3 = new MindMapNodeModel("CHILD3", mModel);
 		mModel.insertNodeInto(child3, mRoot, 2);
@@ -185,7 +185,7 @@ public class LayoutTests extends FreeMindTestBase {
 		assertEquals(yCoordinate + delta, getYCoordinate(mChild2)-yCoordinateRoot2);
 		assertEquals(yCoordinate3, getYCoordinate(child3)-yCoordinateRoot2);
 	}
-	
+
 	protected void layout(MapView mapView) {
 		NodeView root = mapView.getRoot();
 		LayoutManager layout = root.getLayout();
@@ -220,5 +220,5 @@ public class LayoutTests extends FreeMindTestBase {
 		Tools.convertPointToAncestor(nodeView, point, mScrollPane);
 		return point.y;
 	}
-	
+
 }

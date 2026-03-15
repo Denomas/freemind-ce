@@ -82,7 +82,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	private MindMapHookFactory mNodeHookFactory;
 
 	/**
-	 * 
+	 *
 	 */
 	public ExtendedMapFeedbackAdapter() {
 		super();
@@ -133,7 +133,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	@Override
 	public void setWaitingCursor(boolean pWaiting) {
 	}
-	
+
 	@Override
 	public void nodeStyleChanged(MindMapNode node) {
 		nodeChanged(node);
@@ -169,7 +169,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	public Transferable copy(MindMapNode node, boolean saveInvisible) {
 		return new DummyTransferable();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.ExtendedMapFeedback#copy(java.util.List, boolean)
 	 */
@@ -205,7 +205,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 
 	@Override
 	public void close(boolean pForce) {
-		
+
 	}
 
 	@Override
@@ -250,13 +250,13 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 
 	@Override
 	public void toggleFolded() {
-		getActorFactory().getToggleFoldedActor().toggleFolded(getViewAbstraction().getSelecteds().listIterator());		
+		getActorFactory().getToggleFoldedActor().toggleFolded(getViewAbstraction().getSelecteds().listIterator());
 	}
 
 	@Override
 	public void setFolded(MindMapNode pModel, boolean pFold) {
 		getActorFactory().getToggleFoldedActor().setFolded(pModel, pFold);
-		
+
 	}
 
 	@Override
@@ -268,7 +268,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	public void setStrikethrough(MindMapNode pNode, boolean pStrikethroughed) {
 		mActorFactory.getStrikethroughActor().setStrikethrough(pNode, pStrikethroughed);
 	}
-	
+
 	@Override
 	public void setItalic(MindMapNode pNode, boolean pIsItalic) {
 		mActorFactory.getItalicActor().setItalic(pNode, pIsItalic);
@@ -297,12 +297,12 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	@Override
 	public void setFontSize(MindMapNode pNode, String pFontSizeValue) {
 		getActorFactory().getFontSizeActor().setFontSize(pNode, pFontSizeValue);
-		
+
 	}
 
 	@Override
 	public void addIcon(MindMapNode pNode, MindIcon pIcon) {
-		mActorFactory.getAddIconActor().addIcon(pNode, pIcon);		
+		mActorFactory.getAddIconActor().addIcon(pNode, pIcon);
 	}
 
 	@Override
@@ -327,7 +327,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 
 	@Override
 	public void setEdgeColor(MindMapNode pNode, Color pColor) {
-		getActorFactory().getEdgeColorActor().setEdgeColor(pNode, pColor);		
+		getActorFactory().getEdgeColorActor().setEdgeColor(pNode, pColor);
 	}
 
 	@Override
@@ -351,7 +351,7 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	}
 
 	@Override
-	public void addLink(MindMapNode pSource, MindMapNode pTarget) {		
+	public void addLink(MindMapNode pSource, MindMapNode pTarget) {
 		getActorFactory().getAddArrowLinkActor().addLink(pSource, pTarget);
 	}
 
@@ -413,14 +413,14 @@ public abstract class ExtendedMapFeedbackAdapter extends MapFeedbackAdapter
 	public void setAttribute(MindMapNode pNode, int pPosition,
 			Attribute pAttribute) {
 		getActorFactory().getSetAttributeActor().setAttribute(pNode, pPosition, pAttribute);
-		
+
 	}
 
 	@Override
 	public void insertAttribute(MindMapNode pNode, int pPosition,
 			Attribute pAttribute) {
 		getActorFactory().getInsertAttributeActor().insertAttribute(pNode, pPosition, pAttribute);
-		
+
 	}
 
 	@Override

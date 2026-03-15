@@ -67,15 +67,15 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * This is the "paste node as clone" action from the menu.
- * 
+ *
  * @author foltin
  * @date 25.4.2011
- * 
+ *
  */
 public class ClonePasteAction extends MindMapNodeHookAdapter {
 
 	/**
-	 * 
+	 *
 	 */
 	public ClonePasteAction() {
 	}
@@ -155,7 +155,7 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 		protected static java.util.logging.Logger logger = null;
 
 		/**
-		 * 
+		 *
 		 */
 		public CloneProperties() {
 			if (logger == null) {
@@ -163,7 +163,7 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 						this.getClass().getName());
 			}
 		}
-		
+
 		public boolean isCloneItself() {
 			return mCloneItself;
 		}
@@ -463,7 +463,7 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 
 		/**
 		 * Method takes into account, that some actions are different.
-		 * 
+		 *
 		 * @param nodeAction
 		 * @param node
 		 * @return
@@ -557,7 +557,7 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 		/**
 		 * This is the main method here. It returns to a given node its cloned
 		 * nodes on the other side.
-		 * 
+		 *
 		 * @param pNode
 		 *            is checked to be son of one of the clones/original.
 		 * @param pStartWithParent
@@ -742,7 +742,7 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.modes.ModeController.NodeSelectionListener#onSelectionChange
 		 * (freemind.modes.MindMapNode, boolean)

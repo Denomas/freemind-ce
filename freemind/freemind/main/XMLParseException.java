@@ -60,9 +60,9 @@ package freemind.main;
  * $Revision: 1.7.34.3 $<BR>
  * $Date: 2006/07/25 20:28:20 $
  * <P>
- * 
+ *
  * @see XMLElement
- * 
+ *
  * @author Marc De Scheemaecker
  * @version $Name: fm_060405_integration $, $Revision: 1.7.34.3 $
  */
@@ -77,7 +77,7 @@ public class XMLParseException extends RuntimeException {
 	/**
 	 * The line number in the source code where the error occurred, or
 	 * <code>NO_LINE</code> if the line number is unknown.
-	 * 
+	 *
 	 * <dl>
 	 * <dt><b>Invariants:</b></dt>
 	 * <dd>
@@ -91,12 +91,12 @@ public class XMLParseException extends RuntimeException {
 
 	/**
 	 * Creates an exception.
-	 * 
+	 *
 	 * @param name
 	 *            The name of the element where the error is located.
 	 * @param message
 	 *            A message describing what went wrong.
-	 * 
+	 *
 	 *            </dl>
 	 *            <dl>
 	 *            <dt><b>Preconditions:</b></dt>
@@ -106,7 +106,7 @@ public class XMLParseException extends RuntimeException {
 	 *            </ul>
 	 *            </dd>
 	 *            </dl>
-	 * 
+	 *
 	 *            <dl>
 	 *            <dt><b>Postconditions:</b></dt>
 	 *            <dd>
@@ -126,14 +126,14 @@ public class XMLParseException extends RuntimeException {
 
 	/**
 	 * Creates an exception.
-	 * 
+	 *
 	 * @param name
 	 *            The name of the element where the error is located.
 	 * @param lineNr
 	 *            The number of the line in the input.
 	 * @param message
 	 *            A message describing what went wrong.
-	 * 
+	 *
 	 *            </dl>
 	 *            <dl>
 	 *            <dt><b>Preconditions:</b></dt>
@@ -144,7 +144,7 @@ public class XMLParseException extends RuntimeException {
 	 *            </ul>
 	 *            </dd>
 	 *            </dl>
-	 * 
+	 *
 	 *            <dl>
 	 *            <dt><b>Postconditions:</b></dt>
 	 *            <dd>
@@ -166,7 +166,7 @@ public class XMLParseException extends RuntimeException {
 	/**
 	 * Where the error occurred, or <code>NO_LINE</code> if the line number is
 	 * unknown.
-	 * 
+	 *
 	 */
 	public int getLineNr() {
 		return this.lineNr;

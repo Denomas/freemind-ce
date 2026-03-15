@@ -34,7 +34,7 @@ import freemind.modes.MindMapNode;
 /**
  * This base class is free of openstreetmap and similar classes.
  * Thus, it doesn't know much about its position.
- * 
+ *
  * @author foltin
  * @date 16.08.2012
  */
@@ -58,7 +58,7 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 	public static final String SHORT_CYCLE_MAP = "C";
 	public static final String SHORT_MAPNIK = "M";
 	public static ImageIcon sMapLocationIcon;
-	
+
 	protected String mTooltipLocation = null;
 	protected File mTooltipFile = null;
 	private HashMap<String, String> mValues;
@@ -78,7 +78,7 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public MapNodePositionHolderBase() {
 		super();
@@ -86,7 +86,7 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.PermanentNodeHookAdapter#shutdownMapHook()
 	 */
 	public void shutdownMapHook() {
@@ -97,7 +97,7 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.NodeHookAdapter#invoke(freemind.modes.MindMapNode)
 	 */
@@ -106,7 +106,7 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 		setStateIcon(pNode, true);
 		showTooltip();
 	}
-	
+
 	public void showTooltip() {
 		if (isTooltipDesired()) {
 			if (mTooltipLocation != null) {
@@ -116,7 +116,7 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 	}
 
 	protected boolean isTooltipDesired() {
-		return Resources.getInstance().getBoolProperty(NODE_MAP_SHOW_TOOLTIP) && 
+		return Resources.getInstance().getBoolProperty(NODE_MAP_SHOW_TOOLTIP) &&
 				!Tools.safeEquals(mTooltipLocation, "false");
 	}
 
@@ -142,10 +142,10 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	protected void hideTooltip() {
-		setToolTip(NODE_MAP_HOOK_NAME, null);		
+		setToolTip(NODE_MAP_HOOK_NAME, null);
 	}
 
 	public static MapNodePositionHolderBase getBaseHook(MindMapNode node) {
@@ -158,8 +158,8 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 	}
 
 	public String[] getBarePosition() {
-		return new String[] {(String) mValues.get(XML_STORAGE_POS_LAT), 
-				(String) mValues.get(XML_STORAGE_POS_LON), 
+		return new String[] {(String) mValues.get(XML_STORAGE_POS_LAT),
+				(String) mValues.get(XML_STORAGE_POS_LON),
 				(String) mValues.get(XML_STORAGE_MAP_LAT),
 				(String) mValues.get(XML_STORAGE_MAP_LON),
 				(String) mValues.get(XML_STORAGE_ZOOM),
@@ -167,4 +167,3 @@ public class MapNodePositionHolderBase extends PermanentNodeHookAdapter {
 	}
 
 }
-

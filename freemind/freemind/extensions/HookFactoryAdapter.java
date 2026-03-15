@@ -28,7 +28,7 @@ import freemind.modes.MindMapNode;
 
 /**
  * @author foltin
- * 
+ *
  */
 public abstract class HookFactoryAdapter implements HookFactory {
 
@@ -36,7 +36,7 @@ public abstract class HookFactoryAdapter implements HookFactory {
 	protected HashMap<String, HookRegistration> allRegistrationInstances;
 
 	/**
-	 * 
+	 *
 	 */
 	protected HookFactoryAdapter() {
 		super();
@@ -61,7 +61,7 @@ public abstract class HookFactoryAdapter implements HookFactory {
 	 * the factory observes every object creation. <br>
 	 * Moreover, the factory can tell other hooks it creates, who is its base
 	 * plugin.
-	 * 
+	 *
 	 */
 	public void registerRegistrationContainer(
 			HookFactory.RegistrationContainer container,

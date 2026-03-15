@@ -4,17 +4,17 @@
 	File:        freemind2html_links.xsl
 	Version:     0.1
 	Description: A XSLT stylesheet to transform mindmap files created with
-	FreeMind (http://freemind.sf.net) into HTML files with an image and hyperlinks to the URLs. 
+	FreeMind (http://freemind.sf.net) into HTML files with an image and hyperlinks to the URLs.
 -->
 <xsl:stylesheet version="1.0"
-                xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		>
 <!-- mozilla doesn't parse method xhtml (in xslt 2.0) -->
 <xsl:output method="xml"
             version="1.0"
             encoding="UTF-8"
-            doctype-public="-//W3C//DTD XHTML 1.1//EN"  
+            doctype-public="-//W3C//DTD XHTML 1.1//EN"
             doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
 	    omit-xml-declaration="no"
 	    />

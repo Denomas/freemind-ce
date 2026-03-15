@@ -494,7 +494,7 @@ public class XMLElementAdapter extends XMLElement {
 	/**
 	 * Completes the links within the getMap(). They are registered in the
 	 * registry.
-	 * 
+	 *
 	 * Case I: Source+Destination are pasted (Ia: cut, Ib: copy) Case II: Source
 	 * is pasted, Destination remains unchanged in the map (IIa: cut, IIb: copy)
 	 * Case III: Destination is pasted, Source remains unchanged in the map

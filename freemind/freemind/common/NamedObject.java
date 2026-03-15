@@ -25,7 +25,7 @@ package freemind.common;
 
 /**
  * Utility Class for displaying local object names in GUI components.
- * 
+ *
  * @author Dimitri Polivaev 18.01.2007
  */
 public class NamedObject {
@@ -67,6 +67,6 @@ public class NamedObject {
 	public String getName() {
 		return name;
 	}
-	
-	
+
+
 }

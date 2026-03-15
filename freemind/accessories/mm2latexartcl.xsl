@@ -14,7 +14,7 @@
     See: http://freemind.sourceforge.net/
 -->
 
-<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0'>  
+<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0'>
 <xsl:output omit-xml-declaration="yes" />
 
 <xsl:template match="map">
@@ -22,20 +22,20 @@
 <xsl:text>
 \documentclass[a4paper,12pt,single,pdftex]{scrartcl}
 \usepackage{ngerman}
- \usepackage{color}  
- \usepackage{html}  
- \usepackage{times}  
- \usepackage{graphicx} 
- \usepackage{fancyheadings}  
- \usepackage{hyperref}  
- \setlength{\parindent}{0.6pt} 
- \setlength{\parskip}{0.6pt} 
+ \usepackage{color}
+ \usepackage{html}
+ \usepackage{times}
+ \usepackage{graphicx}
+ \usepackage{fancyheadings}
+ \usepackage{hyperref}
+ \setlength{\parindent}{0.6pt}
+ \setlength{\parskip}{0.6pt}
  \title{</xsl:text><xsl:value-of select="node/@TEXT"/><xsl:text>}
  </xsl:text>
 <!-- ======= Document Begining ====== -->
 <xsl:text>
 
-\begin{document} 
+\begin{document}
 \maketitle
 \newpage
 
@@ -212,7 +212,7 @@
  <xsl:otherwise><xsl:value-of select="$SS"/></xsl:otherwise>
 </xsl:choose>
 
-<xsl:text></xsl:text> 
+<xsl:text></xsl:text>
 
 <xsl:call-template name="LaTeXChar">
 <xsl:with-param name="i" select="$i - 1"/>
@@ -257,4 +257,3 @@
 </xsl:template> <!--Items Process -->
 
 </xsl:stylesheet>
-

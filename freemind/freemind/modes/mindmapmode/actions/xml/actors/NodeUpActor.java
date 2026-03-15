@@ -100,7 +100,7 @@ public class NodeUpActor extends XmlActorAdapter {
 	 * The direction is used if side left and right are present. then the next
 	 * suitable place on the same side# is searched. if there is no such place,
 	 * then the side is changed.
-	 * 
+	 *
 	 * @return returns the new index.
 	 */
 	private int moveNodeTo(MindMapNode newChild, MindMapNode parent,

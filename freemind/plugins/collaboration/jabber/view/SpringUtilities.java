@@ -29,9 +29,9 @@ import javax.swing.SpringLayout;
  * A 1.4 file that provides utility methods for creating form- or grid-style
  * layouts with SpringLayout. These utilities are used by several programs, such
  * as SpringBox and SpringCompactGrid.
- * 
+ *
  * (See http://java.sun.com/docs/books/tutorial/uiswing/layout/spring.html)
- *  
+ *
  */
 
 //TODO: Licensing? Copied this from
@@ -52,7 +52,7 @@ public class SpringUtilities {
      * <code>parent</code> in a grid. Each component is as big as the maximum
      * preferred width and height of the components. The parent is made just big
      * enough to fit them all.
-     * 
+     *
      * @param rows
      *            number of rows
      * @param cols
@@ -154,7 +154,7 @@ public class SpringUtilities {
      * the maximum preferred width of the components in that column; height is
      * similarly determined for each row. The parent is made just big enough to
      * fit them all.
-     * 
+     *
      * @param rows
      *            number of rows
      * @param cols
@@ -219,4 +219,3 @@ public class SpringUtilities {
         pCons.setConstraint(SpringLayout.EAST, x);
     }
 }
-

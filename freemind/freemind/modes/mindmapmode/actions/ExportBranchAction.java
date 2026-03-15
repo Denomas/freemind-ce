@@ -130,7 +130,7 @@ public class ExportBranchAction extends MindmapAction {
 				freemind.main.Resources.getInstance().logException(e1);
 				// roll back:
 				mMindMapController.insertNodeInto(node, parent);
-				
+
 				String message = Tools.expandPlaceholders(mMindMapController.getText("save_failed"),
 						chosenFile.getName());
 				mMindMapController.getController().errorMessage(message);

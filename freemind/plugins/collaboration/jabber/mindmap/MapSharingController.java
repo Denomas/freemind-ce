@@ -35,7 +35,7 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author RReppel
- * 
+ *
  * To change the template for this generated type comment go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
@@ -128,7 +128,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
          */
         public void mouseEntered(MouseEvent arg0) {
@@ -136,7 +136,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
          */
         public void mouseExited(MouseEvent arg0) {
@@ -144,7 +144,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
          */
         public void mousePressed(MouseEvent arg0) {
@@ -152,7 +152,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
          */
         public void mouseReleased(MouseEvent arg0) {
@@ -200,7 +200,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
          */
         public void mouseEntered(MouseEvent arg0) {
@@ -208,7 +208,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
          */
         public void mouseExited(MouseEvent arg0) {
@@ -216,7 +216,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
          */
         public void mousePressed(MouseEvent arg0) {
@@ -224,7 +224,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
          */
         public void mouseReleased(MouseEvent arg0) {
@@ -249,7 +249,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
          */
         public void mouseEntered(MouseEvent arg0) {
@@ -257,7 +257,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
          */
         public void mouseExited(MouseEvent arg0) {
@@ -265,7 +265,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
          */
         public void mousePressed(MouseEvent arg0) {
@@ -273,7 +273,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
          */
         public void mouseReleased(MouseEvent arg0) {
@@ -306,7 +306,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
          */
         public void mouseEntered(MouseEvent arg0) {
@@ -314,7 +314,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
          */
         public void mouseExited(MouseEvent arg0) {
@@ -322,7 +322,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
          */
         public void mousePressed(MouseEvent arg0) {
@@ -330,7 +330,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
          */
         public void mouseReleased(MouseEvent arg0) {
@@ -354,7 +354,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
          */
         public void mouseEntered(MouseEvent arg0) {
@@ -362,7 +362,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
          */
         public void mouseExited(MouseEvent arg0) {
@@ -370,7 +370,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
          */
         public void mousePressed(MouseEvent arg0) {
@@ -378,7 +378,7 @@ public class MapSharingController {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
          */
         public void mouseReleased(MouseEvent arg0) {
@@ -389,7 +389,7 @@ public class MapSharingController {
     /**
      * Called by the JabberListener to indicate that a user has accepted or
      * declined an invitation to share a map.
-     * 
+     *
      * @param isAccepted
      */
     public void setMapShareRequestAccepted(String userName, boolean isAccepted) {
@@ -403,7 +403,7 @@ public class MapSharingController {
                  * MindMapXMLElement mapElement = new
                  * MindMapXMLElement(controller.getFrame()); try { StringWriter
                  * sw = new StringWriter();
-                 * 
+                 *
                  * sw.write(" <map version=\"" +
                  * controller.getFrame().getFreemindVersion()+"\">\n");
                  * MindMapMapModel mindMapNodeModel = (MindMapMapModel)
@@ -411,7 +411,7 @@ public class MapSharingController {
                  * mindMapNodeModel.saveInternal(sw, true); // save(sw,
                  * (MindMapMapModel) controller.getView().getModel().getRoot());
                  * sw.write(" </map>\n");
-                 * 
+                 *
                  * sender.sendMap(sw.getBuffer().toString()); } catch(Exception
                  * e) { freemind.main.Resources.getInstance().logException(e); }
                  */
@@ -446,7 +446,7 @@ public class MapSharingController {
 
     /**
      * Stops sharing the current map and disconnects from server.
-     *  
+     *
      */
     private void stopSharing() {
         mapSharingListener.getSession().disconnect();
@@ -458,7 +458,7 @@ public class MapSharingController {
     /**
      * Called by the JabberListener when the other user no longer shares his/her
      * map.
-     * 
+     *
      * @param username
      */
     public void setSharingStopped(String username) {
@@ -469,7 +469,7 @@ public class MapSharingController {
     /**
      * Sets the new state of the map sharing controller and updates the Freemind
      * window title to indicate the state.
-     * 
+     *
      * @param newState
      */
     private void setState(int newState) {

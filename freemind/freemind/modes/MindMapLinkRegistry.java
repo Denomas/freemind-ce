@@ -38,7 +38,7 @@ public class MindMapLinkRegistry {
 	 * All elements put into this sort of vectors are put into the
 	 * SourceToLinks, too. This structure is kept synchronous to the IDToLinks
 	 * structure, but reversed.
-	 * 
+	 *
 	 * @author foltin
 	 * @date 23.01.2012
 	 */
@@ -46,7 +46,7 @@ public class MindMapLinkRegistry {
 	private class SynchronousVector extends Vector<MindMapLink> {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.Vector#add(java.lang.Object)
 		 */
 		public synchronized boolean add(MindMapLink pE) {
@@ -64,7 +64,7 @@ public class MindMapLinkRegistry {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.Vector#removeElementAt(int)
 		 */
 		public synchronized void removeElementAt(int pIndex) {

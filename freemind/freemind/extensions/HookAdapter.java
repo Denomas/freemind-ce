@@ -32,9 +32,9 @@ import freemind.modes.ModeController;
 /**
  * Implments MindMapHook as an Adapter class. Implementation is straight
  * forward.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public class HookAdapter implements MindMapHook {
 
@@ -62,7 +62,7 @@ public class HookAdapter implements MindMapHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.NodeHook#getName()
 	 */
 	public String getName() {
@@ -75,7 +75,7 @@ public class HookAdapter implements MindMapHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.NodeHook#startupMapHook(java.lang.String)
 	 */
 	public void startupMapHook() {
@@ -85,7 +85,7 @@ public class HookAdapter implements MindMapHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.NodeHook#shutdownMapHook()
 	 */
 	public void shutdownMapHook() {
@@ -121,7 +121,7 @@ public class HookAdapter implements MindMapHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.MindMapHook#getResourceString(java.lang.String)
 	 */
 	public String getResourceString(String property) {
@@ -141,7 +141,7 @@ public class HookAdapter implements MindMapHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.MindMapHook#getPluginBaseClass()
 	 */
 	public Object getPluginBaseClass() {

@@ -41,7 +41,7 @@ public class MindMapHookAdapter extends ModeControllerHookAdapter {
 	public MindMapController getMindMapController() {
 		return (MindMapController) getController();
 	}
-	
+
 	public JMenuItem addAccelerator(JMenuItem menuItem, String key) {
 		String keyProp = getMindMapController().getFrame().getProperty(key);
 		if(keyProp == null) {

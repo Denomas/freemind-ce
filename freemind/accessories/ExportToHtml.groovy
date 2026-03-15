@@ -20,8 +20,8 @@
  * Created on 22.06.2011
  */
 
-/** 
- * To use this script, call 
+/**
+ * To use this script, call
  * java -Dstartup_groovy_script=accessories\ExportToHtml.groovy -jar lib\freemind.jar
  */
 

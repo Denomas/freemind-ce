@@ -75,7 +75,7 @@ public class UndoAction extends AbstractXmlAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.AbstractXmlAction#xmlActionPerformed(java
 	 * .awt.event.ActionEvent)
@@ -111,7 +111,7 @@ public class UndoAction extends AbstractXmlAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.Action#setEnabled(boolean)
 	 */
 	public void setEnabled(boolean arg0) {

@@ -32,7 +32,7 @@ import freemind.modes.mindmapmode.actions.xml.ActorXml;
 
 /**
  * @author foltin
- * 
+ *
  */
 public interface NodeActorXml extends ActorXml {
 	/**

@@ -83,7 +83,7 @@ class ForkMainView extends MainView {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView#getStyle()
 	 */
 	String getStyle() {

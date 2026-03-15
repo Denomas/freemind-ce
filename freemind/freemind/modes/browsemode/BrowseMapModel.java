@@ -79,7 +79,7 @@ public class BrowseMapModel extends MapAdapter {
 
 	/**
 	 * Get the value of url.
-	 * 
+	 *
 	 * @return Value of url.
 	 */
 	public URL getURL() {
@@ -88,7 +88,7 @@ public class BrowseMapModel extends MapAdapter {
 
 	/**
 	 * Set the value of url.
-	 * 
+	 *
 	 * @param v
 	 *            Value to assign to url.
 	 */
@@ -106,7 +106,7 @@ public class BrowseMapModel extends MapAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMap#setLinkInclinationChanged()
 	 */
 	public void setLinkInclinationChanged() {
@@ -114,7 +114,7 @@ public class BrowseMapModel extends MapAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMap#getXml(java.io.Writer)
 	 */
 	public void getXml(Writer fileout) throws IOException {
@@ -125,7 +125,7 @@ public class BrowseMapModel extends MapAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMap#getFilteredXml(java.io.Writer)
 	 */
 	public void getFilteredXml(Writer fileout) throws IOException {
@@ -160,7 +160,7 @@ public class BrowseMapModel extends MapAdapter {
 		// FIXME: Need an implementation here
 		return null;
 	}
-	
+
 	public NodeAdapter createEncryptedNode(String additionalInfo) {
 		NodeAdapter node = createNodeAdapter(mMapFeedback, ENCRYPTED_BROWSE_NODE);
 		node.setAdditionalInfo(additionalInfo);

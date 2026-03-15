@@ -47,7 +47,7 @@ public class RemoveIconActor extends NodeXmlActorAdapter {
 	public Class<RemoveIconXmlAction> getDoActionClass() {
 		return RemoveIconXmlAction.class;
 	}
-	
+
 	public RemoveIconXmlAction createRemoveIconXmlAction(MindMapNode node,
 			int iconPosition) {
 		RemoveIconXmlAction action = new RemoveIconXmlAction();

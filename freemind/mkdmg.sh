@@ -84,7 +84,7 @@ main()
     croak "$SCRATCH/$ARCH.dmg created"
 
     # Optionally disable display of removable media on Desktop
-    # 
+    #
     # defaults write com.apple.finder ShowRemovableMediaOnDesktop 0
     # chkerror
     # FINDERPID=`ps -auxwww | grep Finder.app | grep -v grep | awk '{print $2}'`
@@ -98,7 +98,7 @@ main()
     hdid "$SCRATCH/$ARCH.dmg.sparseimage" 2>/dev/null >/dev/null
     chkerror
     croak "$SCRATCH/$ARCH.dmg.sparseimage attached"
-   
+
     # Find out allocated device
     #
     DEV=`mount | grep "Volumes/$ARCH" | awk '{print $1}'`

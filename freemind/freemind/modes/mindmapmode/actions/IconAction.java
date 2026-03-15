@@ -48,7 +48,7 @@ public class IconAction extends MindmapAction implements IconInformation {
 		this.modeController = controller;
 		putValue(Action.SHORT_DESCRIPTION, _icon.getDescription());
 		this.icon = _icon;
-		
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -96,7 +96,7 @@ public class IconAction extends MindmapAction implements IconInformation {
 		}
 	}
 
-	
+
 
 
 	protected AddIconAction createAddIconAction(MindMapNode node,
@@ -111,7 +111,7 @@ public class IconAction extends MindmapAction implements IconInformation {
 	public Class<AddIconAction> getDoActionClass() {
 		return AddIconAction.class;
 	}
-	
+
 
 	public MindIcon getMindIcon() {
 		return icon;

@@ -49,7 +49,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 
 	private static Logger logger;
 
-	
+
 	public NodeHookAction(String hookName, MindMapController controller) {
 		super(hookName, (Icon) null, controller);
 		this._hookName = hookName;
@@ -92,7 +92,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing.JMenuItem
 	 * , javax.swing.Action)

@@ -42,12 +42,12 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author Dimitri Polivaev
- * 
+ *
  */
 public class SplitNode extends MindMapNodeHookAdapter {
 
 	/**
-	 * 
+	 *
 	 */
 	public SplitNode() {
 		super();
@@ -55,14 +55,14 @@ public class SplitNode extends MindMapNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.NodeHook#invoke(freemind.modes.MindMapNode,
 	 * java.util.List)
 	 */
 	public void invoke(MindMapNode node) {
 		super.invoke(node);
 		final List<MindMapNode> list = getMindMapController().getSelecteds();
-		
+
 		for(MindMapNode next : list) {
 			splitNode(next);
 		}

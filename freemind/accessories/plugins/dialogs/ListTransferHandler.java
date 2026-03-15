@@ -49,7 +49,7 @@ public class ListTransferHandler extends TransferHandler {
 	int addIndex = -1; // Location where items were added
 	int addCount = 0; // Number of items added
 
-	
+
 	@Override
 	public boolean importData(JComponent c, Transferable t) {
 		JList<?> target = (JList<?>) c;

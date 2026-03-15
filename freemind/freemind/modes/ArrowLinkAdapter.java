@@ -29,11 +29,11 @@ public abstract class ArrowLinkAdapter extends LinkAdapter implements
 		MindMapArrowLink {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final String ARROW_DEFAULT_UP = "DEFAULT";
 	/**
-	 * 
+	 *
 	 */
 	private static final String ARROW_NONE_UC = "NONE";
 
@@ -158,7 +158,7 @@ public abstract class ArrowLinkAdapter extends LinkAdapter implements
 			arrowLink.setAttribute("ENDARROW", (getEndArrow()));
 		return arrowLink;
 	}
-	
+
 	public ArrowLinkTarget createArrowLinkTarget(MindMapLinkRegistry pRegistry) {
 		ArrowLinkTarget linkTarget = new ArrowLinkTarget(source, target, mMapFeedback);
 		linkTarget.setSourceLabel(pRegistry.getLabel(source));

@@ -32,7 +32,7 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
  * @date 13.12.2011
  */
 public class RemoveMapToNodeAction extends MindMapNodeHookAdapter {
-	
+
 	static final String NODE_CONTEXT_PLUGIN_NAME = "plugins/map/MapDialog_RemoveMapToNode.properties";
 
 	/* (non-Javadoc)

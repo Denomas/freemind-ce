@@ -26,7 +26,7 @@ package freemind.common;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class RemindValueProperty extends ThreeCheckBoxProperty {
 
@@ -40,7 +40,7 @@ public class RemindValueProperty extends ThreeCheckBoxProperty {
 	}
 
 	/**
-     * 
+     *
      */
 	protected void setState(int newState) {
 		state = newState;

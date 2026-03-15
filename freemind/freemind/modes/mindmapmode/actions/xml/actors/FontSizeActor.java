@@ -91,5 +91,5 @@ public class FontSizeActor extends XmlActorAdapter {
 		}
 	}
 
-	
+
 }

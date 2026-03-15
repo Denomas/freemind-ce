@@ -33,7 +33,7 @@ import javax.swing.RootPaneContainer;
 
 /**
  * Long running tasks inside FreeMind should derive from this class.
- * 
+ *
  * @author foltin
  * @date 08.04.2013
  */
@@ -99,7 +99,7 @@ public abstract class FreeMindTask extends Thread {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Thread#run()
 	 */
 	public void run() {
@@ -161,7 +161,7 @@ public abstract class FreeMindTask extends Thread {
 	 * Subclasses should process one single action out of the set of its actions
 	 * and then return. The method is directly called again by the task
 	 * controller until it returns false.
-	 * 
+	 *
 	 * @return true, if further actions follow. False, if done.
 	 */
 	protected abstract boolean processAction() throws Exception;

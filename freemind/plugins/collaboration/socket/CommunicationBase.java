@@ -42,11 +42,11 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 public abstract class CommunicationBase extends TerminateableThread {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final int TIMEOUT_FOR_READ_ERROR_IN_MS = 30000;
 	/**
-	 * 
+	 *
 	 */
 	private static final String STRING_CONTINUATION_SUFFIX = "<cont>";
 	protected Socket mSocket;
@@ -118,7 +118,7 @@ public abstract class CommunicationBase extends TerminateableThread {
 	boolean mConnectionErrorOccuredEarlier = false;
 	long mFirstErrorOnConnection = 0l;
 	boolean mTerminateSent = false;
-	
+
 	public boolean processAction() throws Exception {
 		boolean didSomething = false;
 		try {
@@ -178,7 +178,7 @@ public abstract class CommunicationBase extends TerminateableThread {
 					if (command instanceof CollaborationTransaction) {
 						// inserted in event queue here, to avoid
 						// concurrency issues.
-						EventQueue.invokeLater(runnable);						
+						EventQueue.invokeLater(runnable);
 					} else  {
 						// other commands than transactions are processed directly.
 						runnable.run();
@@ -215,14 +215,14 @@ public abstract class CommunicationBase extends TerminateableThread {
 		} else {
 			String out = pDirection + ": " + Tools.printXmlAction(pCommand);
 			logger.info(getName() + ":" + out);
-			
+
 		}
 	}
 
 	int mCounter = 1;
 
 	public abstract void terminateSocket() throws IOException;
-	
+
 	public abstract void processCommand(CollaborationActionBase command)
 			throws Exception;
 
@@ -296,14 +296,14 @@ public abstract class CommunicationBase extends TerminateableThread {
 		}
 		return "UNKNOWN: " + pCurrentState;
 	}
-	
+
 	/**
 	 * @param pNewModeController
 	 */
 	protected void setController(ExtendedMapFeedback pNewModeController) {
 		mController = pNewModeController;
 	}
-	
+
 	/**
 	 * @return the controller
 	 */

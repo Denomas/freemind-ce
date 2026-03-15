@@ -36,7 +36,7 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class LastStateStorageManagement {
 	public static final int LIST_AMOUNT_LIMIT = 50;

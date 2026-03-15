@@ -31,7 +31,7 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class RemoveReminderHook extends MindMapNodeHookAdapter {
 

@@ -39,7 +39,7 @@ public class NodeStyleActor extends XmlActorAdapter {
 	public NodeStyleActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public Class<NodeStyleFormatAction> getDoActionClass() {
 		return NodeStyleFormatAction.class;
 	}
@@ -85,7 +85,7 @@ public class NodeStyleActor extends XmlActorAdapter {
 				// logger.info("Setting style of " + node + " to "+ style +
 				// " and was " + node.getStyle());
 				node.setStyle(style);
-				getExMapFeedback().nodeStyleChanged(node);					
+				getExMapFeedback().nodeStyleChanged(node);
 			}
 		}
 	}

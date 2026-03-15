@@ -36,15 +36,15 @@ public class LogFileLogHandler extends Handler {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public LogFileLogHandler(LogReceiver pLogReceiver) {
 		mLogReceiver = pLogReceiver;
 	}
-	
+
 	public LogFileLogHandler() {
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
 	 */

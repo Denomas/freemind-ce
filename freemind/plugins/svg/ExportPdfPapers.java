@@ -9,7 +9,7 @@ import javax.print.attribute.standard.MediaSizeName;
 
 /**
  * @author Andy
- * 
+ *
  *         Class is resposible to provide all papers that could be used for PDF
  *         export
  */
@@ -27,7 +27,7 @@ class ExportPdfPapers {
 
 	/**
 	 * constructor
-	 * 
+	 *
 	 * @param exportPdf
 	 */
 	public ExportPdfPapers() {
@@ -36,7 +36,7 @@ class ExportPdfPapers {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the names of the given paper formats
 	 */
 	String[] getPaperNames() {
@@ -50,7 +50,7 @@ class ExportPdfPapers {
 
 	/**
 	 * Initialize the list of papers
-	 * 
+	 *
 	 * for more papers see {@link http://en.wikipedia.org/wiki/Paper_size}
 	 */
 	private void initPapers() {
@@ -73,7 +73,7 @@ class ExportPdfPapers {
 
 	/**
 	 * Add a new paper to the list of papers
-	 * 
+	 *
 	 * @param name
 	 * @param displayName
 	 */
@@ -87,7 +87,7 @@ class ExportPdfPapers {
 
 	/**
 	 * Determine the paper from a given format string
-	 * 
+	 *
 	 * @param formats
 	 *            string like A3 or A4 that is one of the values of
 	 *            getPaperNames()

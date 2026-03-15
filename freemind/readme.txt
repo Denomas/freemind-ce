@@ -31,5 +31,3 @@ ant post
 	- to create a new delivery version
 ant run
 	- to start FreeMind from the sources.
-	
-	

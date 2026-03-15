@@ -33,7 +33,7 @@ div.basetop {
   height:auto;
   right:0em;
   top:0em;
-  left:auto; 
+  left:auto;
   top:0;
     background-color:#ffffff;
         margin-top:0;
@@ -79,7 +79,7 @@ span.cm {
 }
 
 .fl {
-	color:#0000FF;	
+	color:#0000FF;
 	font-style:italic;
 }
 
@@ -92,7 +92,7 @@ ul {
 
 li {
 	list-style:outside;
-  margin-top:10px;   
+  margin-top:10px;
   margin-bottom:10px;
 }
 
@@ -117,9 +117,9 @@ span.links {
 
 .sub { display: none; }
 .subexp {display: block; }
-.sub { display: none; } 
+.sub { display: none; }
 
-.subexp {display: block; } 
+.subexp {display: block; }
 
 li.exp {
   list-style-image:url("plus.png");
@@ -137,7 +137,7 @@ li.col {
 
 li.exp_active {
   list-style-image:url("plus.png");
-  margin-top:10px;  
+  margin-top:10px;
   margin-bottom:10px;
   background-color:#eeeeff;
   cursor:pointer;
@@ -211,7 +211,7 @@ div.nodecontent > p {
 	display:inline;
 }
 
-p + p { 
+p + p {
  	margin-top: 0.5em !important;
 	display:block !important;
 }
@@ -243,5 +243,3 @@ ol li {
 	font-family:sans-serif;
 	font-weight:normal;
 }
-
-

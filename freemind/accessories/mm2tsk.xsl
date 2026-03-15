@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	 
+
 Document   : mm2tsk.xsl
 Created on : 02 October 2010 - 22:14
 Author     : Giacomo Lacava toyg@users at sourceforge.net
@@ -29,15 +29,15 @@ Summary: Export to TaskCoach
 Initial Comment:
 The attached XSL will convert a MM file to TSK, the format used by TaskCoach ( http://www.taskcoach.org ), a popular todo manager (FOSS).
 
-At the moment it doesn't export richtext nodes properly  -- surely you already have a good way to "flatten" them, but I can't find it. TaskCoach doesn't handle HTML, afaik.
+At the moment it doesn't export richtext nodes properly. Surely you already have a good way to "flatten" them, but I can't find it. TaskCoach doesn't handle HTML, afaik.
 
-TSK files require a date-time value in the "startdate" attribute of tasks; it has to be set in the past for nodes to be seen as "active". I don't know if your XSL parser handles XSLT 2.0 (many don't), so I used a 1.0 extension available online in order to do that -- I add the current timestamp, and since more than a second will always pass between the file being saved and the export being opened in TaskCoach, it seems to work.
+TSK files require a date-time value in the "startdate" attribute of tasks; it has to be set in the past for nodes to be seen as "active". I don't know if your XSL parser handles XSLT 2.0 (many don't), so I used a 1.0 extension available online in order to do that. I add the current timestamp, and since more than a second will always pass between the file being saved and the export being opened in TaskCoach, it seems to work.
 
 Let me know if you need anything else.
-    
+
 -->
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-	xmlns:datetime="http://exslt.org/dates-and-times" exclude-result-prefixes="datetime"> 
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:datetime="http://exslt.org/dates-and-times" exclude-result-prefixes="datetime">
 
 	<xsl:param name="datestr" select="datetime:dateTime()" />
 	<xsl:param name="date">
@@ -64,7 +64,7 @@ Let me know if you need anything else.
 	<xsl:template match="node">
 		<task>
 			<xsl:attribute name="startdate">
-				<xsl:value-of select="$date"/>	
+				<xsl:value-of select="$date"/>
 			</xsl:attribute>
 			<xsl:attribute name="status">1</xsl:attribute>
 			<xsl:attribute name="subject">

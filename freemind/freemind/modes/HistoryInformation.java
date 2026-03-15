@@ -27,12 +27,12 @@ import java.util.Date;
 /**
  * Here, the creation and modification times of objects (by now, only for nodes)
  * are stored.
- * 
+ *
  * The storage as longs is preferred as they are normally inlined by the Java
  * compiler.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public class HistoryInformation {
 	long createdAt = 0l;

@@ -403,12 +403,12 @@
 				</draw:page>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:choose>		
+		<xsl:choose>
 			<xsl:when test="$completeOut"/>
 			<xsl:otherwise>
 				<xsl:apply-templates select="node" mode="toc" />
 			</xsl:otherwise>
-		</xsl:choose>		
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="node">
@@ -446,7 +446,7 @@
 					</text:list-item>
 				</text:list>
 			</xsl:otherwise>
-		</xsl:choose>		
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="hook" />
@@ -458,7 +458,7 @@
 			<xsl:element name="text:a" namespace="text">
 				<xsl:attribute namespace="xlink" name="xlink:type">simple</xsl:attribute>
 				<xsl:attribute namespace="xlink" name="xlink:href">
-					<!-- Convert relative links, such that they start with "../". 
+					<!-- Convert relative links, such that they start with "../".
 					     This is due to the fact, that OOo calculates all relative links from the document itself! -->
 					<xsl:choose>
 						<xsl:when test="starts-with(.,'/') or contains(.,':')">
@@ -649,7 +649,7 @@
 			-->
 				<xsl:apply-templates select="text()|*" mode="richcontent">
 					<xsl:with-param name="style" select="$style"></xsl:with-param>
-				</xsl:apply-templates><!--			
+				</xsl:apply-templates><!--
 		-->
 			</text:p>
 		</text:list-item>
@@ -661,7 +661,7 @@
 			-->
 				<xsl:apply-templates select="text()|*" mode="richcontent">
 					<xsl:with-param name="style" select="$style"></xsl:with-param>
-				</xsl:apply-templates><!--			
+				</xsl:apply-templates><!--
 		-->
 			</text:p>
 		</text:list-item>

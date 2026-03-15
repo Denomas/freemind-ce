@@ -77,7 +77,7 @@ public class ModesCreator {
 
 	/**
 	 * Creates a new ModeController.
-	 * 
+	 *
 	 */
 	public Mode getMode(String modeAlias) {
 		getAllModes();

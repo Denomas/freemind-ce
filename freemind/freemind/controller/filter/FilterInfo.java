@@ -30,7 +30,7 @@ public class FilterInfo {
 	private int info = Filter.FILTER_INITIAL_VALUE;
 
 	/**
-     * 
+     *
      */
 	public FilterInfo() {
 		super();

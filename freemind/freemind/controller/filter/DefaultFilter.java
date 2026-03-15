@@ -57,7 +57,7 @@ public class DefaultFilter implements Filter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.Filter#applyFilter(freemind.modes.MindMap)
 	 */
@@ -148,7 +148,7 @@ public class DefaultFilter implements Filter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.Filter#isVisible(freemind.modes.MindMapNode)
 	 */
@@ -171,7 +171,7 @@ public class DefaultFilter implements Filter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.filter.Filter#areMatchedShown()
 	 */
 	public boolean areMatchedShown() {
@@ -180,7 +180,7 @@ public class DefaultFilter implements Filter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.filter.Filter#areHiddenShown()
 	 */
 	public boolean areHiddenShown() {
@@ -189,7 +189,7 @@ public class DefaultFilter implements Filter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.filter.Filter#areAncestorsShown()
 	 */
 	public boolean areAncestorsShown() {
@@ -198,7 +198,7 @@ public class DefaultFilter implements Filter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.filter.Filter#areDescendantsShown()
 	 */
 	public boolean areDescendantsShown() {
@@ -207,7 +207,7 @@ public class DefaultFilter implements Filter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.filter.Filter#areEclipsedShown()
 	 */
 	public boolean areEclipsedShown() {

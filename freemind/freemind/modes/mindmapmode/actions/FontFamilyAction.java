@@ -29,7 +29,7 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class FontFamilyAction extends NodeGeneralAction  {

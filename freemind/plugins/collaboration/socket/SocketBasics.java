@@ -48,7 +48,7 @@ public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 		MapTitleContributor, FirstActionFilter {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final String PLUGINS_COLLABORATION_SOCKET = "plugins/collaboration/socket/";
 	public final static String MASTER_HOOK_LABEL = PLUGINS_COLLABORATION_SOCKET
@@ -101,7 +101,7 @@ public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 	protected ExtendedMapFeedback getMapFeedback() {
 		return getMindMapController();
 	}
-	
+
 	/**
 	 * @return ROLE_MASTER OR ROLE_SLAVE
 	 */
@@ -176,7 +176,7 @@ public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 	/**
 	 * Deep search inside the {@link XmlAction} to find a hook (i.e. myself).
 	 * They should not be send over the wire.
-	 * 
+	 *
 	 * @param pAction
 	 * @param pSearchString
 	 * @return
@@ -269,7 +269,7 @@ public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 	 * Should send the command to the master, or, if the master itself, sends it
 	 * to the clients.
 	 * @param pController TODO
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	protected abstract void broadcastCommand(String pDoAction,

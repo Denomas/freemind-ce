@@ -65,7 +65,7 @@ public class StringProperty extends PropertyBean implements PropertyControl {
 	protected void initializeTextfield() {
 		mTextField = new JTextField();
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}

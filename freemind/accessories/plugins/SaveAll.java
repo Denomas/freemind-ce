@@ -34,12 +34,12 @@ import freemind.view.MapModule;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class SaveAll extends ModeControllerHookAdapter {
 
 	/**
-     * 
+     *
      */
 	public SaveAll() {
 		super();

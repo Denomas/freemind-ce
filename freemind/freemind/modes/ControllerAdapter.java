@@ -144,7 +144,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 	/**
 	 * You _must_ implement this if you use one of the following actions:
 	 * OpenAction, NewMapAction.
-	 * 
+	 *
 	 * @param modeController
 	 *            TODO
 	 */
@@ -405,11 +405,11 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 	}
 
 	/**
-	 * @param model 
+	 * @param model
 	 * @param pFile
-	 * @throws URISyntaxException 
-	 * @throws IOException 
-	 * @throws XMLParseException 
+	 * @throws URISyntaxException
+	 * @throws IOException
+	 * @throws XMLParseException
 	 */
 	abstract protected void loadInternally(URL url, MapAdapter model) throws URISyntaxException, XMLParseException, IOException;
 
@@ -588,12 +588,12 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 		getFrame().setWaitingCursor(pWaiting);
 	}
 
-	
+
 	/**
 	 * fc, 24.1.2004: having two methods getSelecteds with different return
 	 * values (linkedlists of models resp. views) is asking for trouble. @see
 	 * MapView
-	 * 
+	 *
 	 * @return returns a list of MindMapNode s.
 	 */
 	public List<MindMapNode> getSelecteds() {
@@ -773,7 +773,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.FreeMindFileDialog.DirectoryResultListener#setChosenDirectory
 	 * (java.io.File)
@@ -893,17 +893,17 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 	/**
 	 * Creates a proposal for a file name to save the map. Removes all illegal
 	 * characters.
-	 * 
+	 *
 	 * Fixed: When creating file names based on the text of the root node, now
 	 * all the extra unicode characters are replaced with _. This is not very
 	 * good. For chinese content, you would only get a list of ______ as a file
 	 * name. Only characters special for building file paths shall be removed
 	 * (rather than replaced with _), like : or /. The exact list of dangeous
 	 * characters needs to be investigated. 0.8.0RC3.
-	 * 
-	 * 
+	 *
+	 *
 	 * Keywords: suggest file name.
-	 * 
+	 *
 	 */
 	private String getFileNameProposal() {
 		return Tools.getFileNameProposal(getMap().getRootNode());
@@ -970,7 +970,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#setVisible(boolean)
 	 */
 	public void setVisible(boolean visible) {
@@ -1094,7 +1094,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 	public URL getResource(String name) {
 		return getFrame().getResource(name);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.MindMap.MapFeedback#getResourceString(java.lang.String)
 	 */
@@ -1129,7 +1129,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 	public MapView getView() {
 		return mView;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.MapFeedback#getViewAbstraction()
 	 */
@@ -1137,7 +1137,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 	public ViewAbstraction getViewAbstraction() {
 		return getView();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.modes.MapFeedback#getViewFeedback()
 	 */
@@ -1167,7 +1167,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 		return null;
 	}
 
-	
+
 	public class OpenAction extends AbstractAction {
 		ControllerAdapter mc;
 
@@ -1365,7 +1365,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#updatePopupMenu(freemind.controller.
 	 * StructuredMenuHolder)
 	 */
@@ -1385,7 +1385,7 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 	/**
 	 * This method is called after and before a change of the map module. Use it
 	 * to perform the actions that cannot be performed at creation time.
-	 * 
+	 *
 	 */
 	public void startupController() {
 		setAllActions(true);
@@ -1565,6 +1565,6 @@ public abstract class ControllerAdapter extends MapFeedbackAdapter implements Mo
 		// this method fires a property change event to inform others.
 		getController().setProperty(pProperty, pValue);
 	}
-	
-	
+
+
 }

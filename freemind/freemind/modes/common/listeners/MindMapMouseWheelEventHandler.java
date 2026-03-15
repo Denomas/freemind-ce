@@ -36,7 +36,7 @@ import freemind.view.mindmapview.ViewFeedback.MouseWheelEventHandler;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class MindMapMouseWheelEventHandler implements MouseWheelListener {
 
@@ -76,7 +76,7 @@ public class MindMapMouseWheelEventHandler implements MouseWheelListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController.MouseWheelEventHandler#handleMouseWheelEvent
 	 * (java.awt.event.MouseWheelEvent)

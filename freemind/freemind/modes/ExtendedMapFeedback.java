@@ -36,7 +36,7 @@ import freemind.modes.mindmapmode.actions.xml.actors.XmlActorFactory;
 
 /**
  * MapFeedback extended by the xml based node change management.
- * 
+ *
  * @author foltin
  * @date 16.03.2014
  */
@@ -48,10 +48,10 @@ public interface ExtendedMapFeedback extends MapFeedback, MindMapActions {
 
 	boolean doTransaction(String pName, ActionPair pPair);
 
-	
+
 	/**
 	 * Given a node identifier, this method returns the corresponding node.
-	 * 
+	 *
 	 * @throws IllegalArgumentException
 	 *             if the id is unknown.
 	 */
@@ -67,7 +67,7 @@ public interface ExtendedMapFeedback extends MapFeedback, MindMapActions {
 	 * @return
 	 */
 	MindMapNode getSelected();
-	
+
 	void select(MindMapNode pFocussed, List<MindMapNode> pSelecteds);
 
 	/**
@@ -104,9 +104,9 @@ public interface ExtendedMapFeedback extends MapFeedback, MindMapActions {
 	Transferable copy(List<MindMapNode> pNodeList, boolean pSaveInvisible);
 
 	void setWaitingCursor(boolean waiting);
-	
+
 	void nodeStyleChanged(MindMapNode pNode);
-	
+
 	HookFactory getHookFactory();
 
 	/**
@@ -117,12 +117,12 @@ public interface ExtendedMapFeedback extends MapFeedback, MindMapActions {
 
 	/**
 	 * Closes the actual map.
-	 * 
+	 *
 	 * @param pForce
 	 *            true= without save.
 	 */
 	void close(boolean pForce);
 
 
-	
+
 }

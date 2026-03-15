@@ -46,14 +46,14 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class EncryptNode extends MindMapNodeHookAdapter {
 	/**
 	 * Enables the encrypt/decrypt menu item only if the map/node is encrypted.
-	 * 
+	 *
 	 * @author foltin
-	 * 
+	 *
 	 */
 	public static class Registration implements HookRegistration,
 			MenuItemEnabledListener {
@@ -76,7 +76,7 @@ public class EncryptNode extends MindMapNodeHookAdapter {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing
 		 * .JMenuItem, javax.swing.Action)

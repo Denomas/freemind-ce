@@ -39,7 +39,7 @@ public interface MindMapCloud extends MindMapLine {
 
 	/**
 	 * gets iterative level which is required for painting and layout.
-	 * 
+	 *
 	 * Cloud iterative level is kept in CloudAdapter object. It is automatically
 	 * calculated during the first call of this Method (delayed initialisation).
 	 * */
@@ -47,7 +47,7 @@ public interface MindMapCloud extends MindMapLine {
 
 	/**
 	 * changes the iterative level.
-	 * 
+	 *
 	 * When some parent node gets or loses its cloud, it should call this
 	 * Method, with deltaLevel equal to 1 or -1.
 	 */

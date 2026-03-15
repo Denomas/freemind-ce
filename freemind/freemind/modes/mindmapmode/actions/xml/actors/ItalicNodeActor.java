@@ -36,7 +36,7 @@ public class ItalicNodeActor extends NodeXmlActorAdapter {
 
 
 	/**
-	 * 
+	 *
 	 */
 	public ItalicNodeActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);

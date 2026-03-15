@@ -41,7 +41,7 @@ import freemind.modes.common.dialogs.EnterPasswordDialog;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class EncryptedBrowseNode extends BrowseNodeModel {
 

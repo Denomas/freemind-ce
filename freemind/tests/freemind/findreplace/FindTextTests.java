@@ -53,7 +53,7 @@ public class FindTextTests extends FreeMindTestBase {
 
 	/**
 	 * Tests that html tags are not matched by the filter:
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	@SuppressWarnings("serial")

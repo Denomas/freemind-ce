@@ -40,7 +40,7 @@ public class MoveNodeActor extends NodeXmlActorAdapter {
 	public MoveNodeActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public void act(XmlAction action) {
 		MoveNodeXmlAction moveAction = (MoveNodeXmlAction) action;
 		NodeAdapter node = getNodeFromID(moveAction.getNode());

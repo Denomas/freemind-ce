@@ -36,7 +36,7 @@ public class DeactivateCloneAction extends MindMapNodeHookAdapter implements Men
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.NodeHookAdapter#invoke(freemind.modes.MindMapNode)
 	 */
@@ -57,9 +57,9 @@ public class DeactivateCloneAction extends MindMapNodeHookAdapter implements Men
 	 * @see freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing.JMenuItem, javax.swing.Action)
 	 */
 	public boolean isEnabled(JMenuItem pItem, Action pAction) {
-		return getRegistration().isEnabled(pItem, pAction); 
+		return getRegistration().isEnabled(pItem, pAction);
 	}
-	
+
 	protected Registration getRegistration() {
 		return (Registration) getPluginBaseClass();
 	}

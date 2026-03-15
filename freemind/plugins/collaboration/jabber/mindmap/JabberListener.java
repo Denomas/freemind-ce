@@ -47,7 +47,7 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
  *         with another user. - Listens to a limited number of FreeMind commands
  *         sent by the other user. - Performs the FreeMind actions corresponding
  *         to the commands sent.
- *  
+ *
  */
 public class JabberListener {
 
@@ -118,12 +118,12 @@ public class JabberListener {
     }
 
     /**
-     * 
+     *
      * @author RReppel
-     * 
+     *
      * Listens to received Jabber messages and initiates the appropriate
      * FreeMind actions.
-     *  
+     *
      */
     private class FreeMindJabberMessageListener implements
             JabberMessageListener {
@@ -237,4 +237,3 @@ public class JabberListener {
     }
 
 }
-

@@ -188,5 +188,3 @@
         <xsl:text>&#xA;&lt;/verbatim&gt;&#xA;</xsl:text>
     </xsl:template>
 </xsl:stylesheet>
-
- 	  	 

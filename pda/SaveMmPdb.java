@@ -19,7 +19,7 @@ public class SaveMmPdb extends Container {
 		super();
 		this.main=main;
 	}
-	
+
 	public void onStart() {
 		btnQuit=new Button("Quit");
 		add(btnQuit,LEFT,BOTTOM);
@@ -55,10 +55,10 @@ public class SaveMmPdb extends Container {
 		/* Stick the editable filename to the right of the trigger. */
 		add(saveMap=new Edit());
 		saveMap.setRect(AFTER+1,SAME,FILL,PREFERRED);
-		saveMap.setText(main.lastFilename); 
+		saveMap.setText(main.lastFilename);
 
 	}
-	
+
 	/**
 	 * Standard event handler.
 	 */

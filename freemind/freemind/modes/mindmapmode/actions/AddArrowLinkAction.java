@@ -34,7 +34,7 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class AddArrowLinkAction extends MindmapAction {
@@ -60,7 +60,7 @@ public class AddArrowLinkAction extends MindmapAction {
 		boolean identicalError = false;
 		for (MindMapNode destination : nodesFromClipboard) {
 			if(selected != destination) {
-				getMindMapController().addLink(selected, destination);				
+				getMindMapController().addLink(selected, destination);
 			} else {
 				// give an error afterwards?
 				identicalError = true;
@@ -76,7 +76,7 @@ public class AddArrowLinkAction extends MindmapAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.FreemindAction#isEnabled(javax.swing.JMenuItem,
 	 * javax.swing.Action)
 	 */

@@ -27,7 +27,7 @@ import freemind.view.mindmapview.MapView;
 /**
  * Stores targets of arrow links. It is used to enable cut/copy+paste for every
  * parts of links (ie. source, destination or both).
- * 
+ *
  * @author foltin
  * @date 27.10.2012
  */

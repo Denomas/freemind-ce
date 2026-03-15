@@ -29,7 +29,7 @@ import java.awt.event.KeyEvent;
 /**
  * Various hacks to get keyboard event handling to behave in a consistent manner
  * across Java implementations.
- * 
+ *
  * @author Slava Pestov
  * @version $Id: KeyEventWorkaround.java,v 1.1.2.1 2005/05/10 20:55:31
  *          christianfoltin Exp $
@@ -236,7 +236,7 @@ public class KeyEventWorkaround {
 	// {{{ numericKeypadKey() method
 	/**
 	 * A workaround for non-working NumLock status in some Java versions.
-	 * 
+	 *
 	 * @since jEdit 4.0pre8
 	 */
 	public static void numericKeypadKey() {

@@ -454,7 +454,7 @@ class MindMapHTMLWriter {
 		for (PermanentNodeHook hook : model.getActivatedHooks()) {
 			hook.saveHtml(fileout);
 		}
-		
+
 		String link = model.getLink();
 		if (link != null) {
 			if (link.endsWith(".mm")) {

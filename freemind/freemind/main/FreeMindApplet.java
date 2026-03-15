@@ -365,7 +365,7 @@ public class FreeMindApplet extends JApplet implements FreeMindMain {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.main.FreeMindMain#getSouthPanel()
 	 */
 	public JPanel getSouthPanel() {
@@ -374,7 +374,7 @@ public class FreeMindApplet extends JApplet implements FreeMindMain {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.main.FreeMindMain#getJFrame()
 	 */
 	public JFrame getJFrame() {

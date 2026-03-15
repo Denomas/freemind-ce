@@ -41,7 +41,7 @@ public class EdgeStyleActor extends XmlActorAdapter {
 	public EdgeStyleActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public Class<EdgeStyleFormatAction> getDoActionClass() {
 		return EdgeStyleFormatAction.class;
 	}

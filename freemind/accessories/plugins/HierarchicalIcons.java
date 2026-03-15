@@ -120,7 +120,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHook#onAddChild(freemind.modes.MindMapNode
 	 * )
@@ -139,7 +139,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHook#onUpdateChildrenHook(freemind.modes
 	 * .MindMapNode)
@@ -151,7 +151,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.PermanentNodeHook#onUpdateNodeHook()
 	 */
 	public void onUpdateNodeHook() {
@@ -161,7 +161,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.NodeHook#invoke(freemind.modes.MindMapNode)
 	 */
 	public void invoke(MindMapNode node) {

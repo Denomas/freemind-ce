@@ -32,7 +32,7 @@ import freemind.extensions.ModeControllerHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class FreemindHelpStarter extends ModeControllerHookAdapter {
 

@@ -16,7 +16,7 @@ public class LoadMmPdb extends Container {
 		super();
 		this.main=main;
 	}
-	
+
 	public void onStart() {
 		btnQuit=new Button("Quit");
 		add(btnQuit,LEFT,BOTTOM);
@@ -45,10 +45,10 @@ public class LoadMmPdb extends Container {
 		add(new Label("Select map to load:"),LEFT,TOP+1);
 		cbxMaps=new ComboBox(listMaps);
 		add(cbxMaps);
-		cbxMaps.setRect(LEFT,AFTER+2,FILL,PREFERRED); 
+		cbxMaps.setRect(LEFT,AFTER+2,FILL,PREFERRED);
 		cbxMaps.select(listMaps.getItemAt(0));
 	}
-	
+
 	/**
 	 * Standard event handler.
 	 */

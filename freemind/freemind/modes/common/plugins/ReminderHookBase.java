@@ -38,7 +38,7 @@ import freemind.modes.MindMapNode;
 
 /**
  * @author foltin
- * 
+ *
  */
 public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 
@@ -169,7 +169,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 				timer.stop();
 				scheduleTimer();
 				return;
-				
+
 			}
 			// time is over, we add the new icon until
 			// the user removes the reminder.

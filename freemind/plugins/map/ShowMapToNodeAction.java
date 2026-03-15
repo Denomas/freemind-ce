@@ -33,7 +33,7 @@ public class ShowMapToNodeAction extends MindMapNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.NodeHookAdapter#invoke(freemind.modes.MindMapNode)
 	 */
@@ -56,7 +56,7 @@ public class ShowMapToNodeAction extends MindMapNodeHookAdapter {
 			}
 		} else {
 			logger.warning("Can't find registration base class!");
-			
+
 		}
 	}
 

@@ -29,7 +29,7 @@ import java.io.IOException;
 import freemind.extensions.ModeControllerHookAdapter;
 import freemind.main.XMLParseException;
 /**
- * 
+ *
  * @author Gorka Puente
  *
  */
@@ -42,7 +42,7 @@ public class WSL_Skeleton extends ModeControllerHookAdapter {
 
 	public void startupMapHook() {
 		super.startupMapHook();
-		
+
 		File skeletonF = new File(skeleton);
 		try {
 			getController().load(skeletonF);

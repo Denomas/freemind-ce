@@ -91,7 +91,7 @@ import freemind.view.mindmapview.MultipleImage;
 
 /**
  * @author foltin
- * 
+ *
  *         TODO: - Extract HTML from nodes and notes.
  */
 @SuppressWarnings("serial")
@@ -154,7 +154,7 @@ public class TimeList extends MindMapHookAdapter implements
 	private JLabel mTreeLabel;
 
 	private MindMapController mMyMindMapController;
-	
+
 	private boolean mViewFoldedNodes = true;
 
 	private JLabel mStatisticsLabel;
@@ -429,7 +429,7 @@ public class TimeList extends MindMapHookAdapter implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	protected void toggleViewFoldedNodes() {
 		mViewFoldedNodes = ! mViewFoldedNodes;
@@ -472,7 +472,7 @@ public class TimeList extends MindMapHookAdapter implements
 	private final class MindmapTableModel extends DefaultTableModel {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see javax.swing.table.AbstractTableModel#getColumnClass(int)
 		 */
 		@Override
@@ -802,7 +802,7 @@ public class TimeList extends MindMapHookAdapter implements
 				gotoNodesAndClose(row, new int[] { row });
 			}
 		}
-		
+
 	}
 
 	private final class FlatNodeTableKeyListener implements KeyListener {
@@ -854,7 +854,7 @@ public class TimeList extends MindMapHookAdapter implements
 			}
 			super.processKeyEvent(e);
 		}
-		
+
 		/* (non-Javadoc)
 		 * @see javax.swing.JTable#getToolTipText(java.awt.event.MouseEvent)
 		 */
@@ -901,7 +901,7 @@ public class TimeList extends MindMapHookAdapter implements
 			NodeHolder holder = (NodeHolder) value;
 			setText((value == null) ? "" : holder
 					.getUntaggedNodeText());
-		}		
+		}
 	}
 
 	static class NotesRenderer extends DefaultTableCellRenderer {
@@ -1069,7 +1069,7 @@ public class TimeList extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * isMapModuleChangeAllowed(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -1081,7 +1081,7 @@ public class TimeList extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * beforeMapModuleChange(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -1093,7 +1093,7 @@ public class TimeList extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.MapModuleManager.MapModuleChangeObserver#afterMapClose
 	 * (freemind.view.MapModule, freemind.modes.Mode)
@@ -1104,7 +1104,7 @@ public class TimeList extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * afterMapModuleChange(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -1117,7 +1117,7 @@ public class TimeList extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * numberOfOpenMapInformation(int, int)
 	 */

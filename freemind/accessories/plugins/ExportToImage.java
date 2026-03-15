@@ -44,12 +44,12 @@ import freemind.extensions.ExportHook;
  * @author foltin
  * @author kakeda
  * @author rreppel
- * 
+ *
  */
 public class ExportToImage extends ExportHook {
 
 	/**
-	 * 
+	 *
 	 */
 	public ExportToImage() {
 		super();
@@ -57,7 +57,7 @@ public class ExportToImage extends ExportHook {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.MindMapHook#startupMapHook()
 	 */
 	public void startupMapHook() {

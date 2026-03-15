@@ -51,13 +51,13 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 					this.getClass().getName());
 		}
 	}
-	
+
 	public void addLayoutComponent(String arg0, Component arg1) {
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.LayoutManager#removeLayoutComponent(java.awt.Component)
 	 */
 	public void removeLayoutComponent(Component arg0) {
@@ -65,7 +65,7 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.LayoutManager#minimumLayoutSize(java.awt.Container)
 	 */
 	public Dimension minimumLayoutSize(Container arg0) {
@@ -76,7 +76,7 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.LayoutManager#preferredLayoutSize(java.awt.Container)
 	 */
 	public Dimension preferredLayoutSize(Container c) {
@@ -97,7 +97,7 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void layoutOtherItems() {
 		final int componentCount = view.getComponentCount();
@@ -248,7 +248,7 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 						shiftCandidate += child.getHGap();
 					}
 				}
-	
+
 				shift = Math.min(shift, shiftCandidate);
 			}
 		}
@@ -287,7 +287,7 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 					child.setLocation(x, y);
 				}
 //				logger.info("Place of child " + component.getModel().getText() + ": " + child.getLocation());
-				
+
 				y += child.getHeight() - 2 * getSpaceAround() + getVGap()
 						+ additionalCloudHeigth;
 				right = Math.max(right, x + child.getWidth()
@@ -389,5 +389,5 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 		Dimension preferredSize = pFoldingComponent.getPreferredSize();
 		pFoldingComponent.setSize(preferredSize.width, preferredSize.height);
 	}
-	
+
 }

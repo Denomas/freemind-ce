@@ -26,21 +26,21 @@
 	Author:   Markus Brueckner <freemind-xsl@slash-me.net>
 	License:  BSD license without advertising clause. (see
 	http://www.opensource.org/licenses/bsd-license.php for further details)
-	Bug fix (FC/ 25.04.2006): 
+	Bug fix (FC/ 25.04.2006):
 	- Export of local hyperlinks corrected.
 	Update (EWL / 2006-06-02):
 	 - add export of notes & attributes
 	 - re-format/re-arrange/modularize the file to align with tohtml.xsl
 -->
 <xsl:stylesheet version="1.0"
-                xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		>
 <!-- mozilla doesn't parse method xhtml (in xslt 2.0) -->
 <xsl:output method="xml"
             version="1.0"
             encoding="UTF-8"
-            doctype-public="-//W3C//DTD XHTML 1.1//EN"  
+            doctype-public="-//W3C//DTD XHTML 1.1//EN"
             doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
 	    omit-xml-declaration="no"
 	    />
@@ -49,10 +49,10 @@
 <xsl:param name="destination_dir">./</xsl:param>
 <xsl:param name="area_code"></xsl:param>
 <xsl:param name="folding_type">html_export_no_folding</xsl:param>
-	<!-- possible values: 
-		html_export_fold_all, 
-		html_export_no_folding, 
-		html_export_fold_currently_folded, 
+	<!-- possible values:
+		html_export_fold_all,
+		html_export_no_folding,
+		html_export_fold_currently_folded,
 		html_export_based_on_headings: this means, that approx. five levels are given, more deeper nodes are folded.
 		As of the time being, this parameter is not used.
 		-->
@@ -84,7 +84,7 @@
 	<xsl:element name="script">
 		<xsl:attribute name="type">text/javascript</xsl:attribute>
 		<xsl:attribute name="src">
-			<xsl:value-of select="$destination_dir"/>freemind2html.js</xsl:attribute>&#160; 
+			<xsl:value-of select="$destination_dir"/>freemind2html.js</xsl:attribute>&#160;
 	</xsl:element>
 	<script type="text/javascript">
 		<xsl:comment>
@@ -96,7 +96,7 @@
                    if (div_el.style.display != 'none')
                    {
           ]]>
-					
+
                       div_el.style.display='none';
                       img_el.src = '<xsl:value-of select="$destination_dir"/>show.png';
           <![CDATA[
@@ -259,7 +259,7 @@
 			<xsl:element name="a">
 				<xsl:attribute name="href"><!--
 				-->http://www.openstreetmap.org/?lat=<!--
-				--><xsl:value-of select="hook/Parameters/@XML_STORAGE_MAP_LAT"></xsl:value-of><!-- 
+				--><xsl:value-of select="hook/Parameters/@XML_STORAGE_MAP_LAT"></xsl:value-of><!--
 				-->&amp;lon=<!--
 				--><xsl:value-of select="hook/Parameters/@XML_STORAGE_MAP_LON"></xsl:value-of><!--
 				-->&amp;mlat=<!--
@@ -269,11 +269,11 @@
 				-->&amp;zoom=<!--
 				--><xsl:value-of select="hook/Parameters/@XML_STORAGE_ZOOM"></xsl:value-of><!--
 				-->&amp;layers=<!--
-				--><xsl:choose><!--  
-				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource$Mapnik'">M</xsl:when><!-- 
-				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='plugins.map.FreeMindMapController$TransportMap'">T</xsl:when><!-- 
-				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource$CycleMap'">C</xsl:when><!-- 
-				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='plugins.map.FreeMindMapController$MapQuestOpenMap'">Q</xsl:when><!-- 
+				--><xsl:choose><!--
+				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource$Mapnik'">M</xsl:when><!--
+				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='plugins.map.FreeMindMapController$TransportMap'">T</xsl:when><!--
+				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource$CycleMap'">C</xsl:when><!--
+				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='plugins.map.FreeMindMapController$MapQuestOpenMap'">Q</xsl:when><!--
 				--><xsl:otherwise>M</xsl:otherwise></xsl:choose></xsl:attribute>
 				<xsl:element name="img">
 					<xsl:attribute name="src"><xsl:value-of select="$destination_dir"/>map_location.png</xsl:attribute>
@@ -320,8 +320,8 @@
 	</xsl:otherwise>
 	</xsl:choose>
 	<xsl:if test="$show_link_url='true'">
-		- [ <a><xsl:attribute name="href"><xsl:value-of select="@LINK" />  
-		</xsl:attribute><xsl:value-of select="@LINK"/></a> ]   
+		- [ <a><xsl:attribute name="href"><xsl:value-of select="@LINK" />
+		</xsl:attribute><xsl:value-of select="@LINK"/></a> ]
 	</xsl:if>
 </xsl:template> <!-- xsl:template name="output-node-with-link" -->
 
@@ -364,12 +364,12 @@
 	</xsl:choose>
 </xsl:template>
 
-	
+
 	<xsl:template match="text()|@*"  mode="strip-tags">
 		  <xsl:value-of select="string(.)"/>
 	</xsl:template>
 
-	
+
 <!-- replace ASCII line breaks through HTML line breaks (br) -->
 <xsl:template name="format_text">
 	<xsl:param name="nodetext" />

@@ -29,7 +29,7 @@ import freemind.controller.MenuItemEnabledListener;
 
 /**
  * Common class for all actions that are disabled, when no map is open.
- * 
+ *
  * @author foltin
  * @date 22.10.2013
  */
@@ -57,11 +57,11 @@ public abstract class FreemindAction extends AbstractAction implements MenuItemE
 	 * @param title
 	 *            Title is a resource.
 	 */
-	public FreemindAction(String title, 
+	public FreemindAction(String title,
 			ControllerAdapter controllerAdapter) {
 		this(title, (String) null, controllerAdapter);
 	}
-	
+
 	/**
 	 * @param title
 	 *            Title is a resource.
@@ -78,7 +78,7 @@ public abstract class FreemindAction extends AbstractAction implements MenuItemE
 	public ControllerAdapter getControllerAdapter() {
 		return pControllerAdapter;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing.JMenuItem, javax.swing.Action)
 	 */

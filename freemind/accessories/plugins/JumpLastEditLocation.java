@@ -49,7 +49,7 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 /**
  * This plugin stores the location of last edit taken place in order to jump to
  * it on keystroke.
- * 
+ *
  * @author foltin
  */
 public class JumpLastEditLocation extends MindMapNodeHookAdapter {

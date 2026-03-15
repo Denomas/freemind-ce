@@ -133,8 +133,8 @@ final class JCursorMapViewer extends JMapViewer {
 	/**
 	 * @param pMindMapController
 	 * @param pMapDialog
-	 * @param pMapHook 
-	 * 
+	 * @param pMapHook
+	 *
 	 */
 	public JCursorMapViewer(MindMapController pMindMapController,
 			JDialog pMapDialog, TileCache pTileCache, MapDialog pMapHook) {
@@ -180,7 +180,7 @@ final class JCursorMapViewer extends JMapViewer {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.openstreetmap.gui.jmapviewer.JMapViewer#paintComponent(java.awt.Graphics
 	 * )
@@ -239,7 +239,7 @@ final class JCursorMapViewer extends JMapViewer {
 		}
 		return r;
 	}
-	
+
 	public TileController getTileController() {
 		return tileController;
 	}
@@ -290,6 +290,6 @@ final class JCursorMapViewer extends JMapViewer {
 			double pMapCenterLongitude, int pZoom) {
 		super.setDisplayPosition(new Coordinate(pMapCenterLatitude, pMapCenterLongitude), pZoom);
 	}
-	
-	
+
+
 }
