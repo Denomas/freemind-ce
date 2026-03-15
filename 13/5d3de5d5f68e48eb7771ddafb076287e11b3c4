@@ -1,0 +1,29 @@
+freemind/freemind/controller/filter/FilterToolbar.java
+  7843d3304d80a742 146
+freemind/freemind/modes/mindmapmode/hooks/MindMapHookFactory.java
+  7843d3304d80a742 203,326
+freemind/freemind/controller/filter/FilterComposerDialog.java
+  7843d3304d80a742 763-765,767-768
+freemind/freemind/modes/ModesCreator.java
+  7843d3304d80a742 91
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "135d3de5d5f68e48eb7771ddafb076287e11b3c4",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 10,
+      "total_deletions": 7,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
