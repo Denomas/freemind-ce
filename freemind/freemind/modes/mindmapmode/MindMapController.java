@@ -1587,7 +1587,7 @@ public class MindMapController extends ControllerAdapter implements
 
 
 	public void increaseFontSize(MindMapNode node, int increment) {
-		int newSize = Integer.valueOf(node.getFontSize()).intValue()
+		int newSize = Integer.parseInt(node.getFontSize())
 				+ increment;
 
 		if (newSize > 0) {

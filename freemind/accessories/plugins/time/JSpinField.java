@@ -273,7 +273,7 @@ public class JSpinField extends JPanel implements ChangeListener,
 	 */
 	public void caretUpdate(CaretEvent e) {
 		try {
-			int testValue = Integer.valueOf(textField.getText()).intValue();
+			int testValue = Integer.parseInt(textField.getText());
 
 			if ((testValue >= min) && (testValue <= max)) {
 				textField.setForeground(darkGreen);
@@ -302,7 +302,7 @@ public class JSpinField extends JPanel implements ChangeListener,
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (textField.getForeground().equals(darkGreen)) {
-			setValue(Integer.valueOf(textField.getText()).intValue());
+			setValue(Integer.parseInt(textField.getText()));
 		}
 	}
 

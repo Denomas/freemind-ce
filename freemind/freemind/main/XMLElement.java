@@ -1397,7 +1397,7 @@ public class XMLElement {
 			return defaultValue;
 		} else {
 			try {
-				return Double.valueOf(value).doubleValue();
+				return Double.parseDouble(value);
 			} catch (NumberFormatException e) {
 				throw this.invalidValue(name, value);
 			}

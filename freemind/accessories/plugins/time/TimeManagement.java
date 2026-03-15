@@ -486,7 +486,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 		Properties properties = new Properties();
 		if (pRemindAt != 0L) {
 			properties.put(ReminderHookBase.REMINDUSERAT,
-					Long.valueOf(pRemindAt).toString());
+					Long.toString(pRemindAt));
 		}
 		getMindMapController().addHook(node,
 				Tools.getVectorWithSingleElement(node), REMINDER_HOOK_NAME,

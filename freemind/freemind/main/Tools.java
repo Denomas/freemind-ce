@@ -907,7 +907,7 @@ public class Tools {
 	 */
 	public static Date xmlToDate(String xmlString) {
 		try {
-			return new Date(Long.valueOf(xmlString).longValue());
+			return new Date(Long.parseLong(xmlString));
 		} catch (Exception e) {
 			return new Date(System.currentTimeMillis());
 		}
@@ -2114,7 +2114,7 @@ public class Tools {
 		if (value.equals(EdgeAdapter.EDGE_WIDTH_THIN_STRING)) {
 			return EdgeAdapter.WIDTH_THIN;
 		}
-		return Integer.valueOf(value).intValue();
+		return Integer.parseInt(value);
 	}
 
 	static public int iconFirstIndex(MindMapNode node, String iconName) {
