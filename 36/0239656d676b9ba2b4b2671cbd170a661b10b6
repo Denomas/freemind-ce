@@ -1,0 +1,23 @@
+.gitignore
+  7843d3304d80a742 31-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "360239656d676b9ba2b4b2671cbd170a661b10b6",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 0,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
