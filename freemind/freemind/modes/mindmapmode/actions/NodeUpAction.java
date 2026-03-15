@@ -37,10 +37,9 @@ public class NodeUpAction extends MindmapAction  {
 	public NodeUpAction(MindMapController modeController) {
 		super("node_up", modeController);
 		this.modeController = modeController;
-		if (logger == null) {
 			logger = modeController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	public void actionPerformed(ActionEvent e) {

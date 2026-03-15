@@ -48,9 +48,8 @@ public class ScalableJButton extends JButton implements ComponentListener {
 	}
 
 	private void init() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(this.getClass().getName());
-		}
+
 
 //		mInitialFont = getFont();
 //		addComponentListener(this);

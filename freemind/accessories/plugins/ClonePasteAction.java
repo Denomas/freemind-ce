@@ -153,10 +153,9 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 
 
 		public CloneProperties() {
-			if (logger == null) {
 				logger = freemind.main.Resources.getInstance().getLogger(
 						this.getClass().getName());
-			}
+
 		}
 
 		public boolean isCloneItself() {

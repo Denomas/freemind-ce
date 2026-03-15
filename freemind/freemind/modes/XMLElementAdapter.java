@@ -91,10 +91,9 @@ public class XMLElementAdapter extends XMLElement {
 		this.mMapFeedback = pMapFeedback;
 		this.mArrowLinkAdapters = arrowLinkAdapters;
 		this.mIdToTarget = IDToTarget;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	/** abstract method to create elements of my type (factory). */

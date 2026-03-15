@@ -67,8 +67,7 @@ public class EncryptedBrowseNode extends BrowseNodeModel {
 	public EncryptedBrowseNode(Object userObject, MapFeedback pMapFeedback) {
 		super(userObject, pMapFeedback.getMap());
 		this.mMapFeedback = pMapFeedback;
-		if (logger == null)
-			logger = Resources.getInstance().getLogger(
+		logger = Resources.getInstance().getLogger(
 					this.getClass().getName());
 		if (encryptedIcon == null) {
 			encryptedIcon = MindIcon.factory("encrypted").getIcon();

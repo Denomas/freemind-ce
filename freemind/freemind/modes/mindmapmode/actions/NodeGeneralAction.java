@@ -65,10 +65,9 @@ public class NodeGeneralAction extends AbstractXmlAction {
 		}
 
 		this.singleNodeOperation = null;
-		if (logger == null) {
 			logger = modeController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	protected void setName(String name) {

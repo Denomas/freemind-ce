@@ -73,10 +73,8 @@ public class JabberSender implements ActionFilter {
 
     public JabberSender(JabberSession session, MapSharingController controller) {
         this.controller = controller;
-        if (logger == null) {
-            logger = controller.getController().getFrame().getLogger(
-                    this.getClass().getName());
-        }
+        logger = controller.getController().getFrame().getLogger(
+                this.getClass().getName());
         try {
             this.session = session;
             chat = this.session.getChatService();

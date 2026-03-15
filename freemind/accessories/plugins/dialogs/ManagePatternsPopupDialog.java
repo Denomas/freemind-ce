@@ -151,10 +151,9 @@ public class ManagePatternsPopupDialog extends JDialog implements
 	public ManagePatternsPopupDialog(JFrame caller, MindMapController controller) {
 		super(caller);
 		this.mController = controller;
-		if (logger == null) {
 			logger = mController.getFrame()
 					.getLogger(this.getClass().getName());
-		}
+
 		List<Pattern> patternList = new Vector<>();
 		try {
 			patternList = StylePatternFactory.loadPatterns(controller.getPatternReader());

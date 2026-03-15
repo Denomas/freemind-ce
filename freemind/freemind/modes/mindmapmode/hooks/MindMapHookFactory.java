@@ -79,10 +79,9 @@ public class MindMapHookFactory extends HookFactoryAdapter {
 
 
 	public MindMapHookFactory() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		allRegistrationInstances = new HashMap<>();
 	}
 

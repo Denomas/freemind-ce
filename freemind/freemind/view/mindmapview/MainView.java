@@ -53,10 +53,9 @@ public abstract class MainView extends JLabel {
 	}
 
 	MainView() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		isPainting = false;
 		setAlignmentX(NodeView.CENTER_ALIGNMENT);
 		setHorizontalAlignment(CENTER);

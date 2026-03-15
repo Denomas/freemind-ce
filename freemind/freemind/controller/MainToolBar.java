@@ -31,9 +31,8 @@ public class MainToolBar extends FreeMindToolBar {
 	public MainToolBar(final Controller controller) {
 		super();
 		this.controller = controller;
-		if (logger == null) {
 			logger = controller.getFrame().getLogger(this.getClass().getName());
-		}
+
 		setRollover(true);
 		setBorderPainted(false);
 		setMargin(new Insets(0, 0, 0, 0));

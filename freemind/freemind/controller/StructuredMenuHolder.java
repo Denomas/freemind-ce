@@ -67,10 +67,9 @@ public class StructuredMenuHolder {
 	private static ImageIcon sSelectedIcon;
 
 	public StructuredMenuHolder() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		menuMap = new HashMap<>();
 		Vector<String> order = new Vector<>();
 		menuMap.put(ORDER_NAME, order);

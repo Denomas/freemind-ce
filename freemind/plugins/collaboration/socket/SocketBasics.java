@@ -108,10 +108,9 @@ public abstract class SocketBasics extends MindMapNodeHookAdapter implements
 
 	public void startupMapHook() {
 		super.startupMapHook();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		getMindMapController().getController()
 				.registerMapTitleContributor(this);
 	}

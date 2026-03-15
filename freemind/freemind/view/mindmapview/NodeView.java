@@ -116,10 +116,9 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	protected NodeView(MindMapNode model, int position, MapView map,
 			Container parent) {
-		if (logger == null) {
 			logger = Resources.getInstance()
 					.getLogger(this.getClass().getName());
-		}
+
 		if(sListener == null){
 			sListener = new FreemindPropertyListener() {
 

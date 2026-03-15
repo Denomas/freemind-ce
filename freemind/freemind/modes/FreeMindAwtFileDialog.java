@@ -146,10 +146,9 @@ public class FreeMindAwtFileDialog extends FileDialog implements
 
 	public FreeMindAwtFileDialog() {
 		super((Frame) null);
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mFilter = new FreeMindFilenameFilter();
 		super.setFilenameFilter(mFilter);
 		System.setProperty(APPLE_AWT_FILE_DIALOG_FOR_DIRECTORIES, "false");

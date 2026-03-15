@@ -98,10 +98,9 @@ public class EditNodeTextField extends EditNodeBase {
 		this.firstEvent = firstEvent;
 		mParent = pParent;
 		mFocusListener = pFocusListener;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 	public void show() {
 		// Make fields for short texts editable

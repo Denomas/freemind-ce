@@ -35,10 +35,9 @@ public abstract class TerminateableThread extends Thread {
 
 	public TerminateableThread(String pName) {
 		super(pName);
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mSleepTime = 1000;
 	}
 

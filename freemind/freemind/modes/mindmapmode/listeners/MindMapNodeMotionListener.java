@@ -50,8 +50,7 @@ public class MindMapNodeMotionListener extends NodeMotionAdapter {
 
 	public MindMapNodeMotionListener(MindMapController controller) {
 		c = controller;
-		if (logger == null)
-			logger = c.getFrame().getLogger(this.getClass().getName());
+		logger = c.getFrame().getLogger(this.getClass().getName());
 	}
 
 	public void mouseMoved(MouseEvent e) {

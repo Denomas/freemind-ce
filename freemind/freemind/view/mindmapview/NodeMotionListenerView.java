@@ -44,10 +44,9 @@ public class NodeMotionListenerView extends JComponent {
 	protected static java.util.logging.Logger logger = null;
 	public NodeMotionListenerView(NodeView view) {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		this.movedView = view;
 		MapView map = view.getMap();
 		addMouseListener(map.getNodeMotionListener());

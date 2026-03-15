@@ -53,8 +53,7 @@ public class HookAdapter implements MindMapHook {
 
 
 	public HookAdapter() {
-		if (logger == null)
-			logger = freemind.main.Resources.getInstance().getLogger(
+		logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
 		baseClass = null;
 	}

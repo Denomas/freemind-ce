@@ -65,10 +65,8 @@ public class JabberListener {
             MapSharingController sharingWizardController, String jabberServer,
             int port, String userName, String password) {
         controller = c;
-        if (logger == null) {
-            logger = controller.getController().getFrame().getLogger(
-                    this.getClass().getName());
-        }
+        logger = controller.getController().getFrame().getLogger(
+                this.getClass().getName());
         commandQueue = new LinkedList();
         JabberContext context = new JabberContext(userName, password,
                 jabberServer);

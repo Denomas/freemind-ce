@@ -218,10 +218,9 @@ public class LogFileViewer extends MindMapHookAdapter implements
 	 */
 	public void startupMapHook() {
 		super.startupMapHook();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mMyMindMapController = super.getMindMapController();
 		mSimpleFormatter = new SimpleFormatter();
 		// retrieve content

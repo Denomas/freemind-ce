@@ -67,10 +67,9 @@ public class NodeFoldingComponent extends JButton {
 
 	public NodeFoldingComponent(NodeView view) {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		this.nodeView = view;
 		setModel(new DefaultButtonModel());
 		init(null, null);

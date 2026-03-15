@@ -89,8 +89,7 @@ public class CommonNodeMouseMotionListener implements NodeMouseMotionObserver {
 
 	public CommonNodeMouseMotionListener(ModeController controller) {
 		c = controller;
-		if (logger == null)
-			logger = c.getFrame().getLogger(this.getClass().getName());
+		logger = c.getFrame().getLogger(this.getClass().getName());
 		if (delayedSelectionEnabled == null)
 			updateSelectionMethod();
 	}

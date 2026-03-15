@@ -122,10 +122,9 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 		super(caller);
 		this.mController = controller;
 		mNode = pNode;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		initialize(dialogTitle);
 		mStylePatternFrame.setPattern(pattern);
 		mStylePatternFrame.addListeners();

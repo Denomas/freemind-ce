@@ -79,9 +79,8 @@ public class CalendarMarkingDialog extends JDialog implements ActionListener, Ch
 	}
 
 	public CalendarMarkingDialog(MindMapController pController) {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(this.getClass().getName());
-		}
+
 		mController = pController;
 		setTitle(pController.getText("CalendarMarkingDialog.title"));
 		JPanel contentPane = getJContentPane();

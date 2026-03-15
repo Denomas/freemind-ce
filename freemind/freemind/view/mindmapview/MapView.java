@@ -296,8 +296,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 		super();
 		this.model = model;
 		mFeedback = pFeedback;
-		if (logger == null)
-			logger = Resources.getInstance().getLogger(this.getClass().getName());
+		logger = Resources.getInstance().getLogger(this.getClass().getName());
 		mCenterNodeTimer = new Timer();
 		// initialize the standard colors.
 		if (standardNodeTextColor == null) {

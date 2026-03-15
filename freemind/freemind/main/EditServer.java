@@ -76,10 +76,9 @@ public class EditServer extends Thread {
 	EditServer(String portFile, FreeMindMain pFrame) {
 		super("FreeMind server daemon [" + portFile + "]");
 		mFrame = pFrame;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		setDaemon(true);
 		this.portFile = portFile;
 

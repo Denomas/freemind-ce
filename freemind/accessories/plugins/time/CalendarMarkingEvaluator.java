@@ -308,10 +308,9 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 
 	public CalendarMarkingEvaluator(CalendarMarkings pCalendarMarkings) {
 		mCalendarMarkings = pCalendarMarkings;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	public Set<Calendar> getAtLeastTheFirstNEntries(int n){

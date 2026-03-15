@@ -54,10 +54,9 @@ public class MindMapMouseWheelEventHandler implements MouseWheelListener {
 	public MindMapMouseWheelEventHandler(ControllerAdapter controller) {
 		super();
 		mController = controller;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		Controller.addPropertyChangeListener(new FreemindPropertyListener() {
 
 			public void propertyChanged(String propertyName, String newValue,

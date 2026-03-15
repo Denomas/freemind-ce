@@ -81,9 +81,8 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 	public MapAdapter(MapFeedback mapFeedback) {
 		super(null);
 		this.mMapFeedback = mapFeedback;
-		if (logger == null) {
 			logger = Resources.getInstance().getLogger(this.getClass().getName());
-		}
+
 		filter = new DefaultFilter(NoFilteringCondition.createCondition(),
 				true, false);
 		mTimerForFileChangeObservation = new Timer();

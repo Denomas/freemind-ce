@@ -53,10 +53,9 @@ public class ActionRegistry {
 
 	public ActionRegistry() {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		registeredHandler = new Vector<ActionHandler>();
 		registeredFilters = new Vector<ActionFilter>();
 		registeredActors = new HashMap<Class<?>, ActorXml>();

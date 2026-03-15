@@ -53,10 +53,9 @@ public class ImportWizard {
 	protected static java.util.logging.Logger logger = null;
 
 	public ImportWizard() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	/** Build the list of classes */

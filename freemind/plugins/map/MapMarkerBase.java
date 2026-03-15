@@ -63,10 +63,9 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	public MapMarkerBase(MapDialog pMapDialog) {
 		super();
 		mMapDialog = pMapDialog;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	@Override

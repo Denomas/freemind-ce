@@ -203,9 +203,8 @@ public class Controller implements MapModuleChangeObserver {
 	//
 	public Controller(FreeMindMain frame) {
 		this.frame = frame;
-		if (logger == null) {
 			logger = frame.getLogger(this.getClass().getName());
-		}
+
 	}
 
 	public void init() {

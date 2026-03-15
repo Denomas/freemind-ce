@@ -77,10 +77,9 @@ public class PasteActor extends XmlActorAdapter {
 	 */
 	public PasteActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	/*

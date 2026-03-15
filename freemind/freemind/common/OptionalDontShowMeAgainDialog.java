@@ -107,10 +107,9 @@ public class OptionalDontShowMeAgainDialog {
 	public OptionalDontShowMeAgainDialog(JFrame pFrame, Component pComponent,
 			String pMessageId, String pTitleId, TextTranslator pTextTranslator,
 			DontShowPropertyHandler pDontShowPropertyHandler, int pMessageType) {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mComponent = pComponent;
 		mParent = pFrame;
 		mMessageId = pMessageId;

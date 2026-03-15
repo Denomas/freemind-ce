@@ -61,10 +61,9 @@ public class ScriptEditorProperty extends PropertyBean implements
 		this.description = description;
 		this.label = label;
 		mMindMapController = pMindMapController;
-		if (logger == null) {
 			logger = mMindMapController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 		mButton = new JButton();
 		mButton.addActionListener(this);
 		script = "";

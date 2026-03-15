@@ -40,10 +40,9 @@ public class PasteAction extends AbstractAction {
 		super(pMindMapController.getText("paste"), freemind.view.ImageFactory.getInstance().createIcon(
 				pMindMapController.getResource("images/editpaste.png")));
 		this.mMindMapController = pMindMapController;
-		if (logger == null) {
 			logger = mMindMapController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 
 		setEnabled(false);
 

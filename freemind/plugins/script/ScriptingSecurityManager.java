@@ -58,10 +58,9 @@ public class ScriptingSecurityManager extends SecurityManager {
 
 	public ScriptingSecurityManager(boolean pWithoutFileRestriction,
 			boolean pWithoutNetworkRestriction, boolean pWithoutExecRestriction) {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mWithoutFileRestriction = pWithoutFileRestriction;
 		mWithoutNetworkRestriction = pWithoutNetworkRestriction;
 		mWithoutExecRestriction = pWithoutExecRestriction;

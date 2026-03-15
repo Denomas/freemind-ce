@@ -41,10 +41,9 @@ public abstract class XmlActorAdapter implements ActorXml {
 
 	public XmlActorAdapter(ExtendedMapFeedback pMapFeedback) {
 		mMapFeedback = pMapFeedback;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		addActor(this);
 	}
 

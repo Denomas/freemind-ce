@@ -51,10 +51,9 @@ public abstract class MapFeedbackAdapter implements MapFeedback, ViewFeedback {
 
 
 	public MapFeedbackAdapter() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	/*

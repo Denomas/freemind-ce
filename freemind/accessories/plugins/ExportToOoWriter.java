@@ -57,10 +57,9 @@ public class ExportToOoWriter extends ExportHook {
 
 	public ExportToOoWriter() {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	/*

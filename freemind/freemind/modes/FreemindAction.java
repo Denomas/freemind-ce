@@ -46,10 +46,9 @@ public abstract class FreemindAction extends AbstractAction implements MenuItemE
 			ControllerAdapter controllerAdapter) {
 		super(title, icon);
 		this.pControllerAdapter = controllerAdapter;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 
 	}
 

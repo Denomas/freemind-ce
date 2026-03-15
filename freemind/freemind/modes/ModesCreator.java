@@ -54,9 +54,8 @@ public class ModesCreator {
 	}
 
 	public Set<String> getAllModes() {
-		if (logger == null) {
 			logger = c.getFrame().getLogger(this.getClass().getName());
-		}
+
 		if (mCreatedModes == null) {
 			mCreatedModes = new TreeMap<>();
 			modesTranslation = new HashMap<>();

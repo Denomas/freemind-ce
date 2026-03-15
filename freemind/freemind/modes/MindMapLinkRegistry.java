@@ -106,10 +106,9 @@ public class MindMapLinkRegistry {
 	// // Methods /////
 	// //////////////////////////////////////////////////////////////////////////////////////
 	public MindMapLinkRegistry(/* MindMap map */) {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mTargetToId = new HashMap<>();
 		mIdToTarget = new HashMap<>();
 		mIdToLinks = new HashMap<>();

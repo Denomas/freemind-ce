@@ -45,10 +45,9 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout {
 	private int spaceAround;
 
 	public NodeViewLayoutAdapter() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	public void addLayoutComponent(String arg0, Component arg1) {

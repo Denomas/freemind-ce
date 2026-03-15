@@ -47,10 +47,9 @@ public class SearchControllerHook extends MindMapHookAdapter implements
 
 	public SearchControllerHook() {
 		super();
-		if (logger == null) {
 			logger = getController().getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	public Logger getLogger(Class<?> className) {

@@ -41,10 +41,9 @@ public class FreeMindPopupMenu extends JPopupMenu implements
 	protected static java.util.logging.Logger logger = null;
 
 	public FreeMindPopupMenu() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	protected void firePopupMenuWillBecomeVisible() {

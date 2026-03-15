@@ -45,9 +45,8 @@ public class MindMapMode extends Mode {
 
 	public void init(Controller c) {
 		this.c = c;
-		if (logger == null) {
 			logger = c.getFrame().getLogger(this.getClass().getName());
-		}
+
 		modecontroller = (MindMapController) createModeController();
 	}
 

@@ -41,8 +41,7 @@ public class PrintActionHandler implements ActionHandler {
 	public PrintActionHandler(MindMapController c) {
 		super();
 		this.c = c;
-		if (logger == null)
-			logger = c.getFrame().getLogger(this.getClass().getName());
+		logger = c.getFrame().getLogger(this.getClass().getName());
 	}
 
 	/*

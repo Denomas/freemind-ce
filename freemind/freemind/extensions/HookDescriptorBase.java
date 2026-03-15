@@ -58,10 +58,9 @@ public class HookDescriptorBase {
 		super();
 		this.pluginBase = pluginBase;
 		mXmlPluginFile = xmlPluginFile;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 

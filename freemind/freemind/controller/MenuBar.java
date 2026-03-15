@@ -77,9 +77,8 @@ public class MenuBar extends JMenuBar {
 
 	public MenuBar(Controller controller) {
 		this.c = controller;
-		if (logger == null) {
 			logger = controller.getFrame().getLogger(this.getClass().getName());
-		}
+
 		// updateMenus();
 	}// Constructor
 

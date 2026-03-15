@@ -227,8 +227,7 @@ public class FreeMindCommon {
 		super();
 		// TODO Auto-generated constructor stub
 		this.mFreeMindMain = main;
-		if (logger == null)
-			logger = main.getLogger(this.getClass().getName());
+		logger = main.getLogger(this.getClass().getName());
 	}
 
 	public String getProperty(String key) {

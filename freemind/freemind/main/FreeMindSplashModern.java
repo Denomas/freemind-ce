@@ -124,9 +124,8 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 	public FreeMindSplashModern(final FreeMindMain frame) {
 		super("FreeMind CE");
 		this.frame = frame;
-		if (logger == null) {
 			logger = frame.getLogger(this.getClass().getName());
-		}
+
 
 		this.feedBack = new FeedBackImpl();
 

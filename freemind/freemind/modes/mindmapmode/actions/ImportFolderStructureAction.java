@@ -40,8 +40,7 @@ public class ImportFolderStructureAction extends MindmapAction {
 	public ImportFolderStructureAction(MindMapController controller) {
 		super("import_folder_structure", controller);
 		this.controller = controller;
-		if (logger == null)
-			logger = controller.getFrame().getLogger(this.getClass().getName());
+		logger = controller.getFrame().getLogger(this.getClass().getName());
 	}
 
 	public void actionPerformed(ActionEvent e) {

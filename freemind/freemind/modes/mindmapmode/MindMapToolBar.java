@@ -84,10 +84,9 @@ public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
 	public MindMapToolBar(MindMapController controller) {
 		super();
 		this.c = controller;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		this.setRollover(true);
 		fonts = new FreeMindComboBox(Tools.getAvailableFonts());
 		fonts.setFocusable(false);

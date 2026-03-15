@@ -151,8 +151,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		setText((String) userObject);
 		hooks = null; // lazy, fc, 30.6.2005.
 		activatedHooks = null; // lazy, fc, 30.6.2005
-		if (logger == null)
-			logger = Resources.getInstance().getLogger(this.getClass().getName());
+		logger = Resources.getInstance().getLogger(this.getClass().getName());
 		// create creation time:
 		setHistoryInformation(new HistoryInformation());
 		if (sSaveIdPropertyChangeListener == null) {

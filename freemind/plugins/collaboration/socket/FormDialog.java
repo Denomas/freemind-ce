@@ -68,10 +68,9 @@ public class FormDialog extends JDialog implements
 
 	public FormDialog(MindMapController pController) {
 		super(pController.getFrame().getJFrame());
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mController2 = pController;
 	}
 

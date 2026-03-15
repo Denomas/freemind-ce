@@ -37,10 +37,9 @@ public class MindMapLayout implements LayoutManager {
 	protected static java.util.logging.Logger logger = null;
 
 	public MindMapLayout() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	public void addLayoutComponent(String name, Component comp) {

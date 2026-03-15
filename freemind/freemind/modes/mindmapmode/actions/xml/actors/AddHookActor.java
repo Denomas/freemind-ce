@@ -57,10 +57,9 @@ public class AddHookActor extends XmlActorAdapter {
 	 */
 	public AddHookActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	private HookFactory getHookFactory() {
