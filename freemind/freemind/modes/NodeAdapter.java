@@ -138,7 +138,7 @@ public abstract class NodeAdapter implements MindMapNode {
 	private MindMap map = null;
 	private String noteText;
 	private String xmlNoteText;
-	private static FreemindPropertyListener sSaveIdPropertyChangeListener;
+	private static volatile FreemindPropertyListener sSaveIdPropertyChangeListener;
 	private static boolean sSaveOnlyIntrinsicallyNeededIds = false;
 	private Vector<Attribute> mAttributeVector = null;
 
@@ -155,21 +155,23 @@ public abstract class NodeAdapter implements MindMapNode {
 			logger = Resources.getInstance().getLogger(this.getClass().getName());
 		// create creation time:
 		setHistoryInformation(new HistoryInformation());
-		synchronized (NodeAdapter.class) {
-			if (sSaveIdPropertyChangeListener == null) {
-				sSaveIdPropertyChangeListener = new FreemindPropertyListener() {
+		if (sSaveIdPropertyChangeListener == null) {
+			synchronized (NodeAdapter.class) {
+				if (sSaveIdPropertyChangeListener == null) {
+					sSaveIdPropertyChangeListener = new FreemindPropertyListener() {
 
-					public void propertyChanged(String propertyName,
-							String newValue, String oldValue) {
-						if (propertyName
-								.equals(FreeMindCommon.SAVE_ONLY_INTRISICALLY_NEEDED_IDS)) {
-							sSaveOnlyIntrinsicallyNeededIds = Boolean.valueOf(
-									newValue).booleanValue();
+						public void propertyChanged(String propertyName,
+								String newValue, String oldValue) {
+							if (propertyName
+									.equals(FreeMindCommon.SAVE_ONLY_INTRISICALLY_NEEDED_IDS)) {
+								sSaveOnlyIntrinsicallyNeededIds = Boolean.valueOf(
+										newValue).booleanValue();
+							}
 						}
-					}
-				};
-				Controller
-						.addPropertyChangeListenerAndPropagate(sSaveIdPropertyChangeListener);
+					};
+					Controller
+							.addPropertyChangeListenerAndPropagate(sSaveIdPropertyChangeListener);
+				}
 			}
 		}
 
