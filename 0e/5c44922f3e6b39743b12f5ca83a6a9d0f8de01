@@ -1,0 +1,31 @@
+freemind/tests/freemind/ControllerNullGuardTest.java
+  7843d3304d80a742 1-151
+freemind/tests/freemind/CodeQualityTest.java
+  7843d3304d80a742 1-217
+freemind/tests/freemind/Utf8ConsistencyTest.java
+  7843d3304d80a742 1-178
+freemind/tests/freemind/ConditionFactoryBugFixTest.java
+  7843d3304d80a742 1-109
+freemind/tests/freemind/ThreadSafetyTest.java
+  7843d3304d80a742 1-165
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "0e5c44922f3e6b39743b12f5ca83a6a9d0f8de01",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 879,
+      "total_deletions": 59,
+      "accepted_lines": 820,
+      "overriden_lines": 0
+    }
+  }
+}
