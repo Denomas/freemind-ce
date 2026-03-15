@@ -514,7 +514,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 	}
 
 	PrintStream getPrintStream() {
-		return new PrintStream(new ResultFieldStream());
+		return new PrintStream(new ResultFieldStream(), true, StandardCharsets.UTF_8);
 	}
 
 	ErrorHandler getErrorHandler() {

@@ -691,11 +691,11 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 					LoggingOutputStream los;
 					Logger logger = Logger.getLogger(StdFormatter.STDOUT.getName());
 					los = new LoggingOutputStream(logger, StdFormatter.STDOUT);
-					System.setOut(new PrintStream(los, true));
+					System.setOut(new PrintStream(los, true, StandardCharsets.UTF_8));
 
 					logger = Logger.getLogger(StdFormatter.STDERR.getName());
 					los = new LoggingOutputStream(logger, StdFormatter.STDERR);
-					System.setErr(new PrintStream(los, true));
+					System.setErr(new PrintStream(los, true, StandardCharsets.UTF_8));
 
 				} catch (Exception e) {
 					System.err.println("Error creating logging File Handler");
