@@ -1,0 +1,83 @@
+freemind/accessories/plugins/BlinkingNodeHook.java
+  7843d3304d80a742 37
+freemind/freemind/modes/MindMapNode.java
+  7843d3304d80a742 57,68-69,81-82,203,316
+freemind/accessories/plugins/NewParentNode.java
+  7843d3304d80a742 38
+freemind/freemind/main/FreeMindCommon.java
+  7843d3304d80a742 209,211-212
+freemind/freemind/view/mindmapview/IndependantMapViewCreator.java
+  7843d3304d80a742 125
+freemind/freemind/main/Tools.java
+  7843d3304d80a742 1472-1473,1481-1482,1618-1619,1878,1931,1968
+freemind/plugins/map/MapDialog.java
+  7843d3304d80a742 919
+freemind/freemind/main/XHTMLWriter.java
+  7843d3304d80a742 124
+freemind/accessories/plugins/LogFileViewer.java
+  7843d3304d80a742 307
+freemind/freemind/main/EditServer.java
+  7843d3304d80a742 65
+freemind/freemind/view/ImageFactory.java
+  7843d3304d80a742 62
+freemind/freemind/modes/ExtendedMapFeedbackAdapter.java
+  7843d3304d80a742 92
+freemind/plugins/map/MapMarkerBase.java
+  7843d3304d80a742 136
+freemind/plugins/latex/LatexNodeHook.java
+  7843d3304d80a742 35
+freemind/plugins/search/FileSearchModel.java
+  7843d3304d80a742 48
+freemind/freemind/main/HtmlTools.java
+  7843d3304d80a742 309,316,408,620
+freemind/accessories/plugins/time/JMonthChooser.java
+  7843d3304d80a742 245
+freemind/freemind/main/FreeMindStarter.java
+  7843d3304d80a742 40
+freemind/accessories/plugins/time/TableSorter.java
+  7843d3304d80a742 56,63,83
+freemind/freemind/modes/ControllerAdapter.java
+  7843d3304d80a742 407
+freemind/freemind/main/XMLElement.java
+  7843d3304d80a742 79,83,94,102,116-118,324,354,393,425
+freemind/plugins/collaboration/socket/CommunicationBase.java
+  7843d3304d80a742 87
+freemind/freemind/common/ScalableJButton.java
+  7843d3304d80a742 30
+freemind/freemind/main/ExampleFileFilter.java
+  7843d3304d80a742 74,77,79
+freemind/freemind/main/XMLParseException.java
+  7843d3304d80a742 59-60,84,112,148
+freemind/freemind/preferences/layout/KeyEventTranslator.java
+  7843d3304d80a742 223,229
+freemind/freemind/modes/LineAdapter.java
+  7843d3304d80a742 157
+freemind/freemind/modes/mindmapmode/actions/xml/actors/XmlActorAdapter.java
+  7843d3304d80a742 97
+freemind/freemind/controller/Controller.java
+  7843d3304d80a742 1969-1970
+freemind/freemind/modes/MapFeedback.java
+  7843d3304d80a742 69
+freemind/freemind/modes/ModeController.java
+  7843d3304d80a742 214
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "53e68081154deffcefaa619b59cec57a88e5524b",
+  "prompts": {
+    "7843d3304d80a742": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5403330-2355-4151-8582-dba05be5cc21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 118,
+      "total_deletions": 161,
+      "accepted_lines": 70,
+      "overriden_lines": 0
+    }
+  }
+}
