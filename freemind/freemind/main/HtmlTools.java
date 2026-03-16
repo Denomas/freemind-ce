@@ -31,6 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.text.BadLocationException;
+import javax.xml.XMLConstants;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.jsoup.Jsoup;
@@ -575,6 +576,7 @@ public class HtmlTools {
 		try {
 			// Create a builder factory
 			SAXParserFactory factory = SAXParserFactory.newInstance();
+			factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 			factory.setValidating(false);
 
 			// Create the builder and parse the file

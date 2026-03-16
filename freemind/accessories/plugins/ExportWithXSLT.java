@@ -43,6 +43,7 @@ import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.xml.transform.Result;
+import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -340,6 +341,7 @@ public class ExportWithXSLT extends ExportHook {
 		try {
 			// System.out.println("make transform instance");
 			TransformerFactory transFact = TransformerFactory.newInstance();
+			transFact.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
 			Transformer trans = transFact.newTransformer(xsltSource);
 			// set parameter:

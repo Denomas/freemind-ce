@@ -106,6 +106,7 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.UIManager;
+import javax.xml.XMLConstants;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -1061,6 +1062,11 @@ public class Tools {
 					// create an instance of TransformerFactory
 					TransformerFactory transFact = TransformerFactory
 							.newInstance();
+					try {
+						transFact.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+					} catch (Exception e) {
+						logger.warning("Could not set secure processing on TransformerFactory: " + e.getMessage());
+					}
 					logger.info("TransformerFactory class: "
 							+ transFact.getClass());
 					Transformer trans;

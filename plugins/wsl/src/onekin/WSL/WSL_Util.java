@@ -33,6 +33,7 @@ import java.io.StringWriter;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
+import javax.xml.XMLConstants;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -81,6 +82,7 @@ public class WSL_Util {
 	    // create an instance of TransformerFactory
 	    try {
 	        TransformerFactory transFact = TransformerFactory.newInstance();
+	        transFact.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 	        Transformer trans = transFact.newTransformer(xsltSource);
 	        trans.transform(xmlSource, result);
 	    } catch (Exception e) {

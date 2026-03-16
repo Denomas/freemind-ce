@@ -115,6 +115,10 @@ public abstract class NodeAdapter implements MindMapNode {
 	private int hGap = HGAP;
 	private int shiftY = 0;
 
+	// Wrapped in Collections.synchronizedList() for thread safety (BUG-4).
+	// Individual operations (add, remove, get, size) are synchronized by the wrapper.
+	// Iteration (e.g., via listIterator) must be manually synchronized by callers
+	// if concurrent modification is possible.
 	protected List<MindMapNode> children;
 	private MindMapNode preferredChild;
 
