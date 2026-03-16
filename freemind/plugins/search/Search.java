@@ -42,7 +42,7 @@ public class Search {
 			Document d;
 			try {
 				int docId = hits[i].doc;
-				d = searcher.doc(docId);
+				d = searcher.storedFields().document(docId);
 				listData[i] = new SearchResult(i + 1, hits[i].doc,
 						indexer.getFilename(d), indexer.getPath(d),
 						hits[i].score, hits[i].shardIndex);
