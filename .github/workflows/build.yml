@@ -99,6 +99,26 @@ jobs:
         if: runner.os == 'Windows'
         run: .\gradlew.bat test --no-daemon --no-configuration-cache --continue
 
+      - name: Test Count Regression Guard
+        if: always()
+        shell: bash
+        run: |
+          # Minimum expected headless test count (update when adding tests)
+          MIN_TESTS=800
+          RESULTS_DIR="freemind/build/test-results/test"
+          if [ ! -d "$RESULTS_DIR" ]; then
+            echo "::warning::No test results directory found — skipping count check"
+            exit 0
+          fi
+          # Count tests from JUnit XML: <testcase> elements
+          ACTUAL=$(grep -r '<testcase ' "$RESULTS_DIR"/*.xml 2>/dev/null | wc -l | tr -d ' ')
+          echo "Test count: $ACTUAL (minimum: $MIN_TESTS)"
+          if [ "$ACTUAL" -lt "$MIN_TESTS" ]; then
+            echo "::error::Test count regression! Found $ACTUAL tests, expected >= $MIN_TESTS"
+            exit 1
+          fi
+          echo "Test count OK: $ACTUAL >= $MIN_TESTS"
+
       - name: Publish Unit Test Report
         uses: dorny/test-reporter@3d76b34a4535afbd0600d347b09a6ee5deb3ed7f # v2
         if: always()
@@ -119,6 +139,10 @@ jobs:
       - name: Generate Coverage Report
         if: matrix.os == 'ubuntu-24.04' && matrix.java == '21' && always()
         run: ./gradlew :freemind:jacocoTestReport --no-daemon --no-configuration-cache -x test
+
+      - name: Enforce Coverage Threshold
+        if: matrix.os == 'ubuntu-24.04' && matrix.java == '21' && always()
+        run: ./gradlew :freemind:jacocoTestCoverageVerification --no-daemon --no-configuration-cache -x test
 
       - name: Upload Coverage Report
         if: matrix.os == 'ubuntu-24.04' && matrix.java == '21' && always()
