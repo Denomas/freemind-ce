@@ -1,0 +1,27 @@
+freemind/tests/freemind/modes/NodeAdapterTest.java
+  857b3decd23c952b 142-144
+freemind/tests/freemind/testutil/MindMapGeneratorTest.java
+  857b3decd23c952b 81-82,85
+freemind/tests/freemind/io/LargeFilePerformanceTest.java
+  857b3decd23c952b 95-96,99-100,135-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "16dbdc43c63b490a67eaf7235c5a6b4dcd17ec72",
+  "prompts": {
+    "857b3decd23c952b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b455a01f-56d3-43cf-975c-991553c1f19b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 12,
+      "overriden_lines": 0
+    }
+  }
+}
