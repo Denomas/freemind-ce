@@ -2,6 +2,17 @@
 
 Thank you for your interest in contributing to FreeMind CE! This guide will help you get started.
 
+> **MANDATORY READING:** Before starting any work, you MUST read this entire document AND the referenced documents in `docs/`. These are the project's binding rules — not suggestions.
+
+| Document | Purpose | When to Read |
+|----------|---------|-------------|
+| **This file (CONTRIBUTING.md)** | All project rules, workflows, conventions | Always — before any work |
+| **[docs/merge-release-safety.md](docs/merge-release-safety.md)** | Merge protocols, dependency updates, release checklist | Before any merge, review, or release |
+| **[docs/development-guide.md](docs/development-guide.md)** | Build, test, debug, package | Before writing code |
+| **[docs/architecture.md](docs/architecture.md)** | MVC, modes, action framework, plugin system | Before design decisions |
+| **[docs/component-inventory.md](docs/component-inventory.md)** | UI components, plugin registry | Before finding/modifying specific code |
+| **[docs/source-tree-analysis.md](docs/source-tree-analysis.md)** | Directory structure, file locations | Before navigating the codebase |
+
 ## Prerequisites
 
 - **Java 21** (Temurin/Adoptium recommended)
@@ -421,6 +432,35 @@ New runner images must be added within 30 days of availability.
 > "Being lazy in writing tests means facing much bigger workloads later.
 > Our goal is to reduce future workload by testing every user scenario,
 > every edge case, every state, comprehensively, now."
+
+### 9. Merge Safety Protocol
+
+> **Full protocol:** [docs/merge-release-safety.md](docs/merge-release-safety.md)
+
+Every PR merge requires ALL gates to pass — no exceptions, no bypass:
+
+- **CI Matrix:** ALL 48 jobs SUCCESS (not 47/48 — every single one)
+- **Review:** Maintainer approval required for ALL PRs (including Dependabot)
+- **Up-to-date:** Branch must be synced with main
+- **Conversations:** All review threads resolved
+
+**STRICTLY FORBIDDEN:** `--admin` bypass, auto-merge without explicit maintainer instruction, merging with any failing check, force push to main. See [docs/merge-release-safety.md](docs/merge-release-safety.md) for the complete forbidden actions list.
+
+### 10. Dependency Update Protocol
+
+> **Full protocol:** [docs/merge-release-safety.md](docs/merge-release-safety.md#dependency-update-protocol)
+
+- **Patch** (x.x.1→x.x.2): CI passes + changelog review + maintainer approve
+- **Minor** (x.1→x.2): Above + local `make build` verification
+- **Major** (1.x→2.x): Above + migration guide + API fix + `make run` smoke test
+
+CI passing alone is NEVER sufficient. Human review is always required.
+
+### 11. Release Checklist
+
+> **Full checklist:** [docs/merge-release-safety.md](docs/merge-release-safety.md#release-checklist)
+
+Before merging any release-please PR: all CI green, `make build` + `make run` locally, CHANGELOG review, artifact download and verification. See the full checklist in the referenced document.
 
 ## Project Structure
 
