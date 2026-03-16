@@ -139,9 +139,9 @@ class NodeAdapterTest {
         @Test
         @DisplayName("newly created root node has no children (isLeaf)")
         void rootNodeIsLeafInitially() {
-            if (rootNode.getChildCount() == 0) {
-                assertTrue(rootNode.isLeaf());
-            }
+            assertEquals(0, rootNode.getChildCount(),
+                    "Newly created root node should have no children");
+            assertTrue(rootNode.isLeaf());
         }
 
         @Test

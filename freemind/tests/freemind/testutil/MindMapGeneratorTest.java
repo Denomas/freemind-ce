@@ -78,12 +78,11 @@ class MindMapGeneratorTest {
         MindMapMapModel map = MindMapGenerator.create()
                 .withNodes(5).withDepth(2).withWidth(3).withIcons(2).build();
         MindMapNode root = map.getRootNode();
-        // Check a child has icons (root may not have icons in current impl)
-        if (root.getChildCount() > 0) {
-            MindMapNode child = (MindMapNode) root.getChildAt(0);
-            assertEquals(2, child.getIcons().size(),
-                    "Each child should have 2 icons");
-        }
+        assertTrue(root.getChildCount() > 0,
+                "Generator with 5 nodes and depth 2 should create at least one child");
+        MindMapNode child = (MindMapNode) root.getChildAt(0);
+        assertEquals(2, child.getIcons().size(),
+                "Each child should have 2 icons");
     }
 
     @Test
