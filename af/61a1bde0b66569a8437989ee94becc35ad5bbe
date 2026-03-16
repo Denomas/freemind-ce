@@ -1,0 +1,45 @@
+freemind/tests/freemind/filter/FilterConditionTest.java
+  3a569ff05e7219a6 1-1017
+freemind/tests/freemind/testutil/MindMapGeneratorTest.java
+  3a569ff05e7219a6 1-158
+freemind/tests/freemind/io/ChaosXmlDefenseTest.java
+  3a569ff05e7219a6 1-370
+freemind/tests/freemind/io/MapLifecycleTest.java
+  3a569ff05e7219a6 1-353
+freemind/tests/freemind/actions/ActionFrameworkTest.java
+  3a569ff05e7219a6 1-827
+freemind/tests/freemind/ConcurrencyTest.java
+  3a569ff05e7219a6 1-663
+freemind/tests/freemind/filter/FilterIntegrationTest.java
+  3a569ff05e7219a6 1-946
+freemind/tests/freemind/testutil/MindMapGenerator.java
+  3a569ff05e7219a6 1-266
+freemind/tests/freemind/modes/NodeAdapterTest.java
+  3a569ff05e7219a6 1-1007
+freemind/tests/freemind/plugins/HookFrameworkTest.java
+  3a569ff05e7219a6 1-326
+freemind/tests/freemind/io/LargeFilePerformanceTest.java
+  3a569ff05e7219a6 1-165
+freemind/tests/freemind/io/MapRoundTripTest.java
+  3a569ff05e7219a6 1-458
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "af61a1bde0b66569a8437989ee94becc35ad5bbe",
+  "prompts": {
+    "3a569ff05e7219a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f37a94-7137-4f29-a97e-f1bbc6f050d3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 7797,
+      "total_deletions": 1241,
+      "accepted_lines": 6557,
+      "overriden_lines": 0
+    }
+  }
+}
