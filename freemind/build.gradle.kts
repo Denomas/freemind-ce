@@ -172,8 +172,8 @@ dependencies {
     testImplementation("net.jqwik:jqwik-engine:1.9.3")
 
     // Fuzz Testing (Jazzer via JUnit integration)
-    testImplementation("com.code-intelligence:jazzer-api:0.22.1")
-    testImplementation("com.code-intelligence:jazzer-junit:0.22.1")
+    testImplementation("com.code-intelligence:jazzer-api:0.30.0")
+    testImplementation("com.code-intelligence:jazzer-junit:0.30.0")
 
     // Fluent Assertions (AssertJ)
     testImplementation("org.assertj:assertj-core:3.27.7")
