@@ -1,0 +1,31 @@
+freemind/tests/freemind/filter/FilterIntegrationTest.java
+  3a569ff05e7219a6 19-20,25,32-33,951-1095
+freemind/tests/freemind/actions/ActionFrameworkTest.java
+  3a569ff05e7219a6 815-879
+freemind/tests/freemind/io/ChaosXmlDefenseTest.java
+  3a569ff05e7219a6 31,304-338
+freemind/tests/freemind/ConcurrencyTest.java
+  3a569ff05e7219a6 308-368
+freemind/tests/freemind/io/MapLifecycleTest.java
+  3a569ff05e7219a6 16,19-20,24-25,313-404
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "7c054303e4cf1054407bebe8729441968874cee4",
+  "prompts": {
+    "3a569ff05e7219a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f37a94-7137-4f29-a97e-f1bbc6f050d3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 431,
+      "total_deletions": 21,
+      "accepted_lines": 410,
+      "overriden_lines": 0
+    }
+  }
+}
