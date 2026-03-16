@@ -1,0 +1,33 @@
+freemind/tests/freemind/filter/FilterIntegrationConditionTest.java
+  857b3decd23c952b 1-503
+freemind/tests/freemind/filter/FilterIntegrationPipelineTest.java
+  857b3decd23c952b 1-475
+freemind/tests/freemind/filter/FilterConditionAttributeIconTest.java
+  857b3decd23c952b 1-350
+freemind/tests/freemind/filter/FilterIntegrationBasicTest.java
+  857b3decd23c952b 1-446
+freemind/tests/freemind/filter/FilterConditionCompositeTest.java
+  857b3decd23c952b 1-517
+freemind/tests/freemind/filter/FilterConditionBasicTest.java
+  857b3decd23c952b 1-351
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "acab8bb44dfbcc1c2fe49fc83fc1d99a2382b4bc",
+  "prompts": {
+    "857b3decd23c952b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b455a01f-56d3-43cf-975c-991553c1f19b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 2656,
+      "total_deletions": 38,
+      "accepted_lines": 2654,
+      "overriden_lines": 0
+    }
+  }
+}
