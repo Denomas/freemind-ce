@@ -227,7 +227,7 @@ public class FileSearchModel {
 		String[] fileNames = new String[scoreDocs.length];
 		for (int i = 0; i < scoreDocs.length; i++) {
 			ScoreDoc scoreDoc = scoreDocs[i];
-			Document d = searcher.doc(scoreDoc.doc);
+			Document d = searcher.storedFields().document(scoreDoc.doc);
 			fileNames[i] = getPath(d);
 		}
 		return fileNames;
