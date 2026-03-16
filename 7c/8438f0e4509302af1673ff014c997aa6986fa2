@@ -1,0 +1,29 @@
+freemind/tests/freemind/export/ContentPreservationExportTest.java
+  3a569ff05e7219a6 1-265
+freemind/tests/freemind/plugins/PluginLogicTest.java
+  3a569ff05e7219a6 1-501
+freemind/tests/freemind/export/XsltExportTest.java
+  3a569ff05e7219a6 1-325
+freemind/tests/freemind/plugins/CollaborationStructuralTest.java
+  3a569ff05e7219a6 1-379
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "7c8438f0e4509302af1673ff014c997aa6986fa2",
+  "prompts": {
+    "3a569ff05e7219a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f37a94-7137-4f29-a97e-f1bbc6f050d3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 1538,
+      "total_deletions": 68,
+      "accepted_lines": 1470,
+      "overriden_lines": 0
+    }
+  }
+}
