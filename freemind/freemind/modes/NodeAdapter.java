@@ -115,6 +115,10 @@ public abstract class NodeAdapter implements MindMapNode {
 	private int hGap = HGAP;
 	private int shiftY = 0;
 
+	// Wrapped in Collections.synchronizedList() for thread safety (BUG-4).
+	// Individual operations (add, remove, get, size) are synchronized by the wrapper.
+	// Iteration (e.g., via listIterator) must be manually synchronized by callers
+	// if concurrent modification is possible.
 	protected List<MindMapNode> children;
 	private MindMapNode preferredChild;
 
@@ -138,7 +142,7 @@ public abstract class NodeAdapter implements MindMapNode {
 	private MindMap map = null;
 	private String noteText;
 	private String xmlNoteText;
-	private static FreemindPropertyListener sSaveIdPropertyChangeListener;
+	private static volatile FreemindPropertyListener sSaveIdPropertyChangeListener;
 	private static boolean sSaveOnlyIntrinsicallyNeededIds = false;
 	private Vector<Attribute> mAttributeVector = null;
 
@@ -151,30 +155,32 @@ public abstract class NodeAdapter implements MindMapNode {
 		setText((String) userObject);
 		hooks = null; // lazy, fc, 30.6.2005.
 		activatedHooks = null; // lazy, fc, 30.6.2005
-		if (logger == null)
-			logger = Resources.getInstance().getLogger(this.getClass().getName());
+		logger = Resources.getInstance().getLogger(this.getClass().getName());
 		// create creation time:
 		setHistoryInformation(new HistoryInformation());
 		if (sSaveIdPropertyChangeListener == null) {
-			sSaveIdPropertyChangeListener = new FreemindPropertyListener() {
+			synchronized (NodeAdapter.class) {
+				if (sSaveIdPropertyChangeListener == null) {
+					sSaveIdPropertyChangeListener = new FreemindPropertyListener() {
 
-				public void propertyChanged(String propertyName,
-						String newValue, String oldValue) {
-					if (propertyName
-							.equals(FreeMindCommon.SAVE_ONLY_INTRISICALLY_NEEDED_IDS)) {
-						sSaveOnlyIntrinsicallyNeededIds = Boolean.valueOf(
-								newValue).booleanValue();
-					}
+						public void propertyChanged(String propertyName,
+								String newValue, String oldValue) {
+							if (propertyName
+									.equals(FreeMindCommon.SAVE_ONLY_INTRISICALLY_NEEDED_IDS)) {
+								sSaveOnlyIntrinsicallyNeededIds = Boolean.valueOf(
+										newValue).booleanValue();
+							}
+						}
+					};
+					Controller
+							.addPropertyChangeListenerAndPropagate(sSaveIdPropertyChangeListener);
 				}
-			};
-			Controller
-					.addPropertyChangeListenerAndPropagate(sSaveIdPropertyChangeListener);
+			}
 		}
 
 	}
 
-	/**
-     */
+
 	public void setMap(MindMap pMap) {
 		this.map = pMap;
 	}
@@ -471,7 +477,7 @@ public abstract class NodeAdapter implements MindMapNode {
 
 	public String getFontSize() {
 		if (getFont() != null) {
-			return Integer.valueOf(getFont().getSize()).toString();
+			return Integer.toString(getFont().getSize());
 		} else {
 			return getMapFeedback().getProperty("defaultfontsize");
 		}
@@ -1027,8 +1033,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		}
 	}
 
-	/**
-	 */
+
 	public SortedMap<String, String> getToolTip() {
 		boolean toolTipChanged = false;
 		TreeMap<String, String> result = toolTip;
@@ -1083,8 +1088,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		return Collections.unmodifiableSortedMap(result);
 	}
 
-	/**
-	 */
+
 	public void setToolTip(String key, String string) {
 		createToolTip();
 		if (string == null) {
@@ -1367,9 +1371,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		this.shiftY = shiftY;
 	}
 
-	/**
-     *
-     */
+
 
 	public void setAdditionalInfo(String info) {
 	}

@@ -27,7 +27,6 @@ import freemind.controller.LastOpenedList;
 
 /**
  * @author foltin
- * @date 27.08.2013
  */
 public class LastOpenedTests extends FreeMindTestBase {
 	public void testStrangeCharsInList() throws Exception {

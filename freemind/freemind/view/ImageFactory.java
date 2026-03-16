@@ -31,7 +31,6 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * @date 24.05.2015
  */
 public class ImageFactory {
 	private static ImageFactory mInstance = null;
@@ -60,7 +59,7 @@ public class ImageFactory {
 	}
 
 	/**
-	 * @param pString
+	 * @param pFilePath
 	 * @return
 	 */
 	public ImageIcon createIcon(String pFilePath) {

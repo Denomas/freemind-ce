@@ -29,11 +29,11 @@ import javax.swing.JPanel;
 /**
  * @author Dimitri Polivaev 06.11.2005
  */
-@SuppressWarnings("serial")
 public class JCondition extends JPanel {
+	private static final long serialVersionUID = 1L;
 
-	/**
-     */
+
+
 	public JCondition() {
 		super();
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));

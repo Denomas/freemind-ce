@@ -29,12 +29,12 @@ import freemind.controller.MenuItemEnabledListener;
 
 /**
  * Common class for all actions that are disabled, when no map is open.
- * 
+ *
  * @author foltin
- * @date 22.10.2013
  */
-@SuppressWarnings("serial")
 public abstract class FreemindAction extends AbstractAction implements MenuItemEnabledListener{
+	private static final long serialVersionUID = 1L;
+
 
 	private final ControllerAdapter pControllerAdapter;
 	protected static java.util.logging.Logger logger = null;
@@ -46,10 +46,9 @@ public abstract class FreemindAction extends AbstractAction implements MenuItemE
 			ControllerAdapter controllerAdapter) {
 		super(title, icon);
 		this.pControllerAdapter = controllerAdapter;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 
 	}
 
@@ -57,11 +56,11 @@ public abstract class FreemindAction extends AbstractAction implements MenuItemE
 	 * @param title
 	 *            Title is a resource.
 	 */
-	public FreemindAction(String title, 
+	public FreemindAction(String title,
 			ControllerAdapter controllerAdapter) {
 		this(title, (String) null, controllerAdapter);
 	}
-	
+
 	/**
 	 * @param title
 	 *            Title is a resource.
@@ -78,7 +77,7 @@ public abstract class FreemindAction extends AbstractAction implements MenuItemE
 	public ControllerAdapter getControllerAdapter() {
 		return pControllerAdapter;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing.JMenuItem, javax.swing.Action)
 	 */

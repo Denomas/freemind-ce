@@ -35,9 +35,8 @@ import freemind.modes.MindMapNode;
 /**
  * ViewFeedback is an interface implemented by the ModeController classes
  * to offer view related methods.
- * 
+ *
  * @author foltin
- * @date 25.04.2014
  */
 public interface ViewFeedback {
 
@@ -74,7 +73,7 @@ public interface ViewFeedback {
 	void onViewRemovedHook(NodeView pNodeView);
 
 	/**
-	 * @param pResourceId 
+	 * @param pResourceId
 	 * @return the setting of freemind.properties resp. auto.properties.
 	 */
 	String getProperty(String pResourceId);
@@ -132,5 +131,5 @@ public interface ViewFeedback {
 	void deRegisterMouseWheelEventHandler(MouseWheelEventHandler handler);
 
 
-	
+
 }

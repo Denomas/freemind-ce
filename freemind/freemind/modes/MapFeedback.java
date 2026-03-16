@@ -27,11 +27,10 @@ import freemind.extensions.NodeHook;
 import freemind.view.mindmapview.ViewFeedback;
 
 /**
- * This interface describes the services, the {@link ModeController} provides to 
+ * This interface describes the services, the {@link ModeController} provides to
  * a MindMap and its descendants.
- *  
+ *
  * @author foltin
- * @date 30.01.2014
  */
 public interface MapFeedback {
 	/**
@@ -39,13 +38,13 @@ public interface MapFeedback {
 	 * NodeLifetimeListener.
 	 */
 	void fireNodePreDeleteEvent(MindMapNode node);
-	
+
 	/**
 	 * Is issued after a node is deleted. It is issued via
 	 * NodeLifetimeListener.
 	 */
 	void fireNodePostDeleteEvent(MindMapNode node, MindMapNode parent);
-	
+
 	/**
 	 * @param pNode
 	 */
@@ -59,7 +58,7 @@ public interface MapFeedback {
 	void nodeRefresh(MindMapNode node);
 
 	void fireRecursiveNodeCreateEvent(MindMapNode node);
-	
+
 	/**
 	 * @see ModeController#paste(MindMapNode, MindMapNode)
 	 */
@@ -67,18 +66,18 @@ public interface MapFeedback {
 			MindMapNode pParent);
 	/**
 	 * @param pTextId
-	 * @return the string from Resources_<lang>.properties belonging to the pResourceId.
+	 * @return the string from the localized Resources properties belonging to the pResourceId.
 	 */
 	String getResourceString(String pTextId);
 	/**
-	 * @param pResourceId 
+	 * @param pResourceId
 	 * @return the setting of freemind.properties resp. auto.properties.
 	 */
 	String getProperty(String pResourceId);
 
 	int getIntProperty(String key, int defaultValue);
 
-	
+
 	/**
 	 * @param pProperty
 	 * @param pValue
@@ -99,7 +98,7 @@ public interface MapFeedback {
 	 * @return
 	 */
 	Font getFontThroughMap(Font pFont);
-	
+
 	/**
 	 * MapFeedback and MindMap are closely intertwined.
 	 */
@@ -122,13 +121,12 @@ public interface MapFeedback {
 	 * @return a ViewAbstraction, if a view is attached, null otherwise.
 	 */
 	ViewAbstraction getViewAbstraction();
-	
+
 	/**
 	 * @return null, if no feedback is available.
 	 */
 	ViewFeedback getViewFeedback();
 
 	void sortNodesByDepth(List<MindMapNode> inPlaceList);
-	
-}
 
+}

@@ -37,8 +37,9 @@ import freemind.modes.mindmapmode.MindMapMapModel;
 import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /** */
-@SuppressWarnings("serial")
 public class ExportBranchAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController mMindMapController;
 
 	public ExportBranchAction(MindMapController pMindMapController) {
@@ -130,7 +131,7 @@ public class ExportBranchAction extends MindmapAction {
 				freemind.main.Resources.getInstance().logException(e1);
 				// roll back:
 				mMindMapController.insertNodeInto(node, parent);
-				
+
 				String message = Tools.expandPlaceholders(mMindMapController.getText("save_failed"),
 						chosenFile.getName());
 				mMindMapController.getController().errorMessage(message);

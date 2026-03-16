@@ -32,13 +32,11 @@ import freemind.extensions.ModeControllerHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class FreemindHelpStarter extends ModeControllerHookAdapter {
 
-	/**
-     *
-     */
+
 
 	public void startupMapHook() {
 		super.startupMapHook();

@@ -38,7 +38,7 @@ import freemind.view.mindmapview.ViewFeedback.MouseWheelEventHandler;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class UnfoldAll extends MindMapNodeHookAdapter {
 
@@ -85,9 +85,7 @@ public class UnfoldAll extends MindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-	 * 
-	 */
+
 	public UnfoldAll() {
 		super();
 	}
@@ -116,8 +114,7 @@ public class UnfoldAll extends MindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-     */
+
 	protected void unfoldOneStage(MindMapNode node) {
 		int minDepth = getMinDepth(node);
 		if (minDepth < Integer.MAX_VALUE)
@@ -125,14 +122,12 @@ public class UnfoldAll extends MindMapNodeHookAdapter {
 		unfoldStageN(node, minDepth);
 	}
 
-	/**
-     */
+
 	protected void foldOneStage(MindMapNode node) {
 		foldStageN(node, getMaxDepth(node) - 1);
 	}
 
-	/**
-	 */
+
 	protected void foldAll(MindMapNode node) {
 		for (Iterator<MindMapNode> i = node.childrenUnfolded(); i.hasNext();) {
 			foldAll(i.next());
@@ -151,7 +146,7 @@ public class UnfoldAll extends MindMapNodeHookAdapter {
 	 * Unfolds every node that has only children which themselves have children.
 	 * As this function is a bit difficult to describe and perhaps not so
 	 * useful, it is currently not introduced into the menus.
-	 * 
+	 *
 	 * @param node
 	 *            node to start from.
 	 */
@@ -213,8 +208,7 @@ public class UnfoldAll extends MindMapNodeHookAdapter {
 		return k;
 	}
 
-	/**
-	 */
+
 	protected int getMaxDepth(MindMapNode node) {
 		if (node.isFolded() || !node.hasChildren())
 			return depth(node);

@@ -30,9 +30,9 @@ import freemind.main.Tools;
 import freemind.modes.FreeMindFileDialog;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class ImportFolderStructureAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	// Logging:
 	private static java.util.logging.Logger logger;
 	private final MindMapController controller;
@@ -40,8 +40,7 @@ public class ImportFolderStructureAction extends MindmapAction {
 	public ImportFolderStructureAction(MindMapController controller) {
 		super("import_folder_structure", controller);
 		this.controller = controller;
-		if (logger == null)
-			logger = controller.getFrame().getLogger(this.getClass().getName());
+		logger = controller.getFrame().getLogger(this.getClass().getName());
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -108,8 +107,7 @@ public class ImportFolderStructureAction extends MindmapAction {
 
 	}
 
-	/**
-     */
+
 	private MindMapNode addNode(MindMapNode target, String nodeContent,
 			String link) {
 		MindMapNode node = controller.addNewNode(target,

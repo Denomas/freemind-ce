@@ -74,10 +74,9 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /**
  * @author foltin
- * @date 06.09.2012
  */
-@SuppressWarnings("serial")
 public class ClientCommunication extends CommunicationBase {
+
 
 	private static final int MAX_LOCK_RETRIES = 5;
 	private static final long LOCK_RETRY_SLEEP_TIME = 1000;
@@ -93,8 +92,6 @@ public class ClientCommunication extends CommunicationBase {
 	 * @param pClient
 	 * @param pController
 	 * @param pPassword
-	 * @param pOut
-	 * @param pIn
 	 * @throws IOException
 	 */
 	public ClientCommunication(String pName, Socket pClient,
@@ -108,7 +105,7 @@ public class ClientCommunication extends CommunicationBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * plugins.collaboration.socket.CommunicationBase#processCommand(freemind
 	 * .controller.actions.generated.instance.CollaborationActionBase)
@@ -141,7 +138,7 @@ public class ClientCommunication extends CommunicationBase {
 				int showResult = new OptionalDontShowMeAgainDialog(getMindMapController()
 						.getFrame().getJFrame(), getMindMapController().getSelectedView(),
 						errorMessage, getController().getResourceString("confirmation"), new TextTranslator() {
-							
+
 							@Override
 							public String getText(String pKey) {
 								return pKey;
@@ -179,7 +176,7 @@ public class ClientCommunication extends CommunicationBase {
 				helloCommand.setMap(collOffers.getCollaborationMapOffer(0).getMap());
 				send(helloCommand);
 				setCurrentState(STATE_WAIT_FOR_WELCOME);
-				
+
 			} else {
 				// now, we have a bundle of different maps to offer to the user
 				final JDialog mapChooserDialog = new JDialog(getMindMapController().getFrame().getJFrame(),
@@ -189,7 +186,7 @@ public class ClientCommunication extends CommunicationBase {
 						"MapChooserDialog_title",
 						new Object[] { mSocket.getInetAddress().getHostAddress(),
 								Integer.valueOf(mSocket.getPort()) });
-	
+
 				mapChooserDialog.setTitle(mapTitle);
 				mapChooserDialog
 						.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -202,7 +199,7 @@ public class ClientCommunication extends CommunicationBase {
 				// the action title is changed by the following method, thus we create
 				// another close action.
 				AbstractAction cancelAction = new AbstractAction() {
-	
+
 					@Override
 					public void actionPerformed(ActionEvent pE) {
 						logger.info("Map choosing action canceled.");
@@ -213,18 +210,18 @@ public class ClientCommunication extends CommunicationBase {
 				final JList<String> mapList = new JList<>();
 				mapList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				mapList.setModel(new AbstractListModel<String>() {
-					
+
 					@Override
 					public int getSize() {
 						return collOffers.getListCollaborationMapOfferList().size();
 					}
-					
+
 					@Override
 					public String getElementAt(int pIndex) {
 						return collOffers.getCollaborationMapOffer(pIndex).getMap();
 					}});
 				AbstractAction okAction = new AbstractAction() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent pE) {
 						int selection = mapList.getSelectedIndex();
@@ -378,7 +375,7 @@ public class ClientCommunication extends CommunicationBase {
 	/**
 	 * Sends the lock requests, blocks until timeout or answer and returns the
 	 * associated id. Exception otherwise.
-	 * 
+	 *
 	 * @throws InterruptedException
 	 * @throws UnableToGetLockException
 	 */
@@ -471,7 +468,7 @@ public class ClientCommunication extends CommunicationBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#shutdown()
 	 */
 	public void shutdown() {

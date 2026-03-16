@@ -101,9 +101,7 @@ public class LastOpenedList {
 		return str;
 	}
 
-	/**
-     * 
-     */
+
 	void load(String data) {
 		// Take care that there are no ";" in restorable names!
 		if (data != null) {

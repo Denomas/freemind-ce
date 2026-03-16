@@ -213,14 +213,13 @@ import freemind.view.MapModule;
 import freemind.view.mindmapview.MainView;
 import freemind.view.mindmapview.MapView;
 import freemind.view.mindmapview.NodeView;
-@SuppressWarnings("serial")
 public class MindMapController extends ControllerAdapter implements
 		ExtendedMapFeedback, MapSourceChangedObserver {
+
 
 	public static final String REGEXP_FOR_NUMBERS_IN_STRINGS = "([+\\-]?[0-9]*[.,]?[0-9]+)\\b";
 	/**
 	 * @author foltin
-	 * @date 19.11.2013
 	 */
 	private final class NodeInformationTimerAction implements ActionListener {
 		private boolean mIsInterrupted = false;
@@ -310,12 +309,9 @@ public class MindMapController extends ControllerAdapter implements
 
 	/**
 	 * @author foltin
-	 * @date 24.01.2012
 	 */
 	private final class MapSourceChangeDialog implements Runnable {
-		/**
-		 *
-		 */
+
 		private boolean mReturnValue = true;
 
 		/**
@@ -907,9 +903,7 @@ public class MindMapController extends ControllerAdapter implements
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	protected void createNodeHookActions() {
 		if (hookActions == null) {
 			hookActions = new Vector<>();
@@ -1052,8 +1046,7 @@ public class MindMapController extends ControllerAdapter implements
 
 	// get/set methods
 
-	/**
-	 */
+
 	public void updateMenus(StructuredMenuHolder holder) {
 
 		processMenuCategory(holder, mMenuStructure.getListChoiceList(), ""); /*
@@ -1098,8 +1091,7 @@ public class MindMapController extends ControllerAdapter implements
 		}
 	}
 
-	/**
-     */
+
 	public void createPatternSubMenu(StructuredMenuHolder holder,
 			String formatMenuString) {
 		for (int i = 0; i < patterns.length; ++i) {
@@ -1126,8 +1118,7 @@ public class MindMapController extends ControllerAdapter implements
 		}
 	}
 
-	/**
-     */
+
 	public void processMenuCategory(StructuredMenuHolder holder, List<Object> list, String category) {
 		String categoryCopy = category;
 		ButtonGroup buttonGroup = null;
@@ -1592,12 +1583,10 @@ public class MindMapController extends ControllerAdapter implements
 		getActorFactory().getFontSizeActor().setFontSize(node, fontSizeValue);
 	}
 
-	/**
-     *
-     */
+
 
 	public void increaseFontSize(MindMapNode node, int increment) {
-		int newSize = Integer.valueOf(node.getFontSize()).intValue()
+		int newSize = Integer.parseInt(node.getFontSize())
 				+ increment;
 
 		if (newSize > 0) {
@@ -1659,9 +1648,7 @@ public class MindMapController extends ControllerAdapter implements
 		return mActorFactory.getRemoveIconActor().removeLastIcon(node);
 	}
 
-	/**
-     *
-     */
+
 
 	public void addLink(MindMapNode source, MindMapNode target) {
 		getActorFactory().getAddArrowLinkActor().addLink(source, target);
@@ -1675,9 +1662,7 @@ public class MindMapController extends ControllerAdapter implements
 		getActorFactory().getColorArrowLinkActor().setArrowLinkColor(arrowLink, color);
 	}
 
-	/**
-     *
-     */
+
 
 	public void changeArrowsOfArrowLink(MindMapArrowLink arrowLink,
 			boolean hasStartArrow, boolean hasEndArrow) {
@@ -1704,25 +1689,19 @@ public class MindMapController extends ControllerAdapter implements
 		getActorFactory().getEditActor().setNodeText(selected, newText);
 	}
 
-	/**
-     *
-     */
+
 
 	public void setEdgeWidth(MindMapNode node, int width) {
 		getActorFactory().getEdgeWidthActor().setEdgeWidth(node, width);
 	}
 
-	/**
-     *
-     */
+
 
 	public void setEdgeStyle(MindMapNode node, String style) {
 		getActorFactory().getEdgeStyleActor().setEdgeStyle(node, style);
 	}
 
-	/**
-     *
-     */
+
 
 	public void setNodeStyle(MindMapNode node, String style) {
 		getActorFactory().getNodeStyleActor().setStyle(node, style);
@@ -2057,8 +2036,7 @@ public class MindMapController extends ControllerAdapter implements
 		htmlWriter.saveHTML(mindMapNodes);
 	}
 
-	/**
-     */
+
 	public void splitNode(MindMapNode node, int caretPosition, String newText) {
 		if (node.isRoot()) {
 			return;
@@ -2154,8 +2132,7 @@ public class MindMapController extends ControllerAdapter implements
 																		 */);
 	}
 
-	/**
-     */
+
 	private void recursiveCallUpdateHooks(MindMapNode node,
 			MindMapNode changedNode) {
 		// Tell any node hooks that the node is changed:
@@ -2352,8 +2329,7 @@ public class MindMapController extends ControllerAdapter implements
 		return Collections.unmodifiableSet(mPlugins);
 	}
 
-	/**
-	 */
+
 	public Transferable getClipboardContents() {
 		getClipboard();
 		return clipboard.getContents(this);
@@ -2368,8 +2344,7 @@ public class MindMapController extends ControllerAdapter implements
 		}
 	}
 
-	/**
-	 */
+
 	public void setClipboardContents(Transferable t) {
 		getClipboard();
 		clipboard.setContents(t, null);

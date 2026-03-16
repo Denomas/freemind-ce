@@ -1,5 +1,5 @@
 /* MarkTree JavaScript code
- * 
+ *
  * Distributed under the terms of the MIT License.
  * See "LICENCE.MIT" or http://www.opensource.org/licenses/mit-license.php for details.
  *
@@ -7,7 +7,7 @@
  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
  * for the specific language governing rights and limitations under the
  * License.
- * 
+ *
  * Miika Nurminen, 12.7.2004.
  */
 
@@ -18,7 +18,7 @@ function get_keycode(evt) {
            : document.all ? event.keyCode // event.keyCode!=evt.keyCode!
            : evt.keyCode;
 
-  if (code==0) 
+  if (code==0)
     code=evt.which; // for NS
   return code;
 }
@@ -98,7 +98,7 @@ function toggle_class(node) {
     result= str.substr(0,i);
   else
     result= str+"_active";
-  node.className=result; 
+  node.className=result;
   return node;
 }
 
@@ -113,7 +113,7 @@ function deactivate(node) {
 function is_list_node(n) {
   if (n==null) return false;
   if (n.className==null) return false;
-  if ( (is_exp(n)) || 
+  if ( (is_exp(n)) ||
        (is_col(n)) ||
        (is_basic(n)) )
    return true; else return false;
@@ -156,7 +156,7 @@ function set_lastnode(n) {
 /*var d = new Date();
 var t_mil = d.getMilliseconds();*/
 // testattu nopeuksia explorerilla, ei merkittäviä eroja
-  if (lastnode==n) return; 
+  if (lastnode==n) return;
 /*  deactivate(lastnode)
   lastnode=n;
   activate(lastnode);*/
@@ -202,12 +202,12 @@ function prev_list_node() {
 function getsub (li) {
   if (li.childNodes.length==0) return null;
   for (var c = 0; c < li.childNodes.length; c++)
-    if ( (li.childNodes[c].className == 'sub') || (li.childNodes[c].className == 'subexp') ) 
+    if ( (li.childNodes[c].className == 'sub') || (li.childNodes[c].className == 'subexp') )
       return li.childNodes[c];
 }
 
 function find_listnode_recursive (li) {
-  if (is_list_node(li)) return li; 
+  if (is_list_node(li)) return li;
   if (li.childNodes.length==0) return null;
   result=null;
   for (var c = 0; c < li.childNodes.length; c++) {
@@ -223,13 +223,13 @@ function next_child_listnode(li) {
     result=find_listnode_recursive(li.childNodes[i]);
     if (result!=null) return result;
   }
-  return null;  
+  return null;
 }
 
 function next_actual_sibling_listnode(li) {
   if (li==null) return null;
   var temp=li;
-  while (1) { 
+  while (1) {
     var n = temp.nextSibling;
     if (n==null) {
       n=parent_listnode(temp);
@@ -241,11 +241,11 @@ function next_actual_sibling_listnode(li) {
 }
 
 function next_sibling_listnode(li) {
-if (li==null) return null; 
+if (li==null) return null;
  var result=null;
   var temp=li;
   if (is_col(temp)) return next_child_listnode(temp);
-  while (1) { 
+  while (1) {
     var n = temp.nextSibling;
     if (n==null) {
       n=parent_listnode(temp);
@@ -262,7 +262,7 @@ function last_sibling_listnode(li) {
   var last=null;
   while(1) {
     var n = temp.nextSibling;
-    if (is_list_node(temp)) 
+    if (is_list_node(temp))
       last = temp;
     if (n==null) {
       if (is_col(last)) return last_sibling_listnode(next_child_listnode(last));
@@ -272,17 +272,17 @@ function last_sibling_listnode(li) {
   }
 }
 
-function prev_sibling_listnode(li) { 
+function prev_sibling_listnode(li) {
   if (li==null) return null;
   var temp=li;
   var n = null;
-  while (1) { 
+  while (1) {
     n = temp.previousSibling;
     if (n==null) {
       return parent_listnode(li);
     }
     if (is_list_node(n)) {
-      if (is_col(n)) { 
+      if (is_col(n)) {
         return last_sibling_listnode(next_child_listnode(n));
       }
       else {
@@ -315,7 +315,7 @@ function getVisibleParents(id) {
 }
 
 function onClickHandler (evt) {
-if (lastnode==null) 
+if (lastnode==null)
 {
 listnodes = document.getElementsByTagName('li');
 lastnode=listnodes[1];
@@ -332,9 +332,9 @@ temp=listnodes[1];
 
 function expand(node) {
     if (!is_exp(node)) return;
-    if (node.className=='exp_active') 
+    if (node.className=='exp_active')
       node.className='col_active';
-    else 
+    else
         node.className='col';
     setSubClass(node,'subexp');
     //    getsub(node).className='subexp';
@@ -342,10 +342,10 @@ function expand(node) {
 
 function collapse(node) {
   if (!is_col(node)) return;
-  
+
 if (node.className=='col_active')
     node.className='exp_active'
-  else 
+  else
     node.className='exp';
 
  setSubClass(node,'sub');
@@ -356,7 +356,7 @@ if (node.className=='col_active')
 function setSubClass(node,name) {
   sub = getsub(node);
   if (sub==null) return;
-  sub.className=name;  
+  sub.className=name;
 }
 
 function toggle(target) {
@@ -371,7 +371,7 @@ function toggle(target) {
       setSubClass(target,'subexp');
       //      getsub(target).className='subexp';
     }
- 
+
 }
 
 function expandAll(node) {
@@ -381,8 +381,8 @@ function expandAll(node) {
 //        getsub(node).className='subexp';
     }
     var i;
-    if (node.childNodes!=null) 
-//    if (node.hasChildNodes()) 
+    if (node.childNodes!=null)
+//    if (node.hasChildNodes())
         for ( i = 0; i<node.childNodes.length; i++)
             expandAll(node.childNodes[i]);
 }
@@ -393,9 +393,9 @@ function collapseAll(node) {
         setSubClass(node,'sub');
 //        getsub(node).className='sub';
     }
-    var i;        
-    if (node.childNodes!=null) 
-// for opera   if (node.hasChildNodes()) 
+    var i;
+    if (node.childNodes!=null)
+// for opera   if (node.hasChildNodes())
         for ( i = 0; i<node.childNodes.length; i++)
             collapseAll(node.childNodes[i]);
 }
@@ -405,9 +405,9 @@ function collapseAll(node) {
 function unFocus(node) {
      // unfocuses potential link that is to be hidden (if a==null there is no link so it should not be blurred).
      // tested with mozilla 1.7, 12.7.2004. /mn (
-      intemp=parent_listnode(node);  
+      intemp=parent_listnode(node);
       a = get_link(intemp);     // added 6.4. to get keyboard working with
-      // moved before collapse to prevent an error message with IE when readonly==true      
+      // moved before collapse to prevent an error message with IE when readonly==true
       if (a!=null) a.blur(); // netscape after collapsing a focused node
       return intemp;
 }
@@ -425,7 +425,7 @@ function keyfunc(evt,mode) {
   }
 
   //window.alert(c);
-  if (checkup(mode,c)) { // i 
+  if (checkup(mode,c)) { // i
    temp=prev_sibling_listnode(lastnode);
   }
   else if (checkdn(mode,c)) { // k
@@ -436,7 +436,7 @@ function keyfunc(evt,mode) {
     //  temp=next_child_listnode(lastnode);
     // if (temp==null) {
       a = get_link(lastnode);
-        if (a!=null) a.focus(); else self.focus(); 
+        if (a!=null) a.focus(); else self.focus();
       //}
   }
   else if (checkl(mode,c)) { // j

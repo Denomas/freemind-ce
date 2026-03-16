@@ -54,7 +54,7 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * @return the text representation of the nodes content. HTML is represented
-	 *         as <html>....</html> see getXmlText
+	 *         as {@code <html>....</html>} see getXmlText
 	 */
 	String getText();
 
@@ -65,8 +65,8 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * @return the text representation of the nodes content as valid XML. HTML
-	 *         is represented as <html>....</html> with proper tags (like \<br/\>
-	 *         instead of \<br\>
+	 *         is represented as {@code <html>....</html>} with proper tags (like {@code <br/>}
+	 *         instead of {@code <br>}
 	 *         and so on).
 	 */
 	String getXmlText();
@@ -78,8 +78,8 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * @return the text representation of the notes content as valid XML. HTML
-	 *         is represented as <html>....</html> with proper tags (like <br/>
-	 *         instead of <br>
+	 *         is represented as {@code <html>....</html>} with proper tags (like {@code <br/>}
+	 *         instead of {@code <br>}
 	 *         and so on).
 	 */
 	String getXmlNoteText();
@@ -123,7 +123,7 @@ public interface MindMapNode extends MutableTreeNode {
 	 *         has the effect to sort the children first left then right).
 	 * */
 	ListIterator<MindMapNode> sortedChildrenUnfolded();
-	
+
 	/**
 	 * @return a list of (unmodifiable) children (all ones, folded and unfolded)
 	 *         of type MindMapNode.
@@ -155,7 +155,7 @@ public interface MindMapNode extends MutableTreeNode {
 	 * @return the pure style string (even if the style is "AS_PARENT" or null)
 	 */
 	String getBareStyle();
-	
+
 	String getStyle();
 
 	/**
@@ -199,8 +199,8 @@ public interface MindMapNode extends MutableTreeNode {
 	 * If the test node is identical or in the same family and elder as the
 	 * object. node.isChild..(parent) == true means: parent -> .. -> node exists
 	 * in the tree.
-	 * 
-	 * @see isDecendantOf
+	 *
+	 * @see #isDescendantOf(MindMapNode)
 	 */
 	boolean isDescendantOfOrEqual(MindMapNode pParentNode);
 
@@ -263,21 +263,21 @@ public interface MindMapNode extends MutableTreeNode {
 	/**
 	 * After a map creation, all hooks are present via this method, but still
 	 * not activated.
-	 * 
+	 *
 	 * @return a list of PermanentNodeHook elements.
 	 * */
 	List<PermanentNodeHook> getHooks();
 
 	/**
 	 * After activation, this method returns the hooks of this node.
-	 * 
+	 *
 	 * @return a list of PermanentNodeHook elements
 	 */
 	Collection<PermanentNodeHook> getActivatedHooks();
 
 	/**
 	 * Adds the hook to the list of hooks to my node. Does not invoke the hook!
-	 * 
+	 *
 	 * @return returns the input parameter hook
 	 */
 	PermanentNodeHook addHook(PermanentNodeHook hook);
@@ -292,8 +292,6 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * Removes all hooks from this node.
-	 * 
-	 * @param node
 	 */
 	public void removeAllHooks();
 
@@ -314,8 +312,8 @@ public interface MindMapNode extends MutableTreeNode {
 
 	/**
 	 * Is only used to store encrypted content of an encrypted mind map node.
-	 * 
-	 * @see MindMapNode.setAdditionalInfo(String)
+	 *
+	 * @see MindMapNode#setAdditionalInfo(String)
 	 */
 	public String getAdditionalInfo();
 
@@ -364,7 +362,7 @@ public interface MindMapNode extends MutableTreeNode {
 	 * @return true, if there is at least one visible child.
 	 */
 	boolean hasVisibleChilds();
-	
+
 	MapFeedback getMapFeedback();
 
 	MindMap getMap();
@@ -376,10 +374,10 @@ public interface MindMapNode extends MutableTreeNode {
 	List<String> getAttributeKeyList();
 
 	/**
-	 * @return an unmodifiable list of all attributes. 
+	 * @return an unmodifiable list of all attributes.
 	 */
 	List<Attribute> getAttributes();
-	
+
 	/**
 	 * @return the amount of attributes.
 	 */
@@ -397,7 +395,7 @@ public interface MindMapNode extends MutableTreeNode {
 	 * Searches for the first attribute with the given key. This is a
 	 * convenience function. see MindMapActions.editAttribute to set the value
 	 * to a different one.
-	 * 
+	 *
 	 * @param pKey
 	 *            is the name of the attribute
 	 * @return the value of the attribute or null, if not found.
@@ -417,13 +415,13 @@ public interface MindMapNode extends MutableTreeNode {
 	 * Don't set the attributes directly here. Use the {@link MindMapActions} methods instead.
 	 */
 	void setAttribute(int pPosition, Attribute pAttribute);
-	
+
 	/**
 	 * Insert the attribute to the given value.
 	 * Don't set the attributes directly here. Use the {@link MindMapActions} methods instead.
 	 */
 	void insertAttribute(int pPosition, Attribute pAttribute);
-	
+
 	/**
 	 * @param pAttribute
 	 * @return the index of the new attribute

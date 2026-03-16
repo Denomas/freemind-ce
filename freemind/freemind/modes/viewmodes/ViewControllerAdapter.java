@@ -42,7 +42,7 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public abstract class ViewControllerAdapter extends ControllerAdapter {
 
@@ -54,8 +54,7 @@ public abstract class ViewControllerAdapter extends ControllerAdapter {
 
 	public FindNextAction findNext = null;
 
-	/**
-	 */
+
 	public ViewControllerAdapter(Mode mode) {
 		super(mode);
 		toggleFolded = new CommonToggleFoldedAction(this);
@@ -185,5 +184,5 @@ public abstract class ViewControllerAdapter extends ControllerAdapter {
 		return new PermanentNodeHookSubstituteUnknown(pLoadName);
 	}
 
-	
+
 }

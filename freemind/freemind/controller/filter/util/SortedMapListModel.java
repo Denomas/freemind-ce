@@ -31,10 +31,10 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import javax.swing.AbstractListModel;
-
-@SuppressWarnings("serial")
 public class SortedMapListModel extends AbstractListModel implements
 		SortedListModel {
+	private static final long serialVersionUID = 1L;
+
 	SortedSet model;
 
 	public SortedMapListModel() {
@@ -65,7 +65,7 @@ public class SortedMapListModel extends AbstractListModel implements
 		model.addAll(pObjects);
 		fireContentsChanged(this, 0, getSize());
 	}
-	
+
 	public void clear() {
 		int oldSize = getSize();
 		if (oldSize > 0) {
@@ -90,8 +90,7 @@ public class SortedMapListModel extends AbstractListModel implements
 		return model.last();
 	}
 
-	/**
- */
+
 	public int getIndexOf(Object o) {
 		Iterator<Object> i = iterator();
 		int count = -1;
@@ -105,7 +104,7 @@ public class SortedMapListModel extends AbstractListModel implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.util.SortedListModel#replace(java.lang.Object,
 	 * java.lang.Object)
@@ -122,7 +121,7 @@ public class SortedMapListModel extends AbstractListModel implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.util.SortedListModel#delete(java.lang.Object)
 	 */

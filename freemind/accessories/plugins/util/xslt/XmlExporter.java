@@ -30,6 +30,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.xml.XMLConstants;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -38,7 +39,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 /**
- * 
+ *
  * @author joerg
  */
 public class XmlExporter {
@@ -59,6 +60,7 @@ public class XmlExporter {
 	    try {
 	        // System.out.println("make transform instance");
 	        TransformerFactory transFact = TransformerFactory.newInstance();
+	        transFact.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
 	        Transformer trans = transFact.newTransformer(xsltSource);
 

@@ -31,10 +31,10 @@ import freemind.modes.mindmapmode.actions.xml.ActionFilter.FinalActionFilter;
 import freemind.modes.mindmapmode.actions.xml.ActionFilter.FirstActionFilter;
 
 /**
- * Manages the actors and filters for xml transactions inside FreeMind. 
- * 
+ * Manages the actors and filters for xml transactions inside FreeMind.
+ *
  * @author foltin
- * 
+ *
  */
 public class ActionRegistry {
 
@@ -50,15 +50,12 @@ public class ActionRegistry {
 	private UndoActionHandler undoActionHandler;
 	private static java.util.logging.Logger logger = null;
 
-	/**
-	 *
-	 */
+
 	public ActionRegistry() {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		registeredHandler = new Vector<ActionHandler>();
 		registeredFilters = new Vector<ActionFilter>();
 		registeredActors = new HashMap<Class<?>, ActorXml>();
@@ -177,14 +174,12 @@ public class ActionRegistry {
 		return returnValue;
 	}
 
-	/**
-	 */
+
 	public void registerActor(ActorXml actor, Class<?> action) {
 		registeredActors.put(action, actor);
 	}
 
-	/**
-	 */
+
 	public void deregisterActor(Class<?> action) {
 		registeredActors.remove(action);
 	}
@@ -211,7 +206,7 @@ public class ActionRegistry {
 		throw new IllegalArgumentException("No actor present for xmlaction"
 				+ actionClass);
 	}
-	
+
 	public void registerUndoHandler(UndoActionHandler undoActionHandler) {
 		this.undoActionHandler = undoActionHandler;
 	}

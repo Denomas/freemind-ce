@@ -26,9 +26,8 @@ import freemind.common.ComboProperty;
 
 /**
  * Adjusts string values of integers to the nearest integer as string.
- * 
+ *
  * @author foltin
- * @date 26.09.2013
  */
 public class IntegerComboProperty extends ComboProperty {
 
@@ -45,7 +44,7 @@ public class IntegerComboProperty extends ComboProperty {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.common.ComboProperty#setValue(java.lang.String)
 	 */
 	public void setValue(String pValue) {

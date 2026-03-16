@@ -34,14 +34,14 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class RemoveAllIconsAction extends NodeGeneralAction implements
 		IconInformation {
+	private static final long serialVersionUID = 1L;
 
-	/**
-     */
+
+
 	public RemoveAllIconsAction(MindMapController modeController,
 			IconAction addIconAction) {
 		super(modeController, "remove_all_icons", "images/edittrash.png");

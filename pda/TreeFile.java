@@ -5,10 +5,10 @@ import superwaba.ext.xplat.xml.*;
 import superwaba.ext.xplat.io.BufferStream;
 
 public class TreeFile {
-    
+
 	private Stream file;
 	private FmParser fmp;
-	
+
     public TreeFile(String fileName,FmParser fmp) {
 		file = new File(fileName, File.READ_ONLY);
 		this.fmp=fmp;
@@ -81,7 +81,7 @@ public class TreeFile {
 	 * @param source		Tree to read data from.
 	 * @param dBase		Database to write record to.
 	 * @param rec
-	 * @param mapName	Name for use confidence popup. 
+	 * @param mapName	Name for use confidence popup.
 	 * @param main
 	 */
 	public void saveTree(Tree source,Catalog dBase, int rec, String mapName,Window main) {
@@ -159,7 +159,7 @@ public class TreeFile {
 				writeToFile(outBuffer, " " + a.getAttributeAsString());
 			}
 		}
-		
+
 		/* If there are no children or icons, close this node now. */
 		if ((n == null)&&(node.userIcons.size()==0)) {
 			writeToFile(outBuffer, "/>\n");

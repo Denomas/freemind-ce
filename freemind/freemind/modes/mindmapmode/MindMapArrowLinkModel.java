@@ -47,7 +47,7 @@ public class MindMapArrowLinkModel extends ArrowLinkAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapArrowLink#changeInclination(int, int, int,
 	 * int)
 	 */

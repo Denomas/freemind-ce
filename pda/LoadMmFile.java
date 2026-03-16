@@ -18,7 +18,7 @@ public class LoadMmFile extends Container {
 		super();
 		this.main=main;
 	}
-	
+
 	public void onStart() {
 		btnQuit=new Button("Quit");
 		add(btnQuit,LEFT,BOTTOM);
@@ -59,18 +59,18 @@ public class LoadMmFile extends Container {
 			add(new Label("Select file to load:"),LEFT,TOP+1);
 			cbxFiles=new ComboBox(listFiles);
 			add(cbxFiles);
-			cbxFiles.setRect(LEFT,AFTER+2,FILL,PREFERRED); 
+			cbxFiles.setRect(LEFT,AFTER+2,FILL,PREFERRED);
 			cbxFiles.select(listFiles.getItemAt(0));
 
 			add(new Label("Change directory:"),LEFT,AFTER+10);
 			cbxDirs=new ComboBox(listDirs);
 			add(cbxDirs);
-			cbxDirs.setRect(LEFT,AFTER,FILL,PREFERRED); 
+			cbxDirs.setRect(LEFT,AFTER,FILL,PREFERRED);
 			cbxDirs.select(listDirs.getItemAt(0));
 
 		}
 	}
-	
+
 	/**
 	 * Standard event handler.
 	 */

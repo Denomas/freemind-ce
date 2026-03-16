@@ -20,6 +20,7 @@
 
 package freemind.modes.browsemode;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 import freemind.main.XMLElement;
@@ -38,7 +39,7 @@ public class BrowseNodeModel extends NodeAdapter {
 
 	public BrowseNodeModel(Object userObject, MindMap map) {
 		super(userObject, map);
-		children = new LinkedList<>();
+		children = Collections.synchronizedList(new LinkedList<>());
 		setEdge(new BrowseEdgeModel(this, getMapFeedback()));
 	}
 

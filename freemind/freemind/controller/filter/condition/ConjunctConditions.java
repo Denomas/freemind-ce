@@ -43,16 +43,14 @@ public class ConjunctConditions implements Condition {
 	static final String NAME = "conjunct_condition";
 	private Object[] conditions;
 
-	/**
-     *
-     */
+
 	public ConjunctConditions(Object[] conditions) {
 		this.conditions = conditions;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.condition.Condition#checkNode(freemind.modes
 	 * .MindMapNode)
@@ -69,7 +67,7 @@ public class ConjunctConditions implements Condition {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.condition.Condition#getListCellRendererComponent
 	 * ()

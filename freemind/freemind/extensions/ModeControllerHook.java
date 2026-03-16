@@ -27,12 +27,12 @@ package freemind.extensions;
 
 
 /**
- * 
+ *
  * Is a basic interface for all hooks that implement actions independent of nodes.
- * Examples are: 
+ * Examples are:
  * <ul>
  * <li> exports of maps to different formats
- * <li> general dialogs (as the pattern or scripting dialog)  
+ * <li> general dialogs (as the pattern or scripting dialog)
  * </ul>
  * @author foltin
  */

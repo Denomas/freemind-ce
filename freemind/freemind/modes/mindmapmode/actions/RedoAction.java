@@ -25,9 +25,9 @@ package freemind.modes.mindmapmode.actions;
 
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
-
-@SuppressWarnings("serial")
 public class RedoAction extends UndoAction {
+	private static final long serialVersionUID = 1L;
+
 	private MindMapController controller;
 
 	public RedoAction(MindMapController controller) {
@@ -36,8 +36,7 @@ public class RedoAction extends UndoAction {
 		this.controller = controller;
 	}
 
-	/**
-     */
+
 	protected void informUndoPartner(ActionPair pair) {
 		this.controller.undo.add(pair.reverse());
 		this.controller.undo.setEnabled(true);

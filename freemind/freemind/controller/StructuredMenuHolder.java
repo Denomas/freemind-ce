@@ -47,13 +47,11 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class StructuredMenuHolder {
 
-	/**
-	 * 
-	 */
+
 	public static final String AMOUNT_OF_VISIBLE_MENU_ITEMS = "AMOUNT_OF_VISIBLE_MENU_ITEMS";
 	public static final int ICON_SIZE = 16;
 	private String mOutputString;
@@ -69,10 +67,9 @@ public class StructuredMenuHolder {
 	private static ImageIcon sSelectedIcon;
 
 	public StructuredMenuHolder() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		menuMap = new HashMap<>();
 		Vector<String> order = new Vector<>();
 		menuMap.put(ORDER_NAME, order);
@@ -83,15 +80,13 @@ public class StructuredMenuHolder {
 
 	}
 
-	/**
-	 */
+
 	public JMenu addMenu(JMenu item, String category) {
 		StringTokenizer tokens = new StringTokenizer(category, "/");
 		return (JMenu) addMenu(item, tokens);
 	}
 
-	/**
-	 */
+
 	public JMenuItem addMenuItem(JMenuItem item, String category) {
 		StringTokenizer tokens = new StringTokenizer(category, "/");
 		StructuredMenuItemHolder holder = new StructuredMenuItemHolder();
@@ -103,7 +98,7 @@ public class StructuredMenuHolder {
 	}
 
 	/**
-	 * @param item is an action. If it derives from MenuItemSelectedListener, 
+	 * @param item is an action. If it derives from MenuItemSelectedListener,
 	 * a check box is used.
 	 */
 	public JMenuItem addAction(Action item, String category) {
@@ -127,7 +122,7 @@ public class StructuredMenuHolder {
 
 	/**
 	 * Under Mac, no HTML is rendered for menus.
-	 * 
+	 *
 	 * @param holder
 	 */
 	private void adjustTooltips(StructuredMenuItemHolder holder) {
@@ -164,8 +159,7 @@ public class StructuredMenuHolder {
 		categoryPair.order.add(categoryPair.token);
 	}
 
-	/**
-	 */
+
 	private Object addMenu(Object item, StringTokenizer tokens) {
 		MapTokenPair categoryPair = getCategoryMap(tokens, menuMap);
 		// add the item:
@@ -289,8 +283,7 @@ public class StructuredMenuHolder {
 		}, myMap, new DefaultMenuAdderCreator());
 	}
 
-	/**
-	 */
+
 	public void updateMenus(final JToolBar bar, String prefix) {
 		MapTokenPair pair = getCategoryMap(new StringTokenizer(prefix, "/"),
 				menuMap);
@@ -328,13 +321,11 @@ public class StructuredMenuHolder {
 
 	private static class MenuItemAdder implements MenuAdder {
 
-		/**
-		 * 
-		 */
+
 		private int mAmountOfVisibleMenuItems = 20;
 		private int mItemCounter = 0;
 		private int mMenuCounter = 0;
-		
+
 		private JMenu mBaseMenuItem;
 
 		private JMenu myMenuItem;
@@ -384,8 +375,7 @@ public class StructuredMenuHolder {
 		}
 	}
 
-	/**
-     */
+
 	static private void adjustMenuItem(JMenuItem item) {
 		if (item.getIcon() == null) {
 			item.setIcon(blindIcon);
@@ -406,7 +396,7 @@ public class StructuredMenuHolder {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.StructuredMenuHolder.MenuAdderCreator#createAdder
 		 * (javax.swing.JMenu)
@@ -467,7 +457,7 @@ public class StructuredMenuHolder {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
@@ -482,7 +472,7 @@ public class StructuredMenuHolder {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.StructuredMenuHolder.MenuAdderCreator#createAdder
 		 * (javax.swing.JMenu)

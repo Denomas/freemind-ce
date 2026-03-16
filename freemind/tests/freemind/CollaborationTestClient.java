@@ -49,7 +49,6 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /**
  * @author foltin
- * @date 07.05.2014
  */
 public abstract class CollaborationTestClient extends CommunicationBase {
 
@@ -72,7 +71,7 @@ public abstract class CollaborationTestClient extends CommunicationBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.CommunicationBase#terminateSocket()
 	 */
 	@Override
@@ -86,7 +85,7 @@ public abstract class CollaborationTestClient extends CommunicationBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * plugins.collaboration.socket.CommunicationBase#processCommand(freemind
 	 * .controller.actions.generated.instance.CollaborationActionBase)
@@ -190,7 +189,7 @@ public abstract class CollaborationTestClient extends CommunicationBase {
 		rootNode.setMap(newModel);
 		mController.invokeHooksRecursively((NodeAdapter) rootNode, newModel);
 	}
-	
+
 	public abstract void reactOnReceiveLock(
 			CollaborationReceiveLock lockReceived);
 

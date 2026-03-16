@@ -1,3 +1,5 @@
+import java.time.Duration
+
 /*
  * FreeMind CE - Main Module Build Configuration
  * Denomas - 2026
@@ -31,7 +33,22 @@ tasks.withType<Javadoc> {
     options.encoding = "UTF-8"
 }
 
+// Generate version.properties from Gradle project version (synced by release-please)
+val generateVersionProperties by tasks.registering {
+    description = "Generates version.properties with the current project version"
+    group = "Generation"
+    val outputDir = layout.buildDirectory.dir("generated-resources")
+    outputs.dir(outputDir)
+    doLast {
+        val dir = outputDir.get().asFile
+        dir.mkdirs()
+        File(dir, "version.properties").writeText("freemind.version=${project.version}\n")
+    }
+}
+
 tasks.processResources {
+    dependsOn(generateVersionProperties)
+    from(generateVersionProperties.map { it.outputs.files })
     filteringCharset = "UTF-8"
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     // Root-level resource files needed on classpath
@@ -379,6 +396,28 @@ tasks.register<Test>("testGui") {
     }
 }
 
+tasks.register<Test>("testPerformance") {
+    description = "Run performance tests (large file, timing)"
+    group = "verification"
+    useJUnitPlatform {
+        includeTags("performance")
+    }
+    jvmArgs("-Xmx512m")
+    systemProperty("java.awt.headless", "true")
+    maxHeapSize = "512m"
+    timeout.set(Duration.ofMinutes(10))
+}
+
+tasks.register<Test>("testChaos") {
+    description = "Run chaos/resilience tests"
+    group = "verification"
+    useJUnitPlatform {
+        includeTags("chaos")
+    }
+    systemProperty("java.awt.headless", "true")
+    timeout.set(Duration.ofMinutes(5))
+}
+
 tasks.register<JavaExec>("showcaseScreenshots") {
     description = "Launches FreeMind CE with showcase mindmaps and captures full-screen desktop screenshots"
     group = "Verification"
@@ -403,6 +442,16 @@ tasks.jacocoTestReport {
     reports {
         xml.required.set(true)
         html.required.set(true)
+    }
+}
+
+tasks.named<JacocoCoverageVerification>("jacocoTestCoverageVerification") {
+    violationRules {
+        rule {
+            limit {
+                minimum = "0.20".toBigDecimal()
+            }
+        }
     }
 }
 
@@ -531,6 +580,7 @@ tasks.register<Exec>("jpackageWin") {
         "--file-associations", "file-associations.properties",
         "--win-shortcut",
         "--win-menu",
+        "--win-menu-group", "FreeMind CE",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m",
         "--java-options", "-Xss8M",
@@ -624,6 +674,7 @@ tasks.register<Exec>("jpackageWinMsi") {
         "--win-per-user-install",
         "--win-shortcut",
         "--win-menu",
+        "--win-menu-group", "FreeMind CE",
         "--win-shortcut-prompt",
         "--java-options", "-Xms64m",
         "--java-options", "-Xmx512m",

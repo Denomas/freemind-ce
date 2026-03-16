@@ -37,9 +37,9 @@ import freemind.main.Tools;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.actions.xml.AbstractXmlAction;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
-
-@SuppressWarnings("serial")
 public class UndoAction extends AbstractXmlAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private MindMapController controller;
 	private boolean isUndoAction;
@@ -53,10 +53,9 @@ public class UndoAction extends AbstractXmlAction {
 		this(controller, controller.getText("undo"), freemind.view.ImageFactory.getInstance().createIcon(
 				controller.getResource("images/undo.png")), controller);
 		this.controller = controller;
-		if (logger == null) {
 			logger = controller.getFrame()
 					.getLogger(this.getClass().toString());
-		}
+
 	}
 
 	protected UndoAction(MindMapController adapter, String text, Icon icon,
@@ -67,15 +66,14 @@ public class UndoAction extends AbstractXmlAction {
 		isUndoAction = false;
 	}
 
-	/**
-     */
+
 	public boolean isUndoAction() {
 		return isUndoAction;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.AbstractXmlAction#xmlActionPerformed(java
 	 * .awt.event.ActionEvent)
@@ -93,8 +91,7 @@ public class UndoAction extends AbstractXmlAction {
 		}
 	}
 
-	/**
-     */
+
 	protected void informUndoPartner(ActionPair pair) {
 		this.controller.redo.add(pair.reverse());
 		this.controller.redo.setEnabled(true);
@@ -111,7 +108,7 @@ public class UndoAction extends AbstractXmlAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.Action#setEnabled(boolean)
 	 */
 	public void setEnabled(boolean arg0) {

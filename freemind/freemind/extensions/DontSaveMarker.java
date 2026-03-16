@@ -23,7 +23,7 @@ package freemind.extensions;
 /**
  * @author foltin If a PermanentNodeHook derives from this interface, too, it's
  *         save method is not called and it is not stored.
- * 
+ *
  *         This may be useful, when the activity a plugin produces shouldn't be
  *         restored the next time, the map is loaded (eg. the collaboration
  *         feature).

@@ -74,8 +74,7 @@ public class FilterController implements MapModuleChangeObserver {
 		return conditionRenderer;
 	}
 
-	/**
-     */
+
 	public FilterToolbar getFilterToolbar() {
 		if (filterToolbar == null) {
 			filterToolbar = new FilterToolbar(c);
@@ -96,8 +95,7 @@ public class FilterController implements MapModuleChangeObserver {
 		return filterToolbar;
 	}
 
-	/**
-     */
+
 	public void showFilterToolbar(boolean show) {
 		if (show == isVisible())
 			return;
@@ -125,8 +123,7 @@ public class FilterController implements MapModuleChangeObserver {
 		return conditionFactory;
 	}
 
-	/**
-     */
+
 	public MindMap getMap() {
 		return map;
 	}

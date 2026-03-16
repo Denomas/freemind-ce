@@ -32,6 +32,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -78,11 +79,8 @@ import freemind.main.Tools;
  *         <li>show line/column numbers in status bar</li>
  *         </ul>
  */
-@SuppressWarnings("serial")
 public class ScriptEditorPanel extends JDialog implements MenuListener {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 3221975191441136520L;
 
 	private static final String WINDOW_PREFERENCE_STORAGE_PROPERTY = "plugins.script.ScriptEditorPanel/window_positions";
@@ -127,7 +125,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 		public void write(final byte[] pB) throws IOException {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
-					mScriptResultField.append(new String(pB));
+					mScriptResultField.append(new String(pB, StandardCharsets.UTF_8));
 				}
 			});
 		}
@@ -156,7 +154,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing
 		 * .JMenuItem, javax.swing.Action)
@@ -182,7 +180,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing
 		 * .JMenuItem, javax.swing.Action)
@@ -313,7 +311,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 		boolean isDirty();
 
 		/**
-		 * 
+		 *
 		 * @return the index of the new script.
 		 */
 		int addNewScript();
@@ -484,7 +482,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 	/**
 	 * @param pIsCanceled
 	 *            TODO
-	 * 
+	 *
 	 */
 	private void disposeDialog(boolean pIsCanceled) {
 		// the script should be stopped.
@@ -516,7 +514,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 	}
 
 	PrintStream getPrintStream() {
-		return new PrintStream(new ResultFieldStream());
+		return new PrintStream(new ResultFieldStream(), true, StandardCharsets.UTF_8);
 	}
 
 	ErrorHandler getErrorHandler() {
@@ -558,7 +556,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.MenuListener#menuSelected(javax.swing.event.MenuEvent)
 	 */
@@ -574,7 +572,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.MenuListener#menuDeselected(javax.swing.event.MenuEvent
 	 * )
@@ -587,7 +585,7 @@ public class ScriptEditorPanel extends JDialog implements MenuListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.MenuListener#menuCanceled(javax.swing.event.MenuEvent)
 	 */

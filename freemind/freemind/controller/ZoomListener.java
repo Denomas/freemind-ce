@@ -22,7 +22,6 @@ package freemind.controller;
 
 /**
  * @author foltin
- * @date 16.04.2012
  */
 public interface ZoomListener {
 	/**

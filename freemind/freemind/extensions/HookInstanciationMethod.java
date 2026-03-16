@@ -140,15 +140,13 @@ public class HookInstanciationMethod {
 		return res;
 	}
 
-	/**
-	 */
+
 	public Collection<MindMapNode> getDestinationNodes(MapFeedback controller,
 			MindMapNode focussed, List<MindMapNode> selecteds) {
 		return getter.getDestinationNodes(controller, focussed, selecteds);
 	}
 
-	/**
-	 */
+
 	public boolean isAlreadyPresent(String hookName, MindMapNode focussed) {
 		for (Iterator<PermanentNodeHook> i = focussed.getActivatedHooks().iterator(); i.hasNext();) {
 			PermanentNodeHook hook = i.next();
@@ -159,15 +157,13 @@ public class HookInstanciationMethod {
 		return false;
 	}
 
-	/**
-	 */
+
 	public MindMapNode getCenterNode(MapFeedback controller,
 			MindMapNode focussed, List<MindMapNode> selecteds) {
 		return getter.getCenterNode(controller, focussed, selecteds);
 	}
 
-	/**
-     */
+
 	public boolean isUndoable() {
 		return isUndoable;
 	}

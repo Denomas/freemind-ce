@@ -121,7 +121,7 @@ public class XHTMLWriter extends FixedHTMLWriter {
 	/**
 	 * External call to convert a source HTML file to a target XHTML file.
 	 * <p>
-	 * Usage: <tt>java XHTMLWriter &lt;source file&gt; &lt;target file&gt;</tt>
+	 * Usage: {@code java XHTMLWriter <source file> <target file>}
 	 *
 	 * @param args
 	 *            Shell arguments

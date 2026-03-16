@@ -27,7 +27,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
 package onekin.WSL.config;
 
@@ -52,7 +52,7 @@ import java.util.zip.GZIPInputStream;
  * @author Gorka Puente García
  */
 public class WSL_MediaWikiConfig extends JPanel implements ActionListener, FocusListener {
-	
+
     private final static int GAP = 10;
     private final String curDir = System.getProperty("user.dir");
     private final String localSettings = curDir + "/plugins/WSL/resources/LocalSettings.php";
@@ -81,7 +81,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
 
     public WSL_MediaWikiConfig() {
     	wsl_util = new WSL_Util();
-    	
+
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         JPanel leftHalf = new JPanel() {
@@ -112,19 +112,19 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
         button.addActionListener(this);
         button.setActionCommand("clear");
         panel.add(button);
-        
+
         installationDirButton = new JButton("Select dir");
         installationDirButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
-                chooser = new JFileChooser(); 
+
+                chooser = new JFileChooser();
                 chooser.setCurrentDirectory(new java.io.File("."));
                 chooser.setDialogTitle(chooserTitle);
                 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 // disable the "All files" option.
                 chooser.setAcceptAllFileFilterUsed(false);
-                //    
-                if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { 
+                //
+                if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 	installationDir.setText(chooser.getSelectedFile().toString());
                   }
                 else {
@@ -133,7 +133,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
             }
         });
         panel.add(installationDirButton);
-       
+
         //Match the SpringLayout's gap, subtracting 5 to make
         //up for the default gap FlowLayout provides.
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0,
@@ -175,13 +175,13 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
     	}
 
     }
-    
+
 	public void destroy() {
 		if(frame != null){
-			frame.dispose();	
+			frame.dispose();
 		}
 	}
-	
+
     private void installMW() {
         try {
         	String userLocalSettings = installationDir.getText()+ File.separator + wikiName.getText() + "/LocalSettings.php";
@@ -190,7 +190,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
         	BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = "", newText = "";
             while((line = reader.readLine()) != null)
-            	{// Substitute variables with user inputs           	 
+            	{// Substitute variables with user inputs
            	 if(line.contains("$wgScriptPath       =")){
            		 line = "$wgScriptPath = \"/" + wikiName.getText() + "\";";
            	 }else if(line.contains("$wgSitename         =")){
@@ -212,20 +212,20 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
            		 line = "#$wgLogo             = \"$wgStylePath/common/images/wiki.png\";";
            	 }else if(line.contains("$wgDefaultSkin = 'monobook';")){
            		 line = "#$wgDefaultSkin = 'monobook';";
-           	 }	 
+           	 }
            	 newText = newText + line + "\n";
             }
             reader.close();
-               
+
             FileWriter writer = new FileWriter(userLocalSettings);
             writer.write(newText);
             writer.close();
         }catch (IOException ioe){
             ioe.printStackTrace();
         }
-        createDB();	
+        createDB();
 	}
-    
+
    /**
     * This method creates a new database in mysql, with MediaWiki tables
     * and with an admin user "WikiSysop"
@@ -252,9 +252,9 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
     	    exitVal2 = child.waitFor();
     	    // Create WikiSysop user
     	    command = 	"mysql " + dbName.getText() +
-    	    			" --user=" + dbUser.getText() + 
+    	    			" --user=" + dbUser.getText() +
     	    			" --password=" + new String(passwordField.getPassword()) +
-    	    			" --host=" + host.getText() + 
+    	    			" --host=" + host.getText() +
     	    			" -e \"SOURCE "+ curDir + "/plugins/WSL/resources/WikiSysop.sql\"";
     	    child = Runtime.getRuntime().exec(command);
     	    exitVal3 = child.waitFor();
@@ -276,7 +276,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
 	private void downloadMW() {
 		BufferedInputStream in;
 		try {
-			in = new BufferedInputStream(new 
+			in = new BufferedInputStream(new
 					java.net.URL("http://www.onekin.org/wsl/downloads/" + mediaWikiFileName).openStream());
 			FileOutputStream fos = new FileOutputStream(mediaWikiFileName);
 			BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);
@@ -291,21 +291,21 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
 			fos.close();
 			uncompressMW(mediaWikiFileName, new File(installationDir.getText()));
 			deleteFile(mediaWikiFileName);
-			
+
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
-	
+
 	/**
 	 * This methods uncompresses tar.gz files
 	 * @param mediaWikiFileName
 	 * Uncompress tar.gz
-	 */ 
+	 */
 	private void uncompressMW(String mediaWikiFileName, File dest) {
 		try {
 			//assuming the file you pass in is not a dir
@@ -331,14 +331,14 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
 			// Now, rename the folder as the wiki name (e.g., from desktop/mediawiki-1.16.1 to desktop/wikiName)
 			File oldMWDir = new File(installationDir.getText() + File.separatorChar + mediaWikiFileName.substring(0, mediaWikiFileName.length() -7));
 			oldMWDir.renameTo(new File(installationDir.getText() + File.separatorChar + wikiName.getText()));
-			
+
 			} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	/**
@@ -417,17 +417,17 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
 	    if(confirmPasswordField.getPassword().equals("")){
 	    	everythingOK = false;
 	    	warning.append("Confirmation password is empty <BR> ");
-	    }   
+	    }
         warning.append("</p></html>");
 	    addressDisplay.setText(warning.toString());
 		return everythingOK;
 	}
 
 	/**
-	 * 
+	 *
 	 * @param text
 	 * @return Boolean
-	 * Email validator, extracted from 
+	 * Email validator, extracted from
 	 * www.mkyong.com/regular-expressions/how-to-validate-email-address-with-regular-expression
 	 */
 	private Boolean validateEmail(String email) {
@@ -508,7 +508,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
         email = new JTextField();
         email.setColumns(30);
         fields[fieldNum++] = email;
-        
+
         host  = new JTextField();
         host.setColumns(30);
         fields[fieldNum++] = host;
@@ -516,11 +516,11 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
         dbName = new JTextField();
         dbName.setColumns(30);
         fields[fieldNum++] = dbName;
-        
+
         dbUser  = new JTextField();
         dbUser.setColumns(30);
         fields[fieldNum++] = dbUser;
-        
+
         passwordField  = new JPasswordField();
         passwordField.setColumns(30);
         fields[fieldNum++] = passwordField;
@@ -532,7 +532,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
         installationDir = new JTextField();
         installationDir.setColumns(20);
         fields[fieldNum++] = installationDir;
-        
+
         //Associate label/field pairs, add everything,
         //and lay it out.
         for (int i = 0; i < labelStrings.length; i++) {
@@ -559,7 +559,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
         return panel;
     }
 
-  
+
     public JFormattedTextField getTextField(JSpinner spinner) {
         JComponent editor = spinner.getEditor();
         if (editor instanceof JSpinner.DefaultEditor) {
@@ -581,11 +581,11 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
         //Create and set up the window.
         frame = new JFrame("Configure your MediaWiki Installation");
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         //Add contents to the window.
         frame.add(new WSL_MediaWikiConfig());
-        
+
         // make the frame half the height and width
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int height = screenSize.height;
@@ -593,7 +593,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
         frame.setSize(width/2, height/2);
         // Center the frame
         frame.setLocationRelativeTo(null);
-        
+
         //Display the window.
         frame.pack();
         frame.setVisible(true);
@@ -613,7 +613,7 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
 	        UIManager.put("swing.boldMetal", Boolean.FALSE);
                 createAndShowGUI();
             }
-        });	
+        });
 	}
 	static void launch() {
 		//Schedule a job for the event dispatch thread:
@@ -624,6 +624,6 @@ public class WSL_MediaWikiConfig extends JPanel implements ActionListener, Focus
 	        UIManager.put("swing.boldMetal", Boolean.FALSE);
                 createAndShowGUI();
             }
-        });	
+        });
 	}
 }

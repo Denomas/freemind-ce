@@ -40,7 +40,6 @@ import freemind.main.FreeMindMain;
  * Background server for map serving without gui. Single map instance.
  *
  * @author foltin
- * @date 03.05.2014
  */
 public class StandaloneMindMapMaster extends SocketMaster {
 

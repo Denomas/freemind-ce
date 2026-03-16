@@ -34,12 +34,11 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author adapted to the plugin mechanism by ganzer
- * 
+ *
  */
 public class ApplyFormatPlugin extends MindMapNodeHookAdapter {
 
-	/**
-	 */
+
 	public ApplyFormatPlugin() {
 		super();
 	}

@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package plugins.svg;
 
 import java.awt.Dimension;
@@ -26,12 +24,13 @@ import freemind.main.Tools;
 
 /**
  * @author Andy
- * 
+ *
  *         Class is responsible for a dialog to input all pdf export parameters
  *         like page orientation or format
  */
-@SuppressWarnings("serial")
 public class ExportPdfDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+
 
 	private static final String PORTRAIT = "portrait";
 
@@ -72,7 +71,7 @@ public class ExportPdfDialog extends JDialog {
 	private boolean mResult = true;
 
 	/**
-	 * 
+	 *
 	 * @return the format of the page format as text "A3","A4" defined in
 	 *         ExportPdfPapers
 	 */
@@ -81,7 +80,7 @@ public class ExportPdfDialog extends JDialog {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the pageformat PageFormat.LANDSCAPE or PageFormat.PORTRAIT
 	 */
 	public int getOrientation() {
@@ -94,7 +93,7 @@ public class ExportPdfDialog extends JDialog {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param owner
 	 * @param formats
 	 * @param controller

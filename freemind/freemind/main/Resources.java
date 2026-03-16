@@ -52,9 +52,8 @@ public class Resources implements TextTranslator {
 
 	private Resources(FreeMindMain frame) {
 		this.main = frame;
-		if (logger == null) {
 			logger = main.getLogger(this.getClass().getName());
-		}
+
 	}
 
 	static public void createInstance(FreeMindMain frame) {

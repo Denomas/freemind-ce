@@ -31,9 +31,9 @@ import java.awt.print.Printable;
 import javax.swing.JComponent;
 
 import freemind.view.mindmapview.MapView;
-
-@SuppressWarnings("serial")
 class Preview extends JComponent {
+	private static final long serialVersionUID = 1L;
+
 	private final static int DEFAULT_PREVIEW_SIZE = 300;
 	private final static double MINIMUM_ZOOM_FACTOR = 0.1;
 	private BufferedImage previewPageImage = null;

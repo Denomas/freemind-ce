@@ -31,10 +31,11 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class CommonToggleChildrenFoldedAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private ViewControllerAdapter modeController;
 

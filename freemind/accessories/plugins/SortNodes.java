@@ -57,16 +57,14 @@ public class SortNodes extends MindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-	 * 
-	 */
+
 	public SortNodes() {
 		super();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.NodeHook#invoke(freemind.modes.MindMapNode,
 	 * java.util.List)
 	 */

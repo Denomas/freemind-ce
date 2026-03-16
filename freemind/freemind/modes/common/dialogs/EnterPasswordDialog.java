@@ -137,8 +137,7 @@ public class EnterPasswordDialog extends JDialog {
 		close();
 	}
 
-	/**
-     */
+
 	private boolean checkEqualAndMinimumSize() {
 
 		char[] a1 = jPasswordField.getPassword();

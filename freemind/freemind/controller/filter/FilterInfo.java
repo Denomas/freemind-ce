@@ -29,9 +29,7 @@ package freemind.controller.filter;
 public class FilterInfo {
 	private int info = Filter.FILTER_INITIAL_VALUE;
 
-	/**
-     * 
-     */
+
 	public FilterInfo() {
 		super();
 	}
@@ -63,14 +61,12 @@ public class FilterInfo {
 		return info;
 	}
 
-	/**
-     */
+
 	public boolean isAncestor() {
 		return (info & Filter.FILTER_SHOW_ANCESTOR) != 0;
 	}
 
-	/**
-     */
+
 	public boolean isMatched() {
 		return (info & Filter.FILTER_SHOW_MATCHED) != 0;
 	}

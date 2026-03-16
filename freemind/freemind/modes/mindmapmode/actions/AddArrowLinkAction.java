@@ -34,15 +34,15 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class AddArrowLinkAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private final MindMapController modeController;
 
-	/**
-     */
+
 	public AddArrowLinkAction(MindMapController modeController) {
 		super("paste_as_link", "images/designer.png", modeController);
 		this.modeController = modeController;
@@ -60,7 +60,7 @@ public class AddArrowLinkAction extends MindmapAction {
 		boolean identicalError = false;
 		for (MindMapNode destination : nodesFromClipboard) {
 			if(selected != destination) {
-				getMindMapController().addLink(selected, destination);				
+				getMindMapController().addLink(selected, destination);
 			} else {
 				// give an error afterwards?
 				identicalError = true;
@@ -76,7 +76,7 @@ public class AddArrowLinkAction extends MindmapAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.FreemindAction#isEnabled(javax.swing.JMenuItem,
 	 * javax.swing.Action)
 	 */

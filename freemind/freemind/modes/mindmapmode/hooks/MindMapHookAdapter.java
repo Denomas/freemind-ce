@@ -30,9 +30,7 @@ import freemind.modes.mindmapmode.MindMapController;
 /** */
 public class MindMapHookAdapter extends ModeControllerHookAdapter {
 
-	/**
-     *
-     */
+
 	public MindMapHookAdapter() {
 		super();
 
@@ -41,7 +39,7 @@ public class MindMapHookAdapter extends ModeControllerHookAdapter {
 	public MindMapController getMindMapController() {
 		return (MindMapController) getController();
 	}
-	
+
 	public JMenuItem addAccelerator(JMenuItem menuItem, String key) {
 		String keyProp = getMindMapController().getFrame().getProperty(key);
 		if(keyProp == null) {

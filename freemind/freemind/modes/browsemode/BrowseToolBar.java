@@ -29,9 +29,9 @@ import javax.swing.JToolBar;
 
 import freemind.modes.ControllerAdapter;
 import freemind.modes.common.dialogs.PersistentEditableComboBox;
-
-@SuppressWarnings("serial")
 public class BrowseToolBar extends JToolBar {
+	private static final long serialVersionUID = 1L;
+
 
 	public static final String BROWSE_URL_STORAGE_KEY = "browse_url_storage";
 

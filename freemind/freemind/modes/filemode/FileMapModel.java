@@ -35,9 +35,9 @@ import freemind.modes.MindMapLinkRegistry;
 import freemind.modes.MindMapNode;
 import freemind.modes.ModeController;
 import freemind.modes.NodeAdapter;
-
-@SuppressWarnings("serial")
 public class FileMapModel extends MapAdapter {
+	private static final long serialVersionUID = 1L;
+
 
 	private MindMapLinkRegistry linkRegistry;
 
@@ -71,9 +71,7 @@ public class FileMapModel extends MapAdapter {
 		return true;
 	}
 
-	/**
-     *
-     */
+
 
 	public void destroy() {
 		/*
@@ -107,7 +105,7 @@ public class FileMapModel extends MapAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMap#setLinkInclinationChanged()
 	 */
 	public void setLinkInclinationChanged() {
@@ -115,7 +113,7 @@ public class FileMapModel extends MapAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMap#getXml(java.io.Writer)
 	 */
 	public void getXml(Writer fileout) throws IOException {
@@ -126,7 +124,7 @@ public class FileMapModel extends MapAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMap#getFilteredXml(java.io.Writer)
 	 */
 	public void getFilteredXml(Writer fileout) throws IOException {

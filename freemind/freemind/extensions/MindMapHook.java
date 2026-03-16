@@ -27,9 +27,9 @@ import freemind.modes.MapFeedback;
  * This is the most general hook interface. It is a base class for all hooks.
  * {@link ModeControllerHook} for hooks that implement actions independent of nodes
  * {@link NodeHook} for hooks that implement actions belonging to nodes
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public interface MindMapHook {
 	/**
@@ -59,17 +59,17 @@ public interface MindMapHook {
 	 * plugin_registration entry with isPluginBase==true, this object is
 	 * returned here. You can use it to realize something like the state of a
 	 * plugin (eg. is the plugin switched on or off?).<br>
-	 * 
+	 *
 	 * An example is the menu status of the encrypted nodes. If the node is not
 	 * encrypted, the encryption state cannot be toggled (see EncryptNode.java).<br>
-	 * 
+	 *
 	 * Another example arises from the collaboration mode. The state (connected,
 	 * wait for second party, map sharing etc.) can be stored in the plugin
 	 * base.<br>
-	 * 
+	 *
 	 * Remember, that it is most likely that you havn't specified the base class
 	 * and that you get NULL here.
-	 * 
+	 *
 	 * @return The object returned is of HookRegistration type but has to be
 	 *         casted anyway.
 	 */

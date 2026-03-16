@@ -53,7 +53,7 @@ import freemind.modes.ModeController;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class EditNodeBase {
 	protected static boolean checkSpelling = Resources.getInstance().
@@ -84,7 +84,7 @@ public class EditNodeBase {
 		class DialogWindowListener extends WindowAdapter {
 			/*
 			 * (non-Javadoc)
-			 * 
+			 *
 			 * @see
 			 * java.awt.event.WindowAdapter#windowClosing(java.awt.event.WindowEvent
 			 * )

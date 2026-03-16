@@ -31,7 +31,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 26.03.2014
  */
 public class EdgeStyleActor extends XmlActorAdapter {
 
@@ -41,7 +40,7 @@ public class EdgeStyleActor extends XmlActorAdapter {
 	public EdgeStyleActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public Class<EdgeStyleFormatAction> getDoActionClass() {
 		return EdgeStyleFormatAction.class;
 	}

@@ -31,10 +31,11 @@ import freemind.modes.mindmapmode.actions.xml.ActorXml;
 /**
  * Common class for mindmap actions.
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public abstract class MindmapAction extends FreemindAction  {
+	private static final long serialVersionUID = 1L;
+
 
 	private final MindMapController pMindMapController;
 
@@ -53,11 +54,11 @@ public abstract class MindmapAction extends FreemindAction  {
 	 * @param title
 	 *            Title is a resource.
 	 */
-	public MindmapAction(String title, 
+	public MindmapAction(String title,
 			MindMapController mindMapController) {
 		this(title, (String) null, mindMapController);
 	}
-	
+
 	/**
 	 * @param title
 	 *            Title is a resource.
@@ -80,5 +81,5 @@ public abstract class MindmapAction extends FreemindAction  {
 	public MindMapController getMindMapController() {
 		return pMindMapController;
 	}
-	
+
 }

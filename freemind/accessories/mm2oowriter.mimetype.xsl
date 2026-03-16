@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!--
-    adapted from mm2oowriter.xsl by Ondrej Popp  
+    adapted from mm2oowriter.xsl by Ondrej Popp
 /*FreeMind - A Program for creating and viewing Mindmaps
  *Copyright (C) 2000-2008  Christian Foltin and others.
  *
@@ -28,8 +28,8 @@
 
 	<xsl:output method="text" version="1.0" indent="no" encoding="UTF-8" omit-xml-declaration="no"/>
 	<xsl:strip-space elements="*"/>
-	
+
 	<xsl:template match="map"><xsl:text>application/vnd.oasis.opendocument.text</xsl:text>
 	</xsl:template>
-	
+
 </xsl:stylesheet>

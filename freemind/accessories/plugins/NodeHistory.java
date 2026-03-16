@@ -45,7 +45,7 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class NodeHistory extends MindMapNodeHookAdapter {
 
@@ -198,9 +198,7 @@ public class NodeHistory extends MindMapNodeHookAdapter {
 
 	}
 
-	/**
-	 * 
-	 */
+
 	public NodeHistory() {
 		super();
 	}

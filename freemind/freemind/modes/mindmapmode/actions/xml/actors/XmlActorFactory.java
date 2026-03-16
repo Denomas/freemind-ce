@@ -24,9 +24,8 @@ import freemind.modes.ExtendedMapFeedback;
 
 /**
  * Creates all XmlActors needed for the MindMapController
- * 
+ *
  * @author foltin
- * @date 16.03.2014
  */
 public class XmlActorFactory {
 
@@ -115,11 +114,11 @@ public class XmlActorFactory {
 		mUndoPasteActor = new UndoPasteActor(mMapFeedback);
 		mChangeNoteTextActor = new ChangeNoteTextActor(mMapFeedback);
 	}
-	
+
 	public ItalicNodeActor getItalicActor() {
 		return mActionActor;
 	}
-	
+
 	public BoldNodeActor getBoldActor() {
 		return mBoldActor;
 	}
@@ -135,27 +134,27 @@ public class XmlActorFactory {
 	public NewChildActor getNewChildActor() {
 		return mNewChildActor;
 	}
-	
+
 	public DeleteChildActor getDeleteChildActor() {
 		return mDeleteChildActor;
 	}
-	
+
 	public PasteActor getPasteActor() {
 		return mPasteActor;
 	}
-	
+
 	public RemoveAllIconsActor getRemoveAllIconsActor() {
 		return mRemoveAllIconsActor;
 	}
-	
+
 	public AddIconActor getAddIconActor() {
 		return mAddIconActor;
 	}
-	
+
 	public RemoveIconActor getRemoveIconActor() {
 		return mRemoveIconActor;
 	}
-	
+
 	public CloudActor getCloudActor() {
 		return mCloudActor;
 	}
@@ -163,11 +162,11 @@ public class XmlActorFactory {
 	public EdgeStyleActor getEdgeStyleActor() {
 		return mEdgeStyleActor;
 	}
-	
+
 	public EdgeWidthActor getEdgeWidthActor() {
 		return mEdgeWidthActor;
 	}
-	
+
 	public FontFamilyActor getFontFamilyActor() {
 		return mFontFamilyActor;
 	}
@@ -175,15 +174,15 @@ public class XmlActorFactory {
 	public FontSizeActor getFontSizeActor() {
 		return mFontSizeActor;
 	}
-	
+
 	public MoveNodeActor getMoveNodeActor() {
 		return mMoveNodeActor;
 	}
-	
+
 	public NodeStyleActor getNodeStyleActor() {
 		return mNodeStyleActor;
 	}
-	
+
 	public UnderlineActor getUnderlineActor() {
 		return mUnderlineActor;
 	}
@@ -191,43 +190,43 @@ public class XmlActorFactory {
 	public AddArrowLinkActor getAddArrowLinkActor() {
 		return mAddArrowLinkActor;
 	}
-	
+
 	public RemoveArrowLinkActor getRemoveArrowLinkActor() {
 		return mRemoveArrowLinkActor;
 	}
-	
+
 	public ChangeArrowLinkEndPointsActor getChangeArrowLinkEndPointsActor() {
 		return mChangeArrowLinkEndPointsActor;
 	}
-	
+
 	public ChangeArrowsInArrowLinkActor getChangeArrowsInArrowLinkActor() {
 		return mChangeArrowsInArrowLinkActor;
 	}
-	
+
 	public CloudColorActor getCloudColorActor() {
 		return mCloudColorActor;
 	}
-	
+
 	public ColorArrowLinkActor getColorArrowLinkActor() {
 		return mColorArrowLinkActor;
 	}
-	
+
 	public EdgeColorActor getEdgeColorActor() {
 		return mEdgeColorActor;
 	}
-	
+
 	public EditActor getEditActor() {
 		return mEditActor;
 	}
-	
+
 	public NodeBackgroundColorActor getNodeBackgroundColorActor() {
 		return mNodeBackgroundColorActor;
 	}
-	
+
 	public NodeColorActor getNodeColorActor() {
 		return mNodeColorActor;
 	}
-	
+
 	public AddHookActor getAddHookActor() {
 		return mAddHookActor;
 	}
@@ -235,49 +234,49 @@ public class XmlActorFactory {
 	public NodeUpActor getNodeUpActor() {
 		return mNodeUpActor;
 	}
-	
+
 	public RevertActor getRevertActor() {
 		return mRevertActor;
 	}
-	
+
 	public ToggleFoldedActor getToggleFoldedActor() {
 		return mToggleFoldedActor;
 	}
-	
+
 	public SetLinkActor getSetLinkActor() {
 		return mSetLinkActor;
 	}
-	
+
 	public InsertAttributeActor getInsertAttributeActor() {
 		return mInsertAttributeActor;
 	}
-	
+
 	public AddAttributeActor getAddAttributeActor() {
 		return mAddAttributeActor;
 	}
-	
+
 	public RemoveAttributeActor getRemoveAttributeActor() {
 		return mRemoveAttributeActor;
 	}
-	
+
 	public SetAttributeActor getSetAttributeActor() {
 		return mSetAttributeActor;
 	}
-	
+
 	public CutActor getCutActor() {
 		return mCutActor;
 	}
-	
+
 	public CompoundActor getCompoundActor() {
 		return mCompoundActor;
 	}
-	
+
 	public UndoPasteActor getUndoPasteActor() {
 		return mUndoPasteActor;
 	}
-	
+
 	public ChangeNoteTextActor getChangeNoteTextActor() {
 		return mChangeNoteTextActor;
 	}
-	
+
 }

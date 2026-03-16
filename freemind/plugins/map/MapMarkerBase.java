@@ -35,18 +35,14 @@ import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
 
 /**
  * @author foltin
- * @date 28.08.2012
  */
-@SuppressWarnings("serial")
 public abstract class MapMarkerBase extends JLabel implements MapMarker {
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
+
+
 	public static final int CIRCLE_RADIUS = 5;
-	/**
-	 * 
-	 */
+
 	private static final int CIRCLE_DIAMETER = CIRCLE_RADIUS * 2;
 	protected MapDialog mMapDialog;
 	boolean mSelected = false;
@@ -63,16 +59,13 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	private static Layer sLayer = new Layer("basis");
 	private static Style sStyle = new Style();
 
-	/**
-	 * 
-	 */
+
 	public MapMarkerBase(MapDialog pMapDialog) {
 		super();
 		mMapDialog = pMapDialog;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	@Override
@@ -140,7 +133,7 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	}
 
 	/**
-	 * @param pSel
+	 * @param pSelected
 	 */
 	public void setSelected(boolean pSelected) {
 		mSelected = pSelected;
@@ -149,7 +142,7 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	public boolean isSelected() {
 		return mSelected;
 	}
-	
+
 	public Coordinate getCoordinate() {
 		return new Coordinate(getLat(), getLon());
 	}
@@ -162,7 +155,7 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	@Override
 	public void setLayer(Layer pLayer) {
 		sLayer = pLayer;
-		
+
 	}
 
 	@Override

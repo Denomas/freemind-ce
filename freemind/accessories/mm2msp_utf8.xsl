@@ -5,7 +5,7 @@
     (http://www.gnu.org/copyleft/gpl.html)
     Check 'mm2msp_utf8_TEMPLATE.mm' for detailed instructions on how to use
     this sheet.
---> 
+-->
 <xsl:stylesheet version="1.0"
 	xmlns="http://schemas.microsoft.com/project"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -99,7 +99,7 @@
 			<xsl:otherwise>0</xsl:otherwise>
 			</xsl:choose>
 		</xsl:otherwise>
-	</xsl:choose></Type> 
+	</xsl:choose></Type>
 </PredecessorLink>
 </xsl:template>
 
@@ -116,5 +116,3 @@
 <xsl:template match="*" mode="tasks"></xsl:template>
 
 </xsl:stylesheet>
-
- 	  	 

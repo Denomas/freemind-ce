@@ -41,8 +41,7 @@ public class AttributeCompareCondition extends CompareConditionAdapter {
 	private int comparationResult;
 	private boolean succeed;
 
-	/**
-     */
+
 	public AttributeCompareCondition(String attribute, String value,
 			boolean ignoreCase, int comparationResult, boolean succeed) {
 		super(value, ignoreCase);
@@ -53,7 +52,7 @@ public class AttributeCompareCondition extends CompareConditionAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.condition.Condition#checkNode(freemind.modes
 	 * .MindMapNode)

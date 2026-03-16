@@ -78,8 +78,9 @@ import freemind.modes.attributes.Attribute;
  * @author dimitri
  *
  */
-@SuppressWarnings("serial")
 public class FilterComposerDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+
 	private static final Dimension maxButtonDimension = new Dimension(1000,
 			1000);
 
@@ -718,8 +719,7 @@ public class FilterComposerDialog extends JDialog {
 		return item != null ? item.toString() : "";
 	}
 
-	/**
-     */
+
 	void mapChanged(MindMap newMap) {
 		if (newMap != null) {
 			icons.setExtensionList(newMap.getIcons());
@@ -754,16 +754,18 @@ public class FilterComposerDialog extends JDialog {
 		return false;
 	}
 
-	/**
-     */
+
 	public void setSelectedItem(Object selectedItem) {
 		conditionList.setSelectedValue(selectedItem, true);
 
 	}
 
-	public void show() {
-		initInternalConditionModel();
-		super.show();
+	@Override
+	public void setVisible(boolean visible) {
+		if (visible) {
+			initInternalConditionModel();
+		}
+		super.setVisible(visible);
 	}
 
 	private void initInternalConditionModel() {

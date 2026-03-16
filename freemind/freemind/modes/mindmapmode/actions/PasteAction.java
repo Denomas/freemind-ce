@@ -29,9 +29,9 @@ import javax.swing.AbstractAction;
 import freemind.controller.actions.generated.instance.PasteNodeAction;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class PasteAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private static java.util.logging.Logger logger;
 	private final MindMapController mMindMapController;
@@ -40,10 +40,9 @@ public class PasteAction extends AbstractAction {
 		super(pMindMapController.getText("paste"), freemind.view.ImageFactory.getInstance().createIcon(
 				pMindMapController.getResource("images/editpaste.png")));
 		this.mMindMapController = pMindMapController;
-		if (logger == null) {
 			logger = mMindMapController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 
 		setEnabled(false);
 
@@ -58,7 +57,7 @@ public class PasteAction extends AbstractAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.actions.ActorXml#getDoActionClass()
 	 */
 	public Class<PasteNodeAction> getDoActionClass() {

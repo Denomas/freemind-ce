@@ -30,7 +30,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 25.03.2014
  */
 public class AddIconActor extends XmlActorAdapter {
 
@@ -40,7 +39,7 @@ public class AddIconActor extends XmlActorAdapter {
 	public AddIconActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public void addIcon(MindMapNode node, MindIcon icon) {
 		execute(getAddLastIconActionPair(node, icon));
 	}
@@ -70,9 +69,8 @@ public class AddIconActor extends XmlActorAdapter {
 		action.setIconPosition(iconPosition);
 		return action;
 	}
-	
-	/**
-     */
+
+
 	private ActionPair getAddLastIconActionPair(MindMapNode node, MindIcon icon) {
 		int iconIndex = MindIcon.LAST;
 		return getAddIconActionPair(node, icon, iconIndex);
@@ -86,8 +84,7 @@ public class AddIconActor extends XmlActorAdapter {
 		return new ActionPair(doAction, undoAction);
 	}
 
-	/**
-     */
+
 	private ActionPair getToggleIconActionPair(MindMapNode node, MindIcon icon) {
 		int iconIndex = Tools.iconFirstIndex(node,
 				icon.getName());

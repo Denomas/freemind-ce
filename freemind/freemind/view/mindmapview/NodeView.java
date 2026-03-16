@@ -68,8 +68,9 @@ import freemind.preferences.FreemindPropertyListener;
  * This class represents a single Node of a MindMap (in analogy to
  * TreeCellRenderer).
  */
-@SuppressWarnings("serial")
 public class NodeView extends JComponent implements TreeModelListener {
+	private static final long serialVersionUID = 1L;
+
 
 	public void setFocusCycleRoot(boolean pFocusCycleRoot) {
 		// FIXME: On purpose removed. test this!
@@ -115,10 +116,9 @@ public class NodeView extends JComponent implements TreeModelListener {
 
 	protected NodeView(MindMapNode model, int position, MapView map,
 			Container parent) {
-		if (logger == null) {
 			logger = Resources.getInstance()
 					.getLogger(this.getClass().getName());
-		}
+
 		if(sListener == null){
 			sListener = new FreemindPropertyListener() {
 
@@ -306,14 +306,12 @@ public class NodeView extends JComponent implements TreeModelListener {
 		}
 	}
 
-	/**
-     */
+
 	public void setText(String string) {
 		mainView.setText(string);
 	}
 
-	/**
-     */
+
 	public String getText() {
 		return mainView.getText();
 	}
@@ -633,8 +631,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 		return null;
 	}
 
-	/**
-	 */
+
 	public boolean isContentVisible() {
 		return getModel().isVisible();
 	}
@@ -1082,8 +1079,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 		return maxToolTipWidth;
 	}
 
-	/**
-     */
+
 	public void setIcon(MultipleImage image) {
 		mainView.setIcon(image);
 	}

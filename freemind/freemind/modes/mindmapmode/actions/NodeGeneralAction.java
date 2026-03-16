@@ -39,9 +39,9 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 import freemind.modes.mindmapmode.actions.xml.AbstractXmlAction;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
 import freemind.modes.mindmapmode.actions.xml.ActorXml;
-
-@SuppressWarnings("serial")
 public class NodeGeneralAction extends AbstractXmlAction {
+	private static final long serialVersionUID = 1L;
+
 	protected final MindMapController modeController;
 
 	SingleNodeOperation singleNodeOperation;
@@ -65,10 +65,9 @@ public class NodeGeneralAction extends AbstractXmlAction {
 		}
 
 		this.singleNodeOperation = null;
-		if (logger == null) {
 			logger = modeController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	protected void setName(String name) {

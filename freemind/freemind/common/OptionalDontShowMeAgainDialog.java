@@ -46,11 +46,12 @@ import freemind.main.Tools;
 
 /**
  * Dialog with a decision that can be disabled.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public class OptionalDontShowMeAgainDialog {
+
 	public final static int ONLY_OK_SELECTION_IS_STORED = 0;
 	public final static int BOTH_OK_AND_CANCEL_OPTIONS_ARE_STORED = 1;
 	private final String mTitleId;
@@ -65,7 +66,7 @@ public class OptionalDontShowMeAgainDialog {
 	private final Component mComponent;
 
 	protected static java.util.logging.Logger logger = null;
-	
+
 	public interface DontShowPropertyHandler {
 		/**
 		 * @return accepted are the following values as return values: * ""
@@ -80,7 +81,7 @@ public class OptionalDontShowMeAgainDialog {
 
 	/**
 	 * Standard property handler, if you have a controller and a property.
-	 * 
+	 *
 	 */
 	public static class StandardPropertyHandler implements
 			DontShowPropertyHandler {
@@ -106,10 +107,9 @@ public class OptionalDontShowMeAgainDialog {
 	public OptionalDontShowMeAgainDialog(JFrame pFrame, Component pComponent,
 			String pMessageId, String pTitleId, TextTranslator pTextTranslator,
 			DontShowPropertyHandler pDontShowPropertyHandler, int pMessageType) {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mComponent = pComponent;
 		mParent = pFrame;
 		mMessageId = pMessageId;
@@ -125,8 +125,6 @@ public class OptionalDontShowMeAgainDialog {
 	public int getResult() {
 		return mResult;
 	}
-
-	@SuppressWarnings("serial")
 	public OptionalDontShowMeAgainDialog show() {
 		String property = mDontShowPropertyHandler.getProperty();
 		if (Tools.safeEquals(property, "true")) {

@@ -91,10 +91,9 @@ public class UpdateThread extends Thread implements ResultHandler,
 	public UpdateThread(Connection pConnection, MindMapController pController)
 			throws SQLException {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mConnection = pConnection;
 		mController = pController;
 	}

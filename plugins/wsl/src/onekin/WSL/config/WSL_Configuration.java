@@ -27,7 +27,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
 package onekin.WSL.config;
 
@@ -57,17 +57,17 @@ public class WSL_Configuration extends ModeControllerHookAdapter {
 	private final String simpleDialogDesc = "Choose an existing or new MediaWiki installation";
     JPanel jPMain;
     static JFrame frame = new JFrame("WSL Configuration");
-    private static JComponent newContentPane;    
+    private static JComponent newContentPane;
 	private WSL_ExistMWConfig existMW;
-    
+
 	public void startupMapHook() {
 		super.startupMapHook();
 		launch();
-    	
+
     	existMW = new WSL_ExistMWConfig();
     	existMW.setController(getController());
 	 }
-	
+
     /** Creates the GUI shown inside the frame's content pane. */
     public WSL_Configuration() {
         super();
@@ -86,9 +86,9 @@ public class WSL_Configuration extends ModeControllerHookAdapter {
         tabbedPane.addTab("WSL Configuration", null,
                           frequentPanel,
                           simpleDialogDesc); //tooltip text
-     
+
         jPMain.add(tabbedPane, BorderLayout.CENTER);
-        newContentPane = jPMain;		
+        newContentPane = jPMain;
 	}
 
 	/** Creates the panel shown by the first tab. */
@@ -136,15 +136,15 @@ public class WSL_Configuration extends ModeControllerHookAdapter {
                           radioButtons,
                           showItButton);
     }
-    
+
 	public void destroy() {
 		if(frame != null){
-			frame.dispose();	
+			frame.dispose();
 		}
 	}
-    
+
     /**
-     * Used by createSimpleDialogBox to create a pane 
+     * Used by createSimpleDialogBox to create a pane
      * containing a description, a single column
      * of radio buttons, and the Show it! button.
      */
@@ -168,7 +168,7 @@ public class WSL_Configuration extends ModeControllerHookAdapter {
         pane.add(showButton, BorderLayout.PAGE_END);
         return pane;
     }
-    
+
     /**
      * Create the GUI and show it. For thread safety,
      * this method should be invoked from the

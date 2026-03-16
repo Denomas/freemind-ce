@@ -27,7 +27,6 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * @date 22.12.2011
  */
 public class AddLinkToMapAction extends MindMapNodeHookAdapter {
 
@@ -35,7 +34,7 @@ public class AddLinkToMapAction extends MindMapNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.NodeHookAdapter#invoke(freemind.modes.MindMapNode)
 	 */

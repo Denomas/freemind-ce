@@ -29,14 +29,14 @@ import java.awt.Stroke;
 
 import freemind.main.Tools;
 import freemind.modes.MindMapNode;
-
-@SuppressWarnings("serial")
 class BubbleMainView extends MainView {
+	private static final long serialVersionUID = 1L;
+
 	final static Stroke DEF_STROKE = new BasicStroke();
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView.MainView#getPreferredSize()
 	 */
 	public Dimension getPreferredSize() {
@@ -120,7 +120,7 @@ class BubbleMainView extends MainView {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView#getStyle()
 	 */
 	String getStyle() {
@@ -136,7 +136,7 @@ class BubbleMainView extends MainView {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView#getTextWidth()
 	 */
 	public int getTextWidth() {
@@ -145,7 +145,7 @@ class BubbleMainView extends MainView {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView#getTextX()
 	 */
 	public int getTextX() {

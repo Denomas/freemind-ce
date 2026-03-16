@@ -27,7 +27,7 @@ fi
 _debug() {
 	if [ -n "${DEBUG}" ]
 	then
-		echo "DEBUG:   $1" >&2 
+		echo "DEBUG:   $1" >&2
 		shift
 		for text in "$@"
 		do
@@ -146,7 +146,7 @@ findFreeMindJar() {
 	freepath=$(dirname "${freefile}")
 	freepath="${freepath%/bin}" # nothing happens if freemind is not installed
 	                            # under something/bin
-	
+
 	# we try different possibilities to find freemind.jar
 	for jar in "${FREEMIND_BASE_DIR}" \
 		"${freepath}" "${freepath}/share/freemind" "${freepath}/freemind"
@@ -164,7 +164,7 @@ findFreeMindJar() {
 fillClassPath() {
 # The CLASSPATH also lets one specify additional jars, which is good, if
 # you want to add a new Look&Feel jar (the motif one is so ugly...).
-# 
+#
 CLASSPATH="${ADD_JARS}:${CLASSPATH}:${freedir}/lib/freemind.jar:\
 ${freedir}/lib/jibx/jibx-run.jar:\
 ${freedir}/lib/jibx/xpp3.jar:\

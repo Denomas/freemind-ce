@@ -27,7 +27,7 @@ import freemind.controller.actions.generated.instance.XmlAction;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class DefaultActionHandler implements ActionHandler {
 
@@ -39,7 +39,7 @@ public class DefaultActionHandler implements ActionHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#executeAction(freemind.controller
 	 * .actions.ActionPair)
@@ -52,7 +52,7 @@ public class DefaultActionHandler implements ActionHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#startTransaction(java.lang.
 	 * String)
@@ -63,7 +63,7 @@ public class DefaultActionHandler implements ActionHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#endTransaction(java.lang.String
 	 * )

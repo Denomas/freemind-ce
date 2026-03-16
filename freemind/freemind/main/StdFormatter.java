@@ -23,9 +23,8 @@ package freemind.main;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.SimpleFormatter;
-
-@SuppressWarnings("serial")
 class StdFormatter extends SimpleFormatter {
+
 
 	private static class StdOutErrLevel extends Level {
 		public StdOutErrLevel(String name, int value) {
@@ -51,7 +50,7 @@ class StdFormatter extends SimpleFormatter {
 
 	/**
 	 * Format the given LogRecord.
-	 * 
+	 *
 	 * @param record
 	 *            the log record to be formatted.
 	 * @return a formatted log record

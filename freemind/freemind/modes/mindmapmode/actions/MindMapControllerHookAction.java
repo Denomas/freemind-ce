@@ -31,10 +31,10 @@ import javax.swing.JMenuItem;
 
 import freemind.controller.MenuItemEnabledListener;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class MindMapControllerHookAction extends AbstractAction implements
 		HookAction, MenuItemEnabledListener {
+	private static final long serialVersionUID = 1L;
+
 	String mHookName;
 	MindMapController mindMapController;
 

@@ -2,7 +2,7 @@
 Changes made in FreeMind 1.1.0 Beta 2
 ===============================
 * New feature: Strikethrough
-* New feature: Executing "sort-childs" twice sorts in the opposite direction. 
+* New feature: Executing "sort-childs" twice sorts in the opposite direction.
 * New feature: calendar markings for regular events
 * Bug fix: not-well formed HTML pastes are converted to plain text
 
@@ -49,8 +49,8 @@ Changes made in FreeMind 1.1.0 Alpha 1
 * Fixed restore of session when opening files from command line
 * Update JMapViewer to version 1.02
 * Update jibx to 1.2.5 (java 7 compatibility)
-* Fixed #1178 [Shared map] Nodes are lost when moving them through drag & drop 
-  
+* Fixed #1178 [Shared map] Nodes are lost when moving them through drag & drop
+
 ===============================
 Changes made in FreeMind 1.0.0 (final)
 ===============================
@@ -70,7 +70,7 @@ Changes made in FreeMind 1.0.0 RC 5
 ===============================
 * Anti-alias for folding circles fixed
 * Folding buttons can be switched off.
-* Corrected folding buttons for filtered maps (https://sourceforge.net/p/freemind/discussion/320014/). 
+* Corrected folding buttons for filtered maps (https://sourceforge.net/p/freemind/discussion/320014/).
 * Fixed edge width for fork nodes.
 * Fixed note icon to appear after paste.
 * Fixed menu items: edge styles and widths are selected in the menu, now.
@@ -84,12 +84,12 @@ Changes made in FreeMind 1.0.0 RC 4
 * Fix for bug report 1140: Link to parent in Branch As New Map is incorrect. Thanks to Alexandre.
 * Fix: update map as changed on disk question for hidden maps fixed.
 * Fix: cancel the edit of existing nodes inside geographical maps deleted the node
-* Standard styles can be translated 
+* Standard styles can be translated
 * New: Clone types can be chosen: complete synchronization or children-only-cloning
-* Fix: #1145 freemind does not close files after export 
+* Fix: #1145 freemind does not close files after export
 * Fix: #1142 "ant dist" stoped working on linux after commit. Thanks to Alexandre
 * New: folding button for easier folding added.
-* Fix: #1146 Erroneous folding symbol created 
+* Fix: #1146 Erroneous folding symbol created
 
 ===============================
 Changes made in FreeMind 1.0.0 RC 3
@@ -115,7 +115,7 @@ Changes made in FreeMind 1.0.0 RC 3
 Changes made in FreeMind 1.0.0 RC 2
 ===============================
 * Fix: Font name is displayed to the current and not the last selected node.
-* Fix: Collaboration mode, see bug report https://sourceforge.net/tracker/index.php?func=detail&aid=3600130&group_id=7118&atid=107118 
+* Fix: Collaboration mode, see bug report https://sourceforge.net/tracker/index.php?func=detail&aid=3600130&group_id=7118&atid=107118
 * Fix: Open of key documentation http://sourceforge.net/tracker/?func=detail&aid=3603709&group_id=7118&atid=107118
 * Fix: Too many processes if many reminders are used: http://sourceforge.net/tracker/?func=detail&aid=3601229&group_id=7118&atid=107118
 * Fix: Newline in collab mode: https://sourceforge.net/tracker/?func=detail&aid=3573105&group_id=7118&atid=107118
@@ -124,7 +124,7 @@ Changes made in FreeMind 1.0.0 RC 2
 * Fix: Attributes in clones.
 * Fix: Reminders in clones.
 * Improved startup performance of maps with many clones.
- 
+
 ===============================
 Changes made in FreeMind 1.0.0 RC 1
 ===============================
@@ -154,7 +154,7 @@ Changes made in FreeMind 1.0.0 Beta8
     * Locking support (it is not possible to change at two sites at the same time).
     * Notifications about changes are sent to the master and then distributed to clients.
     * Minimal security added: a password must be known to connect. But, each message (even the password) is sent open.
-    * Compression: each message over the network is compressed. 
+    * Compression: each message over the network is compressed.
     * The connection parameters to the master are displayed in the title bar of each member. Thus, it is easy to invite others.
     * The members are displayed in the title of each member as well (update interval: 5 seconds).
 * Search result table on geographical maps: control+enter places the selected line in the map.
@@ -185,7 +185,7 @@ Changes made in FreeMind 1.0.0 Beta5
 ===============================
 Changes made in FreeMind 1.0.0 Beta4
 ===============================
-* NEW: Show clone nodes action added to navigation menu. 
+* NEW: Show clone nodes action added to navigation menu.
 * Workaround: Java7 Update4 (and some java6 version) have a bug. Result: update files from 0.9.0 or earlier does not work.
   Remedia: insert own Xalan version (at the cost of 3MB extra)
 
@@ -208,18 +208,18 @@ Changes made in FreeMind 1.0.0 Beta2
 * Time management: menu added and a method for journals: make new node with current date.
 * FIX: Text based exports are using the correct order for the first level nodes.
 * NEW: If you have addresses as nodes, these can be displayed on the osm-maps very quickly
-* NEW: Find as you type: if you type an address to search for in the geographical map view, 
-  the find window is opened. 
+* NEW: Find as you type: if you type an address to search for in the geographical map view,
+  the find window is opened.
 * NEW: Menu item to display current log file added.
 * NEW: Added support for osm's new transport map
 * NEW: Added support for osm's new MapQuest.Open map
- 
+
 ===============================
 Changes made in FreeMind 1.0.0 Beta1
 ===============================
-* Bug fix for Problem with greek text inside long nodes after upgrading - ID: 3432919, http://sourceforge.net/tracker/?func=detail&aid=3432919&group_id=7118&atid=107118 
+* Bug fix for Problem with greek text inside long nodes after upgrading - ID: 3432919, http://sourceforge.net/tracker/?func=detail&aid=3432919&group_id=7118&atid=107118
 * New feature: add link to osm.org webpage to node for locations.
-* New status bar for geographical maps: 
+* New status bar for geographical maps:
   * hierarchy of nodes are displayed on holding the mouse over a node
   * distance between cursor and mouse if not a node is below the mouse
 * New language bulgarian. Thanks to the author vii!
@@ -240,7 +240,7 @@ Changes made in FreeMind 1.0.0 Alpha8
 * Patch: File > Open should behave like File > Most Recent Files * https://sourceforge.net/tracker/?func=detail&atid=307118&aid=2975476&group_id=7118, Thanks to the author!
 * Added property and functionality: folded nodes are hidden from map view.
 * Change map position with drag&drop.
-* Added map actions to node's context menu. 
+* Added map actions to node's context menu.
 * Added quick look plugin to Mac installer (drop it to the library)
 
 ===============================
@@ -259,7 +259,7 @@ Changes made in FreeMind 1.0.0 Alpha6
 ===============================
 * Opening documents from explorer will open it in a running instance.
 * Export format for PDF can be chosen. Thanks to the author Andreas for the patch.
-* New functionality: "File changed on disk: do you want to reload?" 
+* New functionality: "File changed on disk: do you want to reload?"
 * New functionality: Paste images from clipboard. Thanks to Anantha!
 * Accelerators for search&replace. (Translators: add accelerators in your language to use this function!).
 * Headless export to png added. Usage: java -cp lib/freemind.jar freemind.view.mindmapview.IndependantMapViewCreator <map_path>.mm <picture_path>.png
@@ -274,7 +274,7 @@ Changes made in FreeMind 1.0.0 Alpha5
 * Fixed translation of export xslt dialog http://sourceforge.net/tracker/?func=detail&atid=107118&aid=3308701&group_id=7118
 * Patch https://sourceforge.net/tracker/?func=detail&aid=1909107&group_id=7118&atid=307118 integrated. Thanks to the author!
 * Patch https://sourceforge.net/tracker/?func=detail&aid=2973357&group_id=7118&atid=307118 integrated. Thanks to the author!
-* Patch https://sourceforge.net/tracker/?func=detail&aid=1079144&group_id=7118&atid=307118 integrated. Thanks to the author!         
+* Patch https://sourceforge.net/tracker/?func=detail&aid=1079144&group_id=7118&atid=307118 integrated. Thanks to the author!
 * Patch https://sourceforge.net/tracker/?func=detail&aid=3276562&group_id=7118&atid=307118, thanks to the author!
 * Groovy script at startup supported. This is useful eg. to export maps from the command line. Call java -Dstartup_groovy_script=accessories/ExportToPdf.groovy -jar lib/freemind.jar
 * Accelerators for calendar. (Translators: add accelerators in your language to use this function!).
@@ -370,7 +370,7 @@ Changes made in FreeMind 0.9.0 RC 8
 ===============================
 * Fixed: Crypted root's childnodes order error: http://sourceforge.net/tracker/index.php?func=detail&aid=2912427&group_id=7118&atid=107118
 * Fixed: Build with ant 1.8: https://sourceforge.net/tracker/?func=detail&atid=107118&aid=2972176&group_id=7118
-* Testing: Font-Size of wysiwyg-editors on zommed map. Available as "experimental_font_sizing_for_long_node_editors". 
+* Testing: Font-Size of wysiwyg-editors on zommed map. Available as "experimental_font_sizing_for_long_node_editors".
   You have to set this property by hand in the auto.properties file.
 
 
@@ -384,7 +384,7 @@ Changes made in FreeMind 0.9.0 RC 7
 * Fixed: Maps becomes dirty on map change (if notes window is open)
 * Updated HTML Editor Simply Html
 * Fixed: Selection wrong on move nodes left/right
-* Fixed: Initial focus when notes window open 
+* Fixed: Initial focus when notes window open
 * Fixed: Focus when leave node editing with escape
 * Added: Open hyperlinks in nodes editor
 * New: Search&Replace replaces now all occurences. Thanks to OlegKandaurov (f0y) for the patch.
@@ -401,7 +401,7 @@ Changes made in FreeMind 0.9.0 RC 6
 * Improved: If a file exists in "File->Save as" the file dialog is repeated.
 * We now create two different versions for Mac: for OSX 10.5 Rosetta, there is a different one.
   These versions differ only in the way, the JavaApplicationStub is handled (the Rosetta version
-  takes a copy from my laptop, the other version uses a symbolic link to 
+  takes a copy from my laptop, the other version uses a symbolic link to
   /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub)
 
 ===============================
@@ -494,8 +494,8 @@ Changes made in FreeMind 0.9.0 Beta20
 * Fixed: copying to clipboard for Linux.
 * Fixed: saving of xhtml - tag <option>.
 * Application type of freemind.exe changed to Win32 GUI to prevent DOS box.
-* Fixed: images in notes. 
-* Added translations (thanks to all authors): 
+* Fixed: images in notes.
+* Added translations (thanks to all authors):
 - 2034191 	French - 0.9.0 Beta 19 - FM_Key_Mappings_Quick_Guide_fr.pdf by 	dberthereau
 - 2034187 	French - 0.9.0 Beta 19 - FM_Key_Mappings_Quick_Guide by 	dberthereau
 - 2031743 	Russian 0.9.0 - beta 19 - full
@@ -600,14 +600,14 @@ Changes made in FreeMind 0.9.0 Beta17
 * Fixed: Key Events are not lost during node editor dialog is being created
 * Mnemonics for (some) Dialog Buttons configurable by "&" character in language properties
 * Fixed: placement of text field editor if attribute table is wider than the node text
-* Fixed: height of attribute table rows for zoom factor != 100 %  
+* Fixed: height of attribute table rows for zoom factor != 100 %
 * Fixed: Valid html output * https://sourceforge.net/tracker/?func=detail&atid=107118&aid=1063430&group_id=7118
 * Fixed: faulty undo for edge types after auto layouting * https://sourceforge.net/tracker/?func=detail&atid=107118&aid=1937927&group_id=7118
 * Fixed: Issues with action "Clear note" * https://sourceforge.net/tracker/?func=detail&atid=107118&aid=1842855&group_id=7118
 * A link to the FreeMind's webpage is available in Help Menu
 * Fixed: Folding not saved * https://sourceforge.net/tracker/?func=detail&atid=107118&aid=1938342&group_id=7118
 * Scripts can be signed by a FreeMind key or with a user key (specified in the options)
-  and have then full rights.  
+  and have then full rights.
 * FreeMind version is now a structure that can be used by scripts or plugins to guarantee compatibility.
 * New design of logo (thanks to mmeitzner) and splash (thanks to bernardlang) integrated
 * Fixed: Wrong language name for Norwegian * https://sourceforge.net/tracker/?func=detail&atid=107118&aid=1935818&group_id=7118
@@ -639,7 +639,7 @@ Changes made in FreeMind 0.9.0 Beta16
 * Bug fix: repaint after text field is removed
 * Bug fix: Map hidden after switching from docs (JRE 6)
 * New version of SimplyHTML with some bug fixes
-* Bug fix: In browse mode and file mode, scroll wheel AKA mouse wheel 
+* Bug fix: In browse mode and file mode, scroll wheel AKA mouse wheel
 * Filter toolbar looks similar to the other toolbars.
 * Bug fix: italic and bold handling in patterns (eg. automatic layout)
 * Check marks for a lot of menu items added
@@ -647,7 +647,7 @@ Changes made in FreeMind 0.9.0 Beta16
 * Cut gets a confirmation window, too. See https://sourceforge.net/tracker/?func=detail&atid=107118&aid=1846766&group_id=7118
 * Bug fix: Hyperlink action renamed and it is only enabled, when there is actually a hyperlink. See https://sourceforge.net/tracker/?func=detail&atid=107118&aid=1846702&group_id=7118
 * Updated to Batik 1.6 (for Eric, as this version is already integrated in Debian)
-* Script Editor now has "Add new Script" and is able to assign the script results 
+* Script Editor now has "Add new Script" and is able to assign the script results
   to an (new) attribute using "attr_name=<script>".
 * Updated groovy to version 1.5.1
 * RemoveNote is automatically disabled when no notes found
@@ -655,7 +655,7 @@ Changes made in FreeMind 0.9.0 Beta16
 * Format node window has now scroll bars if needed.
 * Option to store ids only, when needed added.
 * Patch: [ 1897283 ] Multiple reminders added up in parent nodes
-* New installer variant "Java embedded" started, but this 
+* New installer variant "Java embedded" started, but this
   variant will not be released soon due to open license questions
 
 ===============================
@@ -706,27 +706,27 @@ Changes made in FreeMind 0.9.0 Beta 14
 * Display help message for node movement as tool tip.
 * Bug fix: nodes cut when zoom not 100%.
 * Menu item "Split" moved to menu item "Join nodes"
- 
+
 ===============================
 Changes made in FreeMind 0.9.0 Beta 13
 ===============================
-* Menu Item to show SimplyHTML about box 
+* Menu Item to show SimplyHTML about box
 * Use cloud or map backgroung color in WYSIWYG Editor if the node has no own background color.
 * Selection text color no more used for unselected text in Textfield / Textarea
 * Latex plugin added
 * Persistent map filters added
 * Click on icon with control key hold removes the first matched icon, with alt key removes the last one
-* Icon hot keys available in "Select Icon" popup can be set in Preferences 
+* Icon hot keys available in "Select Icon" popup can be set in Preferences
 * Bug fixes.
 * Displaying Selection as Rectangle as default.
 * Optional "unfold on paste"
 * Confirmation on delete added.
-* Decision whether or not to take rich text edit added. 
+* Decision whether or not to take rich text edit added.
 * Icon selection popup, long node editor and WYSIWYG editor do not hide the edited node is possible
 * Bug fix: mind manager import: sides fixed.
 * bug fix: strings containing \n must be saved as XML elements, not as attributes
 * bug fixes and necessary refactorings for paste and cut - actions
-	 only UndoActionHandler uses the undo - action from the action pair, 
+	 only UndoActionHandler uses the undo - action from the action pair,
 	 the undo action is prepared during paste action is executed
 * Bug fix: patterns repaired
 * Bug fix: edge properties in patterns
@@ -734,12 +734,12 @@ Changes made in FreeMind 0.9.0 Beta 13
 * Enter on root gives a new child
 * Bug fix: edges scale now with zoom.
 * Enter on root gives new child, shift-enter on root causes root to get a child of a new root node.
-	 
+
 ===============================
 Changes made in FreeMind 0.9.0 Beta 12
 ===============================
 * Map background color may be set via Format menu and saved with the map.
-* Bug fixes: problems if auto.properties does not exist 
+* Bug fixes: problems if auto.properties does not exist
 * FreeMind Accelerators work from Note Editor
 
 ===============================
@@ -758,7 +758,7 @@ Changes made in FreeMind 0.9.0 Beta 10
 * New option: velocity of mouse wheel movements.
 * Bug fix: F6 and F8 can be used for formats again.
 * Bug fix: sorting keeps graphical links now.
-* user_icons is no more required, 
+* user_icons is no more required,
 * all *.png files in .../.freemind/icons are handled as user icons
 * Bug fix: moving of encrypted nodes is working again.
 * Bug fix: moving or removing a node with active reminder flags clears all parent flags.
@@ -778,9 +778,9 @@ which can be obtained using NodeView.getContent().
 * multiple map views for map are allowed by the new design, but only one NodeView for Node on each MapView
 * NodeView implements TreeModelListener
 * standard TreeModelEvents are used for communicating the map changes
-* If only MainView exists, getContent() returns the MainView. 
-* If some special node has its own content component, it can be added to Component given by 
-  NodeView.getContentPane(). Futher efforts are needed to make such contents like e.g. 
+* If only MainView exists, getContent() returns the MainView.
+* If some special node has its own content component, it can be added to Component given by
+  NodeView.getContentPane(). Futher efforts are needed to make such contents like e.g.
   math formulas possible
 
 * focus in the long node editor goes to the text area after the dialog is opened
@@ -793,9 +793,9 @@ which can be obtained using NodeView.getContent().
 * Plugin API improved, StatefulNodeHook with Undo-Support introduced
 * Window position, size and state are saved and restored correctly
 
-* Adjusting not only the background color of selected node but also its text color. 
-* System colors used instead of FreeMind default colors 
- for default window background color, default node text color, 
+* Adjusting not only the background color of selected node but also its text color.
+* System colors used instead of FreeMind default colors
+ for default window background color, default node text color,
  default selected node background and text colors.
 * Alternative displaying of selected nodes showing rounded rectangle around the node (may be set in preferences)
 
@@ -833,7 +833,7 @@ Changes made in FreeMind 0.9.0 Beta 9
 * Using Shift+Click on icon bar substitutes the current icons by the new one. (Same with Shift+Enter in the icon selection dialog)
 * user friendly closing of the node edit dialogs
 * moved time management to internal plugins.
-* revised build process for external plugins. 
+* revised build process for external plugins.
 * New feature: Sort children nodes added.
 * Calendar scrolls with arrow keys through months and years now (JCalendar improvement).
 * Search&Replace: Title corrected
@@ -851,12 +851,12 @@ Changes made in FreeMind 0.9.0 Beta 9
 * Copy creates HTML for multiple selection.
 * Light Bulb as icon integrated.
 * new spanish translation of documentation map. Thanks to Natxo.
-* Copy limited to filtered nodes 
+* Copy limited to filtered nodes
 
 ===============================
 Changes made in FreeMind 0.9.0 Beta 8
 ===============================
-* bug fix: feedback.increase must not be called before auto properties with language setting has been loaded        
+* bug fix: feedback.increase must not be called before auto properties with language setting has been loaded
 * SimpleHTML: icons for bold and italic actions replaced
 * SimpleHTML: shift + enter inserts <br>
 * SimpleHTML: <END > -  Markierung removed
@@ -896,7 +896,7 @@ Changes made in FreeMind 0.9.0 Beta 7
 ===============================
 Changes made in FreeMind 0.9.0 Beta 6
 ===============================
-* Restrictions on node positions removed, 
+* Restrictions on node positions removed,
 * the node motion view oval is filled red if node overlap is possible.
 * Selected nodes are not indicated on printed / exported maps
 * Bug fixes
@@ -917,7 +917,7 @@ Changes made in FreeMind 0.9.0 Beta 6
 * Patch revised and introduced: 1532279 link between nodes on different freemind maps, thanks to the authors.
 * New feature: history of node is exportable now.
 * Fixed map dragging outside of the window.
-* New feature: Scripting via Groovy introduced. 
+* New feature: Scripting via Groovy introduced.
 * Bug fix: layout of root with attributes
 * Enhancements of the scripting feature.
 

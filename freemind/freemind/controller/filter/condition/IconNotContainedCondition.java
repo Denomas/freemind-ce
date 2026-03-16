@@ -55,7 +55,7 @@ public class IconNotContainedCondition implements Condition {
 			if (iconName.equals(nextIcon.getName())) return i.previousIndex();
 		}
 		return -1;
-		
+
 	}
 
 	static public int iconLastIndex(MindMapNode node, String iconName) {
@@ -66,13 +66,13 @@ public class IconNotContainedCondition implements Condition {
 			if (iconName.equals(nextIcon.getName())) return i.nextIndex();
 		}
 		return -1;
-		
+
 	}
 
 	private static boolean isStateIconContained(MindMapNode node, String iconName) {
 		Set<String> stateIcons = node.getStateIcons().keySet();
 		for(String nextIcon : stateIcons){
-			if (iconName.equals(nextIcon)) return true;		    
+			if (iconName.equals(nextIcon)) return true;
 		}
 		return false;
 	}
@@ -81,9 +81,9 @@ public class IconNotContainedCondition implements Condition {
      * @see javax.swing.ListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int, boolean, boolean)
      */
     public JComponent getListCellRendererComponent() {
-        JCondition component = new JCondition(); 
+        JCondition component = new JCondition();
         String text = Resources.getInstance().getResourceString("filter_icon")
-        + ' ' 
+        + ' '
         + Resources.getInstance().getResourceString("filter_not_contains")
         + ' ';
         component.add(new JLabel(text));
@@ -98,7 +98,7 @@ public class IconNotContainedCondition implements Condition {
 		XMLElement child = new XMLElement();
 		child.setName(NAME);
 		child.setAttribute(ICON, iconName);
-		element.addChild(child);		
+		element.addChild(child);
 	}
 
 	static Condition load(XMLElement element) {

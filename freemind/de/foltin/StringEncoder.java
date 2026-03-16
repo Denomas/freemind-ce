@@ -18,13 +18,13 @@ public final class StringEncoder {
 
 	/**
 	 * Encode a string, escaping any invalid XML characters.
-	 * 
+	 *
 	 * <p>
 	 * Invalid characters are escaped using <code>&#92;uNNNN</code> notation
 	 * like Java unicode characters, e.g., <code>0x001f</code> would appear in
 	 * the encoded string as <code>&#92;u001f</code>. Backslash characters are
 	 * themselves encoded with a double backslash.
-	 * 
+	 *
 	 * @param value
 	 *            string to encode (possibly null)
 	 * @return the encoded version of {@code value}, or {@code null} if
@@ -64,12 +64,12 @@ public final class StringEncoder {
 
 	/**
 	 * Decode a string encoded by {@link #encode}.
-	 * 
+	 *
 	 * <p>
 	 * The parsing is strict; any ill-formed backslash escape sequence (i.e.,
 	 * not of the form <code>&#92;uNNNN</code> or <code>\\</code>) will cause an
 	 * exception to be thrown.
-	 * 
+	 *
 	 * @param text
 	 *            string to decode (possibly null)
 	 * @return the decoded version of {@code text}, or {@code null} if
@@ -136,7 +136,7 @@ public final class StringEncoder {
 	/**
 	 * Determine if the given character is a valid XML character according to
 	 * the XML 1.0 specification.
-	 * 
+	 *
 	 * @see <a href="http://www.w3.org/TR/REC-xml/#charsets">The XML 1.0
 	 *      Specification</a>
 	 */

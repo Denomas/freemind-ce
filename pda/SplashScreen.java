@@ -8,11 +8,11 @@ public class SplashScreen extends Container {
 	private Button btnLogo;
 	private Timer goAwayTimer;
 	private Timer startLoadTimer;
-	
+
 	public SplashScreen(FreeMindPDA main) {
 		super();
 		this.main=main;
-		
+
 	}
 
 	public void onStart() {
@@ -65,7 +65,7 @@ public class SplashScreen extends Container {
 				repaintNow();
 				/* Build a tree structure based on the last file. */
 				main.loadFile("Test.mm");
-			}				
+			}
 		}
 	}
 }

@@ -36,7 +36,7 @@ import javax.swing.JPanel;
 
 /**
  * JCalendar is a bean for entering a date by choosing the year, month and day.
- * 
+ *
  * @author Kai Toedter
  * @version $LastChangedRevision: 95 $
  * @version $LastChangedDate: 2006-05-05 18:43:15 +0200 (Fr, 05 Mai 2006) $
@@ -81,7 +81,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * JCalendar constructor which allows the initial date to be set.
-	 * 
+	 *
 	 * @param date
 	 *            the date
 	 */
@@ -91,7 +91,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * JCalendar constructor which allows the initial calendar to be set.
-	 * 
+	 *
 	 * @param calendar
 	 *            the calendar
 	 */
@@ -102,7 +102,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * JCalendar constructor allowing the initial locale to be set.
-	 * 
+	 *
 	 * @param locale
 	 *            the new locale
 	 */
@@ -112,7 +112,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * JCalendar constructor specifying both the initial date and locale.
-	 * 
+	 *
 	 * @param date
 	 *            the date
 	 * @param locale
@@ -125,7 +125,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	/**
 	 * JCalendar constructor specifying both the initial date and the month
 	 * spinner type.
-	 * 
+	 *
 	 * @param date
 	 *            the date
 	 * @param monthSpinner
@@ -137,7 +137,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * JCalendar constructor specifying both the locale and the month spinner.
-	 * 
+	 *
 	 * @param locale
 	 *            the locale
 	 * @param monthSpinner
@@ -149,7 +149,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * JCalendar constructor specifying the month spinner type.
-	 * 
+	 *
 	 * @param monthSpinner
 	 *            false, if no month spinner should be used
 	 */
@@ -159,7 +159,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * JCalendar constructor with month spinner parameter.
-	 * 
+	 *
 	 * @param date
 	 *            the date
 	 * @param locale
@@ -228,7 +228,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Creates a JFrame with a JCalendar inside and can be used for testing.
-	 * 
+	 *
 	 * @param s
 	 *            The command line arguments
 	 */
@@ -243,7 +243,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Returns the calendar property.
-	 * 
+	 *
 	 * @return the value of the calendar property.
 	 */
 	public Calendar getCalendar() {
@@ -252,7 +252,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Gets the dayChooser attribute of the JCalendar object
-	 * 
+	 *
 	 * @return the dayChooser value
 	 */
 	public JDayChooser getDayChooser() {
@@ -261,9 +261,9 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Returns the locale.
-	 * 
+	 *
 	 * @return the value of the locale property.
-	 * 
+	 *
 	 * @see #setLocale
 	 */
 	public Locale getLocale() {
@@ -272,7 +272,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Gets the monthChooser attribute of the JCalendar object
-	 * 
+	 *
 	 * @return the monthChooser value
 	 */
 	public JMonthChooser getMonthChooser() {
@@ -281,7 +281,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Gets the yearChooser attribute of the JCalendar object
-	 * 
+	 *
 	 * @return the yearChooser value
 	 */
 	public JYearChooser getYearChooser() {
@@ -290,7 +290,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Indicates if the weeks of year are visible..
-	 * 
+	 *
 	 * @return boolean true, if weeks of year are visible
 	 */
 	public boolean isWeekOfYearVisible() {
@@ -298,11 +298,11 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	}
 
 	private boolean doingPropertyChanges = false;
-	
+
 	/**
 	 * JCalendar is a PropertyChangeListener, for its day, month and year
 	 * chooser.
-	 * 
+	 *
 	 * @param evt
 	 *            the property change event
 	 */
@@ -338,7 +338,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the background color.
-	 * 
+	 *
 	 * @param bg
 	 *            the new background
 	 */
@@ -352,7 +352,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the calendar property. This is a bound property.
-	 * 
+	 *
 	 * @param c
 	 *            the new calendar
 	 * @throws NullPointerException
@@ -365,7 +365,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the calendar attribute of the JCalendar object
-	 * 
+	 *
 	 * @param c
 	 *            the new calendar value
 	 * @param update
@@ -385,14 +385,14 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 		}
 
 		calendar = c;
-		// fc, 25.6.2014: always fire the change event (formerly, there was oldCalendar, but sometimes, 
+		// fc, 25.6.2014: always fire the change event (formerly, there was oldCalendar, but sometimes,
 		// they are equal.
 		firePropertyChange("calendar", null, calendar);
 	}
 
 	/**
 	 * Enable or disable the JCalendar.
-	 * 
+	 *
 	 * @param enabled
 	 *            the new enabled value
 	 */
@@ -408,7 +408,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Returns true, if enabled.
-	 * 
+	 *
 	 * @return true, if enabled.
 	 */
 	public boolean isEnabled() {
@@ -417,7 +417,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the font property.
-	 * 
+	 *
 	 * @param font
 	 *            the new font
 	 */
@@ -433,7 +433,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the foreground color.
-	 * 
+	 *
 	 * @param fg
 	 *            the new foreground
 	 */
@@ -449,10 +449,10 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the locale property. This is a bound property.
-	 * 
+	 *
 	 * @param l
 	 *            the new locale value
-	 * 
+	 *
 	 * @see #getLocale
 	 */
 	public void setLocale(Locale l) {
@@ -469,7 +469,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the week of year visible.
-	 * 
+	 *
 	 * @param weekOfYearVisible
 	 *            true, if weeks of year shall be visible
 	 */
@@ -480,7 +480,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Gets the visibility of the decoration background.
-	 * 
+	 *
 	 * @return true, if the decoration background is visible.
 	 */
 	public boolean isDecorationBackgroundVisible() {
@@ -489,7 +489,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the decoration background visible.
-	 * 
+	 *
 	 * @param decorationBackgroundVisible
 	 *            true, if the decoration background should be visible.
 	 */
@@ -501,7 +501,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Gets the visibility of the decoration border.
-	 * 
+	 *
 	 * @return true, if the decoration border is visible.
 	 */
 	public boolean isDecorationBordersVisible() {
@@ -510,7 +510,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the decoration borders visible.
-	 * 
+	 *
 	 * @param decorationBordersVisible
 	 *            true, if the decoration borders should be visible.
 	 */
@@ -521,7 +521,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Returns the color of the decoration (day names and weeks).
-	 * 
+	 *
 	 * @return the color of the decoration (day names and weeks).
 	 */
 	public Color getDecorationBackgroundColor() {
@@ -530,7 +530,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the background of days and weeks of year buttons.
-	 * 
+	 *
 	 * @param decorationBackgroundColor
 	 *            the background color
 	 */
@@ -540,7 +540,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Returns the Sunday foreground.
-	 * 
+	 *
 	 * @return Color the Sunday foreground.
 	 */
 	public Color getSundayForeground() {
@@ -549,7 +549,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Returns the weekday foreground.
-	 * 
+	 *
 	 * @return Color the weekday foreground.
 	 */
 	public Color getWeekdayForeground() {
@@ -558,7 +558,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the Sunday foreground.
-	 * 
+	 *
 	 * @param sundayForeground
 	 *            the sundayForeground to set
 	 */
@@ -568,7 +568,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the weekday foreground.
-	 * 
+	 *
 	 * @param weekdayForeground
 	 *            the weekdayForeground to set
 	 */
@@ -578,7 +578,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Returns a Date object.
-	 * 
+	 *
 	 * @return a date object constructed from the calendar property.
 	 */
 	public Date getDate() {
@@ -587,7 +587,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the date. Fires the property change "date".
-	 * 
+	 *
 	 * @param date
 	 *            the new date.
 	 * @throws NullPointerException
@@ -611,7 +611,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	/**
 	 * Sets a valid date range for selectable dates. If max is before min, the
 	 * default range with no limitation is set.
-	 * 
+	 *
 	 * @param min
 	 *            the minimum selectable date or null (then the minimum date is
 	 *            set to 01\01\0001)
@@ -625,7 +625,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Gets the minimum selectable date.
-	 * 
+	 *
 	 * @return the minimum selectable date
 	 */
 	public Date getMaxSelectableDate() {
@@ -634,7 +634,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Gets the maximum selectable date.
-	 * 
+	 *
 	 * @return the maximum selectable date
 	 */
 	public Date getMinSelectableDate() {
@@ -643,7 +643,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the maximum selectable date.
-	 * 
+	 *
 	 * @param max
 	 *            maximum selectable date
 	 */
@@ -653,7 +653,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 
 	/**
 	 * Sets the minimum selectable date.
-	 * 
+	 *
 	 * @param min
 	 *            minimum selectable date
 	 */
@@ -664,7 +664,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	/**
 	 * Gets the maximum number of characters of a day name or 0. If 0 is
 	 * returned, dateFormatSymbols.getShortWeekdays() will be used.
-	 * 
+	 *
 	 * @return the maximum number of characters of a day name or 0.
 	 */
 	public int getMaxDayCharacters() {
@@ -676,7 +676,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * values are 0-4. If set to 0, dateFormatSymbols.getShortWeekdays() will be
 	 * used, otherwise theses strings will be reduced to the maximum number of
 	 * characters.
-	 * 
+	 *
 	 * @param maxDayCharacters
 	 *            the maximum number of characters of a day name.
 	 */

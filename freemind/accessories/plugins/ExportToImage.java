@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.ImageIO;
+import javax.xml.XMLConstants;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -44,20 +45,18 @@ import freemind.extensions.ExportHook;
  * @author foltin
  * @author kakeda
  * @author rreppel
- * 
+ *
  */
 public class ExportToImage extends ExportHook {
 
-	/**
-	 * 
-	 */
+
 	public ExportToImage() {
 		super();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.MindMapHook#startupMapHook()
 	 */
 	public void startupMapHook() {
@@ -107,6 +106,7 @@ public class ExportToImage extends ExportHook {
 		try {
 			// System.out.println("make transform instance");
 			TransformerFactory transFact = TransformerFactory.newInstance();
+			transFact.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
 			Transformer trans = transFact.newTransformer(xsltSource);
 			// set parameter:

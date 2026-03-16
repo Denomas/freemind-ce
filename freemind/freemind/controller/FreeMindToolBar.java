@@ -34,31 +34,27 @@ import freemind.main.Tools;
 /**
  * @author Stefan Zechmeister
  */
-@SuppressWarnings("serial")
 public class FreeMindToolBar extends JToolBar {
+	private static final long serialVersionUID = 1L;
+
 	private static Insets nullInsets = new Insets(0, 0, 0, 0);
 
-	/**
-	 *
-	 */
+
 	public FreeMindToolBar() {
 		this("", JToolBar.HORIZONTAL);
 	}
 
-	/**
-	 */
+
 	public FreeMindToolBar(int arg0) {
 		this("", arg0);
 	}
 
-	/**
-	 */
+
 	public FreeMindToolBar(String arg0) {
 		this(arg0, JToolBar.HORIZONTAL);
 	}
 
-	/**
-	 */
+
 	public FreeMindToolBar(String arg0, int arg1) {
 		super(arg0, arg1);
 		this.setMargin(nullInsets);

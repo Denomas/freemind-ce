@@ -83,8 +83,9 @@ import freemind.preferences.FreemindPropertyListener;
  * This class represents the view of a whole MindMap (in analogy to class
  * JTree).
  */
-@SuppressWarnings("serial")
 public class MapView extends JPanel implements ViewAbstraction, Printable, Autoscroll {
+	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * Currently, this listener does nothing. But it should move the map
@@ -224,8 +225,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 			return mySelected.contains(node);
 		}
 
-		/**
-		 */
+
 		public void moveToFirst(NodeView newSelected) {
 			if (contains(newSelected)) {
 				int pos = mySelected.indexOf(newSelected);
@@ -296,8 +296,7 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 		super();
 		this.model = model;
 		mFeedback = pFeedback;
-		if (logger == null)
-			logger = Resources.getInstance().getLogger(this.getClass().getName());
+		logger = Resources.getInstance().getLogger(this.getClass().getName());
 		mCenterNodeTimer = new Timer();
 		// initialize the standard colors.
 		if (standardNodeTextColor == null) {

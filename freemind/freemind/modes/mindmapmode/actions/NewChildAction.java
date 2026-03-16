@@ -31,20 +31,19 @@ import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.EncryptedMindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.view.mindmapview.NodeView;
-
-@SuppressWarnings("serial")
 public class NewChildAction extends MindmapAction  {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController c;
 	private static Logger logger = null;
 
 	public NewChildAction(MindMapController modeController) {
 		super("new_child", "images/idea.png", modeController);
 		this.c = modeController;
-		if (logger == null) {
 			logger = c.getFrame().getLogger(NewChildAction.class.getName());
-		}
+
 	}
-	
+
 	MindMapController getModeController() {
 		return c;
 	}

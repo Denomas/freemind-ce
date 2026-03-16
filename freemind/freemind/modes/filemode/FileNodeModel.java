@@ -112,9 +112,7 @@ public class FileNodeModel extends NodeAdapter {
 		return !file.isFile() || (children != null && !children.isEmpty());
 	}
 
-	/**
-     * 
-     */
+
 	public ListIterator<MindMapNode> childrenFolded() {
 		if (!isRoot()) {
 			if (isFolded() || isLeaf()) {
@@ -133,7 +131,7 @@ public class FileNodeModel extends NodeAdapter {
 		try {
 			String[] files = file.list();
 			if (files != null) {
-				children = new LinkedList<>();
+				children = Collections.synchronizedList(new LinkedList<>());
 
 				String path = file.getPath();
 				for (int i = 0; i < files.length; i++) {

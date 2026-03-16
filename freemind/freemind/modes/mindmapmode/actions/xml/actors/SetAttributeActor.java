@@ -60,7 +60,7 @@ public class SetAttributeActor extends XmlActorAdapter {
 		SetAttributeAction undoSetAttributeAction = getSetAttributeAction(selected, pPosition, selected.getAttribute(pPosition));
 		return new ActionPair(setAttributeAction, undoSetAttributeAction);
 	}
-	
+
 	public void setAttribute(MindMapNode pSelected,
 			int pPosition, Attribute pAttribute) {
 		ActionPair actionPair = getActionPair(pSelected, pPosition, pAttribute);

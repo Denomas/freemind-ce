@@ -35,14 +35,12 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class DatabaseConnectionHook extends DatabaseBasics implements
 		PermanentNodeHook, DontSaveMarker {
 
-	/**
-     *
-     */
+
 
 	public void startupMapHook() {
 		super.startupMapHook();

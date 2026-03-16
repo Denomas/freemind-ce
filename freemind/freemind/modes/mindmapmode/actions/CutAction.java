@@ -32,19 +32,18 @@ import javax.swing.JOptionPane;
 import freemind.common.OptionalDontShowMeAgainDialog;
 import freemind.main.FreeMind;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class CutAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController mMindMapController;
 	private static java.util.logging.Logger logger = null;
 
 	public CutAction(MindMapController c) {
 		super(c.getText("cut"), freemind.view.ImageFactory.getInstance().createIcon(
 				c.getResource("images/editcut.png")));
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		this.mMindMapController = c;
 		setEnabled(false);
 	}

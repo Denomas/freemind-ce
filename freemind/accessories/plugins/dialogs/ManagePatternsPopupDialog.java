@@ -72,9 +72,10 @@ import freemind.modes.mindmapmode.dialogs.StylePatternFrame.StylePatternFrameTyp
 import freemind.swing.DefaultListModel;
 
 /** */
-@SuppressWarnings("serial")
 public class ManagePatternsPopupDialog extends JDialog implements
 		TextTranslator, KeyListener {
+	private static final long serialVersionUID = 1L;
+
 	private static Pattern sLastSelectedPattern = null;
 
 	private static final String STACK_PATTERN_FRAME = "PATTERN";
@@ -111,7 +112,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 	public static final int CANCEL = -1;
 
 	public static final int OK = 1;
-	
+
 	public static final int STAY = 2;
 
 	private int result = CANCEL;
@@ -150,10 +151,9 @@ public class ManagePatternsPopupDialog extends JDialog implements
 	public ManagePatternsPopupDialog(JFrame caller, MindMapController controller) {
 		super(caller);
 		this.mController = controller;
-		if (logger == null) {
 			logger = mController.getFrame()
 					.getLogger(this.getClass().getName());
-		}
+
 		List<Pattern> patternList = new Vector<>();
 		try {
 			patternList = StylePatternFactory.loadPatterns(controller.getPatternReader());
@@ -168,8 +168,8 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/**
 	 * This method initializes this
-	 * 
-	 * 
+	 *
+	 *
 	 * @return void
 	 */
 	private void initialize(List<Pattern> patternList) {
@@ -208,8 +208,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 		}
 	}
 
-	/**
-	 */
+
 	private String getDialogTitle() {
 		return mController
 				.getText("accessories/plugins/ManagePatterns.dialog.title");
@@ -237,8 +236,8 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/**
 	 * This method initializes jContentPane
-	 * 
-	 * 
+	 *
+	 *
 	 * @return javax.swing.JPanel
 	 */
 	private javax.swing.JPanel getJContentPane(List<Pattern> patternList) {
@@ -476,7 +475,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/**
 	 * This method initializes jButton
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJOKButton() {
@@ -499,7 +498,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/**
 	 * This method initializes jButton1
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJCancelButton() {
@@ -560,7 +559,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 							 result= STAY;
 							 return;
 						 }
-						 
+
 					}
 				}
 			}
@@ -583,7 +582,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(KeyEvent keyEvent) {
@@ -598,7 +597,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(KeyEvent keyEvent) {
@@ -607,7 +606,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	public void keyTyped(KeyEvent keyEvent) {

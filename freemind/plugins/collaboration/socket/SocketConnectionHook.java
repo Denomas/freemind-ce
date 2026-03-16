@@ -36,16 +36,14 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class SocketConnectionHook extends SocketBasics implements
 		PermanentNodeHook, DontSaveMarker {
 
 	private ClientCommunication mClientCommunication;
 
-	/**
-     *
-     */
+
 
 	public void startupMapHook() {
 		super.startupMapHook();
@@ -112,7 +110,7 @@ public class SocketConnectionHook extends SocketBasics implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#getPort()
 	 */
 	public int getPort() {
@@ -121,7 +119,7 @@ public class SocketConnectionHook extends SocketBasics implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#lock()
 	 */
 	protected String lock(String pUserName, ExtendedMapFeedback pController) throws UnableToGetLockException,
@@ -131,7 +129,7 @@ public class SocketConnectionHook extends SocketBasics implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * plugins.collaboration.socket.SocketBasics#broadcastCommand(java.lang.
 	 * String, java.lang.String, java.lang.String)
@@ -143,7 +141,7 @@ public class SocketConnectionHook extends SocketBasics implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#unlock()
 	 */
 	protected void unlock(ExtendedMapFeedback pController) {
@@ -159,7 +157,7 @@ public class SocketConnectionHook extends SocketBasics implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#shutdown()
 	 */
 	public void shutdown() {
@@ -172,7 +170,7 @@ public class SocketConnectionHook extends SocketBasics implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#getMasterInformation()
 	 */
 	public CollaborationUserInformation getMasterInformation(ExtendedMapFeedback pController) {
@@ -190,7 +188,7 @@ public class SocketConnectionHook extends SocketBasics implements
 
 	public void saveHtml(Writer pFileout) throws IOException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

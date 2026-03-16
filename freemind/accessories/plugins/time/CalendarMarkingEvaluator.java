@@ -32,7 +32,6 @@ import freemind.controller.actions.generated.instance.CalendarMarkings;
 
 /**
  * @author foltin
- * @date 05.07.2015
  */
 public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 
@@ -288,29 +287,30 @@ public class CalendarMarkingEvaluator implements ICalendarMarkingEvaluator {
 	}
 
 
-	private static HashMap<String, RepetitionHandler> sHandlerMap;
+	private static final HashMap<String, RepetitionHandler> sHandlerMap = initHandlerMap();
 	protected static java.util.logging.Logger logger = null;
+
+	private static HashMap<String, RepetitionHandler> initHandlerMap() {
+		HashMap<String, RepetitionHandler> map = new HashMap<>();
+		map.put(CalendarMarking.NEVER, new NeverHandler());
+		map.put(CalendarMarking.DAILY, new DailyHandler());
+		map.put(CalendarMarking.WEEKLY, new WeeklyHandler());
+		map.put(CalendarMarking.WEEKLY_EVERY_NTH_DAY, new WeeklyEveryNthDayHandler());
+		map.put(CalendarMarking.MONTHLY, new MonthlyHandler());
+		map.put(CalendarMarking.MONTHLY_EVERY_NTH_DAY, new MonthlyEveryNthDayHandler());
+		map.put(CalendarMarking.MONTHLY_EVERY_NTH_WEEK, new MonthlyEveryNthWeekHandler());
+		map.put(CalendarMarking.YEARLY, new YearlyHandler());
+		map.put(CalendarMarking.YEARLY_EVERY_NTH_DAY, new YearlyEveryNthDayHandler());
+		map.put(CalendarMarking.YEARLY_EVERY_NTH_WEEK, new YearlyEveryNthWeekHandler());
+		map.put(CalendarMarking.YEARLY_EVERY_NTH_MONTH, new YearlyEveryNthMonthHandler());
+		return map;
+	}
 
 	public CalendarMarkingEvaluator(CalendarMarkings pCalendarMarkings) {
 		mCalendarMarkings = pCalendarMarkings;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
-		if (sHandlerMap == null) {
-			sHandlerMap = new HashMap<>();
-			sHandlerMap.put(CalendarMarking.NEVER, new NeverHandler());
-			sHandlerMap.put(CalendarMarking.DAILY, new DailyHandler());
-			sHandlerMap.put(CalendarMarking.WEEKLY, new WeeklyHandler());
-			sHandlerMap.put(CalendarMarking.WEEKLY_EVERY_NTH_DAY, new WeeklyEveryNthDayHandler());
-			sHandlerMap.put(CalendarMarking.MONTHLY, new MonthlyHandler());
-			sHandlerMap.put(CalendarMarking.MONTHLY_EVERY_NTH_DAY, new MonthlyEveryNthDayHandler());
-			sHandlerMap.put(CalendarMarking.MONTHLY_EVERY_NTH_WEEK, new MonthlyEveryNthWeekHandler());
-			sHandlerMap.put(CalendarMarking.YEARLY, new YearlyHandler());
-			sHandlerMap.put(CalendarMarking.YEARLY_EVERY_NTH_DAY, new YearlyEveryNthDayHandler());
-			sHandlerMap.put(CalendarMarking.YEARLY_EVERY_NTH_WEEK, new YearlyEveryNthWeekHandler());
-			sHandlerMap.put(CalendarMarking.YEARLY_EVERY_NTH_MONTH, new YearlyEveryNthMonthHandler());
-		}
+
 	}
 
 	public Set<Calendar> getAtLeastTheFirstNEntries(int n){

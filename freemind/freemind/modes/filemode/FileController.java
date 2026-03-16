@@ -45,9 +45,8 @@ import freemind.modes.ModeController;
 import freemind.modes.common.actions.NewMapAction;
 import freemind.modes.viewmodes.ViewControllerAdapter;
 import freemind.view.mindmapview.MainView;
-
-@SuppressWarnings("serial")
 public class FileController extends ViewControllerAdapter {
+
 
 	Action newMap = new NewMapAction(this);
 	Action center = new CenterAction();
@@ -126,7 +125,7 @@ public class FileController extends ViewControllerAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.ModeController#updateMenus(freemind.controller.
 	 * StructuredMenuHolder)
 	 */

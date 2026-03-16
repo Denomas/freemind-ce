@@ -48,7 +48,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<xsl:output method="xml" version="1.0" indent="yes" encoding="UTF-8" omit-xml-declaration="no"/>
 	<xsl:strip-space elements="*"/>
-	
+
 	<xsl:template match="map">
 <office:document-content
 	xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
@@ -203,7 +203,7 @@
 
 	</office:document-content>
 	</xsl:template>
-	
+
 	<xsl:template match="node">
 		<xsl:variable name="depth">
 			<xsl:apply-templates select=".." mode="depthMesurement"/>
@@ -259,11 +259,11 @@
 				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
-		
+
 	</xsl:template>
-	
+
 	<xsl:template match="hook"/>
-	
+
 <!--	<xsl:template match="hook[@NAME='accessories/plugins/NodeNote.properties']">
 		<xsl:choose>
 			<xsl:when test="./text">
@@ -272,8 +272,8 @@
 				</text:p>
 			</xsl:when>
 		</xsl:choose>
-	</xsl:template> 
-	
+	</xsl:template>
+
 	<xsl:template match="node" mode="childoutputOrdered">
 		<xsl:param name="nodeText"></xsl:param>
 			<text:ordered-list text:style-name="L1"
@@ -286,8 +286,8 @@
 				</text:list-item>
 			</text:ordered-list>
 	</xsl:template>
-	
-	
+
+
 	<xsl:template match="map" mode="childoutputOrdered">
 		<xsl:param name="nodeText"></xsl:param>
 		<xsl:copy-of select="$nodeText"/>
@@ -304,14 +304,14 @@
 		<xsl:value-of select="$depth"/>
 	</xsl:template>
 
-		
+
 	<!-- Give links out. -->
 	<xsl:template match="@LINK">
 		<text:p text:style-name="Standard">
 			<xsl:element name="text:a" namespace="text">
 				<xsl:attribute namespace="xlink" name="xlink:type">simple</xsl:attribute>
 				<xsl:attribute namespace="xlink" name="xlink:href">
-					<!-- Convert relative links, such that they start with "../". 
+					<!-- Convert relative links, such that they start with "../".
 					     This is due to the fact, that OOo calculates all relative links from the document itself! -->
 					<xsl:choose>
 						<xsl:when test="starts-with(.,'/') or contains(.,':')">
@@ -353,11 +353,11 @@
 			</xsl:otherwise>
 			</xsl:choose>
 	</xsl:template> <!-- xsl:template name="output-nodecontent" -->
-	
+
 	<xsl:template name="output-notecontent">
 		<xsl:if test="richcontent[@TYPE='NOTE']">
 			<xsl:apply-templates select="richcontent[@TYPE='NOTE']/html/body" mode="richcontent" >
-				<xsl:with-param name="style">Standard</xsl:with-param>					
+				<xsl:with-param name="style">Standard</xsl:with-param>
 			</xsl:apply-templates>
 		</xsl:if>
 	</xsl:template> <!-- xsl:template name="output-note" -->
@@ -373,7 +373,7 @@
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template> <!-- xsl:template name="textnode" -->
-	
+
 
 	<!-- replace ASCII line breaks through ODF line breaks (br) -->
 	<xsl:template name="format_text">
@@ -396,22 +396,22 @@
 		<xsl:param name="style">Standard</xsl:param>
 <!--       <xsl:copy-of select="string(.)"/> -->
 		<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
-	</xsl:template> 
-	<xsl:template match="text()" mode="richcontent">	<xsl:copy-of select="string(.)"/></xsl:template> 
+	</xsl:template>
+	<xsl:template match="text()" mode="richcontent">	<xsl:copy-of select="string(.)"/></xsl:template>
 	<xsl:template match="br" mode="richcontent">
 		<text:line-break/>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="b" mode="richcontent">
 		<xsl:param name="style">Standard</xsl:param>
 		<text:span text:style-name="T1">
 			<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		</text:span>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="p" mode="richcontent">
 		<xsl:param name="style">Standard</xsl:param>
 		<xsl:choose>
 			<xsl:when test="$style = ''">
-				<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>			
+				<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 			</xsl:when>
 			<xsl:when test="@style='text-align: center'">
 				<text:p text:style-name="P3">
@@ -435,51 +435,51 @@
 				</xsl:element>
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template> 
+	</xsl:template>
 
 	<xsl:template match="i" mode="richcontent">
 		<xsl:param name="style">Standard</xsl:param>
 		<text:span text:style-name="T2">
 			<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		</text:span>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="u" mode="richcontent">
 		<xsl:param name="style">Standard</xsl:param>
 		<text:span text:style-name="T3">
 			<xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		</text:span>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="ul" mode="richcontent">
 		<xsl:param name="style">Standard</xsl:param>
 		<text:list text:style-name="L1">
 			<xsl:apply-templates select="text()|*" mode="richcontentul"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		</text:list>
 	    <text:p text:style-name="P3"/>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="ol" mode="richcontent">
 		<xsl:param name="style">Standard</xsl:param>
 		<text:list text:style-name="L2">
 			<xsl:apply-templates select="text()|*" mode="richcontentol"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates>
 		</text:list>
 		<text:p text:style-name="P3"/>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="li" mode="richcontentul">
 		<xsl:param name="style">Standard</xsl:param>
       <text:list-item>
         <text:p text:style-name="P1"><!--
-			--><xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates><!--			
+			--><xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates><!--
 		--></text:p>
       </text:list-item>
-	</xsl:template> 
+	</xsl:template>
 	<xsl:template match="li" mode="richcontentol">
 		<xsl:param name="style">Standard</xsl:param>
 	    <text:list-item>
         <text:p text:style-name="P2"><!--
-			--><xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates><!--			
+			--><xsl:apply-templates select="text()|*" mode="richcontent"><xsl:with-param name="style" select="$style"></xsl:with-param></xsl:apply-templates><!--
 		--></text:p>
       </text:list-item>
-	</xsl:template> 
-	
+	</xsl:template>
+
 <!--
       <text:list-item>
         <text:p text:style-name="P1">b
@@ -489,7 +489,7 @@
       </text:list-item>
     <text:p text:style-name="P2"/>
 	-->
-			<!-- 
+			<!--
     <text:ordered-list text:style-name="L2">
       <text:list-item>
         <text:p text:style-name="P3">1</text:p>
@@ -503,7 +503,7 @@
     </text:ordered-list>
     <text:p text:style-name="P2"/>
 -->
-	<!-- Table: 
+	<!-- Table:
 		    <table:table table:name="Table1" table:style-name="Table1">
       <table:table-column table:style-name="Table1.A" table:number-columns-repeated="3"/>
       <table:table-row>
@@ -541,6 +541,6 @@
       </table:table-row>
     </table:table>
 -->
-	
-	
+
+
 </xsl:stylesheet>

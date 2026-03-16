@@ -54,9 +54,7 @@ public class MindMapMock implements MindMap {
 
 	private final String mapXmlString;
 
-	/**
-     * 
-     */
+
 	public MindMapMock(String mapXmlString) {
 		super();
 		this.mapXmlString = mapXmlString;
@@ -218,7 +216,7 @@ public class MindMapMock implements MindMap {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMap#changeRoot(freemind.modes.MindMapNode)
 	 */
 	@Override
@@ -232,7 +230,7 @@ public class MindMapMock implements MindMap {
 	 */
 	@Override
 	public void setReadOnly(boolean pIsReadOnly) {
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -338,7 +336,7 @@ public class MindMapMock implements MindMap {
 	@Override
 	public void insertNodeInto(MindMapNode pNode, MindMapNode pParentNode,
 			int pIndex) {
-		
+
 	}
 
 	/* (non-Javadoc)

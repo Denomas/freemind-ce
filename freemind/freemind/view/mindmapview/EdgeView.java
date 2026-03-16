@@ -43,7 +43,7 @@ public abstract class EdgeView {
 
 	/**
 	 * This should be a task of MindMapLayout start,end must be initialized...
-	 * 
+	 *
 	 * @param target
 	 *            TODO
 	 */

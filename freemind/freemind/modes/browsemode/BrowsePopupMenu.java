@@ -26,9 +26,9 @@ import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
-
-@SuppressWarnings("serial")
 public class BrowsePopupMenu extends JPopupMenu implements PopupMenuListener {
+	private static final long serialVersionUID = 1L;
+
 
 	private BrowseController c;
 
@@ -71,5 +71,5 @@ public class BrowsePopupMenu extends JPopupMenu implements PopupMenuListener {
 	 */
 	public void popupMenuCanceled(PopupMenuEvent pE) {
 	}
-	
+
 }

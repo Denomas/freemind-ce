@@ -59,9 +59,8 @@ import freemind.modes.common.plugins.MapNodePositionHolderBase;
 import freemind.modes.common.plugins.NodeNoteBase;
 import freemind.modes.viewmodes.ViewControllerAdapter;
 import freemind.view.mindmapview.MainView;
-
-@SuppressWarnings("serial")
 public class BrowseController extends ViewControllerAdapter {
+
 
 	private JPopupMenu popupmenu;
 	private JToolBar toolbar;
@@ -267,8 +266,7 @@ public class BrowseController extends ViewControllerAdapter {
 		return null;
 	}
 
-	/**
-	 */
+
 	private GotoLinkNodeAction getGotoLinkNodeAction(MindMapNode destination) {
 		return new GotoLinkNodeAction(this, destination);
 	}

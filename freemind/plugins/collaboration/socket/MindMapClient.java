@@ -45,7 +45,7 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class MindMapClient extends SocketBasics {
 
@@ -174,7 +174,7 @@ public class MindMapClient extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#getPort()
 	 */
 	public int getPort() {
@@ -183,7 +183,7 @@ public class MindMapClient extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#lock()
 	 */
 	protected String lock(String pUserName, ExtendedMapFeedback pController) throws UnableToGetLockException,
@@ -193,7 +193,7 @@ public class MindMapClient extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * plugins.collaboration.socket.SocketBasics#sendCommand(java.lang.String,
 	 * java.lang.String)
@@ -204,7 +204,7 @@ public class MindMapClient extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#unlock()
 	 */
 	protected void unlock(ExtendedMapFeedback pController) {
@@ -212,7 +212,7 @@ public class MindMapClient extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#shutdown()
 	 */
 	public void shutdown() {
@@ -220,7 +220,7 @@ public class MindMapClient extends SocketBasics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.collaboration.socket.SocketBasics#getMasterInformation()
 	 */
 	public CollaborationUserInformation getMasterInformation(ExtendedMapFeedback pController) {

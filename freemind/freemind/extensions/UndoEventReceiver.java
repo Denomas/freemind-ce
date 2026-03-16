@@ -28,14 +28,14 @@ package freemind.extensions;
  * interface (which is easy), it receives onUpdateNodeHook,
  * onUpdateChildrenHook, even when the action issuing this update is caused by an
  * undo action.
- * 
+ *
  * Normally, on undo, no event are generated.
- * 
+ *
  * The onAddChild, onAddChildren events are not implemented yet. They are
  * generated in any case.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public interface UndoEventReceiver {
 

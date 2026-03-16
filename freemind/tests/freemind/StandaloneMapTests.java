@@ -45,17 +45,14 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 
 /**
  * @author foltin
- * @date 16.03.2014
  */
 public class StandaloneMapTests extends FreeMindTestBase {
-	/**
-	 * 
-	 */
+
 	private static final String INITIAL_MAP = "<map>" + "<node TEXT='ROOT'>"
 			+ "<node TEXT='FormatMe'>"
 			+ "<node TEXT='Child1'/>"
-			+ "<node TEXT='Child2'/>" 
-			+ "<node TEXT='Child3'/>" 
+			+ "<node TEXT='Child2'/>"
+			+ "<node TEXT='Child3'/>"
 			+ "</node>"
 			+ "</node>" + "</map>";
 
@@ -293,7 +290,7 @@ public class StandaloneMapTests extends FreeMindTestBase {
 		assertEquals(Tools.colorToXml(Color.MAGENTA), p.getPatternNodeColor().getValue());
 		mapFeedback.applyPattern(subChild2, p);
 		assertEquals(Color.MAGENTA, subChild2.getColor());
-		
+
 		String xmlResult = getMapContents(mMap);
 		System.out.println(xmlResult);
 

@@ -30,7 +30,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 23.04.2014
  */
 public class ChangeNoteTextActor extends XmlActorAdapter {
 

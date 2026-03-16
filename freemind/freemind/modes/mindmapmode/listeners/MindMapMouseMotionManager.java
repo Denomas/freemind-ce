@@ -45,9 +45,7 @@ public class MindMapMouseMotionManager implements MapMouseMotionReceiver {
 
 	// |= oldX >=0 iff we are in the drag
 
-	/**
-     *
-     */
+
 	public MindMapMouseMotionManager(MindMapController controller) {
 		super();
 		this.mController = controller;

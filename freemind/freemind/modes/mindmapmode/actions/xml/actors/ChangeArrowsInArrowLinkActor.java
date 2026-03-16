@@ -30,7 +30,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 01.04.2014
  */
 public class ChangeArrowsInArrowLinkActor extends XmlActorAdapter {
 
@@ -40,14 +39,13 @@ public class ChangeArrowsInArrowLinkActor extends XmlActorAdapter {
 	public ChangeArrowsInArrowLinkActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public void changeArrowsOfArrowLink(MindMapArrowLink arrowLink,
 			boolean hasStartArrow, boolean hasEndArrow) {
 		execute(getActionPair(arrowLink, hasStartArrow, hasEndArrow));
 	}
 
-	/**
-     */
+
 	private ActionPair getActionPair(MindMapArrowLink arrowLink2,
 			boolean hasStartArrow2, boolean hasEndArrow2) {
 		return new ActionPair(createArrowLinkArrowXmlAction(arrowLink2,

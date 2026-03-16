@@ -35,10 +35,10 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * @date 18.10.2011
  */
-@SuppressWarnings("serial")
 public class PasteAsPlainTextAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private MindMapController mMindMapController;
 	private static Logger logger;
@@ -46,17 +46,16 @@ public class PasteAsPlainTextAction extends AbstractAction {
 	public PasteAsPlainTextAction(MindMapController pMindMapController) {
 		super(pMindMapController.getText("paste_as_plain_text"), null);
 		this.mMindMapController = pMindMapController;
-		if (logger == null) {
 			logger = mMindMapController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 
 		setEnabled(false);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */

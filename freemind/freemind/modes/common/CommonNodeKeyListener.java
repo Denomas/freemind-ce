@@ -63,9 +63,8 @@ public class CommonNodeKeyListener implements KeyListener {
 			EditHandler editHandler) {
 		c = controller;
 		this.editHandler = editHandler;
-		if (logger == null) {
 			logger = controller.getFrame().getLogger(this.getClass().getName());
-		}
+
 		up = c.getFrame().getAdjustableProperty("keystroke_move_up");
 		down = c.getFrame().getAdjustableProperty("keystroke_move_down");
 		left = c.getFrame().getAdjustableProperty("keystroke_move_left");

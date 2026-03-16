@@ -31,9 +31,9 @@ import freemind.controller.actions.generated.instance.DeleteNodeAction;
 import freemind.main.FreeMind;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class DeleteChildAction extends MindmapAction  {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController mMindMapController;
 
 	public DeleteChildAction(MindMapController modeController) {

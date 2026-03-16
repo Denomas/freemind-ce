@@ -27,28 +27,24 @@ import freemind.controller.actions.generated.instance.XmlAction;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ActionPair {
 	private XmlAction doAction;
 	private XmlAction undoAction;
 
-	/**
-	 *
-	 */
+
 	public ActionPair(XmlAction doAction, XmlAction undoAction) {
 		this.doAction = doAction;
 		this.undoAction = undoAction;
 	}
 
-	/**
-	 */
+
 	public XmlAction getDoAction() {
 		return doAction;
 	}
 
-	/**
-	 */
+
 	public XmlAction getUndoAction() {
 		return undoAction;
 	}

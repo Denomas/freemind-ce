@@ -1,5 +1,5 @@
 <project name="freemind_plugins" default="dist" basedir=".">
-	
+
 	<property name="plugin.xml" location="${src}/plugins/CollaborationSocket.xml" />
 	<property name="plugin.dir" value="plugins/collaboration/socket"/>
 	<property name="local.plugin.dir" location="${src}/plugins/collaboration/socket"/>

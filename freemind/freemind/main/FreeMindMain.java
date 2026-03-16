@@ -94,7 +94,7 @@ public interface FreeMindMain {
 	 * Properties are stored in freemind.properties (internally) and
 	 * ~/.freemind/auto.properties for user changed values. This method returns
 	 * the user value (if changed) or the original.
-	 * 
+	 *
 	 * @param key
 	 *            The property key as specified in freemind.properties
 	 * @return the value of the property or null, if not found.
@@ -151,7 +151,7 @@ public interface FreeMindMain {
 
 		/**
 		 * Sets the version number from a string.
-		 * 
+		 *
 		 * @param pString
 		 *            : The version number coding. Example "0.9.0 Beta 1"
 		 *            Keywords are "Alpha", "Beta", "RC". Separation by " " or
@@ -235,8 +235,8 @@ public interface FreeMindMain {
 	/**
 	 * Inserts a (south) component into the split pane. If the screen isn't
 	 * split yet, a split pane should be created on the fly.
-	 * @param pMindMapComponent 
-	 * 
+	 * @param pMindMapComponent
+	 *
 	 * @return the split pane in order to move the dividers.
 	 */
 	public JSplitPane insertComponentIntoSplitPane(JComponent pMindMapComponent);
@@ -272,7 +272,7 @@ public interface FreeMindMain {
 
 	public abstract void registerStartupDoneListener(
 			StartupDoneListener pStartupDoneListener);
-	
+
 	/**
 	 * @return a list of all loggers. Used for example for the log file viewer.
 	 */

@@ -37,6 +37,7 @@ import java.util.StringTokenizer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import javax.xml.XMLConstants;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -49,25 +50,22 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ExportToOoWriter extends ExportHook {
 	private static java.util.logging.Logger logger = null;
 
-	/**
-	 * 
-	 */
+
 	public ExportToOoWriter() {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.MindMapHook#startupMapHook()
 	 */
 	public void startupMapHook() {
@@ -122,6 +120,7 @@ public class ExportToOoWriter extends ExportHook {
 
 			// System.out.println("make transform instance");
 			TransformerFactory transFact = TransformerFactory.newInstance();
+			transFact.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
 			Transformer trans = transFact.newTransformer(xsltSource);
 			trans.setParameter(

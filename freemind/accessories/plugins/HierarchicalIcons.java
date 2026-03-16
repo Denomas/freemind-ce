@@ -43,8 +43,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 		super.shutdownMapHook();
 	}
 
-	/**
-     */
+
 	private void removeIcons(MindMapNode node) {
 		node.setStateIcon(getName(), null);
 		getMindMapController().nodeRefresh(node);
@@ -54,9 +53,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 		}
 	}
 
-	/**
-     *
-     */
+
 	public HierarchicalIcons() {
 		super();
 
@@ -104,8 +101,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	}
 
-	/**
-     */
+
 	private void addAccumulatedIconsToTreeSet(MindMapNode child,
 			TreeSet<String> iconSet, TreeSet<String> childsTreeSet) {
 		for (MindIcon icon : child.getIcons()) {
@@ -120,7 +116,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHook#onAddChild(freemind.modes.MindMapNode
 	 * )
@@ -139,7 +135,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHook#onUpdateChildrenHook(freemind.modes
 	 * .MindMapNode)
@@ -151,7 +147,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.PermanentNodeHook#onUpdateNodeHook()
 	 */
 	public void onUpdateNodeHook() {
@@ -161,7 +157,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.NodeHook#invoke(freemind.modes.MindMapNode)
 	 */
 	public void invoke(MindMapNode node) {
@@ -170,8 +166,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 		gatherLeavesAndSetParentsStyle(node);
 	}
 
-	/**
-     */
+
 	private void gatherLeavesAndSetStyle(MindMapNode node) {
 		if (node.getChildCount() == 0) {
 			// call setStyle for all leaves:
@@ -184,8 +179,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 		}
 	}
 
-	/**
-     */
+
 	private void gatherLeavesAndSetParentsStyle(MindMapNode node) {
 		if (node.getChildCount() == 0) {
 			// call setStyleRecursive for all parents:
@@ -200,8 +194,7 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter
 		}
 	}
 
-	/**
-     */
+
 	private void setStyleRecursive(MindMapNode node) {
 		// logger.finest("setStyle " + node);
 		setStyle(node);

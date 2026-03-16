@@ -39,8 +39,7 @@ public class NumberProperty extends PropertyBean implements PropertyControl {
 	private final int max;
 	private final int step;
 
-	/**
-	     */
+
 	public NumberProperty(String description, String label, int min, int max,
 			int step) {
 		this.min = min;
@@ -88,7 +87,7 @@ public class NumberProperty extends PropertyBean implements PropertyControl {
 	public String getValue() {
 		return spinner.getValue().toString();
 	}
-	
+
 	public int getIntValue() {
 		return ((Integer)(spinner.getValue())).intValue();
 	}

@@ -49,9 +49,9 @@ import freemind.controller.filter.condition.SelectedViewCondition;
 import freemind.main.Resources;
 import freemind.modes.MindMap;
 import freemind.modes.MindMapNode;
-
-@SuppressWarnings("serial")
 class FilterToolbar extends FreeMindToolBar {
+	private static final long serialVersionUID = 1L;
+
 	private FilterController mFilterController;
 	private FilterComposerDialog filterDialog = null;
 	private JComboBox<Condition> activeFilterConditionComboBox;
@@ -68,7 +68,7 @@ class FilterToolbar extends FreeMindToolBar {
 			ItemListener, PropertyChangeListener {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -85,7 +85,7 @@ class FilterToolbar extends FreeMindToolBar {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ItemListener#itemStateChanged(java.awt.event.ItemEvent
 		 * )
@@ -125,7 +125,7 @@ class FilterToolbar extends FreeMindToolBar {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -143,15 +143,13 @@ class FilterToolbar extends FreeMindToolBar {
 			if (selectedItem != null) {
 				getFilterDialog().setSelectedItem(selectedItem);
 			}
-			getFilterDialog().show();
+			getFilterDialog().setVisible(true);
 		}
 
 	}
 
 	private class UnfoldAncestorsAction extends AbstractAction {
-		/**
-         *
-         */
+
 		UnfoldAncestorsAction() {
 			super("", freemind.view.ImageFactory.getInstance().createIcon(Resources.getInstance().getResource(
 					"images/unfold.png")));
@@ -253,9 +251,7 @@ class FilterToolbar extends FreeMindToolBar {
 				.addPropertyChangeListener(filterChangeListener);
 	}
 
-	/**
-     *
-     */
+
 	public void resetFilter() {
 		activeFilter = null;
 
@@ -276,14 +272,12 @@ class FilterToolbar extends FreeMindToolBar {
 		}
 	}
 
-	/**
-     */
+
 	FilterComposerDialog getFilterDialog() {
 		return filterDialog;
 	}
 
-	/**
-     */
+
 	void mapChanged(MindMap newMap) {
 		if (!isVisible())
 			return;

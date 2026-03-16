@@ -41,7 +41,7 @@ import freemind.main.Resources;
 /**
  * Converts an unqualified class name to import statements by scanning through
  * the classpath.
- * 
+ *
  * @author Len Trigg (trigg@cs.waikato.ac.nz)
  * @version 1.0 - 6 May 1999
  */
@@ -53,10 +53,9 @@ public class ImportWizard {
 	protected static java.util.logging.Logger logger = null;
 
 	public ImportWizard() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	/** Build the list of classes */
@@ -112,7 +111,7 @@ public class ImportWizard {
 
 	/**
 	 * Adds the classes from the supplied Zip file to the class list.
-	 * 
+	 *
 	 * @param classList
 	 *            the Vector to add the classes to
 	 * @param classPathFile
@@ -139,8 +138,7 @@ public class ImportWizard {
 		}
 	}
 
-	/**
-     */
+
 	private boolean isInteresting(String current) {
 		int length = current.length();
 		if (length < lookFor.length()) {
@@ -152,7 +150,7 @@ public class ImportWizard {
 
 	/**
 	 * Adds the classes from the supplied directory to the class list.
-	 * 
+	 *
 	 * @param classList
 	 *            the Vector to add the classes to
 	 * @param currentDir
@@ -218,21 +216,21 @@ public class ImportWizard {
  * "Mode not available: Mindmap" *
  * https://sourceforge.net/tracker/?func=detail&atid
  * =107118&aid=2025279&group_id=7118 * FreeMind Starter: no more statics.
- * 
+ *
  * Revision 1.1.4.6.2.15 2008/07/18 16:14:25 christianfoltin * Renamed zh into
  * zh_TW (patch from willyann * Reverted changes to Tools.
- * 
+ *
  * Revision 1.1.4.6.2.14 2006/12/14 16:45:00 christianfoltin * Search & Replace
  * Dialog with menu and nicer. Bug fixes...
- * 
+ *
  * Revision 1.1.4.6.2.13 2006/11/28 08:25:01 dpolivaev no message
- * 
+ *
  * Revision 1.1.4.6.2.12 2006/11/26 10:20:40 dpolivaev LocalProperties,
  * TextResources for SHTML and Bug Fixes
- * 
+ *
  * Revision 1.1.4.6.2.11 2006/11/12 21:07:06 christianfoltin * Mac bug fixes
  * (class path, error messages, directories)
- * 
+ *
  * Revision 1.1.4.6.2.10 2006/09/05 21:17:58 dpolivaev SimplyHTML
  */
 

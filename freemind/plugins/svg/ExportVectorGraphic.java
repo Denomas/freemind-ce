@@ -33,6 +33,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import javax.xml.XMLConstants;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -55,12 +56,11 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ExportVectorGraphic extends ExportHook {
 
-	/**
-	 */
+
 	protected SVGGraphics2D fillSVGGraphics2D(MapView view) {
 		// NodeAdapter root = (NodeAdapter) getController().getMap().getRoot();
 		SVGGraphics2D g2d = createSvgGraphics2D();
@@ -89,7 +89,7 @@ public class ExportVectorGraphic extends ExportHook {
 		try {
 			view.preparePrinting();
 			Rectangle innerBounds = null;
-			
+
 			for (NodeView nodeView : view.getViewers(pNode)) {
 				if (innerBounds == null) {
 					innerBounds = nodeView.getInnerBounds();
@@ -149,6 +149,7 @@ public class ExportVectorGraphic extends ExportHook {
 		try {
 			// System.out.println("make transform instance");
 			TransformerFactory transFact = TransformerFactory.newInstance();
+			transFact.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
 			Transformer trans = transFact.newTransformer(xsltSource);
 			// set parameter:

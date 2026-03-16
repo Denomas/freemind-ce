@@ -46,7 +46,7 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ExportHook extends ModeControllerHookAdapter {
 	private MapView view;
@@ -62,7 +62,7 @@ public class ExportHook extends ModeControllerHookAdapter {
 		ModeController controller = getController();
 		return ExportHook.chooseImageFile(type, description, nameExtension, controller);
 	}
-	
+
 	public static File chooseImageFile(String type, String description,
 			String nameExtension, ModeController controller) {
 		Container component = controller.getFrame().getContentPane();
@@ -177,8 +177,7 @@ public class ExportHook extends ModeControllerHookAdapter {
 		// return image;
 	}
 
-	/**
-     */
+
 	protected void copyFromResource(String prefix, String fileName,
 			String destinationDirectory) {
 		// adapted from http://javaalmanac.com/egs/java.io/CopyFile.html
@@ -206,8 +205,7 @@ public class ExportHook extends ModeControllerHookAdapter {
 
 	}
 
-	/**
-     */
+
 	protected void copyFromFile(String dir, String fileName,
 			String destinationDirectory) {
 		// adapted from http://javaalmanac.com/egs/java.io/CopyFile.html

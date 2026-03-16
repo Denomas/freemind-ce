@@ -37,8 +37,7 @@ public class AttributeExistsCondition extends NodeCondition {
 	static final String NAME = "attribute_exists_condition";
 	private String attribute;
 
-	/**
-     */
+
 	public AttributeExistsCondition(String attribute) {
 		super();
 		this.attribute = attribute;
@@ -46,7 +45,7 @@ public class AttributeExistsCondition extends NodeCondition {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.condition.Condition#checkNode(freemind.modes
 	 * .MindMapNode)
@@ -74,8 +73,7 @@ public class AttributeExistsCondition extends NodeCondition {
 	}
 
 	protected String createDesctiption() {
-		final String simpleCondition = Resources.getInstance()
-				.getResourceString(ConditionFactory.FILTER_EXIST);
+		final String simpleCondition = ConditionFactory.FILTER_EXIST.toString();
 		return ConditionFactory.createDescription(attribute, simpleCondition,
 				null, false);
 	}

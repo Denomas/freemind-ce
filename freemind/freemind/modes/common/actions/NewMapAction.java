@@ -34,9 +34,9 @@ import freemind.modes.ModeController;
 // //////////
 // Actions
 // /////////
-
-@SuppressWarnings("serial")
 public class NewMapAction extends AbstractAction {
+	private static final long serialVersionUID = 1L;
+
 	private final ModeController modeController;
 
 	public NewMapAction(ModeController modeController) {

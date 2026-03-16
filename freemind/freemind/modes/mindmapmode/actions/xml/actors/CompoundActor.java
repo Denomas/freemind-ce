@@ -30,7 +30,7 @@ import freemind.modes.mindmapmode.actions.xml.ActorXml;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class CompoundActor extends XmlActorAdapter {
 
@@ -43,7 +43,7 @@ public class CompoundActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActorXml#act(freemind.controller.actions.
 	 * generated.instance.XmlAction)
@@ -63,7 +63,7 @@ public class CompoundActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.actions.ActorXml#getDoActionClass()
 	 */
 	public Class<CompoundAction> getDoActionClass() {

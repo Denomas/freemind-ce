@@ -143,7 +143,7 @@
 		</xsl:choose>
 		<!--
   <xsl:element name="{$elName}">
-    <xsl:choose> 
+    <xsl:choose>
       <xsl:when test="$elName != 'p'" />
       <xsl:when test="not($paraStyle)" />
       <xsl:when test="$paraStyle = 'normal' or $paraStyle = 'BodyText'" />

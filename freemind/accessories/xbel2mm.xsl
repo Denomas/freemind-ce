@@ -16,7 +16,7 @@
 <xsl:stylesheet version="1.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-	<xsl:strip-space elements="*" /> 
+	<xsl:strip-space elements="*" />
 	<xsl:output method="xml" indent="yes" encoding="UTF-8" />
 
 	<xsl:template match="/xbel">
@@ -54,6 +54,6 @@
 	</xsl:template>
 
 	<xsl:template match = "node()|@*" />
-	
+
 
 </xsl:stylesheet>

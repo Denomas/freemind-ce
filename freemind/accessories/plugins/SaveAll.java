@@ -34,13 +34,11 @@ import freemind.view.MapModule;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class SaveAll extends ModeControllerHookAdapter {
 
-	/**
-     * 
-     */
+
 	public SaveAll() {
 		super();
 	}
@@ -73,8 +71,7 @@ public class SaveAll extends ModeControllerHookAdapter {
 				initialMapModule.toString());
 	}
 
-	/**
-     */
+
 	private Map<String, MapModule> getMapModules() {
 		return getController().getController().getMapModuleManager()
 				.getMapModules();

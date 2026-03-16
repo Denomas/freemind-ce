@@ -31,15 +31,13 @@ import freemind.modes.mindmapmode.hooks.PermanentMindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter {
 
 	private String tooltipFormat;
 
-	/**
-	 *  
-	 */
+
 	public CreationModificationPlugin() {
 		super();
 	}
@@ -63,9 +61,7 @@ public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter 
 		super.shutdownMapHook();
 	}
 
-	/**
-	 *  
-	 */
+
 	private void removeToolTipRecursively(MindMapNode node) {
 		setToolTip(node, getName(), null);
 		for (Iterator<MindMapNode> i = node.childrenUnfolded(); i.hasNext();) {
@@ -84,7 +80,7 @@ public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter 
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHook#onUpdateChildrenHook(freemind.modes
 	 * .MindMapNode)
@@ -96,7 +92,7 @@ public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter 
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.PermanentNodeHook#onUpdateNodeHook()
 	 */
 	public void onUpdateNodeHook() {
@@ -106,7 +102,7 @@ public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter 
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.NodeHook#invoke(freemind.modes.MindMapNode)
 	 */
 	public void invoke(MindMapNode node) {
@@ -114,8 +110,7 @@ public class CreationModificationPlugin extends PermanentMindMapNodeHookAdapter 
 		setStyleRecursive(node);
 	}
 
-	/**
-	 */
+
 	private void setStyleRecursive(MindMapNode node) {
 		logger.finest("setStyle " + node);
 		setStyle(node);

@@ -31,7 +31,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 27.03.2014
  */
 public class RemoveArrowLinkActor extends XmlActorAdapter {
 
@@ -46,8 +45,7 @@ public class RemoveArrowLinkActor extends XmlActorAdapter {
 		execute(getActionPair(arrowLink));
 	}
 
-	/**
-     */
+
 	private ActionPair getActionPair(MindMapLink arrowLink) {
 		return new ActionPair(
 				createRemoveArrowLinkXmlAction(arrowLink.getUniqueId()),

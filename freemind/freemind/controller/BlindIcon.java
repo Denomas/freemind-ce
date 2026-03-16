@@ -30,7 +30,7 @@ import javax.swing.Icon;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class BlindIcon implements Icon {
 
@@ -42,7 +42,7 @@ public class BlindIcon implements Icon {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.Icon#getIconHeight()
 	 */
 	public int getIconHeight() {
@@ -51,7 +51,7 @@ public class BlindIcon implements Icon {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.Icon#getIconWidth()
 	 */
 	public int getIconWidth() {
@@ -60,7 +60,7 @@ public class BlindIcon implements Icon {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.Icon#paintIcon(java.awt.Component, java.awt.Graphics,
 	 * int, int)
 	 */

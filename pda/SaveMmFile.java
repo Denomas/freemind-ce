@@ -22,7 +22,7 @@ public class SaveMmFile extends Container {
 		super();
 		this.main=main;
 	}
-	
+
 	public void onStart() {
 		btnQuit=new Button("Quit");
 		add(btnQuit,LEFT,BOTTOM);
@@ -69,18 +69,18 @@ public class SaveMmFile extends Container {
 			/* Stick the editable filename to the right of the trigger. */
 			add(saveFile=new Edit());
 			saveFile.setRect(AFTER+1,SAME,FILL,PREFERRED);
-			saveFile.setText(main.lastFilename); 
-			
+			saveFile.setText(main.lastFilename);
+
 			/* House directory list in combobox */
 			add(new Label("Change directory:"),LEFT,saveFile.getRect().y2()+10);
 			cbxDirs=new ComboBox(listDirs);
 			add(cbxDirs);
-			cbxDirs.setRect(LEFT,AFTER,FILL,PREFERRED); 
+			cbxDirs.setRect(LEFT,AFTER,FILL,PREFERRED);
 			cbxDirs.select(listDirs.getItemAt(0));
 
 		}
 	}
-	
+
 	/**
 	 * Standard event handler.
 	 */

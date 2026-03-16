@@ -12,19 +12,19 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**/MacChanges.java|**/MacChanges.java.not_here|**/MacChanges.java.disabled|**/jabber/**|**/FreeMindApplet.java|**/FreeMindSecurityManager.java|**/ScriptingSecurityManager.java" kind="src" output="bin/main" path="de">
+	<classpathentry excluding="**/MacChanges.java|**/MacChanges.java.not_here|**/MacChanges.java.disabled|**/jabber/**|**/database/**|**/FreeMindApplet.java|**/FreeMindSecurityManager.java|**/ScriptingSecurityManager.java" kind="src" output="bin/main" path="de">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**/MacChanges.java|**/MacChanges.java.not_here|**/MacChanges.java.disabled|**/jabber/**|**/FreeMindApplet.java|**/FreeMindSecurityManager.java|**/ScriptingSecurityManager.java" kind="src" output="bin/main" path="generated-src">
+	<classpathentry excluding="**/MacChanges.java|**/MacChanges.java.not_here|**/MacChanges.java.disabled|**/jabber/**|**/database/**|**/FreeMindApplet.java|**/FreeMindSecurityManager.java|**/ScriptingSecurityManager.java" kind="src" output="bin/main" path="generated-src">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**/MacChanges.java|**/MacChanges.java.not_here|**/MacChanges.java.disabled|**/jabber/**|**/FreeMindApplet.java|**/FreeMindSecurityManager.java|**/ScriptingSecurityManager.java" kind="src" output="bin/main" path="plugins">
+	<classpathentry excluding="**/MacChanges.java|**/MacChanges.java.not_here|**/MacChanges.java.disabled|**/jabber/**|**/database/**|**/FreeMindApplet.java|**/FreeMindSecurityManager.java|**/ScriptingSecurityManager.java" kind="src" output="bin/main" path="plugins">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>

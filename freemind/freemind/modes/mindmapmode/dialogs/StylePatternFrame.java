@@ -79,9 +79,10 @@ import freemind.modes.mindmapmode.actions.IconAction;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public class StylePatternFrame extends JPanel implements TextTranslator,
 		PropertyChangeListener {
+	private static final long serialVersionUID = 1L;
+
 	public static final class StylePatternFrameType {
 		private StylePatternFrameType() {
 
@@ -547,8 +548,7 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				defaultValue, new IdentityTransformer());
 	}
 
-	/**
-	 */
+
 	private void setPatternControls(PatternPropertyBase patternProperty,
 			PropertyBean threeCheckBoxProperty, PropertyBean property,
 			String defaultValue, ValueTransformator transformer) {
@@ -657,8 +657,7 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				transformer);
 	}
 
-	/**
-	 */
+
 	private PatternPropertyBase getPatternResult(
 			PatternPropertyBase baseProperty,
 			ThreeCheckBoxProperty threeCheckBoxProperty, PropertyBean property,

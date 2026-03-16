@@ -10,7 +10,7 @@
                     and colors. feel free to customize it while leaving the ancient authors
                     mentioned. thank you
     ChangeLog:
-    
+
     See: http://freemind.sourceforge.net/
 -->
 
@@ -40,7 +40,7 @@
             &#xA;
             <body>
             &#xA;
-          
+
             <p>
             <xsl:apply-templates/>
             </p>
@@ -89,7 +89,7 @@
                 </xsl:if>
                 <xsl:if test="$fontsize != ''">
                 <xsl:text>font-size:</xsl:text><xsl:value-of select="$fontsize"/><xsl:text>;</xsl:text>
-               </xsl:if> 
+               </xsl:if>
                <xsl:if test="$fontbold = 'true'">
                     <xsl:text>font-weight:bold;</xsl:text>
                 </xsl:if>
@@ -101,15 +101,15 @@
             <xsl:attribute name="href">
         	<xsl:text>#</xsl:text><xsl:value-of select="$target"/>
             </xsl:attribute>
-            
+
             <xsl:value-of select="$nodetext"/>
             </a>&#xA;
         </xsl:if>
 
         <xsl:if test="not(arrowlink/@DESTINATION)">
-            
+
          <span>
-           
+
                 <xsl:attribute name="style">
                 <xsl:if test="$thiscolor != ''">
                     <xsl:text>color:</xsl:text><xsl:value-of select="$thiscolor"/><xsl:text>;</xsl:text>
@@ -119,7 +119,7 @@
                 </xsl:if>
                 <xsl:if test="$fontsize != ''">
                     <xsl:text>font-size:</xsl:text><xsl:value-of select="$fontsize"/><xsl:text>;</xsl:text>
-               </xsl:if> 
+               </xsl:if>
                <xsl:if test="$fontbold = 'true'">
                     <xsl:text>font-weight:bold;</xsl:text>
                 </xsl:if>
@@ -137,4 +137,4 @@
     </ul>&#xA;
 </xsl:template>
 
-</xsl:stylesheet> 
+</xsl:stylesheet>

@@ -27,9 +27,9 @@ import java.awt.Point;
 import java.awt.Stroke;
 
 import freemind.controller.actions.generated.instance.Place;
-
-@SuppressWarnings("serial")
 public class MapSearchMarkerLocation extends MapMarkerBase {
+	private static final long serialVersionUID = 1L;
+
 
 	public static final int CIRCLE_SELECTED_FACTOR = 2;
 	private final Place mPlace;
@@ -65,7 +65,7 @@ public class MapSearchMarkerLocation extends MapMarkerBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see plugins.map.MapMarkerBase#paintCenter(java.awt.Graphics,
 	 * java.awt.Point)
 	 */

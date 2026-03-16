@@ -36,10 +36,10 @@ import freemind.extensions.HookFactory;
 import freemind.extensions.HookInstanciationMethod;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class NodeHookAction extends MindmapAction implements HookAction,
 		MenuItemEnabledListener, MenuItemSelectedListener {
+	private static final long serialVersionUID = 1L;
+
 	String _hookName;
 	MindMapController mMindMapController;
 
@@ -49,13 +49,12 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 
 	private static Logger logger;
 
-	
+
 	public NodeHookAction(String hookName, MindMapController controller) {
 		super(hookName, (Icon) null, controller);
 		this._hookName = hookName;
 		this.mMindMapController = controller;
-		if (logger == null)
-			logger = controller.getFrame().getLogger(this.getClass().getName());
+		logger = controller.getFrame().getLogger(this.getClass().getName());
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
@@ -73,8 +72,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 
 
 
-	/**
-	 */
+
 	private HookInstanciationMethod getInstanciationMethod(String hookName) {
 		HookFactory factory = getHookFactory();
 		// determine instanciation method
@@ -83,8 +81,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 		return instMethod;
 	}
 
-	/**
-	 */
+
 	private HookFactory getHookFactory() {
 		HookFactory factory = mMindMapController.getHookFactory();
 		return factory;
@@ -92,7 +89,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing.JMenuItem
 	 * , javax.swing.Action)
@@ -113,8 +110,7 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 		return true;
 	}
 
-	/**
-	 */
+
 	public String getHookName() {
 		return _hookName;
 	}

@@ -35,10 +35,11 @@ import accessories.plugins.time.TimeList.NotesHolder;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class FlatNodeTableFilterModel extends AbstractTableModel {
+	private static final long serialVersionUID = 1L;
+
 
 	private final TableModel mTableModel;
 	private String mFilterRegexp;
@@ -56,7 +57,7 @@ public class FlatNodeTableFilterModel extends AbstractTableModel {
 	/**
 	 * @param node_text_column
 	 * @param note_text_column TODO
-	 * 
+	 *
 	 */
 	public FlatNodeTableFilterModel(TableModel tableModel, int node_text_column, int note_text_column) {
 		super();
@@ -101,7 +102,7 @@ public class FlatNodeTableFilterModel extends AbstractTableModel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.table.TableModel#getRowCount()
 	 */
 	public int getRowCount() {
@@ -110,7 +111,7 @@ public class FlatNodeTableFilterModel extends AbstractTableModel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.table.TableModel#getColumnCount()
 	 */
 	public int getColumnCount() {
@@ -127,7 +128,7 @@ public class FlatNodeTableFilterModel extends AbstractTableModel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.table.TableModel#getValueAt(int, int)
 	 */
 	public Object getValueAt(int row, int column) {

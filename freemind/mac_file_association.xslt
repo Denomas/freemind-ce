@@ -34,7 +34,7 @@
 		</xsl:otherwise>
 	</xsl:choose>
 	<xsl:apply-templates/>
-	</dict>	
+	</dict>
 </xsl:template>
 
 

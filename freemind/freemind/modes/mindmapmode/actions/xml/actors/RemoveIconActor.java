@@ -33,7 +33,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 25.03.2014
  */
 public class RemoveIconActor extends NodeXmlActorAdapter {
 
@@ -47,7 +46,7 @@ public class RemoveIconActor extends NodeXmlActorAdapter {
 	public Class<RemoveIconXmlAction> getDoActionClass() {
 		return RemoveIconXmlAction.class;
 	}
-	
+
 	public RemoveIconXmlAction createRemoveIconXmlAction(MindMapNode node,
 			int iconPosition) {
 		RemoveIconXmlAction action = new RemoveIconXmlAction();
@@ -70,9 +69,7 @@ public class RemoveIconActor extends NodeXmlActorAdapter {
 		return node.getIcons().size();
 	}
 
-	/**
-    *
-    */
+
 
 	public void act(XmlAction action) {
 		if (action instanceof freemind.controller.actions.generated.instance.RemoveIconXmlAction) {

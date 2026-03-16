@@ -8,13 +8,13 @@ import superwaba.ext.xplat.io.*;
 /**
  * PDA Version of FreeMind, based heavily on various SuperWaba example code and
  * released under the corresponding LGPL.
- * 
+ *
  * @author vik@diamondage.co.nz
  *
  * TODO:
- * 
+ *
  * With able assistance from tester kwoodham:
- * 
+ *
  * A POSITION ID in for the nodes attached to the root.
  *		POSITION="right|left".
  *
@@ -348,7 +348,7 @@ public class FreeMindPDA extends MainWindow {
 	}
 
 	/** Save tree using given filename.
-	 * 
+	 *
 	 * @param fname
 	 */
 	public void saveFile(String fname) {
@@ -412,14 +412,14 @@ public class FreeMindPDA extends MainWindow {
 		editContainer =new EditFmNode(icons, model);
 
 		/* Unlock the record. */
-		dBase.setRecordPos(-1);	
+		dBase.setRecordPos(-1);
 
 		return;
 	}
 
 
 	/** Invokes the tree's method to write the appropriate record.
-	 * 
+	 *
 	 * @param dBase	Catalog to use (opened please)
 	 * @param rec			Record to create/overwrite.
 	 * @param mapName	Name to put up for user confidence.
@@ -495,7 +495,7 @@ public class FreeMindPDA extends MainWindow {
 	}
 
 	/** Returns the directory to store thigns in - or has a bloody good go.
-	 * 
+	 *
 	 * @return	File of storage dir, or a null if we can't cope. */
 	public File getStorageDir() {
 		File file;

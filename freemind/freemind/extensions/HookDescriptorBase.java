@@ -37,7 +37,7 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class HookDescriptorBase {
 	public static final String FREEMIND_BASE_DIR_STRING = "${freemind.base.dir}";
@@ -51,7 +51,6 @@ public class HookDescriptorBase {
 
 	/**
 	 * @param pluginBase
-	 * @param frame
 	 * @param xmlPluginFile
 	 */
 	public HookDescriptorBase(final Plugin pluginBase,
@@ -59,14 +58,12 @@ public class HookDescriptorBase {
 		super();
 		this.pluginBase = pluginBase;
 		mXmlPluginFile = xmlPluginFile;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
-	/**
-	 */
+
 	protected String getFromResourceIfNecessary(String string) {
 		if (string == null) {
 			return string;
@@ -121,7 +118,7 @@ public class HookDescriptorBase {
 
 	/**
 	 * This string is used to identify known classloaders as they are cached.
-	 * 
+	 *
 	 */
 	private String createPluginClasspathString(List<PluginClasspath> pluginClasspathList) {
 		String result = "";

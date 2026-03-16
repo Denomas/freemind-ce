@@ -30,9 +30,9 @@ import freemind.main.Tools;
 import freemind.modes.EdgeAdapter;
 import freemind.modes.MindMapEdge;
 import freemind.modes.MindMapNode;
-
-@SuppressWarnings("serial")
 class ForkMainView extends MainView {
+	private static final long serialVersionUID = 1L;
+
 	public void paint(Graphics graphics) {
 		Graphics2D g = (Graphics2D) graphics;
 
@@ -83,7 +83,7 @@ class ForkMainView extends MainView {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView#getStyle()
 	 */
 	String getStyle() {

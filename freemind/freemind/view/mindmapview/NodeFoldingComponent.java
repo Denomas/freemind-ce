@@ -52,8 +52,9 @@ import freemind.modes.MindMapNode;
  * @author Foltin
  *
  */
-@SuppressWarnings("serial")
 public class NodeFoldingComponent extends JButton {
+	private static final long serialVersionUID = 1L;
+
 	private static final int TIMER_DELAY = 50;
 	private static final int COLOR_COUNTER_MAX = 15;
 	private static final int SIZE_FACTOR_ON_MOUSE_OVER = 4;
@@ -66,10 +67,9 @@ public class NodeFoldingComponent extends JButton {
 
 	public NodeFoldingComponent(NodeView view) {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		this.nodeView = view;
 		setModel(new DefaultButtonModel());
 		init(null, null);

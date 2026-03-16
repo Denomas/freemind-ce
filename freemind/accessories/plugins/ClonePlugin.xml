@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <plugin label="accessories/plugins/ClonePlugin">
-	<plugin_registration 
-		class_name="accessories.plugins.ClonePasteAction$Registration" 
+	<plugin_registration
+		class_name="accessories.plugins.ClonePasteAction$Registration"
 		isPluginBase="true">
 		<plugin_mode class_name="freemind.modes.mindmapmode"/>
 	</plugin_registration>
@@ -23,26 +23,26 @@
 		<plugin_mode class_name="freemind.modes.mindmapmode" />
 		<plugin_menu location="menu_bar/edit/paste/paste_as_clone" />
 	</plugin_action>
-	<plugin_action 
-		documentation="%accessories/plugins/DeactivateCloneAction.properties_documentation" 
-		name="%accessories/plugins/DeactivateCloneAction.properties_name" 
-		key_stroke="%keystroke_accessories/plugins/DeactivateCloneAction.properties_key" 
-		base="freemind.extensions.NodeHookAdapter" 
-		label="accessories/plugins/DeactivateCloneAction.properties" 
-		class_name="accessories.plugins.DeactivateCloneAction" 
+	<plugin_action
+		documentation="%accessories/plugins/DeactivateCloneAction.properties_documentation"
+		name="%accessories/plugins/DeactivateCloneAction.properties_name"
+		key_stroke="%keystroke_accessories/plugins/DeactivateCloneAction.properties_key"
+		base="freemind.extensions.NodeHookAdapter"
+		label="accessories/plugins/DeactivateCloneAction.properties"
+		class_name="accessories.plugins.DeactivateCloneAction"
 		instanciation="other">
 		<plugin_mode class_name="freemind.modes.mindmapmode"/>
 		<plugin_menu location="menu_bar/edit/paste/paste_as_clone2" />
 	</plugin_action>
 
 	<!-- Internal plugin -->
-	<plugin_action 
-		documentation="%accessories/plugins/ShowCloneNodes.properties_documentation" 
-		name="%accessories/plugins/ShowCloneNodes.properties_name" 
-		key_stroke="%keystroke_accessories/plugins/ShowCloneNodes.properties_key" 
-		base="freemind.extensions.NodeHookAdapter" 
-		label="accessories/plugins/ShowCloneNodes.properties" 
-		class_name="accessories.plugins.ShowCloneNodes" 
+	<plugin_action
+		documentation="%accessories/plugins/ShowCloneNodes.properties_documentation"
+		name="%accessories/plugins/ShowCloneNodes.properties_name"
+		key_stroke="%keystroke_accessories/plugins/ShowCloneNodes.properties_key"
+		base="freemind.extensions.NodeHookAdapter"
+		label="accessories/plugins/ShowCloneNodes.properties"
+		class_name="accessories.plugins.ShowCloneNodes"
 		instanciation="Once">
 		<plugin_mode class_name="freemind.modes.mindmapmode"/>
 		<plugin_menu location="menu_bar/navigate/clones"/>
@@ -50,4 +50,3 @@
 
 	<!-- icon_path="accessories/plugins/icons/xeyes.png" -->
 </plugin>
-

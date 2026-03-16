@@ -24,7 +24,7 @@
 			message="Plugin ${plugin.dir}"/>
 		<mkdir dir="${dist}/${plugin.dir}" />
 		<copy todir="${build}">
-			<fileset dir="${src}" 
+			<fileset dir="${src}"
 				includes = "${plugin.dir}/**"
 				excludes = "**/*.java,${additional.lib.pattern}">
 			</fileset>

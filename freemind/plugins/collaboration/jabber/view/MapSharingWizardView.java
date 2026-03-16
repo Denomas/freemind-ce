@@ -43,7 +43,7 @@ import javax.swing.SpringLayout;
 
 /**
  * @author RReppel
- * 
+ *
  * To change the template for this generated type comment go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
@@ -178,7 +178,7 @@ public class MapSharingWizardView extends JFrame {
      * This is the GUI where the user chooses between sharing her/his map or
      * waiting for another user to share a map. It's the first screen of the
      * wizard.
-     *  
+     *
      */
     private void buildShareMapSelectionGui() {
         JPanel shareMapEditPanel = new JPanel();
@@ -266,7 +266,7 @@ public class MapSharingWizardView extends JFrame {
     /**
      * Builds the interface which prompts a user to select somebody to share a
      * map with.
-     *  
+     *
      */
     private void buildSelectUserGui() {
         JPanel selectUserEditPanel = new JPanel();
@@ -304,7 +304,7 @@ public class MapSharingWizardView extends JFrame {
     /**
      * Builds the interface which informs the user that a decision to accept map
      * sharing is pending.
-     *  
+     *
      */
     private void buildNotificationMessageGui(String title, String message) {
         //AwaitingMapSharing GUI UI Components:
@@ -372,7 +372,7 @@ public class MapSharingWizardView extends JFrame {
 
     /**
      * Adds the "Close", "Back" and "Next" buttons.
-     * 
+     *
      * @param panel
      * @param showBackButtion
      */
@@ -392,7 +392,7 @@ public class MapSharingWizardView extends JFrame {
 
     /**
      * Adds the "Close", "Back" and "Next" buttons.
-     * 
+     *
      * @param panel
      */
     private void addCloseButton(JPanel panel) {
@@ -411,7 +411,7 @@ public class MapSharingWizardView extends JFrame {
 
     /**
      * Adds the "Accept" and "Decline" buttons.
-     * 
+     *
      * @param panel
      */
     private void addAcceptDeclineButtons(JPanel panel) {
@@ -427,7 +427,7 @@ public class MapSharingWizardView extends JFrame {
 
     /**
      * Removes any previous user interfaces shown on the wizard's content pane
-     *  
+     *
      */
     private void removeUIs() {
         this.getContentPane().remove(shareMapSelectionPanel);
@@ -536,7 +536,7 @@ public class MapSharingWizardView extends JFrame {
 
     /**
      * True if the user has chosen to share his own map with another user.
-     * 
+     *
      * @return
      */
     public boolean isShareMapSelected() {
@@ -545,7 +545,7 @@ public class MapSharingWizardView extends JFrame {
 
     /**
      * True if the user has chosen to wait for another user to share a map.
-     * 
+     *
      * @return
      */
     public boolean isWaitForMapSharingSelected() {
@@ -554,7 +554,7 @@ public class MapSharingWizardView extends JFrame {
 
     /**
      * The name of the Jabber server to which to connect.
-     * 
+     *
      * @return
      */
     public String getServername() {
@@ -564,7 +564,7 @@ public class MapSharingWizardView extends JFrame {
     /**
      * The name with which the user with which the user should connect to the
      * Jabber server.
-     * 
+     *
      * @return
      */
     public String getUsername() {
@@ -573,7 +573,7 @@ public class MapSharingWizardView extends JFrame {
 
     /**
      * The password for connecting to the Jabber server.
-     * 
+     *
      * @return
      */
     public String getPassword() {
@@ -583,7 +583,7 @@ public class MapSharingWizardView extends JFrame {
     /**
      * The user name of the use with whom to share a map, e.g.
      * "johnsmith@chat.jabbermind.com".
-     * 
+     *
      * @return
      */
     public String getMapShareUserName() {

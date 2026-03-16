@@ -2,18 +2,18 @@
  * FreeMind - A Program for creating and viewing MindmapsCopyright (C) 2000-2015
  * Christian Foltin, Joerg Mueller, Daniel Polansky, Dimitri Polivaev and
  * others.
- * 
+ *
  * See COPYING for Details
- * 
+ *
  * This program is free software; you can redistribute it and/ormodify it under
  * the terms of the GNU General Public Licenseas published by the Free Software
  * Foundation; either version 2of the License, or (at your option) any later
  * version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,but WITHOUT
  * ANY WARRANTY; without even the implied warranty ofMERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See theGNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public Licensealong with
  * this program; if not, write to the Free SoftwareFoundation, Inc., 59 Temple
  * Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -34,10 +34,9 @@ import javax.swing.WindowConstants;
 
 import freemind.main.Tools;
 import freemind.modes.mindmapmode.MindMapToolBar;
-
-
-@SuppressWarnings("serial")
 public class JColorCombo extends JComboBox<ColorPair> {
+	private static final long serialVersionUID = 1L;
+
 
 
 	public static class ColorIcon extends ImageIcon {
@@ -55,8 +54,8 @@ public class JColorCombo extends JComboBox<ColorPair> {
 			g.dispose();
 		}
 
-		
-		
+
+
 	}
 
 	public JColorCombo() {
@@ -73,14 +72,14 @@ public class JColorCombo extends JComboBox<ColorPair> {
 	public java.awt.Dimension getMaximumSize() {
 		return getPreferredSize();
 	}
-	
+
 	public class ComboBoxRenderer extends JLabel implements ListCellRenderer<ColorPair> {
 		public ComboBoxRenderer() {
 			setOpaque(true);
 	        setHorizontalAlignment(LEFT);
 	        setVerticalAlignment(CENTER);
 		}
-		
+
 		/*
 	     * This method finds the image and text corresponding
 	     * to the selected value and returns the label, set up
@@ -115,7 +114,7 @@ public class JColorCombo extends JComboBox<ColorPair> {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
+
 	public static ColorPair[] sColorList = new ColorPair[] {
 		// taken from http://wiki.selfhtml.org/wiki/Grafik/Farbpaletten#Farbnamen
 		// default 16bit colors
@@ -147,7 +146,7 @@ public class JColorCombo extends JComboBox<ColorPair> {
 		new ColorPair(new Color(0x990000), "level3"),
 		new ColorPair(new Color(0x111111), "level4"),
 
-		
+
 		// netscape colors
 		new ColorPair(new Color(0xFFC0CB), "pink"),
 		new ColorPair(new Color(0xFFB6C1), "lightpink"),
@@ -289,5 +288,5 @@ public class JColorCombo extends JComboBox<ColorPair> {
 		new ColorPair(new Color(0x2F4F4F), "darkslategray"),
 		new ColorPair(new Color(0x000000), "black"),
 	};
-	
+
 }

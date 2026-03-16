@@ -29,7 +29,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 26.03.2014
  */
 public class FontSizeActor extends XmlActorAdapter {
 
@@ -44,8 +43,7 @@ public class FontSizeActor extends XmlActorAdapter {
 		return FontSizeNodeAction.class;
 	}
 
-	/**
-     */
+
 	public void setFontSize(MindMapNode node, String fontSizeValue) {
 		if (Tools.safeEquals(fontSizeValue, node.getFontSize())) {
 			return;
@@ -71,16 +69,14 @@ public class FontSizeActor extends XmlActorAdapter {
 
 	}
 
-	/**
-     *
-     */
+
 
 	public void act(XmlAction action) {
 		if (action instanceof FontSizeNodeAction) {
 			FontSizeNodeAction fontSizeAction = (FontSizeNodeAction) action;
 			MindMapNode node = getNodeFromID(fontSizeAction.getNode());
 			try {
-				int size = Integer.valueOf(fontSizeAction.getSize()).intValue();
+				int size = Integer.parseInt(fontSizeAction.getSize());
 				if (!node.getFontSize().equals(fontSizeAction.getSize())) {
 					node.setFontSize(size);
 					getExMapFeedback().nodeChanged(node);
@@ -91,5 +87,5 @@ public class FontSizeActor extends XmlActorAdapter {
 		}
 	}
 
-	
+
 }

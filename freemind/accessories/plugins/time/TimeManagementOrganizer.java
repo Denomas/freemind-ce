@@ -36,9 +36,9 @@ import freemind.modes.mindmapmode.actions.NodeHookAction;
 
 /**
  * Enables the encrypt/decrypt menu item only if the map/node is encrypted.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public class TimeManagementOrganizer implements HookRegistration,
 		MenuItemEnabledListener {
@@ -59,7 +59,7 @@ public class TimeManagementOrganizer implements HookRegistration,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing.JMenuItem
 	 * , javax.swing.Action)
@@ -80,8 +80,7 @@ public class TimeManagementOrganizer implements HookRegistration,
 		return true;
 	}
 
-	/**
-	 */
+
 	public static ReminderHookBase getHook(MindMapNode node) {
 		for (PermanentNodeHook element : node.getActivatedHooks()) {
 			if (element instanceof ReminderHookBase) {

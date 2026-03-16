@@ -38,7 +38,6 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * @date 18.03.2014
  */
 public class DeleteChildActor extends XmlActorAdapter {
 
@@ -50,7 +49,7 @@ public class DeleteChildActor extends XmlActorAdapter {
 	}
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActorXml#act(freemind.controller.actions.
 	 * generated.instance.XmlAction)
@@ -61,8 +60,7 @@ public class DeleteChildActor extends XmlActorAdapter {
 		deleteWithoutUndo(selectedNode);
 	}
 
-	/**
-     */
+
 	public void deleteWithoutUndo(MindMapNode selectedNode) {
 		if(selectedNode.isRoot()) {
 			throw new IllegalArgumentException("Root node can't be deleted");
@@ -122,7 +120,7 @@ public class DeleteChildActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.actions.ActorXml#getDoActionClass()
 	 */
 	public Class<DeleteNodeAction> getDoActionClass() {

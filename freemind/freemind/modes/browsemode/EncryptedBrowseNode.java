@@ -41,7 +41,7 @@ import freemind.modes.common.dialogs.EnterPasswordDialog;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class EncryptedBrowseNode extends BrowseNodeModel {
 
@@ -58,19 +58,16 @@ public class EncryptedBrowseNode extends BrowseNodeModel {
 
 	private final MapFeedback mMapFeedback;
 
-	/**
-	 */
+
 	public EncryptedBrowseNode(MapFeedback pMapFeedback) {
 		this(null, pMapFeedback);
 	}
 
-	/**
-	 */
+
 	public EncryptedBrowseNode(Object userObject, MapFeedback pMapFeedback) {
 		super(userObject, pMapFeedback.getMap());
 		this.mMapFeedback = pMapFeedback;
-		if (logger == null)
-			logger = Resources.getInstance().getLogger(
+		logger = Resources.getInstance().getLogger(
 					this.getClass().getName());
 		if (encryptedIcon == null) {
 			encryptedIcon = MindIcon.factory("encrypted").getIcon();
@@ -141,9 +138,7 @@ public class EncryptedBrowseNode extends BrowseNodeModel {
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	public void setAdditionalInfo(String info) {
 		encryptedContent = info;
 		isDecrypted = false;

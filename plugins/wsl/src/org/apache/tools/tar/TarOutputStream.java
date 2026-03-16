@@ -352,5 +352,3 @@ public class TarOutputStream extends FilterOutputStream {
         buffer.writeRecord(recordBuf);
     }
 }
-
-

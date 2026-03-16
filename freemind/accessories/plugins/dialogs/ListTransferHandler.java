@@ -29,9 +29,9 @@ import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.TransferHandler;
 import freemind.swing.DefaultListModel;
-
-@SuppressWarnings("serial")
 public class ListTransferHandler extends TransferHandler {
+	private static final long serialVersionUID = 1L;
+
 
 	static private DataFlavor localListFlavor;
 	static private DataFlavor[] dataFlavors;
@@ -49,7 +49,7 @@ public class ListTransferHandler extends TransferHandler {
 	int addIndex = -1; // Location where items were added
 	int addCount = 0; // Number of items added
 
-	
+
 	@Override
 	public boolean importData(JComponent c, Transferable t) {
 		JList<?> target = (JList<?>) c;

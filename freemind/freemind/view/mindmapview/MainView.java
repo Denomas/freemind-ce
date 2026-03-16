@@ -39,8 +39,9 @@ import freemind.modes.MindMapNode;
 /**
  * Base class for all node views.
  * */
-@SuppressWarnings("serial")
 public abstract class MainView extends JLabel {
+	private static final long serialVersionUID = 1L;
+
 	static Dimension minimumSize = new Dimension(0, 0);
 	static Dimension maximumSize = new Dimension(Integer.MAX_VALUE,
 			Integer.MAX_VALUE);
@@ -52,10 +53,9 @@ public abstract class MainView extends JLabel {
 	}
 
 	MainView() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		isPainting = false;
 		setAlignmentX(NodeView.CENTER_ALIGNMENT);
 		setHorizontalAlignment(CENTER);
@@ -79,7 +79,7 @@ public abstract class MainView extends JLabel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getPreferredSize()
 	 */
 	public Dimension getPreferredSize() {
@@ -189,7 +189,7 @@ public abstract class MainView extends JLabel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getHeight()
 	 */
 	public int getHeight() {
@@ -204,7 +204,7 @@ public abstract class MainView extends JLabel {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getWidth()
 	 */
 	public int getWidth() {

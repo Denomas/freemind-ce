@@ -36,7 +36,7 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class NodeNoteViewer extends NodeNoteBase implements
 		NodeSelectionListener {

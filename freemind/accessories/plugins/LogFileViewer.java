@@ -62,10 +62,9 @@ import freemind.modes.mindmapmode.actions.xml.ActionHandler;
 import freemind.modes.mindmapmode.actions.xml.PrintActionHandler;
 import freemind.modes.mindmapmode.hooks.MindMapHookAdapter;
 import freemind.view.MapModule;
-
-@SuppressWarnings("serial")
 public class LogFileViewer extends MindMapHookAdapter implements
 		MapModuleChangeObserver, LogReceiver {
+
 
 	public static class Registration implements HookRegistration {
 		/**
@@ -122,7 +121,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 	protected static java.util.logging.Logger logger = null;
 
 	private JMenuBar mMenuBar;
-	
+
 	private UpdateTextAreaThread mUpdateTextAreaThread;
 
 	private SimpleFormatter mSimpleFormatter;
@@ -147,7 +146,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -158,7 +157,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemSelectedListener#isSelected(javax.swing
 		 * .JMenuItem, javax.swing.Action)
@@ -182,7 +181,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
 		 * )
@@ -197,7 +196,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemSelectedListener#isSelected(javax.swing
 		 * .JMenuItem, javax.swing.Action)
@@ -214,15 +213,14 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.HookAdapter#startupMapHook()
 	 */
 	public void startupMapHook() {
 		super.startupMapHook();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mMyMindMapController = super.getMindMapController();
 		mSimpleFormatter = new SimpleFormatter();
 		// retrieve content
@@ -268,7 +266,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 			Level level = levels[i];
 			menuHolder.addAction(new SetLogLevelAction(level),
 					"main/loglevel/setLogLevel_"+level.getName());
-			
+
 		}
 		menuHolder.updateMenus(mMenuBar, "main/");
 		mLogFileViewer.setJMenuBar(mMenuBar);
@@ -297,14 +295,14 @@ public class LogFileViewer extends MindMapHookAdapter implements
 		}
 	}
 
-	
-	
+
+
 	protected Logger getBaseLogger() {
 		return logger.getParent();
 	}
-	
+
 	/**
-	 * @TODO: This is a bit dirty here, better would be to ask the resources class
+	 * TODO: This is a bit dirty here, better would be to ask the resources class
 	 * for the static logger, but this would result in too much new interfaces.
 	 */
 	protected LogFileLogHandler getBaseHandler() {
@@ -327,9 +325,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 		return mMyMindMapController;
 	}
 
-	/**
-	 * 
-	 */
+
 	public void disposeDialog() {
 		mUpdateTextAreaThread.commitSuicide();
 		mUpdateTextAreaThread = null;
@@ -351,7 +347,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * isMapModuleChangeAllowed(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -363,7 +359,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * beforeMapModuleChange(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -374,7 +370,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.MapModuleManager.MapModuleChangeObserver#afterMapClose
 	 * (freemind.view.MapModule, freemind.modes.Mode)
@@ -385,7 +381,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * afterMapModuleChange(freemind.view.MapModule, freemind.modes.Mode,
 	 * freemind.view.MapModule, freemind.modes.Mode)
@@ -397,7 +393,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.MapModuleManager.MapModuleChangeObserver#
 	 * numberOfOpenMapInformation(int, int)
 	 */
@@ -410,7 +406,7 @@ public class LogFileViewer extends MindMapHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * accessories.plugins.LogFileLogHandler.LogReceiver#receiveLog(java.util
 	 * .logging.LogRecord)
@@ -459,18 +455,16 @@ public class LogFileViewer extends MindMapHookAdapter implements
 							} catch (Exception ex) {
 								// We don't want to log anything here...
 							}
-							
+
 						}
 					});
-				} 
+				}
 				sleepALittle();
 			}
 			mSuicided = true;
 		}
 
-		/**
-		 * 
-		 */
+
 		public void commitSuicide() {
 			mCommitSuicide  = true;
 			int timeout = 100;
@@ -486,16 +480,16 @@ public class LogFileViewer extends MindMapHookAdapter implements
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				freemind.main.Resources.getInstance().logException(e);
-				
+
 			}
 		}
-		
+
 		public void addToInbox(String msg) {
 			synchronized (mInbox) {
 				mInbox.add(msg);
 			}
 		}
-		
+
 	}
-	
+
 }

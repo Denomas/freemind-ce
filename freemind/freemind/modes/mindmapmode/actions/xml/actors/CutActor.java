@@ -35,7 +35,6 @@ import freemind.modes.mindmapmode.actions.xml.actors.PasteActor.NodeCoordinate;
 
 /**
  * @author foltin
- * @date 11.04.2014
  */
 public class CutActor extends XmlActorAdapter {
 
@@ -85,7 +84,7 @@ public class CutActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActorXml#act(freemind.controller.actions.
 	 * generated.instance.XmlAction)
@@ -99,7 +98,7 @@ public class CutActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.actions.ActorXml#getDoActionClass()
 	 */
 	public Class<CutNodeAction> getDoActionClass() {

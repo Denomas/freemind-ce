@@ -48,7 +48,6 @@ import java.util.Map;
 
 /**
  * @author foltin
- * @date 05.09.2011
  */
 public class PrintGraphics extends Graphics2D {
 

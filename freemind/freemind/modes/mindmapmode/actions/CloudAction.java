@@ -32,10 +32,11 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class CloudAction extends NodeGeneralAction implements MenuItemSelectedListener {
+	private static final long serialVersionUID = 1L;
+
 
 	public CloudAction(MindMapController controller) {
 		super(controller, "cloud", "images/Cloud24.gif");
@@ -45,7 +46,7 @@ public class CloudAction extends NodeGeneralAction implements MenuItemSelectedLi
 	public Class<AddCloudXmlAction> getDoActionClass() {
 		return AddCloudXmlAction.class;
 	}
-	
+
 	public boolean isSelected(JMenuItem pCheckItem, Action pAction) {
 		return modeController.getSelected().getCloud() != null;
 	}

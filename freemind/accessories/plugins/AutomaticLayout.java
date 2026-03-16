@@ -64,7 +64,7 @@ import freemind.preferences.layout.OptionPanel;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 
@@ -72,9 +72,9 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 
 	/**
 	 * Registers the property pages.
-	 * 
+	 *
 	 * @author foltin
-	 * 
+	 *
 	 */
 	public static class Registration implements HookRegistration {
 		private AutomaticLayoutPropertyContributor mAutomaticLayoutPropertyContributor;
@@ -364,9 +364,7 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 
 	private static Patterns patterns = null;
 
-	/**
-     * 
-     */
+
 	public AutomaticLayout() {
 		super();
 
@@ -394,7 +392,7 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHook#onAddChild(freemind.modes.MindMapNode
 	 * )
@@ -407,7 +405,7 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHook#onUpdateChildrenHook(freemind.modes
 	 * .MindMapNode)
@@ -419,7 +417,7 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.PermanentNodeHook#onUpdateNodeHook()
 	 */
 	public void onUpdateNodeHook() {
@@ -429,7 +427,7 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.NodeHook#invoke(freemind.modes.MindMapNode)
 	 */
 	public void invoke(MindMapNode node) {
@@ -446,8 +444,7 @@ public class AutomaticLayout extends PermanentMindMapNodeHookAdapter {
 		}
 	}
 
-	/**
-     */
+
 	private void setStyleRecursive(MindMapNode node) {
 		logger.finest("setStyle " + node);
 		setStyle(node);

@@ -27,7 +27,7 @@ package freemind.extensions;
 
 /**
  * @author foltin
- * 
+ *
  *         To change the template for this generated type comment go to
  *         Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
@@ -37,8 +37,7 @@ public class ModeControllerHookAdapter extends HookAdapter implements
 	// Logging:
 	// private static java.util.logging.Logger logger;
 
-	/**
-	 */
+
 	public ModeControllerHookAdapter() {
 		super();
 		// if(logger == null)

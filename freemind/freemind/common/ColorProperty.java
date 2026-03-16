@@ -129,8 +129,7 @@ public class ColorProperty extends PropertyBean implements PropertyControl,
 		}
 	}
 
-	/**
-	 */
+
 	private void setColorValue(Color result) {
 		color = result;
 		if (result == null) {
@@ -140,8 +139,7 @@ public class ColorProperty extends PropertyBean implements PropertyControl,
 		mButton.setText(Tools.colorToXml(result));
 	}
 
-	/**
-	 */
+
 	private Color getColorValue() {
 		return color;
 	}

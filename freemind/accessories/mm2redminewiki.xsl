@@ -4,17 +4,17 @@
     This file is licensed under the GPL.
 -->
 
-<xsl:stylesheet version="1.0" 
+<xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <xsl:output method="text" indent="no"/>
 
         <xsl:strip-space elements="*"/>
-        
-	<xsl:template match="map">            
-            	<xsl:apply-templates select="node"/>		
+
+	<xsl:template match="map">
+            	<xsl:apply-templates select="node"/>
 	</xsl:template>
-        
+
         <!-- match "node" -->
 	<xsl:template match="node">
 		<xsl:variable name="depth">
@@ -31,7 +31,7 @@
 			</xsl:when>
                         <xsl:otherwise>
 	                        <xsl:call-template name="ul">
-	                            <xsl:with-param name="count" 
+	                            <xsl:with-param name="count"
 	                            select="$depth - 2"/>
 	                        </xsl:call-template><xsl:text> </xsl:text>
 				<xsl:apply-templates select="." mode="nodeoutput"/>
@@ -41,7 +41,7 @@
 </xsl:text>
 		<xsl:apply-templates select="node"/>
 	</xsl:template>
-        
+
         <xsl:template name="ul">
             <xsl:param name="count" select="1"/>
             <xsl:if test="$count > 0">
@@ -71,7 +71,7 @@
 			<xsl:text>":</xsl:text><xsl:value-of select="@LINK" />
 		</xsl:if>
 	</xsl:template>
-        
+
         <!-- Node Depth Mesurement -->
         <xsl:template match="node" mode="depthMesurement">
             <xsl:param name="depth" select=" '0' "/>
@@ -79,11 +79,11 @@
                     <xsl:with-param name="depth" select="$depth + 1"/>
                 </xsl:apply-templates>
 	</xsl:template>
-        
+
         <!-- Map Depth Mesurement -->
         <xsl:template match="map" mode="depthMesurement">
             <xsl:param name="depth" select=" '0' "/>
             <xsl:value-of select="$depth"/>
 	</xsl:template>
-		
+
 </xsl:stylesheet>

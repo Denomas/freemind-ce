@@ -51,8 +51,7 @@ public abstract class LineAdapter implements MindMapLine {
 	// Attributes
 	//
 
-	/**
-     */
+
 	protected void updateStandards() {
 		if (getStandardColor() == null) {
 			String stdColor = getMapFeedback().getProperty(
@@ -155,7 +154,7 @@ public abstract class LineAdapter implements MindMapLine {
 	protected abstract void setStandardColor(Color standardColor);
 
 	/**
-	 * See {@link LineAdapter.setStandardColor}
+	 * See {@link LineAdapter#setStandardColor(Color)}
 	 */
 	protected abstract Color getStandardColor();
 

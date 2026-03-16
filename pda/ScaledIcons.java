@@ -31,7 +31,7 @@ public class ScaledIcons {
 
 	/** Search the icon names list for this name, and return the relevant icon or
 	 * a null.
-	 * 
+	 *
 	 * @param findMe
 	 * @return
 	 */
@@ -45,11 +45,11 @@ public class ScaledIcons {
 	}
 
 	/** Create an image, and add a reference to the vector list using the name.
-	 * 
+	 *
 	 * @param imageFile	The icon file to use
-	 * @param imageName	Name used in descriptor. 
+	 * @param imageName	Name used in descriptor.
 	 * @return	The Image.
-	 */ 
+	 */
 	private Image createImage(String imageFile,String imageName) {
 		Image newImg=new Image(imageFile).getScaledInstance(iconSize,iconSize);
 		allIcons.add(newImg);

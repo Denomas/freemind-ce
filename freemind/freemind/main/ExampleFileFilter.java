@@ -19,22 +19,22 @@
  */
 /*
  * Copyright (c) 2003 Sun Microsystems, Inc. All  Rights Reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
- * 
+ *
  * -Redistributions of source code must retain the above copyright
  *  notice, this list of conditions and the following disclaimer.
- * 
+ *
  * -Redistribution in binary form must reproduct the above copyright
  *  notice, this list of conditions and the following disclaimer in
  *  the documentation and/or other materials provided with the distribution.
- * 
+ *
  * Neither the name of Sun Microsystems, Inc. or the names of contributors
  * may be used to endorse or promote products derived from this software
  * without specific prior written permission.
- * 
+ *
  * This software is provided "AS IS," without a warranty of any kind. ALL
  * EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING
  * ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
@@ -46,7 +46,7 @@
  * INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY
  * OF LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE, EVEN
  * IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
- * 
+ *
  * You acknowledge that Software is not designed, licensed or intended for
  * use in the design, construction, operation or maintenance of any nuclear
  * facility.
@@ -67,17 +67,17 @@ import javax.swing.filechooser.FileFilter;
 /**
  * A convenience implementation of FileFilter that filters out all files except
  * for those type extensions that it knows about.
- * 
+ *
  * Extensions are of the type ".foo", which is typically found on Windows and
  * Unix boxes, but not on Macinthosh. Case is ignored.
- * 
- * Example - create a new filter that filerts out all files but gif and jpg
+ *
+ * Example - create a new filter that filters out all files but gif and jpg
  * image files:
- * 
- * JFileChooser chooser = new JFileChooser(); ExampleFileFilter filter = new
+ *
+ * {@code JFileChooser chooser = new JFileChooser(); ExampleFileFilter filter = new
  * ExampleFileFilter( new String{"gif", "jpg"}, "JPEG & GIF Images")
- * chooser.addChoosableFileFilter(filter); chooser.showOpenDialog(this);
- * 
+ * chooser.addChoosableFileFilter(filter); chooser.showOpenDialog(this);}
+ *
  * @version 1.14 01/23/03
  * @author Jeff Dinkins
  */
@@ -91,7 +91,7 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Creates a file filter. If no filters are added, then all files are
 	 * accepted.
-	 * 
+	 *
 	 */
 	public ExampleFileFilter() {
 		this.filters = new Hashtable<>();
@@ -100,7 +100,7 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Creates a file filter that accepts files with the given extension.
 	 * Example: new ExampleFileFilter("jpg");
-	 * 
+	 *
 	 */
 	public ExampleFileFilter(String extension) {
 		this(extension, null);
@@ -109,10 +109,10 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Creates a file filter that accepts the given file type. Example: new
 	 * ExampleFileFilter("jpg", "JPEG Image Images");
-	 * 
+	 *
 	 * Note that the "." before the extension is not needed. If provided, it
 	 * will be ignored.
-	 * 
+	 *
 	 */
 	public ExampleFileFilter(String extension, String description) {
 		this();
@@ -125,9 +125,9 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Creates a file filter from the given string array. Example: new
 	 * ExampleFileFilter(String {"gif", "jpg"});
-	 * 
+	 *
 	 * Note that the "." before the extension is not needed adn will be ignored.
-	 * 
+	 *
 	 */
 	public ExampleFileFilter(String[] filters) {
 		this(filters, null);
@@ -137,9 +137,9 @@ public class ExampleFileFilter extends FileFilter {
 	 * Creates a file filter from the given string array and description.
 	 * Example: new ExampleFileFilter(String {"gif", "jpg"},
 	 * "Gif and JPG Images");
-	 * 
+	 *
 	 * Note that the "." before the extension is not needed and will be ignored.
-	 * 
+	 *
 	 */
 	public ExampleFileFilter(String[] filters, String description) {
 		this();
@@ -154,9 +154,9 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Return true if this file should be shown in the directory pane, false if
 	 * it shouldn't.
-	 * 
+	 *
 	 * Files that begin with "." are ignored.
-	 * 
+	 *
 	 */
 	public boolean accept(File f) {
 		if (f != null) {
@@ -174,7 +174,7 @@ public class ExampleFileFilter extends FileFilter {
 
 	/**
 	 * Return the extension portion of the file's name .
-	 * 
+	 *
 	 */
 	public String getExtension(File f) {
 		if (f != null) {
@@ -190,13 +190,13 @@ public class ExampleFileFilter extends FileFilter {
 
 	/**
 	 * Adds a filetype "dot" extension to filter against.
-	 * 
+	 *
 	 * For example: the following code will create a filter that filters out all
 	 * files except those that end in ".jpg" and ".tif":
-	 * 
+	 *
 	 * ExampleFileFilter filter = new ExampleFileFilter();
 	 * filter.addExtension("jpg"); filter.addExtension("tif");
-	 * 
+	 *
 	 * Note that the "." before the extension is not needed and will be ignored.
 	 */
 	public void addExtension(String extension) {
@@ -210,7 +210,7 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Returns the human readable description of this filter. For example:
 	 * "JPEG and GIF Image Files (*.jpg, *.gif)"
-	 * 
+	 *
 	 */
 	public String getDescription() {
 		if (fullDescription == null) {
@@ -237,7 +237,7 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Sets the human readable description of this filter. For example:
 	 * filter.setDescription("Gif and JPG Images");
-	 * 
+	 *
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -247,10 +247,10 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Determines whether the extension list (.jpg, .gif, etc) should show up in
 	 * the human readable description.
-	 * 
+	 *
 	 * Only relevent if a description was provided in the constructor or using
 	 * setDescription();
-	 * 
+	 *
 	 */
 	public void setExtensionListInDescription(boolean b) {
 		useExtensionsInDescription = b;
@@ -260,10 +260,10 @@ public class ExampleFileFilter extends FileFilter {
 	/**
 	 * Returns whether the extension list (.jpg, .gif, etc) should show up in
 	 * the human readable description.
-	 * 
+	 *
 	 * Only relevent if a description was provided in the constructor or using
 	 * setDescription();
-	 * 
+	 *
 	 */
 	public boolean isExtensionListInDescription() {
 		return useExtensionsInDescription;

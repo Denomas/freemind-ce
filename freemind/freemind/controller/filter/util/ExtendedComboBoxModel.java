@@ -32,14 +32,15 @@ import javax.swing.event.ListDataListener;
 /**
  * @author dimitri 14.05.2005
  */
-@SuppressWarnings("serial")
 public class ExtendedComboBoxModel extends DefaultComboBoxModel {
+	private static final long serialVersionUID = 1L;
+
 
 	private class ExtensionDataListener implements ListDataListener {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * javax.swing.event.ListDataListener#intervalAdded(javax.swing.event
 		 * .ListDataEvent)
@@ -52,7 +53,7 @@ public class ExtendedComboBoxModel extends DefaultComboBoxModel {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * javax.swing.event.ListDataListener#intervalRemoved(javax.swing.event
 		 * .ListDataEvent)
@@ -65,7 +66,7 @@ public class ExtendedComboBoxModel extends DefaultComboBoxModel {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * javax.swing.event.ListDataListener#contentsChanged(javax.swing.event
 		 * .ListDataEvent)
@@ -81,8 +82,7 @@ public class ExtendedComboBoxModel extends DefaultComboBoxModel {
 	private SortedListModel extension = null;
 	private ExtensionDataListener extensionDataListener = new ExtensionDataListener();
 
-	/**
-     */
+
 	public void setExtensionList(final SortedListModel sortedListModel) {
 		final int ownSize = getOwnSize();
 		{
@@ -134,8 +134,7 @@ public class ExtendedComboBoxModel extends DefaultComboBoxModel {
 		return extension != null ? extension.getSize() : 0;
 	}
 
-	/**
-     */
+
 	private int getOwnSize() {
 		return super.getSize();
 	}

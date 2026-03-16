@@ -9,7 +9,7 @@
     Description: transforms freemind mm format to html, handles crossrefs and adds numbering. feel free to customize it while leaving the ancient authors
                     mentioned. thank you
     ChangeLog:
-    
+
     See: http://freemind.sourceforge.net/
 -->
 
@@ -20,7 +20,7 @@
     <xsl:template match="/">
         <xsl:text>#MindMapExport FreemindVersion:</xsl:text><xsl:value-of select="map/@version"/>
         <xsl:text>&#xA;</xsl:text>
-        <xsl:text>&#xA;</xsl:text><xsl:apply-templates/>  
+        <xsl:text>&#xA;</xsl:text><xsl:apply-templates/>
     </xsl:template>
 
 <xsl:template match="node">
@@ -37,4 +37,4 @@
      <xsl:apply-templates/>
 </xsl:template>
 
-</xsl:stylesheet> 
+</xsl:stylesheet>

@@ -32,11 +32,11 @@ import javax.swing.JScrollPane;
 /**
  * @author Dimitri Polivaev 15.11.2005
  */
-@SuppressWarnings("serial")
 public class JAutoScrollBarPane extends JScrollPane {
+	private static final long serialVersionUID = 1L;
 
-	/**
-     */
+
+
 	public JAutoScrollBarPane(Component view) {
 		super(view, VERTICAL_SCROLLBAR_NEVER, HORIZONTAL_SCROLLBAR_NEVER);
 	}
@@ -70,7 +70,7 @@ public class JAutoScrollBarPane extends JScrollPane {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.swing.JComponent#getPreferredSize()
 	 */
 	public Dimension getPreferredSize() {

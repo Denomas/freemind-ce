@@ -43,9 +43,7 @@ public class ConditionNotSatisfiedDecorator implements Condition {
 	static final String NAME = "negate_condition";
 	private Condition originalCondition;
 
-	/**
-     *
-     */
+
 	public ConditionNotSatisfiedDecorator(Condition originalCondition) {
 		super();
 		this.originalCondition = originalCondition;
@@ -53,7 +51,7 @@ public class ConditionNotSatisfiedDecorator implements Condition {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.condition.Condition#checkNode(freemind.modes
 	 * .MindMapNode)
@@ -64,7 +62,7 @@ public class ConditionNotSatisfiedDecorator implements Condition {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.condition.Condition#getListCellRendererComponent
 	 * ()

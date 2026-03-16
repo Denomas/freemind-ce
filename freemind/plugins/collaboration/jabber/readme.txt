@@ -18,7 +18,7 @@ Password:    password
 
 7. Select the option "Wait for another user to share a map" and click "Next".
 
-The window title should now be "Freemind - Connected". 
+The window title should now be "Freemind - Connected".
 
 
 On PC number 2:
@@ -36,7 +36,7 @@ Password:    password
 
 13. Select the option "Share this map with another user" (the default) and click "Next".
 
-14. Enter the username 'user-a@jabbermind.servequake.com' and click "Next". 
+14. Enter the username 'user-a@jabbermind.servequake.com' and click "Next".
 
 The 'Waiting for user to accept invitation to share map...' message appears.
 
@@ -50,11 +50,11 @@ On PC number 2:
 
 The message 'You are now sharing the current map with user-a@jabbermind.servequake.com' appears.
 
-16. Click "Close". 
+16. Click "Close".
 
 Now, the maps are shared and you can edit them together.
 
-Note, that you don't have to start with a blank map. 
+Note, that you don't have to start with a blank map.
 
 
 To disconnect from the Jabber server, go to "File -> Stop Sharing".
@@ -62,5 +62,3 @@ To disconnect from the Jabber server, go to "File -> Stop Sharing".
 Good luck.
 
 Robert
-
-

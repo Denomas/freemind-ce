@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:HtmlTools="xalan://freemind.main.HtmlTools" exclude-result-prefixes="HtmlTools">
-	
-	
-	<xsl:template 
+
+
+	<xsl:template
 		match="/ | node() | @* | comment() | processing-instruction()">
 		<xsl:copy>
 			<xsl:apply-templates select="@* | node()"/>
@@ -10,7 +10,7 @@
 	</xsl:template>
 
 	<xsl:template match="map">
-	
+
 		<!-- versions (the version tag is to be found in FreeMind.java as XML_VERSION.-->
 		<xsl:variable name="version"><!--
 			--><xsl:choose><!--
@@ -38,7 +38,7 @@
 			-->0800400<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.8.0 RC5'"><!--
-			-->0800500<!--				
+			-->0800500<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.8.0'"><!--
 			-->0801000<!-- Means the 0.8 release. This number is bigger than that of 0.8RC5.
@@ -47,34 +47,34 @@
 			-->0801004<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.8.1_beta1'"><!--
-			-->0810010<!-- 
+			-->0810010<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.8.1_beta2'"><!--
-			-->0810020<!-- 
+			-->0810020<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.8.1_beta3'"><!--
-			-->0810030<!-- 
+			-->0810030<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.9.0 Beta 5'"><!--
-			-->0900050<!-- 
+			-->0900050<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.9.0_Beta_6'"><!--
-			-->0900060<!-- 
+			-->0900060<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.9.0_Beta_8'"><!--
-			-->0900080<!-- 
+			-->0900080<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='0.9.0'"><!--
-			-->0901000<!-- 
+			-->0901000<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='1.0.0'"><!--
-			-->1001000<!-- 
+			-->1001000<!--
 			--></xsl:when><!--
 			--><xsl:when test="@version='1.0.1'"><!--
-			-->1002000<!-- 
+			-->1002000<!--
 			--></xsl:when><!-- Strikethrough is new in 1.1.0
 			--><xsl:when test="@version='1.1.0'"><!--
-			-->1101000<!-- 
+			-->1101000<!--
 			--></xsl:when><!--
 			--><xsl:otherwise><!--
 			-->-1<!--
@@ -92,11 +92,11 @@
 	 <hook NAME="accessories/plugins/CreationModificationPlugin.properties">
 <Parameters CREATED="1107380732932" MODIFIED="1107901568379"/>
 </hook>
- 
- to 
- 
-	<node COLOR="#00b439" CREATED="1113680014182" FOLDED="true" 
-		ID="Freemind_Link_241899915" MODIFIED="1113680014182" 
+
+ to
+
+	<node COLOR="#00b439" CREATED="1113680014182" FOLDED="true"
+		ID="Freemind_Link_241899915" MODIFIED="1113680014182"
 		TEXT="Transactions">
  -->
 	<!-- remove the following attributes/tags: -->
@@ -111,29 +111,29 @@
 		<hook NAME="accessories/plugins/ClonePlugin.properties">
 				<xsl:element name="Parameters">
 					<xsl:attribute name="CLONE_ID">
-						<xsl:text>CONVERTED_</xsl:text><xsl:value-of 
+						<xsl:text>CONVERTED_</xsl:text><xsl:value-of
 							select="../@ID"/>
 					</xsl:attribute>
 				</xsl:element>
 		</hook>
-	
+
 	</xsl:template>
 	<xsl:template match="hook[@NAME='accessories/plugins/ShadowClonePlugin.properties']">
 		<hook NAME="accessories/plugins/ClonePlugin.properties">
 				<xsl:element name="Parameters">
 					<xsl:attribute name="CLONE_IDS">
-						<xsl:value-of 
+						<xsl:value-of
 							select="Parameters/@ORIGINAL_ID"/><xsl:text>,</xsl:text>
 					</xsl:attribute>
 					<xsl:attribute name="CLONE_ID">
-						<xsl:text>CONVERTED_</xsl:text><xsl:value-of 
+						<xsl:text>CONVERTED_</xsl:text><xsl:value-of
 							select="Parameters/@ORIGINAL_ID"/>
 					</xsl:attribute>
 				</xsl:element>
 		</hook>
-	
+
 	</xsl:template>
-	
+
 	<xsl:template match="node">
 		<xsl:param name="version">-1</xsl:param>
   		<xsl:copy>
@@ -141,30 +141,30 @@
 				<!-- move the attributes CREATED and MODIFIED into the node tag as of version 0.8.0RC3-->
 				<xsl:when test="$version &lt; 0800300 and hook[@NAME='accessories/plugins/CreationModificationPlugin.properties']">
 					<xsl:attribute name="CREATED">
-						<xsl:value-of 
+						<xsl:value-of
 							select="hook[@NAME='accessories/plugins/CreationModificationPlugin.properties']/Parameters/@CREATED"/>
 					</xsl:attribute>
 					<xsl:attribute name="MODIFIED">
-						<xsl:value-of 
+						<xsl:value-of
 							select="hook[@NAME='accessories/plugins/CreationModificationPlugin.properties']/Parameters/@MODIFIED"/>
 					</xsl:attribute>
-				</xsl:when>				
+				</xsl:when>
 				<xsl:when test="$version &lt; 0800400 and @SHIFT_Y">
 					<xsl:attribute name="VSHIFT">
-						<xsl:value-of 
+						<xsl:value-of
 							select="@SHIFT_Y"/>
 					</xsl:attribute>
 				</xsl:when>
 				<xsl:when test="$version &lt; 0800400 and @ADDITIONAL_INFO">
 					<xsl:attribute name="ENCRYPTED_CONTENT">
-						<xsl:value-of 
+						<xsl:value-of
 							select="@ADDITIONAL_INFO"/>
 					</xsl:attribute>
 				</xsl:when>
 			</xsl:choose>
 			<xsl:if test="attrlayout">
 				<xsl:element name="attribute_layout">
-                    	<xsl:apply-templates select = "attrlayout/@*" /> 
+                    	<xsl:apply-templates select = "attrlayout/@*" />
 				</xsl:element>
 			</xsl:if>
 			<xsl:apply-templates select="@*|node()">
@@ -177,7 +177,7 @@
 						<xsl:attribute name="TYPE">NOTE</xsl:attribute>
 					<html>
 					  <head>
-					
+
 					  </head>
 					  <body>
 						<p>
@@ -193,11 +193,11 @@
 					  </body>
 					</html>
 					</xsl:element>
-				</xsl:when>				
+				</xsl:when>
 			</xsl:choose>
 		</xsl:copy>
 	</xsl:template>
-	
+
 	<xsl:template match="@LINK">
 		<xsl:param name="version">-1</xsl:param>
 		<xsl:choose>
@@ -212,11 +212,11 @@
 				</xsl:attribute>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:copy></xsl:copy>		
+				<xsl:copy></xsl:copy>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	
+
 	<xsl:template name="str-replace">
 		<xsl:param name="input"/>
 		<xsl:param name="search-string"/>
@@ -237,7 +237,7 @@
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:otherwise>
-				<!-- There are no more occurrences of the search string so 
+				<!-- There are no more occurrences of the search string so
 				just return the current input string -->
 				<xsl:value-of select="$input"/>
 			</xsl:otherwise>
@@ -290,7 +290,7 @@
 						<xsl:call-template name="br-replace">
 							<xsl:with-param name="input" select="substring(substring-after($input,$search-string),2)"/>
 							<xsl:with-param name="search-string" select="$search-string"/>
-						</xsl:call-template>					
+						</xsl:call-template>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:call-template name="br-replace">
@@ -305,6 +305,6 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	
-	
+
+
 </xsl:stylesheet>

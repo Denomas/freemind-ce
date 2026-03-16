@@ -1,5 +1,5 @@
 <project name="freemind_plugins" default="dist" basedir=".">
-	
+
 	<property name="plugin.xml" location="${src}/plugins/FreemindHelp.xml" />
 	<property name="plugin.dir" value="plugins/help"/>
 	<property name="local.plugin.dir" location="${src}/${plugin.dir}"/>

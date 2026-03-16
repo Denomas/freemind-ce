@@ -44,9 +44,9 @@ import javax.swing.UIManager;
 import freemind.controller.Controller;
 import freemind.controller.MenuBar;
 import freemind.view.mindmapview.MapView;
-
-@SuppressWarnings("serial")
 public class FreeMindApplet extends JApplet implements FreeMindMain {
+	private static final long serialVersionUID = 1L;
+
 
 	public static final VersionInformation version = FreeMind.VERSION;
 	// public static final String defaultPropsURL;
@@ -365,7 +365,7 @@ public class FreeMindApplet extends JApplet implements FreeMindMain {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.main.FreeMindMain#getSouthPanel()
 	 */
 	public JPanel getSouthPanel() {
@@ -374,7 +374,7 @@ public class FreeMindApplet extends JApplet implements FreeMindMain {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.main.FreeMindMain#getJFrame()
 	 */
 	public JFrame getJFrame() {

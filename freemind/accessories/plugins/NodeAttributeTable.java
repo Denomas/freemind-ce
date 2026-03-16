@@ -26,15 +26,15 @@ import freemind.modes.mindmapmode.hooks.MindMapNodeHookAdapter;
 
 /**
  * Shows or hides the attribute table belonging to each node.
- * 
+ *
  * @author foltin
- * 
+ *
  */
 public class NodeAttributeTable extends MindMapNodeHookAdapter {
 
-	
-	
-	
+
+
+
 	public void startupMapHook() {
 		super.startupMapHook();
 		String foldingType = getResourceString("command");

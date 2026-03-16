@@ -32,7 +32,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 26.03.2014
  */
 public class FontFamilyActor extends XmlActorAdapter {
 
@@ -48,8 +47,7 @@ public class FontFamilyActor extends XmlActorAdapter {
 		return FontNodeAction.class;
 	}
 
-	/**
-     */
+
 	public void setFontFamily(MindMapNode node, String fontFamilyValue) {
 		execute(getActionPair(node, fontFamilyValue));
 	}
@@ -71,9 +69,7 @@ public class FontFamilyActor extends XmlActorAdapter {
 
 	}
 
-	/**
-     *
-     */
+
 
 	public void act(XmlAction action) {
 		if (action instanceof FontNodeAction) {
@@ -90,5 +86,5 @@ public class FontFamilyActor extends XmlActorAdapter {
 		}
 	}
 
-	
+
 }

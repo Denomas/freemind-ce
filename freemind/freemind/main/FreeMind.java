@@ -164,7 +164,23 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 	private Logger logger = null;
 
-	protected static final VersionInformation VERSION = new VersionInformation("1.1.0 Beta 2");
+	protected static final VersionInformation VERSION = loadVersionFromProperties();
+
+	private static VersionInformation loadVersionFromProperties() {
+		try (InputStream is = FreeMind.class.getResourceAsStream("/version.properties")) {
+			if (is != null) {
+				Properties props = new Properties();
+				props.load(is);
+				String ver = props.getProperty("freemind.version");
+				if (ver != null && !ver.isEmpty()) {
+					return new VersionInformation(ver);
+				}
+			}
+		} catch (Exception e) {
+			// Fall back to hardcoded version
+		}
+		return new VersionInformation("1.1.0 Beta 2");
+	}
 
 	public static final String XML_VERSION = "1.1.0";
 
@@ -272,8 +288,8 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 
 	private FreeMindCommon mFreeMindCommon;
 
-	private static FileHandler mFileHandler;
-	private static boolean mFileHandlerError = false;
+	private static volatile FileHandler mFileHandler;
+	private static volatile boolean mFileHandlerError = false;
 
 	/**
 	 * The main map's scroll pane.
@@ -297,7 +313,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	private Vector<Logger> mLoggerList = new Vector<>();
 
 
-	private static LogFileLogHandler sLogFileHandler;
+	private static volatile LogFileLogHandler sLogFileHandler;
 
 	public FreeMind(Properties pDefaultPreferences,
 			Properties pUserPreferences, File pAutoPropertiesFile) {
@@ -425,9 +441,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 //		eventQueue.push(new MyEventQueue());
 	}// Constructor
 
-	/**
-	 *
-	 */
+
 	private void updateLookAndFeel() {
 		// set Look&Feel
 		try {
@@ -646,48 +660,52 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 		Logger loggerForClass = java.util.logging.Logger.getLogger(forClass);
 		mLoggerList.add(loggerForClass);
 		if (mFileHandler == null && !mFileHandlerError) {
-			// initialize handlers using an old System.err:
-			final Logger parentLogger = loggerForClass.getParent();
-			final Handler[] handlers = parentLogger.getHandlers();
-			for (int i = 0; i < handlers.length; i++) {
-				final Handler handler = handlers[i];
-				if (handler instanceof ConsoleHandler) {
-					parentLogger.removeHandler(handler);
+		synchronized (FreeMind.class) {
+			if (mFileHandler == null && !mFileHandlerError) {
+				// initialize handlers using an old System.err:
+				final Logger parentLogger = loggerForClass.getParent();
+				final Handler[] handlers = parentLogger.getHandlers();
+				for (int i = 0; i < handlers.length; i++) {
+					final Handler handler = handlers[i];
+					if (handler instanceof ConsoleHandler) {
+						parentLogger.removeHandler(handler);
+					}
+				}
+
+				try {
+					mFileHandler = new FileHandler(getFreemindDirectory()
+							+ File.separator + LOG_FILE_NAME, 1400000, 5, false);
+					mFileHandler.setFormatter(new StdFormatter());
+					mFileHandler.setLevel(Level.INFO);
+					parentLogger.addHandler(mFileHandler);
+
+					final ConsoleHandler stdConsoleHandler = new ConsoleHandler();
+					stdConsoleHandler.setFormatter(new StdFormatter());
+					stdConsoleHandler.setLevel(Level.WARNING);
+					parentLogger.addHandler(stdConsoleHandler);
+
+					sLogFileHandler = new LogFileLogHandler();
+					sLogFileHandler.setFormatter(new SimpleFormatter());
+					sLogFileHandler.setLevel(Level.INFO);
+
+					LoggingOutputStream los;
+					Logger logger = Logger.getLogger(StdFormatter.STDOUT.getName());
+					los = new LoggingOutputStream(logger, StdFormatter.STDOUT);
+					System.setOut(new PrintStream(los, true, StandardCharsets.UTF_8));
+
+					logger = Logger.getLogger(StdFormatter.STDERR.getName());
+					los = new LoggingOutputStream(logger, StdFormatter.STDERR);
+					System.setErr(new PrintStream(los, true, StandardCharsets.UTF_8));
+
+				} catch (Exception e) {
+					System.err.println("Error creating logging File Handler");
+					e.printStackTrace();
+					mFileHandlerError = true;
+					// to avoid infinite recursion.
+					// freemind.main.Resources.getInstance().logExecption(e);
 				}
 			}
-
-			try {
-				mFileHandler = new FileHandler(getFreemindDirectory()
-						+ File.separator + LOG_FILE_NAME, 1400000, 5, false);
-				mFileHandler.setFormatter(new StdFormatter());
-				mFileHandler.setLevel(Level.INFO);
-				parentLogger.addHandler(mFileHandler);
-
-				final ConsoleHandler stdConsoleHandler = new ConsoleHandler();
-				stdConsoleHandler.setFormatter(new StdFormatter());
-				stdConsoleHandler.setLevel(Level.WARNING);
-				parentLogger.addHandler(stdConsoleHandler);
-
-				sLogFileHandler = new LogFileLogHandler();
-				sLogFileHandler.setFormatter(new SimpleFormatter());
-				sLogFileHandler.setLevel(Level.INFO);
-
-				LoggingOutputStream los;
-				Logger logger = Logger.getLogger(StdFormatter.STDOUT.getName());
-				los = new LoggingOutputStream(logger, StdFormatter.STDOUT);
-				System.setOut(new PrintStream(los, true));
-
-				logger = Logger.getLogger(StdFormatter.STDERR.getName());
-				los = new LoggingOutputStream(logger, StdFormatter.STDERR);
-				System.setErr(new PrintStream(los, true));
-
-			} catch (Exception e) {
-				System.err.println("Error creating logging File Handler");
-				e.printStackTrace();
-				mFileHandlerError = true;
-				// to avoid infinite recursion.
-				// freemind.main.Resources.getInstance().logExecption(e);
-			}
+		}
 		}
 		if (sLogFileHandler != null) {
 			loggerForClass.addHandler(sLogFileHandler);

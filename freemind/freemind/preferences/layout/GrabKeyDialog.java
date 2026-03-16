@@ -48,21 +48,20 @@ import freemind.main.Resources;
 /**
  * A dialog for getting shortcut keys.
  */
-@SuppressWarnings("serial")
 public class GrabKeyDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+
 	private final FreeMindMain fmMain;
 
 	private static class Buffer {
 
-		/**
-		 */
+
 		public int getLength() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
-		/**
-		 */
+
 		public void insert(int length, String string) {
 			// TODO Auto-generated method stub
 
@@ -565,8 +564,7 @@ public class GrabKeyDialog extends JDialog {
 
 	} // }}}
 
-	/**
-	 */
+
 	private String getText(String resourceString) {
 		return fmMain.getResourceString("GrabKeyDialog." + resourceString);
 	}

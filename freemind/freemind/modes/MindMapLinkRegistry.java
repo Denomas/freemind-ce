@@ -34,19 +34,19 @@ import freemind.main.Tools;
  * maps have a different registry.
  */
 public class MindMapLinkRegistry {
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * All elements put into this sort of vectors are put into the
 	 * SourceToLinks, too. This structure is kept synchronous to the IDToLinks
 	 * structure, but reversed.
-	 * 
+	 *
 	 * @author foltin
-	 * @date 23.01.2012
 	 */
-	@SuppressWarnings("serial")
 	private class SynchronousVector extends Vector<MindMapLink> {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.Vector#add(java.lang.Object)
 		 */
 		public synchronized boolean add(MindMapLink pE) {
@@ -64,7 +64,7 @@ public class MindMapLinkRegistry {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.Vector#removeElementAt(int)
 		 */
 		public synchronized void removeElementAt(int pIndex) {
@@ -106,10 +106,9 @@ public class MindMapLinkRegistry {
 	// // Methods /////
 	// //////////////////////////////////////////////////////////////////////////////////////
 	public MindMapLinkRegistry(/* MindMap map */) {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		mTargetToId = new HashMap<>();
 		mIdToTarget = new HashMap<>();
 		mIdToLinks = new HashMap<>();

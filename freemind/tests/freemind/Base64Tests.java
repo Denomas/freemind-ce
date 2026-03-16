@@ -27,7 +27,7 @@ import freemind.main.Base64Coding;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class Base64Tests extends FreeMindTestBase {
 	public void testDifferentBase64ers() throws Exception {

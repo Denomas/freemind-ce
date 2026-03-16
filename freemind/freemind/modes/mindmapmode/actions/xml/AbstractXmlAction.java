@@ -33,10 +33,11 @@ import freemind.modes.mindmapmode.actions.MindmapAction;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public abstract class AbstractXmlAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private ActorXml actor;
 
@@ -50,7 +51,7 @@ public abstract class AbstractXmlAction extends MindmapAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
@@ -62,12 +63,10 @@ public abstract class AbstractXmlAction extends MindmapAction {
 		return (String) getValue(Action.SHORT_DESCRIPTION);
 	}
 
-	/**
-	 */
+
 	protected abstract void xmlActionPerformed(ActionEvent arg0);
 
-	/**
-	 */
+
 	public MindMapController getMindMapController() {
 		return controller;
 	}
@@ -81,8 +80,7 @@ public abstract class AbstractXmlAction extends MindmapAction {
 		}
 	}
 
-	/**
-	 */
+
 	public ActorXml getActor() {
 		return actor;
 	}

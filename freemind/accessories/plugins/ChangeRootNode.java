@@ -46,9 +46,8 @@ import freemind.view.mindmapview.NodeView;
 /**
  * Changes the root node to another one What happens with clouds? This is ok, as
  * it can be removed afterwards.
- * 
+ *
  * @author foltin
- * @date 01.10.2011
  */
 public class ChangeRootNode extends MindMapNodeHookAdapter {
 	private static final String TRANSACTION_NAME = "ChangeRootNode";
@@ -92,7 +91,7 @@ public class ChangeRootNode extends MindMapNodeHookAdapter {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.controller.MenuItemEnabledListener#isEnabled(javax.swing
 		 * .JMenuItem, javax.swing.Action)
@@ -103,7 +102,7 @@ public class ChangeRootNode extends MindMapNodeHookAdapter {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.extensions.HookRegistration#register()
 		 */
 		public void register() {
@@ -113,7 +112,7 @@ public class ChangeRootNode extends MindMapNodeHookAdapter {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see freemind.extensions.HookRegistration#deRegister()
 		 */
 		public void deRegister() {
@@ -122,7 +121,7 @@ public class ChangeRootNode extends MindMapNodeHookAdapter {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.modes.mindmapmode.actions.xml.ActorXml#act(freemind.controller
 		 * .actions.generated.instance.XmlAction)
@@ -182,7 +181,7 @@ public class ChangeRootNode extends MindMapNodeHookAdapter {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see
 		 * freemind.modes.mindmapmode.actions.xml.ActorXml#getDoActionClass()
 		 */

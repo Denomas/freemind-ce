@@ -36,9 +36,9 @@ import freemind.modes.MindIcon;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.actions.xml.actors.AddIconActor;
-
-@SuppressWarnings("serial")
 public class IconAction extends MindmapAction implements IconInformation {
+	private static final long serialVersionUID = 1L;
+
 	public MindIcon icon;
 	private final MindMapController modeController;
 
@@ -48,7 +48,7 @@ public class IconAction extends MindmapAction implements IconInformation {
 		this.modeController = controller;
 		putValue(Action.SHORT_DESCRIPTION, _icon.getDescription());
 		this.icon = _icon;
-		
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -96,7 +96,7 @@ public class IconAction extends MindmapAction implements IconInformation {
 		}
 	}
 
-	
+
 
 
 	protected AddIconAction createAddIconAction(MindMapNode node,
@@ -111,7 +111,7 @@ public class IconAction extends MindmapAction implements IconInformation {
 	public Class<AddIconAction> getDoActionClass() {
 		return AddIconAction.class;
 	}
-	
+
 
 	public MindIcon getMindIcon() {
 		return icon;

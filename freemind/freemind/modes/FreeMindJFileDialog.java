@@ -30,10 +30,10 @@ import javax.swing.filechooser.FileFilter;
 /**
  * File Chooser for OS windows and linux (without Mac)
  * @author foltin
- * @date 23.02.2012
  */
-@SuppressWarnings("serial")
 public class FreeMindJFileDialog extends JFileChooser implements FreeMindFileDialog  {
+	private static final long serialVersionUID = 1L;
+
 
 	private DirectoryResultListener mDirectoryResultListener = null;
 
@@ -43,9 +43,9 @@ public class FreeMindJFileDialog extends JFileChooser implements FreeMindFileDia
 	public void registerDirectoryResultListener(
 			DirectoryResultListener pDirectoryResultListener) {
 				mDirectoryResultListener = pDirectoryResultListener;
-		
+
 	}
-	
+
 	protected void callDirectoryListener(final int result) {
 		if(result == JFileChooser.APPROVE_OPTION && mDirectoryResultListener != null) {
 			try {
@@ -55,7 +55,7 @@ public class FreeMindJFileDialog extends JFileChooser implements FreeMindFileDia
 			}
 		}
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see javax.swing.JFileChooser#showOpenDialog(java.awt.Component)
 	 */

@@ -27,9 +27,9 @@ import java.util.List;
 
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.actions.MindmapAction;
-
-@SuppressWarnings("serial")
 public class NodeDownAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController modeController;
 
 	public NodeDownAction(MindMapController adapter) {

@@ -424,7 +424,7 @@ public final class TestMindMapNode implements MindMapNode {
 	public List<String> getAttributeKeyList() {
 		return null;
 	}
-	
+
 	@Override
 	public List<Attribute> getAttributes() {
 		return null;
@@ -472,7 +472,7 @@ public final class TestMindMapNode implements MindMapNode {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.MindMapNode#removeAllHooks()
 	 */
 	public void removeAllHooks() {
@@ -507,7 +507,7 @@ public final class TestMindMapNode implements MindMapNode {
 	@Override
 	public void removeAttribute(int pPosition) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -516,7 +516,7 @@ public final class TestMindMapNode implements MindMapNode {
 	@Override
 	public void insertAttribute(int pPosition, Attribute pAttribute) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)

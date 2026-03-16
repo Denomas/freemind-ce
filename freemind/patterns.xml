@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Default patterns supplied with FreeMind 
-	 Don't change this file per hand as a pattern manager 
+<!-- Default patterns supplied with FreeMind
+	 Don't change this file per hand as a pattern manager
 	 is now included in FreeMind.
 -->
 <patterns>
@@ -48,7 +48,7 @@
 		<pattern_node_font_bold/>
 		<pattern_node_font_italic/>
 		<pattern_node_font_size value="10"/>
-		
+
 	</pattern>
 	<pattern name="Folder">
 		<pattern_node_background_color/>
@@ -111,9 +111,9 @@
 		<pattern_node_color value="#009999"/>
 		<pattern_node_style/>
 	</pattern>
-	
-	<!-- Recursive Mind map styles 
-		 If you want to try them, apply AutomaticMindMapRoot 
+
+	<!-- Recursive Mind map styles
+		 If you want to try them, apply AutomaticMindMapRoot
 		 to the root of a mindmap. Take care, the whole map changes it colors -->
 
 	<pattern name="AutomaticMindMapRoot">
@@ -125,7 +125,7 @@
 		<pattern_edge_width value="8"/>
 		<pattern_child value="MindMap1"/>
 	</pattern>
-	
+
 	<pattern name="MindMap1">
 		<pattern_node_background_color/>
 		<pattern_node_color value="#0033FF"/>
@@ -135,7 +135,7 @@
 		<pattern_edge_width value="4"/>
 		<pattern_child value="MindMap2"/>
 	</pattern>
-	
+
 	<pattern name="MindMap2">
 		<pattern_node_background_color/>
 		<pattern_node_color value="#00b439"/>
@@ -145,7 +145,7 @@
 		<pattern_edge_width value="2"/>
 		<pattern_child value="MindMap3"/>
 	</pattern>
-	
+
 	<pattern name="MindMap3">
 		<pattern_node_background_color/>
 		<pattern_node_color value="#990000"/>
@@ -155,7 +155,7 @@
 		<pattern_edge_width value="1"/>
 		<pattern_child value="MindMapDefault"/>
 	</pattern>
-	
+
 	<pattern name="MindMapDefault">
 		<pattern_node_background_color/>
 		<pattern_node_color value="#111111"/>
@@ -165,5 +165,5 @@
 		<pattern_edge_width value="thin"/>
 		<pattern_child value="MindMapDefault"/>
 	</pattern>
-	
+
 </patterns>

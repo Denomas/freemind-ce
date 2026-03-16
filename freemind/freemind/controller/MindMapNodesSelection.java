@@ -28,6 +28,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class MindMapNodesSelection implements Transferable, ClipboardOwner {
@@ -101,7 +102,7 @@ public class MindMapNodesSelection implements Transferable, ClipboardOwner {
 			return dropActionContent;
 		}
 		if (flavor.equals(rtfFlavor)) {
-			byte[] byteArray = rtfContent.getBytes();
+			byte[] byteArray = rtfContent.getBytes(StandardCharsets.UTF_8);
 			// for (int i = 0; i < byteArray.length; ++i) {
 			// System.out.println(byteArray[i]); }
 

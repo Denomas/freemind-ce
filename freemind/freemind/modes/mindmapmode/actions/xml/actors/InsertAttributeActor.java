@@ -78,13 +78,13 @@ public class InsertAttributeActor extends XmlActorAdapter {
 		insertAttributeAction.setPosition(pPosition);
 		return insertAttributeAction;
 	}
-	
+
 	public void insertAttribute(MindMapNode pNode, int pPosition, Attribute pAttribute) {
 		ActionPair actionPair = getActionPair(pNode, pPosition, pAttribute);
 		execute(actionPair);
 
 	}
 
-	
-	
+
+
 }

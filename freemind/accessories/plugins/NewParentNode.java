@@ -35,16 +35,16 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author foltin The original version was sent by Stephen Viles (sviles)
- *         https://sourceforge.net/tracker/?func=detail&atid=307118&aid=881217&
+ *         https://sourceforge.net/tracker/?func=detail&amp;atid=307118&amp;aid=881217&amp;
  *         group_id=7118
- * 
+ *
  *         Initial Comment: The "New Parent Node" action creates a node as a
  *         parent of one or more selected nodes. If more than one node is
  *         selected, the selected nodes must all have the same parent -- this
  *         restriction is imposed to make the action easier to understand and to
  *         undo manually, and could potentially be removed when we get automated
  *         undo.
- * 
+ *
  *         The root node must not be one of the selected nodes. I find this
  *         action useful when I need to add an extra level of grouping in the
  *         middle of an existing hierarchy. It is quicker than adding a new node
@@ -54,16 +54,14 @@ import freemind.view.mindmapview.MapView;
  */
 public class NewParentNode extends MindMapNodeHookAdapter {
 
-	/**
-	 * 
-	 */
+
 	public NewParentNode() {
 		super();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.NodeHook#invoke(freemind.modes.MindMapNode,
 	 * java.util.List)
 	 */
@@ -171,7 +169,7 @@ public class NewParentNode extends MindMapNodeHookAdapter {
 		getMindMapController().select(selectedParent, Tools.getVectorWithSingleElement(selectedParent));
 //		getMindMapController().obtainFocusForSelected();
 		nodeChanged(selectedParent);
-		
+
 		return newNode;
 	}
 

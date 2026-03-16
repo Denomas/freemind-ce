@@ -3,7 +3,7 @@
 
 Distributed under the terms of the MIT License.
 See "LICENCE.MIT" or http://www.opensource.org/licenses/mit-license.php for details.
- 
+
  Software distributed under the License is distributed on an "AS IS" basis,
  WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
  for the specific language governing rights and limitations under the
@@ -16,12 +16,12 @@ mmTree - alternate XHTML+Javascript export style sheet for FreeMind.
 Transforms Freemind (0.6.7 - 0.8.0) mm file to XHTML 1.1 with JavaScript-based keyboard navigation (MarkTree).
 Output is valid (possibly apart HTML entered by user in Freemind).
 
-Update (MN / 14.12.2004): 
+Update (MN / 14.12.2004):
  - Support for mm 0.7.1 - 0.8.0 constructs (clouds, internal links. opens internal link also if collapsed).
  - Support for icons. Some code adapted from Markus Brueckner's freemind2html.xsl style sheet.
  - newlines &#xa;&#xa; behaviour (find and convert to <br/>)
-	
-Bug fix (FC/ 25.04.2006): 
+
+Bug fix (FC/ 25.04.2006):
  - Export of local hyperlinks corrected.
 
 Update (EWL / 2006-06-02):
@@ -35,16 +35,16 @@ Todo:
  - parameters: use_icons (true/false)
 -->
 <xsl:stylesheet version="1.0"
-                xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  		>
 <!-- mozilla doesn't parse method xhtml (in xslt 2.0) -->
-<!--  		xmlns:HtmlTools="xalan://plugins.map.FreeMindMapController" 
+<!--  		xmlns:HtmlTools="xalan://plugins.map.FreeMindMapController"
  		exclude-result-prefixes="HtmlTools"  -->
 <xsl:output method="xml"
             version="1.0"
             encoding="UTF-8"
-            doctype-public="-//W3C//DTD XHTML 1.1//EN"  
+            doctype-public="-//W3C//DTD XHTML 1.1//EN"
             doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
 	    omit-xml-declaration="no"
 	    />
@@ -111,12 +111,12 @@ Todo:
 <!-- ### THE MATCHED TEMPLATES ### -->
 
 <xsl:template match="node">
-	<xsl:if test="count(child::node)=0"> 
+	<xsl:if test="count(child::node)=0">
 		<xsl:call-template name="listnode">
 			<xsl:with-param name="lifold">basic</xsl:with-param>
 		</xsl:call-template>
 	</xsl:if>
-	<xsl:if test="count(child::node)>0" > 
+	<xsl:if test="count(child::node)>0" >
 		<xsl:choose>
 		<xsl:when test="@FOLDED='true'">
 			<xsl:call-template name="listnode">
@@ -164,10 +164,10 @@ Todo:
 		<xsl:call-template name="output-node" />
 	</xsl:otherwise>
 	</xsl:choose>
-	<xsl:if test="child::node"> 
+	<xsl:if test="child::node">
 		<xsl:text>
 		</xsl:text> <!-- adds a line-break in the html code -->
-		<ul class="{$ulfold}">  
+		<ul class="{$ulfold}">
 			<xsl:apply-templates select="node[@POSITION='left']"/>
 			<xsl:apply-templates select="node[@POSITION='right']"/>
 			<xsl:apply-templates select="node[not(@POSITION)]"/>
@@ -212,7 +212,7 @@ Todo:
 			<xsl:element name="a">
 				<xsl:attribute name="href"><!--
 				-->http://www.openstreetmap.org/?lat=<!--
-				--><xsl:value-of select="hook/Parameters/@XML_STORAGE_MAP_LAT"></xsl:value-of><!-- 
+				--><xsl:value-of select="hook/Parameters/@XML_STORAGE_MAP_LAT"></xsl:value-of><!--
 				-->&amp;lon=<!--
 				--><xsl:value-of select="hook/Parameters/@XML_STORAGE_MAP_LON"></xsl:value-of><!--
 				-->&amp;mlat=<!--
@@ -222,11 +222,11 @@ Todo:
 				-->&amp;zoom=<!--
 				--><xsl:value-of select="hook/Parameters/@XML_STORAGE_ZOOM"></xsl:value-of><!--
 				-->&amp;layers=<!--
-				--><xsl:choose><!--  
-				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource$Mapnik'">M</xsl:when><!-- 
-				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='plugins.map.FreeMindMapController$TransportMap'">T</xsl:when><!-- 
-				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource$CycleMap'">C</xsl:when><!-- 
-				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='plugins.map.FreeMindMapController$MapQuestOpenMap'">Q</xsl:when><!-- 
+				--><xsl:choose><!--
+				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource$Mapnik'">M</xsl:when><!--
+				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='plugins.map.FreeMindMapController$TransportMap'">T</xsl:when><!--
+				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource$CycleMap'">C</xsl:when><!--
+				--><xsl:when test="hook/Parameters/@XML_STORAGE_TILE_SOURCE='plugins.map.FreeMindMapController$MapQuestOpenMap'">Q</xsl:when><!--
 				--><xsl:otherwise>M</xsl:otherwise></xsl:choose></xsl:attribute>
 				<xsl:element name="img">
 					<xsl:attribute name="src"><xsl:value-of select="$destination_dir"/>map_location.png</xsl:attribute>
@@ -273,8 +273,8 @@ Todo:
 	</xsl:otherwise>
 	</xsl:choose>
 	<xsl:if test="$show_link_url='true'">
-		- [ <a><xsl:attribute name="href"><xsl:value-of select="@LINK" />  
-		</xsl:attribute><xsl:value-of select="@LINK"/></a> ]   
+		- [ <a><xsl:attribute name="href"><xsl:value-of select="@LINK" />
+		</xsl:attribute><xsl:value-of select="@LINK"/></a> ]
 	</xsl:if>
 </xsl:template> <!-- xsl:template name="output-node-with-link" -->
 
@@ -317,7 +317,7 @@ Todo:
 	</xsl:choose>
 </xsl:template>
 
-	
+
 	<xsl:template match="text()|@*"  mode="strip-tags">
 		  <xsl:value-of select="string(.)"/>
 	</xsl:template>

@@ -48,9 +48,9 @@ import freemind.main.Tools;
 import freemind.modes.ControllerAdapter;
 import freemind.modes.FreemindAction;
 import freemind.modes.MindMapNode;
-
-@SuppressWarnings("serial")
 public class FindAction extends FreemindAction {
+	private static final long serialVersionUID = 1L;
+
 	private final ControllerAdapter controller;
 
 	private ArrayList<MindMapNode> findNodesUnfoldedByLastFind;
@@ -438,8 +438,7 @@ public class FindAction extends FreemindAction {
 		return false;
 	}
 
-	/**
-	 */
+
 	private void centerNode(MindMapNode node) {
 		// Select the node and scroll to it.
 		controller.centerNode(node);

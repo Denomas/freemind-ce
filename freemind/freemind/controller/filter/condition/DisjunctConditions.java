@@ -43,16 +43,14 @@ public class DisjunctConditions implements Condition {
 	static final String NAME = "disjunct_condition";
 	private Object[] conditions;
 
-	/**
-     *
-     */
+
 	public DisjunctConditions(Object[] conditions) {
 		this.conditions = conditions;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.condition.Condition#checkNode(freemind.modes
 	 * .MindMapNode)
@@ -69,7 +67,7 @@ public class DisjunctConditions implements Condition {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.filter.condition.Condition#getListCellRendererComponent
 	 * ()

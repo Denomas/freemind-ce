@@ -67,7 +67,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 20.03.2014
  */
 public class PasteActor extends XmlActorAdapter {
 
@@ -78,15 +77,14 @@ public class PasteActor extends XmlActorAdapter {
 	 */
 	public PasteActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActorXml#act(freemind.controller.actions.
 	 * generated.instance.XmlAction)
@@ -100,7 +98,7 @@ public class PasteActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.actions.ActorXml#getDoActionClass()
 	 */
 	public Class<PasteNodeAction> getDoActionClass() {
@@ -167,8 +165,8 @@ public class PasteActor extends XmlActorAdapter {
 		 * how to construct the undo action for a complex paste? a) Paste pastes
 		 * a number of new nodes that are adjacent. This number should be
 		 * determined.
-		 * 
-		 * 
+		 *
+		 *
 		 * d) But, as there are many possibilities which data flavor is pasted,
 		 * it has to be determined before, which one will be taken.
 		 */
@@ -314,9 +312,7 @@ public class PasteActor extends XmlActorAdapter {
 			mNodeCreator = pNodeCreator;
 		}
 
-		/**
-		 * 
-		 */
+
 		private DirectHtmlFlavorHandler() {
 			mNodeCreator = new NodeCreator() {
 
@@ -368,18 +364,18 @@ public class PasteActor extends XmlActorAdapter {
 					// Java HTML Editor
 					// does not like
 					// the tag.
-					.replaceAll("(?i)(?s)</?tbody.*?>", ""). 
+					.replaceAll("(?i)(?s)</?tbody.*?>", "").
 					// Java HTML Editor
 					// shows comments in
 					// not very nice
 					// manner.
-					replaceAll("(?i)(?s)<!--.*?-->", ""). 
+					replaceAll("(?i)(?s)<!--.*?-->", "").
 					// Java HTML Editor
 					// does not like
 					// Microsoft Word's
 					// <o> tag.
 					replaceAll("(?i)(?s)</?o[^>]*>", "");
-			textFromClipboard = "<html><body>"+textFromClipboard + "</body></html>"; 
+			textFromClipboard = "<html><body>"+textFromClipboard + "</body></html>";
 			logger.finer("directHtmlFlavor: " + textFromClipboard);
 			if (Resources.getInstance().getBoolProperty(
 					FreeMind.RESOUCES_PASTE_HTML_STRUCTURE)) {
@@ -392,10 +388,10 @@ public class PasteActor extends XmlActorAdapter {
 					textFromClipboard = textFromClipboard.replaceAll(
 							"(?i)(?s)<img[^>]*>", "");
 				} // Cut out images.
-	
+
 				textFromClipboard = HtmlTools
 						.unescapeHTMLUnicodeEntity(textFromClipboard);
-	
+
 				MindMapNode node = getExMapFeedback().newNode(textFromClipboard,
 						getExMapFeedback().getMap());
 				// if only one <a>...</a> element found, set link
@@ -407,7 +403,7 @@ public class PasteActor extends XmlActorAdapter {
 						node.setLink(href);
 					}
 				}
-	
+
 				insertNodeInto(node, target);
 				// addUndoAction(node);
 			}
@@ -453,7 +449,7 @@ public class PasteActor extends XmlActorAdapter {
 			File parentFile= mindmapFile.getParentFile();
 			String filePrefix= mindmapFile.getName().replace(
 					FreeMindCommon.FREEMIND_FILE_EXTENSION, "_");
-			/* prefix for createTempFile must be at least three characters long. 
+			/* prefix for createTempFile must be at least three characters long.
 			 See  [bugs:#1261] Unable to paste images from clipboard */
 			while(filePrefix.length()<3){
 				filePrefix += "_";
@@ -519,8 +515,7 @@ public class PasteActor extends XmlActorAdapter {
 		setWaitingCursor(false);
 	}
 
-	/**
-     */
+
 	private DataFlavorHandler[] getFlavorHandlers() {
 		DataFlavorHandler[] dataFlavorHandlerList = new DataFlavorHandler[] {
 				new FileListFlavorHandler(), new MindMapNodesFlavorHandler(),
@@ -574,14 +569,14 @@ public class PasteActor extends XmlActorAdapter {
 
 	/**
 	 * Paste String (as opposed to other flavors)
-	 * 
+	 *
 	 * Split the text into lines; determine the new tree structure by the number
 	 * of leading spaces in lines. In case that trimmed line starts with
 	 * protocol (http:, https:, ftp:), create a link with the same content.
-	 * 
+	 *
 	 * If there was only one line to be pasted, return the pasted node, null
 	 * otherwise.
-	 * 
+	 *
 	 * @param isLeft
 	 *            TODO
 	 */
@@ -718,8 +713,7 @@ public class PasteActor extends XmlActorAdapter {
 		return pastedNode;
 	}
 
-	/**
-     */
+
 	private void insertNodeInto(MindMapNodeModel node, MindMapNode parent, int i) {
 		getExMapFeedback().insertNodeInto(node, parent, i);
 	}
@@ -853,7 +847,7 @@ public class PasteActor extends XmlActorAdapter {
 		return childCount;
 	}
 
-	
+
 	/**
 	 * Only for HTML nodes.
 	 * @param t
@@ -917,9 +911,7 @@ public class PasteActor extends XmlActorAdapter {
 	protected void setWaitingCursor(boolean waitingCursor) {
 		getExMapFeedback().setWaitingCursor(waitingCursor);
 	}
-	/**
-	 *
-	 */
+
 	public void processUnfinishedLinksInHooks(MindMapNode node) {
 		for (Iterator<MindMapNode> i = node.childrenUnfolded(); i.hasNext();) {
 			MindMapNode child = i.next();

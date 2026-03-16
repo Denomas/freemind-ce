@@ -30,13 +30,13 @@ import java.awt.Point;
 import freemind.main.FreeMind;
 import freemind.main.Resources;
 import freemind.main.Tools;
-
-@SuppressWarnings("serial")
 class RootMainView extends MainView {
+	private static final long serialVersionUID = 1L;
+
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView.MainView#getPreferredSize()
 	 */
 	public Dimension getPreferredSize() {
@@ -117,7 +117,7 @@ class RootMainView extends MainView {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView#getStyle()
 	 */
 	String getStyle() {
@@ -138,7 +138,7 @@ class RootMainView extends MainView {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.view.mindmapview.NodeView#getTextX()
 	 */
 	public int getTextX() {

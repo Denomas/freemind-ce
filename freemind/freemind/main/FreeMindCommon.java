@@ -206,10 +206,10 @@ public class FreeMindCommon {
 	 * Related issues
 	 * <ul>
 	 * <li>
-	 * http://sourceforge.net/tracker/?func=detail&aid=2908045&group_id=7118&
+	 * http://sourceforge.net/tracker/?func=detail&amp;aid=2908045&amp;group_id=7118&amp;
 	 * atid=107118
-	 * <li>http://sourceforge.net/tracker/index.php?func=detail&aid=1980423&
-	 * group_id=7118&atid=107118
+	 * <li>http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1980423&amp;
+	 * group_id=7118&amp;atid=107118
 	 * </ul>
 	 */
 	public static final String LOAD_EVENT_DURING_STARTUP = "loadEventDuringStartup";
@@ -222,15 +222,12 @@ public class FreeMindCommon {
 
 	private static Logger logger = null;
 
-	/**
-	 *
-	 */
+
 	public FreeMindCommon(FreeMindMain main) {
 		super();
 		// TODO Auto-generated constructor stub
 		this.mFreeMindMain = main;
-		if (logger == null)
-			logger = main.getLogger(this.getClass().getName());
+		logger = main.getLogger(this.getClass().getName());
 	}
 
 	public String getProperty(String key) {

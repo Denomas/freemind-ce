@@ -57,13 +57,13 @@ import freemind.modes.mindmapmode.dialogs.StylePatternFrame.StylePatternFrameTyp
 import freemind.view.mindmapview.MapView;
 
 /** */
-@SuppressWarnings("serial")
 public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 		KeyListener {
+	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * @author foltin
-	 * @date 21.02.2014
 	 */
 	private final class DemoMapFeedback extends ExtendedMapFeedbackAdapter {
 		MindMap mMap;
@@ -72,7 +72,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 		public MindMap getMap() {
 			return mMap;
 		}
-		
+
 		/* (non-Javadoc)
 		 * @see freemind.modes.MapFeedbackAdapter#getDefaultFont()
 		 */
@@ -80,7 +80,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 		public Font getDefaultFont() {
 			return mController.getController().getDefaultFont();
 		}
-		
+
 	}
 
 	public static final int CANCEL = -1;
@@ -115,17 +115,16 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 	 * This constructor is used, if you need the user to enter a pattern
 	 * generally.
 	 * @param pNode if this not null, the text resp. children are taken for format demonstration.
-	 * 
+	 *
 	 */
 	public ChooseFormatPopupDialog(JFrame caller, MindMapController controller,
 			String dialogTitle, Pattern pattern, MindMapNode pNode) {
 		super(caller);
 		this.mController = controller;
 		mNode = pNode;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		initialize(dialogTitle);
 		mStylePatternFrame.setPattern(pattern);
 		mStylePatternFrame.addListeners();
@@ -133,7 +132,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize(String dialogTitle) {
@@ -180,7 +179,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 
 	/**
 	 * This method initializes jContentPane
-	 * 
+	 *
 	 * @return javax.swing.JPanel
 	 */
 	private javax.swing.JPanel getJContentPane() {
@@ -265,7 +264,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 
 	/**
 	 * This method initializes jButton
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJOKButton() {
@@ -287,7 +286,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 
 	/**
 	 * This method initializes jButton1
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJCancelButton() {
@@ -326,7 +325,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(KeyEvent keyEvent) {
@@ -341,7 +340,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(KeyEvent keyEvent) {
@@ -350,7 +349,7 @@ public class ChooseFormatPopupDialog extends JDialog implements TextTranslator,
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	public void keyTyped(KeyEvent keyEvent) {

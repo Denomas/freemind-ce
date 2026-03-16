@@ -27,16 +27,14 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * Normal Permanent... enhanced by the getMindMapController method.
- * 
+ *
  * This is a specialization adapted to the mindmap mode.
- * As currently, nearly all hooks belong to the mindmap mode, 
+ * As currently, nearly all hooks belong to the mindmap mode,
  * all derive from this class.
  * */
 public class PermanentMindMapNodeHookAdapter extends PermanentNodeHookAdapter {
 
-	/**
-     *
-     */
+
 	public PermanentMindMapNodeHookAdapter() {
 		super();
 

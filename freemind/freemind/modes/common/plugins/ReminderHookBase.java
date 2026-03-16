@@ -38,7 +38,7 @@ import freemind.modes.MindMapNode;
 
 /**
  * @author foltin
- * 
+ *
  */
 public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 
@@ -66,9 +66,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 
 	// private Vector dateVector = new Vector();
 
-	/**
-	 *
-	 */
+
 	public ReminderHookBase() {
 		super();
 	}
@@ -78,7 +76,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 		HashMap<String, String> hash = loadNameValuePairs(child);
 		if (hash.containsKey(REMINDUSERAT)) {
 			String remindAt = (String) hash.get(REMINDUSERAT);
-			setRemindUserAt(Long.valueOf(remindAt).longValue());
+			setRemindUserAt(Long.parseLong(remindAt));
 		}
 
 	}
@@ -117,8 +115,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 		logger.info("Invoke for node: " + node.getObjectId(getController()));
 	}
 
-	/**
-	 */
+
 	private void scheduleTimer() {
 		timer = new Timer(getRemindUserAtAsSecondsFromNow(),
 				new TimerBlinkTask(false));
@@ -152,8 +149,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 
 	public class TimerBlinkTask implements ActionListener {
 
-		/**
-		 */
+
 		public TimerBlinkTask(boolean stateAdded) {
 			super();
 			this.stateAdded = stateAdded;
@@ -169,7 +165,7 @@ public abstract class ReminderHookBase extends PermanentNodeHookAdapter {
 				timer.stop();
 				scheduleTimer();
 				return;
-				
+
 			}
 			// time is over, we add the new icon until
 			// the user removes the reminder.

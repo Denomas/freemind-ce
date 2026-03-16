@@ -30,22 +30,22 @@ import javax.swing.event.MenuListener;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class FreeMindPopupMenu extends JPopupMenu implements
 		StructuredMenuHolder.MenuEventSupplier {
+	private static final long serialVersionUID = 1L;
+
 	private HashSet<MenuListener> listeners = new HashSet<>();
 
 	protected static java.util.logging.Logger logger = null;
-	
+
 	public FreeMindPopupMenu() {
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
-	
+
 	protected void firePopupMenuWillBecomeVisible() {
 		super.firePopupMenuWillBecomeVisible();
 		logger.fine("Popup firePopupMenuWillBecomeVisible called.");

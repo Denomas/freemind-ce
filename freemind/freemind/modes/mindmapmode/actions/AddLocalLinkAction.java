@@ -34,15 +34,15 @@ import freemind.modes.mindmapmode.MindMapController;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class AddLocalLinkAction extends MindmapAction {
+	private static final long serialVersionUID = 1L;
+
 
 	private final MindMapController modeController;
 
-	/**
-     */
+
 	public AddLocalLinkAction(MindMapController modeController) {
 		super("paste_as_local_link", "images/stock_right.png", modeController);
 		this.modeController = modeController;
@@ -74,7 +74,7 @@ public class AddLocalLinkAction extends MindmapAction {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.FreemindAction#isEnabled(javax.swing.JMenuItem,
 	 * javax.swing.Action)
 	 */

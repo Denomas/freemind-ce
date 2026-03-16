@@ -50,8 +50,7 @@ public class MindMapNodeMotionListener extends NodeMotionAdapter {
 
 	public MindMapNodeMotionListener(MindMapController controller) {
 		c = controller;
-		if (logger == null)
-			logger = c.getFrame().getLogger(this.getClass().getName());
+		logger = c.getFrame().getLogger(this.getClass().getName());
 	}
 
 	public void mouseMoved(MouseEvent e) {
@@ -168,8 +167,7 @@ public class MindMapNodeMotionListener extends NodeMotionAdapter {
 		}
 	}
 
-	/**
-     */
+
 	private NodeView getNodeView(MouseEvent e) {
 		return ((NodeMotionListenerView) e.getSource()).getMovedView();
 	}
@@ -217,8 +215,7 @@ public class MindMapNodeMotionListener extends NodeMotionAdapter {
 		stopDrag();
 	}
 
-	/**
-     */
+
 	private void resetPositions(MindMapNode node) {
 		node.getParentNode().setVGap(originalParentVGap);
 		node.setHGap(originalHGap);

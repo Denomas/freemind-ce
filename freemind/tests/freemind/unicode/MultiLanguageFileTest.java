@@ -1053,9 +1053,10 @@ class MultiLanguageFileTest {
     }
 
     private void saveMapToFile(File file) throws Exception {
-        Writer fileout = new BufferedWriter(new OutputStreamWriter(
-            new FileOutputStream(file), StandardCharsets.UTF_8));
-        map.getXml(fileout);
+        try (Writer fileout = new BufferedWriter(new OutputStreamWriter(
+            new FileOutputStream(file), StandardCharsets.UTF_8))) {
+            map.getXml(fileout);
+        }
     }
 
     private MindMapNode reloadMap(File file) throws Exception {

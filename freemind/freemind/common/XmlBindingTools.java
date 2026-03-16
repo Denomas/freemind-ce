@@ -31,10 +31,16 @@ import java.io.StringWriter;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.sax.SAXSource;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
 import freemind.controller.Controller;
 import freemind.controller.actions.generated.instance.WindowConfigurationStorage;
@@ -47,23 +53,28 @@ import freemind.main.Resources;
  */
 public class XmlBindingTools {
 
-	private static XmlBindingTools instance;
 	private static JAXBContext jaxbContext;
 
-	private XmlBindingTools() {
-	}
+	private static class Holder {
+		static final XmlBindingTools INSTANCE = createInstance();
 
-	public static XmlBindingTools getInstance() {
-		if (instance == null) {
-			instance = new XmlBindingTools();
+		private static XmlBindingTools createInstance() {
+			XmlBindingTools tools = new XmlBindingTools();
 			try {
 				jaxbContext = JAXBContext.newInstance(
 						"freemind.controller.actions.generated.instance");
 			} catch (JAXBException e) {
 				freemind.main.Resources.getInstance().logException(e);
 			}
+			return tools;
 		}
-		return instance;
+	}
+
+	private XmlBindingTools() {
+	}
+
+	public static XmlBindingTools getInstance() {
+		return Holder.INSTANCE;
 	}
 
 	public Marshaller createMarshaller() {
@@ -166,9 +177,10 @@ public class XmlBindingTools {
 	public XmlAction unMarshall(Reader reader) {
 		try {
 			Unmarshaller u = XmlBindingTools.getInstance().createUnmarshaller();
-			XmlAction doAction = (XmlAction) u.unmarshal(reader);
+			SAXSource source = createSecureSAXSource(reader);
+			XmlAction doAction = (XmlAction) u.unmarshal(source);
 			return doAction;
-		} catch (JAXBException e) {
+		} catch (Exception e) {
 			freemind.main.Resources.getInstance().logException(e);
 			return null;
 		}
@@ -181,11 +193,23 @@ public class XmlBindingTools {
 	public <T> T unMarshall(Reader reader, Class<T> type) {
 		try {
 			Unmarshaller u = XmlBindingTools.getInstance().createUnmarshaller();
-			Object result = u.unmarshal(reader);
+			SAXSource source = createSecureSAXSource(reader);
+			Object result = u.unmarshal(source);
 			return (T) result;
-		} catch (JAXBException e) {
+		} catch (Exception e) {
 			freemind.main.Resources.getInstance().logException(e);
 			return null;
 		}
+	}
+
+	/**
+	 * Creates a SAXSource with secure processing enabled to prevent
+	 * XML Entity Expansion (Billion Laughs) attacks.
+	 */
+	private SAXSource createSecureSAXSource(Reader reader) throws Exception {
+		SAXParserFactory spf = SAXParserFactory.newInstance();
+		spf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+		XMLReader xmlReader = spf.newSAXParser().getXMLReader();
+		return new SAXSource(xmlReader, new InputSource(reader));
 	}
 }

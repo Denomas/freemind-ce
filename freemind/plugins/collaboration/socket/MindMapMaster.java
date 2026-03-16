@@ -51,13 +51,13 @@ import plugins.collaboration.socket.FormDialog.FormDialogValidator;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class MindMapMaster extends SocketMaster implements PermanentNodeHook,
 		DontSaveMarker {
 
 	public static final String LABEL = "plugins/collaboration/socket/socket_master_plugin";
-	
+
 	MasterThread mListener = null;
 	ServerSocket mServer;
 	private boolean mMasterStarted;
@@ -77,7 +77,7 @@ public class MindMapMaster extends SocketMaster implements PermanentNodeHook,
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see plugins.collaboration.socket.TerminateableThread#processAction()
 		 */
 		public boolean processAction() throws Exception {
@@ -212,7 +212,7 @@ public class MindMapMaster extends SocketMaster implements PermanentNodeHook,
 
 			public void run() {
 				togglePermanentHook(mindMapController, MASTER_HOOK_LABEL);
-				
+
 			}});
 	}
 
@@ -243,8 +243,8 @@ public class MindMapMaster extends SocketMaster implements PermanentNodeHook,
 	}
 
 	/**
-	 * @param pMapFeedback 
-	 * 
+	 * @param pMapFeedback
+	 *
 	 */
 	private void signalEndOfSession(ExtendedMapFeedback pMapFeedback) {
 		CollaborationGoodbye goodbye = new CollaborationGoodbye();

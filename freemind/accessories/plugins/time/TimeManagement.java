@@ -73,9 +73,9 @@ import freemind.view.MapModule;
  * @author foltin
  *
  */
-@SuppressWarnings("serial")
 public class TimeManagement extends MindMapHookAdapter implements
 		PropertyChangeListener, ActionListener, MapModuleChangeObserver {
+
 
 	private static final String WINDOW_PREFERENCE_STORAGE_PROPERTY = TimeManagement.class
 			.getName() + "_properties";
@@ -380,8 +380,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 
 	}
 
-	/**
-	 */
+
 	private JPanel getTimePanel() {
 		if (timePanel == null) {
 			timePanel = new JPanel();
@@ -486,16 +485,14 @@ public class TimeManagement extends MindMapHookAdapter implements
 		Properties properties = new Properties();
 		if (pRemindAt != 0L) {
 			properties.put(ReminderHookBase.REMINDUSERAT,
-					Long.valueOf(pRemindAt).toString());
+					Long.toString(pRemindAt));
 		}
 		getMindMapController().addHook(node,
 				Tools.getVectorWithSingleElement(node), REMINDER_HOOK_NAME,
 				properties);
 	}
 
-	/**
-	 *
-	 */
+
 	private void disposeDialog() {
 		try {
 			WindowConfigurationStorage storage = new WindowConfigurationStorage();
@@ -516,8 +513,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 		}
 	}
 
-	/**
-	 */
+
 	private Date getCalendarDate() {
 		Calendar cal = getCalendar();
 		try {
@@ -569,9 +565,7 @@ public class TimeManagement extends MindMapHookAdapter implements
 		return mController;
 	}
 
-	/**
-	 *
-	 */
+
 	private void requestFocusForDay() {
 		calendar.getDayChooser().getSelectedDay().requestFocus();
 	}

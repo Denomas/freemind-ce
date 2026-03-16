@@ -34,24 +34,24 @@ import freemind.modes.mindmapmode.MindMapController;
 /**
  * Reverts the map to the saved version. In Xml, the old map is stored as xml
  * and as an undo action, the new map is stored, too.
- * 
+ *
  * Moreover, the filename of the doAction is set to the appropriate map file's
  * name. The undo action has no file name associated.
- * 
+ *
  * The action goes like this: close the actual map and open the given Xml/File.
  * If only a Xml string is given, a temporary file name is created, the xml
  * stored into and this map is opened instead of the actual.
- * 
+ *
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class RevertAction extends MindmapAction  {
+	private static final long serialVersionUID = 1L;
+
 
 	private final MindMapController mindMapController;
 
-	/**
-	 */
+
 	public RevertAction(MindMapController modeController) {
 		super("RevertAction", (String) null, modeController);
 		mindMapController = modeController;
@@ -60,7 +60,7 @@ public class RevertAction extends MindmapAction  {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */

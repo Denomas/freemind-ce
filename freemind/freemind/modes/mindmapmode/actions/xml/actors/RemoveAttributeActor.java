@@ -79,7 +79,7 @@ public class RemoveAttributeActor extends XmlActorAdapter {
 		removeAttributeAction.setPosition(pPosition);
 		return removeAttributeAction;
 	}
-	
+
 	public void removeAttribute(MindMapNode pNode, int pPosition) {
 		ActionPair actionPair = getActionPair(pNode, pPosition);
 		execute(actionPair);

@@ -54,18 +54,16 @@ public class ScriptEditorProperty extends PropertyBean implements
 
 	private static java.util.logging.Logger logger = null;
 
-	/**
-	 */
+
 	public ScriptEditorProperty(String description, String label,
 			MindMapController pMindMapController) {
 		super();
 		this.description = description;
 		this.label = label;
 		mMindMapController = pMindMapController;
-		if (logger == null) {
 			logger = mMindMapController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 		mButton = new JButton();
 		mButton.addActionListener(this);
 		script = "";
@@ -107,8 +105,7 @@ public class ScriptEditorProperty extends PropertyBean implements
 		}
 	}
 
-	/**
-	 */
+
 	private void setScriptValue(String result) {
 		if (result == null) {
 			result = "";

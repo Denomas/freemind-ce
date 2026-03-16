@@ -2,12 +2,13 @@ package freemind.main;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * An OutputStream that writes contents to a Logger upon each call to flush()
- * 
+ *
  * See http://blogs.sun.com/nickstephen/entry/java_redirecting_system_out_and
  */
 class LoggingOutputStream extends ByteArrayOutputStream {
@@ -19,7 +20,7 @@ class LoggingOutputStream extends ByteArrayOutputStream {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param logger
 	 *            Logger to write to
 	 * @param level
@@ -35,7 +36,7 @@ class LoggingOutputStream extends ByteArrayOutputStream {
 	/**
 	 * upon flush() write the existing contents of the OutputStream to the
 	 * logger as a log record.
-	 * 
+	 *
 	 * @throws java.io.IOException
 	 *             in case of error
 	 */
@@ -44,7 +45,7 @@ class LoggingOutputStream extends ByteArrayOutputStream {
 		String record;
 		synchronized (this) {
 			super.flush();
-			record = this.toString();
+			record = this.toString(StandardCharsets.UTF_8);
 			super.reset();
 		}
 

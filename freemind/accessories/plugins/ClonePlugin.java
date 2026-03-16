@@ -96,7 +96,7 @@ public class ClonePlugin extends PermanentMindMapNodeHookAdapter implements
 
 	/**
 	 * double add = remove.
-	 * 
+	 *
 	 */
 	protected void removeHook() {
 		// first deactivate cloning for this node (otherwise, the deactivation will be cloned, too!)
@@ -325,7 +325,7 @@ public class ClonePlugin extends PermanentMindMapNodeHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.extensions.PermanentNodeHookAdapter#processUnfinishedLinks()
 	 */
@@ -356,7 +356,7 @@ public class ClonePlugin extends PermanentMindMapNodeHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see accessories.plugins.ClonePasteAction.ClonePropertiesObserver#
 	 * propertiesChanged(accessories.plugins.ClonePasteAction.CloneProperties)
 	 */

@@ -26,7 +26,6 @@ import freemind.main.Tools;
 
 /**
  * @author foltin
- * @date 06.08.2012
  */
 public class PasswordProperty extends StringProperty {
 
@@ -50,5 +49,5 @@ public class PasswordProperty extends StringProperty {
 		String pwInPlain = Tools.decompress(value);
 		super.setValue(pwInPlain);
 	}
-	
+
 }

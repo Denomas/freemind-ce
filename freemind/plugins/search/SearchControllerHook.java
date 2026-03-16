@@ -30,37 +30,33 @@ import freemind.modes.mindmapmode.hooks.MindMapHookAdapter;
 import freemind.view.MapModule;
 
 /**
- * 
- * 
- * 
+ *
+ *
+ *
  * @author Stephen Leonard
  * @since 14 Feb 2014
- * 
+ *
  * @version $Author:: $: Author of last commit
  * @version $Rev:: $: Revision of last commit
  * @version $Date:: $: Date of last commit
- * 
+ *
  */
 public class SearchControllerHook extends MindMapHookAdapter implements
 		ISearchController {
 
-	/**
-	 */
+
 	public SearchControllerHook() {
 		super();
-		if (logger == null) {
 			logger = getController().getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	public Logger getLogger(Class<?> className) {
 		return getController().getFrame().getLogger(className.getName());
 	}
 
-	/**
-	 * 
-	 */
+
 	/* (non-Javadoc)
 	 * @see freemind.extensions.HookAdapter#startupMapHook()
 	 */

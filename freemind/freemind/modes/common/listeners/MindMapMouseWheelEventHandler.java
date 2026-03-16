@@ -36,7 +36,7 @@ import freemind.view.mindmapview.ViewFeedback.MouseWheelEventHandler;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class MindMapMouseWheelEventHandler implements MouseWheelListener {
 
@@ -50,16 +50,13 @@ public class MindMapMouseWheelEventHandler implements MouseWheelListener {
 	private static java.util.logging.Logger logger = null;
 	private ControllerAdapter mController;
 
-	/**
-	 *
-	 */
+
 	public MindMapMouseWheelEventHandler(ControllerAdapter controller) {
 		super();
 		mController = controller;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		Controller.addPropertyChangeListener(new FreemindPropertyListener() {
 
 			public void propertyChanged(String propertyName, String newValue,
@@ -76,7 +73,7 @@ public class MindMapMouseWheelEventHandler implements MouseWheelListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.ModeController.MouseWheelEventHandler#handleMouseWheelEvent
 	 * (java.awt.event.MouseWheelEvent)

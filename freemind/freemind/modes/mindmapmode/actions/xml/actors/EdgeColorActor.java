@@ -33,7 +33,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 01.04.2014
  */
 public class EdgeColorActor extends XmlActorAdapter {
 
@@ -55,7 +54,7 @@ public class EdgeColorActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActorXml#act(freemind.controller.actions.
 	 * generated.instance.XmlAction)
@@ -85,7 +84,7 @@ public class EdgeColorActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.actions.ActorXml#getDoActionClass()
 	 */
 	public Class<EdgeColorFormatAction> getDoActionClass() {

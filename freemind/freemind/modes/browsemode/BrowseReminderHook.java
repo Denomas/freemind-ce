@@ -27,20 +27,18 @@ import freemind.modes.common.plugins.ReminderHookBase;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class BrowseReminderHook extends ReminderHookBase {
 
-	/**
-	 *
-	 */
+
 	public BrowseReminderHook() {
 		super();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.common.plugins.ReminderHookBase#nodeRefresh(freemind.modes
 	 * .MindMapNode)
@@ -51,7 +49,7 @@ public class BrowseReminderHook extends ReminderHookBase {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.common.plugins.ReminderHookBase#setToolTip(freemind.modes
 	 * .MindMapNode, java.lang.String, java.lang.String)

@@ -34,23 +34,19 @@ import freemind.view.mindmapview.NodeViewVisitor;
 
 /**
  * @author christianfoltin
- * 
- * @file BlinkingNodeHook.java
- * @package freemind.modes.mindmapmode
- * */
+ */
 public class BlinkingNodeHook extends PermanentMindMapNodeHookAdapter {
 
 	private Timer timer = null;
 
-	/**
-	 */
+
 	public BlinkingNodeHook() {
 		super();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.NodeHook#startupMapHook(java.lang.String)
 	 */
 	public void invoke(MindMapNode node) {
@@ -109,7 +105,7 @@ public class BlinkingNodeHook extends PermanentMindMapNodeHookAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.MindMapHook#shutdownMapHook()
 	 */
 	public void shutdownMapHook() {

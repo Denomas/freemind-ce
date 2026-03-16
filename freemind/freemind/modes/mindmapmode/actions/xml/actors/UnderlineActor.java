@@ -30,7 +30,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 27.03.2014
  */
 public class UnderlineActor extends NodeXmlActorAdapter {
 
@@ -40,7 +39,7 @@ public class UnderlineActor extends NodeXmlActorAdapter {
 	public UnderlineActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
 	}
-	
+
 	public void act(XmlAction action) {
 		UnderlinedNodeAction underlinedact = (UnderlinedNodeAction) action;
 		NodeAdapter node = getNodeFromID(underlinedact.getNode());

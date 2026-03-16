@@ -42,10 +42,10 @@ import freemind.main.Resources;
  * internally. Future: if more than two, it can use a JTabbedPane.
  *
  * @author foltin
- * @date 26.08.2014
  */
-@SuppressWarnings("serial")
 public class JOptionalSplitPane extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 
 	private HashMap<Integer, JComponent> mComponentHash = new HashMap<Integer, JComponent>();
 	private JComponent mBasicComponent = null;

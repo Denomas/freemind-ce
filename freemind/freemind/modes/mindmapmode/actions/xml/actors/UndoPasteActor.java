@@ -28,7 +28,6 @@ import freemind.modes.mindmapmode.actions.xml.actors.PasteActor.NodeCoordinate;
 
 /**
  * @author foltin
- * @date 09.05.2012
  */
 public class UndoPasteActor extends XmlActorAdapter {
 
@@ -43,7 +42,7 @@ public class UndoPasteActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.modes.mindmapmode.actions.xml.ActorXml#act(freemind.controller
 	 * .actions.generated.instance.XmlAction)
@@ -65,7 +64,7 @@ public class UndoPasteActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.modes.mindmapmode.actions.xml.ActorXml#getDoActionClass()
 	 */
 	public Class<UndoPasteNodeAction> getDoActionClass() {

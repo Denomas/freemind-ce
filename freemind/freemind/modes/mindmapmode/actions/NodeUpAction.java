@@ -28,19 +28,18 @@ import java.util.logging.Logger;
 
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
-
-@SuppressWarnings("serial")
 public class NodeUpAction extends MindmapAction  {
+	private static final long serialVersionUID = 1L;
+
 	private final MindMapController modeController;
 	private static Logger logger;
 
 	public NodeUpAction(MindMapController modeController) {
 		super("node_up", modeController);
 		this.modeController = modeController;
-		if (logger == null) {
 			logger = modeController.getFrame().getLogger(
 					this.getClass().getName());
-		}
+
 	}
 
 	public void actionPerformed(ActionEvent e) {

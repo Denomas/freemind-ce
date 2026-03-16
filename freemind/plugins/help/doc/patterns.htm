@@ -12,14 +12,14 @@
 
 <h2><b><font color="#008000" face="Arial">Physical style - patterns</font></b>
 </h2>
-<p><font face="Arial">There is a set of physical styles, also called patterns. 
-Most patterns encompass typeface variations, such as style, font and size. But 
+<p><font face="Arial">There is a set of physical styles, also called patterns.
+Most patterns encompass typeface variations, such as style, font and size. But
 patterns can also be designed to include links to images, files, programs, etc.</font></p>
 <p><font face="Arial">You can apply a pattern to a node in one of two ways.</font></p>
 <ul>
-  <li><font face="Arial">Right-click on the node, pick Physical Style from the 
+  <li><font face="Arial">Right-click on the node, pick Physical Style from the
   node menu, then choose the pattern you want.</font></li>
-  <li><font face="Arial">Select a node, and use the keyboard shortcut to apply a 
+  <li><font face="Arial">Select a node, and use the keyboard shortcut to apply a
   particular pattern.</font></li>
 </ul>
 <blockquote>
@@ -45,9 +45,9 @@ patterns can also be designed to include links to images, files, programs, etc.<
   <p><font face="Arial" size="2">The shortcuts may be edited in the
   <a href="customuser.htm">user.properties</a> file.</font></p>
 </blockquote>
-<p><font face="Arial">You can create or change patterns by editing &quot;patterns.xml&quot;, 
-located in the folder &quot;freemind&quot; in your home directory. Pattern applies to a 
-node, if there is a &lt;node&gt; tag; it applies to an edge, if there is an &lt;edge&gt; 
+<p><font face="Arial">You can create or change patterns by editing &quot;patterns.xml&quot;,
+located in the folder &quot;freemind&quot; in your home directory. Pattern applies to a
+node, if there is a &lt;node&gt; tag; it applies to an edge, if there is an &lt;edge&gt;
 tag. </font></p>
 <p><font face="Arial">A typical pattern in patterns.xml looks like this:</font></p>
 <pre><font size="3">&lt;pattern name=&quot;Folder&quot;&gt;
@@ -55,26 +55,26 @@ tag. </font></p>
         &lt;font NAME=&quot;Arial&quot; size=&quot;14&quot; /&gt;
     &lt;/node&gt;
 &lt;/pattern&gt;</font></pre>
-<p><font face="Arial">Note that the &lt;node&gt; tag has the &lt;font&gt; tag as a child.&nbsp; 
+<p><font face="Arial">Note that the &lt;node&gt; tag has the &lt;font&gt; tag as a child.&nbsp;
 The &lt;font&gt; tag itself is terminated by the &quot;/&quot; at the end.</font></p>
 <p><font face="Arial">You can have a simple pattern that only changes the color:</font></p>
 <pre><font size="3">&lt;pattern name=&quot;Purple&quot;&gt;
     &lt;node color=&quot;#993399&quot;/&gt;
 &lt;/pattern&gt;</font></pre>
-<p><font face="Arial">Or, the tag can included imbedded links. In this case, 
-it's necessary to use the &quot;&amp;&quot; codes for special HTML characters. The following 
-example loads the node with a graphic that has been stored in FreeMind's images 
+<p><font face="Arial">Or, the tag can included imbedded links. In this case,
+it's necessary to use the &quot;&amp;&quot; codes for special HTML characters. The following
+example loads the node with a graphic that has been stored in FreeMind's images
 directory.</font></p>
 <pre><font size="3">&lt;pattern name=&quot;Question mark&quot;&gt;
     &lt;node TEXT=&quot;&amp;lt;html&amp;gt;&amp;lt;img src=&amp;quot;file:///C:/Program Files/FreeMind/Images/question.gif&amp;quot;&amp;gt;&amp;lt;/html&amp;gt; &quot;&gt;
         &lt;font NAME=&quot;Default&quot; SIZE=&quot;14&quot;/&gt;
     &lt;/node&gt;
 &lt;/pattern&gt;</font></pre>
-<p><font face="Arial"><i>Be aware that the use of the &quot;text&quot; attribute, whether 
-to insert actual text or HTML code, will completely overwrite any text that was 
+<p><font face="Arial"><i>Be aware that the use of the &quot;text&quot; attribute, whether
+to insert actual text or HTML code, will completely overwrite any text that was
 already in that node.</i></font></p>
-<p><font face="Arial">If you're using the shortcut keys, remember that the 
-patterns are numbered simply according to their sequence in the list. So if you 
+<p><font face="Arial">If you're using the shortcut keys, remember that the
+patterns are numbered simply according to their sequence in the list. So if you
 add or delete a pattern in the middle, the numbering will change.</font></p>
 
 </body>

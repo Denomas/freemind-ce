@@ -42,9 +42,7 @@ import plugins.search.Search.SearchResult;
 
 public class SearchViewPanel extends JDialog implements ListSelectionListener {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -4038199355190689628L;
 	private JTextField searchTermsField = new JTextField();
 	private JRadioButton rdbtnOpen;
@@ -122,9 +120,7 @@ public class SearchViewPanel extends JDialog implements ListSelectionListener {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	/**
-	 * 
-	 */
+
 	private void initialize() {
 		final JPanel content = new JPanel();
 		setContentPane(content);
@@ -316,7 +312,7 @@ public class SearchViewPanel extends JDialog implements ListSelectionListener {
 		criteriaPanel.setSize(width / 2, height / 2);
 		content.setSize(width, height);
 		setSize(width, height);
-		
+
 		setModal(true);
 
 	}

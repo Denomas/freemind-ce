@@ -24,13 +24,13 @@ package freemind.modes.mindmapmode.actions.xml;
 
 /**
  * @author foltin
- * 
+ *
  *         Filter serve for the intersection of commands to be executed.
- * 
+ *
  *         The most useful scenario for these classes is the intersection of the
  *         command flow, eg. for collaboration or for storage of the map
  *         creation procedure ("map's story").
- * 
+ *
  */
 public interface ActionFilter {
 	/**
@@ -51,6 +51,6 @@ public interface ActionFilter {
 	 *         called first and *should* not alter the action pair.
 	 */
 	public interface FirstActionFilter extends ActionFilter {
-		
+
 	}
 }

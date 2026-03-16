@@ -31,7 +31,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 25.03.2014
  */
 public class RemoveAllIconsActor extends NodeXmlActorAdapter {
 
@@ -81,5 +80,5 @@ public class RemoveAllIconsActor extends NodeXmlActorAdapter {
 	}
 
 
-	
+
 }

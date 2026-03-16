@@ -44,9 +44,9 @@ import freemind.main.Tools;
 import freemind.modes.MindMapNode;
 import freemind.view.ImageFactory;
 import freemind.view.mindmapview.MapView;
-
-@SuppressWarnings("serial")
 public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
+	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * A combo box that doesn't fill the complete screen.
@@ -80,14 +80,13 @@ public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
 	private int userDefinedCounter = 1;
 
 	protected static java.util.logging.Logger logger = null;
-	
+
 	public MindMapToolBar(MindMapController controller) {
 		super();
 		this.c = controller;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		this.setRollover(true);
 		fonts = new FreeMindComboBox(Tools.getAvailableFonts());
 		fonts.setFocusable(false);
@@ -97,7 +96,7 @@ public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
 		iconToolBarScrollPane = new JAutoScrollBarPane(iconToolBar);
 		iconToolBar.setOrientation(JToolBar.VERTICAL);
 		iconToolBar.setRollover(true);
-		iconToolBar.setLayout(new GridLayout(0, getController().getIntProperty(FreeMind.ICON_BAR_COLUMN_AMOUNT, 1))); 
+		iconToolBar.setLayout(new GridLayout(0, getController().getIntProperty(FreeMind.ICON_BAR_COLUMN_AMOUNT, 1)));
 		iconToolBarScrollPane.getVerticalScrollBar().setUnitIncrement(100);
 		fontsListener = new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -154,7 +153,7 @@ public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
 				}
 			}
 		});
-		
+
 		colorCombo = new JColorCombo();
 		colorCombo.setFocusable(false);
 		colorCombo.addItemListener(new ItemListener(){
@@ -190,17 +189,17 @@ public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
 			c.setNodeColor(node, pItem.color);
 		}
 	}
-	
 
-	
+
+
 	protected Controller getController() {
 		return c.getController();
 	}
-	
+
 	public void update(StructuredMenuHolder holder) {
 		this.removeAll();
 		holder.updateMenus(this, "mindmapmode_toolbar/");
-		
+
 		addIcon("images/list-add-font.png");
 		fonts.setMaximumRowCount(30);
 		add(fonts);
@@ -215,7 +214,7 @@ public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
 		add(Box.createHorizontalGlue());
 		addIcon("images/page-zoom.png");
 		add(zoom);
-		
+
 		// button tool bar.
 		iconToolBar.removeAll();
 		iconToolBar.add(c.removeLastIconAction);
@@ -283,9 +282,9 @@ public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
 			}
 		}
 		zoom.setSelectedItem(userDefinedZoom);
-		
+
 	}
-	
+
 	private String getItemForZoom(float f) {
 		return (int) (f * 100F) + "%";
 	}
@@ -293,7 +292,7 @@ public class MindMapToolBar extends FreeMindToolBar implements ZoomListener {
 	public void startup() {
 		getController().registerZoomListener(this);
 	}
-		
+
 	public void shutdown() {
 		getController().deregisterZoomListener(this);
 	}

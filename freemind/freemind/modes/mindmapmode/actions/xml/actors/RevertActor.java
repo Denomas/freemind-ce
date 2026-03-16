@@ -40,7 +40,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 10.04.2014
  */
 public class RevertActor extends XmlActorAdapter {
 

@@ -31,7 +31,6 @@ import freemind.view.mindmapview.ViewFeedback;
 
 /**
  * @author foltin
- * @date 16.03.2014
  */
 public abstract class XmlActorAdapter implements ActorXml {
 
@@ -39,19 +38,16 @@ public abstract class XmlActorAdapter implements ActorXml {
 
 	protected static java.util.logging.Logger logger = null;
 
-	/**
-	 * 
-	 */
+
 	public XmlActorAdapter(ExtendedMapFeedback pMapFeedback) {
 		mMapFeedback = pMapFeedback;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		addActor(this);
 	}
 
-	
+
 	/**
 	 * @deprecated replaced by {@link XmlActorAdapter#getExMapFeedback()}
 	 * @return
@@ -71,13 +67,13 @@ public abstract class XmlActorAdapter implements ActorXml {
 	public ViewFeedback getViewFeedback() {
 		return getExMapFeedback().getViewFeedback();
 	}
-	
+
 	/**
 	 * @param pActionPair
 	 */
 	protected void execute(ActionPair pActionPair) {
 		getExMapFeedback().doTransaction(getDoActionClass().getName(), pActionPair);
-		
+
 	}
 
 	/**
@@ -97,7 +93,7 @@ public abstract class XmlActorAdapter implements ActorXml {
 	}
 
 	/**
-	 * @param pSelected
+	 * @param pNode
 	 * @return
 	 */
 	protected String getNodeID(MindMapNode pNode) {
@@ -111,16 +107,15 @@ public abstract class XmlActorAdapter implements ActorXml {
 					actor.getDoActionClass());
 		}
 	}
-	
+
 	protected XmlActorFactory getXmlActorFactory() {
 		return getExMapFeedback().getActorFactory();
 	}
 
 
-	/**
-	 */
+
 	protected MindMapLinkRegistry getLinkRegistry() {
 		return getExMapFeedback().getMap().getLinkRegistry();
 	}
-	
+
 }

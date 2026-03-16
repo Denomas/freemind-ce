@@ -33,7 +33,7 @@ import freemind.main.Tools;
 /**
  * In conjunction with the <code>KeyEventWorkaround</code>, hides some warts in
  * the AWT key event API.
- * 
+ *
  * @author Slava Pestov
  * @version $Id: KeyEventTranslator.java,v 1.1.2.2 2005/05/12 21:56:57
  *          christianfoltin Exp $
@@ -42,7 +42,7 @@ public class KeyEventTranslator {
 	// {{{ addTranslation() method
 	/**
 	 * Adds a keyboard translation.
-	 * 
+	 *
 	 * @param key1
 	 *            Translate this key
 	 * @param key2
@@ -57,7 +57,7 @@ public class KeyEventTranslator {
 	/**
 	 * Pass this an event from
 	 * {@link KeyEventWorkaround#processKeyEvent(java.awt.event.KeyEvent)}.
-	 * 
+	 *
 	 * @since jEdit 4.2pre3
 	 */
 	public static Key translateKeyEvent(KeyEvent evt) {
@@ -160,7 +160,7 @@ public class KeyEventTranslator {
 	 * combination of A for Alt, C for Control, S for Shift or M for Meta, and
 	 * <i>shortcut</i> is either a single character, or a keycode name from the
 	 * <code>KeyEvent</code> class, without the <code>VK_</code> prefix.
-	 * 
+	 *
 	 * @param keyStroke
 	 *            A string description of the key stroke
 	 * @since jEdit 4.2pre3
@@ -217,21 +217,19 @@ public class KeyEventTranslator {
 	/**
 	 * Changes the mapping between symbolic modifier key names (<code>C</code>,
 	 * <code>A</code>, <code>M</code>, <code>S</code>) and Java modifier flags.
-	 * 
+	 *
 	 * You can map more than one Java modifier to a symobolic modifier, for
 	 * example :
-	 * <p>
-	 * <code><pre>
+	 * <pre>{@code
 	 * 	setModifierMapping(
 	 * 		InputEvent.CTRL_MASK,
 	 * 		InputEvent.ALT_MASK | InputEvent.META_MASK,
 	 * 		0,
 	 * 		InputEvent.SHIFT_MASK);
-	 * <pre></code>
-	 * </p>
-	 * 
+	 * }</pre>
+	 *
 	 * You cannot map a Java modifer to more than one symbolic modifier.
-	 * 
+	 *
 	 * @param c
 	 *            The modifier(s) to map the <code>C</code> modifier to
 	 * @param a
@@ -240,7 +238,7 @@ public class KeyEventTranslator {
 	 *            The modifier(s) to map the <code>M</code> modifier to
 	 * @param s
 	 *            The modifier(s) to map the <code>S</code> modifier to
-	 * 
+	 *
 	 * @since jEdit 4.2pre3
 	 */
 	public static void setModifierMapping(int c, int a, int m, int s) {
@@ -274,10 +272,10 @@ public class KeyEventTranslator {
 	/**
 	 * Returns a the symbolic modifier name for the specified Java modifier
 	 * flag.
-	 * 
+	 *
 	 * @param mod
 	 *            A modifier constant from <code>InputEvent</code>
-	 * 
+	 *
 	 * @since jEdit 4.2pre3
 	 */
 	public static String getSymbolicModifierName(int mod) {
@@ -334,10 +332,10 @@ public class KeyEventTranslator {
 	/**
 	 * Returns a string containing symbolic modifier names set in the specified
 	 * event.
-	 * 
+	 *
 	 * @param evt
 	 *            The event
-	 * 
+	 *
 	 * @since jEdit 4.2pre3
 	 */
 	public static String getModifierString(InputEvent evt) {

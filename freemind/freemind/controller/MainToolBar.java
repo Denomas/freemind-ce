@@ -22,18 +22,17 @@ package freemind.controller;
 
 import java.awt.Insets;
 import java.util.logging.Logger;
-
-@SuppressWarnings("serial")
 public class MainToolBar extends FreeMindToolBar {
+	private static final long serialVersionUID = 1L;
+
 	Controller controller;
 	private static Logger logger = null;
 
 	public MainToolBar(final Controller controller) {
 		super();
 		this.controller = controller;
-		if (logger == null) {
 			logger = controller.getFrame().getLogger(this.getClass().getName());
-		}
+
 		setRollover(true);
 		setBorderPainted(false);
 		setMargin(new Insets(0, 0, 0, 0));

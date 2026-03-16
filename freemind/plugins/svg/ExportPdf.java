@@ -50,7 +50,7 @@ import freemind.view.mindmapview.MapView;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class ExportPdf extends ExportVectorGraphic {
 	ExportPdfPapers papers = new ExportPdfPapers();
@@ -179,7 +179,7 @@ public class ExportPdf extends ExportVectorGraphic {
 		 * according to
 		 * https://sourceforge.net/tracker/?func=detail&atid=107118&
 		 * aid=1921334&group_id=7118
-		 * 
+		 *
 		 * Submitted By: Frank Spangenberg (f_spangenberg) Summary: Large mind
 		 * maps produce invalid PDF
 		 */

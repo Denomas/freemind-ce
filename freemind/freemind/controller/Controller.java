@@ -108,12 +108,11 @@ import freemind.view.mindmapview.MapView;
  * Provides the methods to edit/change a Node. Forwards all messages to
  * MapModel(editing) or MapView(navigation).
  */
-@SuppressWarnings("serial")
 public class Controller implements MapModuleChangeObserver {
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 *
-	 */
+
+
 	private static final String PAGE_FORMAT_PROPERTY = "page_format";
 	private HashSet<MapModuleManager.MapTitleChangeListener> mMapTitleChangeListenerSet = new HashSet<>();
 	private HashSet<ZoomListener> mZoomListenerSet = new HashSet<>();
@@ -204,9 +203,8 @@ public class Controller implements MapModuleChangeObserver {
 	//
 	public Controller(FreeMindMain frame) {
 		this.frame = frame;
-		if (logger == null) {
 			logger = frame.getLogger(this.getClass().getName());
-		}
+
 	}
 
 	public void init() {
@@ -448,22 +446,19 @@ public class Controller implements MapModuleChangeObserver {
 		return getFontThroughMap(new Font(fontFamily, fontStyle, fontSize));
 	}
 
-	/**
-     */
+
 	public String getDefaultFontFamilyName() {
 		String fontFamily = getProperty("defaultfont");
 		return fontFamily;
 	}
 
-	/**
-     */
+
 	public int getDefaultFontStyle() {
 		int fontStyle = frame.getIntProperty("defaultfontstyle", 0);
 		return fontStyle;
 	}
 
-	/**
-     */
+
 	public int getDefaultFontSize() {
 		int fontSize = frame.getIntProperty("defaultfontsize", 12);
 		return fontSize;
@@ -1300,8 +1295,12 @@ public class Controller implements MapModuleChangeObserver {
 				// if the current language does not provide its own translation,
 				// POSTFIX_TRANSLATE_ME is appended:
 				map = Tools.removeTranslateComment(map);
+				if (map == null) {
+					logger.warning("browsemode_initial_map resource not configured");
+					return;
+				}
 				URL url = null;
-				if (map != null && map.startsWith(".")) {
+				if (map.startsWith(".")) {
 					url = localDocumentationLinkConverter.convertLocalLink(map);
 				} else {
 					url = Tools.fileToUrl(new File(map));
@@ -1342,9 +1341,13 @@ public class Controller implements MapModuleChangeObserver {
 			// if the current language does not provide its own translation,
 			// POSTFIX_TRANSLATE_ME is appended:
 			urlText = Tools.removeTranslateComment(urlText);
+			if (urlText == null) {
+				logger.warning("pdfKeyDocLocation resource not configured");
+				return;
+			}
 			try {
 				URL url = null;
-				if (urlText != null && urlText.startsWith(".")) {
+				if (urlText.startsWith(".")) {
 					url = localDocumentationLinkConverter
 							.convertLocalLink(urlText);
 				} else {
@@ -1648,8 +1651,7 @@ public class Controller implements MapModuleChangeObserver {
 				.equalsIgnoreCase(BooleanProperty.TRUE_VALUE);
 	}
 
-	/**
-     */
+
 	public MindMap getMap() {
 		return getMapModule().getModel();
 	}
@@ -1686,9 +1688,7 @@ public class Controller implements MapModuleChangeObserver {
 
 		private final Controller controller;
 
-		/**
-		 *
-		 */
+
 		public PropertyAction(Controller controller) {
 			super(controller.getResourceString("property_dialog"));
 			this.controller = controller;
@@ -1751,8 +1751,7 @@ public class Controller implements MapModuleChangeObserver {
 			changeAntialias(command);
 		}
 
-		/**
-	     */
+
 		public void changeAntialias(String command) {
 			if (command == null) {
 				return;
@@ -1788,8 +1787,7 @@ public class Controller implements MapModuleChangeObserver {
 			changeSelection(command);
 		}
 
-		/**
-         */
+
 		private void changeSelection(String command) {
 			setProperty("selection_method", command);
 			// and update the selection method in the NodeMouseMotionListener
@@ -1976,7 +1974,8 @@ public class Controller implements MapModuleChangeObserver {
 	 *
 	 * @param pMindMapComponent
 	 *            south panel to be inserted
-	 * @return the split pane in order to move the dividers.
+	 * @param pSplitComponentType
+	 *            the type of split component
 	 */
 	public void insertComponentIntoSplitPane(JComponent pMindMapComponent, SplitComponentType pSplitComponentType) {
 		if(mOptionalSplitPane == null) {
@@ -2003,9 +2002,7 @@ public class Controller implements MapModuleChangeObserver {
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	private void storeOptionSplitPanePosition() {
 		if (mOptionalSplitPane != null) {
 			setProperty(FreeMind.RESOURCES_OPTIONAL_SPLIT_DIVIDER_POSITION, ""

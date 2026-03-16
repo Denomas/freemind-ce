@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -48,7 +49,7 @@ public class MindMapNodeModel extends NodeAdapter {
 
 	public MindMapNodeModel(Object userObject, MindMap pMap) {
 		super(userObject, pMap);
-		children = new LinkedList<>();
+		children = Collections.synchronizedList(new LinkedList<>());
 		setEdge(new MindMapEdgeModel(this, getMapFeedback()));
 	}
 

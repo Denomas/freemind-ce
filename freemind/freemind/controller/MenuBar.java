@@ -45,8 +45,9 @@ import freemind.view.MapModule;
  * This is the menu bar for FreeMind. Actions are defined in MenuListener.
  * Moreover, the StructuredMenuHolder of all menus are hold here.
  * */
-@SuppressWarnings("serial")
 public class MenuBar extends JMenuBar {
+	private static final long serialVersionUID = 1L;
+
 
 	private static java.util.logging.Logger logger;
 	public static final String MENU_BAR_PREFIX = "menu_bar/";
@@ -76,9 +77,8 @@ public class MenuBar extends JMenuBar {
 
 	public MenuBar(Controller controller) {
 		this.c = controller;
-		if (logger == null) {
 			logger = controller.getFrame().getLogger(this.getClass().getName());
-		}
+
 		// updateMenus();
 	}// Constructor
 
@@ -422,8 +422,7 @@ public class MenuBar extends JMenuBar {
 		}
 	}
 
-	/**
-     */
+
 	public StructuredMenuHolder getMenuHolder() {
 		return menuHolder;
 	}

@@ -32,21 +32,21 @@ import freemind.main.Resources;
 import freemind.main.Tools;
 
 /**
- * 
+ *
  * The oval appearing to move nodes to other positions.
- * 
+ *
  * @author Dimitri
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class NodeMotionListenerView extends JComponent {
+	private static final long serialVersionUID = 1L;
+
 	protected static java.util.logging.Logger logger = null;
 	public NodeMotionListenerView(NodeView view) {
 		super();
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 		this.movedView = view;
 		MapView map = view.getMap();
 		addMouseListener(map.getNodeMotionListener());

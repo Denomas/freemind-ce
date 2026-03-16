@@ -48,7 +48,6 @@ import freemind.view.mindmapview.NodeView;
 
 /**
  * @author foltin
- * @date 01.04.2014
  */
 public class AddHookActor extends XmlActorAdapter {
 
@@ -58,19 +57,16 @@ public class AddHookActor extends XmlActorAdapter {
 	 */
 	public AddHookActor(ExtendedMapFeedback pMapFeedback) {
 		super(pMapFeedback);
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
+
 	}
-	/**
-	 */
+
 	private HookFactory getHookFactory() {
 		return getExMapFeedback().getHookFactory();
 	}
-	
-	/**
-	 */
+
+
 	private HookInstanciationMethod getInstanciationMethod(String hookName) {
 		HookFactory factory = getHookFactory();
 		// determine instanciation method
@@ -134,7 +130,7 @@ public class AddHookActor extends XmlActorAdapter {
 												.getStringAttribute(name));
 										hookNodeAction.addNodeChildParameter(nodeHookChild);
 									}
-	
+
 								} else {
 									logger.warning("Unusual save mechanism, implement me.");
 								}

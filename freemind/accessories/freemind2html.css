@@ -1,13 +1,13 @@
-body { 
+body {
   background-color: #FFFFFF;
 }
 
-div.node { 
+div.node {
   padding-bottom:     1ex;
   padding-left:       2em;
 }
 
-div.cloud { 
+div.cloud {
   padding-bottom:     1ex;
   padding-left:       2em;
   background-color:   #C0C0FF;
@@ -16,17 +16,17 @@ div.cloud {
   border-color:       #A0A0FF;
 }
 
-div.content { 
+div.content {
   border-width:       1px;
   border-style:   dashed;
   border-color:       #C0C0C0;
 }
 
-img.hideshow { 
+img.hideshow {
   padding-right: 1ex;
 }
 
-img.ilink { 
+img.ilink {
   border-width: 0px;
   padding-left: 1ex;
 }
@@ -70,7 +70,7 @@ div.nodecontent > p {
 	display:inline;
 }
 
-p + p { 
+p + p {
  	margin-top: 0.5em !important;
 	display:block !important;
 }

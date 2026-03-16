@@ -29,16 +29,16 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class FontSizeAction extends NodeGeneralAction {
+	private static final long serialVersionUID = 1L;
+
 
 	/** This action is used for all sizes, which have to be set first. */
 	private String actionSize;
 
-	/**
-     */
+
 	public FontSizeAction(MindMapController modeController) {
 		super(modeController, "font_size", null, (NodeActorXml) null);
 		// default value:

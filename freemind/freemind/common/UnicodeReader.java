@@ -1,10 +1,10 @@
 package freemind.common;
 
 /**
- * 
+ *
  * fc, 2010-12-23 Taken from http://koti.mbnet.fi/akini/java/unicodereader/UnicodeReader.java.txt
  * asuming public domain.
- * 
+ *
  version: 1.1 / 2007-01-25
  - changed BOM recognition ordering (longer boms first)
 
@@ -41,7 +41,7 @@ public class UnicodeReader extends Reader {
 	private static final int BOM_SIZE = 4;
 
 	/**
-	 * 
+	 *
 	 * @param in
 	 *            inputstream to be read
 	 * @param defaultEnc

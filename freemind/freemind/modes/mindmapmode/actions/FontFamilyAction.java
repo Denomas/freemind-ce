@@ -29,15 +29,15 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * 
+ *
  */
-@SuppressWarnings("serial")
 public class FontFamilyAction extends NodeGeneralAction  {
+	private static final long serialVersionUID = 1L;
+
 	/** This action is used for all fonts, which have to be set first. */
 	private String actionFont;
 
-	/**
-     */
+
 	public FontFamilyAction(MindMapController modeController) {
 		super(modeController, "font_family", null, (NodeActorXml) null);
 		// default value:

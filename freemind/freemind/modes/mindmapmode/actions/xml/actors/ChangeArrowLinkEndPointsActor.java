@@ -31,7 +31,6 @@ import freemind.modes.mindmapmode.actions.xml.ActionPair;
 
 /**
  * @author foltin
- * @date 01.04.2014
  */
 public class ChangeArrowLinkEndPointsActor extends XmlActorAdapter {
 
@@ -47,8 +46,7 @@ public class ChangeArrowLinkEndPointsActor extends XmlActorAdapter {
 		execute(getActionPair(link, startPoint, endPoint));
 	}
 
-	/**
-	 */
+
 	private ActionPair getActionPair(MindMapArrowLink link, Point startPoint,
 			Point endPoint) {
 		return new ActionPair(createArrowLinkPointXmlAction(link, startPoint,
@@ -58,7 +56,7 @@ public class ChangeArrowLinkEndPointsActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActorXml#act(freemind.controller.actions.
 	 * generated.instance.XmlAction)
@@ -79,7 +77,7 @@ public class ChangeArrowLinkEndPointsActor extends XmlActorAdapter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.controller.actions.ActorXml#getDoActionClass()
 	 */
 	public Class<ArrowLinkPointXmlAction> getDoActionClass() {

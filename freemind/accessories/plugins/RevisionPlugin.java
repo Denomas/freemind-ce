@@ -34,7 +34,7 @@ import freemind.modes.mindmapmode.hooks.PermanentMindMapNodeHookAdapter;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class RevisionPlugin extends PermanentMindMapNodeHookAdapter implements
 		ActionHandler {
@@ -43,16 +43,14 @@ public class RevisionPlugin extends PermanentMindMapNodeHookAdapter implements
 
 	private Color color;
 
-	/**
-	 * 
-	 */
+
 	public RevisionPlugin() {
 		super();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see freemind.extensions.NodeHook#invoke(freemind.modes.MindMapNode)
 	 */
 	public void invoke(MindMapNode node) {
@@ -72,7 +70,7 @@ public class RevisionPlugin extends PermanentMindMapNodeHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#executeAction(freemind.controller
 	 * .actions.ActionPair)
@@ -90,7 +88,7 @@ public class RevisionPlugin extends PermanentMindMapNodeHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#startTransaction(java.lang.
 	 * String)
@@ -100,7 +98,7 @@ public class RevisionPlugin extends PermanentMindMapNodeHookAdapter implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * freemind.controller.actions.ActionHandler#endTransaction(java.lang.String
 	 * )

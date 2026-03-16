@@ -58,9 +58,10 @@ import freemind.modes.ModeController;
 
 /**
  * @author foltin
- * 
+ *
  */
 public class EditNodeTextField extends EditNodeBase {
+
 	final int EDIT = 1;
 	final int CANCEL = 2;
 	int cursorWidth = 1;
@@ -97,13 +98,10 @@ public class EditNodeTextField extends EditNodeBase {
 		this.firstEvent = firstEvent;
 		mParent = pParent;
 		mFocusListener = pFocusListener;
-		if (logger == null) {
 			logger = freemind.main.Resources.getInstance().getLogger(
 					this.getClass().getName());
-		}
-	}
 
-	@SuppressWarnings("serial")
+	}
 	public void show() {
 		// Make fields for short texts editable
 		textfield = (getText().length() < 8) ? new JTextField(getText(), 8)
