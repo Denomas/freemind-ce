@@ -28,7 +28,7 @@ dependencies {
     implementation("org.apache.xmlgraphics:xmlgraphics-commons:2.11")
 
     // Rhino (JavaScript Engine for Batik)
-    implementation("org.mozilla:rhino:1.7.14")
+    implementation("org.mozilla:rhino:1.9.1")
 
     // XML Commons
     implementation("xml-apis:xml-apis-ext:1.3.04")
