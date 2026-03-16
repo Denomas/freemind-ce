@@ -1,0 +1,25 @@
+freemind/tests/freemind/StructuralQualityTest.java
+  3a569ff05e7219a6 1-377
+freemind/tests/freemind/BackwardCompatTest.java
+  3a569ff05e7219a6 1-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "ecd91f8b85d1db848f1b824e24400c0bfe08e76c",
+  "prompts": {
+    "3a569ff05e7219a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f37a94-7137-4f29-a97e-f1bbc6f050d3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 588,
+      "total_deletions": 15,
+      "accepted_lines": 573,
+      "overriden_lines": 0
+    }
+  }
+}
