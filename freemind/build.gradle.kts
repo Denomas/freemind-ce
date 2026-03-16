@@ -89,7 +89,7 @@ application {
 val jpackageVersion = project.version.toString().replace(Regex("-.*"), "")
 
 val jaxbApiVersion = "2.3.1"
-val jaxbImplVersion = "2.3.9"
+val jaxbImplVersion = "4.0.7"
 val batikVersion = "1.19"
 val fopVersion = "2.11"
 val flatlafVersion = "3.7"
