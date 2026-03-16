@@ -1,0 +1,33 @@
+freemind/freemind/main/XMLElement.java
+  3a569ff05e7219a6 2217-2225,2236,2800,2803,2805,2810
+freemind/build.gradle.kts
+  3a569ff05e7219a6 1-2,399-420,448-457
+freemind/tests/freemind/io/MapRoundTripTest.java
+  3a569ff05e7219a6 149,157-158
+freemind/freemind/modes/mindmapmode/MindMapMapModel.java
+  3a569ff05e7219a6 276-277,279
+Makefile
+  3a569ff05e7219a6 61,102-107
+freemind/tests/freemind/unicode/MultiLanguageFileTest.java
+  3a569ff05e7219a6 1056-1057,1059
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "dbbc4ed95d9df1e68215563bece676f6ebbb441b",
+  "prompts": {
+    "3a569ff05e7219a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f37a94-7137-4f29-a97e-f1bbc6f050d3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 66,
+      "total_deletions": 17,
+      "accepted_lines": 64,
+      "overriden_lines": 0
+    }
+  }
+}
