@@ -146,18 +146,16 @@ class MapRoundTripTest {
     }
 
     @Test
-    @DisplayName("Flag emoji (supplementary chars) — document behavior")
+    @DisplayName("Flag emoji (supplementary chars) — preserved in round-trip")
     void flagEmojiRoundTripBehavior() throws Exception {
         // Flag emoji (🇹🇷 = U+1F1F9 U+1F1F7) are supplementary characters
-        // FreeMind's XML writer may not preserve them — this documents current behavior
         String flagEmoji = "\ud83c\uddf9\ud83c\uddf7";
         MindMapMapModel map = createSingleChildMap(flagEmoji);
         String xml = toXml(map);
         MindMapMapModel loaded = MindMapGenerator.loadFromXml(xml);
         MindMapNode child = (MindMapNode) loaded.getRootNode().getChildAt(0);
-        // Document: supplementary chars may be lost in XML round-trip
-        // This is a known limitation — if getText() returns empty, it's a future fix candidate
-        assertNotNull(child.getText(), "Text must not be null even if emoji stripped");
+        assertEquals(flagEmoji, child.getText(),
+                "Flag emoji must survive XML round-trip");
     }
 
     @Test

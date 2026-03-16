@@ -273,9 +273,10 @@ public class MindMapMapModel extends MapAdapter {
 			}
 			// Generating output Stream — explicit UTF-8 encoding ensures
 			// non-ASCII characters are written correctly on all platforms.
-			BufferedWriter fileout = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream(file), "UTF-8"));
-			getXml(fileout);
+			try (BufferedWriter fileout = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(file), "UTF-8"))) {
+				getXml(fileout);
+			}
 
 			if (!isInternal) {
 				setFile(file);
@@ -309,7 +310,6 @@ public class MindMapMapModel extends MapAdapter {
 		fileout.write("<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->\n");
 		pRootNode.save(fileout, this.getLinkRegistry(), saveInvisible, true);
 		fileout.write("</map>\n");
-		fileout.close();
 	}
 
 	public void getXml(Writer fileout) throws IOException {

@@ -2214,6 +2214,15 @@ public class XMLElement {
 				writer.write(';');
 				break;
 			default:
+				if (Character.isHighSurrogate(ch) && i + 1 < str.length()) {
+					char low = str.charAt(i + 1);
+					if (Character.isLowSurrogate(low)) {
+						int codePoint = Character.toCodePoint(ch, low);
+						writer.write("&#x" + Integer.toHexString(codePoint) + ";");
+						i++; // skip low surrogate
+						break;
+					}
+				}
 				int unicode = (int) ch;
 				if (unicode < 32 || unicode == 127) {
 					// XML control characters — must be encoded
@@ -2224,7 +2233,7 @@ public class XMLElement {
 					writer.write(';');
 				} else if (unicode >= 0xD800 && unicode <= 0xDFFF
 						|| unicode == 0xFFFE || unicode == 0xFFFF) {
-					// XML-invalid characters (surrogates, BOM) — silently drop
+					// Unpaired surrogates or XML-invalid characters — silently drop
 				} else {
 					// Printable ASCII and Unicode (UTF-8 safe)
 					writer.write(ch);
@@ -2788,16 +2797,17 @@ public class XMLElement {
 		}
 		String key = keyBuf.toString();
 		if (key.charAt(0) == '#') {
+			int codePoint;
 			try {
 				if (key.charAt(1) == 'x') {
-					ch = (char) Integer.parseInt(key.substring(2), 16);
+					codePoint = Integer.parseInt(key.substring(2), 16);
 				} else {
-					ch = (char) Integer.parseInt(key.substring(1), 10);
+					codePoint = Integer.parseInt(key.substring(1), 10);
 				}
 			} catch (NumberFormatException e) {
 				throw this.unknownEntity(key);
 			}
-			buf.append(ch);
+			buf.append(Character.toChars(codePoint));
 		} else {
 			char[] value = (char[]) this.entities.get(key);
 			if (value == null) {

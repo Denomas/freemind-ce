@@ -1,3 +1,5 @@
+import java.time.Duration
+
 /*
  * FreeMind CE - Main Module Build Configuration
  * Denomas - 2026
@@ -394,6 +396,28 @@ tasks.register<Test>("testGui") {
     }
 }
 
+tasks.register<Test>("testPerformance") {
+    description = "Run performance tests (large file, timing)"
+    group = "verification"
+    useJUnitPlatform {
+        includeTags("performance")
+    }
+    jvmArgs("-Xmx512m")
+    systemProperty("java.awt.headless", "true")
+    maxHeapSize = "512m"
+    timeout.set(Duration.ofMinutes(10))
+}
+
+tasks.register<Test>("testChaos") {
+    description = "Run chaos/resilience tests"
+    group = "verification"
+    useJUnitPlatform {
+        includeTags("chaos")
+    }
+    systemProperty("java.awt.headless", "true")
+    timeout.set(Duration.ofMinutes(5))
+}
+
 tasks.register<JavaExec>("showcaseScreenshots") {
     description = "Launches FreeMind CE with showcase mindmaps and captures full-screen desktop screenshots"
     group = "Verification"
@@ -418,6 +442,16 @@ tasks.jacocoTestReport {
     reports {
         xml.required.set(true)
         html.required.set(true)
+    }
+}
+
+tasks.named<JacocoCoverageVerification>("jacocoTestCoverageVerification") {
+    violationRules {
+        rule {
+            limit {
+                minimum = "0.20".toBigDecimal()
+            }
+        }
     }
 }
 
