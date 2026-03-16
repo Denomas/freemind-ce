@@ -18,9 +18,9 @@ dependencies {
     compileOnly(project(":freemind"))
 
     // Apache Lucene 9.12.3
-    implementation("org.apache.lucene:lucene-core:9.12.3")
-    implementation("org.apache.lucene:lucene-analysis-common:9.12.3")
-    implementation("org.apache.lucene:lucene-queryparser:9.12.3")
+    implementation("org.apache.lucene:lucene-core:10.4.0")
+    implementation("org.apache.lucene:lucene-analysis-common:10.4.0")
+    implementation("org.apache.lucene:lucene-queryparser:10.4.0")
 }
 
 tasks.jar {
