@@ -1,0 +1,49 @@
+freemind/freemind/modes/mindmapmode/MindMapNodeModel.java
+  3a569ff05e7219a6 28,52
+freemind/accessories/plugins/ImportMindmanagerFiles.java
+  3a569ff05e7219a6 38,136
+freemind/freemind/modes/filemode/FileNodeModel.java
+  3a569ff05e7219a6 134
+freemind/freemind/main/Tools.java
+  3a569ff05e7219a6 109,1065-1069
+freemind/freemind/modes/NodeAdapter.java
+  3a569ff05e7219a6 118-121
+freemind/freemind/main/HtmlTools.java
+  3a569ff05e7219a6 34,579
+freemind/plugins/svg/ExportVectorGraphic.java
+  3a569ff05e7219a6 36,152
+freemind/accessories/plugins/ExportToOoWriter.java
+  3a569ff05e7219a6 40,123
+freemind/freemind/common/XmlBindingTools.java
+  3a569ff05e7219a6 34,39-43,180-181,183,196-197,199,204-213
+freemind/accessories/plugins/ExportWithXSLT.java
+  3a569ff05e7219a6 46,344
+freemind/freemind/modes/browsemode/BrowseNodeModel.java
+  3a569ff05e7219a6 23,42
+freemind/accessories/plugins/ExportToImage.java
+  3a569ff05e7219a6 34,109
+freemind/accessories/plugins/util/xslt/XmlExporter.java
+  3a569ff05e7219a6 33,63
+plugins/wsl/src/onekin/WSL/WSL_Util.java
+  3a569ff05e7219a6 36,85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "b97cba0b58fce3c5f439c6b84e7b07fa6ca34561",
+  "prompts": {
+    "3a569ff05e7219a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f37a94-7137-4f29-a97e-f1bbc6f050d3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 56,
+      "total_deletions": 9,
+      "accepted_lines": 54,
+      "overriden_lines": 0
+    }
+  }
+}
