@@ -1,0 +1,27 @@
+docs/merge-release-safety.md
+  857b3decd23c952b 1-159
+CONTRIBUTING.md
+  857b3decd23c952b 5-15,436-464
+CLAUDE.md
+  857b3decd23c952b 130-131,141-143
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "88837138be32859bfd1b093595b3af0da1f533df",
+  "prompts": {
+    "857b3decd23c952b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b455a01f-56d3-43cf-975c-991553c1f19b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas <tolgakaratas@gmail.com>",
+      "messages": [],
+      "total_additions": 204,
+      "total_deletions": 0,
+      "accepted_lines": 204,
+      "overriden_lines": 0
+    }
+  }
+}
