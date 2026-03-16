@@ -16,16 +16,21 @@ import freemind.controller.filter.condition.IconContainedCondition;
 import freemind.controller.filter.condition.IconNotContainedCondition;
 import freemind.controller.filter.condition.NoFilteringCondition;
 import freemind.main.HeadlessFreeMind;
+import freemind.main.XMLElement;
+import freemind.modes.mindmapmode.MindMapMapModel;
 import freemind.modes.MindIcon;
 import freemind.modes.MindMapNode;
 import freemind.modes.attributes.Attribute;
 import freemind.modes.mindmapmode.MindMapNodeModel;
+import tests.freemind.testutil.MindMapGenerator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import tests.freemind.MindMapMock;
 
+import java.io.IOException;
+import java.io.StringWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -941,6 +946,151 @@ class FilterIntegrationTest {
                 assertTrue(allPassFilter.isVisible(node),
                         "Node '" + node.getText() + "' should be visible after reset");
             }
+        }
+    }
+
+    // ========================================================================
+    // Filter Root Protection
+    // ========================================================================
+
+    @Nested
+    @DisplayName("Filter Root Protection")
+    class FilterRootProtectionTests {
+
+        @Test
+        @DisplayName("Root node is never hidden by filter even when it does not match condition")
+        void rootNodeNeverHiddenByFilter() {
+            // Create a tree where root text does NOT match the condition
+            MindMapNodeModel root = createNode("RootNoMatch");
+            MindMapNodeModel child1 = createNode("Alpha target");
+            MindMapNodeModel child2 = createNode("Beta item");
+            MindMapNodeModel child3 = createNode("Gamma item");
+            root.insert(child1, -1);
+            root.insert(child2, -1);
+            root.insert(child3, -1);
+
+            // Condition that matches "Alpha" — root text "RootNoMatch" does NOT match
+            Condition containsAlpha = factory.createCondition(FILTER_NODE, FILTER_CONTAINS, "Alpha", false);
+            assertFalse(containsAlpha.checkNode(null, root),
+                    "Root should NOT match the Alpha condition");
+
+            // Apply filter using simulateFilterApplication (which protects root)
+            simulateFilterApplication(root, containsAlpha);
+
+            // Root node must NEVER be hidden — simulateFilterApplication skips root in filter flags
+            // The root's FilterInfo should remain at FILTER_INITIAL_VALUE (not FILTER_SHOW_HIDDEN)
+            int rootFilterValue = callGet(root.getFilterInfo());
+            assertNotEquals(Filter.FILTER_SHOW_HIDDEN, rootFilterValue,
+                    "Root node must NEVER have FILTER_SHOW_HIDDEN flag set");
+
+            // Verify root is visible with any reasonable filter configuration
+            DefaultFilter filter = new DefaultFilter(containsAlpha, true, true);
+            assertTrue(filter.isVisible(root),
+                    "Root node must always be visible regardless of filter condition");
+        }
+    }
+
+    // ========================================================================
+    // Filter-Export Interaction
+    // ========================================================================
+
+    @Nested
+    @DisplayName("Filter-Export Interaction")
+    class FilterExportInteractionTests {
+
+        @Test
+        @DisplayName("Export includes all nodes regardless of filter state")
+        void exportIncludesAllNodesRegardlessOfFilter() throws Exception {
+            // Create a map with 5 nodes via XML (root + 4 children)
+            String mapXml = "<map>"
+                    + "<node TEXT='ExportRoot'>"
+                    + "<node TEXT='Alpha visible'/>"
+                    + "<node TEXT='Beta hidden'/>"
+                    + "<node TEXT='Gamma hidden'/>"
+                    + "<node TEXT='Delta hidden'/>"
+                    + "</node>"
+                    + "</map>";
+
+            MindMapMapModel map = MindMapGenerator.loadFromXml(mapXml);
+            MindMapNode root = map.getRootNode();
+            assertEquals(4, root.getChildCount(), "Map should have 4 children");
+
+            // Apply a filter that only matches "Alpha" — hides 3 of 4 children
+            Condition containsAlpha = factory.createCondition(FILTER_NODE, FILTER_CONTAINS, "Alpha", false);
+            simulateFilterApplication(root, containsAlpha);
+
+            // Verify filter was applied: only 1 child matches
+            int matchedCount = 0;
+            for (MindMapNode node : collectAllNodes(root)) {
+                if (node.getFilterInfo().isMatched()) {
+                    matchedCount++;
+                }
+            }
+            assertEquals(1, matchedCount, "Only 1 child should match the Alpha filter");
+
+            // Export to XML via getXml (which includes ALL nodes regardless of filter)
+            StringWriter sw = new StringWriter();
+            map.getXml(sw);
+            String xml = sw.toString();
+
+            // Verify ALL 5 nodes are present in the exported XML
+            assertTrue(xml.contains("ExportRoot"), "Export must include root");
+            assertTrue(xml.contains("Alpha visible"), "Export must include Alpha (matched)");
+            assertTrue(xml.contains("Beta hidden"), "Export must include Beta (filtered)");
+            assertTrue(xml.contains("Gamma hidden"), "Export must include Gamma (filtered)");
+            assertTrue(xml.contains("Delta hidden"), "Export must include Delta (filtered)");
+
+            // Verify total node count after re-loading the exported XML
+            MindMapMapModel reloaded = MindMapGenerator.loadFromXml(xml);
+            assertEquals(5, MindMapGenerator.countNodes(reloaded.getRootNode()),
+                    "Exported and reloaded map must have all 5 nodes");
+        }
+    }
+
+    // ========================================================================
+    // Filter Save/Load (Condition Serialization)
+    // ========================================================================
+
+    @Nested
+    @DisplayName("Filter Condition Save/Load")
+    class FilterSaveLoadTests {
+
+        @Test
+        @DisplayName("NodeContainsCondition survives save/load cycle with identical behavior")
+        void conditionSaveLoadRoundTrip() {
+            // Create a condition using the factory
+            Condition original = factory.createCondition(FILTER_NODE, FILTER_CONTAINS, "Alpha", false);
+            assertNotNull(original, "Factory should create a condition");
+
+            // Save the condition to an XMLElement
+            XMLElement container = new XMLElement();
+            original.save(container);
+
+            // The save method adds a child element to the container
+            assertTrue(container.countChildren() > 0,
+                    "save() should add a child element to the container");
+
+            // Load the condition back from the saved XMLElement
+            XMLElement savedChild = container.getChildren().get(0);
+            Condition loaded = factory.loadCondition(savedChild);
+            assertNotNull(loaded, "loadCondition should return a non-null condition");
+
+            // Verify the loaded condition behaves identically to the original
+            MindMapNodeModel matchingNode = createNode("Alpha project");
+            MindMapNodeModel nonMatchingNode = createNode("Beta release");
+
+            assertEquals(original.checkNode(null, matchingNode),
+                    loaded.checkNode(null, matchingNode),
+                    "Loaded condition should match same nodes as original (matching case)");
+            assertEquals(original.checkNode(null, nonMatchingNode),
+                    loaded.checkNode(null, nonMatchingNode),
+                    "Loaded condition should match same nodes as original (non-matching case)");
+
+            // Both should match "Alpha project" and not match "Beta release"
+            assertTrue(loaded.checkNode(null, matchingNode),
+                    "Loaded condition should match 'Alpha project'");
+            assertFalse(loaded.checkNode(null, nonMatchingNode),
+                    "Loaded condition should not match 'Beta release'");
         }
     }
 }

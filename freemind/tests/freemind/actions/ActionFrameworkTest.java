@@ -812,6 +812,72 @@ class ActionFrameworkTest {
     }
 
     // -----------------------------------------------------------------------
+    // Format toggle tests (setBold, setItalic, setFontSize)
+    // -----------------------------------------------------------------------
+    @Nested
+    @DisplayName("Format toggle via ExtendedMapFeedbackImpl")
+    class FormatToggleTests {
+
+        private ExtendedMapFeedbackImpl mapFeedback;
+        private MindMapNode root;
+        private MindMapNode targetNode;
+
+        @BeforeEach
+        void setUp() throws Exception {
+            mapFeedback = new ExtendedMapFeedbackImpl();
+            MindMapMapModel mMap = new MindMapMapModel(mapFeedback);
+            mapFeedback.setMap(mMap);
+            Tools.StringReaderCreator readerCreator = new Tools.StringReaderCreator(INITIAL_MAP);
+            root = mMap.loadTree(readerCreator, MapAdapter.sDontAskInstance);
+            mMap.setRoot(root);
+            targetNode = (MindMapNode) root.getChildAt(0);
+        }
+
+        @Test
+        @DisplayName("setBold toggles bold state on node")
+        void setBoldTogglesState() {
+            assertFalse(targetNode.isBold(), "Node should not be bold initially");
+
+            mapFeedback.setBold(targetNode, true);
+            assertTrue(targetNode.isBold(), "Node should be bold after setBold(true)");
+
+            mapFeedback.setBold(targetNode, false);
+            assertFalse(targetNode.isBold(), "Node should not be bold after setBold(false)");
+        }
+
+        @Test
+        @DisplayName("setItalic toggles italic state on node")
+        void setItalicTogglesState() {
+            assertFalse(targetNode.isItalic(), "Node should not be italic initially");
+
+            mapFeedback.setItalic(targetNode, true);
+            assertTrue(targetNode.isItalic(), "Node should be italic after setItalic(true)");
+
+            mapFeedback.setItalic(targetNode, false);
+            assertFalse(targetNode.isItalic(), "Node should not be italic after setItalic(false)");
+        }
+
+        @Test
+        @DisplayName("setFontSize changes and reverts font size on node")
+        void setFontSizeChangesAndReverts() {
+            String originalSize = targetNode.getFontSize();
+
+            mapFeedback.setFontSize(targetNode, "24");
+            assertEquals("24", targetNode.getFontSize(), "Font size should be 24 after set");
+
+            mapFeedback.setFontSize(targetNode, "18");
+            assertEquals("18", targetNode.getFontSize(), "Font size should be 18 after second set");
+
+            // Revert to original
+            if (originalSize != null) {
+                mapFeedback.setFontSize(targetNode, originalSize);
+                assertEquals(originalSize, targetNode.getFontSize(),
+                        "Font size should revert to original value");
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------
     // Helper methods
     // -----------------------------------------------------------------------
 

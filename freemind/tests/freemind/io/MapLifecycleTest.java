@@ -13,11 +13,16 @@ import freemind.main.Tools;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import tests.freemind.testutil.MindMapGenerator;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.Timer;
 import java.util.Vector;
 
@@ -303,6 +308,98 @@ class MapLifecycleTest {
 
         assertEquals("https://freemind.sourceforge.net/", loadedChild.getLink(),
                 "Hyperlink should be preserved after save/load round-trip");
+    }
+
+    // ── Re-save Atomicity ────────────────────────────────────────────────
+
+    @Test
+    @DisplayName("Re-save to same file produces valid XML")
+    void reSaveToSameFileProducesValidXml(@TempDir Path tempDir) throws Exception {
+        MindMapMapModel map = createMapWithChildren(5);
+        File file = tempDir.resolve("resave.mm").toFile();
+
+        // First save
+        try (FileWriter fw = new FileWriter(file, StandardCharsets.UTF_8)) {
+            map.getXml(fw);
+        }
+        assertTrue(file.length() > 0, "First save should produce non-empty file");
+
+        // Modify the map before re-saving
+        MindMapNodeModel extraChild = new MindMapNodeModel(map);
+        extraChild.setUserObject("ExtraChild_AfterFirstSave");
+        ((MindMapNodeModel) map.getRootNode()).insert(extraChild, -1);
+
+        // Re-save to SAME file (overwrite)
+        try (FileWriter fw = new FileWriter(file, StandardCharsets.UTF_8)) {
+            map.getXml(fw);
+        }
+        assertTrue(file.length() > 0, "Re-save should produce non-empty file");
+
+        // Verify the re-saved file is valid XML by parsing it
+        javax.xml.parsers.DocumentBuilderFactory dbf =
+                javax.xml.parsers.DocumentBuilderFactory.newInstance();
+        assertDoesNotThrow(() -> dbf.newDocumentBuilder().parse(file),
+                "Re-saved file must be valid XML — not corrupted by partial write");
+
+        // Verify the re-saved file contains the new child
+        MindMapMapModel reloaded = MindMapGenerator.loadFromFile(file.getAbsolutePath());
+        int reloadedCount = MindMapGenerator.countNodes(reloaded.getRootNode());
+        // original root + 5 children + 1 extra = 7
+        assertEquals(7, reloadedCount,
+                "Re-saved map should contain all nodes including the one added after first save");
+    }
+
+    // ── Link Registry Integrity ────────────────────────────────────────
+
+    @Test
+    @DisplayName("Remove arrow link target node — saved XML has no dangling arrowlink reference")
+    void removeLinkTargetNodeNoDanglingReference() throws Exception {
+        String initialMap = "<map>"
+                + "<node TEXT='ROOT'>"
+                + "<node TEXT='Source'/>"
+                + "<node TEXT='Target'/>"
+                + "</node>"
+                + "</map>";
+
+        ExtendedMapFeedbackImpl mapFeedback = new ExtendedMapFeedbackImpl();
+        MindMapMapModel map = new MindMapMapModel(mapFeedback);
+        mapFeedback.setMap(map);
+        Tools.StringReaderCreator readerCreator = new Tools.StringReaderCreator(initialMap);
+        MindMapNode root = map.loadTree(readerCreator, MapAdapter.sDontAskInstance);
+        map.setRoot(root);
+
+        MindMapNode source = (MindMapNode) root.getChildAt(0);
+        MindMapNode target = (MindMapNode) root.getChildAt(1);
+
+        // Create arrow link from source to target
+        mapFeedback.addLink(source, target);
+        Vector<MindMapLink> linksBefore = map.getLinkRegistry().getAllLinksFromMe(source);
+        assertEquals(1, linksBefore.size(), "Should have 1 arrow link before removal");
+
+        // Save XML before removal to confirm arrowlink is present
+        String xmlBefore = toXml(map);
+        assertTrue(xmlBefore.contains("arrowlink"),
+                "XML before removal should contain arrowlink");
+
+        // Remove the link via feedback (clean deregistration)
+        MindMapArrowLink arrowLink = (MindMapArrowLink) linksBefore.firstElement();
+        mapFeedback.removeReference(arrowLink);
+
+        // Verify link was removed from registry
+        Vector<MindMapLink> linksAfter = map.getLinkRegistry().getAllLinksFromMe(source);
+        assertEquals(0, linksAfter.size(), "Link should be removed from registry");
+
+        // Now remove the target node from its parent
+        root.remove(1);
+
+        // Save to XML after removal
+        String xmlAfter = toXml(map);
+
+        // Verify: the saved XML should NOT contain any arrowlink element
+        // since we removed the link before removing the node
+        assertFalse(xmlAfter.contains("arrowlink"),
+                "After removing arrow link and target node, saved XML must not contain "
+                        + "any arrowlink reference");
     }
 
     // ── Autosave Timer (Structural Verification via Reflection) ─────────

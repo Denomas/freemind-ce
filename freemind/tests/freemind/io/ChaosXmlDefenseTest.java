@@ -28,6 +28,7 @@ import freemind.modes.mindmapmode.MindMapNodeModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.io.TempDir;
 import tests.freemind.testutil.MindMapGenerator;
 
@@ -298,6 +299,41 @@ class ChaosXmlDefenseTest {
         assertEquals(originalMap.getRootNode().getText(),
                 loadedMap.getRootNode().getText(),
                 "Root text must match after round-trip");
+    }
+
+    // ── XML Entity Expansion Defense ─────────────────────────────────────
+
+    @Test
+    @Timeout(30)
+    @DisplayName("XML with entity expansion does not cause OOM or hang")
+    void xmlEntityExpansionDefense() {
+        // Simplified entity expansion — not a full billion laughs attack,
+        // but tests that the parser handles entities safely.
+        String xmlBomb = "<?xml version=\"1.0\"?>\n"
+                + "<!DOCTYPE map [\n"
+                + "  <!ENTITY lol \"lol\">\n"
+                + "  <!ENTITY lol2 \"&lol;&lol;&lol;&lol;&lol;\">\n"
+                + "]>\n"
+                + "<map version=\"1.1.0\"><node TEXT=\"&lol2;\"/></map>";
+
+        // The parser must either:
+        // 1. Load successfully with entity text resolved, OR
+        // 2. Throw an exception gracefully (no OOM, no hang)
+        // Critical: this test has @Timeout(30) to catch hangs
+        assertDoesNotThrow(() -> {
+            try {
+                MindMapMapModel map = MindMapGenerator.loadFromXml(xmlBomb);
+                // If loading succeeded, verify we got a usable map
+                assertNotNull(map.getRootNode(),
+                        "Root node must not be null after loading XML with entities");
+                assertNotNull(map.getRootNode().getText(),
+                        "Root text must not be null");
+            } catch (Exception e) {
+                // Graceful exception is acceptable — the important thing is
+                // no OOM and no infinite hang.
+                // If we got here, it's an Exception (not an Error), which is fine.
+            }
+        }, "XML with entity expansion must not hang or OOM");
     }
 
     // ── Helper Methods ──────────────────────────────────────────────────

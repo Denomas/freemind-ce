@@ -305,6 +305,67 @@ class ConcurrencyTest {
         assertTrue(executor.awaitTermination(10, TimeUnit.SECONDS));
     }
 
+    // ── Concurrent getXml on same map ──
+
+    @Test
+    @DisplayName("Concurrent getXml on same map produces valid output")
+    void concurrentGetXmlOnSameMap() throws Exception {
+        // Create a single shared map with enough nodes to exercise serialization
+        StringBuilder xmlBuilder = new StringBuilder("<map><node TEXT='SharedRoot'>");
+        for (int i = 0; i < 20; i++) {
+            xmlBuilder.append("<node TEXT='Node_").append(i).append("'>");
+            for (int j = 0; j < 3; j++) {
+                xmlBuilder.append("<node TEXT='Sub_").append(i).append("_").append(j).append("'/>");
+            }
+            xmlBuilder.append("</node>");
+        }
+        xmlBuilder.append("</node></map>");
+        MindMapMapModel sharedMap = createMapFromXml(xmlBuilder.toString());
+
+        int threadCount = 5;
+        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+        CountDownLatch startGate = new CountDownLatch(1);
+        List<Future<String>> futures = new ArrayList<>();
+
+        for (int i = 0; i < threadCount; i++) {
+            futures.add(executor.submit(() -> {
+                startGate.await();
+                StringWriter sw = new StringWriter();
+                sharedMap.getXml(sw);
+                return sw.toString();
+            }));
+        }
+
+        startGate.countDown();
+
+        // All threads must produce valid, non-empty XML without corruption
+        var factory = javax.xml.parsers.DocumentBuilderFactory.newInstance();
+        String firstXml = null;
+        for (int i = 0; i < threadCount; i++) {
+            String xmlResult = futures.get(i).get(10, TimeUnit.SECONDS);
+            assertNotNull(xmlResult, "XML output from thread " + i + " must not be null");
+            assertFalse(xmlResult.isEmpty(), "XML output from thread " + i + " must not be empty");
+            assertTrue(xmlResult.contains("<map"), "Output must contain <map element");
+            assertTrue(xmlResult.contains("SharedRoot"), "Output must contain root text");
+
+            // Parse to verify it's well-formed XML
+            assertDoesNotThrow(
+                () -> factory.newDocumentBuilder().parse(
+                    new org.xml.sax.InputSource(new java.io.StringReader(xmlResult))),
+                "XML from thread " + i + " must be well-formed");
+
+            if (firstXml == null) {
+                firstXml = xmlResult;
+            } else {
+                assertEquals(firstXml, xmlResult,
+                    "All threads should produce identical XML from the same map");
+            }
+        }
+
+        executor.shutdown();
+        assertTrue(executor.awaitTermination(10, TimeUnit.SECONDS));
+    }
+
     // ── 7. Parallel getXml ──
 
     @Test
