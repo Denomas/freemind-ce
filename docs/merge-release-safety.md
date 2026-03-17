@@ -65,7 +65,7 @@ All dependency updates follow risk-appropriate procedures. CI passing alone is N
 
 ### Major Updates (1.x → 2.x) — Special Handling Required
 
-Major version bumps contain breaking API changes. They require the most rigorous review process.
+Major version bumps in **dependencies** may contain breaking API changes that require code adaptation. They require the most rigorous review process. Note: while the dependency's API may change, **FreeMind CE itself must never break backward compatibility** — every `.mm` file must still open correctly after any dependency update.
 
 | Step | Action | Who |
 |------|--------|-----|
@@ -126,8 +126,9 @@ The `main` branch is protected by GitHub Rulesets with the following configurati
 |------|---------|---------|
 | Restrict deletions | ON | Main branch cannot be deleted |
 | Block force pushes | ON | No force push to main |
-| Require pull request | ON | No direct push to main |
+| Require pull request | ON | No direct push to main — ALL changes via PR |
 | Required approvals | 1 | Every PR needs maintainer approval |
+| Require approval from someone other than last pusher | OFF | Solo maintainer can self-approve (CI is the real gate) |
 | Dismiss stale reviews | ON | New push invalidates previous approval |
 | Require conversation resolution | ON | All review threads must be resolved |
 | Require status checks | ON | `CI` aggregator must pass |
@@ -139,6 +140,45 @@ The `main` branch is protected by GitHub Rulesets with the following configurati
 - **Squash merge only** — produces clean, linear history on main
 - Merge commits and rebase merge are disabled
 - Auto-delete head branches after merge
+
+## Fork PR Security
+
+External contributors submit PRs from forks. GitHub Actions handles fork PRs with restricted permissions:
+
+| Aspect | Fork PR Behavior |
+|--------|-----------------|
+| CI workflow runs? | Yes — uses workflow YAML from **main** (not the fork) |
+| Secrets available? | NO — `GITHUB_TOKEN` is read-only, custom secrets hidden |
+| Can modify workflows? | NO — base branch workflow is used |
+| Write permissions? | NO — fork PRs cannot push, create releases, etc. |
+| First-time contributor | Requires maintainer approval before CI runs |
+
+**Maintainer responsibilities for fork PRs:**
+1. Review the diff carefully — fork code is untrusted
+2. Check for malicious dependency changes in `build.gradle.kts`
+3. Verify no secrets or credentials are included
+4. Approve CI run for first-time contributors before any code executes
+
+## Bot PR Policy
+
+| Bot | Creates PRs | Auto-merge Allowed | Maintainer Action |
+|-----|------------|-------------------|-------------------|
+| **release-please** | Release PR with CHANGELOG | NO — always manual review | Apply Release Checklist, then approve |
+| **Dependabot (patch)** | Dependency bump PR | YES — after CI passes | Monitor, intervene if CI fails |
+| **Dependabot (minor)** | Dependency bump PR | YES — after CI passes | Review changelog, then let auto-merge proceed |
+| **Dependabot (major)** | Dependency bump PR | NO — manual review required | Follow Major Update Protocol |
+
+Dependabot auto-merge for patch/minor updates is an approved exception to the general "no auto-merge" rule. This is documented here as an explicit policy decision. Major version bumps always require manual review per the Dependency Update Protocol above.
+
+## AI Agent Policy
+
+AI agents (Claude Code, Cursor, Copilot, etc.) working with maintainer credentials:
+
+- Follow the exact same PR workflow as any human contributor
+- Commits are attributed to the maintainer (the human is accountable)
+- AI-generated PRs MUST be reviewed by the maintainer with the same rigor as external contributions
+- Never add AI attribution (`Co-Authored-By`, "Generated with..." etc.) to commits or PRs
+- AI agents must run `make build` before pushing and use Serena for impact analysis (see CONTRIBUTING.md)
 
 ## Incident History
 

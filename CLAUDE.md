@@ -134,7 +134,7 @@ Not in Gradle: latex, collaboration/database, collaboration/jabber
 3. **Never commit `auto.properties`** — runtime-generated user config
 4. **Test before commit** — `make build` must pass, `make run` to verify
 5. **No @SuppressWarnings** — fix root causes, don't suppress
-6. **Preserve backward compatibility** — existing .mm files must keep working
+6. **Preserve backward compatibility — ABSOLUTE RULE** — every `.mm` file ever created must open correctly. No breaking changes. No `feat!:` commits. See CONTRIBUTING.md Project Philosophy.
 7. **Verify with Serena before commit** — use `find_referencing_symbols` to check impact of all changes
 8. **Serena is MANDATORY for all agents** — every subagent task must include Serena usage as a requirement; start all analysis with `get_symbols_overview` and `find_symbol`
 9. **Always check `.gitignore` before CI paths** — never reference gitignored paths in GitHub Actions workflows (`paths-ignore`, pathspecs, etc.). They don't exist in the CI runner. Always run `grep <path> .gitignore` before adding any path to workflow files.

@@ -33,18 +33,25 @@ jobs:
             echo "::notice::Non-PR event, running full build"
             exit 0
           fi
-          # PR: doc-only mı kontrol et (negated pathspec: doc dışı değişiklik var mı?)
-          BASE="${{ github.event.pull_request.base.sha }}"
+          # PR: doc-only mı kontrol et
+          # Use merge-base to compare only the PR's own changes,
+          # not commits merged into main since the branch was created.
+          BASE=$(git merge-base "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}")
           HEAD="${{ github.event.pull_request.head.sha }}"
-          if git diff --quiet "$BASE...$HEAD" -- \
+          echo "::notice::Comparing $BASE..$HEAD (merge-base)"
+          # List non-doc files changed in this PR
+          NON_DOC_FILES=$(git diff --name-only "$BASE..$HEAD" -- \
             ':!**/*.md' ':!docs/**' \
             ':!LICENSE' ':!COPYING' ':!.gitattributes' \
             ':!.github/ISSUE_TEMPLATE/**' ':!.github/PULL_REQUEST_TEMPLATE/**' \
-            ':!.github/release-notes-template.md'; then
+            ':!.github/release-notes-template.md')
+          if [ -z "$NON_DOC_FILES" ]; then
             echo "code=false" >> "$GITHUB_OUTPUT"
             echo "::notice::Documentation-only change — skipping build & test matrix"
           else
             echo "code=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Code changes detected: $(echo "$NON_DOC_FILES" | wc -l | tr -d ' ') non-doc files"
+            echo "$NON_DOC_FILES" | head -10
           fi
 
   build:
