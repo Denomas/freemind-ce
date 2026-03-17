@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.2](https://github.com/Denomas/freemind-ce/compare/v1.3.1...v1.3.2) (2026-03-17)
+
+
+### Dependencies
+
+* bump com.code-intelligence:jazzer-junit from 0.22.1 to 0.30.0 ([#22](https://github.com/Denomas/freemind-ce/issues/22)) ([855c448](https://github.com/Denomas/freemind-ce/commit/855c448b1d91d9efe3f0af7a8dee667b90b6e741))
+* bump flatlafVersion from 3.7 to 3.7.1 ([#20](https://github.com/Denomas/freemind-ce/issues/20)) ([326fc00](https://github.com/Denomas/freemind-ce/commit/326fc0043ff335f61644b4b4164365a0eb844812))
+* bump org.apache.lucene:lucene-analysis-common from 9.12.3 to 10.4.0 ([#23](https://github.com/Denomas/freemind-ce/issues/23)) ([7bbe557](https://github.com/Denomas/freemind-ce/commit/7bbe55758c26a5bdece5444a266505662510e481))
+* bump org.mozilla:rhino from 1.7.14 to 1.9.1 ([#21](https://github.com/Denomas/freemind-ce/issues/21)) ([b7933a4](https://github.com/Denomas/freemind-ce/commit/b7933a4be071be34a3984406177a0d834d050048))
+
 ## [1.3.1](https://github.com/Denomas/freemind-ce/compare/v1.3.0...v1.3.1) (2026-03-14)
 
 
