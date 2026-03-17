@@ -2,6 +2,33 @@
 
 Thank you for your interest in contributing to FreeMind CE! This guide will help you get started.
 
+> **MANDATORY READING:** Before starting any work, you MUST read this entire document AND the referenced documents in `docs/`. These are the project's binding rules — not suggestions.
+
+| Document | Purpose | When to Read |
+|----------|---------|-------------|
+| **This file (CONTRIBUTING.md)** | Project rules, workflows, conventions (entry point) | Always — before any work |
+| **[docs/contributor-workflows.md](docs/contributor-workflows.md)** | All workflow diagrams (16 mermaid): CI, merge, release, security | Before any PR, merge, or release |
+| **[docs/serena-guide.md](docs/serena-guide.md)** | Serena tool reference (18 tools), decision trees, examples | Before any code analysis or editing |
+| **[docs/merge-release-safety.md](docs/merge-release-safety.md)** | Merge protocols, dependency updates, release checklist | Before any merge, review, or release |
+| **[docs/development-guide.md](docs/development-guide.md)** | Build, test, debug, package | Before writing code |
+| **[docs/architecture.md](docs/architecture.md)** | MVC, modes, action framework, plugin system | Before design decisions |
+| **[docs/component-inventory.md](docs/component-inventory.md)** | UI components, plugin registry | Before finding/modifying specific code |
+| **[docs/source-tree-analysis.md](docs/source-tree-analysis.md)** | Directory structure, file locations | Before navigating the codebase |
+
+## Project Philosophy
+
+> FreeMind CE exists because we love FreeMind as it is. We modernize the infrastructure, never the soul.
+
+This project brings the original FreeMind back to life on modern platforms. Every contribution must respect these principles:
+
+| Principle | What It Means |
+|-----------|--------------|
+| **Preserve the original** | Every feature, every icon, every behavior of the original FreeMind must be preserved. We change nothing — we only modernize the infrastructure. |
+| **Full backward compatibility** | Every `.mm` file ever created by any version of FreeMind must open correctly. We NEVER break file format compatibility. There are no exceptions. |
+| **No breaking changes** | The `feat!:` (breaking change) commit type is FORBIDDEN. We do not use `BREAKING CHANGE` footers. We do not trigger major version bumps. If a change would break backward compatibility, we find another way or we don't do it. |
+| **User content is sacred** | FreeMind is a content creation tool. We NEVER sanitize, filter, block, or modify user content. Script tags, file paths, SQL strings, emoji — whatever the user types is preserved exactly as written through every save/load/export cycle. |
+| **Simplicity over features** | FreeMind's power is its simplicity. We do not add unnecessary complexity, unnecessary dependencies, or unnecessary features. Every addition must earn its place. |
+
 ## Prerequisites
 
 - **Java 21** (Temurin/Adoptium recommended)
@@ -27,12 +54,92 @@ make help     # Show all available targets
 
 ## Development Workflow
 
-1. **Create a branch** from `main`
-2. **Make your changes** following the code style below
-3. **Run the build** — `./gradlew build --no-configuration-cache` must pass
-4. **Run the app** — verify your changes visually if they affect the UI
-5. **Commit** using Conventional Commits format
-6. **Open a Pull Request** against `main`
+### Who Can Contribute
+
+> Workflow diagram: [docs/contributor-workflows.md — Section 2](docs/contributor-workflows.md#section-2-contributor-type-workflows)
+
+| Contributor Type | Access | How to Submit | CI Behavior | Review Required |
+|-----------------|--------|---------------|-------------|-----------------|
+| **External (open source)** | None — fork the repo | PR from fork | CI runs, secrets NOT available | Maintainer approval |
+| **Collaborator** | Write — invited by maintainer | PR from repo branch | CI runs, full access | Maintainer or peer approval |
+| **Maintainer** | Admin | PR from repo branch | CI runs, full access | Self-review (CI is the gate) |
+| **AI Agent** (Claude Code, etc.) | Via maintainer's credentials | PR from repo branch | CI runs, full access | Maintainer MUST review the diff |
+| **Bots** (Dependabot, release-please) | App token | Auto-generated PR | CI runs automatically | Maintainer approval for merge |
+
+### For External Contributors (Fork Workflow)
+
+```bash
+# 1. Fork on GitHub UI, then clone your fork
+git clone https://github.com/YOUR-USERNAME/freemind-ce.git
+cd freemind-ce
+
+# 2. Add upstream remote
+git remote add upstream https://github.com/Denomas/freemind-ce.git
+
+# 3. Create feature branch
+git checkout -b feat/your-feature
+
+# 4. Make changes, build, and test
+make build    # Must pass before committing
+
+# 5. Push to your fork and open PR
+git push -u origin feat/your-feature
+# Then open PR on GitHub: YOUR-USERNAME/freemind-ce → Denomas/freemind-ce:main
+```
+
+> **Note for fork PRs:** CI secrets are NOT available in fork PR runs. This is a GitHub security measure. All tests still run normally since they don't require secrets.
+
+### For Collaborators and Maintainer
+
+```bash
+# Clone directly (you have write access)
+git clone https://github.com/Denomas/freemind-ce.git
+cd freemind-ce
+
+# Create feature branch (never commit directly to main)
+git checkout -b feat/your-feature
+
+# Make changes, build, and test
+make build
+
+# Push and create PR
+git push -u origin feat/your-feature
+gh pr create --title "feat: your feature" --body "Description"
+```
+
+### All Changes Go Through Pull Requests
+
+**Direct push to main is BLOCKED for everyone** — maintainer included. This is enforced by GitHub Ruleset with an empty bypass list. There are no exceptions, no hotfix bypasses, no admin overrides.
+
+> Blocked vs Allowed diagram: [docs/contributor-workflows.md — Section 3](docs/contributor-workflows.md#section-3-blocked-actions)
+
+### Hotfix / Emergency Fix Workflow
+
+There is NO shortcut for emergencies. The fastest path is still a PR:
+
+> Hotfix flow diagram: [docs/contributor-workflows.md — Section 4](docs/contributor-workflows.md#section-4-hotfix-flow)
+
+> Total time from bug discovery to merge: **~12 minutes.** This is fast enough. Never bypass CI.
+
+### First-Time Contributor Flow
+
+> First-time contributor diagram: [docs/contributor-workflows.md — Section 2](docs/contributor-workflows.md#first-time-contributor-flow)
+
+### Conflict Resolution Flow
+
+> Conflict resolution diagram: [docs/contributor-workflows.md — Section 5](docs/contributor-workflows.md#section-5-conflict-resolution)
+
+### Bot PR Lifecycle
+
+> Bot lifecycle diagram: [docs/contributor-workflows.md — Section 8](docs/contributor-workflows.md#section-8-bot-lifecycle)
+
+### AI Agent Workflow
+
+> AI agent workflow diagram: [docs/contributor-workflows.md — Section 2](docs/contributor-workflows.md#for-ai-agents)
+
+### Security Incident: Secret Leaked in PR
+
+> Security incident diagram: [docs/contributor-workflows.md — Section 11](docs/contributor-workflows.md#section-11-security-incident)
 
 ## Commit Best Practices
 
@@ -77,7 +184,7 @@ feat: infrastructure modernization (tests, CI, release, docs)
 - **Subject line:** max 72 characters, imperative mood ("add", "fix", "remove" — not "added", "fixed", "removed")
 - **Body (optional):** explain **why** the change was made, not what changed (the diff shows that). Wrap at 72 characters.
 - **Footer (optional):** reference issues with `Closes #123` or `Refs #456`
-- **Breaking changes:** add `!` after the type, e.g., `feat!: remove legacy XML import`
+- **Breaking changes (`feat!:`):** NEVER USE. This project preserves full backward compatibility with every `.mm` file ever created. We do not break the past — see [Project Philosophy](#project-philosophy) below.
 
 ### What Belongs in a Single Commit
 
@@ -100,9 +207,9 @@ feat: infrastructure modernization (tests, CI, release, docs)
 
 ## Serena Code Intelligence (MANDATORY)
 
-> **This is NOT optional.** Serena usage is a hard requirement for every developer, every AI agent, and every subagent task. No code change may be committed without Serena verification. All analysis work must start with Serena's symbolic tools before any file reads or edits.
+> **This is NOT optional.** Serena usage is a hard requirement for every developer, every AI agent, and every subagent task. No code change may be committed without Serena verification.
 
-This project uses [Serena](https://github.com/oraios/serena) as a semantic code analysis tool via MCP (Model Context Protocol). Serena provides LSP-powered symbol navigation, reference tracking, and impact analysis — ensuring every change is fully understood before it is committed.
+> **Full guide:** [docs/serena-guide.md](docs/serena-guide.md) — 18 tools, workflow diagrams, decision trees, examples
 
 ### Why Serena?
 
@@ -115,197 +222,17 @@ This project uses [Serena](https://github.com/oraios/serena) as a semantic code 
 
 1. **Before any code change:** Use `get_symbols_overview` and `find_symbol` to understand the current structure
 2. **Before committing:** Use `find_referencing_symbols` to verify all references remain valid
-3. **AI agents and subagents:** Must use Serena tools as the first step in every analysis task — this is non-negotiable
+3. **AI agents and subagents:** Must use Serena tools as the first step in every analysis task — non-negotiable
 4. **Never skip Serena:** Even for "simple" changes — every change has potential impact that Serena can detect
 
-### Setup (One-Time)
-
-```bash
-# 1. Install uv (Python package manager) if not already installed
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# 2. Add Serena as MCP server for Claude Code (per-project)
-claude mcp add serena -- uvx --from git+https://github.com/oraios/serena \
-  serena start-mcp-server --context=claude-code --project-from-cwd
-
-# 3. Create project config (already done — .serena/project.yml is versioned)
-# Only needed if starting a new project:
-# uvx --from git+https://github.com/oraios/serena serena project create --language java .
-
-# 4. Index the codebase (recommended after major changes)
-uvx --from git+https://github.com/oraios/serena serena project index .
-
-# 5. Verify setup
-uvx --from git+https://github.com/oraios/serena serena project health-check .
-```
-
-### Pre-Commit SOP (Standard Operating Procedure)
-
-**Every developer must follow this checklist before committing:**
+### Pre-Commit SOP
 
 1. **Build passes:** `make build`
-2. **Verify with Serena:** Use `find_symbol` and `find_referencing_symbols` to confirm:
-   - All references to modified symbols still compile and work correctly
-   - No orphaned references exist (dead code from renames/deletions)
-   - Interface contracts are preserved (method signatures, return types)
+2. **Verify with Serena:** `find_referencing_symbols` — all references intact, no orphans
 3. **Run the app:** `make run` — visually verify UI changes
-4. **Review log files:** Check `~/.freemind/log.0` for new SEVERE/WARNING entries
-5. **Clean diff:** `git diff --staged` — no debug code, no unrelated changes
+4. **Clean diff:** `git diff --staged` — no debug code, no unrelated changes
 
-### Complete Serena Tool Reference (18 Tools)
-
-#### Category 1: Code Exploration & Analysis
-
-| Tool | Purpose | Key Parameters |
-|------|---------|----------------|
-| `get_symbols_overview` | Get a file's class/method/field structure without reading the entire file. **Always call this first** when exploring a new file. | `relative_path` (required), `depth` (0=top-level only, 1=include children like methods of a class) |
-| `find_symbol` | Locate a class, method, or field by name path pattern. Supports simple names (`"setNoteText"`), relative paths (`"NodeAdapter/setNoteText"`), and absolute paths (`"/NodeAdapter/setNoteText"`). Can include source body and hover info. | `name_path_pattern` (required), `include_body` (read source), `include_info` (docstring/signature), `depth` (descendants), `substring_matching` (partial match), `relative_path` (restrict scope), `include_kinds`/`exclude_kinds` (filter by LSP kind) |
-| `find_referencing_symbols` | Find **all code that references a symbol** — callers, usages, imports. Returns code snippets around each reference with symbolic metadata. **Critical for impact analysis.** | `name_path` (required), `relative_path` (file path, required — must be a file, not directory) |
-| `search_for_pattern` | Flexible regex search across the entire codebase including non-code files (XML, YAML, properties, HTML). Supports DOTALL mode (`.` matches newlines). Use for finding patterns that aren't code symbols. | `substring_pattern` (regex, required), `relative_path` (restrict to dir/file), `restrict_search_to_code_files`, `paths_include_glob`/`paths_exclude_glob`, `context_lines_before`/`context_lines_after` |
-| `list_dir` | List files and directories. Use to understand project structure. | `relative_path` (required), `recursive` (required), `skip_ignored_files` |
-| `find_file` | Find files by name or wildcard mask (e.g., `*.java`, `*Controller*`). Only searches non-gitignored files. | `file_mask` (required), `relative_path` (required — use `.` for root) |
-
-#### Category 2: Code Editing (Symbol-Level Precision)
-
-| Tool | Purpose | When to Use |
-|------|---------|-------------|
-| `replace_symbol_body` | Replace the **entire body** of a symbol (method, class, function). The body includes the signature line but NOT preceding comments/docstrings/imports. | When you need to rewrite an entire method or class. First retrieve with `find_symbol(include_body=True)` to see current body. |
-| `insert_after_symbol` | Insert new code **after** a symbol's definition. | Adding a new method after an existing one, appending code at end of file (use last top-level symbol). |
-| `insert_before_symbol` | Insert new code **before** a symbol's definition. | Adding imports before the first symbol, inserting a new method before an existing one. |
-| `rename_symbol` | Rename a symbol **across the entire codebase** using LSP rename. Handles all references automatically. For Java overloaded methods, include signature in name_path. | When renaming a class, method, field, or variable. All references updated atomically. |
-
-#### Category 3: Memory System (Project Knowledge Persistence)
-
-| Tool | Purpose | Example |
-|------|---------|---------|
-| `write_memory` | Save project knowledge to named memory files (persists across sessions). Use `/` in names for topic organization. Prefix with `global/` for cross-project memories. | `write_memory("auth/login_flow", "The login flow uses...")` |
-| `read_memory` | Read a previously saved memory by name. Only read if relevant to current task. | `read_memory("suggested_commands")` |
-| `list_memories` | List all available memories, optionally filtered by topic. | `list_memories(topic="auth")` |
-| `edit_memory` | Edit memory content using literal string or regex replacement. | `edit_memory("overview", "old text", "new text", mode="literal")` |
-| `delete_memory` | Delete a memory. Only when explicitly instructed. | `delete_memory("obsolete/old_info")` |
-| `rename_memory` | Rename or move a memory to a different topic. | `rename_memory("old_name", "new/organized_name")` |
-
-#### Category 4: Project Management
-
-| Tool | Purpose |
-|------|---------|
-| `check_onboarding_performed` | Check if project onboarding has been done. Call at start of every new conversation. |
-| `onboarding` | Perform initial project setup — creates memory files with project overview, commands, conventions. Call once per project. |
-
-### Name Path Pattern Syntax
-
-Serena uses **name paths** to identify symbols within files:
-
-```
-Simple name:     "setNoteText"              → matches ANY symbol with that name
-Relative path:   "NodeAdapter/setNoteText"  → matches name path suffix
-Absolute path:   "/NodeAdapter/setNoteText" → exact full path match
-With index:      "MyClass/method[1]"        → specific overload (0-based)
-Substring:       "Node/set" + substring_matching=true → matches "Node/setText", "Node/setLink", etc.
-```
-
-### LSP Symbol Kinds (for `include_kinds`/`exclude_kinds`)
-
-| Kind | Integer | Kind | Integer |
-|------|---------|------|---------|
-| File | 1 | Module | 2 |
-| Namespace | 3 | Package | 4 |
-| Class | 5 | Method | 6 |
-| Property | 7 | Field | 8 |
-| Constructor | 9 | Enum | 10 |
-| Interface | 11 | Function | 12 |
-| Variable | 13 | Constant | 14 |
-| String | 15 | Number | 16 |
-| Boolean | 17 | Array | 18 |
-
-### Example Workflows
-
-#### Workflow 1: Understanding a Class Before Modifying It
-
-```
-# Step 1: Get class structure overview
-get_symbols_overview("freemind/freemind/modes/NodeAdapter.java", depth=1)
-→ See all methods, fields, inner classes
-
-# Step 2: Read specific method body
-find_symbol("NodeAdapter/setNoteText", include_body=True)
-→ Read full implementation
-
-# Step 3: Find all callers
-find_referencing_symbols("NodeAdapter/setNoteText",
-    relative_path="freemind/freemind/modes/NodeAdapter.java")
-→ See every place that calls this method with code context
-
-# Step 4: Make the change
-replace_symbol_body("NodeAdapter/setNoteText", ..., body="new implementation")
-
-# Step 5: Verify no broken references
-find_referencing_symbols again → confirm all callers still compatible
-```
-
-#### Workflow 2: Safe Renaming
-
-```
-# Step 1: Find the symbol
-find_symbol("MindMapController/addNewNode", include_info=True)
-→ See signature and javadoc
-
-# Step 2: Check impact
-find_referencing_symbols("MindMapController/addNewNode", ...)
-→ See all 47 callers across 12 files
-
-# Step 3: Rename across entire codebase
-rename_symbol("MindMapController/addNewNode", ..., new_name="createChildNode")
-→ All 47 references updated automatically
-
-# Step 4: Build to verify
-make build
-```
-
-#### Workflow 3: Adding a New Method to an Existing Class
-
-```
-# Step 1: Find the last method in the class
-get_symbols_overview("freemind/freemind/main/HtmlTools.java", depth=1)
-→ Identify last method name
-
-# Step 2: Insert new method after it
-insert_after_symbol("HtmlTools/lastMethodName", ...,
-    body="\n    public static String newMethod() {\n        ...\n    }")
-
-# Step 3: Verify placement
-get_symbols_overview again → confirm new method appears
-```
-
-#### Workflow 4: Cross-Codebase Pattern Search
-
-```
-# Find all XML plugin descriptors
-search_for_pattern("hook_name=",
-    paths_include_glob="**/*.xml",
-    relative_path="freemind/plugins")
-
-# Find all TODO/FIXME in code
-search_for_pattern("TODO|FIXME",
-    restrict_search_to_code_files=True,
-    context_lines_after=2)
-
-# Find usages of deprecated API in non-test code
-search_for_pattern("FreeMindMainMock",
-    restrict_search_to_code_files=True,
-    paths_exclude_glob="**/tests/**")
-```
-
-### Anti-Patterns (What NOT to Do)
-
-| Don't | Do Instead |
-|-------|-----------|
-| Read entire file with `cat` or `Read` tool first | Use `get_symbols_overview` → `find_symbol(include_body=True)` for specific symbols |
-| Use `grep` to find method callers | Use `find_referencing_symbols` for precise, LSP-powered reference tracking |
-| Manually search-and-replace a rename | Use `rename_symbol` for atomic, codebase-wide rename |
-| Edit code with line-based text tools | Use `replace_symbol_body` for precise symbol-level edits |
-| Skip Serena for "simple" changes | Always verify — even one-line changes can break interface contracts |
-| Commit without `find_referencing_symbols` | Every modified symbol must be verified for reference integrity |
+> **Complete Serena reference:** [docs/serena-guide.md](docs/serena-guide.md) — 18 tools, setup, workflow diagrams, decision trees, examples, anti-patterns
 
 ## Code Style
 
@@ -313,7 +240,7 @@ search_for_pattern("FreeMindMainMock",
 - No `@SuppressWarnings` — fix root causes
 - Never modify files in `generated-src/` — regenerate with `make jaxb`
 - Never ignore `*.jar` in `.gitignore` — the project depends on ~90 tracked local JARs
-- Preserve backward compatibility with existing `.mm` files
+- **Preserve backward compatibility** — every `.mm` file ever created must open correctly (see [Project Philosophy](#project-philosophy))
 
 ## Testing
 
@@ -366,21 +293,39 @@ Runner images: [actions/runner-images](https://github.com/actions/runner-images)
 
 Non-PR events (`push` to main, `workflow_call` from release-please) **always run the full matrix**.
 
-**CI flow diagram:**
+**CI flow diagram:** [docs/contributor-workflows.md — Section 6](docs/contributor-workflows.md#section-6-ci-pipeline)
 
+**Path filtering detection method:**
+
+The `Detect changes` job uses `git merge-base` to compute the common ancestor between the PR branch and main, then checks only the PR's own commits (not commits merged into main since the branch was created). This prevents false positives when main has recent merges.
+
+```bash
+# Correct: merge-base ensures only PR's own changes are checked
+BASE=$(git merge-base "$PR_BASE_SHA" "$PR_HEAD_SHA")
+git diff --name-only "$BASE..$HEAD" -- ':!**/*.md' ':!docs/**' ...
 ```
-PR (code change):   changes(code=true)  → build(24) → gui-tests(24) → CI ✅
-PR (docs only):     changes(code=false) → build(SKIP) → gui-tests(SKIP) → CI ✅
-Push to main:       changes(code=true)  → build(24) → gui-tests(24) → CI ✅
-workflow_call:      changes(code=true)  → build(24) → gui-tests(24) → CI ✅
-```
+
+**Doc-only file patterns** (changes to ONLY these files skip the build matrix):
+
+| Pattern | Examples |
+|---------|---------|
+| `**/*.md` | `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `docs/*.md` |
+| `docs/**` | Any file under `docs/` directory |
+| `LICENSE`, `COPYING`, `.gitattributes` | License and git config files |
+| `.github/ISSUE_TEMPLATE/**` | Issue templates |
+| `.github/PULL_REQUEST_TEMPLATE/**` | PR templates |
+| `.github/release-notes-template.md` | Release notes template |
+
+Any other file change (`.java`, `.kts`, `.yml`, `.xml`, `.properties`, etc.) triggers the full 48-job matrix.
 
 ### 4. Branch Workflow
+
+> PR lifecycle diagram: [docs/contributor-workflows.md — Section 7](docs/contributor-workflows.md#section-7-branch-workflow)
 
 - **All changes** via feature branch → Pull Request → main
 - **No direct push to main** (enforced by GitHub Ruleset)
 - PR requires: `CI` check pass + code review (single required check, not 48 individual)
-- Squash merge preferred for clean history
+- Squash merge only — clean linear history on main
 
 ### 5. GUI Test Requirements
 
@@ -392,12 +337,9 @@ workflow_call:      changes(code=true)  → build(24) → gui-tests(24) → CI �
 
 ### 6. Release Gating
 
-```
-Push to main → release-please.yml (paths-ignore skips doc-only pushes)
-  → build.yml (changes → build(24) → gui-tests(24) → CI) → release-please PR
-Tag → release.yml validate (24) + gui-tests (24) → packaging
-Any failure at any stage blocks release completely.
-```
+> Release pipeline diagram: [docs/contributor-workflows.md — Section 10](docs/contributor-workflows.md#section-10-release-gating)
+
+**Any failure at any stage blocks the release completely.** There is no manual override.
 
 > **Note:** `release-please.yml` and `scorecard.yml` use `paths-ignore` on push triggers.
 > Doc-only pushes to main skip these workflows entirely. The next code push catches up
@@ -421,6 +363,37 @@ New runner images must be added within 30 days of availability.
 > "Being lazy in writing tests means facing much bigger workloads later.
 > Our goal is to reduce future workload by testing every user scenario,
 > every edge case, every state, comprehensively, now."
+
+### 9. Merge Safety Protocol
+
+> **Full protocol:** [docs/merge-release-safety.md](docs/merge-release-safety.md)
+
+Every PR merge requires ALL gates to pass — no exceptions, no bypass:
+
+- **CI Matrix:** ALL 48 jobs SUCCESS (not 47/48 — every single one)
+- **Review:** Maintainer approval required for ALL PRs (including Dependabot)
+- **Up-to-date:** Branch must be synced with main
+- **Conversations:** All review threads resolved
+
+**STRICTLY FORBIDDEN:** `--admin` bypass, auto-merge without explicit maintainer instruction, merging with any failing check, force push to main. See [docs/merge-release-safety.md](docs/merge-release-safety.md) for the complete forbidden actions list.
+
+### 10. Dependency Update Protocol
+
+> **Full protocol:** [docs/merge-release-safety.md](docs/merge-release-safety.md#dependency-update-protocol)
+
+> Dependency decision tree diagram: [docs/contributor-workflows.md — Section 9](docs/contributor-workflows.md#section-9-dependency-updates)
+
+- **Patch** (x.x.1→x.x.2): CI passes + changelog review + maintainer approve
+- **Minor** (x.1→x.2): Above + local `make build` verification
+- **Major** (1.x→2.x): Above + migration guide + API fix + `make run` smoke test
+
+CI passing alone is NEVER sufficient. Human review is always required.
+
+### 11. Release Checklist
+
+> **Full checklist:** [docs/merge-release-safety.md](docs/merge-release-safety.md#release-checklist)
+
+Before merging any release-please PR: all CI green, `make build` + `make run` locally, CHANGELOG review, artifact download and verification. See the full checklist in the referenced document.
 
 ## Project Structure
 

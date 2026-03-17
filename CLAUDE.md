@@ -127,15 +127,20 @@ Not in Gradle: latex, collaboration/database, collaboration/jabber
 
 ## Critical Rules
 
+> **Rule 0 — Read [`CONTRIBUTING.md`](CONTRIBUTING.md) first.** It is the single source of truth for ALL project rules, merge protocols, dependency update procedures, and release checklists. Every agent, every subagent, every contributor MUST read it before starting any work. Follow the mandatory reading table at the top of that file.
+
 1. **Never ignore `*.jar` in .gitignore** — project depends on ~90 tracked local JARs in `lib/`
 2. **Never modify `generated-src/`** — regenerate with `make jaxb`
 3. **Never commit `auto.properties`** — runtime-generated user config
 4. **Test before commit** — `make build` must pass, `make run` to verify
 5. **No @SuppressWarnings** — fix root causes, don't suppress
-6. **Preserve backward compatibility** — existing .mm files must keep working
+6. **Preserve backward compatibility — ABSOLUTE RULE** — every `.mm` file ever created must open correctly. No breaking changes. No `feat!:` commits. See CONTRIBUTING.md Project Philosophy.
 7. **Verify with Serena before commit** — use `find_referencing_symbols` to check impact of all changes
 8. **Serena is MANDATORY for all agents** — every subagent task must include Serena usage as a requirement; start all analysis with `get_symbols_overview` and `find_symbol`
 9. **Always check `.gitignore` before CI paths** — never reference gitignored paths in GitHub Actions workflows (`paths-ignore`, pathspecs, etc.). They don't exist in the CI runner. Always run `grep <path> .gitignore` before adding any path to workflow files.
+10. **Never bypass merge controls** — no `--admin`, no force merge, no skipping review. See [`docs/merge-release-safety.md`](docs/merge-release-safety.md)
+11. **Dependency updates require manual review** — follow patch/minor/major protocol in [`docs/merge-release-safety.md`](docs/merge-release-safety.md#dependency-update-protocol)
+12. **Never auto-merge without explicit maintainer instruction** — every merge decision requires human approval for that specific PR
 
 ## Common Tasks
 
