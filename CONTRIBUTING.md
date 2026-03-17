@@ -345,7 +345,42 @@ Any other file change (`.java`, `.kts`, `.yml`, `.xml`, `.properties`, etc.) tri
 > Doc-only pushes to main skip these workflows entirely. The next code push catches up
 > because release-please accumulates all commits since the last release.
 
-### 7. New Runner/Java Version Procedure
+### 7. Scheduled Workflow Health (MANDATORY)
+
+> **This check is MANDATORY before every release and after every major change.**
+> A green PR CI does NOT mean all workflows are healthy — scheduled workflows run independently.
+
+The following workflows run on a schedule, NOT on every PR. They can break silently:
+
+| Workflow | Schedule | What it checks | How to verify |
+|----------|----------|---------------|---------------|
+| `security-scan.yml` | Weekly (Mon 06:00 UTC) | OWASP dependency vulns + CodeQL | `gh run list --workflow=security-scan.yml --limit 1` |
+| `scorecard.yml` | Every push to main | OpenSSF security scorecard | `gh run list --workflow=scorecard.yml --limit 1` |
+| `fuzz.yml` | On PR (if enabled) | Fuzzing tests | `gh run list --workflow=fuzz.yml --limit 1` |
+| `stale.yml` | Daily | Stale issue/PR cleanup | `gh run list --workflow=stale.yml --limit 1` |
+
+**Verification command (run before every release):**
+
+```bash
+# Check ALL workflow health — every line must show "success"
+for wf in security-scan.yml scorecard.yml fuzz.yml stale.yml build.yml release-please.yml; do
+  result=$(gh run list --workflow=$wf --limit 1 --json conclusion --jq '.[0].conclusion // "no runs"' 2>/dev/null)
+  echo "$wf: $result"
+done
+```
+
+**If any scheduled workflow is failing:**
+1. Investigate the failure logs: `gh run view <run-id> --log-failed`
+2. Fix the root cause (do NOT disable the workflow)
+3. Trigger a manual re-run: `gh workflow run <workflow-name>`
+4. Verify it passes before proceeding with the release
+
+**Common scheduled workflow failures:**
+- **CodeQL "no source code seen"** → add `clean` to the Gradle build command so CodeQL sees fresh compilation
+- **OWASP timeout** → increase timeout or add `continue-on-error: true` (already set)
+- **Scorecard API errors** → transient, re-run usually fixes
+
+### 8. New Runner/Java Version Procedure
 
 When a new GitHub Actions runner image or Java GA version becomes available:
 
@@ -358,13 +393,13 @@ When a new GitHub Actions runner image or Java GA version becomes available:
 New Java GA versions must be added within 30 days of release.
 New runner images must be added within 30 days of availability.
 
-### 8. Test Philosophy
+### 9. Test Philosophy
 
 > "Being lazy in writing tests means facing much bigger workloads later.
 > Our goal is to reduce future workload by testing every user scenario,
 > every edge case, every state, comprehensively, now."
 
-### 9. Merge Safety Protocol
+### 10. Merge Safety Protocol
 
 > **Full protocol:** [docs/merge-release-safety.md](docs/merge-release-safety.md)
 
@@ -377,7 +412,7 @@ Every PR merge requires ALL gates to pass — no exceptions, no bypass:
 
 **STRICTLY FORBIDDEN:** `--admin` bypass, auto-merge without explicit maintainer instruction, merging with any failing check, force push to main. See [docs/merge-release-safety.md](docs/merge-release-safety.md) for the complete forbidden actions list.
 
-### 10. Dependency Update Protocol
+### 11. Dependency Update Protocol
 
 > **Full protocol:** [docs/merge-release-safety.md](docs/merge-release-safety.md#dependency-update-protocol)
 
@@ -389,7 +424,7 @@ Every PR merge requires ALL gates to pass — no exceptions, no bypass:
 
 CI passing alone is NEVER sufficient. Human review is always required.
 
-### 11. Release Checklist
+### 12. Release Checklist
 
 > **Full checklist:** [docs/merge-release-safety.md](docs/merge-release-safety.md#release-checklist)
 

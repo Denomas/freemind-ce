@@ -104,6 +104,12 @@ Before merging any release-please PR:
   - Save the file
   - Export to at least one format (HTML, PDF, or PNG)
   - Verify no errors in `~/.freemind/log.0`
+- [ ] **ALL scheduled/non-PR workflows are healthy** — check each one:
+  - `gh run list --workflow=security-scan.yml --limit 1` → must be `success`
+  - `gh run list --workflow=scorecard.yml --limit 1` → must be `success`
+  - `gh run list --workflow=fuzz.yml --limit 1` → must be `success` (if enabled)
+  - `gh run list --workflow=stale.yml --limit 1` → must be `success`
+  - If ANY scheduled workflow is failing, fix it BEFORE releasing
 - [ ] No open Dependabot PRs with failing CI (all dependencies should be stable)
 - [ ] Version number in `.release-please-manifest.json` is correct
 - [ ] No WIP branches that should have been included in this release
