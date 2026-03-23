@@ -127,7 +127,7 @@ jobs:
           echo "Test count OK: $ACTUAL >= $MIN_TESTS"
 
       - name: Publish Unit Test Report
-        uses: dorny/test-reporter@3d76b34a4535afbd0600d347b09a6ee5deb3ed7f # v2
+        uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v2
         if: always()
         with:
           name: Unit Tests (${{ matrix.os }}, Java ${{ matrix.java }})
@@ -290,7 +290,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish GUI Test Report
-        uses: dorny/test-reporter@3d76b34a4535afbd0600d347b09a6ee5deb3ed7f # v2
+        uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v2
         if: always()
         with:
           name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
