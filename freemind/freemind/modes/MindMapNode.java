@@ -49,8 +49,8 @@ public interface MindMapNode extends MutableTreeNode {
 	public static final String STYLE_FORK = "fork";
 	public static final String STYLE_COMBINED = "combined";
 	public static final String STYLE_AS_PARENT = "as_parent";
-	public static final String[] NODE_STYLES = new String[] { STYLE_FORK,
-			STYLE_BUBBLE, STYLE_AS_PARENT, STYLE_COMBINED };
+	public static final java.util.List<String> NODE_STYLES = java.util.Collections.unmodifiableList(java.util.Arrays.asList(STYLE_FORK,
+			STYLE_BUBBLE, STYLE_AS_PARENT, STYLE_COMBINED));
 
 	/**
 	 * @return the text representation of the nodes content. HTML is represented

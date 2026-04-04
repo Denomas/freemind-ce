@@ -44,7 +44,7 @@ public class CommonNodeMouseMotionListener implements NodeMouseMotionObserver {
 	private final ModeController c;
 
 	// Logging:
-	private static java.util.logging.Logger logger;
+	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CommonNodeMouseMotionListener.class.getName());
 
 	/** time in ms, overwritten by property time_for_delayed_selection */
 	private static Tools.IntHolder timeForDelayedSelection;
@@ -89,7 +89,6 @@ public class CommonNodeMouseMotionListener implements NodeMouseMotionObserver {
 
 	public CommonNodeMouseMotionListener(ModeController controller) {
 		c = controller;
-		logger = c.getFrame().getLogger(this.getClass().getName());
 		if (delayedSelectionEnabled == null)
 			updateSelectionMethod();
 	}

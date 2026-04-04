@@ -39,8 +39,8 @@ class UnicodeRoundTripTests {
 
     @Test
     void nodeText_unicodePreservedThroughSaveLoad() throws Exception {
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            String script = ALL_SCRIPTS[i];
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            String script = ALL_SCRIPTS.get(i);
             String mapXml = "<map><node TEXT='" + xmlEscape(script) + "'/></map>";
             Tools.StringReaderCreator reader = new Tools.StringReaderCreator(mapXml);
             MindMapNode root = map.loadTree(reader, MapAdapter.sDontAskInstance);
@@ -48,7 +48,7 @@ class UnicodeRoundTripTests {
 
             String savedXml = getMapContents(map);
             assertThat(savedXml)
-                .as("Saved XML should contain UTF-8 for %s", ALL_SCRIPT_NAMES[i])
+                .as("Saved XML should contain UTF-8 for %s", ALL_SCRIPT_NAMES.get(i))
                 .contains(script);
         }
     }
@@ -77,18 +77,18 @@ class UnicodeRoundTripTests {
     void noteText_allScripts_noEntitiesInSavedXml() throws Exception {
         MindMapNode root = createMapWithRoot();
 
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            String htmlNote = wrapInHtml(ALL_SCRIPTS[i]);
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            String htmlNote = wrapInHtml(ALL_SCRIPTS.get(i));
             MindMapNode child = mapFeedback.addNewNode(root, i, true);
             mapFeedback.setNoteText(child, htmlNote);
         }
 
         String savedXml = getMapContents(map);
 
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             assertThat(savedXml)
-                .as("Saved XML should contain UTF-8 %s text directly", ALL_SCRIPT_NAMES[i])
-                .contains(ALL_SCRIPTS[i]);
+                .as("Saved XML should contain UTF-8 %s text directly", ALL_SCRIPT_NAMES.get(i))
+                .contains(ALL_SCRIPTS.get(i));
         }
     }
 

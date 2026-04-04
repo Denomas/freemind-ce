@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.net.URL;
+import java.util.Objects;
 
 import freemind.modes.ArrowLinkAdapter;
 import freemind.modes.ArrowLinkTarget;
@@ -136,7 +137,7 @@ public class BrowseMapModel extends MapAdapter {
 
 
 	protected NodeAdapter createNodeAdapter(MapFeedback pMapFeedback, String nodeClass) {
-		if (nodeClass == ENCRYPTED_BROWSE_NODE) {
+		if (Objects.equals(nodeClass, ENCRYPTED_BROWSE_NODE)) {
 			return new EncryptedBrowseNode(null, pMapFeedback);
 		}
 		return new BrowseNodeModel(null, pMapFeedback.getMap());

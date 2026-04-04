@@ -74,7 +74,7 @@ public class NodeNoteViewer extends NodeNoteBase implements
 			// logger.info("Panel added");
 			mBrowseController.getController().insertComponentIntoSplitPane(
 					getNoteViewerComponent(noteText), SplitComponentType.NOTE_PANEL);
-			noteViewer.setText(noteText != null ? noteText : "");
+			noteViewer.setText(noteText);
 		}
 	}
 

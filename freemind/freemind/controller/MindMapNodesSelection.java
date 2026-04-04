@@ -41,20 +41,20 @@ public class MindMapNodesSelection implements Transferable, ClipboardOwner {
 	private String dropActionContent;
 	private final List fileList;
 	private List<String> nodeIdsContent;
-	public static DataFlavor mindMapNodesFlavor = null;
-	public static DataFlavor rtfFlavor = null;
-	public static DataFlavor htmlFlavor = null;
-	public static DataFlavor fileListFlavor = null;
+	public static final DataFlavor mindMapNodesFlavor;
+	public static final DataFlavor rtfFlavor;
+	public static final DataFlavor htmlFlavor;
+	public static final DataFlavor fileListFlavor;
 	/**
 	 * fc, 7.8.2004: This is a quite interesting flavor, but how does it
 	 * works???
 	 */
-	public static DataFlavor dropActionFlavor = null;
+	public static final DataFlavor dropActionFlavor;
 	/**
 	 * This flavor contains the node ids only. Thus, it works only on the same
 	 * map.
 	 */
-	public static DataFlavor copyNodeIdsFlavor = null;
+	public static final DataFlavor copyNodeIdsFlavor;
 
 	static {
 		try {
@@ -70,6 +70,7 @@ public class MindMapNodesSelection implements Transferable, ClipboardOwner {
 					"application/freemind-node-ids; class=java.util.List");
 		} catch (Exception e) {
 			System.err.println(e);
+			throw new ExceptionInInitializerError(e);
 		}
 	}
 

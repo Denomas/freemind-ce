@@ -57,13 +57,12 @@ public class CommonNodeKeyListener implements KeyListener {
 
 	private final EditHandler editHandler;
 
-	private static Logger logger;
+	private static final Logger logger = Logger.getLogger(CommonNodeKeyListener.class.getName());
 
 	public CommonNodeKeyListener(ModeController controller,
 			EditHandler editHandler) {
 		c = controller;
 		this.editHandler = editHandler;
-			logger = controller.getFrame().getLogger(this.getClass().getName());
 
 		up = c.getFrame().getAdjustableProperty("keystroke_move_up");
 		down = c.getFrame().getAdjustableProperty("keystroke_move_down");

@@ -270,7 +270,7 @@ public class FreeMind extends JFrame implements FreeMindMain, ActionListener {
 	// public static Properties defaultProps;
 	public static Properties props;
 
-	private static Properties defProps;
+	private Properties defProps;
 
 	private MenuBar menuBar;
 

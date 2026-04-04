@@ -56,8 +56,7 @@ public class EdgeStyleActor extends XmlActorAdapter {
 		if (style != null) {
 			boolean found = false;
 			// check style:
-			for (int i = 0; i < EdgeAdapter.EDGESTYLES.length; i++) {
-				String possibleStyle = EdgeAdapter.EDGESTYLES[i];
+			for (String possibleStyle : EdgeAdapter.EDGESTYLES) {
 				if (Tools.safeEquals(style, possibleStyle)) {
 					found = true;
 					break;

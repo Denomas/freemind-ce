@@ -143,7 +143,7 @@ public class ManagePatternsPopupDialog extends JDialog implements
 
 	private JSplitPane mSplitPane;
 
-	private static Logger logger = null;
+	private static final Logger logger = Logger.getLogger(ManagePatternsPopupDialog.class.getName());
 
 	/**
 	 * This is the default constructor
@@ -151,8 +151,6 @@ public class ManagePatternsPopupDialog extends JDialog implements
 	public ManagePatternsPopupDialog(JFrame caller, MindMapController controller) {
 		super(caller);
 		this.mController = controller;
-			logger = mController.getFrame()
-					.getLogger(this.getClass().getName());
 
 		List<Pattern> patternList = new Vector<>();
 		try {

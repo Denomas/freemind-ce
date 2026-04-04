@@ -114,7 +114,7 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 	private final FreeMindMain frame;
 	private final FeedBackImpl feedBack; // !
 	private JProgressBar mProgressBar;
-	private static Logger logger;
+	private static final Logger logger = Logger.getLogger(FreeMindSplashModern.class.getName());
 	private ImageIcon mIcon;
 
 	public FeedBack getFeedBack() {
@@ -124,7 +124,6 @@ public class FreeMindSplashModern extends JFrame implements IFreeMindSplash {
 	public FreeMindSplashModern(final FreeMindMain frame) {
 		super("FreeMind CE");
 		this.frame = frame;
-			logger = frame.getLogger(this.getClass().getName());
 
 
 		this.feedBack = new FeedBackImpl();

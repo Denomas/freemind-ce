@@ -89,9 +89,9 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 
 		}
 
-		public static StylePatternFrameType WITHOUT_NAME_AND_CHILDS = new StylePatternFrameType();
+		public static final StylePatternFrameType WITHOUT_NAME_AND_CHILDS = new StylePatternFrameType();
 
-		public static StylePatternFrameType WITH_NAME_AND_CHILDS = new StylePatternFrameType();
+		public static final StylePatternFrameType WITH_NAME_AND_CHILDS = new StylePatternFrameType();
 	}
 
 	private static final String[] EDGE_STYLES = new String[] {

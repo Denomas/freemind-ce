@@ -49,7 +49,7 @@ public class MenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 
 
-	private static java.util.logging.Logger logger;
+	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuBar.class.getName());
 	public static final String MENU_BAR_PREFIX = "menu_bar/";
 	public static final String GENERAL_POPUP_PREFIX = "popup/";
 
@@ -77,7 +77,6 @@ public class MenuBar extends JMenuBar {
 
 	public MenuBar(Controller controller) {
 		this.c = controller;
-			logger = controller.getFrame().getLogger(this.getClass().getName());
 
 		// updateMenus();
 	}// Constructor

@@ -453,8 +453,7 @@ public class MindMapMapModel extends MapAdapter {
 						new InputStreamReader(new FileInputStream(semaphoreFile), StandardCharsets.UTF_8));
 				String lockingUser = semaphoreReader.readLine();
 
-				long lockTime = Long.valueOf(semaphoreReader.readLine())
-						.longValue();
+				long lockTime = Long.parseLong(semaphoreReader.readLine());
 				long timeDifference = System.currentTimeMillis() - lockTime;
 				// catch (NumberFormatException enf) {} // This means that the
 				// time was not written at all - lock is corrupt

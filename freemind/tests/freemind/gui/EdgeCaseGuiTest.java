@@ -161,12 +161,12 @@ class EdgeCaseGuiTest extends GuiTestBase {
         String savedXml = saveMap();
 
         MindMapNode root2 = reloadMap(savedXml);
-        assertThat(root2.getChildCount()).isEqualTo(ALL_SCRIPTS.length);
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        assertThat(root2.getChildCount()).isEqualTo(ALL_SCRIPTS.size());
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             MindMapNode child = (MindMapNode) root2.getChildAt(i);
             assertThat(child.getText())
-                .as("Script %s preserved", ALL_SCRIPT_NAMES[i])
-                .isEqualTo(ALL_SCRIPTS[i]);
+                .as("Script %s preserved", ALL_SCRIPT_NAMES.get(i))
+                .isEqualTo(ALL_SCRIPTS.get(i));
         }
     }
 

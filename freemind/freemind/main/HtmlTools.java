@@ -624,10 +624,10 @@ public class HtmlTools {
 	public static boolean isXMLValidCharacter(char character) {
 		// Order the tests in such a sequence that the most probable
 		// conditions are tested first.
+		// Note: char type is 0-65535, so character >= 0x10000 check is unnecessary
 		return character >= 0x20 && character <= 0xD7FF || character == 0x9
 				|| character == 0xA || character == 0xD || character >= 0xE000
-				&& character <= 0xFFFD || character >= 0x10000
-				&& character <= 0x10FFFF;
+				&& character <= 0xFFFD;
 	}
 
 	/** Precondition: The input text contains XML unicode entities rather
@@ -799,7 +799,7 @@ public class HtmlTools {
 						Matcher matcher = LEVEL_PATTERN.matcher(element.attr("style"));
 						if(element.tagName().equals("p") && matcher.find()) {
 							// special handling for outlook
-							int newLevel = Integer.valueOf(matcher.group(1));
+							int newLevel = Integer.parseInt(matcher.group(1));
 							while(newLevel>mLevel) {
 //								System.out.println("Level increase from: " + mLevel + " to " + newLevel);
 								createChild();

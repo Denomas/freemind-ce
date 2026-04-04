@@ -222,7 +222,7 @@ class CollaborationGuiTest extends GuiTestBase {
     void collaboration_socketMaster() throws Exception {
         // Socket collaboration requires network; verify model can serialize for sharing
         MapModelFixture fixture = createMapModel();
-        MindMapNode root = loadMap(fixture.model, "<map><node TEXT='MasterMap'/></map>");
+        loadMap(fixture.model, "<map><node TEXT='MasterMap'/></map>");
         String xml = saveMapToXml(fixture.model);
         assertThat(xml).contains("MasterMap");
     }
@@ -249,7 +249,7 @@ class CollaborationGuiTest extends GuiTestBase {
     @Test
     void collaboration_databaseMaster() throws Exception {
         MapModelFixture fixture = createMapModel();
-        MindMapNode root = loadMap(fixture.model, "<map><node TEXT='DbMaster'/></map>");
+        loadMap(fixture.model, "<map><node TEXT='DbMaster'/></map>");
         String xml = saveMapToXml(fixture.model);
         // Verify map can be serialized for database storage
         assertThat(xml).isNotEmpty();

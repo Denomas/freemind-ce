@@ -97,15 +97,15 @@ class HtmlUnicodeTests {
 
     @Test
     void toXhtml_allScripts_noNumericEntities() {
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            String html = wrapInHtml(ALL_SCRIPTS[i]);
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            String html = wrapInHtml(ALL_SCRIPTS.get(i));
             String xhtml = htmlTools.toXhtml(html);
             assertThat(xhtml)
-                .as("Script: %s", ALL_SCRIPT_NAMES[i])
+                .as("Script: %s", ALL_SCRIPT_NAMES.get(i))
                 .isNotNull();
             // Should not contain numeric HTML entities for non-ASCII chars
             assertThat(xhtml)
-                .as("Script %s should not have numeric entities", ALL_SCRIPT_NAMES[i])
+                .as("Script %s should not have numeric entities", ALL_SCRIPT_NAMES.get(i))
                 .doesNotContainPattern("&#[0-9]+;");
         }
     }

@@ -212,11 +212,11 @@ class DialogsGuiTest extends GuiTestBase {
         runOnEdt(() -> {
             SHTMLPanel panel = SHTMLPanel.createSHTMLPanel();
             panel.setSize(600, 400);
-            for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-                panel.setCurrentDocumentContent(wrapInHtml(ALL_SCRIPTS[i]));
+            for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+                panel.setCurrentDocumentContent(wrapInHtml(ALL_SCRIPTS.get(i)));
                 // If no exception is thrown, the script is handled correctly
                 assertThat(panel.getDocumentText())
-                    .as("Script %s should produce non-null content", ALL_SCRIPT_NAMES[i])
+                    .as("Script %s should produce non-null content", ALL_SCRIPT_NAMES.get(i))
                     .isNotNull();
             }
             panel.setVisible(false);
@@ -295,9 +295,9 @@ class DialogsGuiTest extends GuiTestBase {
     void dialog_sHTMLPanelToXhtmlPipelineAllScripts() throws Exception {
         HtmlTools htmlTools = HtmlTools.getInstance();
 
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            final String script = ALL_SCRIPTS[i];
-            final String scriptName = ALL_SCRIPT_NAMES[i];
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            final String script = ALL_SCRIPTS.get(i);
+            final String scriptName = ALL_SCRIPT_NAMES.get(i);
 
             String panelOutput = runOnEdtAndGet(() -> {
                 SHTMLPanel panel = SHTMLPanel.createSHTMLPanel();

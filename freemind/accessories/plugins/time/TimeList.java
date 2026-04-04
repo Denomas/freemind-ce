@@ -100,17 +100,17 @@ public class TimeList extends MindMapHookAdapter implements
 
 	private static final int TYPE_DELAY_TIME = 500;
 
-	private static String COLUMN_MODIFIED = "Modified";
+	private String COLUMN_MODIFIED = "Modified";
 
-	private static String COLUMN_CREATED = "Created";
+	private String COLUMN_CREATED = "Created";
 
-	private static String COLUMN_ICONS = "Icons";
+	private String COLUMN_ICONS = "Icons";
 
-	private static String COLUMN_TEXT = "Text";
+	private String COLUMN_TEXT = "Text";
 
-	private static String COLUMN_DATE = "Date";
+	private String COLUMN_DATE = "Date";
 
-	private static String COLUMN_NOTES = "Notes";
+	private String COLUMN_NOTES = "Notes";
 
 	private static final int DATE_COLUMN = 0;
 

@@ -1,5 +1,9 @@
 package tests.freemind.unicode;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Constants for Unicode test data across multiple scripts and edge cases.
  */
@@ -46,15 +50,15 @@ public final class UnicodeTestData {
     public static final String MIXED_SCRIPTS = "Hello Привет 你好 مرحبا שלום";
 
     // All non-ASCII test strings for iteration
-    public static final String[] ALL_SCRIPTS = {
+    public static final List<String> ALL_SCRIPTS = Collections.unmodifiableList(Arrays.asList(
         TURKISH, GERMAN, CYRILLIC, ARABIC, HEBREW,
         CJK, JAPANESE, KOREAN, THAI, DEVANAGARI, EMOJI, MIXED_SCRIPTS
-    };
+    ));
 
-    public static final String[] ALL_SCRIPT_NAMES = {
+    public static final List<String> ALL_SCRIPT_NAMES = Collections.unmodifiableList(Arrays.asList(
         "Turkish", "German", "Cyrillic", "Arabic", "Hebrew",
         "CJK", "Japanese", "Korean", "Thai", "Devanagari", "Emoji", "Mixed"
-    };
+    ));
 
     // HTML-wrapped versions for note editor testing
     public static String wrapInHtml(String text) {

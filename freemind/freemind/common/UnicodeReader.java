@@ -28,6 +28,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PushbackInputStream;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Generic unicode textreader, which will use BOM mark to identify the encoding
@@ -110,7 +111,7 @@ public class UnicodeReader extends Reader {
 
 		// Use given encoding
 		if (encoding == null) {
-			internalIn2 = new InputStreamReader(internalIn);
+			internalIn2 = new InputStreamReader(internalIn, StandardCharsets.UTF_8);
 		} else {
 			internalIn2 = new InputStreamReader(internalIn, encoding);
 		}

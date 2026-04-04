@@ -220,14 +220,13 @@ public class FreeMindCommon {
 
 	public static final String TIME_MANAGEMENT_MARKING_XML = "time_management_marking_xml";
 
-	private static Logger logger = null;
+	private static final Logger logger = Logger.getLogger(FreeMindCommon.class.getName());
 
 
 	public FreeMindCommon(FreeMindMain main) {
 		super();
 		// TODO Auto-generated constructor stub
 		this.mFreeMindMain = main;
-		logger = main.getLogger(this.getClass().getName());
 	}
 
 	public String getProperty(String key) {

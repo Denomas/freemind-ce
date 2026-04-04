@@ -33,8 +33,8 @@ import freemind.modes.MindMapNode;
 
 public class NoFilteringCondition implements Condition {
 
-	private static String description;
-	private static JComponent renderer;
+	private String description;
+	private JComponent renderer;
 	private static NoFilteringCondition condition;
 
 	private NoFilteringCondition() {

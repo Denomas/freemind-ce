@@ -170,7 +170,7 @@ public class FreeMindMapController extends JMapController implements
 
 	private static final String DO_REVERSE_LOOKUP_ON_LAT_LON_SEARCH = "do_reverse_lookup_on_lat_lon_search";
 
-	protected static java.util.logging.Logger logger = freemind.main.Resources
+	protected static final java.util.logging.Logger logger = freemind.main.Resources
 			.getInstance().getLogger("plugins.map.FreeMindMapController");
 
 	private JPopupMenu mPopupMenu = new JPopupMenu();
@@ -2104,7 +2104,7 @@ public class FreeMindMapController extends JMapController implements
 			// doesn't work due to event thread...
 			mResultTable.setBackground(Color.GRAY);
 			Searchresults results = getSearchResults(mSearchText);
-			if (results == null) {
+			if (results == null || results.getListPlaceList() == null) {
 				mResultTable.setBackground(Color.RED);
 			} else {
 				for (Iterator<Place> it = results.getListPlaceList().iterator(); it.hasNext();) {
@@ -2360,12 +2360,16 @@ public class FreeMindMapController extends JMapController implements
 					result);
 			if (results == null) {
 				logger.warning("URL: "  +b + ", result:" + result + " can't be parsed");
+				return new Searchresults();
 			}
 		} catch (Exception e) {
 			logger.fine("Searching for " + b.toString() + " gave an error");
 			final String errorString = e.toString();
 			freemind.main.Resources.getInstance().logException(e);
 			logger.warning("Result was " + result);
+			if (results == null) {
+				return new Searchresults();
+			}
 			results.addPlace(getErrorPlace(errorString, "ERROR"));
 		}
 		if (results.getListPlaceList().isEmpty()) {

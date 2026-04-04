@@ -121,7 +121,7 @@ public class Controller implements MapModuleChangeObserver {
 	 * Converts from a local link to the real file URL of the documentation map.
 	 * (Used to change this behaviour under MacOSX).
 	 */
-	private static Logger logger;
+	private static final Logger logger = Logger.getLogger(Controller.class.getName());
 	/** Used for MAC!!! */
 	public static LocalLinkConverter localDocumentationLinkConverter;
 	private static JColorChooser colorChooser = new JColorChooser();
@@ -203,8 +203,6 @@ public class Controller implements MapModuleChangeObserver {
 	//
 	public Controller(FreeMindMain frame) {
 		this.frame = frame;
-			logger = frame.getLogger(this.getClass().getName());
-
 	}
 
 	public void init() {

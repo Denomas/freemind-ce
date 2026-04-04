@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -138,7 +139,7 @@ public class TransformTest extends FreeMindTestBase {
 		Tools.copyStream(xmlSource, out, true);
 		ExportWithXSLT exportHook = new ExportWithXSLT();
 		MindMapControllerMock controller = new MindMapControllerMock(
-				mFreeMindMain, out.toString());
+				mFreeMindMain, out.toString(StandardCharsets.UTF_8));
 		exportHook.setController(controller);
 
 		exportHook.setProperties(properties);
@@ -157,7 +158,7 @@ public class TransformTest extends FreeMindTestBase {
 		Tools.copyStream(xmlSource, out, true);
 		ExportToOoWriter exportHook = new ExportToOoWriter();
 		exportHook.setController(new MindMapControllerMock(mFreeMindMain, out
-				.toString()));
+				.toString(StandardCharsets.UTF_8)));
 
 		exportHook.setProperties(properties);
 		File destinationFile = new File(destinationFileName);

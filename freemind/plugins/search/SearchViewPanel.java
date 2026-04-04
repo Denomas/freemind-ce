@@ -101,14 +101,13 @@ public class SearchViewPanel extends JDialog implements ListSelectionListener {
 	 */
 	SearchViewPanel(ISearchController searchController) {
 		super(searchController.getJFrame(), "Search Multiple Maps", false);
-		this._logger = searchController.getLogger(SearchViewPanel.class);
 
 		this.searchControllerHook = searchController;
 		initialize();
 
 	}
 
-	private static Logger _logger = null;
+	private static final Logger _logger = Logger.getLogger(SearchViewPanel.class.getName());
 
 	private File selectedDirectory;
 	private JButton btnGoButton = new JButton("Search");
