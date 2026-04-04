@@ -1,0 +1,29 @@
+.claude/settings.json
+  22af26e20b09ff0b 122,133
+freemind/config/pmd-ruleset.xml
+  22af26e20b09ff0b 1-33
+freemind/build.gradle.kts
+  22af26e20b09ff0b 14,461-477
+.claude/hooks/check-grep-java.sh
+  22af26e20b09ff0b 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "e0a2980c52827ae8442f44723e7f4887cb25db63",
+  "prompts": {
+    "22af26e20b09ff0b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d9a1a69-77af-46fc-9352-452601442e05",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 85,
+      "total_deletions": 33,
+      "accepted_lines": 55,
+      "overriden_lines": 0
+    }
+  }
+}
