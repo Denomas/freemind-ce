@@ -1,0 +1,25 @@
+freemind/freemind/modes/mindmapmode/actions/JoinNodesAction.java
+  4e2c43392ac4c63a 95,102
+freemind/tests/freemind/gui/ViewMenuGuiTest.java
+  4e2c43392ac4c63a 11,96,101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "e1f906ecee6f90c6baf67eed6d2ad1bfedc92f5c",
+  "prompts": {
+    "4e2c43392ac4c63a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2aa18cd03ffeqAp1FC2ntTOx3p",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 5,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    }
+  }
+}
