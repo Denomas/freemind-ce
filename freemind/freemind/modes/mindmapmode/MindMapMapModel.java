@@ -397,9 +397,7 @@ public class MindMapMapModel extends MapAdapter {
 		String lockingUserOfOldLock = null;
 
 		private File getSemaphoreFile(File mapFile) {
-			return new File(mapFile.getParent()
-					+ System.getProperty("file.separator") + "$~"
-					+ mapFile.getName() + "~");
+			return new File(mapFile.getParentFile(), "$~" + mapFile.getName() + "~");
 		}
 
 		public synchronized String popLockingUserOfOldLock() {

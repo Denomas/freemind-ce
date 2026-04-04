@@ -126,6 +126,13 @@ public class ImportWizard {
 			while (enumeration.hasMoreElements()) {
 				ZipEntry zipEntry = (ZipEntry) enumeration.nextElement();
 				String current = zipEntry.getName();
+				// Validate against Zip Slip (path traversal) attacks:
+				// reject entries containing ".." path components
+				java.nio.file.Path normalized = java.nio.file.Paths.get(current).normalize();
+				if (normalized.startsWith("..") || normalized.isAbsolute()) {
+					logger.warning("Skipping suspicious zip entry: " + current);
+					continue;
+				}
 				if (isInteresting(current)) {
 					current = current.substring(0,
 							current.length() - lookFor.length());
