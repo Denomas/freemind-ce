@@ -110,7 +110,7 @@ val jaxbImplVersion = "2.3.9"
 val batikVersion = "1.19"
 val fopVersion = "2.11"
 val flatlafVersion = "3.7.1"
-val jgoodiesFormsVersion = "1.8.0"
+val jgoodiesFormsVersion = "1.9.0"
 val jgoodiesCommonVersion = "1.8.1"
 val junitVersion = "4.13.2"
 

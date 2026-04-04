@@ -37,6 +37,7 @@ import javax.swing.WindowConstants;
 
 import com.jgoodies.forms.builder.ButtonBarBuilder;
 import com.jgoodies.forms.builder.DefaultFormBuilder;
+import com.jgoodies.forms.factories.Borders;
 import com.jgoodies.forms.layout.FormLayout;
 
 import freemind.common.PropertyBean;
@@ -89,8 +90,8 @@ public class FormDialog extends JDialog implements
 		getContentPane().setLayout(new BorderLayout());
 		FormLayout formLayout = new FormLayout(
 				"right:max(40dlu;p), 4dlu, 80dlu, 7dlu", "");
-		DefaultFormBuilder builder = new DefaultFormBuilder(formLayout);
-		builder.setDefaultDialogBorder();
+		DefaultFormBuilder builder = new DefaultFormBuilder(formLayout)
+				.border(Borders.DIALOG);
 		for (PropertyControl prop : controls) {
 			prop.layout(builder, mController2);
 			PropertyBean bean = (PropertyBean) prop;
