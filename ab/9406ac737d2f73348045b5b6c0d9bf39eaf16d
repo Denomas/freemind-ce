@@ -1,0 +1,40 @@
+.release-please-manifest.json
+  4e2c43392ac4c63a 2
+CHANGELOG.md
+  4e2c43392ac4c63a 3,8,10,12-14,16,18,20
+build.gradle.kts
+  4e2c43392ac4c63a 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "ab9406ac737d2f73348045b5b6c0d9bf39eaf16d",
+  "prompts": {
+    "3a569ff05e7219a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f37a94-7137-4f29-a97e-f1bbc6f050d3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 224,
+      "overriden_lines": 0
+    },
+    "4e2c43392ac4c63a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2aa18cd03ffeqAp1FC2ntTOx3p",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 88,
+      "accepted_lines": 11,
+      "overriden_lines": 0
+    }
+  }
+}
