@@ -1,41 +1,66 @@
 # FreeMind CE — Developer Guide
 
-## RULE 0 — GROUNDING (MANDATORY BEFORE ANY ACTION)
+## YOU KNOW THIS, BUT IT'S DIFFERENT HERE
 
-> **No matter what task or request you receive, you MUST NOT start working until you have answered ALL of these questions.** Starting work without understanding context is a disqualifying violation.
+You already know Java, security, refactoring — good. But this project has specific rules that override standard practices. If you skip this section and rely on your general knowledge, you WILL break things.
 
-| # | Question | How to Answer |
-|---|----------|--------------|
-| 1 | **Neredeyim?** — Hangi proje, hangi repo, hangi branch, hangi dizin? | `git status`, `pwd`, `ls`, README oku |
-| 2 | **Ben kimim?** — Rolüm ne, hangi araçlara erişimim var, kısıtlamalarım ne? | Bu dosyayı (CLAUDE.md) oku, mevcut tool'ları kontrol et |
-| 3 | **Görevim ne?** — Tam olarak ne isteniyor, ne istenmiyor, başarı kriteri ne? | Kullanıcı talebini parçala, belirsizlik varsa sor |
-| 4 | **Kurallarım ne?** — Hangi dokümanları okumalıyım, hangi kurallar geçerli? | Mandatory Reading Table'ı oku, CONTRIBUTING.md'yi aç |
-| 5 | **Araçlarım ne?** — Hangi tool'lar mevcut, nasıl kullanırım? | Serena MCP, bash, file tools — her birinin doğru kullanımını bil |
+| You normally do this | HERE, do this instead | Why |
+|---|---|---|
+| `grep/rg` on Java files | `search_for_pattern()` (Serena MCP) | Semantic analysis, not text matching |
+| `cat File.java` or `Read` whole file | `get_symbols_overview()` then `find_symbol()` | Token-efficient, symbol-level precision |
+| `find . -name "*.java"` | `find_file("*.java", ".")` (Serena MCP) | Respects .gitignore, structured results |
+| Commit without checking callers | `find_referencing_symbols()` before every commit | Broken callers are invisible without it |
+| Sanitize/filter user input | **NEVER** — user content is sacred | Every path, script, SQL the user types is preserved exactly |
+| Use `feat!:` for breaking changes | **NEVER** — backward compatibility is absolute | Every `.mm` file ever created must still open |
 
-**Bu 5 sorunun cevaplarını BULMADAN ve ANLAMADAN hiçbir işe BAŞLAMA.**
+> `grep/rg` on non-Java files (`.properties`, `.md`, `.yml`, `.xml`) is fine and encouraged.
+
+## First Action — Grounding Checklist
+
+Before ANY work, call `mcp__serena__check_onboarding_performed` then print:
+
+```
+GROUNDING:
+- Branch: ___  Directory: ___
+- Task (one sentence): ___
+- Serena onboarding: yes/no
+- First Serena call: get_symbols_overview on ___
+```
+
+## Read What Applies to Your Task
+
+Don't read everything — read what's relevant:
+
+| Your task involves... | Read this |
+|---|---|
+| Any code analysis or editing | [docs/serena-guide.md](docs/serena-guide.md) |
+| Design or architecture decisions | [docs/architecture.md](docs/architecture.md) |
+| PR, merge, or release | [docs/merge-release-safety.md](docs/merge-release-safety.md) + [docs/contributor-workflows.md](docs/contributor-workflows.md) |
+| Build, test, or packaging | [docs/development-guide.md](docs/development-guide.md) |
+| Finding specific code/components | [docs/component-inventory.md](docs/component-inventory.md) + [docs/source-tree-analysis.md](docs/source-tree-analysis.md) |
+| Commit conventions, project rules | [CONTRIBUTING.md](CONTRIBUTING.md) (single source of truth) |
+
+## Pre-Commit Checklist
+
+Before EVERY commit:
+1. `find_referencing_symbols(symbol, file)` — for each modified symbol
+2. `make build` — must pass (compile + test)
+3. `make run` — visual smoke test for UI changes
+4. `git diff --staged` — no debug code, no secrets
+
+## Subagent Rule
+
+Every subagent prompt starts with:
+```
+Proje: freemind-ce. CLAUDE.md'yi oku ve talimatları uygula. Java kod analizi için Serena MCP kullan (grep/find değil). Görev: [X]
+```
+One line. The subagent reads THIS file and gets all the context it needs.
 
 ---
 
-> **RULE 1 — READ BEFORE ANY WORK:** You MUST read ALL documents listed in the Mandatory Reading Table below before starting any task. Skipping any document is a disqualifying violation. Every rule in those documents must be applied before any commit, push, or merge.
+## Reference (look up as needed — do not read upfront)
 
-## Mandatory Reading Table
-
-| Document | What It Contains | When to Read |
-|----------|-----------------|-------------|
-| **[CONTRIBUTING.md](CONTRIBUTING.md)** | **Single source of truth for ALL rules:** project philosophy, commit conventions, Serena workflow, CI/CD SOP (48-job matrix, path filtering, GUI test requirements, scheduled workflow health checks, CI output verification), merge safety protocol, dependency update protocol, release checklist, code style, testing | **Always — before any work, without exception** |
-| **[docs/serena-guide.md](docs/serena-guide.md)** | Serena MCP tool reference (18 tools), workflow diagrams, decision trees, examples, anti-patterns | Before any code analysis or editing |
-| **[docs/development-guide.md](docs/development-guide.md)** | Build commands, test execution, debug mode, packaging, JVM arguments, module structure | Before writing or running code |
-| **[docs/architecture.md](docs/architecture.md)** | MVC pattern, mode-based architecture (Browse/MindMap/File), action framework, plugin system, hook architecture | Before any design decision |
-| **[docs/component-inventory.md](docs/component-inventory.md)** | UI components, plugin registry, source file locations | Before finding or modifying specific code |
-| **[docs/source-tree-analysis.md](docs/source-tree-analysis.md)** | Directory structure, file locations, module organization | Before navigating the codebase |
-| **[docs/merge-release-safety.md](docs/merge-release-safety.md)** | Merge protocols, branch protection, dependency update rules (patch/minor/major), release checklist | Before any merge, review, or release |
-| **[docs/contributor-workflows.md](docs/contributor-workflows.md)** | Workflow diagrams: CI pipeline, PR lifecycle, release gating, dependency updates, blocked actions, hotfix flow, conflict resolution, bot lifecycle, security incidents | Before any PR, merge, or release operation |
-
-> **SINGLE SOURCE OF TRUTH RULE:** Every project rule, workflow, and convention exists in exactly ONE place — CONTRIBUTING.md and the docs/ directory. This file (CLAUDE.md) only contains links and quick references. Never duplicate content. If a rule is referenced here, follow the link to read the authoritative version.
-
----
-
-## Quick Start
+### Quick Start
 
 ```bash
 make build    # Build the project (compile + test)
@@ -43,39 +68,41 @@ make run      # Run FreeMind CE
 make help     # Show all available make targets
 ```
 
-> **Note:** `make` wraps Gradle with correct `JAVA_HOME` and `--no-configuration-cache` flags automatically.
-> See raw Gradle commands in `Makefile` if needed.
+> `make` wraps Gradle with correct `JAVA_HOME` and `--no-configuration-cache` flags.
 
 - Entry point: `freemind.main.FreeMindStarter`
-- Version: Managed by release-please. **Never edit manually.** → [CONTRIBUTING.md — Commit Best Practices](CONTRIBUTING.md#commit-best-practices)
+- Version: Managed by release-please. Never edit manually.
 
-## Repository Layout
+### Key Constraints
+
+1. Never ignore `*.jar` in .gitignore — ~90 tracked local JARs
+2. Never modify `generated-src/` — regenerate with `make jaxb`
+3. Never commit `auto.properties` — runtime-generated
+4. No `@SuppressWarnings` — fix root causes
+5. Backward compatibility is ABSOLUTE — every `.mm` file must open
+6. Never bypass merge controls — no `--admin`, no force merge
+7. Dependency updates require manual review → [docs/merge-release-safety.md](docs/merge-release-safety.md#dependency-update-protocol)
+
+### Repository Layout
 
 ```
 freemind-ce/
-├── CLAUDE.md                 # This file — index and quick reference
-├── CONTRIBUTING.md           # ← SINGLE SOURCE OF TRUTH for ALL rules
+├── CLAUDE.md                 # This file
+├── CONTRIBUTING.md           # Single source of truth for ALL rules
 ├── Makefile                  # Development shortcuts
 ├── .serena/project.yml       # Serena LSP config
-├── docs/
-│   ├── architecture.md       # MVC, modes, action framework
-│   ├── component-inventory.md # UI components, plugins
-│   ├── source-tree-analysis.md # Directory structure
-│   ├── development-guide.md  # Build, test, deploy
-│   ├── serena-guide.md       # Serena tool reference (18 tools)
-│   ├── merge-release-safety.md # Merge protocols, release checklist
-│   └── contributor-workflows.md # Workflow diagrams
+├── docs/                     # Architecture, guides, workflows
 ├── build.gradle.kts          # Root build config
-├── freemind/                  # Main module
-│   ├── freemind/              # Core source
-│   ├── accessories/           # XSLT exports, accessory plugins
-│   ├── plugins/               # Plugin modules
-│   ├── generated-src/         # JAXB generated (DO NOT EDIT)
-│   └── tests/                 # JUnit tests
-└── _bmad-output/              # Technical specs
+├── freemind/                 # Main module
+│   ├── freemind/             # Core source
+│   ├── accessories/          # XSLT exports
+│   ├── plugins/              # Plugin modules
+│   ├── generated-src/        # JAXB generated (DO NOT EDIT)
+│   └── tests/                # JUnit tests
+└── _bmad-output/             # Technical specs
 ```
 
-## Key Source Locations
+### Key Source Locations
 
 | What | Where |
 |------|-------|
@@ -85,30 +112,14 @@ freemind-ce/
 | Map view | `freemind/freemind/view/mindmapview/MapView.java` |
 | Node model | `freemind/freemind/modes/MindMapNode.java` |
 
-## Plugin Development
+### Architecture
 
-→ [CONTRIBUTING.md — Plugin Development](CONTRIBUTING.md#plugin-development)
+- **Pattern:** MVC + Mode-based (Browse/MindMap/File) + Hook/Plugin
+- **XML Binding:** JAXB 2.3.1/2.3.9
+- **L&F:** FlatLaf 3.7
+- Active plugins: svg, script, map, search, help, contextgraph, collaboration/socket
 
-Active plugins: svg, script, map, search, help, contextgraph, collaboration/socket
-
-## Critical Rules (Summary)
-
-> **Full rules → [CONTRIBUTING.md — Critical Rules](CONTRIBUTING.md#critical-rules)**
-
-1. **Never ignore `*.jar` in .gitignore** — ~90 tracked local JARs
-2. **Never modify `generated-src/`** — regenerate with `make jaxb`
-3. **Never commit `auto.properties`** — runtime-generated
-4. **Test before commit** — `make build` must pass
-5. **No @SuppressWarnings** — fix root causes
-6. **Preserve backward compatibility — ABSOLUTE RULE** — every `.mm` file must open
-7. **Verify with Serena before commit** — `find_referencing_symbols`
-8. **Serena is MANDATORY** — every agent, every subagent
-9. **Check `.gitignore` before CI paths** — never reference gitignored paths
-10. **Never bypass merge controls** — no `--admin`, no force merge
-11. **Dependency updates require manual review** → [docs/merge-release-safety.md](docs/merge-release-safety.md#dependency-update-protocol)
-12. **Never auto-merge without maintainer instruction**
-
-## Common Tasks
+### Common Tasks
 
 ```bash
 make build          # Full build (compile + test)
@@ -121,105 +132,25 @@ make check          # Build + all quality checks
 make jaxb           # Regenerate JAXB classes
 make javadoc        # Generate API documentation
 make package        # Native package for current OS
-make package-mac    # macOS (.dmg)
-make package-win    # Windows (.exe)
-make package-linux  # Linux (.deb)
 make dist-zip       # Distribution ZIP
-make install-dist   # Local distribution layout
-make info           # Show detected Java and system info
 make help           # Show all targets
 ```
 
-## Git & Release
-
-→ [CONTRIBUTING.md — Git & Release](CONTRIBUTING.md#git--release)
+### Git & Release
 
 - **Remotes:** `origin` → Denomas/freemind-ce (GitHub), `upstream` → SourceForge
 - **Branch:** `main` — trunk-based, all changes via PR (no direct push)
 - **Release:** Tag `v*.*.*` → GitHub Actions auto-builds DMG/EXE/DEB
-- **CI:** 6 OS × 4 Java = 48 checks, gated by single `CI` aggregator
+- **CI:** 6 OS x 4 Java = 48 checks, gated by single `CI` aggregator
+- **Commits:** Conventional Commits enforced (`feat`, `fix`, `docs`, `refactor`, `test`, `build`, `ci`, `chore`)
 
-## Subagent Rules
-
-→ [CONTRIBUTING.md — Subagent Rules](CONTRIBUTING.md#subagent-rules)
-
-**CRITICAL:** Every subagent prompt MUST include the following block verbatim:
+### Serena Quick Reference
 
 ```
-MANDATORY — BEFORE ANY WORK:
-1. Read CLAUDE.md at the project root
-2. Answer these 5 questions BEFORE starting:
-   - Neredeyim? (project, repo, branch, directory)
-   - Ben kimim? (role, tools, constraints)
-   - Görevim ne? (exact requirements, success criteria)
-   - Kurallarım ne? (which docs to read, which rules apply)
-   - Araçlarım ne? (available tools, correct usage)
-3. Read CONTRIBUTING.md — it is the single source of truth for ALL rules
-4. Read docs/serena-guide.md — Serena MCP is MANDATORY for code analysis
-5. Do NOT start working until you have answered all 5 questions and read the docs
-6. Use Serena MCP tools for all code analysis — never bash grep/find
-
-SERENA USAGE (MANDATORY):
-- ALWAYS start with: get_symbols_overview(file, depth=1) to understand file structure
-- ALWAYS use: find_symbol(name, include_body=True) to read specific code
-- ALWAYS use: find_referencing_symbols(name, file) before committing any change
-- ALWAYS use: find_file(mask, ".") to verify file exists before editing
-- NEVER use: bash grep, find, cat, sed, awk for code analysis
-- Anti-patterns: grep → search_for_pattern, find → find_file, cat → get_symbols_overview
+EXPLORE:  get_symbols_overview(file, depth=1) → find_symbol(name, include_body=True)
+VERIFY:   find_referencing_symbols(name, file) → make build
+EDIT:     replace_symbol_body | insert_after_symbol | insert_before_symbol | rename_symbol
+SEARCH:   search_for_pattern(regex) | find_file(mask, path) | list_dir(path, recursive)
 ```
 
-**Summary:**
-- Every subagent MUST read CLAUDE.md and CONTRIBUTING.md before starting
-- Every subagent MUST answer the 5 grounding questions before any work
-- Every subagent MUST use Serena MCP tools (not bash grep/find)
-- Every subagent MUST verify backward compatibility
-- Every subagent MUST verify with `find_referencing_symbols` + `make build`
-- After subagent completes: verify `git status`, `make build`, file existence
-
-## Architecture (Summary)
-
-→ [docs/architecture.md](docs/architecture.md)
-
-- **Pattern:** MVC + Mode-based (Browse/MindMap/File) + Hook/Plugin
-- **XML Binding:** JAXB 2.3.1/2.3.9
-- **L&F:** FlatLaf 3.7
-
-## Serena Code Intelligence
-
-→ [docs/serena-guide.md](docs/serena-guide.md) — 18 tools, workflow diagrams, decision trees
-
-**Mandatory workflow:**
-```
-1. get_symbols_overview(file)     → understand structure
-2. find_symbol(name, body=True)   → read specific code
-3. find_referencing_symbols(name) → verify all references intact
-4. make build                     → compile + test
-```
-
-### Serena Anti-Patterns (DO NOT do these)
-
-| Do NOT | Do this instead | Why |
-|--------|----------------|-----|
-| `grep -r "pattern" .` | `search_for_pattern("pattern")` | Grep = text match; Serena = semantic reference |
-| `find . -name "*.java"` | `find_file("*.java", ".")` | Serena respects .gitignore, grep doesn't |
-| `cat File.java` | `get_symbols_overview("File.java")` → `find_symbol()` | Read wastes tokens; Serena reads only what you need |
-| Manual search-and-replace rename | `rename_symbol()` | Manual misses references; Serena is atomic |
-| Edit by line number | `replace_symbol_body()` | Line numbers shift; symbol bodies are stable |
-| Commit without checking references | `find_referencing_symbols()` first | Broken callers are invisible without it |
-
-### Pre-Commit Serena Verification (MANDATORY)
-
-Before EVERY commit:
-1. `find_referencing_symbols(symbol, file)` — for each modified symbol
-2. Verify no broken references, no orphans
-3. `make build` — must pass
-4. `make run` — visual smoke test for UI changes
-
-### Subagent Serena Requirements
-
-Every subagent MUST:
-1. Use `get_symbols_overview` BEFORE reading any file
-2. Use `find_symbol` BEFORE editing any code
-3. Use `find_referencing_symbols` BEFORE committing any change
-4. Use `find_file` BEFORE assuming a file exists
-5. NEVER use bash `grep`, `find`, `cat`, `sed`, `awk` for code analysis
+Full guide: [docs/serena-guide.md](docs/serena-guide.md)
