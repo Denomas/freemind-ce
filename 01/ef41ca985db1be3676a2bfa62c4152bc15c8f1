@@ -1,0 +1,27 @@
+docs/development-guide.md
+  22af26e20b09ff0b 167-214
+CLAUDE.md
+  22af26e20b09ff0b 85
+CONTRIBUTING.md
+  22af26e20b09ff0b 250-302
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "01ef41ca985db1be3676a2bfa62c4152bc15c8f1",
+  "prompts": {
+    "22af26e20b09ff0b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d9a1a69-77af-46fc-9352-452601442e05",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 102,
+      "total_deletions": 0,
+      "accepted_lines": 102,
+      "overriden_lines": 0
+    }
+  }
+}
