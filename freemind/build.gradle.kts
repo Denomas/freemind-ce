@@ -11,6 +11,7 @@ plugins {
     java
     application
     jacoco
+    pmd
     id("com.github.spotbugs") version "6.4.8"
     id("org.owasp.dependencycheck") version "12.2.0"
     id("org.cyclonedx.bom") version "2.3.1"
@@ -454,6 +455,24 @@ tasks.named<JacocoCoverageVerification>("jacocoTestCoverageVerification") {
             }
         }
     }
+}
+
+// ============================================================================
+// Static Analysis (PMD)
+// ============================================================================
+
+pmd {
+    isConsoleOutput = true
+    toolVersion = "7.21.0"
+    rulesMinimumPriority.set(5)
+    // Legacy codebase: don't fail build, report only.
+    // New code should have zero PMD violations.
+    isIgnoreFailures = true
+}
+
+tasks.withType<Pmd>().configureEach {
+    ruleSetFiles = files("config/pmd-ruleset.xml")
+    ruleSets = listOf()
 }
 
 // ============================================================================
