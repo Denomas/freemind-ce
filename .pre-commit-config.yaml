@@ -67,7 +67,7 @@ repos:
       # Verify Java compilation on staged .java files
       - id: gradle-compile-check
         name: Verify Java compilation
-        entry: bash -c 'export JAVA_HOME="/opt/homebrew/Cellar/openjdk@21/21.0.10/libexec/openjdk.jdk/Contents/Home" && ./gradlew :freemind:compileJava --no-configuration-cache -q'
+        entry: bash -c 'make build -s'
         language: system
         files: '\.java$'
         pass_filenames: false

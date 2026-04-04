@@ -434,6 +434,13 @@ public class BrowseController extends ViewControllerAdapter {
 	BrowseNodeModel loadTree(URL url) {
 		BrowseNodeModel root = null;
 
+		String protocol = url.getProtocol();
+		if (!"http".equals(protocol) && !"https".equals(protocol) && !"file".equals(protocol)) {
+			getFrame().getController().errorMessage(
+					"Unsupported protocol: " + protocol);
+			return null;
+		}
+
 		InputStreamReader urlStreamReader = null;
 
 		try {

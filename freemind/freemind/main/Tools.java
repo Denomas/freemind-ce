@@ -542,9 +542,9 @@ public class Tools {
 		String osNameStart = System.getProperty("os.name").substring(0, 3);
 		if (osNameStart.equals("Win")) {
 			try {
-				Runtime.getRuntime().exec(
-						"attrib " + (hidden ? "+" : "-") + "H \""
-								+ file.getAbsolutePath() + "\"");
+				Runtime.getRuntime().exec(new String[]{
+						"attrib", (hidden ? "+H" : "-H"),
+								file.getAbsolutePath()});
 				// Synchronize the effect, because it is asynchronous in
 				// general.
 				if (!synchronously) {
@@ -683,17 +683,20 @@ public class Tools {
 	public static class DesEncrypter {
 		private static final String SALT_PRESENT_INDICATOR = " ";
 		private static final int SALT_LENGTH = 8;
+		private static final int LEGACY_ITERATION_COUNT = 19;
+		private static final int DEFAULT_ITERATION_COUNT = 600_000;
 
 		Cipher ecipher;
 
 		Cipher dcipher;
 
-		// 8-byte default Salt
-		byte[] salt = { (byte) 0xA9, (byte) 0x9B, (byte) 0xC8, (byte) 0x32,
+		// 8-byte legacy Salt — used only for decrypting old format data
+		private static final byte[] LEGACY_SALT = { (byte) 0xA9, (byte) 0x9B, (byte) 0xC8, (byte) 0x32,
 				(byte) 0x56, (byte) 0x35, (byte) 0xE3, (byte) 0x03 };
 
-		// Iteration count
-		int iterationCount = 19;
+		byte[] salt = LEGACY_SALT.clone();
+
+		int iterationCount = LEGACY_ITERATION_COUNT;
 
 		private final char[] passPhrase;
 		private String mAlgorithm;
@@ -705,10 +708,16 @@ public class Tools {
 		}
 
 
-		private void init(byte[] mSalt) {
+		private void init(byte[] mSalt, boolean forEncryption) {
 			if (mSalt != null) {
 				this.salt = mSalt;
+				this.iterationCount = DEFAULT_ITERATION_COUNT;
+			} else {
+				this.salt = LEGACY_SALT.clone();
+				this.iterationCount = LEGACY_ITERATION_COUNT;
 			}
+			ecipher = null;
+			dcipher = null;
 			if (ecipher == null) {
 				try {
 					// Create the key
@@ -747,7 +756,7 @@ public class Tools {
 				// determine salt by random using SecureRandom:
 				byte[] newSalt = SecureRandom.getInstanceStrong().generateSeed(SALT_LENGTH);
 
-				init(newSalt);
+				init(newSalt, true);
 				// Encrypt
 				byte[] enc = ecipher.doFinal(utf8);
 
@@ -780,7 +789,7 @@ public class Tools {
 				// Decode base64 to get bytes
 				str = str.replaceAll("\\s", "");
 				byte[] dec = Tools.fromBase64(str);
-				init(salt);
+				init(salt, false);
 
 				// Decrypt
 				byte[] utf8 = dcipher.doFinal(dec);
@@ -1448,7 +1457,11 @@ public class Tools {
 		private final File mFile;
 
 		public FileReaderCreator(File pFile) {
-			mFile = pFile;
+			try {
+				mFile = pFile.getCanonicalFile();
+			} catch (java.io.IOException e) {
+				throw new IllegalArgumentException("Invalid file path: " + pFile, e);
+			}
 		}
 
 		public Reader createReader() throws FileNotFoundException {
