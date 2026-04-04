@@ -245,6 +245,91 @@ After subagents complete, ALWAYS verify:
 - [ ] Serena `find_referencing_symbols` was used before each change
 - [ ] `git status` shows the expected changes are actually saved
 - [ ] CONTRIBUTING.md and docs were read by the subagent
+- [ ] **CI output checked** — `gh pr checks <pr-number>` shows ALL jobs passing (see CI Output Check below)
+
+### CI Output Check (MANDATORY — Before Reporting Done)
+
+> **This check is MANDATORY after every PR creation and before reporting completion.**
+> A green build locally does NOT mean CI is healthy — platform-specific failures must be caught.
+
+**After every PR is created or updated, you MUST:**
+
+1. **Wait for CI to complete** — do not report success until all checks finish
+2. **Check all CI results:** `gh pr checks <pr-number>`
+3. **If any job fails, investigate logs:** `gh run view <run-id> --log-failed`
+4. **Fix the root cause** — do NOT disable tests or add `continue-on-error`
+5. **Verify scheduled workflows are healthy** (they run independently of PR CI):
+   ```bash
+   for wf in security-scan.yml scorecard.yml fuzz.yml stale.yml; do
+     result=$(gh run list --workflow=$wf --limit 1 --json conclusion --jq '.[0].conclusion // "no runs"')
+     echo "$wf: $result"
+   done
+   ```
+6. **Only report success when ALL 48 build/test jobs + CodeQL + CI aggregator pass**
+
+**Common failure investigation patterns:**
+- Windows-specific failures → check path separators, line endings, file permissions
+- Java version-specific failures → check deprecated API usage, module system issues
+- GUI test failures → check headless display setup, timing issues
+- CodeQL failures → check for compilation errors, missing build artifacts
+
+> **Full CI SOP:** [CONTRIBUTING.md — CI/CD Standard Operating Procedure](CONTRIBUTING.md#cicd-standard-operating-procedure-sop)
+
+### CI Output Check (MANDATORY — Before Reporting Done)
+
+> **This check is MANDATORY after every PR creation and before reporting completion.**
+> A green build locally does NOT mean CI is healthy — platform-specific failures must be caught.
+
+**After every PR is created or updated, you MUST:**
+
+1. **Wait for CI to complete** — do not report success until all checks finish
+2. **Check all CI results:** `gh pr checks <pr-number>`
+3. **If any job fails, investigate logs:** `gh run view <run-id> --log-failed`
+4. **Fix the root cause** — do NOT disable tests or add `continue-on-error`
+5. **Verify scheduled workflows are healthy** (they run independently of PR CI):
+   ```bash
+   for wf in security-scan.yml scorecard.yml fuzz.yml stale.yml; do
+     result=$(gh run list --workflow=$wf --limit 1 --json conclusion --jq '.[0].conclusion // "no runs"')
+     echo "$wf: $result"
+   done
+   ```
+6. **Only report success when ALL 48 build/test jobs + CodeQL + CI aggregator pass**
+
+**Common failure investigation patterns:**
+- Windows-specific failures → check path separators, line endings, file permissions
+- Java version-specific failures → check deprecated API usage, module system issues
+- GUI test failures → check headless display setup, timing issues
+- CodeQL failures → check for compilation errors, missing build artifacts
+
+> **Full CI SOP:** [CONTRIBUTING.md — CI/CD Standard Operating Procedure](CONTRIBUTING.md#cicd-standard-operating-procedure-sop)
+
+### CI Output Check (MANDATORY — Before Reporting Done)
+
+> **This check is MANDATORY after every PR creation and before reporting completion.**
+> A green build locally does NOT mean CI is healthy — platform-specific failures must be caught.
+
+**After every PR is created or updated, you MUST:**
+
+1. **Wait for CI to complete** — do not report success until all checks finish
+2. **Check all CI results:** `gh pr checks <pr-number>`
+3. **If any job fails, investigate logs:** `gh run view <run-id> --log-failed`
+4. **Fix the root cause** — do NOT disable tests or add `continue-on-error`
+5. **Verify scheduled workflows are healthy** (they run independently of PR CI):
+   ```bash
+   for wf in security-scan.yml scorecard.yml fuzz.yml stale.yml; do
+     result=$(gh run list --workflow=$wf --limit 1 --json conclusion --jq '.[0].conclusion // "no runs"')
+     echo "$wf: $result"
+   done
+   ```
+6. **Only report success when ALL 48 build/test jobs + CodeQL + CI aggregator pass**
+
+**Common failure investigation patterns:**
+- Windows-specific failures → check path separators, line endings, file permissions
+- Java version-specific failures → check deprecated API usage, module system issues
+- GUI test failures → check headless display setup, timing issues
+- CodeQL failures → check for compilation errors, missing build artifacts
+
+> **Full CI SOP:** [CONTRIBUTING.md — CI/CD Standard Operating Procedure](CONTRIBUTING.md#cicd-standard-operating-procedure-sop)
 
 ## Where to Look Next
 
