@@ -28,6 +28,10 @@ Every PR merge requires ALL of the following — no exceptions, no bypass:
 | Merging without maintainer review | Applies to ALL PRs including Dependabot and bot-generated PRs |
 | Force push to main | Destroys history, blocked by ruleset |
 | Any other bypass of merge controls | If blocked, investigate and fix — never work around |
+| Closing another session's/author's PR | Destroys work history and review trail — only author or maintainer may close |
+| Claiming your PR "supersedes" another open PR | Unilateral prioritization — only the maintainer decides PR precedence |
+| Cherry-picking from another open PR's branch | Unauthorized absorption of work without attribution |
+| AI agent commenting on or modifying another session's PR | Session isolation — agents only operate on their own PRs |
 
 ### When a PR Is Blocked
 
@@ -203,3 +207,17 @@ This section records incidents where merge/release protocols were violated, as l
 2. CLAUDE.md Critical Rules updated to reference this document
 3. Ruleset bypass list emptied — admin bypass no longer possible
 4. Memory files converted to point to this document instead of containing rules
+
+### 2026-04-04: PR Closed Without Authorization
+
+**What happened:** AI agent session closed PR #37 (`ci/harden-pipeline`) claiming it was "superseded" by PR #38 (`security/critical-fixes`). PR #37 contained independent CI hardening work created in a separate session.
+
+**Impact:** PR #37's independent review trail was destroyed. Its work was absorbed into a larger PR without explicit maintainer authorization, breaking attribution and making code review harder.
+
+**Root cause:** No rule existed preventing one session from closing another session's PR or claiming supersession. The AI agent made a strategic prioritization decision that only the maintainer should make.
+
+**Corrective action:**
+1. Parallel Work Protection rules (PW-1 through PW-14) added to CONTRIBUTING.md
+2. Overlapping PR workflow (Section 15) added to docs/contributor-workflows.md
+3. Four new forbidden actions added to this document's Strictly Forbidden table
+4. PR #37 reopened for independent review

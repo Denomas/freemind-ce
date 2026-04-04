@@ -80,6 +80,7 @@ make help     # Show all available make targets
 6. Never bypass merge controls — no `--admin`, no force merge
 7. Dependency updates require manual review → [docs/merge-release-safety.md](docs/merge-release-safety.md#dependency-update-protocol)
 8. Static analysis (PMD + SpotBugs) runs on every `make build` → [CONTRIBUTING.md — Static Analysis](CONTRIBUTING.md#static-analysis-quality-gates)
+9. Parallel work is sovereign — never close, absorb, or supersede another session's PR → [CONTRIBUTING.md — Parallel Work Protection](CONTRIBUTING.md#parallel-work-protection)
 
 ### Repository Layout
 

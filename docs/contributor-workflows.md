@@ -684,3 +684,46 @@ flowchart TD
 
 **Allowed types in full:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`,
 `ci`, `chore`, `revert`, `deps` — enforced by gitlint on every commit.
+
+---
+
+## Section 15: Parallel Work / Overlapping PRs
+
+When you discover that another open PR overlaps with your work, follow this decision tree.
+For the full binding rules, see [CONTRIBUTING.md — Parallel Work Protection](../CONTRIBUTING.md#parallel-work-protection).
+
+```mermaid
+flowchart TD
+    A["You discover open PR #X<br>overlaps with your work"] --> B{Are you the author<br>of PR #X?}
+
+    B -->|Yes — same author| C["You may close/merge/reorder<br>your own PRs as needed"]
+    B -->|No — different author/session| D["DO NOT close PR #X<br>DO NOT absorb its commits<br>DO NOT claim supersession"]
+
+    D --> E["Add to YOUR PR description:<br>Related: #X"]
+    E --> F["Inform the maintainer<br>that overlap exists"]
+    F --> G["Maintainer reviews both<br>PRs independently"]
+
+    G --> H{Maintainer decides<br>merge order}
+    H -->|PR #X first| I["PR #X merges to main"]
+    H -->|Your PR first| J["Your PR merges to main"]
+
+    I --> K["Rebase your branch:<br>git fetch origin<br>git rebase origin/main"]
+    J --> L["PR #X author rebases:<br>git fetch origin<br>git rebase origin/main"]
+
+    K --> M["Resolve conflicts if any"]
+    L --> M
+    M --> N["CI re-runs on rebased branch"]
+    N --> O["Normal merge flow continues"]
+
+    style D fill:#ffcccc,stroke:#cc0000
+    style E fill:#ccffcc,stroke:#00cc00
+    style F fill:#ccffcc,stroke:#00cc00
+```
+
+### Key Principles
+
+- **PR sovereignty:** Every PR belongs to its author. Only the author or maintainer may close it.
+- **No supersession claims:** Saying "my PR supersedes yours" is a judgment call reserved for the maintainer.
+- **Report, don't act:** When an AI agent discovers overlap, it reports to the human — it does not take action on the other PR.
+- **Independent review:** Overlapping PRs are reviewed independently. Neither is subordinate to the other.
+- **Merge order:** The maintainer decides which PR merges first. The second PR rebases and resolves conflicts.

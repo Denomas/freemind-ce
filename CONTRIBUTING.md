@@ -58,6 +58,46 @@ All contributor types, workflows, fork/collaborator setup, hotfix flow, conflict
 
 > **[docs/contributor-workflows.md](docs/contributor-workflows.md)** — 16 workflow diagrams, contributor types, step-by-step guides for every scenario.
 
+## Parallel Work Protection
+
+When multiple developers, AI agents, or sessions work on the same repository simultaneously, each person's work is sovereign. These rules prevent one session from destroying, absorbing, or invalidating another's work.
+
+### PR Sovereignty
+
+| Rule | Description |
+|------|-------------|
+| **PW-1** | A PR may only be closed by: (a) its original author, (b) the repository maintainer, or (c) the stale bot after 60+14 days. No other party may close a PR. |
+| **PW-2** | An AI agent MUST NEVER close, comment "superseded", or request closure of a PR it did not create. |
+| **PW-3** | Closing a PR requires a comment explaining: why it's being closed, what happens to the work, and a link to any successor PR. |
+| **PW-4** | If a PR is closed in favor of another, the successor MUST reference the original with `Incorporates #NN` or `Replaces #NN` and explain what was preserved vs. dropped. |
+
+### No Unilateral Scope Absorption
+
+| Rule | Description |
+|------|-------------|
+| **PW-5** | No contributor or AI agent may claim their PR "supersedes" another open PR. Only the maintainer can make that judgment. |
+| **PW-6** | If two PRs overlap in scope, both remain open for independent review. The maintainer decides merge order and conflict resolution. |
+| **PW-7** | Cherry-picking or copying commits from another open PR into your branch is forbidden without explicit maintainer approval. |
+| **PW-8** | If you discover an overlapping open PR: (1) note "Related: #NN" in your PR description, (2) do NOT absorb it, (3) let the maintainer decide. |
+
+### Branch and Commit Integrity
+
+| Rule | Description |
+|------|-------------|
+| **PW-9** | Force-pushing to a branch with an open PR from another session/author is forbidden. Use `--force-with-lease` only on your own branches. |
+| **PW-10** | Squashing multiple independent PRs into one before merge is forbidden. Each unit of work gets its own PR, CI run, and review thread. |
+| **PW-11** | Every commit must be attributable. AI agent PRs must state which agent/session produced the work. |
+
+### AI Agent Multi-Session Rules
+
+| Rule | Description |
+|------|-------------|
+| **PW-12** | Each AI session operates in its own branch and PR. Sessions MUST NOT interact with each other's PRs (no comments, closures, reviews, or status changes). |
+| **PW-13** | When an AI agent discovers another open PR during work, the ONLY permitted actions are: (a) mention "Related: #NN" in your own PR, (b) inform the human user. The agent MUST NOT act on the other PR. |
+| **PW-14** | AI agents MUST NOT use `gh pr close`, `gh pr comment`, or `gh pr edit` on PRs they did not create. |
+
+> **Overlap workflow diagram:** [docs/contributor-workflows.md — Section 15](docs/contributor-workflows.md#section-15-parallel-work)
+
 ## Commit Best Practices
 
 ### Conventional Commits
