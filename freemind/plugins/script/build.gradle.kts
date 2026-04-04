@@ -18,7 +18,7 @@ dependencies {
     compileOnly(project(":freemind"))
 
     // Groovy (scripting engine)
-    implementation("org.codehaus.groovy:groovy-all:2.1.8")
+    implementation("org.codehaus.groovy:groovy-all:3.0.25")
 }
 
 tasks.jar {

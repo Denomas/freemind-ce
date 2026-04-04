@@ -158,7 +158,7 @@ dependencies {
     implementation("org.jsoup:jsoup:1.10.3")
 
     // Plugin dependencies
-    implementation("org.codehaus.groovy:groovy-all:2.1.8")
+    implementation("org.codehaus.groovy:groovy-all:3.0.25")
     implementation(files("plugins/map/JMapViewer.jar"))
     implementation("org.apache.lucene:lucene-core:10.4.0")
     implementation("org.apache.lucene:lucene-analysis-common:10.4.0")
