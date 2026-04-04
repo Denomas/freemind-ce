@@ -1,0 +1,27 @@
+freemind/freemind/modes/mindmapmode/MindMapController.java
+  22af26e20b09ff0b 708
+freemind/freemind/extensions/ImportWizard.java
+  22af26e20b09ff0b 131-132,134-135
+freemind/freemind/modes/mindmapmode/MindMapMapModel.java
+  22af26e20b09ff0b 400
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "1d5e7bf6ab98bc3232c3603ddaa58941791ae4e3",
+  "prompts": {
+    "22af26e20b09ff0b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d9a1a69-77af-46fc-9352-452601442e05",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 10,
+      "overriden_lines": 0
+    }
+  }
+}
