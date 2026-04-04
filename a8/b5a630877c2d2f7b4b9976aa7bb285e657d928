@@ -1,0 +1,62 @@
+CLAUDE.md
+  4e2c43392ac4c63a 3-21,34,40-43,45-52,54,58-59,74,78,80,82,84-93,107-111,117-128,130-155
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "a8b5a630877c2d2f7b4b9976aa7bb285e657d928",
+  "prompts": {
+    "27d3f849d7df3e17": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a74399e0ffeWadS50BxD7ytjB",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    },
+    "41fc7263be1b2c3e": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a743a83affeIiTAT8ZFwVSaqU",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    },
+    "4e2c43392ac4c63a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2aa18cd03ffeqAp1FC2ntTOx3p",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 96,
+      "total_deletions": 285,
+      "accepted_lines": 93,
+      "overriden_lines": 0
+    },
+    "4fffb4dc1b3cf06c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a7431d6bffei5p9vV2si2p6sn",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    }
+  }
+}
