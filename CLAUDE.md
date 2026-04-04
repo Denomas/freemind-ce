@@ -48,6 +48,16 @@ Before EVERY commit:
 3. `make run` — visual smoke test for UI changes
 4. `git diff --staged` — no debug code, no secrets
 
+## Post-Push: PR Review Comments
+
+After pushing commits, GitHub automated code review (github-code-quality) may add comments to the PR. These comments identify real issues: unused variables, inefficient patterns, dead code, etc.
+
+**Every automated review comment MUST be analyzed and fixed before merge:**
+1. Check PR comments after each push: `gh api repos/OWNER/REPO/pulls/PR/comments`
+2. Fix each finding in a new commit
+3. Push and verify the comment is resolved
+4. Do NOT ignore or dismiss automated findings — they catch real bugs
+
 ## Subagent Rule
 
 Every subagent prompt starts with:

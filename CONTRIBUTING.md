@@ -205,6 +205,19 @@ feat: infrastructure modernization (tests, CI, release, docs)
 4. **Stage intentionally:** use `git add <file>` for specific files, avoid `git add -A` or `git add .`
 5. **No generated artifacts:** never commit `build/`, `*.class`, `auto.properties`, or IDE-specific files
 
+### After Pushing: Automated Code Review
+
+GitHub automated code review (github-code-quality) analyzes every commit and posts findings as PR comments. These are NOT suggestions — they identify real issues: unused variables, inefficient patterns, dead code, security findings.
+
+**Every automated review comment MUST be fixed before merge:**
+
+1. **Check PR comments** after each push: `gh api repos/OWNER/REPO/pulls/NUMBER/comments`
+2. **Fix each finding** in a new atomic commit
+3. **Push and verify** the comment is resolved
+4. **Never ignore or dismiss** automated findings — they catch real bugs that humans miss
+
+This applies to ALL contributors including AI agents. If an agent pushes code and gets automated findings, it must fix them in the same session.
+
 ## Serena Code Intelligence (MANDATORY)
 
 > **This is NOT optional.** Serena usage is a hard requirement for every developer, every AI agent, and every subagent task. No code change may be committed without Serena verification.
