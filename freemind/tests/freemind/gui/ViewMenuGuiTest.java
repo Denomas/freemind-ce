@@ -8,6 +8,7 @@ import java.awt.*;
 import java.io.File;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static tests.freemind.unicode.UnicodeTestData.ALL_SCRIPTS;
 import static tests.freemind.unicode.UnicodeTestData.ALL_SCRIPT_NAMES;
 import static tests.freemind.unicode.UnicodeTestData.wrapInHtml;
@@ -92,13 +93,12 @@ class ViewMenuGuiTest extends GuiTestBase {
         for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             final String html = wrapInHtml(ALL_SCRIPTS.get(i));
             final String scriptName = ALL_SCRIPT_NAMES.get(i);
-            runOnEdt(() -> {
+            assertThatCode(() -> runOnEdt(() -> {
                 SHTMLPanel panel = SHTMLPanel.createSHTMLPanel();
                 panel.setSize(600, 400);
                 panel.setCurrentDocumentContent(html);
                 panel.setVisible(false);
-            });
-            // No exception for script: scriptName
+            })).as("No exception for script: " + scriptName).doesNotThrowAnyException();
         }
     }
 
