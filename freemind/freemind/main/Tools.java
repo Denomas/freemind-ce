@@ -74,6 +74,8 @@ import java.nio.file.Path;
 import java.nio.file.attribute.DosFileAttributes;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.KeySpec;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -725,10 +727,15 @@ public class Tools {
 					ecipher.init(Cipher.ENCRYPT_MODE, key, paramSpec);
 					dcipher.init(Cipher.DECRYPT_MODE, key, paramSpec);
 				} catch (java.security.InvalidAlgorithmParameterException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				} catch (java.security.spec.InvalidKeySpecException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				} catch (javax.crypto.NoSuchPaddingException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				} catch (java.security.NoSuchAlgorithmException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				} catch (java.security.InvalidKeyException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				}
 			}
 		}
@@ -736,12 +743,9 @@ public class Tools {
 		public String encrypt(String str) {
 			try {
 				// Encode the string into bytes using utf-8
-				byte[] utf8 = str.getBytes("UTF8");
-				// determine salt by random:
-				byte[] newSalt = new byte[SALT_LENGTH];
-				for (int i = 0; i < newSalt.length; i++) {
-					newSalt[i] = (byte) (Math.random() * 256l - 128l);
-				}
+				byte[] utf8 = str.getBytes(StandardCharsets.UTF_8);
+				// determine salt by random using SecureRandom:
+				byte[] newSalt = SecureRandom.getInstanceStrong().generateSeed(SALT_LENGTH);
 
 				init(newSalt);
 				// Encrypt
@@ -751,8 +755,11 @@ public class Tools {
 				return Tools.toBase64(newSalt) + SALT_PRESENT_INDICATOR
 						+ Tools.toBase64(enc);
 			} catch (javax.crypto.BadPaddingException e) {
+				freemind.main.Resources.getInstance().logException(e);
 			} catch (IllegalBlockSizeException e) {
-			} catch (UnsupportedEncodingException e) {
+				freemind.main.Resources.getInstance().logException(e);
+			} catch (NoSuchAlgorithmException e) {
+				freemind.main.Resources.getInstance().logException(e);
 			}
 			return null;
 		}
@@ -779,10 +786,11 @@ public class Tools {
 				byte[] utf8 = dcipher.doFinal(dec);
 
 				// Decode using utf-8
-				return new String(utf8, "UTF8");
+				return new String(utf8, StandardCharsets.UTF_8);
 			} catch (javax.crypto.BadPaddingException e) {
+				freemind.main.Resources.getInstance().logException(e);
 			} catch (IllegalBlockSizeException e) {
-			} catch (UnsupportedEncodingException e) {
+				freemind.main.Resources.getInstance().logException(e);
 			}
 			return null;
 		}

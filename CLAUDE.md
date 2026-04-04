@@ -164,6 +164,88 @@ make info           # Show detected Java and system info
 make help           # Show all targets
 ```
 
+## Subagent Rules (CRITICAL — Lessons Learned)
+
+> **WHY SUBAGENTS FAILED BEFORE:** In early security fix attempts, subagents were spawned without proper context. They did NOT read CONTRIBUTING.md, did NOT use Serena MCP, did NOT check if files exist, and did NOT understand backward compatibility rules. This resulted in broken code, missing changes, and wasted time.
+
+### Root Cause Analysis: Why Agents Start Wrong
+
+| # | Failure | Root Cause | Prevention |
+|---|---------|-----------|------------|
+| 1 | **Did not read CONTRIBUTING.md** | Subagent prompt didn't enforce mandatory reading | MUST include "Read CONTRIBUTING.md first" as rule #1 |
+| 2 | **Did not read README.md** | No requirement to understand project philosophy | MUST include project philosophy summary in prompt |
+| 3 | **Did not use Serena MCP** | Subagent used bash grep/find instead of Serena | MUST enforce Serena workflow: get_symbols_overview → find_symbol → find_referencing_symbols |
+| 4 | **Hallucinated file paths** | Tried to edit `plugins/wsl/src/...` which doesn't exist | MUST verify file exists with Serena `find_file` or `list_dir` before editing |
+| 5 | **Did not check backward compatibility** | Would have broken .mm file format | MUST include backward compatibility rules in every subagent prompt |
+| 6 | **Did not verify references** | Changed code without checking callers | MUST run `find_referencing_symbols` before committing |
+| 7 | **Changes not saved** | Subagent reported fixes but didn't persist | MUST verify with `git status` and `make build` after subagent completes |
+| 8 | **Did not read developer docs** | Skipped serena-guide.md, development-guide.md | MUST include doc reading checklist in subagent prompt |
+
+### Mandatory Subagent Rules
+
+1. **DO NOT spawn subagents without first reading this file (CLAUDE.md) and CONTRIBUTING.md yourself**
+2. **Every subagent prompt MUST include these exact instructions:**
+   ```
+   MANDATORY RULES — READ BEFORE ANY WORK:
+   
+   1. DOCUMENTATION (read these files in order):
+      - CONTRIBUTING.md (project rules, philosophy, workflows)
+      - docs/serena-guide.md (Serena tool reference — MANDATORY)
+      - docs/development-guide.md (build, test, deploy)
+   
+   2. SERENA WORKFLOW (NO EXCEPTIONS):
+      - Step 1: get_symbols_overview(file) → understand structure
+      - Step 2: find_symbol(name, include_body=True) → read code
+      - Step 3: find_referencing_symbols(name) → understand impact
+      - Step 4: search_for_pattern(pattern) → find all occurrences
+      - Step 5: find_file(mask) → verify file exists before editing
+      - NEVER use bash grep/find/cat for code analysis
+   
+   3. BACKWARD COMPATIBILITY (ABSOLUTE RULE):
+      - Every .mm file ever created must open correctly
+      - Never change file format compatibility
+      - Never change runtime behavior or UX
+      - Never sanitize, filter, or modify user content
+   
+   4. VERIFICATION (before reporting done):
+      - Run find_referencing_symbols to verify references intact
+      - Run make build to verify compilation
+      - Run git status to verify changes are saved
+      - Report exact files changed with line numbers
+   
+   5. COMMIT MESSAGES:
+      - Must be in English (international project)
+      - Use conventional commits: fix:, refactor:, ci:, test:, etc.
+      - Never use feat!: (breaking changes forbidden)
+   ```
+3. **Subagents must use Serena MCP tools** — not bash grep/find/cat for code analysis
+4. **Subagents must verify file existence** before attempting to edit (many files may not exist in this project)
+5. **Subagents must understand backward compatibility** — no breaking changes to .mm file format
+6. **Subagents must NOT change runtime behavior or UX** — only fix security/code quality issues
+7. **After subagent completes, ALWAYS verify with `git status` and `make build`** — subagents may report fixes that weren't actually saved
+
+### When to Use Subagents
+
+| Task | Use Subagent? | Notes |
+|------|--------------|-------|
+| Security vulnerability fixes | ✅ Yes | But MUST include all rules above |
+| SpotBugs fixes | ✅ Yes | But MUST use Serena tools |
+| CI/CD workflow changes | ✅ Yes | But MUST check .gitignore first |
+| Test writing | ✅ Yes | But MUST understand existing test patterns |
+| Simple file edits | ❌ No | Do it yourself, faster |
+
+### Subagent Verification Checklist
+
+After subagents complete, ALWAYS verify:
+- [ ] All changed files actually exist in the project (not hallucinated paths)
+- [ ] `make build` passes
+- [ ] No runtime behavior changes
+- [ ] No backward compatibility breaks
+- [ ] Commit messages are in English
+- [ ] Serena `find_referencing_symbols` was used before each change
+- [ ] `git status` shows the expected changes are actually saved
+- [ ] CONTRIBUTING.md and docs were read by the subagent
+
 ## Where to Look Next
 
 | If you need... | Read... |
