@@ -542,8 +542,9 @@ public class Tools {
 		String osNameStart = System.getProperty("os.name").substring(0, 3);
 		if (osNameStart.equals("Win")) {
 			try {
+				String attribPath = System.getenv("SystemRoot") + "\\System32\\attrib.exe";
 				Runtime.getRuntime().exec(new String[]{
-						"attrib", (hidden ? "+H" : "-H"),
+						attribPath, (hidden ? "+H" : "-H"),
 								file.getAbsolutePath()});
 				// Synchronize the effect, because it is asynchronous in
 				// general.
