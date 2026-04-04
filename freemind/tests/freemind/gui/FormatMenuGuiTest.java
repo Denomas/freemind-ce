@@ -56,12 +56,12 @@ class FormatMenuGuiTest extends GuiTestBase {
 
     @Test
     void format_toXhtmlPreservesAllScripts() throws Exception {
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            String html = wrapInHtml(ALL_SCRIPTS[i]);
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            String html = wrapInHtml(ALL_SCRIPTS.get(i));
             String xhtml = htmlTools.toXhtml(html);
             assertThat(xhtml)
-                .as("toXhtml should preserve %s text", ALL_SCRIPT_NAMES[i])
-                .contains(ALL_SCRIPTS[i]);
+                .as("toXhtml should preserve %s text", ALL_SCRIPT_NAMES.get(i))
+                .contains(ALL_SCRIPTS.get(i));
         }
     }
 
@@ -170,22 +170,22 @@ class FormatMenuGuiTest extends GuiTestBase {
 
     @Test
     void format_entityEncodingAllScripts() throws Exception {
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            String encoded = HtmlTools.unicodeToHTMLUnicodeEntity(ALL_SCRIPTS[i], false);
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            String encoded = HtmlTools.unicodeToHTMLUnicodeEntity(ALL_SCRIPTS.get(i), false);
             assertThat(encoded)
-                .as("Entity encoding for %s should contain numeric entities", ALL_SCRIPT_NAMES[i])
+                .as("Entity encoding for %s should contain numeric entities", ALL_SCRIPT_NAMES.get(i))
                 .contains("&#");
         }
     }
 
     @Test
     void format_entityDecodingAllScripts() throws Exception {
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            String encoded = HtmlTools.unicodeToHTMLUnicodeEntity(ALL_SCRIPTS[i], false);
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            String encoded = HtmlTools.unicodeToHTMLUnicodeEntity(ALL_SCRIPTS.get(i), false);
             String decoded = HtmlTools.unescapeHTMLUnicodeEntity(encoded);
             assertThat(decoded)
-                .as("Round-trip decode for %s should restore original", ALL_SCRIPT_NAMES[i])
-                .isEqualTo(ALL_SCRIPTS[i]);
+                .as("Round-trip decode for %s should restore original", ALL_SCRIPT_NAMES.get(i))
+                .isEqualTo(ALL_SCRIPTS.get(i));
         }
     }
 

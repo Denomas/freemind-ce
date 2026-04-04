@@ -32,13 +32,11 @@ public class NodeUpAction extends MindmapAction  {
 	private static final long serialVersionUID = 1L;
 
 	private final MindMapController modeController;
-	private static Logger logger;
+	private static final Logger logger = Logger.getLogger(NodeUpAction.class.getName());
 
 	public NodeUpAction(MindMapController modeController) {
 		super("node_up", modeController);
 		this.modeController = modeController;
-			logger = modeController.getFrame().getLogger(
-					this.getClass().getName());
 
 	}
 

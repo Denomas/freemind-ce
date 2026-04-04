@@ -38,14 +38,13 @@ public class MindMapMode extends Mode {
 	private MindMapController modecontroller;
 	private final String MODENAME = "MindMap";
 	private boolean isRunning = false;
-	private static Logger logger = null;
+	private static final Logger logger = Logger.getLogger(MindMapMode.class.getName());
 
 	public MindMapMode() {
 	}
 
 	public void init(Controller c) {
 		this.c = c;
-			logger = c.getFrame().getLogger(this.getClass().getName());
 
 		modecontroller = (MindMapController) createModeController();
 	}

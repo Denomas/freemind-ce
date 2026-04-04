@@ -162,7 +162,7 @@ public class Tools {
 	private static String sEnvFonts[] = null;
 
 	// bug fix from Dimitri.
-	public static Random ran = new Random();
+	public static final Random ran = new Random();
 
 	public static boolean executableByExtension(String file) {
 		return executableExtensions.contains(getExtension(file));
@@ -1634,7 +1634,7 @@ public class Tools {
 		if (font != null) {
 			float oldFontSize = font.getSize2D();
 			float newFontSize = normalFontSize * zoom;
-			if (oldFontSize != newFontSize) {
+			if (Math.abs(oldFontSize - newFontSize) >= 0.0001f) {
 				font = font.deriveFont(newFontSize);
 			}
 		}

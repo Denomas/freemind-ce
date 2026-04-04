@@ -34,13 +34,12 @@ public class ImportFolderStructureAction extends MindmapAction {
 	private static final long serialVersionUID = 1L;
 
 	// Logging:
-	private static java.util.logging.Logger logger;
+	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ImportFolderStructureAction.class.getName());
 	private final MindMapController controller;
 
 	public ImportFolderStructureAction(MindMapController controller) {
 		super("import_folder_structure", controller);
 		this.controller = controller;
-		logger = controller.getFrame().getLogger(this.getClass().getName());
 	}
 
 	public void actionPerformed(ActionEvent e) {

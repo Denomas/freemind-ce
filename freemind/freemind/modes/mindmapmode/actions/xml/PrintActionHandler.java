@@ -35,13 +35,12 @@ public class PrintActionHandler implements ActionHandler {
 	private MindMapController c;
 
 	// Logging:
-	private static java.util.logging.Logger logger;
+	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PrintActionHandler.class.getName());
 
 
 	public PrintActionHandler(MindMapController c) {
 		super();
 		this.c = c;
-		logger = c.getFrame().getLogger(this.getClass().getName());
 	}
 
 	/*

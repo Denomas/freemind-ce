@@ -92,7 +92,7 @@ public class JoinNodesAction extends MindmapAction {
 				nodeContent = end[0] + "<body><p>" + nodeContent + "</p>";
 			}
 		}
-		if (isHtmlNode & !content.equals("")) {
+		if (isHtmlNode && !content.equals("")) {
 			final String end[] = BODY_START.split(nodeContent, 2);
 			nodeContent = end[1];
 			if (!isHtml) {

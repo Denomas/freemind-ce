@@ -89,9 +89,9 @@ class ViewMenuGuiTest extends GuiTestBase {
 
     @Test
     void view_sHTMLPanelUnicodeAllScripts() throws Exception {
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            final String html = wrapInHtml(ALL_SCRIPTS[i]);
-            final String scriptName = ALL_SCRIPT_NAMES[i];
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            final String html = wrapInHtml(ALL_SCRIPTS.get(i));
+            final String scriptName = ALL_SCRIPT_NAMES.get(i);
             runOnEdt(() -> {
                 SHTMLPanel panel = SHTMLPanel.createSHTMLPanel();
                 panel.setSize(600, 400);

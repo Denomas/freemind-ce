@@ -70,6 +70,7 @@ import javax.swing.SwingUtilities;
  */
 public class EditServer extends Thread {
 	protected static java.util.logging.Logger logger = null;
+	private static final Random RANDOM = new Random();
 	private final FreeMindMain mFrame;
 
 	// {{{ EditServer constructor
@@ -96,7 +97,7 @@ public class EditServer extends Thread {
 			// Bind to any port on localhost; accept 2 simultaneous
 			// connection attempts before rejecting connections
 			socket = new ServerSocket(0, 2, InetAddress.getByName("127.0.0.1"));
-			authKey = new Random().nextInt(Integer.MAX_VALUE);
+			authKey = RANDOM.nextInt(Integer.MAX_VALUE);
 			int port = socket.getLocalPort();
 
 			Writer out = new OutputStreamWriter(new FileOutputStream(portFile), StandardCharsets.UTF_8);

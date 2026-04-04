@@ -46,11 +46,10 @@ public class MindMapNodeMotionListener extends NodeMotionAdapter {
 	private final MindMapController c;
 
 	// Logging:
-	private static java.util.logging.Logger logger;
+	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MindMapNodeMotionListener.class.getName());
 
 	public MindMapNodeMotionListener(MindMapController controller) {
 		c = controller;
-		logger = c.getFrame().getLogger(this.getClass().getName());
 	}
 
 	public void mouseMoved(MouseEvent e) {

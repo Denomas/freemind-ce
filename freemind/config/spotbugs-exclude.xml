@@ -9,4 +9,43 @@
     <Match>
         <Package name="~de\..*"/>
     </Match>
+
+    <!-- Intentional shared state across instances (last selected/position patterns) -->
+    <Match>
+        <Class name="accessories.plugins.dialogs.ManagePatternsPopupDialog"/>
+        <Method name="setLastSelectedPattern"/>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+    </Match>
+    <Match>
+        <Class name="freemind.modes.common.dialogs.IconSelectionPopupDialog"/>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+    </Match>
+
+    <!-- Public static API field (backward compatibility) -->
+    <Match>
+        <Class name="freemind.main.FreeMind"/>
+        <Field name="props"/>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+    </Match>
+
+    <!-- Lazy initialization of shared sentinel object -->
+    <Match>
+        <Class name="freemind.modes.MindIcon"/>
+        <Method name="getIcon"/>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+    </Match>
+
+    <!-- Shared configuration updated from properties -->
+    <Match>
+        <Class name="freemind.modes.common.listeners.CommonNodeMouseMotionListener"/>
+        <Method name="updateSelectionMethod"/>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+    </Match>
+
+    <!-- Shared layer for all map markers (interface requirement) -->
+    <Match>
+        <Class name="plugins.map.MapMarkerBase"/>
+        <Method name="setLayer"/>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+    </Match>
 </FindBugsFilter>

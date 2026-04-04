@@ -713,19 +713,12 @@ public class ClonePasteAction extends MindMapNodeHookAdapter {
 			if (!sShowIcon) {
 				return;
 			}
-			while (node != null) {
+			if (node != null) {
 				ImageIcon i = pEnableShadow ? sCloneIcon : null;
 				if (node == pCloneNode) {
 					i = sOriginalIcon;
 				}
 				setIcon(node, i);
-				if (node == pCloneNode)
-					break;
-				node = node.getParentNode();
-				// comment this out to get a complete marked path to the root of
-				// the
-				// clones.
-				break;
 			}
 		}
 

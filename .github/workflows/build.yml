@@ -301,7 +301,7 @@ jobs:
   ci:
     name: CI
     if: always()
-    needs: [changes, build, gui-tests]
+    needs: [changes, build, gui-tests, codeql]
     runs-on: ubuntu-latest
     permissions: {}
     steps:
@@ -310,6 +310,7 @@ jobs:
           echo "Code changed: ${{ needs.changes.outputs.code }}"
           echo "Build: ${{ needs.build.result }}"
           echo "GUI Tests: ${{ needs.gui-tests.result }}"
+          echo "CodeQL: ${{ needs.codeql.result }}"
           if [[ "${{ contains(needs.*.result, 'failure') }}" == "true" ]]; then
             echo "::error::One or more jobs failed"
             exit 1
@@ -319,3 +320,46 @@ jobs:
             exit 1
           fi
           echo "All checks passed"
+
+  codeql:
+    name: CodeQL Analysis
+    needs: [changes, build]
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['java-kotlin', 'javascript-typescript']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@c10b8064de6f491fea524254123dbe5e09572f13 # v4
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-extended
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build
+        run: ./gradlew build -x test --no-daemon --no-configuration-cache
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@c10b8064de6f491fea524254123dbe5e09572f13 # v4
+        with:
+          category: "/language:${{ matrix.language }}"

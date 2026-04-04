@@ -140,8 +140,6 @@ public class ScriptingRegistration implements HookRegistration,
 
 	public ScriptingRegistration(ModeController controller, MindMap map) {
 		this.controller = (MindMapController) controller;
-		ScriptingEngine.logger = controller.getFrame().getLogger(
-				this.getClass().getName());
 	}
 
 	public void register() {

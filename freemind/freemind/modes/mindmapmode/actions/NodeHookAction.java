@@ -47,14 +47,13 @@ public class NodeHookAction extends MindmapAction implements HookAction,
 		return mMindMapController;
 	}
 
-	private static Logger logger;
+	private static final Logger logger = Logger.getLogger(NodeHookAction.class.getName());
 
 
 	public NodeHookAction(String hookName, MindMapController controller) {
 		super(hookName, (Icon) null, controller);
 		this._hookName = hookName;
 		this.mMindMapController = controller;
-		logger = controller.getFrame().getLogger(this.getClass().getName());
 	}
 
 	public void actionPerformed(ActionEvent arg0) {

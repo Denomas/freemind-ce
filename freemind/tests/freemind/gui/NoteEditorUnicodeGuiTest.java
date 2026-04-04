@@ -67,9 +67,9 @@ class NoteEditorUnicodeGuiTest extends GuiTestBase {
 
     @Test
     void noteEditor_idempotency_allScripts() throws Exception {
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            String scriptName = ALL_SCRIPT_NAMES[i];
-            String htmlContent = wrapInHtml(ALL_SCRIPTS[i]);
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            String scriptName = ALL_SCRIPT_NAMES.get(i);
+            String htmlContent = wrapInHtml(ALL_SCRIPTS.get(i));
             final SHTMLPanel[] panelHolder = new SHTMLPanel[1];
             final String[] outputs = new String[2];
 

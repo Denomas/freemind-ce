@@ -411,8 +411,14 @@ jobs:
       - name: Build AppImage
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          # Download appimagetool
+          # Download appimagetool with checksum verification
+          EXPECTED_SHA="b72d338a9a4969815a935b230512519990b5ed729821f1b27480e15d0ca64e36"
           wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool
+          ACTUAL_SHA=$(sha256sum appimagetool | awk '{print $1}')
+          if [ "$ACTUAL_SHA" != "$EXPECTED_SHA" ]; then
+            echo "::error::appimagetool checksum mismatch! Expected: $EXPECTED_SHA, Got: $ACTUAL_SHA"
+            exit 1
+          fi
           chmod +x appimagetool
 
           # Create AppDir structure from installed dist
@@ -488,6 +494,28 @@ jobs:
           cd artifacts
           find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -exec sha256sum {} + > SHA256SUMS.txt
           cat SHA256SUMS.txt
+
+      - name: Generate SBOM
+        run: |
+          ./gradlew :freemind:cyclonedxBom --no-daemon --no-configuration-cache
+          mkdir -p artifacts/sbom
+          cp freemind/build/reports/bom.json artifacts/sbom/bom.json
+          cp freemind/build/reports/bom.xml artifacts/sbom/bom.xml
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@d7d6107eb3a806d6a4a2688cc4b9842945a27f5d # v3.9.0
+
+      - name: Sign release artifacts
+        run: |
+          cd artifacts
+          for f in *; do
+            if [ -f "$f" ] && [ "$f" != "SHA256SUMS.txt" ] && [ "$f" != "SHA256SUMS.txt.sig" ] && [ "$f" != "SHA256SUMS.txt.pem" ]; then
+              cosign sign-blob --yes "$f" --output-signature="${f}.sig" --output-certificate="${f}.pem"
+              echo "Signed: $f"
+            fi
+          done
+          # Also sign the checksums file
+          cosign sign-blob --yes SHA256SUMS.txt --output-signature=SHA256SUMS.txt.sig --output-certificate=SHA256SUMS.txt.pem
 
       - name: Create Release
         uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2

@@ -64,13 +64,13 @@ class KeyboardShortcutsGuiTest extends GuiTestBase {
     @Test
     void keyboard_allTestDataConstantsExist() {
         assertThat(ALL_SCRIPTS).isNotNull();
-        assertThat(ALL_SCRIPTS.length).isGreaterThan(0);
+        assertThat(ALL_SCRIPTS.size()).isGreaterThan(0);
     }
 
     @Test
     void keyboard_allTestDataNamesExist() {
         assertThat(ALL_SCRIPT_NAMES).isNotNull();
-        assertThat(ALL_SCRIPT_NAMES.length).isEqualTo(ALL_SCRIPTS.length);
+        assertThat(ALL_SCRIPT_NAMES.size()).isEqualTo(ALL_SCRIPTS.size());
     }
 
     @Test

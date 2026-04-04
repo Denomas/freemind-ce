@@ -103,16 +103,16 @@ class InsertMenuGuiTest extends GuiTestBase {
 
     @Test
     void insert_nodeWithAllUnicodeScripts() throws Exception {
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             MindMapNode child = mapFeedback.addNewNode(root, i, true);
-            mapFeedback.setNodeText(child, ALL_SCRIPTS[i]);
+            mapFeedback.setNodeText(child, ALL_SCRIPTS.get(i));
         }
-        assertThat(root.getChildCount()).isEqualTo(ALL_SCRIPTS.length);
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        assertThat(root.getChildCount()).isEqualTo(ALL_SCRIPTS.size());
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             MindMapNode child = (MindMapNode) root.getChildAt(i);
             assertThat(child.getText())
-                .as("Node text for %s script", ALL_SCRIPT_NAMES[i])
-                .isEqualTo(ALL_SCRIPTS[i]);
+                .as("Node text for %s script", ALL_SCRIPT_NAMES.get(i))
+                .isEqualTo(ALL_SCRIPTS.get(i));
         }
     }
 

@@ -66,16 +66,8 @@ public class CalendarMarkingDialog extends JDialog implements ActionListener, Ch
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		CalendarMarkingDialog dialog = new CalendarMarkingDialog(null);
-		CalendarMarkings markings = (CalendarMarkings) Tools.unMarshall(MARKINGS);
-		dialog.setCalendarMarking(markings.getCalendarMarking(0));
-		dialog.setModalityType(Dialog.ModalityType.DOCUMENT_MODAL);
-		dialog.setVisible(true);
-		System.out.println(dialog.getResult());
-		CalendarMarking marking = dialog.getCalendarMarking();
-		CalendarMarkings markingsZwo = new CalendarMarkings();
-		markingsZwo.addCalendarMarking(marking);
-		System.out.println(Tools.marshall(markingsZwo));
+		// This is a standalone launcher - requires a real MindMapController
+		System.err.println("CalendarMarkingDialog.main() requires a MindMapController - not supported as standalone");
 	}
 
 	public CalendarMarkingDialog(MindMapController pController) {

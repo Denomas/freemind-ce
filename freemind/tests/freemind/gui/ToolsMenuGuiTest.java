@@ -301,11 +301,11 @@ class ToolsMenuGuiTest extends GuiTestBase {
     @Test
     void tools_htmlToolsXhtmlAllScripts() {
         HtmlTools htmlTools = HtmlTools.getInstance();
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            String html = "<html><body><p>" + ALL_SCRIPTS[i] + "</p></body></html>";
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            String html = "<html><body><p>" + ALL_SCRIPTS.get(i) + "</p></body></html>";
             String xhtml = htmlTools.toXhtml(html);
             assertThat(xhtml)
-                .as("toXhtml should produce non-empty result for %s", ALL_SCRIPT_NAMES[i])
+                .as("toXhtml should produce non-empty result for %s", ALL_SCRIPT_NAMES.get(i))
                 .isNotNull()
                 .isNotEmpty();
         }

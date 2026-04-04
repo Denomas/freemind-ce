@@ -419,8 +419,8 @@ public class TimeManagement extends MindMapHookAdapter implements
 				gb2.gridy = 0;
 				gb2.fill = GridBagConstraints.HORIZONTAL;
 				minuteField = new JTextField(2);
-				String minuteString = Integer.valueOf(Calendar.getInstance().get(
-						Calendar.MINUTE)).toString();
+				String minuteString = Integer.toString(Calendar.getInstance().get(
+						Calendar.MINUTE));
 				// padding with "0"
 				if (minuteString.length() < 2) {
 					minuteString = "0" + minuteString;

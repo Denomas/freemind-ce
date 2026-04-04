@@ -75,16 +75,16 @@ class ExportGuiTest extends GuiTestBase {
     void export_xmlPreservesUnicode() throws Exception {
         String xml = runOnEdtAndGet(() -> {
             MindMapNode root = loadBasicMap();
-            for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+            for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
                 MindMapNode child = mapFeedback.addNewNode(root, i, true);
-                mapFeedback.setNodeText(child, ALL_SCRIPTS[i]);
+                mapFeedback.setNodeText(child, ALL_SCRIPTS.get(i));
             }
             return getMapXml();
         });
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             assertThat(xml)
-                .as("XML should contain %s text", ALL_SCRIPT_NAMES[i])
-                .contains(ALL_SCRIPTS[i]);
+                .as("XML should contain %s text", ALL_SCRIPT_NAMES.get(i))
+                .contains(ALL_SCRIPTS.get(i));
         }
     }
 

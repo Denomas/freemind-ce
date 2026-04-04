@@ -68,5 +68,9 @@ public class NamedObject {
 		return name;
 	}
 
+	@Override
+	public int hashCode() {
+		return object != null ? object.hashCode() : 0;
+	}
 
 }

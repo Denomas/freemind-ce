@@ -89,6 +89,20 @@ public class ComboProperty extends PropertyBean implements PropertyControl {
 				possibleTranslations)));
 	}
 
+	public ComboProperty(String description, String label, List<String> possibles,
+			TextTranslator pTranslator) {
+		super();
+		this.description = description;
+		this.label = label;
+		fillPossibleValues(possibles);
+		Vector<String> possibleTranslations = new Vector<>();
+		for (String key : possibleValues) {
+			possibleTranslations.add(pTranslator.getText(key));
+		}
+		mComboBox.setModel(new DefaultComboBoxModel<>(possibleTranslations));
+		addActionListener();
+	}
+
 
 	private void fillPossibleValues(String[] possibles) {
 		fillPossibleValues(Arrays.asList(possibles));

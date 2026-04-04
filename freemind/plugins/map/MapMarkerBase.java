@@ -46,7 +46,7 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	private static final int CIRCLE_DIAMETER = CIRCLE_RADIUS * 2;
 	protected MapDialog mMapDialog;
 	boolean mSelected = false;
-	protected static java.util.logging.Logger logger = null;
+	protected static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MapMarkerBase.class.getName());
 	protected Color mBulletColor = Color.BLACK;
 	protected Color mSelectedBackgroundColor = Color.GRAY;
 	protected Color mBackgroundColor = Color.WHITE;
@@ -63,8 +63,6 @@ public abstract class MapMarkerBase extends JLabel implements MapMarker {
 	public MapMarkerBase(MapDialog pMapDialog) {
 		super();
 		mMapDialog = pMapDialog;
-			logger = freemind.main.Resources.getInstance().getLogger(
-					this.getClass().getName());
 
 	}
 

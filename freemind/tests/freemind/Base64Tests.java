@@ -23,6 +23,8 @@
 
 package tests.freemind;
 
+import java.nio.charset.StandardCharsets;
+
 import freemind.main.Base64Coding;
 
 /**
@@ -32,7 +34,7 @@ import freemind.main.Base64Coding;
 public class Base64Tests extends FreeMindTestBase {
 	public void testDifferentBase64ers() throws Exception {
 		String input = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		String output = Base64Coding.encode64(input.getBytes());
+		String output = Base64Coding.encode64(input.getBytes(StandardCharsets.UTF_8));
 		System.out.println(output);
 		// byte[] output2 = CommonsCodecBase64.encodeBase64(input.getBytes());
 		// String string2 = new String(output2);
@@ -40,7 +42,7 @@ public class Base64Tests extends FreeMindTestBase {
 		String expected = "YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXpBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWg==";
 		assertEquals(expected, output);
 
-		String back = new String(Base64Coding.decode64(output));
+		String back = new String(Base64Coding.decode64(output), StandardCharsets.UTF_8);
 		assertEquals(input, back);
 	}
 

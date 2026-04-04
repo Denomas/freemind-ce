@@ -552,7 +552,7 @@ public abstract class MapAdapter extends DefaultTreeModel implements MindMap {
 		return node;
 	}
 
-	public static DontAskUserBeforeUpdateAdapter sDontAskInstance = new DontAskUserBeforeUpdateAdapter();
+	public static final DontAskUserBeforeUpdateAdapter sDontAskInstance = new DontAskUserBeforeUpdateAdapter();
 
 	public static class DontAskUserBeforeUpdateAdapter implements AskUserBeforeUpdateCallback {
 

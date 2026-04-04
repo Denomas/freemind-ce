@@ -237,18 +237,18 @@ class NodeCrudGuiTest extends GuiTestBase {
     @Test
     void node_noteWithUnicode() throws Exception {
         runOnEdt(() -> {
-            for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+            for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
                 MindMapNode child = mapFeedback.addNewNode(root, i, true);
-                String noteHtml = "<html><body>" + ALL_SCRIPTS[i] + "</body></html>";
+                String noteHtml = "<html><body>" + ALL_SCRIPTS.get(i) + "</body></html>";
                 mapFeedback.setNoteText(child, noteHtml);
             }
         });
 
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             MindMapNode child = (MindMapNode) root.getChildAt(i);
-            String expectedNote = "<html><body>" + ALL_SCRIPTS[i] + "</body></html>";
+            String expectedNote = "<html><body>" + ALL_SCRIPTS.get(i) + "</body></html>";
             assertThat(child.getNoteText())
-                .as("Note for script %s should be preserved", ALL_SCRIPT_NAMES[i])
+                .as("Note for script %s should be preserved", ALL_SCRIPT_NAMES.get(i))
                 .isEqualTo(expectedNote);
         }
     }

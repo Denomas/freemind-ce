@@ -36,8 +36,8 @@ class MapViewUnicodeGuiTest extends GuiTestBase {
     void mapSaveLoad_preservesUnicodeNodeText() throws Exception {
         // Build a map with all script nodes
         StringBuilder mapXml = new StringBuilder("<map><node TEXT='ROOT'>");
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            mapXml.append("<node TEXT='").append(xmlEscape(ALL_SCRIPTS[i])).append("'/>");
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            mapXml.append("<node TEXT='").append(xmlEscape(ALL_SCRIPTS.get(i))).append("'/>");
         }
         mapXml.append("</node></map>");
 
@@ -50,10 +50,10 @@ class MapViewUnicodeGuiTest extends GuiTestBase {
         String savedXml = getMapContents();
 
         // Verify all scripts present as UTF-8
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             assertThat(savedXml)
-                .as("Saved map should contain %s text", ALL_SCRIPT_NAMES[i])
-                .contains(ALL_SCRIPTS[i]);
+                .as("Saved map should contain %s text", ALL_SCRIPT_NAMES.get(i))
+                .contains(ALL_SCRIPTS.get(i));
         }
 
         // Reload
@@ -65,11 +65,11 @@ class MapViewUnicodeGuiTest extends GuiTestBase {
         map2.setRoot(reloadedRoot);
 
         // Verify all children preserved
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             MindMapNode child = (MindMapNode) reloadedRoot.getChildAt(i);
             assertThat(child.getText())
-                .as("Reloaded %s node text", ALL_SCRIPT_NAMES[i])
-                .isEqualTo(ALL_SCRIPTS[i]);
+                .as("Reloaded %s node text", ALL_SCRIPT_NAMES.get(i))
+                .isEqualTo(ALL_SCRIPTS.get(i));
         }
     }
 
@@ -82,20 +82,20 @@ class MapViewUnicodeGuiTest extends GuiTestBase {
         map.setRoot(root);
 
         // Add children with Unicode notes
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             MindMapNode child = mapFeedback.addNewNode(root, i, true);
-            mapFeedback.setNodeText(child, ALL_SCRIPT_NAMES[i]);
-            mapFeedback.setNoteText(child, wrapInHtml(ALL_SCRIPTS[i]));
+            mapFeedback.setNodeText(child, ALL_SCRIPT_NAMES.get(i));
+            mapFeedback.setNoteText(child, wrapInHtml(ALL_SCRIPTS.get(i)));
         }
 
         // Save
         String savedXml = getMapContents();
 
         // Verify notes contain UTF-8
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
             assertThat(savedXml)
-                .as("Saved XML should contain %s note text", ALL_SCRIPT_NAMES[i])
-                .contains(ALL_SCRIPTS[i]);
+                .as("Saved XML should contain %s note text", ALL_SCRIPT_NAMES.get(i))
+                .contains(ALL_SCRIPTS.get(i));
         }
     }
 

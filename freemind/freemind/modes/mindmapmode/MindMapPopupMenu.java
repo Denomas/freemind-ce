@@ -33,14 +33,13 @@ public class MindMapPopupMenu extends FreeMindPopupMenu {
 
 	private static final String MINDMAPMODE_POPUP = "mindmapmode_popup/";
 
-	private static Logger logger = null;
+	private static final Logger logger = Logger.getLogger(MindMapPopupMenu.class.getName());
 
 	private MindMapController c;
 
 	public MindMapPopupMenu(MindMapController c) {
 		super();
 		this.c = c;
-			logger = c.getFrame().getLogger(this.getClass().getName());
 
 	}
 

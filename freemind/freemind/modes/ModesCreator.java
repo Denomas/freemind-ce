@@ -47,15 +47,13 @@ public class ModesCreator {
 	 */
 	private Map<String, String> modesTranslation;
 
-	private static Logger logger;
+	private static final Logger logger = Logger.getLogger(ModesCreator.class.getName());
 
 	public ModesCreator(Controller c) {
 		this.c = c;
 	}
 
 	public Set<String> getAllModes() {
-			logger = c.getFrame().getLogger(this.getClass().getName());
-
 		if (mCreatedModes == null) {
 			mCreatedModes = new TreeMap<>();
 			modesTranslation = new HashMap<>();

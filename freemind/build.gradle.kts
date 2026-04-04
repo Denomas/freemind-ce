@@ -13,6 +13,7 @@ plugins {
     jacoco
     id("com.github.spotbugs") version "6.4.8"
     id("org.owasp.dependencycheck") version "12.2.0"
+    id("org.cyclonedx.bom") version "2.3.1"
 }
 
 // ============================================================================
@@ -460,9 +461,9 @@ tasks.named<JacocoCoverageVerification>("jacocoTestCoverageVerification") {
 // ============================================================================
 
 spotbugs {
-    ignoreFailures.set(true)
+    ignoreFailures.set(false)
+    reportLevel.set(com.github.spotbugs.snom.Confidence.HIGH)
     excludeFilter.set(file("config/spotbugs-exclude.xml"))
-    // SpotBugs 6.x: configure report format via extension
     showProgress.set(false)
 }
 
@@ -497,9 +498,13 @@ tasks.matching { it.name.startsWith("spotbugs") }.configureEach {
 // ============================================================================
 
 dependencyCheck {
-    failBuildOnCVSS = 11f  // report only, never fail
+    failBuildOnCVSS = 7f  // block on High+ severity CVEs
     suppressionFile = "config/owasp-suppressions.xml"
     analyzers.assemblyEnabled = false
+    failOnError = true
+    analyzers.retirejs.enabled = false
+    analyzers.nodeAudit.enabled = false
+    analyzers.nodeEnabled = false
 }
 
 // ============================================================================

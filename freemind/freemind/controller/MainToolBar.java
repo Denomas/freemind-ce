@@ -26,12 +26,11 @@ public class MainToolBar extends FreeMindToolBar {
 	private static final long serialVersionUID = 1L;
 
 	Controller controller;
-	private static Logger logger = null;
+	private static final Logger logger = Logger.getLogger(MainToolBar.class.getName());
 
 	public MainToolBar(final Controller controller) {
 		super();
 		this.controller = controller;
-			logger = controller.getFrame().getLogger(this.getClass().getName());
 
 		setRollover(true);
 		setBorderPainted(false);

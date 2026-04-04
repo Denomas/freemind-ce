@@ -35,12 +35,11 @@ public class NewChildAction extends MindmapAction  {
 	private static final long serialVersionUID = 1L;
 
 	private final MindMapController c;
-	private static Logger logger = null;
+	private static final Logger logger = Logger.getLogger(NewChildAction.class.getName());
 
 	public NewChildAction(MindMapController modeController) {
 		super("new_child", "images/idea.png", modeController);
 		this.c = modeController;
-			logger = c.getFrame().getLogger(NewChildAction.class.getName());
 
 	}
 

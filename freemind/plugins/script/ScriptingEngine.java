@@ -55,7 +55,7 @@ import groovy.transform.ThreadInterrupt;
 public class ScriptingEngine extends MindMapHookAdapter {
 	public static final String SCRIPT_PREFIX = "script";
 	private static final HashMap sScriptCookies = new HashMap<>();
-	static java.util.logging.Logger logger;
+	static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ScriptingEngine.class.getName());
 
 	public interface ErrorHandler {
 		void gotoLine(int pLineNumber);

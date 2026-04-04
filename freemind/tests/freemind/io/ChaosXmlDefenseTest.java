@@ -34,6 +34,7 @@ import tests.freemind.testutil.MindMapGenerator;
 
 import java.io.StringWriter;
 import java.nio.file.Path;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -51,6 +52,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @DisplayName("Chaos XML Defense & Content Preservation")
 class ChaosXmlDefenseTest {
+
+    private static final Random RANDOM = new Random(42);
 
     @BeforeAll
     static void init() {
@@ -83,7 +86,7 @@ class ChaosXmlDefenseTest {
     @DisplayName("Binary content returns error node, no hang")
     void binaryContentReturnsErrorNode() throws Exception {
         byte[] randomBytes = new byte[256];
-        new java.util.Random(42).nextBytes(randomBytes);
+        RANDOM.nextBytes(randomBytes);
         for (int i = 0; i < randomBytes.length; i++) {
             if (randomBytes[i] == 0) randomBytes[i] = 1;
         }

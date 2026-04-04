@@ -203,17 +203,17 @@ class ImportGuiTest extends GuiTestBase {
     void import_preservesUnicode() throws Exception {
         // Import branches with all unicode scripts, verify text preserved
         runOnEdt(() -> {
-            for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-                createChildNode(mapFeedback, root, ALL_SCRIPTS[i]);
+            for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+                createChildNode(mapFeedback, root, ALL_SCRIPTS.get(i));
             }
         });
 
         String xml = saveMapToXml(map);
         MindMapNode reloaded = reloadMap(xml);
 
-        for (int i = 0; i < ALL_SCRIPTS.length; i++) {
-            assertThat(findNodeByText(reloaded, ALL_SCRIPTS[i]))
-                .as("Node with %s text should exist after import round-trip", ALL_SCRIPT_NAMES[i])
+        for (int i = 0; i < ALL_SCRIPTS.size(); i++) {
+            assertThat(findNodeByText(reloaded, ALL_SCRIPTS.get(i)))
+                .as("Node with %s text should exist after import round-trip", ALL_SCRIPT_NAMES.get(i))
                 .isNotNull();
         }
     }
