@@ -76,7 +76,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
+        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
 
       - name: Make gradlew executable
         if: runner.os != 'Windows'
@@ -127,7 +127,7 @@ jobs:
           echo "Test count OK: $ACTUAL >= $MIN_TESTS"
 
       - name: Publish Unit Test Report
-        uses: dorny/test-reporter@3d76b34a4535afbd0600d347b09a6ee5deb3ed7f # v2
+        uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v2
         if: always()
         with:
           name: Unit Tests (${{ matrix.os }}, Java ${{ matrix.java }})
@@ -192,7 +192,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
+        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
 
       - name: Make gradlew executable
         if: runner.os != 'Windows'
@@ -290,7 +290,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish GUI Test Report
-        uses: dorny/test-reporter@3d76b34a4535afbd0600d347b09a6ee5deb3ed7f # v2
+        uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v2
         if: always()
         with:
           name: GUI Tests (${{ matrix.os }}, Java ${{ matrix.java }})
