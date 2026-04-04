@@ -262,8 +262,8 @@ public class MapView extends JPanel implements ViewAbstraction, Printable, Autos
 	private boolean fitToPage = true;
 	private int pagesWide = 1;
 
-	int mPaintingTime;
-	int mPaintingAmount;
+	long mPaintingTime;
+	long mPaintingAmount;
 	static boolean printOnWhiteBackground;
 	static Color standardMapBackgroundColor;
 	static Color standardSelectColor;

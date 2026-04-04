@@ -41,7 +41,7 @@ class RootMainView extends MainView {
 	 */
 	public Dimension getPreferredSize() {
 		Dimension prefSize = super.getPreferredSize();
-		prefSize.width *= 1.1;
+		prefSize.width = (int) (prefSize.width * 1.1);
 		prefSize.height *= 2;
 		return prefSize;
 	}

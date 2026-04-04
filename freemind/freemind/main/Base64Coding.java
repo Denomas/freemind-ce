@@ -94,21 +94,21 @@ public class Base64Coding {
 			// Four input chars (6 bits) are decoded as three bytes as
 			// 000000 001111 111122 222222
 
-			byte b0 = (byte) (c[i] << 2);
+			int b0 = (c[i] << 2);
 			if (remaining >= 2) {
-				b0 += (c[i + 1] & 0x30) >> 4;
+				b0 = b0 + ((c[i + 1] & 0x30) >> 4);
 			}
 			bs.write(b0);
 
 			if (remaining >= 3) {
-				byte b1 = (byte) ((c[i + 1] & 0x0F) << 4);
-				b1 += (byte) ((c[i + 2] & 0x3C) >> 2);
+				int b1 = ((c[i + 1] & 0x0F) << 4);
+				b1 = b1 + ((c[i + 2] & 0x3C) >> 2);
 				bs.write(b1);
 			}
 
 			if (remaining >= 4) {
-				byte b2 = (byte) ((c[i + 2] & 0x03) << 6);
-				b2 += c[i + 3];
+				int b2 = ((c[i + 2] & 0x03) << 6);
+				b2 = b2 + c[i + 3];
 				bs.write(b2);
 			}
 
