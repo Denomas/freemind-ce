@@ -42,11 +42,8 @@ Don't read everything — read what's relevant:
 
 ## Pre-Commit Checklist
 
-Before EVERY commit:
-1. `find_referencing_symbols(symbol, file)` — for each modified symbol
-2. `make build` — must pass (compile + test)
-3. `make run` — visual smoke test for UI changes
-4. `git diff --staged` — no debug code, no secrets
+→ [CONTRIBUTING.md — Before Committing](CONTRIBUTING.md#before-committing) (single source of truth)
+→ [docs/serena-guide.md — Pre-Commit Verification](docs/serena-guide.md#pre-commit-verification-flow) (Serena steps)
 
 ## Subagent Rule
 
@@ -115,10 +112,7 @@ freemind-ce/
 
 ### Architecture
 
-- **Pattern:** MVC + Mode-based (Browse/MindMap/File) + Hook/Plugin
-- **XML Binding:** JAXB 2.3.1/2.3.9
-- **L&F:** FlatLaf 3.7
-- Active plugins: svg, script, map, search, help, contextgraph, collaboration/socket
+→ [docs/architecture.md](docs/architecture.md) — MVC, modes, action framework, plugin system, data architecture.
 
 ### Common Tasks
 
@@ -139,11 +133,9 @@ make help           # Show all targets
 
 ### Git & Release
 
-- **Remotes:** `origin` → Denomas/freemind-ce (GitHub), `upstream` → SourceForge
-- **Branch:** `main` — trunk-based, all changes via PR (no direct push)
-- **Release:** Tag `v*.*.*` → GitHub Actions auto-builds DMG/EXE/DEB
-- **CI:** 6 OS x 4 Java = 48 checks, gated by single `CI` aggregator
-- **Commits:** Conventional Commits enforced (`feat`, `fix`, `docs`, `refactor`, `test`, `build`, `ci`, `chore`)
+→ [docs/contributor-workflows.md](docs/contributor-workflows.md) — Branch workflow, CI pipeline, release gating.
+→ [docs/merge-release-safety.md](docs/merge-release-safety.md) — Merge protocol, release checklist.
+→ [CONTRIBUTING.md — Commit Best Practices](CONTRIBUTING.md#commit-best-practices) — Conventional Commits format.
 
 ### Serena Quick Reference
 

@@ -166,51 +166,9 @@ make coverage       # Tests + JaCoCo coverage report
 
 ## Static Analysis
 
-Every `make build` runs two static analysis tools automatically alongside compilation and tests.
+Static analysis tools (PMD + SpotBugs), configuration, reports, and the early detection chain are documented in **one place**:
 
-### Tools & Commands
-
-| Tool | Purpose | Report Location |
-|------|---------|----------------|
-| **SpotBugs 6.4.8** | Bug patterns: null deref, dead store, concurrency, resource leaks | `freemind/build/reports/spotbugs/main.html` |
-| **PMD 7.21.0** | Code quality: unused vars, empty catch, inefficient patterns, design, security | `freemind/build/reports/pmd/main.html` |
-
-```bash
-make build          # Runs both PMD + SpotBugs automatically
-make check          # Build + all quality checks
-
-# View reports
-open freemind/build/reports/pmd/main.html       # PMD (source code)
-open freemind/build/reports/pmd/test.html        # PMD (test code)
-open freemind/build/reports/spotbugs/main.html   # SpotBugs
-```
-
-### PMD Configuration
-
-- **Config:** `freemind/config/pmd-ruleset.xml`
-- **Categories:** All 7 — bestpractices, errorprone, performance, codestyle, design, multithreading, security
-- **Rules:** 294, all priority levels
-- **Build behavior:** Reports violations but does not fail build (`ignoreFailures = true` for legacy code)
-
-### SpotBugs Configuration
-
-- **Config:** `freemind/config/spotbugs-exclude.xml`
-- **Confidence:** HIGH minimum
-- **Build behavior:** Fails build on any finding (`ignoreFailures = false`)
-
-### Early Detection Chain
-
-Issues are caught at the earliest possible stage:
-
-```
-Code written
-  → Serena MCP (semantic analysis, reference checking)
-    → PMD + SpotBugs (make build)
-      → Pre-commit hook (compile verification)
-        → git push
-          → GitHub code-quality (automated PR review comments)
-            → CI 48-job matrix (6 OS × 4 Java)
-```
+> **[CONTRIBUTING.md — Static Analysis](../CONTRIBUTING.md#static-analysis-quality-gates)** — Tools, config files, report locations, viewing commands, early detection chain.
 
 ## Git Remotes
 
@@ -225,44 +183,11 @@ Code written
 
 ## CI/CD Pipeline
 
-### Build Workflow (`.github/workflows/build.yml`)
+CI pipeline details, path filtering, test matrix, workflows, and packaging are documented in **one place**:
 
-The build workflow uses **path filtering** to skip the full matrix on doc-only PRs:
+> **[docs/contributor-workflows.md — Section 6](contributor-workflows.md#section-6-ci-pipeline)** — CI flow diagrams, path filtering, doc-only detection, release gating.
 
-| Job | Purpose | Runs on doc-only PR? |
-|---|---|---|
-| `Detect changes` | Pure `git diff` with negated pathspecs — determines if code changed | Always |
-| `Build (os, java)` | Compile + unit tests + SpotBugs (6 OS × 4 Java = 24 combinations) | Skipped |
-| `GUI Tests (os, java)` | GUI integration tests + screenshots (24 combinations) | Skipped |
-| `CI` | Aggregator — evaluates all results, **single required check** in GitHub Ruleset | Always |
-
-**Doc-only paths** (changes limited to these skip the matrix):
-`**/*.md`, `docs/**`, `LICENSE`, `COPYING`, `.gitattributes`, `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
-
-**Flow:**
-```
-PR (code change):   changes(code=true)  → build(24) → gui-tests(24) → CI ✅
-PR (docs only):     changes(code=false) → build(SKIP) → gui-tests(SKIP) → CI ✅ (~30s)
-Push to main:       changes(code=true)  → build(24) → gui-tests(24) → CI ✅
-workflow_call:      changes(code=true)  → build(24) → gui-tests(24) → CI ✅
-```
-
-### Other Workflows
-
-| Workflow | Trigger | Path filtering |
-|---|---|---|
-| `release-please.yml` | Push to main + `workflow_dispatch` | `paths-ignore` skips doc-only pushes |
-| `scorecard.yml` | Weekly schedule + push to main + `workflow_dispatch` | `paths-ignore` skips doc-only pushes |
-| `release.yml` | Tag `v*.*.*` | No filtering — always runs full matrix + packaging |
-
-### Packaging
-
-- **macOS:** jpackage DMG
-- **Windows:** jpackage EXE
-- **Linux:** jpackage DEB
-- **Release:** Upload to GitHub Releases (on tag event)
-
-**Triggers:** PRs on main (build.yml), push to main via release-please (workflow_call), tag creation (release.yml)
+> **[docs/merge-release-safety.md](merge-release-safety.md)** — Merge protocol, release checklist, dependency updates.
 
 ## Legacy Build (Ant)
 
