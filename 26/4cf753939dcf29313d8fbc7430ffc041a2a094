@@ -1,0 +1,23 @@
+.claude/settings.json
+  22af26e20b09ff0b 122
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "264cf753939dcf29313d8fbc7430ffc041a2a094",
+  "prompts": {
+    "22af26e20b09ff0b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d9a1a69-77af-46fc-9352-452601442e05",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
