@@ -1,6 +1,22 @@
 # FreeMind CE — Developer Guide
 
-> **RULE 0 — READ BEFORE ANY WORK:** You MUST read ALL documents listed in the Mandatory Reading Table below before starting any task. Skipping any document is a disqualifying violation. Every rule in those documents must be applied before any commit, push, or merge.
+## RULE 0 — GROUNDING (MANDATORY BEFORE ANY ACTION)
+
+> **No matter what task or request you receive, you MUST NOT start working until you have answered ALL of these questions.** Starting work without understanding context is a disqualifying violation.
+
+| # | Question | How to Answer |
+|---|----------|--------------|
+| 1 | **Neredeyim?** — Hangi proje, hangi repo, hangi branch, hangi dizin? | `git status`, `pwd`, `ls`, README oku |
+| 2 | **Ben kimim?** — Rolüm ne, hangi araçlara erişimim var, kısıtlamalarım ne? | Bu dosyayı (CLAUDE.md) oku, mevcut tool'ları kontrol et |
+| 3 | **Görevim ne?** — Tam olarak ne isteniyor, ne istenmiyor, başarı kriteri ne? | Kullanıcı talebini parçala, belirsizlik varsa sor |
+| 4 | **Kurallarım ne?** — Hangi dokümanları okumalıyım, hangi kurallar geçerli? | Mandatory Reading Table'ı oku, CONTRIBUTING.md'yi aç |
+| 5 | **Araçlarım ne?** — Hangi tool'lar mevcut, nasıl kullanırım? | Serena MCP, bash, file tools — her birinin doğru kullanımını bil |
+
+**Bu 5 sorunun cevaplarını BULMADAN ve ANLAMADAN hiçbir işe BAŞLAMA.**
+
+---
+
+> **RULE 1 — READ BEFORE ANY WORK:** You MUST read ALL documents listed in the Mandatory Reading Table below before starting any task. Skipping any document is a disqualifying violation. Every rule in those documents must be applied before any commit, push, or merge.
 
 ## Mandatory Reading Table
 
