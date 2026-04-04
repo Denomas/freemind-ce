@@ -247,6 +247,59 @@ This applies to ALL contributors including AI agents. If an agent pushes code an
 
 > **Complete Serena reference:** [docs/serena-guide.md](docs/serena-guide.md) — 18 tools, setup, workflow diagrams, decision trees, examples, anti-patterns
 
+## Static Analysis (Quality Gates)
+
+Every `make build` runs two static analysis tools automatically. These are **not optional** — they are the first line of defense against bugs.
+
+### Tools
+
+| Tool | Version | What It Catches | Config |
+|------|---------|----------------|--------|
+| **SpotBugs** | 6.4.8 | Null dereference, dead store, concurrency bugs, resource leaks | `config/spotbugs-exclude.xml` |
+| **PMD** | 7.21.0 | Unused variables, empty catch blocks, inefficient patterns, design issues, security | `config/pmd-ruleset.xml` |
+
+### PMD Configuration
+
+- **All 7 categories active:** bestpractices, errorprone, performance, codestyle, design, multithreading, security
+- **294 rules**, all priority levels (1-5)
+- **Ruleset:** `freemind/config/pmd-ruleset.xml` — full categories, no exclusions
+- **Reports:** `freemind/build/reports/pmd/main.html` (source) and `test.html` (tests)
+- **Current status:** `ignoreFailures = true` due to legacy violations. Goal: zero violations, then switch to `false`
+
+### SpotBugs Configuration
+
+- **Confidence:** HIGH (minimum)
+- **Exclude filter:** `freemind/config/spotbugs-exclude.xml`
+- **Fails build:** Yes (`ignoreFailures = false`)
+- **Reports:** `freemind/build/reports/spotbugs/` (HTML)
+
+### Early Detection Chain
+
+The goal is to catch issues as early as possible, at the closest point to where code is written:
+
+```
+Code written
+  → Serena MCP (semantic analysis, reference checking)
+    → PMD + SpotBugs (make build — static analysis)
+      → Pre-commit hook (compile verification)
+        → git push
+          → GitHub code-quality (automated PR review)
+            → CI 48-job matrix (6 OS × 4 Java)
+```
+
+Every layer catches different things. No layer is redundant. Skipping any layer means bugs slip through.
+
+### Viewing Reports
+
+```bash
+make build          # Runs PMD + SpotBugs automatically
+# PMD reports:
+open freemind/build/reports/pmd/main.html
+open freemind/build/reports/pmd/test.html
+# SpotBugs reports:
+open freemind/build/reports/spotbugs/main.html
+```
+
 ## Code Style
 
 - Follow existing patterns in the codebase

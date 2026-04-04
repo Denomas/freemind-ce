@@ -164,6 +164,54 @@ make coverage       # Tests + JaCoCo coverage report
 | `HtmlConversionTests.java` | HTML export |
 | `StandaloneMapTests.java` | Standalone map operations |
 
+## Static Analysis
+
+Every `make build` runs two static analysis tools automatically alongside compilation and tests.
+
+### Tools & Commands
+
+| Tool | Purpose | Report Location |
+|------|---------|----------------|
+| **SpotBugs 6.4.8** | Bug patterns: null deref, dead store, concurrency, resource leaks | `freemind/build/reports/spotbugs/main.html` |
+| **PMD 7.21.0** | Code quality: unused vars, empty catch, inefficient patterns, design, security | `freemind/build/reports/pmd/main.html` |
+
+```bash
+make build          # Runs both PMD + SpotBugs automatically
+make check          # Build + all quality checks
+
+# View reports
+open freemind/build/reports/pmd/main.html       # PMD (source code)
+open freemind/build/reports/pmd/test.html        # PMD (test code)
+open freemind/build/reports/spotbugs/main.html   # SpotBugs
+```
+
+### PMD Configuration
+
+- **Config:** `freemind/config/pmd-ruleset.xml`
+- **Categories:** All 7 — bestpractices, errorprone, performance, codestyle, design, multithreading, security
+- **Rules:** 294, all priority levels
+- **Build behavior:** Reports violations but does not fail build (`ignoreFailures = true` for legacy code)
+
+### SpotBugs Configuration
+
+- **Config:** `freemind/config/spotbugs-exclude.xml`
+- **Confidence:** HIGH minimum
+- **Build behavior:** Fails build on any finding (`ignoreFailures = false`)
+
+### Early Detection Chain
+
+Issues are caught at the earliest possible stage:
+
+```
+Code written
+  → Serena MCP (semantic analysis, reference checking)
+    → PMD + SpotBugs (make build)
+      → Pre-commit hook (compile verification)
+        → git push
+          → GitHub code-quality (automated PR review comments)
+            → CI 48-job matrix (6 OS × 4 Java)
+```
+
 ## Git Remotes
 
 | Remote | URL | Purpose |
