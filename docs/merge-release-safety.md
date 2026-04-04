@@ -137,13 +137,16 @@ The `main` branch is protected by GitHub Rulesets with the following configurati
 | Restrict deletions | ON | Main branch cannot be deleted |
 | Block force pushes | ON | No force push to main |
 | Require pull request | ON | No direct push to main — ALL changes via PR |
-| Required approvals | 1 | Every PR needs maintainer approval |
-| Require approval from someone other than last pusher | OFF | Solo maintainer can self-approve (CI is the real gate) |
+| Required approvals | 0 | Solo maintainer project — CI is the gate, not approval count |
+| Require approval from someone other than last pusher | OFF | Solo maintainer can self-merge after CI |
 | Dismiss stale reviews | ON | New push invalidates previous approval |
 | Require conversation resolution | ON | All review threads must be resolved |
 | Require status checks | ON | `CI` aggregator must pass |
 | Strict status checks | ON | Branch must be up-to-date with main |
+| Require code scanning (CodeQL) | ON | Errors + high/critical security alerts block merge |
 | Bypass list | EMPTY | Nobody can bypass — not even admin |
+
+> **Note:** `Protect-Main` (legacy duplicate ruleset) was deleted on 2026-04-05. Only `main-protection` remains.
 
 ### Merge Method
 
