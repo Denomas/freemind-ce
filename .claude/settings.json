@@ -1,0 +1,117 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make:*)",
+      "Bash(make build:*)",
+      "Bash(make test:*)",
+      "Bash(make test-gui:*)",
+      "Bash(make clean:*)",
+      "Bash(make jaxb:*)",
+      "Bash(make info:*)",
+      "Bash(make javadoc:*)",
+      "Bash(make coverage:*)",
+      "Bash(make dist-zip:*)",
+      "Bash(make check:*)",
+      "Bash(make run:*)",
+      "Bash(make package:*)",
+      "Bash(make help:*)",
+      "Bash(gh:*)",
+      "Bash(git:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(sed:*)",
+      "Bash(awk:*)",
+      "Bash(cut:*)",
+      "Bash(tr:*)",
+      "Bash(diff:*)",
+      "Bash(echo:*)",
+      "Bash(printf:*)",
+      "Bash(pwd)",
+      "Bash(which:*)",
+      "Bash(jq:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(touch:*)",
+      "Bash(jar:*)",
+      "Bash(java:*)",
+      "Bash(./gradlew:*)",
+      "Bash(JAVA_HOME:*)",
+      "Bash(export JAVA_HOME:*)",
+      "Bash(.claude/hooks:*)",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__onboarding",
+      "mcp__serena__initial_instructions",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__find_symbol",
+      "mcp__serena__find_referencing_symbols",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__find_file",
+      "mcp__serena__list_dir",
+      "mcp__serena__list_memories",
+      "mcp__serena__read_memory",
+      "mcp__serena__write_memory",
+      "mcp__serena__edit_memory",
+      "mcp__serena__delete_memory",
+      "mcp__serena__rename_memory",
+      "mcp__serena__replace_symbol_body",
+      "mcp__serena__insert_after_symbol",
+      "mcp__serena__insert_before_symbol",
+      "mcp__serena__rename_symbol",
+      "mcp__serena__safe_delete_symbol"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command' | grep -qE '\\.(java|kts|gradle)' && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"block\",\"permissionDecisionReason\":\"BLOCKED: Use Serena MCP for Java code analysis: search_for_pattern, find_symbol, get_symbols_overview. See CLAUDE.md.\"}}' || true",
+            "timeout": 5,
+            "statusMessage": "Serena compliance check"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | grep -qE '\\.(java|kts)$' && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"block\",\"permissionDecisionReason\":\"BLOCKED: Use Serena MCP to read Java files: get_symbols_overview(file, depth=1) then find_symbol(name, include_body=True). See CLAUDE.md.\"}}' || true",
+            "timeout": 5,
+            "statusMessage": "Serena compliance check"
+          }
+        ]
+      },
+      {
+        "matcher": "Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/check-grep-java.sh",
+            "timeout": 5,
+            "statusMessage": "Serena compliance check"
+          }
+        ]
+      }
+    ]
+  }
+}

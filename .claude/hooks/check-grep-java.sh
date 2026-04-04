@@ -1,0 +1,9 @@
+#!/bin/bash
+# PreToolUse hook: Block Grep on .java/.kts files, redirect to Serena MCP
+INPUT=$(cat)
+GLOB=$(echo "$INPUT" | jq -r '.tool_input.glob // empty')
+PVAL=$(echo "$INPUT" | jq -r '.tool_input.path // empty')
+TVAL=$(echo "$INPUT" | jq -r '.tool_input.type // empty')
+if echo "$GLOB $PVAL $TVAL" | grep -qiE '(java|kts)'; then
+  echo '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"block","permissionDecisionReason":"BLOCKED: Use Serena MCP to search Java code: search_for_pattern(pattern) or find_symbol(name). See CLAUDE.md."}}'
+fi
