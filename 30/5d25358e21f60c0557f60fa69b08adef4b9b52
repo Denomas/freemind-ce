@@ -1,0 +1,306 @@
+freemind/freemind/modes/mindmapmode/actions/NodeHookAction.java
+  f62d8a5e57a31029 50
+freemind/accessories/plugins/ClonePasteAction.java
+  9cb5718c7183fd96 716
+freemind/freemind/modes/MindMapNode.java
+  27216fb3d60bf0b2 52-53
+freemind/config/spotbugs-exclude.xml
+  f62d8a5e57a31029 12-50
+.github/workflows/build.yml
+  4e2c43392ac4c63a 304,313,323-365
+freemind/freemind/controller/filter/condition/NoFilteringCondition.java
+  f62d8a5e57a31029 36-37
+freemind/freemind/modes/EdgeAdapter.java
+  27216fb3d60bf0b2 46-47
+freemind/freemind/modes/browsemode/BrowseMapModel.java
+  4d99d6e2ced42bf8 140
+freemind/freemind/controller/MindMapNodesSelection.java
+  27216fb3d60bf0b2 44-47,52,57,73
+freemind/freemind/common/ScriptEditorProperty.java
+  f62d8a5e57a31029 55
+freemind/freemind/modes/mindmapmode/MindMapMapModel.java
+  19e0a5b8f572d907 456
+freemind/accessories/plugins/time/TimeManagement.java
+  19e0a5b8f572d907 422-423
+.github/workflows/release.yml
+  4e2c43392ac4c63a 414-415,417-421,498-519
+freemind/tests/freemind/gui/ToolsMenuGuiTest.java
+  63ddaa2f9784e231 304-305,308
+freemind/freemind/modes/mindmapmode/actions/xml/actors/NodeStyleActor.java
+  27216fb3d60bf0b2 51
+freemind/freemind/modes/mindmapmode/dialogs/StylePatternFrame.java
+  27216fb3d60bf0b2 92,94
+freemind/accessories/plugins/dialogs/ManagePatternsPopupDialog.java
+  f62d8a5e57a31029 146
+freemind/freemind/common/UnicodeReader.java
+  bce816070343bde7 31,114
+freemind/freemind/main/FreeMind.java
+  f62d8a5e57a31029 273
+freemind/freemind/modes/mindmapmode/actions/ImportFolderStructureAction.java
+  f62d8a5e57a31029 37
+freemind/accessories/plugins/time/TimeList.java
+  f62d8a5e57a31029 103,105,107,109,111,113
+freemind/freemind/modes/mindmapmode/actions/UndoAction.java
+  19e0a5b8f572d907 152-153
+.github/workflows/security-scan.yml
+  4e2c43392ac4c63a 83-109
+freemind/build.gradle.kts
+  4e2c43392ac4c63a 16,464-465,501,504-507
+freemind/freemind/common/ComboProperty.java
+  27216fb3d60bf0b2 92-105
+freemind/freemind/main/Tools.java
+  27216fb3d60bf0b2 165
+  4d99d6e2ced42bf8 1637
+freemind/tests/freemind/io/ChaosXmlDefenseTest.java
+  a8170f9483be3978 37,56-57,89
+freemind/freemind/common/NamedObject.java
+  4d99d6e2ced42bf8 71-74
+freemind/freemind/main/FreeMindCommon.java
+  f62d8a5e57a31029 223
+freemind/freemind/main/EditServer.java
+  a8170f9483be3978 73,100
+freemind/freemind/controller/LastOpenedList.java
+  19e0a5b8f572d907 57-58
+freemind/tests/freemind/Base64Tests.java
+  bce816070343bde7 26-27,45
+freemind/freemind/modes/mindmapmode/actions/PasteAsPlainTextAction.java
+  f62d8a5e57a31029 44
+freemind/tests/freemind/gui/NodeCrudGuiTest.java
+  63ddaa2f9784e231 240,242,247,249,251
+freemind/tests/freemind/unicode/UnicodeTestData.java
+  63ddaa2f9784e231 3-6,53,56,58,61
+freemind/freemind/modes/common/listeners/CommonNodeMouseMotionListener.java
+  f62d8a5e57a31029 47
+freemind/tests/freemind/gui/ImportGuiTest.java
+  63ddaa2f9784e231 206-207,214-216
+freemind/freemind/modes/mindmapmode/actions/JoinNodesAction.java
+  9cb5718c7183fd96 95
+freemind/tests/freemind/gui/EdgeCaseGuiTest.java
+  63ddaa2f9784e231 164-165,168-169
+freemind/freemind/view/mindmapview/SharpBezierEdgeView.java
+  4d99d6e2ced42bf8 95
+freemind/plugins/search/SearchViewPanel.java
+  f62d8a5e57a31029 110
+freemind/freemind/modes/mindmapmode/MindMapPopupMenu.java
+  f62d8a5e57a31029 36
+freemind/tests/freemind/gui/NodeEditingGuiTest.java
+  63ddaa2f9784e231 236-238
+freemind/tests/freemind/gui/DialogsGuiTest.java
+  63ddaa2f9784e231 215-216,219,298-300
+freemind/tests/freemind/gui/KeyboardShortcutsGuiTest.java
+  63ddaa2f9784e231 67,73
+freemind/tests/freemind/gui/NoteEditorUnicodeGuiTest.java
+  63ddaa2f9784e231 70-72
+freemind/freemind/modes/browsemode/NodeNoteViewer.java
+  9cb5718c7183fd96 77
+freemind/tests/freemind/gui/ViewMenuGuiTest.java
+  63ddaa2f9784e231 92-94
+freemind/freemind/controller/MenuBar.java
+  f62d8a5e57a31029 52
+freemind/tests/freemind/unicode/UnicodeRoundTripTests.java
+  63ddaa2f9784e231 42-43,51,80-81,88,90-91
+freemind/freemind/modes/mindmapmode/MindMapMode.java
+  f62d8a5e57a31029 41
+freemind/freemind/main/FreeMindSplashModern.java
+  f62d8a5e57a31029 117
+freemind/tests/freemind/gui/FormatMenuGuiTest.java
+  63ddaa2f9784e231 59-60,63-64,173-174,176,183-184,187-188
+freemind/tests/freemind/gui/ExportGuiTest.java
+  63ddaa2f9784e231 78,80,84,86-87
+freemind/freemind/modes/mindmapmode/actions/NewChildAction.java
+  f62d8a5e57a31029 38
+freemind/freemind/modes/ModesCreator.java
+  f62d8a5e57a31029 50
+freemind/tests/freemind/gui/MapViewUnicodeGuiTest.java
+  63ddaa2f9784e231 39-40,53,55-56,68,71-72,85,87-88,95,97-98
+freemind/freemind/modes/mindmapmode/actions/NodeUpAction.java
+  f62d8a5e57a31029 35
+freemind/freemind/modes/mindmapmode/actions/xml/actors/EdgeStyleActor.java
+  27216fb3d60bf0b2 59
+freemind/tests/freemind/gui/InsertMenuGuiTest.java
+  63ddaa2f9784e231 106,108,110-111,114-115
+freemind/tests/freemind/unicode/HtmlUnicodeTests.java
+  63ddaa2f9784e231 100-101,104,108
+freemind/freemind/controller/MainToolBar.java
+  f62d8a5e57a31029 29
+freemind/plugins/script/ScriptingEngine.java
+  f62d8a5e57a31029 58
+.opencode/opencode.json
+  5281e902853c8b88 1-18
+freemind/freemind/modes/MapAdapter.java
+  27216fb3d60bf0b2 555
+freemind/freemind/modes/mindmapmode/listeners/MindMapNodeMotionListener.java
+  f62d8a5e57a31029 49
+freemind/tests/freemind/gui/CollaborationGuiTest.java
+  9cb5718c7183fd96 225,252
+freemind/freemind/modes/common/CommonNodeKeyListener.java
+  f62d8a5e57a31029 60
+freemind/plugins/map/MapMarkerBase.java
+  f62d8a5e57a31029 49
+freemind/tests/freemind/TransformTest.java
+  bce816070343bde7 30,142,161
+freemind/freemind/controller/Controller.java
+  f62d8a5e57a31029 124
+freemind/accessories/plugins/time/CalendarMarkingDialog.java
+  4d99d6e2ced42bf8 69-70
+kaldigimiz-yerden-devam-ederken-yapilacaklar.md
+  3a569ff05e7219a6 1-224
+freemind/plugins/map/FreeMindMapController.java
+  4d99d6e2ced42bf8 2107,2363,2370-2372
+  63ddaa2f9784e231 173
+freemind/freemind/main/HtmlTools.java
+  4e2c43392ac4c63a 627,630
+  19e0a5b8f572d907 802
+freemind/freemind/modes/mindmapmode/actions/xml/PrintActionHandler.java
+  f62d8a5e57a31029 38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "305d25358e21f60c0557f60fa69b08adef4b9b52",
+  "prompts": {
+    "19e0a5b8f572d907": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a772353effeDfbdNoFIKDGUNY",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 8,
+      "total_deletions": 9,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    },
+    "27216fb3d60bf0b2": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a780ef35ffeznLyPuAWDnCdzM",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 31,
+      "total_deletions": 18,
+      "accepted_lines": 31,
+      "overriden_lines": 0
+    },
+    "3a569ff05e7219a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f37a94-7137-4f29-a97e-f1bbc6f050d3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 224,
+      "overriden_lines": 0
+    },
+    "4d99d6e2ced42bf8": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a77ce22dffej2b5yPatwGaXii",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 14,
+      "total_deletions": 14,
+      "accepted_lines": 14,
+      "overriden_lines": 0
+    },
+    "4e2c43392ac4c63a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2aa18cd03ffeqAp1FC2ntTOx3p",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 111,
+      "total_deletions": 7,
+      "accepted_lines": 111,
+      "overriden_lines": 0
+    },
+    "5281e902853c8b88": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a785a611ffeamH9TlCb1niKWv",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 18,
+      "total_deletions": 0,
+      "accepted_lines": 18,
+      "overriden_lines": 0
+    },
+    "63ddaa2f9784e231": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a7727980ffeRyWULbbARA66et",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 91,
+      "total_deletions": 87,
+      "accepted_lines": 91,
+      "overriden_lines": 0
+    },
+    "9cb5718c7183fd96": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a77203feffebmxPQ0Gqlr1WsD",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 12,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    },
+    "a8170f9483be3978": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a7728ff9ffe5hBmEHcugGC1AF",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 6,
+      "total_deletions": 2,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    },
+    "bce816070343bde7": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a77282dbffeGXte7ZJwHJzzyY",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 8,
+      "total_deletions": 4,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    },
+    "f62d8a5e57a31029": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2a78cba7cffeYjjTrTPGyeICQo",
+        "model": "opencode/qwen3.6-plus-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 70,
+      "total_deletions": 61,
+      "accepted_lines": 70,
+      "overriden_lines": 0
+    }
+  }
+}
