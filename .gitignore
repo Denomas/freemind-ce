@@ -104,8 +104,13 @@ coverage/
 # Legacy Ant build output inside freemind/
 freemind/bin/
 
-# Claude Code local settings (per-developer)
-.claude/
+# Claude Code — ignore local settings but keep project settings and hooks
+.claude/*
+!.claude/settings.json
+!.claude/hooks/
+.claude/settings.local.json
+.claude/worktrees/
+.claude/plans/
 
 # Serena LSP agent (keep .serena/project.yml versioned)
 .serena/project.local.yml

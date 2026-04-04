@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="FreeMind CE"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        FreeMind CE — full PMD ruleset for maximum early detection.
+        Goal: zero violations on all new code, progressive cleanup of legacy.
+    </description>
+
+    <!-- All best practices -->
+    <rule ref="category/java/bestpractices.xml" />
+
+    <!-- All error-prone patterns -->
+    <rule ref="category/java/errorprone.xml" />
+
+    <!-- All performance issues -->
+    <rule ref="category/java/performance.xml" />
+
+    <!-- All code style issues -->
+    <rule ref="category/java/codestyle.xml" />
+
+    <!-- All design issues (coupling, complexity) -->
+    <rule ref="category/java/design.xml" />
+
+    <!-- All multithreading issues -->
+    <rule ref="category/java/multithreading.xml" />
+
+    <!-- All security issues -->
+    <rule ref="category/java/security.xml" />
+
+</ruleset>

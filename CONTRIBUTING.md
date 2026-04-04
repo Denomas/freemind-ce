@@ -54,92 +54,49 @@ make help     # Show all available targets
 
 ## Development Workflow
 
-### Who Can Contribute
+All contributor types, workflows, fork/collaborator setup, hotfix flow, conflict resolution, bot lifecycles, AI agent workflow, and security incident procedures are documented in **one place**:
 
-> Workflow diagram: [docs/contributor-workflows.md — Section 2](docs/contributor-workflows.md#section-2-contributor-type-workflows)
+> **[docs/contributor-workflows.md](docs/contributor-workflows.md)** — 16 workflow diagrams, contributor types, step-by-step guides for every scenario.
 
-| Contributor Type | Access | How to Submit | CI Behavior | Review Required |
-|-----------------|--------|---------------|-------------|-----------------|
-| **External (open source)** | None — fork the repo | PR from fork | CI runs, secrets NOT available | Maintainer approval |
-| **Collaborator** | Write — invited by maintainer | PR from repo branch | CI runs, full access | Maintainer or peer approval |
-| **Maintainer** | Admin | PR from repo branch | CI runs, full access | Self-review (CI is the gate) |
-| **AI Agent** (Claude Code, etc.) | Via maintainer's credentials | PR from repo branch | CI runs, full access | Maintainer MUST review the diff |
-| **Bots** (Dependabot, release-please) | App token | Auto-generated PR | CI runs automatically | Maintainer approval for merge |
+## Parallel Work Protection
 
-### For External Contributors (Fork Workflow)
+When multiple developers, AI agents, or sessions work on the same repository simultaneously, each person's work is sovereign. These rules prevent one session from destroying, absorbing, or invalidating another's work.
 
-```bash
-# 1. Fork on GitHub UI, then clone your fork
-git clone https://github.com/YOUR-USERNAME/freemind-ce.git
-cd freemind-ce
+### PR Sovereignty
 
-# 2. Add upstream remote
-git remote add upstream https://github.com/Denomas/freemind-ce.git
+| Rule | Description |
+|------|-------------|
+| **PW-1** | A PR may only be closed by: (a) its original author, (b) the repository maintainer, or (c) the stale bot after 60+14 days. No other party may close a PR. |
+| **PW-2** | An AI agent MUST NEVER close, comment "superseded", or request closure of a PR it did not create. |
+| **PW-3** | Closing a PR requires a comment explaining: why it's being closed, what happens to the work, and a link to any successor PR. |
+| **PW-4** | If a PR is closed in favor of another, the successor MUST reference the original with `Incorporates #NN` or `Replaces #NN` and explain what was preserved vs. dropped. |
 
-# 3. Create feature branch
-git checkout -b feat/your-feature
+### No Unilateral Scope Absorption
 
-# 4. Make changes, build, and test
-make build    # Must pass before committing
+| Rule | Description |
+|------|-------------|
+| **PW-5** | No contributor or AI agent may claim their PR "supersedes" another open PR. Only the maintainer can make that judgment. |
+| **PW-6** | If two PRs overlap in scope, both remain open for independent review. The maintainer decides merge order and conflict resolution. |
+| **PW-7** | Cherry-picking or copying commits from another open PR into your branch is forbidden without explicit maintainer approval. |
+| **PW-8** | If you discover an overlapping open PR: (1) note "Related: #NN" in your PR description, (2) do NOT absorb it, (3) let the maintainer decide. |
 
-# 5. Push to your fork and open PR
-git push -u origin feat/your-feature
-# Then open PR on GitHub: YOUR-USERNAME/freemind-ce → Denomas/freemind-ce:main
-```
+### Branch and Commit Integrity
 
-> **Note for fork PRs:** CI secrets are NOT available in fork PR runs. This is a GitHub security measure. All tests still run normally since they don't require secrets.
+| Rule | Description |
+|------|-------------|
+| **PW-9** | Force-pushing to a branch with an open PR from another session/author is forbidden. Use `--force-with-lease` only on your own branches. |
+| **PW-10** | Squashing multiple independent PRs into one before merge is forbidden. Each unit of work gets its own PR, CI run, and review thread. |
+| **PW-11** | Every commit must be attributable. AI agent PRs must state which agent/session produced the work. |
 
-### For Collaborators and Maintainer
+### AI Agent Multi-Session Rules
 
-```bash
-# Clone directly (you have write access)
-git clone https://github.com/Denomas/freemind-ce.git
-cd freemind-ce
+| Rule | Description |
+|------|-------------|
+| **PW-12** | Each AI session operates in its own branch and PR. Sessions MUST NOT interact with each other's PRs (no comments, closures, reviews, or status changes). |
+| **PW-13** | When an AI agent discovers another open PR during work, the ONLY permitted actions are: (a) mention "Related: #NN" in your own PR, (b) inform the human user. The agent MUST NOT act on the other PR. |
+| **PW-14** | AI agents MUST NOT use `gh pr close`, `gh pr comment`, or `gh pr edit` on PRs they did not create. |
 
-# Create feature branch (never commit directly to main)
-git checkout -b feat/your-feature
-
-# Make changes, build, and test
-make build
-
-# Push and create PR
-git push -u origin feat/your-feature
-gh pr create --title "feat: your feature" --body "Description"
-```
-
-### All Changes Go Through Pull Requests
-
-**Direct push to main is BLOCKED for everyone** — maintainer included. This is enforced by GitHub Ruleset with an empty bypass list. There are no exceptions, no hotfix bypasses, no admin overrides.
-
-> Blocked vs Allowed diagram: [docs/contributor-workflows.md — Section 3](docs/contributor-workflows.md#section-3-blocked-actions)
-
-### Hotfix / Emergency Fix Workflow
-
-There is NO shortcut for emergencies. The fastest path is still a PR:
-
-> Hotfix flow diagram: [docs/contributor-workflows.md — Section 4](docs/contributor-workflows.md#section-4-hotfix-flow)
-
-> Total time from bug discovery to merge: **~12 minutes.** This is fast enough. Never bypass CI.
-
-### First-Time Contributor Flow
-
-> First-time contributor diagram: [docs/contributor-workflows.md — Section 2](docs/contributor-workflows.md#first-time-contributor-flow)
-
-### Conflict Resolution Flow
-
-> Conflict resolution diagram: [docs/contributor-workflows.md — Section 5](docs/contributor-workflows.md#section-5-conflict-resolution)
-
-### Bot PR Lifecycle
-
-> Bot lifecycle diagram: [docs/contributor-workflows.md — Section 8](docs/contributor-workflows.md#section-8-bot-lifecycle)
-
-### AI Agent Workflow
-
-> AI agent workflow diagram: [docs/contributor-workflows.md — Section 2](docs/contributor-workflows.md#for-ai-agents)
-
-### Security Incident: Secret Leaked in PR
-
-> Security incident diagram: [docs/contributor-workflows.md — Section 11](docs/contributor-workflows.md#section-11-security-incident)
+> **Overlap workflow diagram:** [docs/contributor-workflows.md — Section 15](docs/contributor-workflows.md#section-15-parallel-work)
 
 ## Commit Best Practices
 
@@ -205,34 +162,77 @@ feat: infrastructure modernization (tests, CI, release, docs)
 4. **Stage intentionally:** use `git add <file>` for specific files, avoid `git add -A` or `git add .`
 5. **No generated artifacts:** never commit `build/`, `*.class`, `auto.properties`, or IDE-specific files
 
+### After Pushing: Automated Code Review
+
+GitHub automated code review (github-code-quality) analyzes every commit and posts findings as PR comments. These are NOT suggestions — they identify real issues: unused variables, inefficient patterns, dead code, security findings.
+
+**Every automated review comment MUST be fixed before merge:**
+
+1. **Check PR comments** after each push: `gh api repos/OWNER/REPO/pulls/NUMBER/comments`
+2. **Fix each finding** in a new atomic commit
+3. **Push and verify** the comment is resolved
+4. **Never ignore or dismiss** automated findings — they catch real bugs that humans miss
+
+This applies to ALL contributors including AI agents. If an agent pushes code and gets automated findings, it must fix them in the same session.
+
 ## Serena Code Intelligence (MANDATORY)
 
-> **This is NOT optional.** Serena usage is a hard requirement for every developer, every AI agent, and every subagent task. No code change may be committed without Serena verification.
+Serena is a hard requirement for every developer, every AI agent, and every subagent. No code change may be committed without Serena verification. All rules, workflows, tool reference, anti-patterns, and setup instructions are in **one place**:
 
-> **Full guide:** [docs/serena-guide.md](docs/serena-guide.md) — 18 tools, workflow diagrams, decision trees, examples
+> **[docs/serena-guide.md](docs/serena-guide.md)** — 18 tools, mandatory workflow, decision trees, examples, anti-patterns, pre-commit verification flow.
 
-### Why Serena?
+## Static Analysis (Quality Gates)
 
-- **Symbol-level precision:** Find all references to a method/class across the entire codebase
-- **Impact analysis:** Understand what breaks when you change a symbol
-- **Semantic editing:** Modify code at the symbol level, not just text search-and-replace
-- **Token efficiency:** Read only the symbols you need, not entire files
+Every `make build` runs two static analysis tools automatically. These are **not optional** — they are the first line of defense against bugs.
 
-### Mandatory Usage Rules
+### Tools
 
-1. **Before any code change:** Use `get_symbols_overview` and `find_symbol` to understand the current structure
-2. **Before committing:** Use `find_referencing_symbols` to verify all references remain valid
-3. **AI agents and subagents:** Must use Serena tools as the first step in every analysis task — non-negotiable
-4. **Never skip Serena:** Even for "simple" changes — every change has potential impact that Serena can detect
+| Tool | Version | What It Catches | Config |
+|------|---------|----------------|--------|
+| **SpotBugs** | 6.4.8 | Null dereference, dead store, concurrency bugs, resource leaks | `config/spotbugs-exclude.xml` |
+| **PMD** | 7.21.0 | Unused variables, empty catch blocks, inefficient patterns, design issues, security | `config/pmd-ruleset.xml` |
 
-### Pre-Commit SOP
+### PMD Configuration
 
-1. **Build passes:** `make build`
-2. **Verify with Serena:** `find_referencing_symbols` — all references intact, no orphans
-3. **Run the app:** `make run` — visually verify UI changes
-4. **Clean diff:** `git diff --staged` — no debug code, no unrelated changes
+- **All 7 categories active:** bestpractices, errorprone, performance, codestyle, design, multithreading, security
+- **294 rules**, all priority levels (1-5)
+- **Ruleset:** `freemind/config/pmd-ruleset.xml` — full categories, no exclusions
+- **Reports:** `freemind/build/reports/pmd/main.html` (source) and `test.html` (tests)
+- **Current status:** `ignoreFailures = true` due to legacy violations. Goal: zero violations, then switch to `false`
 
-> **Complete Serena reference:** [docs/serena-guide.md](docs/serena-guide.md) — 18 tools, setup, workflow diagrams, decision trees, examples, anti-patterns
+### SpotBugs Configuration
+
+- **Confidence:** HIGH (minimum)
+- **Exclude filter:** `freemind/config/spotbugs-exclude.xml`
+- **Fails build:** Yes (`ignoreFailures = false`)
+- **Reports:** `freemind/build/reports/spotbugs/` (HTML)
+
+### Early Detection Chain
+
+The goal is to catch issues as early as possible, at the closest point to where code is written:
+
+```
+Code written
+  → Serena MCP (semantic analysis, reference checking)
+    → PMD + SpotBugs (make build — static analysis)
+      → Pre-commit hook (compile verification)
+        → git push
+          → GitHub code-quality (automated PR review)
+            → CI 48-job matrix (6 OS × 4 Java)
+```
+
+Every layer catches different things. No layer is redundant. Skipping any layer means bugs slip through.
+
+### Viewing Reports
+
+```bash
+make build          # Runs PMD + SpotBugs automatically
+# PMD reports:
+open freemind/build/reports/pmd/main.html
+open freemind/build/reports/pmd/test.html
+# SpotBugs reports:
+open freemind/build/reports/spotbugs/main.html
+```
 
 ## Code Style
 
@@ -244,195 +244,40 @@ feat: infrastructure modernization (tests, CI, release, docs)
 
 ## Testing
 
-- Tests use **JUnit 3** (`extends TestCase`) running under JUnit 5 vintage engine
-- Test base class: `FreeMindTestBase` (provides mock FreeMindMain context)
-- GUI tests extend `GuiTestBase` (AssertJ Swing, `@Tag("gui")`, automatic screenshots)
-- Property-based tests use jqwik with centralized generators in `MindmapGenerators`
-- Run tests: `make test` (unit) / `make test-gui` (GUI)
-- Coverage report: `make coverage` (opens `freemind/build/reports/jacoco/test/html/index.html`)
+Test framework, commands, base classes, and test structure are documented in **one place**:
+
+> **[docs/development-guide.md — Testing](docs/development-guide.md#testing)** — JUnit, GUI tests, property-based tests, fuzz tests, coverage.
 
 ## CI/CD Standard Operating Procedure (SOP)
 
-### 1. Zero-Tolerance Policy
+### Zero-Tolerance Policy
 
-ALL tests MUST pass on ALL platforms and ALL Java versions before merge or release.
-No exceptions. No manual overrides. No `continue-on-error`.
-A single failure on any combination blocks the entire pipeline.
+ALL tests MUST pass on ALL platforms (6 OS × 4 Java = 48 checks) before merge or release. No exceptions. No manual overrides. A single failure blocks the entire pipeline.
 
-### 2. Test Matrix
-
-Every PR and every release runs on this complete matrix:
-
-|  | ubuntu-24.04 | ubuntu-22.04 | win-2025 | win-2022 | macos-15 | macos-14 |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Java 21 (LTS)** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Java 22** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Java 23** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Java 24** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-
-**Total: 48 required checks** (24 Build + 24 GUI Tests).
-
-> **Note:** `macos-13` was removed because GitHub Actions discontinued the runner image.
-
-Runner images: [actions/runner-images](https://github.com/actions/runner-images)
-
-### 3. CI Jobs & Path Filtering
-
-| Job | Purpose | Runs on doc-only PR? |
-|---|---|---|
-| `Detect changes` | Determines if PR contains code changes (pure `git diff` with negated pathspecs) | **Always** |
-| `Build (os, java)` | Compile + unit tests + SpotBugs (24 matrix combinations) | **Skipped** |
-| `GUI Tests (os, java)` | GUI integration tests + screenshots (24 matrix combinations) | **Skipped** |
-| `CI` | Aggregator — evaluates all job results, single required check in GitHub Ruleset | **Always** |
-
-**Path filtering** skips the 48-job build/test matrix when a PR only changes documentation files:
-
-- `**/*.md`, `docs/**`
-- `LICENSE`, `COPYING`, `.gitattributes`
-- `.github/ISSUE_TEMPLATE/**`, `.github/PULL_REQUEST_TEMPLATE/**`, `.github/release-notes-template.md`
-
-Non-PR events (`push` to main, `workflow_call` from release-please) **always run the full matrix**.
-
-**CI flow diagram:** [docs/contributor-workflows.md — Section 6](docs/contributor-workflows.md#section-6-ci-pipeline)
-
-**Path filtering detection method:**
-
-The `Detect changes` job uses `git merge-base` to compute the common ancestor between the PR branch and main, then checks only the PR's own commits (not commits merged into main since the branch was created). This prevents false positives when main has recent merges.
-
-```bash
-# Correct: merge-base ensures only PR's own changes are checked
-BASE=$(git merge-base "$PR_BASE_SHA" "$PR_HEAD_SHA")
-git diff --name-only "$BASE..$HEAD" -- ':!**/*.md' ':!docs/**' ...
-```
-
-**Doc-only file patterns** (changes to ONLY these files skip the build matrix):
-
-| Pattern | Examples |
-|---------|---------|
-| `**/*.md` | `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `docs/*.md` |
-| `docs/**` | Any file under `docs/` directory |
-| `LICENSE`, `COPYING`, `.gitattributes` | License and git config files |
-| `.github/ISSUE_TEMPLATE/**` | Issue templates |
-| `.github/PULL_REQUEST_TEMPLATE/**` | PR templates |
-| `.github/release-notes-template.md` | Release notes template |
-
-Any other file change (`.java`, `.kts`, `.yml`, `.xml`, `.properties`, etc.) triggers the full 48-job matrix.
-
-### 4. Branch Workflow
-
-> PR lifecycle diagram: [docs/contributor-workflows.md — Section 7](docs/contributor-workflows.md#section-7-branch-workflow)
-
-- **All changes** via feature branch → Pull Request → main
-- **No direct push to main** (enforced by GitHub Ruleset)
-- PR requires: `CI` check pass + code review (single required check, not 48 individual)
-- Squash merge only — clean linear history on main
-
-### 5. GUI Test Requirements
+### GUI Test Requirements
 
 - Every new UI feature **MUST** include GUI tests before merge
 - Tests must capture screenshots for visual verification on every platform
 - Tests must cover: happy path, error path, edge cases
-- No UI change is too small to test
 - GUI test base class: `GuiTestBase` (AssertJ Swing, automatic screenshots)
 
-### 6. Release Gating
-
-> Release pipeline diagram: [docs/contributor-workflows.md — Section 10](docs/contributor-workflows.md#section-10-release-gating)
-
-**Any failure at any stage blocks the release completely.** There is no manual override.
-
-> **Note:** `release-please.yml` and `scorecard.yml` use `paths-ignore` on push triggers.
-> Doc-only pushes to main skip these workflows entirely. The next code push catches up
-> because release-please accumulates all commits since the last release.
-
-### 7. Scheduled Workflow Health (MANDATORY)
-
-> **This check is MANDATORY before every release and after every major change.**
-> A green PR CI does NOT mean all workflows are healthy — scheduled workflows run independently.
-
-The following workflows run on a schedule, NOT on every PR. They can break silently:
-
-| Workflow | Schedule | What it checks | How to verify |
-|----------|----------|---------------|---------------|
-| `security-scan.yml` | Weekly (Mon 06:00 UTC) | OWASP dependency vulns + CodeQL | `gh run list --workflow=security-scan.yml --limit 1` |
-| `scorecard.yml` | Every push to main | OpenSSF security scorecard | `gh run list --workflow=scorecard.yml --limit 1` |
-| `fuzz.yml` | On PR (if enabled) | Fuzzing tests | `gh run list --workflow=fuzz.yml --limit 1` |
-| `stale.yml` | Daily | Stale issue/PR cleanup | `gh run list --workflow=stale.yml --limit 1` |
-
-**Verification command (run before every release):**
-
-```bash
-# Check ALL workflow health — every line must show "success"
-for wf in security-scan.yml scorecard.yml fuzz.yml stale.yml build.yml release-please.yml; do
-  result=$(gh run list --workflow=$wf --limit 1 --json conclusion --jq '.[0].conclusion // "no runs"' 2>/dev/null)
-  echo "$wf: $result"
-done
-```
-
-**If any scheduled workflow is failing:**
-1. Investigate the failure logs: `gh run view <run-id> --log-failed`
-2. Fix the root cause (do NOT disable the workflow)
-3. Trigger a manual re-run: `gh workflow run <workflow-name>`
-4. Verify it passes before proceeding with the release
-
-**Common scheduled workflow failures:**
-- **CodeQL "no source code seen"** → add `clean` to the Gradle build command so CodeQL sees fresh compilation
-- **OWASP timeout** → increase timeout or add `continue-on-error: true` (already set)
-- **Scorecard API errors** → transient, re-run usually fixes
-
-### 8. New Runner/Java Version Procedure
-
-When a new GitHub Actions runner image or Java GA version becomes available:
-
-1. Add to matrix in `build.yml` and `release.yml`
-2. No ruleset update needed — single `CI` aggregator check covers all matrix combinations automatically
-3. Update the SOP table above
-4. Verify all existing tests pass on the new combination
-5. Fix any compatibility issues before merging
-
-New Java GA versions must be added within 30 days of release.
-New runner images must be added within 30 days of availability.
-
-### 9. Test Philosophy
+### Test Philosophy
 
 > "Being lazy in writing tests means facing much bigger workloads later.
 > Our goal is to reduce future workload by testing every user scenario,
 > every edge case, every state, comprehensively, now."
 
-### 10. Merge Safety Protocol
+### Detailed CI/CD Documentation
 
-> **Full protocol:** [docs/merge-release-safety.md](docs/merge-release-safety.md)
+CI pipeline details, path filtering, test matrix, branch workflow, release gating, scheduled workflow health, and runner/Java version procedures are documented in dedicated files:
 
-Every PR merge requires ALL gates to pass — no exceptions, no bypass:
+> **[docs/contributor-workflows.md](docs/contributor-workflows.md)** — CI pipeline flow, path filtering, doc-only detection, branch lifecycle, release gating diagrams.
 
-- **CI Matrix:** ALL 48 jobs SUCCESS (not 47/48 — every single one)
-- **Review:** Maintainer approval required for ALL PRs (including Dependabot)
-- **Up-to-date:** Branch must be synced with main
-- **Conversations:** All review threads resolved
-
-**STRICTLY FORBIDDEN:** `--admin` bypass, auto-merge without explicit maintainer instruction, merging with any failing check, force push to main. See [docs/merge-release-safety.md](docs/merge-release-safety.md) for the complete forbidden actions list.
-
-### 11. Dependency Update Protocol
-
-> **Full protocol:** [docs/merge-release-safety.md](docs/merge-release-safety.md#dependency-update-protocol)
-
-> Dependency decision tree diagram: [docs/contributor-workflows.md — Section 9](docs/contributor-workflows.md#section-9-dependency-updates)
-
-- **Patch** (x.x.1→x.x.2): CI passes + changelog review + maintainer approve
-- **Minor** (x.1→x.2): Above + local `make build` verification
-- **Major** (1.x→2.x): Above + migration guide + API fix + `make run` smoke test
-
-CI passing alone is NEVER sufficient. Human review is always required.
-
-### 12. Release Checklist
-
-> **Full checklist:** [docs/merge-release-safety.md](docs/merge-release-safety.md#release-checklist)
-
-Before merging any release-please PR: all CI green, `make build` + `make run` locally, CHANGELOG review, artifact download and verification. See the full checklist in the referenced document.
+> **[docs/merge-release-safety.md](docs/merge-release-safety.md)** — Merge protocol, forbidden actions, dependency update protocol (patch/minor/major), release checklist, GitHub Ruleset configuration.
 
 ## Project Structure
 
-See [CLAUDE.md](CLAUDE.md) for detailed repository layout, key source locations, and architecture overview.
+> **[docs/source-tree-analysis.md](docs/source-tree-analysis.md)** — Full directory structure, critical folders, entry points, source statistics.
 
 ## Reporting Issues
 

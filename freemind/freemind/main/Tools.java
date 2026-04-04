@@ -74,6 +74,8 @@ import java.nio.file.Path;
 import java.nio.file.attribute.DosFileAttributes;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.KeySpec;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -540,9 +542,10 @@ public class Tools {
 		String osNameStart = System.getProperty("os.name").substring(0, 3);
 		if (osNameStart.equals("Win")) {
 			try {
-				Runtime.getRuntime().exec(
-						"attrib " + (hidden ? "+" : "-") + "H \""
-								+ file.getAbsolutePath() + "\"");
+				String attribPath = System.getenv("SystemRoot") + "\\System32\\attrib.exe";
+				Runtime.getRuntime().exec(new String[]{
+						attribPath, (hidden ? "+H" : "-H"),
+								file.getAbsolutePath()});
 				// Synchronize the effect, because it is asynchronous in
 				// general.
 				if (!synchronously) {
@@ -681,17 +684,20 @@ public class Tools {
 	public static class DesEncrypter {
 		private static final String SALT_PRESENT_INDICATOR = " ";
 		private static final int SALT_LENGTH = 8;
+		private static final int LEGACY_ITERATION_COUNT = 19;
+		private static final int DEFAULT_ITERATION_COUNT = 600_000;
 
 		Cipher ecipher;
 
 		Cipher dcipher;
 
-		// 8-byte default Salt
-		byte[] salt = { (byte) 0xA9, (byte) 0x9B, (byte) 0xC8, (byte) 0x32,
+		// 8-byte legacy Salt — used only for decrypting old format data
+		private static final byte[] LEGACY_SALT = { (byte) 0xA9, (byte) 0x9B, (byte) 0xC8, (byte) 0x32,
 				(byte) 0x56, (byte) 0x35, (byte) 0xE3, (byte) 0x03 };
 
-		// Iteration count
-		int iterationCount = 19;
+		byte[] salt = LEGACY_SALT.clone();
+
+		int iterationCount = LEGACY_ITERATION_COUNT;
 
 		private final char[] passPhrase;
 		private String mAlgorithm;
@@ -703,10 +709,16 @@ public class Tools {
 		}
 
 
-		private void init(byte[] mSalt) {
+		private void init(byte[] mSalt, boolean forEncryption) {
 			if (mSalt != null) {
 				this.salt = mSalt;
+				this.iterationCount = DEFAULT_ITERATION_COUNT;
+			} else {
+				this.salt = LEGACY_SALT.clone();
+				this.iterationCount = LEGACY_ITERATION_COUNT;
 			}
+			ecipher = null;
+			dcipher = null;
 			if (ecipher == null) {
 				try {
 					// Create the key
@@ -725,10 +737,15 @@ public class Tools {
 					ecipher.init(Cipher.ENCRYPT_MODE, key, paramSpec);
 					dcipher.init(Cipher.DECRYPT_MODE, key, paramSpec);
 				} catch (java.security.InvalidAlgorithmParameterException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				} catch (java.security.spec.InvalidKeySpecException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				} catch (javax.crypto.NoSuchPaddingException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				} catch (java.security.NoSuchAlgorithmException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				} catch (java.security.InvalidKeyException e) {
+					freemind.main.Resources.getInstance().logException(e);
 				}
 			}
 		}
@@ -736,14 +753,11 @@ public class Tools {
 		public String encrypt(String str) {
 			try {
 				// Encode the string into bytes using utf-8
-				byte[] utf8 = str.getBytes("UTF8");
-				// determine salt by random:
-				byte[] newSalt = new byte[SALT_LENGTH];
-				for (int i = 0; i < newSalt.length; i++) {
-					newSalt[i] = (byte) (Math.random() * 256l - 128l);
-				}
+				byte[] utf8 = str.getBytes(StandardCharsets.UTF_8);
+				// determine salt by random using SecureRandom:
+				byte[] newSalt = SecureRandom.getInstanceStrong().generateSeed(SALT_LENGTH);
 
-				init(newSalt);
+				init(newSalt, true);
 				// Encrypt
 				byte[] enc = ecipher.doFinal(utf8);
 
@@ -751,8 +765,11 @@ public class Tools {
 				return Tools.toBase64(newSalt) + SALT_PRESENT_INDICATOR
 						+ Tools.toBase64(enc);
 			} catch (javax.crypto.BadPaddingException e) {
+				freemind.main.Resources.getInstance().logException(e);
 			} catch (IllegalBlockSizeException e) {
-			} catch (UnsupportedEncodingException e) {
+				freemind.main.Resources.getInstance().logException(e);
+			} catch (NoSuchAlgorithmException e) {
+				freemind.main.Resources.getInstance().logException(e);
 			}
 			return null;
 		}
@@ -773,16 +790,17 @@ public class Tools {
 				// Decode base64 to get bytes
 				str = str.replaceAll("\\s", "");
 				byte[] dec = Tools.fromBase64(str);
-				init(salt);
+				init(salt, false);
 
 				// Decrypt
 				byte[] utf8 = dcipher.doFinal(dec);
 
 				// Decode using utf-8
-				return new String(utf8, "UTF8");
+				return new String(utf8, StandardCharsets.UTF_8);
 			} catch (javax.crypto.BadPaddingException e) {
+				freemind.main.Resources.getInstance().logException(e);
 			} catch (IllegalBlockSizeException e) {
-			} catch (UnsupportedEncodingException e) {
+				freemind.main.Resources.getInstance().logException(e);
 			}
 			return null;
 		}
@@ -1440,7 +1458,11 @@ public class Tools {
 		private final File mFile;
 
 		public FileReaderCreator(File pFile) {
-			mFile = pFile;
+			try {
+				mFile = pFile.getCanonicalFile();
+			} catch (java.io.IOException e) {
+				throw new IllegalArgumentException("Invalid file path: " + pFile, e);
+			}
 		}
 
 		public Reader createReader() throws FileNotFoundException {

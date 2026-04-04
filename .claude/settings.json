@@ -1,0 +1,152 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make:*)",
+      "Bash(make build:*)",
+      "Bash(make test:*)",
+      "Bash(make test-gui:*)",
+      "Bash(make clean:*)",
+      "Bash(make jaxb:*)",
+      "Bash(make info:*)",
+      "Bash(make javadoc:*)",
+      "Bash(make coverage:*)",
+      "Bash(make dist-zip:*)",
+      "Bash(make check:*)",
+      "Bash(make run:*)",
+      "Bash(make package:*)",
+      "Bash(make help:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git branch)",
+      "Bash(git branch -a)",
+      "Bash(git branch -v:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git stash:*)",
+      "Bash(git merge-base:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git shortlog:*)",
+      "Bash(git blame:*)",
+      "Bash(git checkout -b:*)",
+      "Bash(git switch:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(gh code-scanning:*)",
+      "Bash(gh run:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh api:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(cut:*)",
+      "Bash(tr:*)",
+      "Bash(diff:*)",
+      "Bash(echo:*)",
+      "Bash(printf:*)",
+      "Bash(pwd)",
+      "Bash(which:*)",
+      "Bash(jq:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(chmod:*)",
+      "Bash(touch:*)",
+      "Bash(jar:*)",
+      "Bash(java:*)",
+      "Bash(./gradlew:*)",
+      "Bash(JAVA_HOME:*)",
+      "Bash(export JAVA_HOME:*)",
+      "Bash(.claude/hooks:*)",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__onboarding",
+      "mcp__serena__initial_instructions",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__find_symbol",
+      "mcp__serena__find_referencing_symbols",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__find_file",
+      "mcp__serena__list_dir",
+      "mcp__serena__list_memories",
+      "mcp__serena__read_memory",
+      "mcp__serena__write_memory",
+      "mcp__serena__edit_memory",
+      "mcp__serena__delete_memory",
+      "mcp__serena__rename_memory",
+      "mcp__serena__replace_symbol_body",
+      "mcp__serena__insert_after_symbol",
+      "mcp__serena__insert_before_symbol",
+      "mcp__serena__rename_symbol",
+      "mcp__serena__safe_delete_symbol"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -f:*)",
+      "Bash(git branch -D:*)",
+      "Bash(git checkout -- .:*)",
+      "Bash(git restore .:*)",
+      "Bash(rm -rf:*)",
+      "Bash(rm -r:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CMD=$(jq -r '.tool_input.command'); echo \"$CMD\" | head -1 | grep -qE '^(grep|rg|cat|find|head|tail|sed|awk)' && echo \"$CMD\" | grep -qE '\\.(java)' && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"BLOCKED: Use Serena MCP for Java code analysis: search_for_pattern, find_symbol, get_symbols_overview. See CLAUDE.md.\"}}' || true",
+            "timeout": 5,
+            "statusMessage": "Serena compliance check"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | grep -qE '\\.java$' && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"BLOCKED: Use Serena MCP to read Java files: get_symbols_overview(file, depth=1) then find_symbol(name, include_body=True). See CLAUDE.md.\"}}' || true",
+            "timeout": 5,
+            "statusMessage": "Serena compliance check"
+          }
+        ]
+      },
+      {
+        "matcher": "Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/check-grep-java.sh",
+            "timeout": 5,
+            "statusMessage": "Serena compliance check"
+          }
+        ]
+      }
+    ]
+  }
+}

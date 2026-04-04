@@ -1141,7 +1141,7 @@ public class NodeView extends JComponent implements TreeModelListener {
 	protected static Color getAntiColor1(Color c) {
 		float[] hsb = Color.RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(),
 				null);
-		hsb[0] += 0.40;
+		hsb[0] += 0.40f;
 		if (hsb[0] > 1)
 			hsb[0]--;
 		hsb[1] = 1;

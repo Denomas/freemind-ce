@@ -13,6 +13,8 @@ import static tests.freemind.unicode.UnicodeTestData.ALL_SCRIPTS;
 import static tests.freemind.unicode.UnicodeTestData.ALL_SCRIPT_NAMES;
 import static tests.freemind.unicode.UnicodeTestData.wrapInHtml;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
+
 /**
  * GUI tests for view menu operations: SHTMLPanel creation,
  * content management, sizing, and screenshot capture.

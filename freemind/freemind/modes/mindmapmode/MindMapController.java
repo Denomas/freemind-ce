@@ -705,7 +705,7 @@ public class MindMapController extends ControllerAdapter implements
 
 	protected void loadInternally(URL url, MapAdapter model) throws URISyntaxException, XMLParseException, IOException {
 		logger.info("Loading file: " + url.toString());
-		File file = Tools.urlToFile(url);
+		File file = Tools.urlToFile(url).getCanonicalFile();
 		if (!file.exists()) {
 			throw new FileNotFoundException(Tools.expandPlaceholders(
 					getText("file_not_found"), file.getPath()));
