@@ -143,8 +143,34 @@ make help           # Show all targets
 
 → [CONTRIBUTING.md — Subagent Rules](CONTRIBUTING.md#subagent-rules)
 
+**CRITICAL:** Every subagent prompt MUST include the following block verbatim:
+
+```
+MANDATORY — BEFORE ANY WORK:
+1. Read CLAUDE.md at the project root
+2. Answer these 5 questions BEFORE starting:
+   - Neredeyim? (project, repo, branch, directory)
+   - Ben kimim? (role, tools, constraints)
+   - Görevim ne? (exact requirements, success criteria)
+   - Kurallarım ne? (which docs to read, which rules apply)
+   - Araçlarım ne? (available tools, correct usage)
+3. Read CONTRIBUTING.md — it is the single source of truth for ALL rules
+4. Read docs/serena-guide.md — Serena MCP is MANDATORY for code analysis
+5. Do NOT start working until you have answered all 5 questions and read the docs
+6. Use Serena MCP tools for all code analysis — never bash grep/find
+
+SERENA USAGE (MANDATORY):
+- ALWAYS start with: get_symbols_overview(file, depth=1) to understand file structure
+- ALWAYS use: find_symbol(name, include_body=True) to read specific code
+- ALWAYS use: find_referencing_symbols(name, file) before committing any change
+- ALWAYS use: find_file(mask, ".") to verify file exists before editing
+- NEVER use: bash grep, find, cat, sed, awk for code analysis
+- Anti-patterns: grep → search_for_pattern, find → find_file, cat → get_symbols_overview
+```
+
 **Summary:**
-- Every subagent MUST read CONTRIBUTING.md, serena-guide.md, development-guide.md
+- Every subagent MUST read CLAUDE.md and CONTRIBUTING.md before starting
+- Every subagent MUST answer the 5 grounding questions before any work
 - Every subagent MUST use Serena MCP tools (not bash grep/find)
 - Every subagent MUST verify backward compatibility
 - Every subagent MUST verify with `find_referencing_symbols` + `make build`
@@ -169,3 +195,31 @@ make help           # Show all targets
 3. find_referencing_symbols(name) → verify all references intact
 4. make build                     → compile + test
 ```
+
+### Serena Anti-Patterns (DO NOT do these)
+
+| Do NOT | Do this instead | Why |
+|--------|----------------|-----|
+| `grep -r "pattern" .` | `search_for_pattern("pattern")` | Grep = text match; Serena = semantic reference |
+| `find . -name "*.java"` | `find_file("*.java", ".")` | Serena respects .gitignore, grep doesn't |
+| `cat File.java` | `get_symbols_overview("File.java")` → `find_symbol()` | Read wastes tokens; Serena reads only what you need |
+| Manual search-and-replace rename | `rename_symbol()` | Manual misses references; Serena is atomic |
+| Edit by line number | `replace_symbol_body()` | Line numbers shift; symbol bodies are stable |
+| Commit without checking references | `find_referencing_symbols()` first | Broken callers are invisible without it |
+
+### Pre-Commit Serena Verification (MANDATORY)
+
+Before EVERY commit:
+1. `find_referencing_symbols(symbol, file)` — for each modified symbol
+2. Verify no broken references, no orphans
+3. `make build` — must pass
+4. `make run` — visual smoke test for UI changes
+
+### Subagent Serena Requirements
+
+Every subagent MUST:
+1. Use `get_symbols_overview` BEFORE reading any file
+2. Use `find_symbol` BEFORE editing any code
+3. Use `find_referencing_symbols` BEFORE committing any change
+4. Use `find_file` BEFORE assuming a file exists
+5. NEVER use bash `grep`, `find`, `cat`, `sed`, `awk` for code analysis
