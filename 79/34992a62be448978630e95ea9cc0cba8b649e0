@@ -1,0 +1,33 @@
+docs/source-tree-analysis.md
+  22af26e20b09ff0b 106-107
+CLAUDE.md
+  22af26e20b09ff0b 1
+docs/index.md
+  22af26e20b09ff0b 31,50
+AGENTS.md
+  22af26e20b09ff0b 1-149
+docs/contributor-workflows.md
+  22af26e20b09ff0b 169,355
+docs/merge-release-safety.md
+  22af26e20b09ff0b 213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "7934992a62be448978630e95ea9cc0cba8b649e0",
+  "prompts": {
+    "22af26e20b09ff0b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d9a1a69-77af-46fc-9352-452601442e05",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 157,
+      "total_deletions": 156,
+      "accepted_lines": 157,
+      "overriden_lines": 0
+    }
+  }
+}
