@@ -112,7 +112,10 @@ coverage: ## Run tests with JaCoCo coverage report
 check: ## Run build + all quality checks
 	$(GRADLE_CMD) check $(GRADLE_FLAGS)
 
-audit: ## Run security audit (dependency vulnerability scan)
+# ── Security ────────────────────────────────────────────────────────
+##@ Security
+
+audit: ## Run security audit — Grype (fast, ~30s, fails on High+)
 	@command -v grype >/dev/null 2>&1 || { echo "Error: grype not found. Install: mise install grype"; exit 1; }
 	grype dir:. --only-fixed --fail-on high
 	@echo ""
@@ -122,6 +125,8 @@ audit-full: ## Run full OWASP dependency-check (slower, detailed HTML report)
 	$(GRADLE_CMD) :freemind:dependencyCheckAnalyze $(GRADLE_FLAGS)
 	@echo ""
 	@echo "Report: freemind/build/reports/dependency-check-report.html"
+
+##@ Code Generation
 
 jaxb: ## Regenerate JAXB classes from XSD schema
 	$(GRADLE_CMD) :freemind:generateJaxb $(GRADLE_FLAGS)

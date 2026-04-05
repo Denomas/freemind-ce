@@ -164,6 +164,40 @@ make coverage       # Tests + JaCoCo coverage report
 | `HtmlConversionTests.java` | HTML export |
 | `StandaloneMapTests.java` | Standalone map operations |
 
+## Security Audit
+
+Dependency vulnerability scanning catches known CVEs in project dependencies before they reach production.
+
+### Running Locally
+
+```bash
+# Quick scan — Grype (requires: mise install grype)
+make audit            # ~30 seconds, fails on High+ with known fix
+
+# Full report — OWASP Dependency-Check (Gradle plugin)
+make audit-full       # ~5 minutes, HTML report
+open freemind/build/reports/dependency-check-report.html
+```
+
+### What Gets Scanned
+
+| Source | Examples |
+|--------|---------|
+| Gradle dependencies | jsoup, Batik, FOP, Lucene, Logback, JUnit |
+| Tracked JARs (`lib/`) | jortho.jar, SimplyHTML.jar, bindings.jar |
+| Plugin JARs (`plugins/*/`) | JMapViewer.jar, jhall.jar, groovy-all.jar |
+| Build tools (non-runtime) | PMD, SpotBugs, JaCoCo |
+
+### Core Principle
+
+> No external API dependency for security tooling. If a tool runs as a local CLI, we use the CLI — not cloud dashboards or paid services. All scanning runs offline after initial database download.
+
+### GitHub Safety Net
+
+Weekly `security-scan.yml` runs Grype + Trivy + OWASP on GitHub Actions with SARIF upload to the Security tab. This catches anything missed locally and provides audit trail.
+
+Full documentation: **[CONTRIBUTING.md — Security Audit](../CONTRIBUTING.md#security-audit-vulnerability-scanning)**
+
 ## Static Analysis
 
 Static analysis tools (PMD + SpotBugs), configuration, reports, and the early detection chain are documented in **one place**:

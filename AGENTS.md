@@ -79,7 +79,9 @@ make help     # Show all available make targets
 6. Never bypass merge controls — no `--admin`, no force merge
 7. Dependency updates require manual review -> [docs/merge-release-safety.md](docs/merge-release-safety.md#dependency-update-protocol)
 8. Static analysis (PMD + SpotBugs) runs on every `make build` -> [CONTRIBUTING.md — Static Analysis](CONTRIBUTING.md#static-analysis-quality-gates)
-9. Parallel work is sovereign — never close, absorb, or supersede another session's PR -> [CONTRIBUTING.md — Parallel Work Protection](CONTRIBUTING.md#parallel-work-protection)
+9. Security audit (`make audit`) before pushing dependency changes -> [CONTRIBUTING.md — Security Audit](CONTRIBUTING.md#security-audit-vulnerability-scanning)
+10. No external API dependency for security tooling — if a tool runs as CLI, use the CLI, not cloud services
+11. Parallel work is sovereign — never close, absorb, or supersede another session's PR -> [CONTRIBUTING.md — Parallel Work Protection](CONTRIBUTING.md#parallel-work-protection)
 
 ### Repository Layout
 
@@ -120,6 +122,8 @@ freemind-ce/
 make build          # Full build (compile + test)
 make run            # Run the app
 make test           # Run tests only
+make audit          # Security audit — Grype (fast, ~30s)
+make audit-full     # Full OWASP dependency-check (HTML report)
 make coverage       # Tests + JaCoCo coverage report
 make debug          # Debug mode (port 5005)
 make clean          # Clean build artifacts

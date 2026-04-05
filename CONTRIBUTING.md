@@ -158,9 +158,10 @@ feat: infrastructure modernization (tests, CI, release, docs)
 
 1. **Build must pass:** `make build`
 2. **Tests must pass:** `make test`
-3. **Review your diff:** `git diff --staged` — make sure no debug code, secrets, or unrelated changes are included
-4. **Stage intentionally:** use `git add <file>` for specific files, avoid `git add -A` or `git add .`
-5. **No generated artifacts:** never commit `build/`, `*.class`, `auto.properties`, or IDE-specific files
+3. **Security audit (if dependencies changed):** `make audit` — fails on High+ CVEs with known fixes
+4. **Review your diff:** `git diff --staged` — make sure no debug code, secrets, or unrelated changes are included
+5. **Stage intentionally:** use `git add <file>` for specific files, avoid `git add -A` or `git add .`
+6. **No generated artifacts:** never commit `build/`, `*.class`, `auto.properties`, or IDE-specific files
 
 ### After Pushing: Automated Code Review
 
@@ -180,6 +181,57 @@ This applies to ALL contributors including AI agents. If an agent pushes code an
 Serena is a hard requirement for every developer, every AI agent, and every subagent. No code change may be committed without Serena verification. All rules, workflows, tool reference, anti-patterns, and setup instructions are in **one place**:
 
 > **[docs/serena-guide.md](docs/serena-guide.md)** — 18 tools, mandatory workflow, decision trees, examples, anti-patterns, pre-commit verification flow.
+
+## Security Audit (Vulnerability Scanning)
+
+Every dependency — whether declared in Gradle or tracked as a local JAR — must be free of known high-severity vulnerabilities before release.
+
+### Core Principle
+
+> **No external API dependency for security tooling.** If a tool can run as a local CLI, we use the CLI. We do not depend on cloud services, paid APIs, or third-party dashboards for security decisions. All scanning runs offline after the initial database download.
+
+### Tools
+
+| Tool | Where | Command | What It Catches | Speed |
+|------|-------|---------|----------------|-------|
+| **Grype** | Local + GitHub | `make audit` | Known CVEs in JARs and Gradle dependencies (with fix versions) | ~30 seconds |
+| **OWASP Dependency-Check** | Local + GitHub | `make audit-full` | Same + detailed HTML report with NVD references | ~5 minutes |
+| **Trivy** | GitHub only | `security-scan.yml` | Filesystem vulnerability scan, SARIF upload | ~2 minutes |
+
+### Local Workflow
+
+```bash
+# Quick scan — run before pushing (fails on High+ CVEs with known fixes)
+make audit
+
+# Full report — run periodically or before releases
+make audit-full
+open freemind/build/reports/dependency-check-report.html
+```
+
+### Handling Findings
+
+| Severity | Action | Timeline |
+|----------|--------|----------|
+| **Critical/High** (fix available) | Update dependency immediately | Before next merge |
+| **Critical/High** (no fix) | Add OWASP suppression with justification | Document in `config/owasp-suppressions.xml` |
+| **Medium** | Create GitHub issue, fix in next sprint | Before next release |
+| **Low** | Track, fix opportunistically | No deadline |
+
+### What Gets Scanned
+
+- Gradle dependencies (Maven Central)
+- Tracked JAR files in `freemind/lib/`, `freemind/plugins/*/`
+- Build tool dependencies (PMD, SpotBugs, JaCoCo — build-time only, not runtime)
+- Transitive dependencies
+
+### Prerequisites
+
+Install Grype via [mise](https://mise.jdx.dev/):
+
+```bash
+mise install grype
+```
 
 ## Static Analysis (Quality Gates)
 
@@ -215,13 +267,18 @@ The goal is to catch issues as early as possible, at the closest point to where 
 Code written
   → Serena MCP (semantic analysis, reference checking)
     → PMD + SpotBugs (make build — static analysis)
-      → Pre-commit hook (compile verification)
-        → git push
-          → GitHub code-quality (automated PR review)
-            → CI 48-job matrix (6 OS × 4 Java)
+      → Grype (make audit — dependency vulnerability scan)
+        → Pre-commit hook (compile verification)
+          → git push
+            → GitHub code-quality (automated PR review)
+              → CI 48-job matrix (6 OS × 4 Java)
+                → Grype + Trivy + OWASP (weekly security-scan.yml)
 ```
 
 Every layer catches different things. No layer is redundant. Skipping any layer means bugs slip through.
+
+**Local layers** (developer machine): Serena → PMD/SpotBugs → Grype → pre-commit hooks
+**Remote layers** (GitHub): code-quality → CI matrix → weekly security scans
 
 ### Viewing Reports
 
