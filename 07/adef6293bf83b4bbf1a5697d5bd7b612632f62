@@ -1,0 +1,25 @@
+.github/workflows/security-scan.yml
+  5979b916dfc6a201 84-110
+Makefile
+  5979b916dfc6a201 63,115-125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "07adef6293bf83b4bbf1a5697d5bd7b612632f62",
+  "prompts": {
+    "5979b916dfc6a201": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dd849746-e801-447c-b352-7a95de70a677",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 42,
+      "total_deletions": 4,
+      "accepted_lines": 39,
+      "overriden_lines": 0
+    }
+  }
+}
