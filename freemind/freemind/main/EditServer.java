@@ -215,7 +215,7 @@ public class EditServer extends Thread {
 			logger.info(client + ": authenticated" + " successfully");
 
 			final String script = in.readUTF();
-			logger.info(script.replaceAll("[\\r\\n]", "_"));
+			logger.info("Received script of length " + script.length());
 
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
