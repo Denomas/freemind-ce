@@ -242,6 +242,9 @@ public class ServerCommunication extends CommunicationBase {
 				send(unableToLock);
 			} catch (InterruptedException e) {
 				freemind.main.Resources.getInstance().logException(e);
+				if (lockAcquired) {
+					mMindMapMaster.unlock(getController());
+				}
 			} catch (Exception e) {
 				if (lockAcquired) {
 					mMindMapMaster.unlock(getController());
