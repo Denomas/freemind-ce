@@ -2154,16 +2154,12 @@ public class FreeMindMapController extends JMapController implements
 		return null;
 	}
 
-	/**
-	 * @param pText
-	 * @return
-	 */
 	public Searchresults getSearchResults(String pText) {
 		String result = "unknown";
 		Searchresults results = new Searchresults();
 		// special case: lat lon[;lat2 lon2;...]
-		if (pText.matches("[ 0-9eE.,;\\-]+")) {
-			String regex = " *([0-9eE.,\\-]+) +([0-9eE.,\\-]+) *";
+		if (pText.matches("[ 0-9eE.,;\\\\-]+")) {
+			String regex = " *([0-9eE.,\\\\-]+) +([0-9eE.,\\\\-]+) *";
 			Pattern pattern = Pattern.compile(regex);
 			boolean reverseLookupErrorOccured = !Resources.getInstance()
 					.getBoolProperty(DO_REVERSE_LOOKUP_ON_LAT_LON_SEARCH);
@@ -2359,14 +2355,14 @@ public class FreeMindMapController extends JMapController implements
 			results = (Searchresults) XmlBindingTools.getInstance().unMarshall(
 					result);
 			if (results == null) {
-				logger.warning("URL: "  +b + ", result:" + result + " can't be parsed");
+				logger.warning("Search result could not be parsed");
 				return new Searchresults();
 			}
 		} catch (Exception e) {
-			logger.fine("Searching for " + b.toString() + " gave an error");
+			logger.fine("Search gave an error");
 			final String errorString = e.toString();
 			freemind.main.Resources.getInstance().logException(e);
-			logger.warning("Result was " + result);
+			logger.warning("Search result contained an error");
 			if (results == null) {
 				return new Searchresults();
 			}
@@ -2393,7 +2389,7 @@ public class FreeMindMapController extends JMapController implements
 		String result;
 		mMindMapController.getFrame().setWaitingCursor(true);
 		try {
-			logger.fine("Searching for " + b.toString());
+			logger.fine("Searching for " + b.toString().replaceAll("[\\r\\n]", "_"));
 			URL url = new URL(b.toString());
 			URLConnection urlConnection = url.openConnection();
 			if (Tools.isAboveJava4()) {
@@ -2423,10 +2419,10 @@ public class FreeMindMapController extends JMapController implements
 				HttpURLConnection huc = (HttpURLConnection) urlConnection;
 				String newUrl = huc.getHeaderField("Location");
 				// again
-				logger.info("Received: " + result + " and therefore reload of '" + newUrl + "'.");
+				logger.info("Received status " + status + ", reloading via redirect.");
 				return wget(newUrl);
 			}
-			logger.info(result + " was received for search " + b  + " with status " + status);
+			logger.info("Search completed with status " + status);
 		} finally {
 			mMindMapController.getFrame().setWaitingCursor(false);
 		}

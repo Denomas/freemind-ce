@@ -58,7 +58,7 @@ public class EditNodeExternalApplication extends EditNodeBase {
 				Writer writer = null;
 				try {
 
-					File temporaryFile = File.createTempFile("tmm", ".html");
+					File temporaryFile = java.nio.file.Files.createTempFile("tmm", ".html").toFile();
 
 					// a. Write the text of the long node to the temporary file
 					writer = new OutputStreamWriter(new FileOutputStream(temporaryFile), StandardCharsets.UTF_8);
@@ -75,9 +75,9 @@ public class EditNodeExternalApplication extends EditNodeBase {
 					Process htmlEditorProcess = Runtime.getRuntime().exec(
 							expandedHtmlEditingCommand);
 					htmlEditorProcess.waitFor(); // Here we wait
-																// until the
-																// editor ends
-																// up itself
+													// until the
+													// editor ends
+													// up itself
 					// Waiting does not work if the process starts another
 					// process,
 					// like in case of Microsoft Word. It works with certain

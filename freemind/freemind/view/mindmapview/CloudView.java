@@ -111,15 +111,10 @@ public class CloudView {
 			dxn = dx / length; /* normalized direction of p0 -> p1 */
 			dyn = dy / length;
 			if (length > distanceBetweenPoints) {
-				for (int j = 0; j < length / distanceBetweenPoints - 1; ++j) {
+				int loopLimit = (int) (length / distanceBetweenPoints - 1);
+				for (int j = 0; j < loopLimit; ++j) {
 					if ((j + 2) * distanceBetweenPoints < length) {
-						x3 = x0 + (j + 1) * distanceBetweenPoints * dxn; /*
-																		 * the
-																		 * drawing
-																		 * end
-																		 * point
-																		 * .
-																		 */
+						x3 = x0 + (j + 1) * distanceBetweenPoints * dxn;
 						y3 = y0 + (j + 1) * distanceBetweenPoints * dyn;
 					} else {
 						/* last point */

@@ -832,22 +832,16 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	public void keyReleased(KeyEvent e) {
 	}
 
-	/**
-	 * Enable or disable the JDayChooser.
-	 *
-	 * @param enabled
-	 *            The new enabled value
-	 */
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
 
-		for (short i = 0; i < days.length; i++) {
+		for (int i = 0; i < days.length; i++) {
 			if (days[i] != null) {
 				days[i].setEnabled(enabled);
 			}
 		}
 
-		for (short i = 0; i < weeks.length; i++) {
+		for (int i = 0; i < weeks.length; i++) {
 			if (weeks[i] != null) {
 				weeks[i].setEnabled(enabled);
 			}

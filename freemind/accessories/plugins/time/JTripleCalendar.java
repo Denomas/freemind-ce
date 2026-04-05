@@ -143,9 +143,6 @@ public class JTripleCalendar extends JPanel implements PropertyChangeListener {
 			setEnabled(false);
 		}
 
-		/* (non-Javadoc)
-		 * @see accessories.plugins.time.JCalendar#createJDayChooser(boolean)
-		 */
 		@Override
 		protected JDayChooser createJDayChooser(boolean pWeekOfYearVisible) {
 			return new JDayChooser(weekOfYearVisible){
@@ -171,7 +168,7 @@ public class JTripleCalendar extends JPanel implements PropertyChangeListener {
 						// no color selection
 						selectedColor = oldDayBackgroundColor;
 					}
-					for (short i = 0; i < days.length; i++) {
+					for (int i = 0; i < days.length; i++) {
 						if (days[i] != null) {
 							days[i].setFocusable(pEnabled);
 						}

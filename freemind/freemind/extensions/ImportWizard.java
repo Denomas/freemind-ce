@@ -109,14 +109,6 @@ public class ImportWizard {
 
 	}
 
-	/**
-	 * Adds the classes from the supplied Zip file to the class list.
-	 *
-	 * @param classList
-	 *            the Vector to add the classes to
-	 * @param classPathFile
-	 *            the File to scan as a zip file
-	 */
 	public void addClassesFromZip(Vector<String> classList, File classPathFile) {
 		// System.out.println("Processing jar/zip file: " + classPathFile);
 
@@ -127,10 +119,9 @@ public class ImportWizard {
 				ZipEntry zipEntry = (ZipEntry) enumeration.nextElement();
 				String current = zipEntry.getName();
 				// Validate against Zip Slip (path traversal) attacks:
-				// reject entries containing ".." path components
-				java.nio.file.Path normalized = java.nio.file.Paths.get(current).normalize();
-				if (normalized.startsWith("..") || normalized.isAbsolute()) {
-					logger.warning("Skipping suspicious zip entry: " + current);
+				// reject entries containing ".." path components or absolute paths
+				if (current.contains("..") || current.startsWith("/") || current.startsWith("\\")) {
+					logger.warning("Skipping suspicious zip entry");
 					continue;
 				}
 				if (isInteresting(current)) {

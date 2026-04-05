@@ -226,8 +226,10 @@ public class ServerCommunication extends CommunicationBase {
 			if (getCurrentState() != STATE_IDLE) {
 				printWrongState(pCommand);
 			}
+			boolean lockAcquired = false;
 			try {
 				String lockId = mMindMapMaster.lock(this.getName(), getController());
+				lockAcquired = true;
 				logger.info("Got lock for " + getName());
 				CollaborationReceiveLock lockCommand = new CollaborationReceiveLock();
 				lockCommand.setId(lockId);
@@ -240,6 +242,11 @@ public class ServerCommunication extends CommunicationBase {
 				send(unableToLock);
 			} catch (InterruptedException e) {
 				freemind.main.Resources.getInstance().logException(e);
+			} catch (Exception e) {
+				if (lockAcquired) {
+					mMindMapMaster.unlock(getController());
+				}
+				throw e;
 			}
 		}
 		if (!commandHandled) {
