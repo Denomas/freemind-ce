@@ -60,7 +60,7 @@ GRADLE_CMD   = JAVA_HOME=$(JAVA_HOME) $(GRADLE)
 
 .PHONY: help build run debug clean test test-gui test-performance test-chaos coverage jaxb javadoc \
         package package-mac package-win package-linux \
-        dist-zip install-dist check info all
+        dist-zip install-dist check audit audit-full info all
 
 .DEFAULT_GOAL := help
 
@@ -111,6 +111,22 @@ coverage: ## Run tests with JaCoCo coverage report
 
 check: ## Run build + all quality checks
 	$(GRADLE_CMD) check $(GRADLE_FLAGS)
+
+# ── Security ────────────────────────────────────────────────────────
+##@ Security
+
+audit: ## Run security audit — Grype (fast, ~30s, fails on High+)
+	@command -v grype >/dev/null 2>&1 || { echo "Error: grype not found. Install: mise install grype"; exit 1; }
+	grype dir:. --only-fixed --fail-on high
+	@echo ""
+	@echo "Full OWASP report: make audit-full"
+
+audit-full: ## Run full OWASP dependency-check (slower, detailed HTML report)
+	$(GRADLE_CMD) :freemind:dependencyCheckAnalyze $(GRADLE_FLAGS)
+	@echo ""
+	@echo "Report: freemind/build/reports/dependency-check-report.html"
+
+##@ Code Generation
 
 jaxb: ## Regenerate JAXB classes from XSD schema
 	$(GRADLE_CMD) :freemind:generateJaxb $(GRADLE_FLAGS)

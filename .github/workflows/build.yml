@@ -23,6 +23,7 @@ jobs:
       contents: read
     outputs:
       code: ${{ steps.check.outputs.code }}
+      java_code: ${{ steps.check.outputs.java_code }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
@@ -33,6 +34,7 @@ jobs:
           # Push to main ve workflow_call (release akışı) → her zaman full build
           if [ "${{ github.event_name }}" != "pull_request" ]; then
             echo "code=true" >> "$GITHUB_OUTPUT"
+            echo "java_code=true" >> "$GITHUB_OUTPUT"
             echo "::notice::Non-PR event, running full build"
             exit 0
           fi
@@ -50,11 +52,21 @@ jobs:
             ':!.github/release-notes-template.md')
           if [ -z "$NON_DOC_FILES" ]; then
             echo "code=false" >> "$GITHUB_OUTPUT"
+            echo "java_code=false" >> "$GITHUB_OUTPUT"
             echo "::notice::Documentation-only change — skipping build & test matrix"
           else
             echo "code=true" >> "$GITHUB_OUTPUT"
             echo "::notice::Code changes detected: $(echo "$NON_DOC_FILES" | wc -l | tr -d ' ') non-doc files"
             echo "$NON_DOC_FILES" | head -10
+            # Check if any Java/Kotlin source files changed (for CodeQL)
+            JAVA_FILES=$(git diff --name-only "$BASE..$HEAD" -- '*.java' '*.kt' '*.kts')
+            if [ -z "$JAVA_FILES" ]; then
+              echo "java_code=false" >> "$GITHUB_OUTPUT"
+              echo "::notice::No Java/Kotlin files changed — CodeQL analysis will be skipped"
+            else
+              echo "java_code=true" >> "$GITHUB_OUTPUT"
+              echo "::notice::Java/Kotlin files changed: $(echo "$JAVA_FILES" | wc -l | tr -d ' ') files"
+            fi
           fi
 
   build:
@@ -327,7 +339,7 @@ jobs:
   codeql:
     name: CodeQL Analysis
     needs: [changes, build]
-    if: ${{ needs.changes.outputs.code == 'true' }}
+    if: ${{ needs.changes.outputs.code == 'true' && needs.changes.outputs.java_code == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       actions: read

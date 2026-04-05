@@ -81,6 +81,33 @@ jobs:
         with:
           category: "/language:java-kotlin"
 
+  grype-scan:
+    name: Grype Vulnerability Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Run Grype scan
+        uses: anchore/scan-action@1638637db639e0ade3258b51db49a9a137574c3e # v6
+        id: grype
+        with:
+          path: "."
+          fail-build: false
+          only-fixed: true
+          severity-cutoff: high
+
+      - name: Upload Grype results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@c10b8064de6f491fea524254123dbe5e09572f13 # v4
+        if: always()
+        with:
+          sarif_file: ${{ steps.grype.outputs.sarif }}
+          category: grype-scan
+
   trivy-scan:
     name: Trivy Filesystem Scan
     runs-on: ubuntu-latest

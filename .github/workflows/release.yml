@@ -478,6 +478,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
+      attestations: write
 
     steps:
       - name: Download all artifacts
@@ -516,6 +518,13 @@ jobs:
           done
           # Also sign the checksums file
           cosign sign-blob --yes SHA256SUMS.txt --output-signature=SHA256SUMS.txt.sig --output-certificate=SHA256SUMS.txt.pem
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@c074443f1aee8d4aeeae555aebba3282517141b2 # v2.2.3
+        with:
+          subject-path: |
+            artifacts/FreeMind-CE-*
+            artifacts/SHA256SUMS.txt
 
       - name: Create Release
         uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2
