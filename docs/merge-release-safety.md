@@ -190,8 +190,11 @@ AI agents (Claude Code, Cursor, Copilot, etc.) working with maintainer credentia
 - Follow the exact same PR workflow as any human contributor
 - Commits are attributed to the maintainer (the human is accountable)
 - AI-generated PRs MUST be reviewed by the maintainer with the same rigor as external contributions
-- Never add AI attribution (`Co-Authored-By`, "Generated with..." etc.) to commits or PRs
+- Never add AI attribution (`Co-Authored-By`, "Generated with..." etc.) to commits or PRs — no AI tool name may appear anywhere in the repository history
 - AI agents must run `make build` before pushing and use Serena for impact analysis (see CONTRIBUTING.md)
+- AI agents MUST read CONTRIBUTING.md and all referenced docs BEFORE starting any work — skipping documentation to rely on "general knowledge" produces rule violations
+- Tool enforcement details: [docs/contributor-workflows.md — AI Agent Tool Enforcement](contributor-workflows.md#ai-agent-tool-enforcement-3-layer-defense)
+- Single Source of Truth: each fact lives in exactly one file; other files link to it — never duplicate information across docs
 
 ## Incident History
 
@@ -210,6 +213,19 @@ This section records incidents where merge/release protocols were violated, as l
 2. CLAUDE.md Critical Rules updated to reference this document
 3. Ruleset bypass list emptied — admin bypass no longer possible
 4. Memory files converted to point to this document instead of containing rules
+
+### 2026-04-05: AI Attribution in Commit and PR
+
+**What happened:** AI agent added `Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>` to a commit message and "Generated with [Claude Code]" footer to a PR body, despite the rule at line 193 of this document explicitly forbidding it.
+
+**Impact:** AI tool branding appeared in repository history. Required force-push to amend the commit and manual PR body edit.
+
+**Root cause:** Agent followed its system prompt's default commit template instead of reading and obeying this project's binding rules. The agent did not read CONTRIBUTING.md and linked docs before starting work — it assumed its general knowledge was sufficient.
+
+**Corrective action:**
+1. Commit amended and force-pushed to remove attribution
+2. AI Agent Policy section expanded with explicit "read docs first" requirement
+3. AI Agent Tool Enforcement section added to contributor-workflows.md documenting the 3-layer defense mechanism and technical implementation details
 
 ### 2026-04-04: PR Closed Without Authorization
 
