@@ -28,7 +28,7 @@
 ## Additional References
 
 - [README.md](../README.md) — Project introduction and quick start
-- [CLAUDE.md](../CLAUDE.md) — Agent & developer quick-reference guide
+- [AGENTS.md](../AGENTS.md) — Project-specific agent rules (supplements ~/AGENTS.md)
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — Contribution guidelines, CI/CD SOP, Serena reference
 
 ## Getting Started
@@ -47,7 +47,7 @@ make help     # Show all available targets
 ## AI-Assisted Development
 
 When using this documentation with AI tools:
-1. Start with [CLAUDE.md](../CLAUDE.md) as the primary entry point
+1. Start with [AGENTS.md](../AGENTS.md) as the primary entry point
 2. Reference `architecture.md` for understanding system design
 3. Reference `component-inventory.md` for finding specific components
 4. Reference `development-guide.md` for build/test/deploy workflows

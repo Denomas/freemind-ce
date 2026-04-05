@@ -210,7 +210,7 @@ This section records incidents where merge/release protocols were violated, as l
 
 **Corrective action:**
 1. This document was created with explicit forbidden actions list
-2. CLAUDE.md Critical Rules updated to reference this document
+2. AGENTS.md rules updated to reference this document
 3. Ruleset bypass list emptied — admin bypass no longer possible
 4. Memory files converted to point to this document instead of containing rules
 

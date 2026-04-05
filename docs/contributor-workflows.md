@@ -166,7 +166,7 @@ AI agents are mechanically prevented from bypassing project rules through three 
 |-------|-----------|-----------------|
 | **1. SessionStart hook** | `~/.claude/hooks/inject-project-docs.sh` | Auto-injects CONTRIBUTING.md + README.md into every session context. Agent cannot claim "I didn't read the rules." |
 | **2. PreToolUse hooks** | `.claude/settings.json` (committed, not gitignored) | Blocks `Read`, `Grep`, `Bash(grep/rg/cat/find)` on `.java` files with `permissionDecision: "deny"`. Forces Serena MCP usage. |
-| **3. CLAUDE.md format** | Ego-compatible contrast table | First section is "You normally do X → HERE do Y instead" — overrides agent's default assumptions. |
+| **3. AGENTS.md format** | Ego-compatible contrast table | First section is "You normally do X → HERE do Y instead" — overrides agent's default assumptions. |
 
 **Technical details (lessons learned):**
 
@@ -352,7 +352,7 @@ Changes to ONLY these files cause the 48-job matrix to be skipped:
 
 | Pattern | Examples |
 |---------|---------|
-| `**/*.md` | `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `docs/*.md` |
+| `**/*.md` | `README.md`, `CONTRIBUTING.md`, `AGENTS.md`, `docs/*.md` |
 | `docs/**` | Any file under `docs/` directory |
 | `LICENSE`, `COPYING`, `.gitattributes` | License and git config files |
 | `.github/ISSUE_TEMPLATE/**` | Issue templates |
