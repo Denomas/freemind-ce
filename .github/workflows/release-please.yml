@@ -30,6 +30,8 @@ jobs:
     permissions:
       contents: read
       checks: write
+      actions: read
+      security-events: write
     uses: ./.github/workflows/build.yml
 
   # Step 2: Only create/update Release PR if build passes
