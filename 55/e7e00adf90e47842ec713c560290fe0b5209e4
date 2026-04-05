@@ -1,0 +1,25 @@
+docs/contributor-workflows.md
+  22af26e20b09ff0b 161-180
+docs/merge-release-safety.md
+  22af26e20b09ff0b 193,195-197,217-229
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "55e7e00adf90e47842ec713c560290fe0b5209e4",
+  "prompts": {
+    "22af26e20b09ff0b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d9a1a69-77af-46fc-9352-452601442e05",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 37,
+      "total_deletions": 1,
+      "accepted_lines": 37,
+      "overriden_lines": 0
+    }
+  }
+}
