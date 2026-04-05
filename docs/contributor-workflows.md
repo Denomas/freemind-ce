@@ -158,6 +158,26 @@ flowchart TD
     style L fill:#ffffcc,stroke:#cccc00
 ```
 
+### AI Agent Tool Enforcement (3-Layer Defense)
+
+AI agents are mechanically prevented from bypassing project rules through three independent layers:
+
+| Layer | Mechanism | What It Enforces |
+|-------|-----------|-----------------|
+| **1. SessionStart hook** | `~/.claude/hooks/inject-project-docs.sh` | Auto-injects CONTRIBUTING.md + README.md into every session context. Agent cannot claim "I didn't read the rules." |
+| **2. PreToolUse hooks** | `.claude/settings.json` (committed, not gitignored) | Blocks `Read`, `Grep`, `Bash(grep/rg/cat/find)` on `.java` files with `permissionDecision: "deny"`. Forces Serena MCP usage. |
+| **3. AGENTS.md format** | Ego-compatible contrast table | First section is "You normally do X → HERE do Y instead" — overrides agent's default assumptions. |
+
+**Technical details (lessons learned):**
+
+| Detail | Correct | Wrong |
+|--------|---------|-------|
+| Hook permission decision | `"deny"` | `"block"` (not a valid value — only `"deny"`, `"allow"`, `"ask"` work) |
+| Hook config location | `.claude/settings.json` (committed) | `.claude/settings.local.json` (gitignored — worktree subagents won't get it) |
+| Hook file scope | `.java` only | `.java` + `.kts` (Gradle configs aren't analyzable by Serena) |
+| Hook pattern matching | Match command prefix first (`grep`, `rg`, `cat`, `find`) then check for `.java` | Match any text containing `.java` (false positive on `gh pr create --body "...Tools.java..."`) |
+| Non-Java files | Unrestricted — `grep`/`rg` on `.properties`, `.md`, `.yml`, `.xml` is expected and necessary | Blocking all grep/rg regardless of file type |
+
 ### First-Time Contributor Flow
 
 GitHub pauses CI for first-time contributors until a maintainer verifies the code is safe to run:
@@ -332,7 +352,7 @@ Changes to ONLY these files cause the 48-job matrix to be skipped:
 
 | Pattern | Examples |
 |---------|---------|
-| `**/*.md` | `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `docs/*.md` |
+| `**/*.md` | `README.md`, `CONTRIBUTING.md`, `AGENTS.md`, `docs/*.md` |
 | `docs/**` | Any file under `docs/` directory |
 | `LICENSE`, `COPYING`, `.gitattributes` | License and git config files |
 | `.github/ISSUE_TEMPLATE/**` | Issue templates |

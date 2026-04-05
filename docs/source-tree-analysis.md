@@ -103,7 +103,8 @@ freemind-ce/
 ├── docs/                              # ★ Generated project documentation
 │
 ├── .pre-commit-config.yaml            # Pre-commit hooks (XML validation, Java compile, whitespace)
-├── CLAUDE.md                          # ★ Agent & developer quick-reference guide
+├── AGENTS.md                          # ★ Project-specific agent rules (supplements ~/AGENTS.md)
+├── CLAUDE.md                          # Points to AGENTS.md
 ├── CONTRIBUTING.md                    # Contribution guidelines, CI/CD SOP, Serena reference
 ├── CHANGELOG.md                       # Auto-generated changelog (release-please)
 ├── SECURITY.md                        # Security policy
