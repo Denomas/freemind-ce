@@ -117,7 +117,7 @@ check: ## Run build + all quality checks
 
 audit: ## Run security audit — Grype (fast, ~30s, fails on High+)
 	@command -v grype >/dev/null 2>&1 || { echo "Error: grype not found. Install: mise install grype"; exit 1; }
-	grype dir:. --only-fixed --fail-on high
+	grype dir:build --only-fixed --fail-on high
 	@echo ""
 	@echo "Full OWASP report: make audit-full"
 
