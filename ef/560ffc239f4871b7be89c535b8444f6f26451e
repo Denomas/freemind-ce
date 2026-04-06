@@ -1,0 +1,27 @@
+freemind/freemind/main/HtmlTools.java
+  605939c0bf262e1e 873
+freemind/build.gradle.kts
+  605939c0bf262e1e 159-160
+Makefile
+  605939c0bf262e1e 120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "ef560ffc239f4871b7be89c535b8444f6f26451e",
+  "prompts": {
+    "605939c0bf262e1e": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_29fdef5f4ffejSFSnkCc8rHkyE",
+        "model": "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 4,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
