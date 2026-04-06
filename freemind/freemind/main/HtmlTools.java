@@ -870,6 +870,6 @@ public class HtmlTools {
 	 * Uses JSoup to parse HTML
 	 */
 	public void insertHtmlIntoNodes(String pText, MindMapNode pParentNode, NodeCreator pCreator) {
-		new NodeTraversor(new HtmlNodeVisitor(pParentNode, pCreator)).traverse(Jsoup.parse(pText));
+		NodeTraversor.traverse(new HtmlNodeVisitor(pParentNode, pCreator), Jsoup.parse(pText));
 	}
 }
