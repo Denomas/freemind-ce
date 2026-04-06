@@ -1,0 +1,23 @@
+Makefile
+  605939c0bf262e1e 120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "4e8a8f6148a75a2e69624708c9afa0e4a842c935",
+  "prompts": {
+    "605939c0bf262e1e": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_29fdef5f4ffejSFSnkCc8rHkyE",
+        "model": "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 4,
+      "accepted_lines": 1,
+      "overriden_lines": 2
+    }
+  }
+}
