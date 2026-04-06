@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.4](https://github.com/Denomas/freemind-ce/compare/v1.3.3...v1.3.4) (2026-04-06)
+
+
+### Bug Fixes
+
+* add missing CodeQL permissions to release-please validate job ([#39](https://github.com/Denomas/freemind-ce/issues/39)) ([f6f8bc3](https://github.com/Denomas/freemind-ce/commit/f6f8bc3c5b71f0aee41c42778c65992e5754e7fb))
+* critical security fixes and agent compliance enforcement ([#38](https://github.com/Denomas/freemind-ce/issues/38)) ([c21b7cc](https://github.com/Denomas/freemind-ce/commit/c21b7cc6d5f8f0e882b1be18052e72560e2e0a83))
+* **deps:** update jsoup 1.10.3 → 1.17.2 ([#47](https://github.com/Denomas/freemind-ce/issues/47)) ([e1bfeb1](https://github.com/Denomas/freemind-ce/commit/e1bfeb1396ac2c0f170f5b1c0e02464ff2c80fab))
+* release lock on InterruptedException in ServerCommunication ([#43](https://github.com/Denomas/freemind-ce/issues/43)) ([7b332c5](https://github.com/Denomas/freemind-ce/commit/7b332c535fdf593469f74af03d0903cc629243a0))
+* resolve CodeQL phase 2 security and quality alerts ([#41](https://github.com/Denomas/freemind-ce/issues/41)) ([056df0f](https://github.com/Denomas/freemind-ce/commit/056df0f0579cae6d54ff0626fbdc1bac5262402a))
+
 ## [1.3.3](https://github.com/Denomas/freemind-ce/compare/v1.3.2...v1.3.3) (2026-04-04)
 
 
