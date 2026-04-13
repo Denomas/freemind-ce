@@ -40,7 +40,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
 
       - name: Make gradlew executable
         if: runner.os != 'Windows'
@@ -92,7 +92,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
 
       - name: Make gradlew executable
         if: runner.os != 'Windows'
@@ -140,7 +140,7 @@ jobs:
 
       - name: Upload GUI Test Screenshots
         if: always()
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: release-gui-screenshots-${{ matrix.os }}-java${{ matrix.java }}
           path: freemind/build/test-screenshots/
@@ -207,7 +207,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
@@ -225,7 +225,7 @@ jobs:
           for f in *.dmg; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-macOS.dmg"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: FreeMindCE-macOS
           path: freemind/build/jpackage/FreeMind-CE-*
@@ -248,7 +248,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
 
       - name: Build
         run: .\gradlew.bat build -x test --no-daemon --no-configuration-cache
@@ -356,7 +356,7 @@ jobs:
           for f in *.msi; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Windows.msi"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: FreeMindCE-Windows
           path: freemind/build/jpackage/FreeMind-CE-*
@@ -379,7 +379,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
@@ -460,14 +460,14 @@ jobs:
           for f in *.rpm; do [ -f "$f" ] && mv "$f" "FreeMind-CE-${VERSION}-Linux.rpm"; done
 
       - name: Upload packages
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: FreeMindCE-Linux
           path: freemind/build/jpackage/FreeMind-CE-*
           if-no-files-found: error
 
       - name: Upload JAR distribution
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: FreeMindCE-jar
           path: freemind/build/distributions/*
@@ -520,14 +520,14 @@ jobs:
           cosign sign-blob --yes SHA256SUMS.txt --output-signature=SHA256SUMS.txt.sig --output-certificate=SHA256SUMS.txt.pem
 
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@c074443f1aee8d4aeeae555aebba3282517141b2 # v2.2.3
+        uses: actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32 # v4.1.0
         with:
           subject-path: |
             artifacts/FreeMind-CE-*
             artifacts/SHA256SUMS.txt
 
       - name: Create Release
-        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2
+        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v2
         with:
           files: artifacts/*
           generate_release_notes: true
