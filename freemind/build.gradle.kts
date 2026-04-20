@@ -13,7 +13,7 @@ plugins {
     jacoco
     pmd
     id("com.github.spotbugs") version "6.5.1"
-    id("org.owasp.dependencycheck") version "12.2.0"
+    id("org.owasp.dependencycheck") version "12.2.1"
     id("org.cyclonedx.bom") version "2.3.1"
 }
 
