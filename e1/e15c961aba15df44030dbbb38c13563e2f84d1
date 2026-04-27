@@ -1,0 +1,23 @@
+freemind/plugins/collaboration/socket/ServerCommunication.java
+  e8e7097b06057d68 263,268-274
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "e1e15c961aba15df44030dbbb38c13563e2f84d1",
+  "prompts": {
+    "e8e7097b06057d68": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_22eea221bffe1k5kWml85uEL4H",
+        "model": "opencode/minimax-m2.5-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 0,
+      "accepted_lines": 4,
+      "overriden_lines": 1
+    }
+  }
+}
