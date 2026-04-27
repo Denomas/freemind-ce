@@ -1,0 +1,23 @@
+.github/workflows/release.yml
+  e8e7097b06057d68 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "99846aade146893a46e8a6726338604ba7e2f0f3",
+  "prompts": {
+    "e8e7097b06057d68": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_22eea221bffe1k5kWml85uEL4H",
+        "model": "opencode/minimax-m2.5-free"
+      },
+      "human_author": "Tolga Karatas",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
