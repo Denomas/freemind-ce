@@ -10,7 +10,7 @@ on:
         description: 'Release tag (e.g., v1.2.0) — only needed for manual runs'
         required: false
 
-permissions: {}
+permissions: read-all
 
 env:
   JAVA_VERSION: '21'
