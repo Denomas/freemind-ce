@@ -157,7 +157,7 @@ dependencies {
     implementation("xerces:xercesImpl:2.12.2")
 
     // Jsoup (HTML Parsing)
-    implementation("org.jsoup:jsoup:1.17.2")
+    implementation("org.jsoup:jsoup:1.22.2")
 
     // Plugin dependencies
     implementation("org.codehaus.groovy:groovy-all:3.0.25")
