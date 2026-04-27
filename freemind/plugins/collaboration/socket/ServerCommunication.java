@@ -260,6 +260,18 @@ public class ServerCommunication extends CommunicationBase {
 
 	public void terminateSocket() throws IOException {
 		mMindMapMaster.removeConnection(this);
+		try {
+			ExtendedMapFeedback controller = getController();
+			if (controller != null) {
+				mMindMapMaster.unlock(controller);
+			}
+		} catch (IllegalStateException e) {
+			logger.fine("Lock already released");
+		} catch (IllegalArgumentException e) {
+			logger.fine("Session not found");
+		} catch (NullPointerException e) {
+			logger.fine("Controller was null");
+		}
 		commitSuicide();
 		close();
 	}
