@@ -162,9 +162,9 @@ dependencies {
     // Plugin dependencies
     implementation("org.codehaus.groovy:groovy-all:3.0.25")
     implementation(files("plugins/map/JMapViewer.jar"))
-    implementation("org.apache.lucene:lucene-core:10.4.0")
-    implementation("org.apache.lucene:lucene-analysis-common:10.4.0")
-    implementation("org.apache.lucene:lucene-queryparser:10.4.0")
+    implementation("org.apache.lucene:lucene-core:10.5.0")
+    implementation("org.apache.lucene:lucene-analysis-common:10.5.0")
+    implementation("org.apache.lucene:lucene-queryparser:10.5.0")
     implementation(files("plugins/help/jhall.jar"))
     // LaTeX plugin (JLaTeXMath) — built as separate module :freemind:plugins:latex
     implementation("org.scilab.forge:jlatexmath:1.0.7")
