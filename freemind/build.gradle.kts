@@ -180,15 +180,15 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.5.32")
 
     // Testing - JUnit 5 with vintage engine for JUnit 3 backward compatibility
-    testImplementation("org.junit.jupiter:junit-jupiter:6.0.3")
-    testImplementation("org.junit.vintage:junit-vintage-engine:6.0.3")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:6.0.3")
+    testImplementation("org.junit.jupiter:junit-jupiter:6.1.3")
+    testImplementation("org.junit.vintage:junit-vintage-engine:6.1.3")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:6.1.3")
     testImplementation("junit:junit:${junitVersion}")
-    testImplementation("org.mockito:mockito-core:5.23.0")
+    testImplementation("org.mockito:mockito-core:5.24.0")
 
     // Property-Based Testing (jqwik)
-    testImplementation("net.jqwik:jqwik:1.9.3")
-    testImplementation("net.jqwik:jqwik-engine:1.9.3")
+    testImplementation("net.jqwik:jqwik:1.10.1")
+    testImplementation("net.jqwik:jqwik-engine:1.10.1")
 
     // Fuzz Testing (Jazzer via JUnit integration)
     testImplementation("com.code-intelligence:jazzer-api:0.30.0")
