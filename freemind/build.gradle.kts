@@ -176,8 +176,8 @@ dependencies {
     implementation("org.apache.xmlgraphics:fop:${fopVersion}")
 
     // Logging (SLF4J + Logback)
-    implementation("org.slf4j:slf4j-api:2.0.17")
-    implementation("ch.qos.logback:logback-classic:1.5.32")
+    implementation("org.slf4j:slf4j-api:2.0.20")
+    implementation("ch.qos.logback:logback-classic:1.6.5")
 
     // Testing - JUnit 5 with vintage engine for JUnit 3 backward compatibility
     testImplementation("org.junit.jupiter:junit-jupiter:6.1.3")
